@@ -111,6 +111,16 @@ textarea{resize:vertical;min-height:60px;}
 .new-ing-grid label{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.04em;}
 .new-ing-grid input,.new-ing-grid select{font-size:13px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;background:#fff;color:#1a1a1a;width:100%;}
 @media(max-width:700px){.new-ing-grid{grid-template-columns:1fr 1fr;}.fornitori-grid{grid-template-columns:1fr;}.form-grid{grid-template-columns:1fr;}.form-grid-3{grid-template-columns:1fr 1fr;}}
+.search-result-group{padding:10px 16px 4px;font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #f0ede6;}
+.search-result-row{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid #f5f3ef;cursor:pointer;transition:background .1s;}
+.search-result-row:last-child{border-bottom:none;}
+.search-result-row:hover{background:#f9f8f5;}
+.search-result-icon{font-size:18px;width:28px;text-align:center;flex-shrink:0;}
+.search-result-info{flex:1;}
+.search-result-nome{font-size:14px;font-weight:500;color:#1a1a1a;}
+.search-result-meta{font-size:12px;color:#888;}
+.search-result-tipo{font-size:11px;padding:2px 8px;border-radius:20px;flex-shrink:0;}
+.search-empty{padding:24px;text-align:center;color:#aaa;font-size:14px;}
 /* Semilavorati & Piatti finiti */
 .semi-card,.piatto-card{background:#fff;border:1px solid #e0ded8;border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
 .semi-card:hover,.piatto-card:hover{border-color:#888;box-shadow:0 2px 8px rgba(0,0,0,.06);}
@@ -263,6 +273,13 @@ textarea{resize:vertical;min-height:60px;}
 <header>
   <h1>Ricettario</h1>
   <span>Food Cost Pro</span>
+  <div style="flex:1;max-width:320px;margin:0 8px;">
+    <input type="text" id="global-search" placeholder="&#128269; Cerca piatto, ingrediente, semilavorato..." 
+      oninput="globalSearch(this.value)"
+      style="width:100%;font-size:13px;padding:7px 12px;border:1px solid #d0cec8;border-radius:20px;background:#f5f4f0;color:#1a1a1a;outline:none;"
+      onfocus="this.style.background='#fff';this.style.borderColor='#1a1a1a';"
+      onblur="this.style.background='#f5f4f0';this.style.borderColor='#d0cec8';if(!this.value)closeSearch();"/>
+  </div>
   <div style="margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
     <span id="backup-status" style="font-size:11px;color:#2d7d46;display:none;">&#10003; Salvato</span>
     <button onclick="esportaDati()" style="padding:6px 12px;font-size:12px;font-weight:500;background:#fff;border:1px solid #d0cec8;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:5px;">&#128229; Esporta</button>
@@ -277,6 +294,8 @@ textarea{resize:vertical;min-height:60px;}
     <button onclick="dropboxDisconnetti()" id="btn-dbx-disc" style="padding:6px 12px;font-size:12px;font-weight:500;background:#fff;border:1px solid #d0cec8;color:#888;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;" title="Disconnetti Dropbox">&#9729; &#10005;</button>
   </div>
 </header>
+<div id="search-overlay" style="display:none;position:fixed;top:57px;left:0;right:0;bottom:0;background:rgba(0,0,0,.3);z-index:50;" onclick="closeSearch()"></div>
+<div id="search-results" style="display:none;position:fixed;top:57px;left:50%;transform:translateX(-50%);width:100%;max-width:680px;background:#fff;border-radius:0 0 14px 14px;box-shadow:0 8px 32px rgba(0,0,0,.15);z-index:51;max-height:70vh;overflow-y:auto;"></div>
 <div class="container">
   <div class="tab-bar">
     <div class="tab active" onclick="showTab('home')">&#127968; Home</div>
@@ -3222,6 +3241,131 @@ function openRicettaBase(){
   document.getElementById('btn-modifica-ricetta').style.display='none';
   buildPrintModal(r);
   document.getElementById('print-modal').classList.add('open');
+}
+
+/* ===== RICERCA GLOBALE ===== */
+function globalSearch(q){
+  var overlay=document.getElementById('search-overlay');
+  var results=document.getElementById('search-results');
+  if(!q||q.trim().length<2){
+    overlay.style.display='none';
+    results.style.display='none';
+    return;
+  }
+  q=q.toLowerCase().trim();
+  var html='';
+  var count=0;
+
+  /* Piatti finiti */
+  var piattiFiltrati=piatti.filter(function(p){
+    return p.nome.toLowerCase().indexOf(q)>=0
+      ||(p.categoria||'').toLowerCase().indexOf(q)>=0
+      ||(p.sottocategoria||'').toLowerCase().indexOf(q)>=0;
+  });
+  if(piattiFiltrati.length){
+    html+='<div class="search-result-group">Piatti finiti</div>';
+    piattiFiltrati.forEach(function(p){
+      var idx=piatti.indexOf(p);
+      var fc='';
+      if(p.prezzoVendita>0){
+        var tot=p.componenti.reduce(function(t,c){
+          if(c.conv===0||c.unit==='q.b.')return t;
+          if(c.tipo==='mp') return t+c.qtaBase*c.conv*gp(c.magIdx);
+          return t+costoSemi(c.semiIdx)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1));
+        },0);
+        var pct=tot/p.pax/p.prezzoVendita*100;
+        fc=' &middot; FC '+pct.toFixed(1)+'%';
+      }
+      html+='<div class="search-result-row" onclick="closeSearch();npModifica('+idx+')">'
+        +'<span class="search-result-icon">&#127869;</span>'
+        +'<div class="search-result-info">'
+        +'<div class="search-result-nome">'+p.nome+'</div>'
+        +'<div class="search-result-meta">'+p.categoria+(p.sottocategoria?' &middot; '+p.sottocategoria:'')+' &middot; '+p.pax+' porz.'+fc+'</div>'
+        +'</div>'
+        +'<span class="search-result-tipo badge badge-blue">Piatto</span>'
+        +'</div>';
+      count++;
+    });
+  }
+
+  /* Semilavorati */
+  var semiFiltrati=semilavorati.filter(function(s){
+    return s.nome.toLowerCase().indexOf(q)>=0
+      ||(s.categoria||'').toLowerCase().indexOf(q)>=0;
+  });
+  if(semiFiltrati.length){
+    html+='<div class="search-result-group">Semilavorati</div>';
+    semiFiltrati.forEach(function(s){
+      var idx=semilavorati.indexOf(s);
+      html+='<div class="search-result-row" onclick="closeSearch();showTab(&quot;semilavorati&quot;)">'
+        +'<span class="search-result-icon">&#9881;</span>'
+        +'<div class="search-result-info">'
+        +'<div class="search-result-nome">'+s.nome+'</div>'
+        +'<div class="search-result-meta">'+s.categoria+' &middot; resa '+s.resaQta+' '+s.resaUm+'</div>'
+        +'</div>'
+        +'<span class="search-result-tipo badge badge-green">Semilavorato</span>'
+        +'</div>';
+      count++;
+    });
+  }
+
+  /* Materie prime */
+  var mpFiltrate=magazzino.filter(function(m){
+    return m.nome.toLowerCase().indexOf(q)>=0
+      ||(activeSupplier(m).nome||'').toLowerCase().indexOf(q)>=0;
+  });
+  if(mpFiltrate.length){
+    html+='<div class="search-result-group">Materie prime</div>';
+    mpFiltrate.forEach(function(m){
+      var act=activeSupplier(m);
+      html+='<div class="search-result-row" onclick="closeSearch();showTab(&quot;magazzino&quot;)">'
+        +'<span class="search-result-icon">&#129746;</span>'
+        +'<div class="search-result-info">'
+        +'<div class="search-result-nome">'+m.nome+'</div>'
+        +'<div class="search-result-meta">'+act.nome+' &middot; '+eur(gp(magazzino.indexOf(m)))+'/'+m.um+'</div>'
+        +'</div>'
+        +'<span class="search-result-tipo badge badge-gray">Materia prima</span>'
+        +'</div>';
+      count++;
+    });
+  }
+
+  /* Fornitori */
+  var fornFiltrati=fornitori.filter(function(f){
+    return f.nome.toLowerCase().indexOf(q)>=0
+      ||(f.tipo||'').toLowerCase().indexOf(q)>=0
+      ||(f.referente||'').toLowerCase().indexOf(q)>=0;
+  });
+  if(fornFiltrati.length){
+    html+='<div class="search-result-group">Fornitori</div>';
+    fornFiltrati.forEach(function(f){
+      var idx=fornitori.indexOf(f);
+      html+='<div class="search-result-row" onclick="closeSearch();showTab(&quot;fornitori&quot;)">'
+        +'<span class="search-result-icon">&#127978;</span>'
+        +'<div class="search-result-info">'
+        +'<div class="search-result-nome">'+f.nome+'</div>'
+        +'<div class="search-result-meta">'+(f.tipo||'')+(f.referente?' &middot; '+f.referente:'')+'</div>'
+        +'</div>'
+        +'<span class="search-result-tipo badge badge-gray">Fornitore</span>'
+        +'</div>';
+      count++;
+    });
+  }
+
+  if(!count){
+    html='<div class="search-empty">&#128269; Nessun risultato per "<strong>'+q+'</strong>"</div>';
+  }
+
+  results.innerHTML=html;
+  results.style.display='block';
+  overlay.style.display='block';
+}
+
+function closeSearch(){
+  document.getElementById('search-overlay').style.display='none';
+  document.getElementById('search-results').style.display='none';
+  var inp=document.getElementById('global-search');
+  if(inp) inp.value='';
 }
 
 /* ===== NUOVO PIATTO (form unificato) ===== */
