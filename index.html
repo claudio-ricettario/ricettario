@@ -474,7 +474,8 @@ textarea{resize:vertical;min-height:60px;}
       </div>
     </div>
 
-    <div style="display:flex;gap:10px;justify-content:flex-end;margin-bottom:24px;">
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-bottom:24px;flex-wrap:wrap;">
+      <button class="btn-danger" id="np-delete-btn" onclick="npElimina()" style="display:none;margin-right:auto;">&#128465; Elimina piatto</button>
       <button class="btn-secondary" onclick="npReset()">&#10005; Svuota</button>
       <button class="btn-primary" id="np-save-btn" style="padding:10px 24px;font-size:14px;" onclick="npSalva()">&#10003; Salva piatto</button>
     </div>
@@ -3407,6 +3408,17 @@ function npShowAlert(msg){
   if(el) el.innerHTML='<div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:8px 12px;font-size:13px;color:#92400e;margin-bottom:8px;">'+msg+'</div>';
 }
 function npClearAlert(){var el=document.getElementById('np-alert');if(el)el.innerHTML='';}
+
+function npElimina(){
+  if(npEditIdx<0)return;
+  var p=piatti[npEditIdx];
+  if(!confirm('Eliminare definitivamente il piatto "'+p.nome+'"?\nQuesta operazione non puo essere annullata.'))return;
+  piatti.splice(npEditIdx,1);
+  savePiatti();
+  npReset();
+  showTab('home');
+  renderHome();
+}
 
 function npSalva(){
   npClearAlert();
