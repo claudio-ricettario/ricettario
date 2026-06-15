@@ -2794,24 +2794,12 @@ function renderHome(){
   if(!cont)return;
   if(typeof CAT_ORDER==='undefined'||!CAT_ORDER)return;
 
-  /* include risotto base inside "Primi piatti" */
-  var risottoBase={
-    _isBase:true,
-    nome:'Risotto alla milanese',
-    categoria:'Primi piatti',
-    sottocategoria:'',
-    pax:4,
-    prezzoVendita:0,
-    foto:baseFotoData||'',
-    ingredienti:ingredienti
-  };
-
-  /* group all: base + ricette salvate + piatti finiti */
-  var allRicette=[{r:risottoBase,i:-1,_tipo:'base'}]
+  /* group all: ricette salvate + piatti finiti */
+  var allRicette=[]
     .concat(ricetteSalvate.map(function(r,i){return {r:r,i:i,_tipo:'ricetta'};}))
     .concat(piatti.map(function(p,i){return {r:{
       nome:p.nome,categoria:p.categoria,sottocategoria:p.sottocategoria,
-      pax:p.pax,prezzoVendita:p.prezzoVendita,foto:'',_isPiatto:true,
+      pax:p.pax,prezzoVendita:p.prezzoVendita,foto:p.foto||'',_isPiatto:true,
       _piattoIdx:i,componenti:p.componenti
     },i:i,_tipo:'piatto'};}));
 
