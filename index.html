@@ -273,8 +273,8 @@ textarea{resize:vertical;min-height:60px;}
 <header>
   <h1>Ricettario</h1>
   <span>Food Cost Pro</span>
-  <div style="flex:1;max-width:320px;margin:0 8px;">
-    <input type="text" id="global-search" placeholder="&#128269; Cerca piatto, ingrediente, semilavorato..." 
+  <div style="flex:1;max-width:320px;min-width:140px;margin:0 8px;">
+    <input type="text" id="global-search" placeholder="&#128269; Cerca..." 
       oninput="globalSearch(this.value)"
       style="width:100%;font-size:13px;padding:7px 12px;border:1px solid #d0cec8;border-radius:20px;background:#f5f4f0;color:#1a1a1a;outline:none;"
       onfocus="this.style.background='#fff';this.style.borderColor='#1a1a1a';"
@@ -300,7 +300,7 @@ textarea{resize:vertical;min-height:60px;}
   <div class="tab-bar">
     <div class="tab active" onclick="showTab('home')">&#127968; Home</div>
     <div class="tab" onclick="showTab('semilavorati')">&#9881; Semilavorati</div>
-    <div class="tab" onclick="showTab('magazzino')">&#129746; Materie prime</div>
+    <div class="tab" onclick="showTab('magazzino')">&#128230; Materie prime</div>
     <div class="tab" onclick="showTab('foodcost')">&#128202; Food cost</div>
     <div class="tab" onclick="showTab('fornitori')">&#127978; Fornitori</div>
     <div class="tab" onclick="showTab('nuovo-piatto')">&#43; Nuovo piatto</div>
@@ -507,9 +507,7 @@ textarea{resize:vertical;min-height:60px;}
       <p class="muted" style="margin-bottom:0;">Preparazioni di base usate nei piatti finiti</p></div>
       <button class="btn-primary" onclick="openSemiModal(-1)">+ Nuovo semilavorato</button>
     </div>
-    <div id="semi-search-bar" style="margin-bottom:12px;">
-      <input type="text" id="semi-search" placeholder="&#128269; Cerca semilavorato..." oninput="renderSemilavorati()" style="font-size:13px;padding:8px 12px;border:1px solid #d0cec8;border-radius:8px;width:100%;max-width:320px;"/>
-    </div>
+
     <div id="semi-list"></div>
   </div>
 
