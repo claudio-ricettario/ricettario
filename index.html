@@ -280,12 +280,11 @@ textarea{resize:vertical;min-height:60px;}
 <div class="container">
   <div class="tab-bar">
     <div class="tab active" onclick="showTab('home')">&#127968; Home</div>
-    <div class="tab" onclick="showTab('magazzino')">&#129746; Materie prime</div>
     <div class="tab" onclick="showTab('semilavorati')">&#9881; Semilavorati</div>
-    <div class="tab" onclick="showTab('piatti')">&#127869; Piatti finiti</div>
+    <div class="tab" onclick="showTab('magazzino')">&#129746; Materie prime</div>
     <div class="tab" onclick="showTab('foodcost')">&#128202; Food cost</div>
     <div class="tab" onclick="showTab('fornitori')">&#127978; Fornitori</div>
-    <div class="tab" onclick="showTab('nuova-ricetta')">&#43; Nuovo</div>
+    <div class="tab" onclick="showTab('nuovo-piatto')">&#43; Nuovo piatto</div>
   </div>
 
   <!-- HOME -->
@@ -296,7 +295,7 @@ textarea{resize:vertical;min-height:60px;}
         <h1 class="home-title">Il mio Ricettario</h1>
         <p class="home-subtitle">Seleziona una categoria per vedere le ricette</p>
       </div>
-      <button class="btn-primary no-print" onclick="showTab('nuova-ricetta')" style="margin-left:auto;white-space:nowrap;">&#43; Nuova ricetta</button>
+      <button class="btn-primary no-print" onclick="showTab('nuovo-piatto')" style="margin-left:auto;white-space:nowrap;">&#43; Nuovo piatto</button>
     </div>
     <div id="home-cats-container"></div>
   </div>
@@ -376,7 +375,7 @@ textarea{resize:vertical;min-height:60px;}
     </div>
     <hr style="border:none;border-top:1px solid #e0ded8;margin:8px 0 20px;"/>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
-      <h2 style="font-size:16px;">Ricettario</h2>
+      <h2 style="font-size:16px;">Il mio ricettario</h2>
       <div style="display:flex;gap:6px;flex-wrap:wrap;" id="ricette-filtri">
         <button class="filtro-btn active" onclick="setFiltro('',this)">Tutti</button>
         <button class="filtro-btn" onclick="setFiltro('Antipasti',this)">Antipasti</button>
@@ -388,6 +387,97 @@ textarea{resize:vertical;min-height:60px;}
       </div>
     </div>
     <div id="ricette-salvate-cont"><p style="font-size:13px;color:#aaa;">Nessuna ricetta salvata ancora.</p></div>
+  </div>
+
+  <!-- NUOVO PIATTO -->
+  <div id="tab-nuovo-piatto" class="section">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px;">
+      <div><h2 id="np-title" style="margin-bottom:2px;">Nuovo piatto</h2>
+      <p class="muted" style="margin-bottom:0;">Componi il piatto con materie prime e/o semilavorati</p></div>
+    </div>
+    <div id="np-alert" style="margin-bottom:8px;"></div>
+
+    <div class="card">
+      <div class="section-label">Informazioni generali</div>
+      <div class="form-grid">
+        <div class="form-row"><label>Nome piatto *</label><input type="text" id="np-nome" placeholder="es. Gnocchi al rag&ugrave; di vitello"/></div>
+        <div class="form-row"><label>Categoria</label>
+          <select id="np-cat">
+            <option>Antipasti</option><option selected>Primi piatti</option><option>Secondi piatti</option>
+            <option>Contorni</option><option>Dolci</option><option>Pane e lievitati</option><option>Altro</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-row"><label>Sottocategoria</label>
+          <select id="np-sottocat">
+            <option value="">-- nessuna --</option>
+            <option>Carne</option><option>Pesce</option><option>Vegetariano</option><option>Vegano</option>
+          </select>
+        </div>
+        <div class="form-row"><label>Porzioni base *</label>
+          <input type="number" id="np-pax" value="4" min="1" style="width:100%;text-align:left;"/>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-row"><label>Prezzo di vendita (&euro;/pax)</label>
+          <input type="number" id="np-pv" placeholder="0.00" min="0" step="0.50" style="width:100%;text-align:left;"/>
+        </div>
+        <div class="form-row">
+          <label>Foto del piatto <span style="font-weight:400;color:#aaa;font-size:11px;">(opzionale)</span></label>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <label style="flex:1;display:flex;align-items:center;gap:6px;padding:6px 10px;border:1px dashed #d0cec8;border-radius:6px;cursor:pointer;font-size:13px;color:#888;text-transform:none;letter-spacing:0;font-weight:400;">
+              &#128247; <span id="np-foto-nome">Scegli foto...</span>
+              <input type="file" id="np-foto-input" accept="image/*" style="display:none;" onchange="npLoadFoto(this)"/>
+            </label>
+            <button class="btn-sm danger-sm" id="np-foto-clear" style="display:none;" onclick="npClearFoto()">&#10005;</button>
+          </div>
+          <div id="np-foto-preview" style="margin-top:6px;display:none;">
+            <img id="np-foto-img" style="max-width:100%;max-height:100px;border-radius:8px;object-fit:cover;border:1px solid #e0ded8;"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-label">Componenti</div>
+      <p style="font-size:12px;color:#888;margin-bottom:10px;">Aggiungi materie prime dal magazzino e/o semilavorati</p>
+      <div id="np-comp-list" style="margin-bottom:12px;"></div>
+      <div style="background:#f5f4f0;border-radius:10px;padding:12px 14px;">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;align-items:end;">
+          <div class="fg">
+            <label style="font-size:11px;color:#888;display:block;margin-bottom:3px;">Componente</label>
+            <select id="np-sel-comp" style="font-size:13px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;width:100%;"></select>
+          </div>
+          <div class="fg">
+            <label style="font-size:11px;color:#888;display:block;margin-bottom:3px;">Quantit&agrave;</label>
+            <input type="number" id="np-qta" placeholder="es. 200" min="0" step="0.1" style="width:100%;font-size:13px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;text-align:left;"/>
+          </div>
+          <div class="fg">
+            <label style="font-size:11px;color:#888;display:block;margin-bottom:3px;">Unit&agrave;</label>
+            <select id="np-unit" style="font-size:13px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;width:100%;">
+              <option value="g">g</option><option value="kg">kg</option><option value="lt">lt</option>
+              <option value="ml">ml</option><option value="pz">pz</option><option value="porzioni">porzioni</option><option value="q.b.">q.b.</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-sm" style="margin-top:8px;" onclick="npAddComp()">+ Aggiungi componente</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-label">Procedimento <span style="font-weight:400;color:#aaa;font-size:11px;">(opzionale)</span></div>
+      <div id="np-steps-list" style="margin-bottom:10px;"></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;">
+        <textarea id="np-step-text" placeholder="Descrivi il passaggio..." style="flex:1;min-height:54px;font-size:13px;border:1px solid #d0cec8;border-radius:6px;padding:8px;font-family:inherit;"></textarea>
+        <button class="btn-primary" style="padding:7px 14px;white-space:nowrap;margin-top:1px;" onclick="npAddStep()">+ Passo</button>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-bottom:24px;">
+      <button class="btn-secondary" onclick="npReset()">&#10005; Svuota</button>
+      <button class="btn-primary" id="np-save-btn" style="padding:10px 24px;font-size:14px;" onclick="npSalva()">&#10003; Salva piatto</button>
+    </div>
   </div>
 
   <!-- SEMILAVORATI -->
@@ -403,18 +493,7 @@ textarea{resize:vertical;min-height:60px;}
     <div id="semi-list"></div>
   </div>
 
-  <!-- PIATTI FINITI -->
-  <div id="tab-piatti" class="section">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
-      <div><h2 style="margin-bottom:2px;">Piatti finiti</h2>
-      <p class="muted" style="margin-bottom:0;">Composti da materie prime e/o semilavorati</p></div>
-      <button class="btn-primary" onclick="openPiattoModal(-1)">+ Nuovo piatto</button>
-    </div>
-    <div id="piatti-search-bar" style="margin-bottom:12px;">
-      <input type="text" id="piatti-search" placeholder="&#128269; Cerca piatto..." oninput="renderPiatti()" style="font-size:13px;padding:8px 12px;border:1px solid #d0cec8;border-radius:8px;width:100%;max-width:320px;"/>
-    </div>
-    <div id="piatti-list"></div>
-  </div>
+
 
   <!-- MAGAZZINO -->
   <div id="tab-magazzino" class="section">
@@ -1678,16 +1757,18 @@ function syncSlider(el){document.getElementById('sl-port').value=el.value;update
 function showTab(name){
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
-  var tabs=['home','magazzino','foodcost','fornitori','nuova-ricetta'];
+  var tabs=['home','semilavorati','magazzino','foodcost','fornitori','nuovo-piatto'];
   var idx=tabs.indexOf(name);
   if(idx>=0) document.querySelectorAll('.tab')[idx].classList.add('active');
-  /* ricetta tab has no tab button - just show the section */
-  document.getElementById('tab-'+name).classList.add('active');
+  var el=document.getElementById('tab-'+name);
+  if(el) el.classList.add('active');
   if(name==='home'){renderHome();}
   else if(name==='fornitori'){renderFornitori();}
   else if(name==='magazzino'){renderMagazzino();}
-  else if(name==='nuova-ricetta'){nrInit();}
+  else if(name==='semilavorati'){renderSemilavorati();}
+  else if(name==='nuovo-piatto'){npInit();}
   else if(name==='ricetta'){updateAll();}
+  else if(name==='foodcost'){updateAll();}
   else{updateAll();}
 }
 
@@ -2809,7 +2890,7 @@ function homeRicettaRow(r,i){
   var thumbHtml=r.foto
     ?'<img src="'+r.foto+'" style="width:100%;height:100%;object-fit:cover;"/>'
     :'<span style="font-size:20px;">&#127869;</span>';
-  var clickFn=r._isBase?'showTab(&quot;ricetta&quot;)':(r._isPiatto?'openPiattoModal('+r._piattoIdx+')':'openRicettaSalvata('+i+')');
+  var clickFn=r._isBase?'showTab(&quot;ricetta&quot;)':(r._isPiatto?'npModifica('+r._piattoIdx+')':'openRicettaSalvata('+i+')');
   return '<div class="home-ricetta-row" onclick="'+clickFn+'">'
     +'<div class="home-ricetta-thumb">'+thumbHtml+'</div>'
     +'<div class="home-ricetta-info">'
@@ -3153,6 +3234,210 @@ function openRicettaBase(){
   buildPrintModal(r);
   document.getElementById('print-modal').classList.add('open');
 }
+
+/* ===== NUOVO PIATTO (form unificato) ===== */
+var npComps=[], npSteps=[], npFotoData='', npEditIdx=-1;
+
+function npInit(){
+  var sel=document.getElementById('np-sel-comp');
+  if(!sel)return;
+  sel.innerHTML='<option value="">-- seleziona componente --</option>';
+  var grpMP=document.createElement('optgroup');
+  grpMP.label='Materie prime';
+  magazzino.forEach(function(m,i){
+    var opt=document.createElement('option');
+    opt.value='mp:'+i;
+    opt.textContent=m.nome+' ('+eur(gp(i))+'/'+m.um+')';
+    grpMP.appendChild(opt);
+  });
+  sel.appendChild(grpMP);
+  if(semilavorati.length){
+    var grpSL=document.createElement('optgroup');
+    grpSL.label='Semilavorati';
+    semilavorati.forEach(function(s,i){
+      var opt=document.createElement('option');
+      opt.value='sl:'+i;
+      opt.textContent=s.nome+' ('+eur(costoSemi(i))+'/'+s.resaUm+')';
+      grpSL.appendChild(opt);
+    });
+    sel.appendChild(grpSL);
+  }
+  npRenderComps();
+  npRenderSteps();
+  npClearAlert();
+}
+
+function npModifica(idx){
+  npEditIdx=idx;
+  var p=piatti[idx];
+  npComps=JSON.parse(JSON.stringify(p.componenti||[]));
+  npSteps=JSON.parse(JSON.stringify(p.steps||[]));
+  npFotoData=p.foto||'';
+  showTab('nuovo-piatto');
+  document.getElementById('np-nome').value=p.nome;
+  document.getElementById('np-cat').value=p.categoria||'Primi piatti';
+  document.getElementById('np-sottocat').value=p.sottocategoria||'';
+  document.getElementById('np-pax').value=p.pax||4;
+  document.getElementById('np-pv').value=p.prezzoVendita||'';
+  document.getElementById('np-title').textContent='Modifica piatto';
+  document.getElementById('np-save-btn').textContent='✓ Aggiorna piatto';
+  if(npFotoData){
+    document.getElementById('np-foto-img').src=npFotoData;
+    document.getElementById('np-foto-preview').style.display='block';
+    document.getElementById('np-foto-clear').style.display='inline-block';
+    document.getElementById('np-foto-nome').textContent='Foto caricata';
+  }
+  npRenderComps();npRenderSteps();
+  npShowAlert('Stai modificando "'+p.nome+'". Premi "Aggiorna piatto" per salvare.');
+}
+
+function npReset(){
+  npComps=[];npSteps=[];npFotoData='';npEditIdx=-1;
+  var f=['np-nome','np-step-text'];
+  f.forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  var paxEl=document.getElementById('np-pax');if(paxEl)paxEl.value='4';
+  var pvEl=document.getElementById('np-pv');if(pvEl)pvEl.value='';
+  var catEl=document.getElementById('np-cat');if(catEl)catEl.value='Primi piatti';
+  var subEl=document.getElementById('np-sottocat');if(subEl)subEl.value='';
+  var titleEl=document.getElementById('np-title');if(titleEl)titleEl.textContent='Nuovo piatto';
+  var btnEl=document.getElementById('np-save-btn');if(btnEl)btnEl.textContent='✓ Salva piatto';
+  npClearFoto();npRenderComps();npRenderSteps();npClearAlert();
+  /* re-init selector */
+  npInit();
+}
+
+function npLoadFoto(input){
+  if(!input.files||!input.files[0])return;
+  var file=input.files[0];
+  if(file.size>2*1024*1024){alert('Foto troppo grande (max 2MB).');input.value='';return;}
+  var reader=new FileReader();
+  reader.onload=function(e){
+    npFotoData=e.target.result;
+    document.getElementById('np-foto-img').src=npFotoData;
+    document.getElementById('np-foto-preview').style.display='block';
+    document.getElementById('np-foto-clear').style.display='inline-block';
+    document.getElementById('np-foto-nome').textContent=file.name;
+  };
+  reader.readAsDataURL(file);
+}
+
+function npClearFoto(){
+  npFotoData='';
+  var inp=document.getElementById('np-foto-input');if(inp)inp.value='';
+  var nomeEl=document.getElementById('np-foto-nome');if(nomeEl)nomeEl.textContent='Scegli foto...';
+  var prevEl=document.getElementById('np-foto-preview');if(prevEl)prevEl.style.display='none';
+  var clrEl=document.getElementById('np-foto-clear');if(clrEl)clrEl.style.display='none';
+}
+
+function npAddComp(){
+  var val=document.getElementById('np-sel-comp').value;
+  var qta=parseFloat(document.getElementById('np-qta').value);
+  var unit=document.getElementById('np-unit').value;
+  if(!val){alert('Seleziona un componente.');return;}
+  if(isNaN(qta)||qta<0){alert('Inserisci una quantita valida.');return;}
+  var conv=unit==='g'||unit==='ml'?0.001:(unit==='q.b.'?0:1);
+  var parts=val.split(':'); var tipo=parts[0]; var idx=parseInt(parts[1]);
+  var nome=tipo==='mp'?magazzino[idx].nome:semilavorati[idx].nome;
+  var comp={tipo:tipo,nome:nome,qtaBase:qta,unit:unit,conv:conv};
+  if(tipo==='mp') comp.magIdx=idx; else comp.semiIdx=idx;
+  npComps.push(comp);
+  document.getElementById('np-qta').value='';
+  document.getElementById('np-sel-comp').value='';
+  npRenderComps();
+}
+
+function npRemoveComp(i){npComps.splice(i,1);npRenderComps();}
+
+function npRenderComps(){
+  var el=document.getElementById('np-comp-list');if(!el)return;
+  if(!npComps.length){el.innerHTML='<p style="font-size:13px;color:#aaa;padding:4px 0;">Nessun componente aggiunto.</p>';return;}
+  var pax=parseInt(document.getElementById('np-pax').value)||4;
+  var tot=npComps.reduce(function(t,c){
+    if(c.conv===0||c.unit==='q.b.')return t;
+    if(c.tipo==='mp') return t+c.qtaBase*c.conv*gp(c.magIdx);
+    return t+costoSemi(c.semiIdx)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1));
+  },0);
+  el.innerHTML='<table style="width:100%;border-collapse:collapse;font-size:13px;">'
+    +'<thead><tr>'
+    +'<th style="text-align:left;padding:6px 8px;font-size:11px;color:#888;border-bottom:1px solid #f0ede6;">Componente</th>'
+    +'<th style="text-align:left;padding:6px 8px;font-size:11px;color:#888;border-bottom:1px solid #f0ede6;">Tipo</th>'
+    +'<th style="text-align:right;padding:6px 8px;font-size:11px;color:#888;border-bottom:1px solid #f0ede6;">Dose</th>'
+    +'<th style="text-align:right;padding:6px 8px;font-size:11px;color:#888;border-bottom:1px solid #f0ede6;">Costo</th>'
+    +'<th style="width:24px;border-bottom:1px solid #f0ede6;"></th></tr></thead><tbody>'
+    +npComps.map(function(c,i){
+      var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*c.conv*gp(c.magIdx):costoSemi(c.semiIdx)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1)));
+      return '<tr><td style="padding:7px 8px;border-bottom:1px solid #f5f3ef;font-weight:500;">'+c.nome+'</td>'
+        +'<td style="padding:7px 8px;border-bottom:1px solid #f5f3ef;"><span class="comp-tipo '+(c.tipo==='mp'?'mp':'sl')+'">'+(c.tipo==='mp'?'Materia prima':'Semilavorato')+'</span></td>'
+        +'<td style="padding:7px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
+        +'<td style="padding:7px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td>'
+        +'<td style="padding:7px 8px;border-bottom:1px solid #f5f3ef;text-align:center;"><span style="cursor:pointer;color:#d0cec8;font-size:15px;" onclick="npRemoveComp('+i+')">&#10005;</span></td></tr>';
+    }).join('')+'</tbody>'
+    +'<tfoot><tr><td colspan="3" style="padding:8px 8px;font-weight:600;border-top:1px solid #e0ded8;">Costo MP totale</td>'
+    +'<td style="padding:8px 8px;text-align:right;font-weight:600;border-top:1px solid #e0ded8;">'+eur(tot)+'</td>'
+    +'<td style="border-top:1px solid #e0ded8;"></td></tr>'
+    +'<tr><td colspan="3" style="padding:2px 8px;font-size:12px;color:#888;">Per porzione ('+pax+' pax)</td>'
+    +'<td style="padding:2px 8px;text-align:right;font-size:12px;color:#888;">'+eur(tot/pax)+'</td>'
+    +'<td></td></tr></tfoot></table>';
+}
+
+function npAddStep(){
+  var txt=document.getElementById('np-step-text').value.trim();
+  if(!txt){alert('Scrivi il testo del passaggio.');return;}
+  npSteps.push(txt);
+  document.getElementById('np-step-text').value='';
+  npRenderSteps();
+}
+
+function npRemoveStep(i){npSteps.splice(i,1);npRenderSteps();}
+
+function npRenderSteps(){
+  var el=document.getElementById('np-steps-list');if(!el)return;
+  if(!npSteps.length){el.innerHTML='<p style="font-size:13px;color:#aaa;padding:4px 0;">Nessun passaggio aggiunto.</p>';return;}
+  el.innerHTML=npSteps.map(function(s,i){
+    return '<div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #f0ede6;font-size:13px;align-items:flex-start;">'
+      +'<span style="min-width:22px;height:22px;border-radius:50%;background:#1a1a1a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;">'+(i+1)+'</span>'
+      +'<span style="flex:1;line-height:1.5;">'+s+'</span>'
+      +'<span style="cursor:pointer;color:#d0cec8;font-size:16px;" onclick="npRemoveStep('+i+')">&#10005;</span>'
+      +'</div>';
+  }).join('');
+}
+
+function npShowAlert(msg){
+  var el=document.getElementById('np-alert');
+  if(el) el.innerHTML='<div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:8px 12px;font-size:13px;color:#92400e;margin-bottom:8px;">'+msg+'</div>';
+}
+function npClearAlert(){var el=document.getElementById('np-alert');if(el)el.innerHTML='';}
+
+function npSalva(){
+  npClearAlert();
+  var nome=document.getElementById('np-nome').value.trim();
+  var errs=[];
+  if(!nome) errs.push('Inserisci il nome del piatto.');
+  if(!npComps.length) errs.push('Aggiungi almeno un componente.');
+  if(errs.length){npShowAlert(errs.join(' '));return;}
+  var p={
+    nome:nome,
+    categoria:document.getElementById('np-cat').value,
+    sottocategoria:document.getElementById('np-sottocat').value||'',
+    pax:parseInt(document.getElementById('np-pax').value)||4,
+    prezzoVendita:parseFloat(document.getElementById('np-pv').value)||0,
+    foto:npFotoData||'',
+    steps:JSON.parse(JSON.stringify(npSteps)),
+    componenti:JSON.parse(JSON.stringify(npComps)),
+    dataCreazione:today()
+  };
+  if(npEditIdx>=0){
+    piatti[npEditIdx]=p;
+  } else {
+    piatti.push(p);
+    piatti.sort(function(a,b){return a.nome.localeCompare(b.nome,'it');});
+  }
+  savePiatti();
+  npReset();
+  showTab('home');
+  renderHome();
+}
+
 </script>
 
 <!-- MODAL SEMILAVORATO -->
