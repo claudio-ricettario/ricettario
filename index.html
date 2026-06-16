@@ -534,7 +534,6 @@ textarea{resize:vertical;min-height:60px;}
     </div>
     <div id="alerts-container"></div>
     <div id="giacenza-alerts-container"></div>
-    <div id="mag-categorie-container"></div>
 
     <!-- FORM NUOVO INGREDIENTE -->
     <div class="new-ing-form">
@@ -1213,7 +1212,7 @@ function dropboxDisconnetti(){
 }
 
 
-var MAGAZZINO_VERSION=8;
+var MAGAZZINO_VERSION=7;
 function loadSaved(){
   try{
     var ver=parseInt(localStorage.getItem('rc_mag_ver')||'0');
@@ -1463,121 +1462,94 @@ function renderMagazzino(){
   if(!cont)return;
 
   var CAT_ICONS_MAG={
-    'Verdura':'&#129367;',
-    'Frutta':'&#127820;',
-    'Carne e pollame':'&#129385;',
-    'Pesce e frutti di mare':'&#127825;',
-    'Latticini e formaggi':'&#129472;',
-    'Salumi':'&#129363;',
-    'Generale':'&#129778;'
+    'Verdura':'&#129367;','Frutta':'&#127820;','Carne e pollame':'&#129385;',
+    'Pesce e frutti di mare':'&#127825;','Latticini e formaggi':'&#129472;',
+    'Salumi':'&#129363;','Generale':'&#129778;'
   };
   var CAT_ORDER_MAG=['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi','Generale'];
 
-  /* group by category */
   var grouped={};
   CAT_ORDER_MAG.forEach(function(c){grouped[c]=[];});
   magazzino.forEach(function(m,mi){
     var cat=m.categoria||'Generale';
-    if(!grouped[cat]) grouped[cat]=[];
+    if(!grouped[cat])grouped[cat]=[];
     grouped[cat].push({m:m,mi:mi});
   });
 
-  var html='';
+  var out='';
   CAT_ORDER_MAG.forEach(function(cat){
     var items=grouped[cat]||[];
     var isOpen=magExpanded[cat];
-    html+='<div class="mag-cat-block">'
-      +'<div class="mag-cat-header" data-cat="'+cat+'" onclick="magToggleCat(this.dataset.cat,this)">'
+    out+='<div class="mag-cat-block">'
+      +'<div class="mag-cat-header" data-cat="'+cat+'" onclick="magToggleCat(this.dataset.cat,this)" style="pointer-events:auto;">'
       +'<span class="mag-cat-icon">'+(CAT_ICONS_MAG[cat]||'&#127869;')+'</span>'
-      +'<div class="mag-cat-info">'
-      +'<div class="mag-cat-nome">'+cat+'</div>'
-      +'<div class="mag-cat-count">'+items.length+' ingredient'+(items.length===1?'e':'i')+'</div>'
-      +'</div>'
+      +'<div class="mag-cat-info"><div class="mag-cat-nome">'+cat+'</div>'
+      +'<div class="mag-cat-count">'+items.length+' ingredient'+(items.length===1?'e':'i')+'</div></div>'
       +'<span class="mag-cat-chevron'+(isOpen?' open':'')+'">&#9654;</span>'
       +'</div>'
-      +'<div class="mag-cat-body'+(isOpen?' open':'')+'">';
+      +'<div class="mag-cat-body'+(isOpen?' open':'')+'">'; 
 
     if(!items.length){
-      html+='<div style="padding:12px 16px;font-size:13px;color:#aaa;">Nessun ingrediente in questa categoria.</div>';
+      out+='<div style="padding:12px 16px;font-size:13px;color:#aaa;">Nessun ingrediente.</div>';
     } else {
-      html+='<table class="mag-table" style="margin:0;border-radius:0;">'
-        +'<thead><tr>'
-        +'<th style="padding-left:14px;width:28px;"></th>'
-        +'<th>Ingrediente</th>'
-        +'<th>Fornitore attivo</th>'
-        +'<th class="r">Scarto</th>'
-        +'<th class="r">Prezzo netto</th>'
-        +'<th class="r">Giacenza</th>'
-        +'<th class="r"></th>'
-        +'</tr></thead><tbody>';
-
       items.forEach(function(item){
         var m=item.m; var mi=item.mi;
         var act=activeSupplier(m);
-        var ci=act.prezzoKg*(1+m.iva/100);
-        var prezzoNetto=gp(mi);
         var scarto=m.scarto||0;
-        var altCount=m.suppliers.length-1;
-        var altBadge=altCount>0?('<span class="badge badge-gray">+'+altCount+'</span>'):'';
-        var isExpanded=expanded[mi];
-
-        /* status dot */
-        var statusDot='';
-        if(!m.allergeniOk||!m.tracceOk||!m.nutrizionaliOk)
-          statusDot='<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#f59e0b;margin-right:5px;vertical-align:middle;" title="Scheda incompleta"></span>';
-
-        /* giacenza */
+        var resa=m.resa||100;
+        var prezzoNetto=gp(mi);
+        var isExp=expanded[mi];
+        var ok=m.allergeniOk&&m.tracceOk&&m.nutrizionaliOk;
+        var statusDot=ok
+          ?'<span class="ing-status-ok"></span>'
+          :'<span class="ing-status-warn"></span>';
         var giac=m.giacenza||0;
         var giacMin=m.giacenzaMin||0;
-        var giacClass=giacMin<=0?'ok':(giac<=0?'danger':(giac<giacMin?'warn':'ok'));
-        var giacCell='<td class="r" style="min-width:80px;">'
-          +'<span style="font-size:12px;font-weight:500;color:'+(giacClass==='danger'?'#e53e3e':giacClass==='warn'?'#b45309':'#555')+';">'+giac+' '+m.um+'</span>'
-          +'</td>';
+        var giacClass=giacMin<=0?'#555':(giac<=0?'#e53e3e':giac<giacMin?'#b45309':'#2d7d46');
 
-        /* scarto badge */
-        var scartoBadge=scarto>0
-          ?'<span style="font-size:11px;color:#b45309;font-weight:600;">-'+scarto+'%</span>'
-          :'<span style="font-size:11px;color:#aaa;">—</span>';
+        out+='<div style="border-bottom:1px solid #f0ede6;">';
+        /* main row */
+        out+='<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:background .1s;" '
+          +'onclick="toggleExpand('+mi+')">'
+          +'<span style="font-size:13px;color:#aaa;width:16px;">&#9654;</span>'
+          +statusDot
+          +'<span style="flex:1;font-size:14px;font-weight:500;">'+m.nome+'</span>'
+          +'<span style="font-size:12px;color:#888;min-width:120px;">'+act.nome+'</span>'
+          +(scarto>0?'<span style="font-size:11px;color:#b45309;font-weight:600;min-width:50px;text-align:right;">-'+scarto+'%</span>':'<span style="min-width:50px;"></span>')
+          +'<span style="font-size:13px;font-weight:600;min-width:80px;text-align:right;">'+eur(prezzoNetto)+'/'+m.um+'</span>'
+          +'<span style="font-size:12px;color:'+giacClass+';min-width:60px;text-align:right;">'+giac+' '+m.um+'</span>'
+          +'<button class="btn-sm danger-sm" onclick="event.stopPropagation();eliminaIngrediente('+mi+')" style="flex-shrink:0;">&#128465;</button>'
+          +'</div>';
 
-        var schedaBtn='<button class="btn-sm" onclick="event.stopPropagation();openSchedaModal('+mi+')" title="Scheda completa">&#128196;</button>';
+        /* expanded panel */
+        if(isExp){
+          out+='<div style="padding:14px 18px;background:#fafaf8;border-top:1px solid #f0ede6;">';
 
-        html+='<tr class="ing-row-main" style="cursor:pointer;" onclick="toggleExpand('+mi+')">'
-          +'<td style="padding-left:14px;font-size:14px;color:#aaa;">'+(isExpanded?'&#9660;':'&#9654;')+'</td>'
-          +'<td>'+statusDot+'<strong>'+m.nome+'</strong></td>'
-          +'<td class="sm">'+act.nome+'</td>'
-          +'<td class="r">'+scartoBadge+'</td>'
-          +'<td class="r"><strong>'+eur(prezzoNetto)+'</strong> <span style="font-size:11px;color:#aaa;">/'+m.um+'</span></td>'
-          +giacCell
-          +'<td class="r" style="white-space:nowrap;">'
-          +altBadge+' '
-          +schedaBtn
-          +' <button class="btn-sm danger-sm" onclick="event.stopPropagation();eliminaIngrediente('+mi+')" title="Elimina">&#128465;</button>'
-          +'</td>'
-          +'</tr>';
+          /* categoria */
+          out+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:13px;">'
+            +'<label style="color:#666;font-weight:500;">Categoria:</label>'
+            +'<select onchange="updateCategoria('+mi+',this.value)" onclick="event.stopPropagation();" style="font-size:13px;padding:4px 8px;border:1px solid #d0cec8;border-radius:6px;">'
+            +['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi','Generale'].map(function(c){
+              return '<option value="'+c+'"'+(m.categoria===c?' selected':'')+'>'+c+'</option>';
+            }).join('')
+            +'</select></div>';
 
-        if(isExpanded){
-          html+='<tr><td colspan="7" style="padding:0;background:#fafaf8;">'
-            +'<div style="padding:14px 18px;">';
-
-          /* scarto/resa row */
-          html+='<div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;padding:8px 12px;background:#fef9f0;border-radius:8px;font-size:13px;flex-wrap:wrap;">'
-            +'<span style="font-weight:600;color:#b45309;">Scarto e resa:</span>'
-            +'<div style="display:flex;align-items:center;gap:6px;">'
+          /* scarto */
+          out+='<div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;padding:8px 12px;background:#fef9f0;border-radius:8px;font-size:13px;flex-wrap:wrap;">'
+            +'<span style="font-weight:600;color:#b45309;">Scarto:</span>'
             +'<input type="number" value="'+scarto+'" min="0" max="99" step="1" '
-            +'onchange="updateScarto('+mi+',parseFloat(this.value)||0)" '
-            +'onclick="event.stopPropagation();" '
+            +'onchange="updateScarto('+mi+',parseFloat(this.value)||0)" onclick="event.stopPropagation();" '
             +'style="width:60px;font-size:12px;padding:3px 6px;border:1px solid #fbbf24;border-radius:6px;text-align:right;"/> %'
-            +'</div>'
-            +' &rarr; resa <strong>'+(m.resa||100)+'%</strong>'
+            +' &rarr; resa <strong>'+resa+'%</strong>'
             +' &rarr; prezzo netto <strong>'+eur(prezzoNetto)+'/'+m.um+'</strong>'
             +'</div>';
 
-          /* suppliers */
-          html+='<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Fornitori</div>';
+          /* fornitori */
+          out+='<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Fornitori</div>';
           m.suppliers.forEach(function(sup,si){
             var isAct=si===m.activeIdx;
-            html+='<div class="supplier-row'+(isAct?' active':'')+'" style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #f0ede6;font-size:13px;" onclick="event.stopPropagation();">'
-              +'<input type="radio" name="sup-'+mi+'" '+(isAct?'checked':'')+' onchange="setActiveSupplier('+mi+','+si+')" style="flex-shrink:0;"/>'
+            out+='<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #f0ede6;font-size:13px;" onclick="event.stopPropagation();">'
+              +'<input type="radio" name="sup-'+mi+'" '+(isAct?'checked':'')+' onchange="setActiveSupplier('+mi+','+si+')" />'
               +'<span style="flex:1;font-weight:'+(isAct?'600':'400')+';">'+sup.nome+'</span>'
               +'<input type="number" value="'+sup.prezzoKg+'" step="0.01" min="0" '
               +'onchange="updateSupplierPrice('+mi+','+si+',parseFloat(this.value)||0)" '
@@ -1587,32 +1559,28 @@ function renderMagazzino(){
           });
 
           /* add supplier */
-          html+='<div class="add-supplier-row" onclick="event.stopPropagation();" style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">'
-            +'<input type="text" id="new-supp-name-'+mi+'" placeholder="Nome fornitore" style="flex:2;min-width:140px;font-size:12px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/>'
-            +'<input type="number" id="new-supp-price-'+mi+'" placeholder="Prezzo" min="0" step="0.01" style="flex:1;min-width:80px;font-size:12px;padding:5px 6px;border:1px solid #d0cec8;border-radius:6px;text-align:left;"/>'
+          out+='<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;" onclick="event.stopPropagation();">'
+            +'<input type="text" id="new-supp-name-'+mi+'" placeholder="Nome fornitore" style="flex:2;min-width:120px;font-size:12px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/>'
+            +'<input type="number" id="new-supp-price-'+mi+'" placeholder="Prezzo" min="0" step="0.01" style="flex:1;min-width:70px;font-size:12px;padding:5px 6px;border:1px solid #d0cec8;border-radius:6px;text-align:left;"/>'
             +'<button class="btn-sm" onclick="addSupplierToIng('+mi+')">+ Fornitore</button>'
             +'</div>';
 
-          /* giacenza & lotti */
-          html+='<div style="margin-top:14px;padding-top:12px;border-top:1px solid #e0ded8;">';
-          html+='<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Giacenza & Lotti</div>';
-          html+='<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px;font-size:13px;">'
+          /* giacenza */
+          out+='<div style="margin-top:12px;padding-top:12px;border-top:1px solid #e0ded8;">'
+            +'<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Giacenza & Lotti</div>'
+            +'<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px;font-size:13px;">'
             +'<div style="display:flex;align-items:center;gap:6px;">'
             +'<label style="color:#666;">Giacenza:</label>'
             +'<input type="number" value="'+(m.giacenza||0)+'" min="0" step="0.1" '
-            +'onchange="updateGiacenza('+mi+',parseFloat(this.value)||0)" '
-            +'onclick="event.stopPropagation();" '
-            +'style="width:72px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;text-align:right;"/>'
-            +' <span style="color:#888;font-size:12px;">'+m.um+'</span>'
-            +'</div>'
+            +'onchange="updateGiacenza('+mi+',parseFloat(this.value)||0)" onclick="event.stopPropagation();" '
+            +'style="width:70px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;text-align:right;"/>'
+            +' <span style="color:#888;font-size:12px;">'+m.um+'</span></div>'
             +'<div style="display:flex;align-items:center;gap:6px;">'
             +'<label style="color:#666;">Soglia min:</label>'
             +'<input type="number" value="'+(m.giacenzaMin||0)+'" min="0" step="0.1" '
-            +'onchange="updateGiacenzaMin('+mi+',parseFloat(this.value)||0)" '
-            +'onclick="event.stopPropagation();" '
-            +'style="width:72px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;text-align:right;"/>'
-            +' <span style="color:#888;font-size:12px;">'+m.um+'</span>'
-            +'</div>'
+            +'onchange="updateGiacenzaMin('+mi+',parseFloat(this.value)||0)" onclick="event.stopPropagation();" '
+            +'style="width:70px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;text-align:right;"/>'
+            +' <span style="color:#888;font-size:12px;">'+m.um+'</span></div>'
             +'</div>';
 
           /* lotti */
@@ -1620,40 +1588,43 @@ function renderMagazzino(){
             m.lotti.forEach(function(l,li){
               var oggi=new Date();oggi.setHours(0,0,0,0);
               var scad=l.scadenza?new Date(l.scadenza):null;
-              var diffDays=scad?Math.round((scad-oggi)/(1000*60*60*24)):null;
-              var scadClass=!scad?'':diffDays<=0?'lotto-scad-danger':diffDays<=30?'lotto-scad-warn':'lotto-scad-ok';
-              var scadLabel=!scad?'Nessuna scadenza':diffDays<=0?'SCADUTO':'Scade tra '+diffDays+' gg ('+l.scadenza+')';
-              html+='<div class="lotto-row">'
+              var diff=scad?Math.round((scad-oggi)/(1000*60*60*24)):null;
+              var scadCls=!scad?'':diff<=0?'lotto-scad-danger':diff<=30?'lotto-scad-warn':'lotto-scad-ok';
+              var scadLbl=!scad?'Nessuna scadenza':diff<=0?'SCADUTO':'Scade tra '+diff+' gg ('+l.scadenza+')';
+              out+='<div class="lotto-row">'
                 +'<span style="font-weight:500;">Lotto '+l.numero+'</span>'
                 +'<span style="color:#666;">'+l.qta+' '+m.um+'</span>'
-                +'<span class="'+scadClass+'">'+scadLabel+'</span>'
+                +'<span class="'+scadCls+'">'+scadLbl+'</span>'
                 +'<button class="btn-sm danger-sm" onclick="event.stopPropagation();rimuoviLotto('+mi+','+li+')">&#10005;</button>'
                 +'</div>';
             });
           } else {
-            html+='<div style="font-size:12px;color:#aaa;padding:4px 0;">Nessun lotto registrato.</div>';
+            out+='<div style="font-size:12px;color:#aaa;padding:4px 0;">Nessun lotto registrato.</div>';
           }
 
-          /* add lotto */
-          html+='<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px;padding-top:8px;border-top:1px solid #f0ede6;" onclick="event.stopPropagation();">'
+          out+='<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px;padding-top:8px;border-top:1px solid #f0ede6;" onclick="event.stopPropagation();">'
             +'<input type="text" id="new-lotto-num-'+mi+'" placeholder="N. lotto" style="width:90px;font-size:12px;padding:4px 7px;border:1px solid #d0cec8;border-radius:6px;"/>'
             +'<input type="number" id="new-lotto-qta-'+mi+'" placeholder="Qta" min="0" step="0.1" style="width:70px;font-size:12px;padding:4px 6px;border:1px solid #d0cec8;border-radius:6px;"/>'
             +'<span style="font-size:12px;color:#888;">'+m.um+'</span>'
             +'<input type="date" id="new-lotto-scad-'+mi+'" style="font-size:12px;padding:4px 7px;border:1px solid #d0cec8;border-radius:6px;"/>'
             +'<button class="btn-sm" onclick="aggiungiLotto('+mi+')">+ Lotto</button>'
+            +'</div></div>';
+
+          /* allergeni e nutrizionali */
+          out+='<div style="margin-top:12px;padding-top:12px;border-top:1px solid #e0ded8;display:flex;gap:8px;flex-wrap:wrap;">'
+            +'<button class="btn-sm" onclick="event.stopPropagation();openSchedaModal('+mi+')">&#128196; Scheda allergeni &amp; nutrizionali</button>'
+            +(ok?'<span class="badge badge-green">Scheda completa</span>':'<span class="badge badge-red">Scheda incompleta — ingrediente bloccato</span>')
             +'</div>';
 
-          html+='</div></div></td></tr>';
+          out+='</div>';
         }
+        out+='</div>';
       });
-
-      html+='</tbody></table>';
     }
-
-    html+='</div></div>';
+    out+='</div></div>';
   });
 
-  cont.innerHTML=html;
+  cont.innerHTML=out;
   renderGiacenzaAlerts();
 }
 
