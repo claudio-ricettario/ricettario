@@ -1592,7 +1592,11 @@ function renderMagazzino(){
 
           /* add supplier */
           out+='<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;" onclick="event.stopPropagation();">'
-            +'<input type="text" id="new-supp-name-'+mi+'" placeholder="Nome fornitore" style="flex:2;min-width:120px;font-size:12px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/>'
+            +'<input type="text" id="new-supp-name-'+mi+'" placeholder="Nome fornitore" list="forn-list-'+mi+'" style="flex:2;min-width:120px;width:100%;font-size:12px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/>'
+            +'<datalist id="forn-list-'+mi+'">'
+            +fornitori.map(function(f){return '<option value="'+f.nome+'">';}).join('')
+            +'<option value="++ Nuovo fornitore">'
+            +'</datalist>'
             +'<input type="number" id="new-supp-price-'+mi+'" placeholder="Prezzo" min="0" step="0.01" style="flex:1;min-width:70px;font-size:12px;padding:5px 6px;border:1px solid #d0cec8;border-radius:6px;text-align:left;"/>'
             +'<button class="btn-sm" onclick="addSupplierToIng('+mi+')">+ Fornitore</button>'
             +'</div>';
