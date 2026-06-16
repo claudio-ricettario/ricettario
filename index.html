@@ -821,6 +821,17 @@ textarea{resize:vertical;min-height:60px;}
 </div>
 
 <script>
+/* ===== GLOBALS ===== */
+var CAT_ICONS_MAG={
+  'Verdura':'&#129367;','Frutta':'&#127820;','Carne e pollame':'&#129385;',
+  'Pesce e frutti di mare':'&#127825;','Latticini e formaggi':'&#129472;',
+  'Salumi':'&#129363;','Generale':'&#129778;'
+};
+var CAT_ORDER_MAG=['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi','Generale'];
+var semilavorati=[];
+var piatti=[];
+/* magExpanded declared globally above */
+
 var ALLERGENI_LIST=['Glutine','Crostacei','Uova','Pesce','Arachidi','Soia','Latte e lattosio','Frutta a guscio','Sedano','Senape','Sesamo','Anidride solforosa e solfiti','Lupini','Molluschi'];
 
 function emptyNutrizionali(){return {energia:0,grassi:0,grassiSaturi:0,carboidrati:0,zuccheri:0,fibre:0,proteine:0,sale:0};}
@@ -1462,12 +1473,7 @@ function renderMagazzino(){
   var cont=document.getElementById('mag-categorie-container');
   if(!cont)return;
 
-  var CAT_ICONS_MAG={
-    'Verdura':'&#129367;','Frutta':'&#127820;','Carne e pollame':'&#129385;',
-    'Pesce e frutti di mare':'&#127825;','Latticini e formaggi':'&#129472;',
-    'Salumi':'&#129363;','Generale':'&#129778;'
-  };
-  var CAT_ORDER_MAG=['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi','Generale'];
+  /* CAT_ICONS_MAG and CAT_ORDER_MAG are global */
 
   var grouped={};
   CAT_ORDER_MAG.forEach(function(c){grouped[c]=[];});
@@ -2368,7 +2374,7 @@ setTimeout(function(){
 loadIngredienti();
 
 /* ===== SEMILAVORATI ===== */
-var semilavorati = [];
+/* semilavorati declared globally above */
 var smComps = []; /* componenti in editing */
 
 var SEMILAVORATI_DEFAULT=[
@@ -2624,7 +2630,7 @@ function toggleSemiDetail(idx,el){
 }
 
 /* ===== PIATTI FINITI ===== */
-var piatti = [];
+/* piatti declared globally above */
 var pm2Comps = [];
 
 function loadPiatti(){
@@ -3377,7 +3383,7 @@ function updateScarto(mi,val){
   renderMagazzino();
 }
 
-var magExpanded={};
+/* magExpanded declared globally above */
 function magToggleCat(cat,el){
   if(!cat){
     var node=el;
