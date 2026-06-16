@@ -585,8 +585,14 @@ textarea{resize:vertical;min-height:60px;}
   <!-- FOOD COST -->
   <div id="tab-foodcost" class="section">
     <h2>Analisi food cost</h2>
-    <p class="muted">Risotto alla milanese</p>
+    <p class="muted">Seleziona un piatto per analizzarne il food cost</p>
     <div class="controls">
+      <div class="ctrl-group" style="flex:1;">
+        <span>Piatto</span>
+        <select id="fc-piatto-sel" onchange="fcSelectPiatto()" style="font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;flex:1;max-width:280px;">
+          <option value="">-- seleziona un piatto --</option>
+        </select>
+      </div>
       <div class="ctrl-group">
         <span>Porzioni</span>
         <input type="range" id="sl-port2" min="1" max="100" step="1" value="4" oninput="syncSlider(this)"/>
@@ -1770,7 +1776,91 @@ function setIva(on){
   if(document.getElementById('tab-magazzino').classList.contains('active'))renderMagazzino();
 }
 
-function syncSlider(el){document.getElementById('sl-port').value=el.value;updateAll();}
+function syncSlider(el){
+  document.getElementById('sl-port').value=el.value;
+  updateAll();
+  renderFoodCost();
+}
+
+function fcPopulateSelector(){
+  var sel=document.getElementById('fc-piatto-sel');
+  if(!sel)return;
+  var current=sel.value;
+  sel.innerHTML='<option value="">-- seleziona un piatto --</option>';
+  piatti.forEach(function(p,i){
+    var opt=document.createElement('option');
+    opt.value=i;
+    opt.textContent=p.nome+' ('+p.pax+' pax)';
+    sel.appendChild(opt);
+  });
+  if(current) sel.value=current;
+}
+
+function fcSelectPiatto(){
+  renderFoodCost();
+}
+
+function renderFoodCost(){
+  var sel=document.getElementById('fc-piatto-sel');
+  if(!sel||sel.value===''){
+    /* reset metrics */
+    ['fc-costo','fc-pax','fc-ricavo','fc-perc'].forEach(function(id){
+      var el=document.getElementById(id);if(el){el.textContent='-';el.className='metric-value';}
+    });
+    var tb=document.getElementById('fc-tbody');if(tb)tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:#aaa;padding:16px;">Seleziona un piatto per vedere il food cost</td></tr>';
+    var bb=document.getElementById('benchmark-tbody');if(bb)bb.innerHTML='';
+    return;
+  }
+  var pi=parseInt(sel.value);
+  var p=piatti[pi];
+  if(!p)return;
+  var pax=parseInt(document.getElementById('sl-port2').value)||p.pax;
+  var mult=pax/p.pax;
+
+  /* calc total cost */
+  var tot=p.componenti.reduce(function(t,c){
+    if(c.conv===0||c.unit==='q.b.')return t;
+    if(c.tipo==='mp') return t+c.qtaBase*mult*c.conv*gp(c.magIdx);
+    var si=c.semiIdx;
+    if(si===undefined||si<0||si>=semilavorati.length)return t;
+    return t+costoSemi(si)*(c.qtaBase*mult*(c.unit==='g'||c.unit==='ml'?0.001:1));
+  },0);
+
+  var pv=p.prezzoVendita||0;
+  var ricavo=pv*pax;
+  var pax1=tot/pax;
+  var fcP=ricavo>0?(tot/ricavo*100):0;
+
+  document.getElementById('fc-costo').textContent=eur(tot);
+  document.getElementById('fc-pax').textContent=eur(pax1);
+  document.getElementById('fc-ricavo').textContent=pv>0?eur(ricavo):'-';
+  var fcEl=document.getElementById('fc-perc');
+  if(fcP>0){fcEl.textContent=fcP.toFixed(1)+'%';fcEl.className='metric-value '+fcC(fcP);}
+  else{fcEl.textContent='-';fcEl.className='metric-value';}
+
+  /* detail rows */
+  var sorted=p.componenti.map(function(c){
+    var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*mult*c.conv*gp(c.magIdx):costoSemi(c.semiIdx)*(c.qtaBase*mult*(c.unit==='g'||c.unit==='ml'?0.001:1)));
+    var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':(c.qtaBase*mult)+(c.unit==='g'||c.unit==='ml'||c.unit==='kg'||c.unit==='lt'?c.unit:'');
+    return {nome:c.nome,tipo:c.tipo,qFmt:qFmt,costo:costo};
+  }).sort(function(a,b){return b.costo-a.costo;});
+
+  document.getElementById('fc-tbody').innerHTML=sorted.map(function(r){
+    var pp=tot>0?(r.costo/tot*100):0;
+    var bar='<span style="display:inline-block;width:'+Math.round(pp)+'px;max-width:80px;height:4px;background:#1a1a1a;border-radius:2px;opacity:.15;vertical-align:middle;margin-right:6px;"></span>';
+    var tipoBadge='<span class="comp-tipo '+(r.tipo==='mp'?'mp':'sl')+'" style="font-size:10px;padding:1px 5px;">'+(r.tipo==='mp'?'MP':'SL')+'</span>';
+    return '<tr><td>'+r.nome+' '+tipoBadge+'</td><td class="r">'+r.qFmt+'</td><td class="r">'+eur(r.costo)+'</td><td class="r">'+bar+pp.toFixed(1)+'%</td></tr>';
+  }).join('');
+
+  /* benchmark */
+  var bench=[{label:'Trattoria / osteria',min:25,max:35},{label:'Ristorante medio',min:28,max:38},{label:'Fine dining',min:20,max:28}];
+  document.getElementById('benchmark-tbody').innerHTML=bench.map(function(b){
+    var mn=pax1/(b.max/100);var mx=pax1/(b.min/100);
+    var ok=pv>=mn&&pv<=mx;
+    var badge=pv>0?(ok?'<span class="badge badge-green">Ok</span>':(pv<mn?'<span class="badge badge-red">Basso</span>':'<span class="badge badge-amber">Alto</span>')):'—';
+    return '<tr><td>'+b.label+'</td><td class="r">'+b.min+'-'+b.max+'%</td><td class="r">'+eur(mn)+' – '+eur(mx)+'</td><td class="r">'+badge+'</td></tr>';
+  }).join('');
+}
 
 function showTab(name){
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
@@ -1786,7 +1876,7 @@ function showTab(name){
   else if(name==='semilavorati'){renderSemilavorati();}
   else if(name==='nuovo-piatto'){npInit();}
   else if(name==='ricetta'){updateAll();}
-  else if(name==='foodcost'){updateAll();}
+  else if(name==='foodcost'){fcPopulateSelector();renderFoodCost();}
   else{updateAll();}
 }
 
