@@ -823,7 +823,6 @@ textarea{resize:vertical;min-height:60px;}
 
 <script>
 /* ===== GLOBALS ===== */
-var magExpanded={};
 var CAT_ICONS_MAG={
   'Verdura':'&#129367;','Frutta':'&#127820;','Carne e pollame':'&#129385;',
   'Pesce e frutti di mare':'&#127825;','Latticini e formaggi':'&#129472;',
@@ -1493,7 +1492,7 @@ function removeSupplier(mi,si){
 }
 
 /* ---- MAGAZZINO RENDER ---- */
-function renderGiacenzaAlerts(){var cont=document.getElementById("giacenza-alerts-container");if(cont)cont.innerHTML="";}
+function renderGiacenzaAlerts(){var c=document.getElementById("giacenza-alerts-container");if(c)c.innerHTML="";}
 function renderMagazzino(){
   var cont=document.getElementById('mag-categorie-container');
   if(!cont)return;
