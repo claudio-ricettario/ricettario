@@ -535,7 +535,6 @@ textarea{resize:vertical;min-height:60px;}
     <div id="alerts-container"></div>
     <div id="giacenza-alerts-container"></div>
     <div id="mag-categorie-container"></div>
-    <div id="mag-categorie-container"></div>
 
     <!-- FORM NUOVO INGREDIENTE -->
     <div class="new-ing-form">
@@ -823,6 +822,7 @@ textarea{resize:vertical;min-height:60px;}
 
 <script>
 /* ===== GLOBALS ===== */
+var magExpanded={};
 var CAT_ICONS_MAG={
   'Verdura':'&#129367;','Frutta':'&#127820;','Carne e pollame':'&#129385;',
   'Pesce e frutti di mare':'&#127825;','Latticini e formaggi':'&#129472;',
@@ -1457,6 +1457,7 @@ function addSupplierToIng(mi){
   var nEl=document.getElementById('new-supp-name-'+mi);
   var pEl=document.getElementById('new-supp-price-'+mi);
   var n=nEl.value.trim(),p=parseFloat(pEl.value);
+  if(n==='__ Nuovo fornitore...'){showTab('fornitori');return;}
   if(!n){alert('Inserisci il nome del fornitore.');return;}
   if(isNaN(p)||p<=0){alert('Inserisci un prezzo valido maggiore di zero.');return;}
   /* verifica scheda fornitore */
