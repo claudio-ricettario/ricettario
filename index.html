@@ -311,7 +311,7 @@ textarea{resize:vertical;min-height:60px;}
   <div class="tab-bar">
     <div class="tab active" onclick="showTab('home')">&#127968; Home</div>
     <div class="tab" onclick="showTab('semilavorati')">&#9881; Semilavorati</div>
-    <div class="tab" onclick="showTab('magazzino')">&#128230; Materie prime</div>
+    <div class="tab" onclick="showTab('magazzino')">&#128230; Magazzino</div>
     <div class="tab" onclick="showTab('foodcost')">&#128202; Food cost</div>
     <div class="tab" onclick="showTab('fornitori')">&#127978; Fornitori</div>
     <div class="tab" onclick="showTab('nuovo-piatto')">&#43; Nuovo piatto</div>
@@ -526,7 +526,10 @@ textarea{resize:vertical;min-height:60px;}
 
   <!-- MAGAZZINO -->
   <div id="tab-magazzino" class="section">
-    <h2>Magazzino ingredienti</h2>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px;">
+      <h2 style="margin:0;">Magazzino</h2>
+      <button class="btn-primary" onclick="openNuovaMPModal(-1)">+ Nuova materia prima</button>
+    </div>
     <p class="muted">Espandi per gestire fornitori, prezzi, giacenza, lotti e scadenze</p>
     <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#666;margin-bottom:12px;align-items:center;">
       <span><span class="ing-status-ok"></span> Scheda completa</span>
@@ -535,47 +538,6 @@ textarea{resize:vertical;min-height:60px;}
     <div id="alerts-container"></div>
     <div id="giacenza-alerts-container"></div>
     <div id="mag-categorie-container"></div>
-
-    <!-- FORM NUOVO INGREDIENTE -->
-    <div class="new-ing-form">
-      <div class="form-title">+ Aggiungi ingrediente al magazzino</div>
-      <div class="new-ing-grid">
-        <div class="fg">
-          <label>Nome ingrediente *</label>
-          <input type="text" id="ni-nome" placeholder="es. Panna fresca"/>
-        </div>
-        <div class="fg">
-          <label>Unit&agrave; misura *</label>
-          <select id="ni-um">
-            <option value="kg">kg</option>
-            <option value="lt">lt</option>
-            <option value="bustina">bustina</option>
-            <option value="pz">pz</option>
-            <option value="g">g</option>
-            <option value="ml">ml</option>
-          </select>
-        </div>
-        <div class="fg">
-          <label>IVA %</label>
-          <select id="ni-iva">
-            <option value="4">4%</option>
-            <option value="10" selected>10%</option>
-            <option value="22">22%</option>
-          </select>
-        </div>
-        <div class="fg">
-          <label>Primo fornitore *</label>
-          <input type="text" id="ni-forn" placeholder="es. Latteria Valle Verde"/>
-        </div>
-        <div class="fg">
-          <label>Prezzo (&euro;/unit.) *</label>
-          <input type="number" id="ni-prezzo" placeholder="0.00" min="0" step="0.01" style="text-align:left;width:100%;"/>
-        </div>
-      </div>
-      <div style="margin-top:10px;display:flex;justify-content:flex-end;">
-        <button class="btn-primary" onclick="aggiungiIngrediente()">Aggiungi al magazzino</button>
-      </div>
-    </div>
 
     <div class="controls">
       <div class="ctrl-group" style="margin-left:auto;">
@@ -3424,6 +3386,136 @@ function magToggleCat(cat,el){
   renderMagazzino();
 }
 
+
+function openNuovaMPModal(editIdx){
+  var isNew=(editIdx===-1||editIdx===undefined);
+  mpEditIdx=isNew?-1:editIdx;
+  document.getElementById('mp-modal-title').textContent=isNew?'Nuova materia prima':'Modifica materia prima';
+  document.getElementById('mp-btn-elimina').style.display=isNew?'none':'block';
+  var dl=document.getElementById('mp-forn-list');
+  if(dl) dl.innerHTML=fornitori.map(function(f){return '<option value="'+f.nome+'">';}).join('');
+  var ag=document.getElementById('mp-allergeni-grid');
+  if(ag) ag.innerHTML=ALLERGENI_LIST.map(function(a){
+    return '<label style="font-size:12px;display:flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #e0ded8;border-radius:6px;cursor:pointer;"><input type="checkbox" class="mp-allerg-cb" value="'+a+'"> '+a+'</label>';
+  }).join('');
+  var tg=document.getElementById('mp-tracce-grid');
+  if(tg) tg.innerHTML=ALLERGENI_LIST.map(function(a){
+    return '<label style="font-size:12px;display:flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #e0ded8;border-radius:6px;cursor:pointer;"><input type="checkbox" class="mp-tracce-cb" value="'+a+'"> '+a+'</label>';
+  }).join('');
+  var fields=['mp-nome','mp-forn','mp-prezzo','mp-energia','mp-grassi','mp-saturi','mp-carbo','mp-zuccheri','mp-fibre','mp-proteine','mp-sale'];
+  if(isNew){
+    fields.forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+    document.getElementById('mp-cat').value='Generale';
+    document.getElementById('mp-um').value='kg';
+    document.getElementById('mp-iva').value='10';
+    document.getElementById('mp-scarto').value='0';
+    document.getElementById('mp-resa').value='100';
+    document.getElementById('mp-all-ok').checked=false;
+    document.getElementById('mp-tracce-ok').checked=false;
+    document.getElementById('mp-nutr-ok').checked=false;
+  } else {
+    var m=magazzino[editIdx];
+    document.getElementById('mp-nome').value=m.nome||'';
+    document.getElementById('mp-cat').value=m.categoria||'Generale';
+    document.getElementById('mp-um').value=m.um||'kg';
+    document.getElementById('mp-iva').value=m.iva||10;
+    document.getElementById('mp-scarto').value=m.scarto||0;
+    document.getElementById('mp-resa').value=m.resa||100;
+    document.getElementById('mp-forn').value=m.suppliers&&m.suppliers[m.activeIdx||0]?m.suppliers[m.activeIdx||0].nome:'';
+    document.getElementById('mp-prezzo').value=m.suppliers&&m.suppliers[m.activeIdx||0]?m.suppliers[m.activeIdx||0].prezzoKg:'';
+    document.getElementById('mp-all-ok').checked=m.allergeniOk||false;
+    document.getElementById('mp-tracce-ok').checked=m.tracceOk||false;
+    document.getElementById('mp-nutr-ok').checked=m.nutrizionaliOk||false;
+    document.querySelectorAll('.mp-allerg-cb').forEach(function(cb){cb.checked=(m.allergeni||[]).indexOf(cb.value)>=0;});
+    document.querySelectorAll('.mp-tracce-cb').forEach(function(cb){cb.checked=(m.tracce||[]).indexOf(cb.value)>=0;});
+    var n=m.nutrizionali||{};
+    document.getElementById('mp-energia').value=n.energia||'';
+    document.getElementById('mp-grassi').value=n.grassi||'';
+    document.getElementById('mp-saturi').value=n.grassiSaturi||'';
+    document.getElementById('mp-carbo').value=n.carboidrati||'';
+    document.getElementById('mp-zuccheri').value=n.zuccheri||'';
+    document.getElementById('mp-fibre').value=n.fibre||'';
+    document.getElementById('mp-proteine').value=n.proteine||'';
+    document.getElementById('mp-sale').value=n.sale||'';
+  }
+  document.getElementById('mp-scarto').oninput=function(){
+    document.getElementById('mp-resa').value=Math.round((100-(parseFloat(this.value)||0))*100)/100;
+  };
+  document.getElementById('mp-alert').innerHTML='';
+  document.getElementById('nuova-mp-modal').classList.add('open');
+}
+
+var mpEditIdx=-1;
+
+function closeNuovaMPModal(){
+  document.getElementById('nuova-mp-modal').classList.remove('open');
+}
+
+function mpSalva(){
+  var nome=document.getElementById('mp-nome').value.trim();
+  var forn=document.getElementById('mp-forn').value.trim();
+  var prezzo=parseFloat(document.getElementById('mp-prezzo').value);
+  var errs=[];
+  if(!nome) errs.push('Inserisci il nome.');
+  if(!forn) errs.push('Inserisci il fornitore.');
+  if(isNaN(prezzo)||prezzo<0) errs.push('Inserisci un prezzo valido.');
+  if(errs.length){document.getElementById('mp-alert').innerHTML='<div class="alert-banner">'+errs.join(' ')+'</div>';return;}
+  var scarto=parseFloat(document.getElementById('mp-scarto').value)||0;
+  var allergeni=[];
+  document.querySelectorAll('.mp-allerg-cb').forEach(function(cb){if(cb.checked)allergeni.push(cb.value);});
+  var tracce=[];
+  document.querySelectorAll('.mp-tracce-cb').forEach(function(cb){if(cb.checked)tracce.push(cb.value);});
+  var nutr={
+    energia:parseFloat(document.getElementById('mp-energia').value)||0,
+    grassi:parseFloat(document.getElementById('mp-grassi').value)||0,
+    grassiSaturi:parseFloat(document.getElementById('mp-saturi').value)||0,
+    carboidrati:parseFloat(document.getElementById('mp-carbo').value)||0,
+    zuccheri:parseFloat(document.getElementById('mp-zuccheri').value)||0,
+    fibre:parseFloat(document.getElementById('mp-fibre').value)||0,
+    proteine:parseFloat(document.getElementById('mp-proteine').value)||0,
+    sale:parseFloat(document.getElementById('mp-sale').value)||0
+  };
+  if(mpEditIdx===-1){
+    magazzino.push({
+      nome:nome,categoria:document.getElementById('mp-cat').value,
+      um:document.getElementById('mp-um').value,
+      iva:parseInt(document.getElementById('mp-iva').value)||10,
+      scarto:scarto,resa:Math.round((100-scarto)*100)/100,
+      activeIdx:0,allergeni:allergeni,allergeniOk:document.getElementById('mp-all-ok').checked,
+      tracce:tracce,tracceOk:document.getElementById('mp-tracce-ok').checked,
+      nutrizionali:nutr,nutrizionaliOk:document.getElementById('mp-nutr-ok').checked,
+      giacenza:0,giacenzaMin:0,lotti:[],
+      suppliers:[{nome:forn,prezzoKg:prezzo,storico:[]}]
+    });
+  } else {
+    var m=magazzino[mpEditIdx];
+    m.nome=nome;m.categoria=document.getElementById('mp-cat').value;
+    m.um=document.getElementById('mp-um').value;
+    m.iva=parseInt(document.getElementById('mp-iva').value)||10;
+    m.scarto=scarto;m.resa=Math.round((100-scarto)*100)/100;
+    m.allergeni=allergeni;m.allergeniOk=document.getElementById('mp-all-ok').checked;
+    m.tracce=tracce;m.tracceOk=document.getElementById('mp-tracce-ok').checked;
+    m.nutrizionali=nutr;m.nutrizionaliOk=document.getElementById('mp-nutr-ok').checked;
+    if(m.suppliers&&m.suppliers[m.activeIdx||0]) m.suppliers[m.activeIdx||0].prezzoKg=prezzo;
+  }
+  magazzino.sort(function(a,b){
+    var ca=a.categoria||'Generale',cb=b.categoria||'Generale';
+    if(ca!==cb)return ca.localeCompare(cb,'it');
+    return a.nome.localeCompare(b.nome,'it');
+  });
+  saveMagazzino();
+  closeNuovaMPModal();
+  renderMagazzino();
+}
+
+function mpElimina(){
+  if(mpEditIdx<0)return;
+  if(!confirm('Eliminare "'+magazzino[mpEditIdx].nome+'"?'))return;
+  magazzino.splice(mpEditIdx,1);
+  saveMagazzino();
+  closeNuovaMPModal();
+  renderMagazzino();
+}
 /* ===== RICERCA GLOBALE ===== */
 function globalSearch(q){
   var overlay=document.getElementById('search-overlay');
@@ -3818,6 +3910,98 @@ function npSalva(){
   </div>
 </div>
 
+<!-- MODAL NUOVA MATERIA PRIMA -->
+<div class="modal-overlay" id="nuova-mp-modal" onclick="if(event.target===this)closeNuovaMPModal()">
+  <div class="modal" style="max-width:680px;max-height:90vh;overflow-y:auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+      <h3 id="mp-modal-title" style="margin:0;">Nuova materia prima</h3>
+      <button class="btn-secondary" onclick="closeNuovaMPModal()">&#10005;</button>
+    </div>
+    <div class="section-label">Informazioni generali</div>
+    <div class="form-grid">
+      <div class="form-row"><label>Nome *</label><input type="text" id="mp-nome" placeholder="es. Petto di pollo"/></div>
+      <div class="form-row"><label>Categoria *</label>
+        <select id="mp-cat">
+          <option value="Verdura">Verdura</option>
+          <option value="Frutta">Frutta</option>
+          <option value="Carne e pollame">Carne e pollame</option>
+          <option value="Pesce e frutti di mare">Pesce e frutti di mare</option>
+          <option value="Latticini e formaggi">Latticini e formaggi</option>
+          <option value="Salumi">Salumi</option>
+          <option value="Generale" selected>Generale</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-grid">
+      <div class="form-row"><label>Unita di misura</label>
+        <select id="mp-um">
+          <option value="kg">kg</option><option value="lt">lt</option>
+          <option value="g">g</option><option value="ml">ml</option>
+          <option value="pz">pz</option><option value="bustina">bustina</option>
+        </select>
+      </div>
+      <div class="form-row"><label>IVA %</label>
+        <select id="mp-iva">
+          <option value="4">4%</option><option value="10" selected>10%</option><option value="22">22%</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-grid">
+      <div class="form-row"><label>% Scarto</label>
+        <input type="number" id="mp-scarto" value="0" min="0" max="99" step="1" style="text-align:left;"/>
+      </div>
+      <div class="form-row"><label>Resa %</label>
+        <input type="number" id="mp-resa" value="100" min="1" max="100" step="0.1" style="text-align:left;" readonly/>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:14px;">Fornitore e prezzo</div>
+    <div class="form-grid">
+      <div class="form-row"><label>Fornitore *</label>
+        <input type="text" id="mp-forn" placeholder="es. Macelleria Rossi" list="mp-forn-list"/>
+        <datalist id="mp-forn-list"></datalist>
+      </div>
+      <div class="form-row"><label>Prezzo (euro/um) *</label>
+        <input type="number" id="mp-prezzo" placeholder="0.00" min="0" step="0.01" style="text-align:left;"/>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:14px;">Allergeni</div>
+    <div id="mp-allergeni-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin-bottom:8px;"></div>
+    <div style="margin-bottom:4px;">
+      <label style="font-size:12px;display:flex;align-items:center;gap:6px;cursor:pointer;">
+        <input type="checkbox" id="mp-all-ok"/> Confermo: allergeni verificati
+      </label>
+    </div>
+    <div class="section-label" style="margin-top:10px;">Tracce di allergeni</div>
+    <div id="mp-tracce-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin-bottom:8px;"></div>
+    <div style="margin-bottom:14px;">
+      <label style="font-size:12px;display:flex;align-items:center;gap:6px;cursor:pointer;">
+        <input type="checkbox" id="mp-tracce-ok"/> Confermo: tracce verificate
+      </label>
+    </div>
+    <div class="section-label">Valori nutrizionali (per 100g/100ml)</div>
+    <div class="form-grid">
+      <div class="form-row"><label>Energia (kcal)</label><input type="number" id="mp-energia" placeholder="0" min="0" style="text-align:left;"/></div>
+      <div class="form-row"><label>Grassi (g)</label><input type="number" id="mp-grassi" placeholder="0" min="0" step="0.1" style="text-align:left;"/></div>
+      <div class="form-row"><label>di cui saturi (g)</label><input type="number" id="mp-saturi" placeholder="0" min="0" step="0.1" style="text-align:left;"/></div>
+      <div class="form-row"><label>Carboidrati (g)</label><input type="number" id="mp-carbo" placeholder="0" min="0" step="0.1" style="text-align:left;"/></div>
+      <div class="form-row"><label>di cui zuccheri (g)</label><input type="number" id="mp-zuccheri" placeholder="0" min="0" step="0.1" style="text-align:left;"/></div>
+      <div class="form-row"><label>Fibre (g)</label><input type="number" id="mp-fibre" placeholder="0" min="0" step="0.1" style="text-align:left;"/></div>
+      <div class="form-row"><label>Proteine (g)</label><input type="number" id="mp-proteine" placeholder="0" min="0" step="0.1" style="text-align:left;"/></div>
+      <div class="form-row"><label>Sale (g)</label><input type="number" id="mp-sale" placeholder="0" min="0" step="0.01" style="text-align:left;"/></div>
+    </div>
+    <div style="margin-bottom:14px;">
+      <label style="font-size:12px;display:flex;align-items:center;gap:6px;cursor:pointer;">
+        <input type="checkbox" id="mp-nutr-ok"/> Confermo: valori nutrizionali inseriti
+      </label>
+    </div>
+    <div id="mp-alert" style="margin-bottom:8px;"></div>
+    <div class="modal-btns">
+      <button class="btn-danger" id="mp-btn-elimina" onclick="mpElimina()" style="display:none;margin-right:auto;">Elimina</button>
+      <button class="btn-secondary" onclick="closeNuovaMPModal()">Annulla</button>
+      <button class="btn-primary" onclick="mpSalva()">Salva</button>
+    </div>
+  </div>
+</div>
 <!-- MODAL SEMILAVORATO -->
 <div class="modal-overlay" id="semi-modal" onclick="if(event.target===this)closeSemiModal()">
   <div class="modal" style="max-width:620px;">
