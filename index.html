@@ -1555,7 +1555,20 @@ function renderMagazzino(){
 
           /* add supplier */
           out+='<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;" onclick="event.stopPropagation();">'
-            +'<input type="text" id="new-supp-name-'+mi+'" placeholder="Nome fornitore" list="forn-list-'+mi+'" style="flex:2;min-width:120px;width:100%;font-size:12px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/>'
+            +'<input type="text" id="new-supp-name-'+mi+'" placeholder="Seleziona o scrivi..." list="forn-list-'+mi+'" oninput="checkNuovoFornIng('+mi+',this.value)" style="flex:2;min-width:120px;width:100%;font-size:12px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/>'
+            +'<datalist id="forn-list-'+mi+'">'
+            +fornitori.map(function(fn){return '<option value="'+fn.nome+'">';}).join('')
+            +'<option value="++ Nuovo fornitore">'
+            +'</datalist>'
+            +'<div id="nf-form-'+mi+'" style="display:none;margin-top:6px;padding:10px;background:#f5f4f0;border-radius:8px;width:100%;">'
+            +'<div style="font-size:11px;font-weight:600;color:#555;margin-bottom:6px;">Nuovo fornitore</div>'
+            +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+            +'<input type="text" id="nf-nome-'+mi+'" placeholder="Nome *" style="flex:2;min-width:120px;font-size:12px;padding:4px 7px;border:1px solid #d0cec8;border-radius:6px;"/>'
+            +'<input type="text" id="nf-tel-'+mi+'" placeholder="Telefono" style="flex:1;min-width:100px;font-size:12px;padding:4px 7px;border:1px solid #d0cec8;border-radius:6px;"/>'
+            +'<input type="number" id="nf-prezzo-'+mi+'" placeholder="Prezzo" min="0" step="0.01" style="width:80px;font-size:12px;padding:4px 6px;border:1px solid #d0cec8;border-radius:6px;text-align:left;"/>'
+            +'<button class="btn-sm" onclick="creaNuovoFornIng('+mi+')">+ Crea</button>'
+            +'<button class="btn-sm" onclick="document.getElementById(&quot;nf-form-'+mi+'&quot;).style.display=&quot;none&quot;;document.getElementById(&quot;new-supp-name-'+mi+'&quot;).value=&quot;&quot;;">&#10005;</button>'
+            +'</div></div>'
             +'<datalist id="forn-list-'+mi+'">'
             +fornitori.map(function(f){return '<option value="'+f.nome+'">';}).join('')
             +'<option value="++ Nuovo fornitore">'
@@ -3394,7 +3407,9 @@ function openNuovaMPModal(editIdx){
   document.getElementById('mp-modal-title').textContent=isNew?'Nuova materia prima':'Modifica materia prima';
   document.getElementById('mp-btn-elimina').style.display=isNew?'none':'block';
   var dl=document.getElementById('mp-forn-list');
-  if(dl) dl.innerHTML=fornitori.map(function(f){return '<option value="'+f.nome+'">';}).join('');
+  if(dl) dl.innerHTML=fornitori.map(function(f){return '<option value="'+f.nome+'">';}).join('')+'<option value="++ Nuovo fornitore">';
+  var nff=document.getElementById('mp-nuovo-forn-form');
+  if(nff)nff.style.display='none';
   var ag=document.getElementById('mp-allergeni-grid');
   if(ag) ag.innerHTML=ALLERGENI_LIST.map(function(a){
     return '<label style="font-size:12px;display:flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #e0ded8;border-radius:6px;cursor:pointer;"><input type="checkbox" class="mp-allerg-cb" value="'+a+'"> '+a+'</label>';
@@ -3516,6 +3531,56 @@ function mpElimina(){
   saveMagazzino();
   closeNuovaMPModal();
   renderMagazzino();
+}
+
+function mpCheckNuovoForn(val){
+  var form=document.getElementById('mp-nuovo-forn-form');
+  if(!form)return;
+  form.style.display=(val==='++ Nuovo fornitore')?'block':'none';
+  if(val==='++ Nuovo fornitore') document.getElementById('mp-forn').value='++ Nuovo fornitore';
+}
+
+function mpPopulateFornList(){
+  var dl=document.getElementById('mp-forn-list');
+  if(!dl)return;
+  dl.innerHTML=fornitori.map(function(f){return '<option value="'+f.nome+'">';}).join('')+'<option value="++ Nuovo fornitore">';
+}
+
+function mpCreaNuovoForn(){
+  var nome=document.getElementById('mp-nf-nome').value.trim();
+  if(!nome){alert('Inserisci il nome del fornitore.');return;}
+  var tel=document.getElementById('mp-nf-tel').value.trim();
+  var email=document.getElementById('mp-nf-email').value.trim();
+  var tipo=document.getElementById('mp-nf-tipo').value;
+  fornitori.push({nome:nome,tipo:tipo,referente:'',tel:tel,email:email,indirizzo:'',giorni:'',consegna:'',leadTime:'',pagamento:'',note:''});
+  saveFornitori();
+  renderFornitori();
+  document.getElementById('mp-forn').value=nome;
+  document.getElementById('mp-nuovo-forn-form').style.display='none';
+  mpPopulateFornList();
+  alert('Fornitore "'+nome+'" creato!');
+}
+
+function checkNuovoFornIng(mi,val){
+  var form=document.getElementById('nf-form-'+mi);
+  if(!form)return;
+  form.style.display=(val==='++ Nuovo fornitore')?'block':'none';
+}
+
+function creaNuovoFornIng(mi){
+  var nome=document.getElementById('nf-nome-'+mi).value.trim();
+  if(!nome){alert('Inserisci il nome del fornitore.');return;}
+  var tel=document.getElementById('nf-tel-'+mi).value.trim();
+  var prezzo=parseFloat(document.getElementById('nf-prezzo-'+mi).value)||0;
+  fornitori.push({nome:nome,tipo:'',referente:'',tel:tel,email:'',indirizzo:'',giorni:'',consegna:'',leadTime:'',pagamento:'',note:''});
+  saveFornitori();
+  magazzino[mi].suppliers.push({nome:nome,prezzoKg:prezzo,storico:[]});
+  saveMagazzino();
+  document.getElementById('nf-form-'+mi).style.display='none';
+  document.getElementById('new-supp-name-'+mi).value='';
+  renderMagazzino();
+  renderFornitori();
+  alert('Fornitore "'+nome+'" creato e aggiunto!');
 }
 /* ===== RICERCA GLOBALE ===== */
 function globalSearch(q){
@@ -3958,8 +4023,28 @@ function npSalva(){
     <div class="section-label" style="margin-top:14px;">Fornitore e prezzo</div>
     <div class="form-grid">
       <div class="form-row"><label>Fornitore *</label>
-        <input type="text" id="mp-forn" placeholder="es. Macelleria Rossi" list="mp-forn-list"/>
+        <input type="text" id="mp-forn" placeholder="Seleziona o scrivi..." list="mp-forn-list" oninput="mpCheckNuovoForn(this.value)"/>
         <datalist id="mp-forn-list"></datalist>
+      </div>
+      <div id="mp-nuovo-forn-form" style="display:none;margin-top:8px;padding:12px;background:#f5f4f0;border-radius:8px;border:1px solid #e0ded8;">
+        <div style="font-size:12px;font-weight:600;color:#555;margin-bottom:8px;">Nuovo fornitore</div>
+        <div class="form-grid">
+          <div class="form-row"><label>Nome *</label><input type="text" id="mp-nf-nome" placeholder="es. Macelleria Rossi"/></div>
+          <div class="form-row"><label>Telefono</label><input type="text" id="mp-nf-tel" placeholder="es. 045 123456"/></div>
+          <div class="form-row"><label>Email</label><input type="text" id="mp-nf-email" placeholder="es. info@..."/></div>
+          <div class="form-row"><label>Tipo</label>
+            <select id="mp-nf-tipo">
+              <option value="">-- seleziona --</option>
+              <option>Macelleria</option><option>Pescheria</option><option>Ortofrutticolo</option>
+              <option>Caseificio</option><option>Salumificio</option><option>Ingrosso alimentare</option>
+              <option>Cash and Carry</option><option>Supermercato</option><option>Altro</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:8px;">
+          <button class="btn-sm" onclick="mpCreaNuovoForn()">+ Crea fornitore</button>
+          <button class="btn-sm" onclick="document.getElementById('mp-nuovo-forn-form').style.display='none';document.getElementById('mp-forn').value='';">Annulla</button>
+        </div>
       </div>
       <div class="form-row"><label>Prezzo (euro/um) *</label>
         <input type="number" id="mp-prezzo" placeholder="0.00" min="0" step="0.01" style="text-align:left;"/>
