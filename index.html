@@ -1287,7 +1287,7 @@ function saveDismissed(){try{localStorage.setItem('rc_dismissed',JSON.stringify(
 function flash(id){var el=document.getElementById(id);if(el){el.textContent='Salvato';setTimeout(function(){el.textContent='';},2000);}}
 
 function activeSupplier(m){return m.suppliers[m.activeIdx]||m.suppliers[0];}
-function gp(idx){var s=activeSupplier(magazzino[idx]);return ivaOn?s.prezzoKg*(1+magazzino[idx].iva/100):s.prezzoKg;}
+function gp(idx){var m=magazzino[idx];var s=activeSupplier(m);var base=ivaOn?s.prezzoKg*(1+m.iva/100):s.prezzoKg;var resa=(m.resa!==undefined&&m.resa>0)?m.resa:100;return base/(resa/100);}
 function costoIng(ing,p){if(ing.conv===0||ing.unit==='q.b.')return 0;return ing.qtaBase*(p/BASE)*ing.conv*gp(ing.magIdx);}
 
 function fmtQta(ing,p){
