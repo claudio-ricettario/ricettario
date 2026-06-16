@@ -1213,7 +1213,7 @@ function dropboxDisconnetti(){
 }
 
 
-var MAGAZZINO_VERSION=7;
+var MAGAZZINO_VERSION=9;
 function loadSaved(){
   try{
     var ver=parseInt(localStorage.getItem('rc_mag_ver')||'0');
@@ -1629,11 +1629,6 @@ function renderMagazzino(){
   renderGiacenzaAlerts();
 }
 
-var magExpanded={magExpanded_placeholder:false};
-function magToggleCat(cat,el){
-  magExpanded[cat]=!magExpanded[cat];
-  renderMagazzino();
-}
 
 
 /* ---- FOOD COST + RICETTA ---- */
@@ -3359,6 +3354,39 @@ function openRicettaBase(){
   document.getElementById('btn-modifica-ricetta').style.display='none';
   buildPrintModal(r);
   document.getElementById('print-modal').classList.add('open');
+}
+
+/* ===== MAGAZZINO FUNCTIONS ===== */
+
+function updateCategoria(mi,val){
+  magazzino[mi].categoria=val;
+  magazzino.sort(function(a,b){
+    var ca=a.categoria||'Generale', cb=b.categoria||'Generale';
+    if(ca!==cb)return ca.localeCompare(cb,'it');
+    return a.nome.localeCompare(b.nome,'it');
+  });
+  saveMagazzino();
+  renderMagazzino();
+}
+
+function updateScarto(mi,val){
+  val=Math.max(0,Math.min(99,val));
+  magazzino[mi].scarto=val;
+  magazzino[mi].resa=Math.round((100-val)*100)/100;
+  saveMagazzino();
+  renderMagazzino();
+}
+
+var magExpanded={};
+function magToggleCat(cat,el){
+  if(!cat){
+    var node=el;
+    while(node&&!node.dataset.cat) node=node.parentElement;
+    if(node) cat=node.dataset.cat;
+  }
+  if(!cat)return;
+  magExpanded[cat]=!magExpanded[cat];
+  renderMagazzino();
 }
 
 /* ===== RICERCA GLOBALE ===== */
