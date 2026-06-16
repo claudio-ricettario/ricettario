@@ -1432,6 +1432,28 @@ function setActive(mi,si){magazzino[mi].activeIdx=si;saveMagazzino();updateAll()
 
 function toggleExpand(mi){expanded[mi]=!expanded[mi];renderMagazzino();}
 
+
+function setActiveSupplier(mi,si){
+  magazzino[mi].activeIdx=si;
+  saveMagazzino();
+  renderMagazzino();
+}
+function updateSupplierPrice(mi,si,val){
+  magazzino[mi].suppliers[si].prezzoKg=val;
+  saveMagazzino();
+  renderMagazzino();
+}
+function rimuoviFornitore(mi,si){
+  if(magazzino[mi].suppliers.length<=1){alert('Devi avere almeno un fornitore.');return;}
+  if(!confirm('Rimuovere questo fornitore?'))return;
+  magazzino[mi].suppliers.splice(si,1);
+  if(magazzino[mi].activeIdx>=magazzino[mi].suppliers.length) magazzino[mi].activeIdx=0;
+  saveMagazzino();
+  renderMagazzino();
+}
+function openSchedaModal(mi){
+  amOpen(mi);
+}
 function addSupplierToIng(mi){
   var nEl=document.getElementById('new-supp-name-'+mi);
   var pEl=document.getElementById('new-supp-price-'+mi);
