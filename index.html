@@ -1512,7 +1512,8 @@ function renderMagazzino(){
           +(scarto>0?'<span style="font-size:11px;color:#b45309;font-weight:600;min-width:50px;text-align:right;">-'+scarto+'%</span>':'<span style="min-width:50px;"></span>')
           +'<span style="font-size:13px;font-weight:600;min-width:80px;text-align:right;">'+eur(prezzoNetto)+'/'+m.um+'</span>'
           +'<span style="font-size:12px;color:'+giacClass+';min-width:60px;text-align:right;">'+giac+' '+m.um+'</span>'
-          +'<button class="btn-sm danger-sm" onclick="event.stopPropagation();eliminaIngrediente('+mi+')" style="flex-shrink:0;">&#128465;</button>'
+          +'<button class="btn-sm" onclick="event.stopPropagation();openNuovaMPModal('+mi+')" style="flex-shrink:0;" title="Modifica">&#9998;</button> '
+          +'<button class="btn-sm danger-sm" onclick="event.stopPropagation();eliminaIngrediente('+mi+')" style="flex-shrink:0;" title="Elimina">&#128465;</button>'
           +'</div>';
 
         /* expanded panel */
