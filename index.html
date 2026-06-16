@@ -856,10 +856,70 @@ var magazzino = [
   {nome:'Olio EVO',um:'lt',iva:10,activeIdx:0,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:{energia:884,grassi:100,grassiSaturi:14,carboidrati:0,zuccheri:0,fibre:0,proteine:0,sale:0},nutrizionaliOk:true,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
     {nome:'Ingrosso alimentare',prezzoKg:5.50,storico:[]},
     {nome:'Frantoio diretto',prezzoKg:6.80,storico:[]}]},
-  {nome:'Sale fino',um:'kg',iva:4,activeIdx:0,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:{energia:0,grassi:0,grassiSaturi:0,carboidrati:0,zuccheri:0,fibre:0,proteine:0,sale:38.7},nutrizionaliOk:true,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+  {nome:'Sale fino',um:'kg',iva:4,activeIdx:0,scarto:0,resa:100,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:{energia:0,grassi:0,grassiSaturi:0,carboidrati:0,zuccheri:0,fibre:0,proteine:0,sale:38.7},nutrizionaliOk:true,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
     {nome:'Ingrosso',prezzoKg:0.60,storico:[]}]},
-  {nome:'Pepe nero',um:'kg',iva:4,activeIdx:0,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:{energia:251,grassi:3.3,grassiSaturi:1.0,carboidrati:64,zuccheri:0.6,fibre:25,proteine:10,sale:0.04},nutrizionaliOk:true,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
-    {nome:'Ingrosso spezie',prezzoKg:12.00,storico:[]}]}
+  {nome:'Pepe nero',um:'kg',iva:4,activeIdx:0,scarto:0,resa:100,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:{energia:251,grassi:3.3,grassiSaturi:1.0,carboidrati:64,zuccheri:0.6,fibre:25,proteine:10,sale:0.04},nutrizionaliOk:true,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Ingrosso spezie',prezzoKg:12.00,storico:[]}]},
+  {nome:'Aglio',um:'kg',iva:4,activeIdx:0,scarto:5,resa:95,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:8.0,storico:[]}]},
+  {nome:'Asparagi bianchi',um:'kg',iva:4,activeIdx:0,scarto:40,resa:60,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:4.5,storico:[]}]},
+  {nome:'Asparagi verdi',um:'kg',iva:4,activeIdx:0,scarto:18,resa:82,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:5.0,storico:[]}]},
+  {nome:'Bieta',um:'kg',iva:4,activeIdx:0,scarto:20,resa:80,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.5,storico:[]}]},
+  {nome:'Broccoli',um:'kg',iva:4,activeIdx:0,scarto:30,resa:70,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.8,storico:[]}]},
+  {nome:'Cavolini di Bruxelles',um:'kg',iva:4,activeIdx:0,scarto:15,resa:85,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:2.5,storico:[]}]},
+  {nome:'Carciofi',um:'kg',iva:4,activeIdx:0,scarto:80,resa:20,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:3.0,storico:[]}]},
+  {nome:'Cavolfiore',um:'kg',iva:4,activeIdx:0,scarto:25,resa:75,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.6,storico:[]}]},
+  {nome:'Cavolo',um:'kg',iva:4,activeIdx:0,scarto:15,resa:85,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.4,storico:[]}]},
+  {nome:'Cetriolo',um:'kg',iva:4,activeIdx:0,scarto:8,resa:92,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.2,storico:[]}]},
+  {nome:'Concasse di pomodoro',um:'kg',iva:4,activeIdx:0,scarto:50,resa:50,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:2.0,storico:[]}]},
+  {nome:'Finocchio',um:'kg',iva:4,activeIdx:0,scarto:20,resa:80,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.5,storico:[]}]},
+  {nome:'Funghi champignon',um:'kg',iva:4,activeIdx:0,scarto:10,resa:90,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:3.5,storico:[]}]},
+  {nome:'Indivia belga',um:'kg',iva:4,activeIdx:0,scarto:10,resa:90,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:2.8,storico:[]}]},
+  {nome:'Lattuga',um:'kg',iva:4,activeIdx:0,scarto:10,resa:90,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.8,storico:[]}]},
+  {nome:'Melanzana',um:'kg',iva:4,activeIdx:0,scarto:15,resa:85,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.6,storico:[]}]},
+  {nome:'Patata',um:'kg',iva:4,activeIdx:0,scarto:12,resa:88,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:0.7,storico:[]}]},
+  {nome:'Peperone',um:'kg',iva:4,activeIdx:0,scarto:30,resa:70,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:2.2,storico:[]}]},
+  {nome:'Piselli (freschi)',um:'kg',iva:4,activeIdx:0,scarto:15,resa:85,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:3.0,storico:[]}]},
+  {nome:'Pomodoro',um:'kg',iva:4,activeIdx:0,scarto:5,resa:95,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.8,storico:[]}]},
+  {nome:'Porro',um:'kg',iva:4,activeIdx:0,scarto:10,resa:90,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.9,storico:[]}]},
+  {nome:'Radicchio rosso',um:'kg',iva:4,activeIdx:0,scarto:15,resa:85,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:2.0,storico:[]}]},
+  {nome:'Sedano',um:'kg',iva:4,activeIdx:0,scarto:20,resa:80,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.2,storico:[]}]},
+  {nome:'Sedano rapa',um:'kg',iva:4,activeIdx:0,scarto:30,resa:70,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.8,storico:[]}]},
+  {nome:'Spinaci',um:'kg',iva:4,activeIdx:0,scarto:12,resa:88,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:2.5,storico:[]}]},
+  {nome:'Taccole',um:'kg',iva:4,activeIdx:0,scarto:5,resa:95,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:3.5,storico:[]}]},
+  {nome:'Zucca',um:'kg',iva:4,activeIdx:0,scarto:25,resa:75,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:0.9,storico:[]}]},
+  {nome:'Zucchina',um:'kg',iva:4,activeIdx:0,scarto:10,resa:90,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:1.4,storico:[]}]},
+  {nome:'Cipolla',um:'kg',iva:4,activeIdx:0,scarto:10,resa:90,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:{energia:40,grassi:0.1,grassiSaturi:0,carboidrati:9,zuccheri:4.2,fibre:1.7,proteine:1.1,sale:0.01},nutrizionaliOk:true,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:0.90,storico:[]}]},
+  {nome:'Carota',um:'kg',iva:4,activeIdx:0,scarto:20,resa:80,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:{energia:41,grassi:0.2,grassiSaturi:0,carboidrati:10,zuccheri:4.7,fibre:2.8,proteine:0.9,sale:0.07},nutrizionaliOk:true,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[
+    {nome:'Negozio frutta e verdura',prezzoKg:0.80,storico:[]}]}
 ];
 
 var ingredienti=[
@@ -1141,7 +1201,7 @@ function dropboxDisconnetti(){
 }
 
 
-var MAGAZZINO_VERSION=6;
+var MAGAZZINO_VERSION=7;
 function loadSaved(){
   try{
     var ver=parseInt(localStorage.getItem('rc_mag_ver')||'0');
@@ -1161,6 +1221,8 @@ function loadSaved(){
         if(sm.giacenzaMin===undefined) sm.giacenzaMin=0;
         if(sm.um===undefined) sm.um='kg';
         if(!sm.lotti) sm.lotti=[];
+        if(sm.scarto===undefined) sm.scarto=0;
+        if(sm.resa===undefined) sm.resa=100;
       });
       /* version guard: if saved has fewer items than default, reset */
       if(saved.length < magazzino.length){
@@ -1250,7 +1312,7 @@ function aggiungiIngrediente(){
       alert(msg);
     }
   }
-  magazzino.push({nome:nome,um:um,iva:iva,activeIdx:0,allergeni:[],allergeniOk:false,tracce:[],tracceOk:false,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[{nome:forn,prezzoKg:prezzo,storico:[]}]});
+  magazzino.push({nome:nome,um:um,iva:iva,activeIdx:0,scarto:0,resa:100,allergeni:[],allergeniOk:false,tracce:[],tracceOk:false,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[{nome:forn,prezzoKg:prezzo,storico:[]}]});
   document.getElementById('ni-nome').value='';
   document.getElementById('ni-forn').value='';
   document.getElementById('ni-prezzo').value='';
@@ -1412,7 +1474,7 @@ function renderMagazzino(){
       +'<td>'+statusDot+'<strong>'+m.nome+'</strong>'+alertDot+giacDot+scadDot+'</td>'
       +'<td class="sm"><span class="active-dot"></span>'+act.nome+(act.nome==='Supermercato / Generico'?' <span style="font-size:10px;background:#fef3c7;color:#92400e;padding:1px 5px;border-radius:4px;">provvisorio</span>':'')+'</td>'
       +giacCell
-      +'<td class="r">'+eur(ivaOn?ci:act.prezzoKg)+' <span style="font-size:11px;color:#aaa;">/'+m.um+'</span></td>'
+      +'<td class="r">'+eur(gp(mi))+' <span style="font-size:11px;color:#aaa;">/'+m.um+(m.scarto>0?' <span style="color:#b45309;">(-'+m.scarto+'%)</span>':'')+'</span></td>'
       +'<td class="r" style="'+(ivaOn?'font-weight:600;':'color:#aaa;font-size:12px;')+'">'+eur(ci)+'</td>'
       +'<td class="r">'+altBadge+'</td>'
       +'<td class="r" style="white-space:nowrap;display:flex;gap:6px;align-items:center;justify-content:flex-end;">'+schedaBtn
@@ -1463,6 +1525,19 @@ function renderMagazzino(){
       /* ── Giacenza & Lotti ── */
       rows+='<div style="margin-top:14px;padding-top:12px;border-top:1px solid #e0ded8;">';
       rows+='<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Giacenza & Lotti</div>';
+
+      /* scarto controls */
+      rows+='<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:8px;font-size:13px;padding:8px 12px;background:#fef9f0;border-radius:8px;">'
+        +'<span style="font-size:12px;font-weight:600;color:#b45309;">Scarto:</span>'
+        +'<div style="display:flex;align-items:center;gap:6px;">'
+        +'<input type="number" value="'+(m.scarto||0)+'" min="0" max="99" step="1" '
+        +'onchange="updateScarto('+mi+',parseFloat(this.value)||0)" '
+        +'onclick="event.stopPropagation();" '
+        +'style="width:60px;font-size:12px;padding:3px 6px;border:1px solid #fbbf24;border-radius:6px;text-align:right;"/>'
+        +' % &nbsp;&rarr;&nbsp; resa <strong>'+(m.resa||100)+'%</strong>'
+        +' &nbsp;&rarr;&nbsp; costo netto <strong>'+eur(gp(mi))+'/'+m.um+'</strong>'
+        +'</div>'
+        +'</div>';
 
       /* giacenza controls */
       rows+='<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px;font-size:13px;">'
@@ -1567,6 +1642,14 @@ function renderGiacenzaAlerts(){
     var icon=a.type==='scadenza'?'&#128197;':'&#128230;';
     return '<div class="'+cls+'">'+icon+' '+a.msg+'</div>';
   }).join('');
+}
+
+function updateScarto(mi,val){
+  val=Math.max(0,Math.min(99,val));
+  magazzino[mi].scarto=val;
+  magazzino[mi].resa=Math.round((100-val)*100)/100;
+  saveMagazzino();
+  renderMagazzino();
 }
 
 function updateGiacenza(mi,val){
