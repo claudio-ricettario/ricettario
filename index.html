@@ -1358,7 +1358,7 @@ function aggiungiIngrediente(){
 
 function eliminaIngrediente(mi){
   var m=magazzino[mi];
-  var usedIn=ricetteSalvate.filter(function(r){return r.ingredienti.some(function(i){return i.magIdx===mi;});});
+  var usedIn=(ricetteSalvate||[]).filter(function(r){return r.ingredienti.some(function(i){return i.magIdx===mi;});});
   var msg='Vuoi eliminare "'+m.nome+'" dal magazzino?';
   if(usedIn.length){
     msg+='\n\nATTENZIONE: questo ingrediente e usato nelle seguenti ricette:\n';
@@ -1471,6 +1471,7 @@ function removeSupplier(mi,si){
 }
 
 /* ---- MAGAZZINO RENDER ---- */
+function renderGiacenzaAlerts(){var cont=document.getElementById("giacenza-alerts-container");if(cont)cont.innerHTML="";}
 function renderMagazzino(){
   var cont=document.getElementById('mag-categorie-container');
   if(!cont)return;
