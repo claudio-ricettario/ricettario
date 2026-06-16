@@ -311,7 +311,7 @@ textarea{resize:vertical;min-height:60px;}
   <div class="tab-bar">
     <div class="tab active" onclick="showTab('home')">&#127968; Home</div>
     <div class="tab" onclick="showTab('semilavorati')">&#9881; Semilavorati</div>
-    <div class="tab" onclick="showTab('magazzino')">&#128230; Materie prime</div>
+    <div class="tab" onclick="showTab('magazzino')">&#128230; Magazzino</div>
     <div class="tab" onclick="showTab('foodcost')">&#128202; Food cost</div>
     <div class="tab" onclick="showTab('fornitori')">&#127978; Fornitori</div>
     <div class="tab" onclick="showTab('nuovo-piatto')">&#43; Nuovo piatto</div>
@@ -526,7 +526,10 @@ textarea{resize:vertical;min-height:60px;}
 
   <!-- MAGAZZINO -->
   <div id="tab-magazzino" class="section">
-    <h2>Magazzino ingredienti</h2>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px;">
+      <h2 style="margin:0;">Magazzino</h2>
+      <button class="btn-primary" onclick="openNuovaMPModal()">+ Nuova materia prima</button>
+    </div>
     <p class="muted">Espandi per gestire fornitori, prezzi, giacenza, lotti e scadenze</p>
     <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#666;margin-bottom:12px;align-items:center;">
       <span><span class="ing-status-ok"></span> Scheda completa</span>
@@ -536,9 +539,7 @@ textarea{resize:vertical;min-height:60px;}
     <div id="giacenza-alerts-container"></div>
     <div id="mag-categorie-container"></div>
 
-    <div style="display:flex;justify-content:flex-end;margin-bottom:16px;">
-      <button class="btn-primary" onclick="openNuovaMPModal()">+ Nuova materia prima</button>
-    </div>
+    
     <div class="controls">
       <div class="ctrl-group" style="margin-left:auto;">
         <span>IVA</span>
@@ -1537,7 +1538,11 @@ function renderMagazzino(){
 
           /* add supplier */
           out+='<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;" onclick="event.stopPropagation();">'
-            +'<input type="text" id="new-supp-name-'+mi+'" placeholder="Nome fornitore" style="flex:2;min-width:120px;font-size:12px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/>'
+            +'<input type="text" id="new-supp-name-'+mi+'" placeholder="Nome fornitore" list="forn-list-'+mi+'" style="flex:2;min-width:120px;width:100%;font-size:12px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/>'
+            +'<datalist id="forn-list-'+mi+'">'
+            +fornitori.map(function(f){return '<option value="'+f.nome+'">';}).join('')
+            +'<option value="++ Nuovo fornitore">'
+            +'</datalist>'
             +'<input type="number" id="new-supp-price-'+mi+'" placeholder="Prezzo" min="0" step="0.01" style="flex:1;min-width:70px;font-size:12px;padding:5px 6px;border:1px solid #d0cec8;border-radius:6px;text-align:left;"/>'
             +'<button class="btn-sm" onclick="addSupplierToIng('+mi+')">+ Fornitore</button>'
             +'</div>';
@@ -3376,6 +3381,8 @@ function openNuovaMPModal(editIdx){
   if(dl)dl.innerHTML=fornitori.map(function(f){return '<option value="'+f.nome+'">';}).join('');
   var grid=document.getElementById('mp-allergeni-grid');
   if(grid)grid.innerHTML=ALLERGENI_LIST.map(function(a){return '<label style="font-size:12px;display:flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #e0ded8;border-radius:6px;cursor:pointer;background:#fafaf8;"><input type="checkbox" class="mp-allerg-cb" value="'+a+'"/> '+a+'</label>';}).join('');
+  var tgrid=document.getElementById('mp-tracce-grid');
+  if(tgrid)tgrid.innerHTML=ALLERGENI_LIST.map(function(a){return '<label style="font-size:12px;display:flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #e0ded8;border-radius:6px;cursor:pointer;background:#fafaf8;"><input type="checkbox" class="mp-tracce-cb" value="'+a+'"/> '+a+'</label>';}).join('');
   if(isNew){
     ['mp-nome','mp-forn','mp-prezzo','mp-energia','mp-grassi','mp-saturi','mp-carbo','mp-zuccheri','mp-fibre','mp-proteine','mp-sale'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
     document.getElementById('mp-cat').value='Generale';
@@ -3401,6 +3408,8 @@ function openNuovaMPModal(editIdx){
     document.getElementById('mp-nutr-ok').checked=m.nutrizionaliOk||false;
     var allCbs=document.querySelectorAll('.mp-allerg-cb');
     allCbs.forEach(function(cb){cb.checked=(m.allergeni||[]).indexOf(cb.value)>=0;});
+    var tCbs=document.querySelectorAll('.mp-tracce-cb');
+    tCbs.forEach(function(cb){cb.checked=(m.tracce||[]).indexOf(cb.value)>=0;});
     var n=m.nutrizionali||{};
     document.getElementById('mp-energia').value=n.energia||'';
     document.getElementById('mp-grassi').value=n.grassi||'';
@@ -3427,12 +3436,13 @@ function mpSalva(){
   if(errs.length){document.getElementById('mp-alert').innerHTML='<div class="alert-banner">'+errs.join(' ')+'</div>';return;}
   var scarto=parseFloat(document.getElementById('mp-scarto').value)||0;
   var allergeni=[]; document.querySelectorAll('.mp-allerg-cb').forEach(function(cb){if(cb.checked)allergeni.push(cb.value);});
+  var tracce=[]; document.querySelectorAll('.mp-tracce-cb').forEach(function(cb){if(cb.checked)tracce.push(cb.value);});
   var nutr={energia:parseFloat(document.getElementById('mp-energia').value)||0,grassi:parseFloat(document.getElementById('mp-grassi').value)||0,grassiSaturi:parseFloat(document.getElementById('mp-saturi').value)||0,carboidrati:parseFloat(document.getElementById('mp-carbo').value)||0,zuccheri:parseFloat(document.getElementById('mp-zuccheri').value)||0,fibre:parseFloat(document.getElementById('mp-fibre').value)||0,proteine:parseFloat(document.getElementById('mp-proteine').value)||0,sale:parseFloat(document.getElementById('mp-sale').value)||0};
   if(mpEditIdx===-1){
-    magazzino.push({nome:nome,categoria:document.getElementById('mp-cat').value,um:document.getElementById('mp-um').value,iva:parseInt(document.getElementById('mp-iva').value)||10,scarto:scarto,resa:Math.round((100-scarto)*100)/100,activeIdx:0,allergeni:allergeni,allergeniOk:document.getElementById('mp-all-ok').checked,tracce:[],tracceOk:document.getElementById('mp-tracce-ok').checked,nutrizionali:nutr,nutrizionaliOk:document.getElementById('mp-nutr-ok').checked,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[{nome:forn,prezzoKg:prezzo,storico:[]}]});
+    magazzino.push({nome:nome,categoria:document.getElementById('mp-cat').value,um:document.getElementById('mp-um').value,iva:parseInt(document.getElementById('mp-iva').value)||10,scarto:scarto,resa:Math.round((100-scarto)*100)/100,activeIdx:0,allergeni:allergeni,allergeniOk:document.getElementById('mp-all-ok').checked,tracce:tracce,tracceOk:document.getElementById('mp-tracce-ok').checked,nutrizionali:nutr,nutrizionaliOk:document.getElementById('mp-nutr-ok').checked,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[{nome:forn,prezzoKg:prezzo,storico:[]}]});
   } else {
     var m=magazzino[mpEditIdx];
-    m.nome=nome;m.categoria=document.getElementById('mp-cat').value;m.um=document.getElementById('mp-um').value;m.iva=parseInt(document.getElementById('mp-iva').value)||10;m.scarto=scarto;m.resa=Math.round((100-scarto)*100)/100;m.allergeni=allergeni;m.allergeniOk=document.getElementById('mp-all-ok').checked;m.tracceOk=document.getElementById('mp-tracce-ok').checked;m.nutrizionali=nutr;m.nutrizionaliOk=document.getElementById('mp-nutr-ok').checked;
+    m.nome=nome;m.categoria=document.getElementById('mp-cat').value;m.um=document.getElementById('mp-um').value;m.iva=parseInt(document.getElementById('mp-iva').value)||10;m.scarto=scarto;m.resa=Math.round((100-scarto)*100)/100;m.allergeni=allergeni;m.allergeniOk=document.getElementById('mp-all-ok').checked;m.tracce=tracce;m.tracceOk=document.getElementById('mp-tracce-ok').checked;m.nutrizionali=nutr;m.nutrizionaliOk=document.getElementById('mp-nutr-ok').checked;
     if(m.suppliers&&m.suppliers[0])m.suppliers[0].prezzoKg=prezzo;
   }
   magazzino.sort(function(a,b){var ca=a.categoria||'Generale',cb=b.categoria||'Generale';if(ca!==cb)return ca.localeCompare(cb,'it');return a.nome.localeCompare(b.nome,'it');});
@@ -3881,6 +3891,8 @@ function npSalva(){
     <div class="section-label" style="margin-top:14px;">Allergeni</div>
     <div id="mp-allergeni-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin-bottom:8px;"></div>
     <div style="margin-bottom:4px;"><label style="font-size:12px;display:flex;align-items:center;gap:6px;cursor:pointer;"><input type="checkbox" id="mp-all-ok"/> Confermo: allergeni verificati</label></div>
+    <div style="font-size:12px;color:#666;margin-bottom:6px;">Tracce di allergeni:</div>
+    <div id="mp-tracce-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin-bottom:8px;"></div>
     <div style="margin-bottom:14px;"><label style="font-size:12px;display:flex;align-items:center;gap:6px;cursor:pointer;"><input type="checkbox" id="mp-tracce-ok"/> Confermo: tracce verificate</label></div>
     <div class="section-label">Valori nutrizionali (per 100g/100ml)</div>
     <div class="form-grid">
