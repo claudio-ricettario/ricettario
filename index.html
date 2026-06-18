@@ -1248,7 +1248,7 @@ function saveDismissed(){try{localStorage.setItem('rc_dismissed',JSON.stringify(
 function flash(id){var el=document.getElementById(id);if(el){el.textContent='Salvato';setTimeout(function(){el.textContent='';},2000);}}
 
 function activeSupplier(m){return m.suppliers[m.activeIdx]||m.suppliers[0];}
-function gp(idx){var m=magazzino[idx];var s=activeSupplier(m);var base=ivaOn?s.prezzoKg*(1+m.iva/100):s.prezzoKg;var resa=(m.resa!==undefined&&m.resa>0)?m.resa:100;return base/(resa/100);}
+function gp(idx){var m=magazzino[idx];if(!m)return 0;var s=activeSupplier(m);var base=ivaOn?s.prezzoKg*(1+m.iva/100):s.prezzoKg;var resa=(m.resa!==undefined&&m.resa>0)?m.resa:100;return base/(resa/100);}
 function costoIng(ing,p){if(ing.conv===0||ing.unit==='q.b.')return 0;return ing.qtaBase*(p/BASE)*ing.conv*gp(ing.magIdx);}
 
 function fmtQta(ing,p){
@@ -1854,7 +1854,8 @@ function renderFoodCost(){
   var mult=pax/p.pax;
 
   /* calc total cost */
-  var tot=p.componenti.reduce(function(t,c){
+  var tot=(p.componenti||[]).reduce(function(t,c){
+    if(!c) return t;
     if(c.conv===0||c.unit==='q.b.')return t;
     if(c.tipo==='mp') return t+c.qtaBase*mult*c.conv*gp(c.magIdx);
     var si=c.semiIdx;
@@ -2444,7 +2445,7 @@ function saveSemilavorati(){
 
 /* costo per unità di un semilavorato (per g/kg/lt/ml/pz) */
 function costoSemi(si){
-  var s=semilavorati[si];
+  var s=semilavorati[si];if(!s)return 0;
   var totCosto=s.componenti.reduce(function(tot,c){
     if(c.conv===0||c.unit==='q.b.') return tot;
     var costo=c.qtaBase*c.conv*gp(c.magIdx);
@@ -3607,7 +3608,8 @@ function globalSearch(q){
       var idx=piatti.indexOf(p);
       var fc='';
       if(p.prezzoVendita>0){
-        var tot=p.componenti.reduce(function(t,c){
+        var tot=(p.componenti||[]).reduce(function(t,c){
+    if(!c) return t;
           if(c.conv===0||c.unit==='q.b.')return t;
           if(c.tipo==='mp') return t+c.qtaBase*c.conv*gp(c.magIdx);
           return t+costoSemi(c.semiIdx)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1));
