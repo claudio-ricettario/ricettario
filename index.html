@@ -3018,8 +3018,8 @@ function renderHome(){
 
 
 function homeRicettaRow(r,i){
-  var tot=r.ingredienti.reduce(function(s,ing){
-    if(ing.magIdx===undefined||ing.magIdx>=magazzino.length)return s;
+  var tot=(r.ingredienti||[]).reduce(function(s,ing){
+    if(!ing||ing.magIdx===undefined||ing.magIdx>=magazzino.length||!magazzino[ing.magIdx])return s;
     return s+(ing.conv?ing.qtaBase*ing.conv*gp(ing.magIdx):0);
   },0);
   var fc=r.prezzoVendita>0?(tot/r.pax/r.prezzoVendita*100):0;
