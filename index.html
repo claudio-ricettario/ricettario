@@ -2790,6 +2790,8 @@ function pm2AddComp(){
   pm2Comps.push(comp);
   document.getElementById('pm2-qta').value='';
   document.getElementById('pm2-sel-comp').value='';
+  var si2=document.getElementById('pm2-search-comp');if(si2)si2.value='';
+  var sr2=document.getElementById('pm2-search-results');if(sr2)sr2.style.display='none';
   pm2RenderComps();
 }
 
@@ -3657,6 +3659,52 @@ document.addEventListener('click',function(e){
   var inp=document.getElementById('np-search-comp');
   if(res&&inp&&!res.contains(e.target)&&e.target!==inp) res.style.display='none';
 });
+
+function pm2SearchComp(q){
+  var res=document.getElementById('pm2-search-results');
+  if(!q||q.length<1){res.style.display='none';return;}
+  var ql=q.toLowerCase();
+  var matches=[];
+  magazzino.forEach(function(m,i){
+    if(m.nome.toLowerCase().indexOf(ql)>=0)
+      matches.push({label:m.nome,sub:(m.categoria||'')+' - '+eur(gp(i))+'/'+m.um+(m.scarto>0?' (-'+m.scarto+'%)':''),value:'mp:'+i,tipo:'MP'});
+  });
+  if(!matches.length){
+    res.innerHTML='<div style="padding:10px 14px;font-size:13px;color:#aaa;">Nessun risultato</div>';
+    res.style.display='block';
+    return;
+  }
+  var rows='';
+  matches.forEach(function(it,idx){
+    rows+='<div class="pm2-search-row" data-idx="'+idx+'" style="display:flex;align-items:center;gap:10px;padding:8px 14px;cursor:pointer;border-bottom:1px solid #f5f3ef;">'
+      +'<div style="flex:1;">'
+      +'<div style="font-size:13px;font-weight:500;">'+it.label+'</div>'
+      +'<div style="font-size:11px;color:#888;">'+it.sub+'</div>'
+      +'</div>'
+      +'<span style="font-size:10px;padding:1px 6px;border-radius:10px;font-weight:600;background:#e8f4fd;color:#1a6fa8;">'+it.tipo+'</span>'
+      +'</div>';
+  });
+  res.innerHTML=rows;
+  res.style.display='block';
+  var divs=res.querySelectorAll('.pm2-search-row');
+  divs.forEach(function(div){
+    div.addEventListener('click',function(){
+      var idx=parseInt(this.dataset.idx);
+      var it=matches[idx];
+      document.getElementById('pm2-sel-comp').value=it.value;
+      document.getElementById('pm2-search-comp').value=it.label;
+      res.style.display='none';
+    });
+    div.addEventListener('mouseover',function(){this.style.background='#f9f8f5';});
+    div.addEventListener('mouseout',function(){this.style.background='';});
+  });
+}
+
+document.addEventListener('click',function(e){
+  var res=document.getElementById('pm2-search-results');
+  var inp=document.getElementById('pm2-search-comp');
+  if(res&&inp&&!res.contains(e.target)&&e.target!==inp) res.style.display='none';
+});
 /* ===== RICERCA GLOBALE ===== */
 function globalSearch(q){
   var overlay=document.getElementById('search-overlay');
@@ -4274,7 +4322,15 @@ function npSalva(){
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;align-items:end;">
         <div class="fg">
           <label style="font-size:11px;color:#888;display:block;margin-bottom:3px;">Componente</label>
-          <select id="pm2-sel-comp" style="font-size:13px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;width:100%;"><option value="">-- seleziona --</option></select>
+          <div style="position:relative;">
+              <input type="text" id="pm2-search-comp" placeholder="Cerca materia prima..." 
+                oninput="pm2SearchComp(this.value)"
+                onfocus="pm2SearchComp(this.value)"
+                autocomplete="off"
+                style="font-size:13px;padding:6px 10px;border:1px solid #d0cec8;border-radius:6px;width:100%;box-sizing:border-box;"/>
+              <div id="pm2-search-results" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #d0cec8;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:100;max-height:220px;overflow-y:auto;margin-top:2px;"></div>
+            </div>
+            <input type="hidden" id="pm2-sel-comp" value=""/>
         </div>
         <div class="fg"><label style="font-size:11px;color:#888;display:block;margin-bottom:3px;">Quantit&agrave;</label>
           <input type="number" id="pm2-qta" placeholder="es. 200" min="0" step="0.1" style="width:100%;font-size:13px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;text-align:left;"/>
