@@ -1855,6 +1855,9 @@ function renderFoodCost(){
 
   /* calc total cost */
   var tot=(p.componenti||[]).reduce(function(t,c){
+    if(!c||c.conv===undefined) return t;
+    if(c.tipo==='mp'&&(c.magIdx===undefined||c.magIdx>=magazzino.length||!magazzino[c.magIdx]))return t;
+    if(c.tipo==='sl'&&(c.semiIdx===undefined||c.semiIdx>=semilavorati.length||!semilavorati[c.semiIdx]))return t;
     if(!c) return t;
     if(c.conv===0||c.unit==='q.b.')return t;
     if(c.tipo==='mp') return t+c.qtaBase*mult*c.conv*gp(c.magIdx);
@@ -3609,6 +3612,9 @@ function globalSearch(q){
       var fc='';
       if(p.prezzoVendita>0){
         var tot=(p.componenti||[]).reduce(function(t,c){
+    if(!c||c.conv===undefined) return t;
+    if(c.tipo==='mp'&&(c.magIdx===undefined||c.magIdx>=magazzino.length||!magazzino[c.magIdx]))return t;
+    if(c.tipo==='sl'&&(c.semiIdx===undefined||c.semiIdx>=semilavorati.length||!semilavorati[c.semiIdx]))return t;
     if(!c) return t;
           if(c.conv===0||c.unit==='q.b.')return t;
           if(c.tipo==='mp') return t+c.qtaBase*c.conv*gp(c.magIdx);
