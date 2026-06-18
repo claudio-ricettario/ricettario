@@ -1225,6 +1225,10 @@ function loadSaved(){
     var da=localStorage.getItem('rc_dismissed');
     dismissedAlerts=da?JSON.parse(da):{};
   }catch(e){fornitori=JSON.parse(JSON.stringify(FORNITORI_DEFAULT));}
+  /* carica semilavorati */
+  try{var sv=localStorage.getItem('rc_semilavorati');if(sv)semilavorati=JSON.parse(sv);}catch(e){}
+  /* carica piatti */
+  try{var pf=localStorage.getItem('rc_piatti');if(pf)piatti=JSON.parse(pf);}catch(e){}
 }
 
 var _saveCount=0;
