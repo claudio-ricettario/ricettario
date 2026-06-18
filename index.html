@@ -3764,6 +3764,8 @@ function npModifica(idx){
   document.getElementById('np-pax').value=p.pax||4;
   document.getElementById('np-pv').value=p.prezzoVendita||'';
   document.getElementById('np-title').textContent='Modifica piatto';
+  var delBtn=document.getElementById('np-delete-btn');
+  if(delBtn) delBtn.style.display='block';
   document.getElementById('np-save-btn').textContent='✓ Aggiorna piatto';
   if(npFotoData){
     document.getElementById('np-foto-img').src=npFotoData;
@@ -3777,6 +3779,8 @@ function npModifica(idx){
 
 function npReset(){
   npComps=[];npSteps=[];npFotoData='';npEditIdx=-1;
+  var delBtn=document.getElementById('np-delete-btn');
+  if(delBtn) delBtn.style.display='none';
   var f=['np-nome','np-step-text'];
   f.forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
   var paxEl=document.getElementById('np-pax');if(paxEl)paxEl.value='4';
