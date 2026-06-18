@@ -477,7 +477,15 @@ textarea{resize:vertical;min-height:60px;}
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;align-items:end;">
           <div class="fg">
             <label style="font-size:11px;color:#888;display:block;margin-bottom:3px;">Componente</label>
-            <select id="np-sel-comp" style="font-size:13px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;width:100%;"></select>
+            <div style="position:relative;">
+              <input type="text" id="np-search-comp" placeholder="Cerca materia prima o semilavorato..." 
+                oninput="npSearchComp(this.value)"
+                onfocus="npSearchComp(this.value)"
+                autocomplete="off"
+                style="font-size:13px;padding:6px 10px;border:1px solid #d0cec8;border-radius:6px;width:100%;box-sizing:border-box;"/>
+              <div id="np-search-results" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #d0cec8;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:100;max-height:220px;overflow-y:auto;margin-top:2px;"></div>
+            </div>
+            <input type="hidden" id="np-sel-comp" value=""/>
           </div>
           <div class="fg">
             <label style="font-size:11px;color:#888;display:block;margin-bottom:3px;">Quantit&agrave;</label>
@@ -3590,6 +3598,65 @@ function creaNuovoFornIng(mi){
   renderFornitori();
   alert('Fornitore "'+nome+'" creato e aggiunto!');
 }
+
+var npSearchItems=[];
+
+function npBuildSearchItems(){
+  npSearchItems=[];
+  magazzino.forEach(function(m,i){
+    npSearchItems.push({label:m.nome,sub:(m.categoria||'')+' - '+eur(gp(i))+'/'+m.um+(m.scarto>0?' (-'+m.scarto+'%)':''),value:'mp:'+i,tipo:'MP'});
+  });
+  semilavorati.forEach(function(s,i){
+    npSearchItems.push({label:s.nome,sub:(s.categoria||'')+' - '+eur(costoSemi(i))+'/'+s.resaUm,value:'sl:'+i,tipo:'SL'});
+  });
+}
+
+function npSearchComp(q){
+  var res=document.getElementById('np-search-results');
+  if(!q||q.length<1){res.style.display='none';return;}
+  npBuildSearchItems();
+  var ql=q.toLowerCase();
+  var matches=npSearchItems.filter(function(it){return it.label.toLowerCase().indexOf(ql)>=0;});
+  if(!matches.length){
+    res.innerHTML='<div style="padding:10px 14px;font-size:13px;color:#aaa;">Nessun risultato</div>';
+    res.style.display='block';
+    return;
+  }
+  var rows='';
+  matches.forEach(function(it,idx){
+    var bgMP='background:#e8f4fd;color:#1a6fa8;';
+    var bgSL='background:#e8f8f0;color:#1a7a3c;';
+    var badgeStyle=it.tipo==='MP'?bgMP:bgSL;
+    rows+='<div class="np-search-row" data-idx="'+idx+'" style="display:flex;align-items:center;gap:10px;padding:8px 14px;cursor:pointer;border-bottom:1px solid #f5f3ef;">'
+      +'<div style="flex:1;">'
+      +'<div style="font-size:13px;font-weight:500;">'+it.label+'</div>'
+      +'<div style="font-size:11px;color:#888;">'+it.sub+'</div>'
+      +'</div>'
+      +'<span style="font-size:10px;padding:1px 6px;border-radius:10px;font-weight:600;'+badgeStyle+'">'+it.tipo+'</span>'
+      +'</div>';
+  });
+  res.innerHTML=rows;
+  res.style.display='block';
+  /* attach click handlers senza virgolette annidate */
+  var divs=res.querySelectorAll('.np-search-row');
+  divs.forEach(function(div){
+    div.addEventListener('click',function(){
+      var idx=parseInt(this.dataset.idx);
+      var it=matches[idx];
+      document.getElementById('np-sel-comp').value=it.value;
+      document.getElementById('np-search-comp').value=it.label;
+      res.style.display='none';
+    });
+    div.addEventListener('mouseover',function(){this.style.background='#f9f8f5';});
+    div.addEventListener('mouseout',function(){this.style.background='';});
+  });
+}
+
+document.addEventListener('click',function(e){
+  var res=document.getElementById('np-search-results');
+  var inp=document.getElementById('np-search-comp');
+  if(res&&inp&&!res.contains(e.target)&&e.target!==inp) res.style.display='none';
+});
 /* ===== RICERCA GLOBALE ===== */
 function globalSearch(q){
   var overlay=document.getElementById('search-overlay');
@@ -3781,6 +3848,9 @@ function npReset(){
   npComps=[];npSteps=[];npFotoData='';npEditIdx=-1;
   var delBtn=document.getElementById('np-delete-btn');
   if(delBtn) delBtn.style.display='none';
+  var si=document.getElementById('np-search-comp');if(si)si.value='';
+  var sr=document.getElementById('np-search-results');if(sr)sr.style.display='none';
+  var sc=document.getElementById('np-sel-comp');if(sc)sc.value='';
   var f=['np-nome','np-step-text'];
   f.forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
   var paxEl=document.getElementById('np-pax');if(paxEl)paxEl.value='4';
