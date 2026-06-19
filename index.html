@@ -4159,6 +4159,32 @@ function resolveSemiIdx(c){
   if(c.codiceSl){var idx=slByCodice(c.codiceSl);if(idx>=0)return idx;}
   return c.semiIdx;
 }
+
+function riparaComponenti(){
+  var fixSl=0, fixPf=0;
+  semilavorati.forEach(function(s){
+    (s.componenti||[]).forEach(function(c){
+      if(!c.codiceMp){
+        var m=magazzino.find(function(x){return x.nome===c.nome;});
+        if(m){c.codiceMp=m.codice||null;c.magIdx=magazzino.indexOf(m);fixSl++;}
+      }
+    });
+  });
+  piatti.forEach(function(p){
+    (p.componenti||[]).forEach(function(c){
+      if(c.tipo==='mp'&&!c.codiceMp){
+        var m=magazzino.find(function(x){return x.nome===c.nome;});
+        if(m){c.codiceMp=m.codice||null;c.magIdx=magazzino.indexOf(m);fixPf++;}
+      } else if(c.tipo==='sl'&&!c.codiceSl){
+        var s=semilavorati.find(function(x){return x.nome===c.nome;});
+        if(s){c.codiceSl=s.codice||null;c.semiIdx=semilavorati.indexOf(s);fixPf++;}
+      }
+    });
+  });
+  saveSemilavorati();
+  savePiatti();
+  alert('Componenti riparati:\n'+fixSl+' nei semilavorati\n'+fixPf+' nei piatti finiti\n\nRicarica la pagina per vedere le stampe corrette.');
+}
 /* ===== RICERCA GLOBALE ===== */
 function globalSearch(q){
   var overlay=document.getElementById('search-overlay');
