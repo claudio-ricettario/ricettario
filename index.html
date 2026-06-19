@@ -3925,6 +3925,26 @@ function nuovoCodice(tipo){
   var num=String(codiceCounters[tipo]).padStart(3,'0');
   return prefix+'-'+num;
 }
+
+function assegnaCodiciRetroattivi(){
+  var count={mp:0,sl:0,pf:0};
+  magazzino.forEach(function(m){
+    if(!m.codice){m.codice=nuovoCodice('mp');count.mp++;}
+  });
+  semilavorati.forEach(function(s){
+    if(!s.codice){s.codice=nuovoCodice('sl');count.sl++;}
+  });
+  piatti.forEach(function(p){
+    if(!p.codice){p.codice=nuovoCodice('pf');count.pf++;}
+  });
+  saveMagazzino();
+  saveSemilavorati();
+  savePiatti();
+  alert('Codici assegnati:\n'+count.mp+' materie prime\n'+count.sl+' semilavorati\n'+count.pf+' piatti finiti');
+  renderMagazzino();
+  renderSemilavorati();
+  renderHome();
+}
 /* ===== RICERCA GLOBALE ===== */
 function globalSearch(q){
   var overlay=document.getElementById('search-overlay');
