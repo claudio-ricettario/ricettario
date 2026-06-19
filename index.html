@@ -3803,8 +3803,9 @@ function printSemilavorato(idx){
   var righe=(s.componenti||[]).map(function(c){
     var m=magazzino[c.magIdx];
     var nome=m?m.nome:(c.nome||'?');
+    var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':(c.qtaBase+' '+(c.unit||'g'));
     return '<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+nome+'</td>'
-      +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+c.qta+' '+(c.unit||'g')+'</td></tr>';
+      +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+qFmt+'</td></tr>';
   }).join('');
   var procHtml='';
   if(s.procedimento){
