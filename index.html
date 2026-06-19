@@ -2637,7 +2637,9 @@ function renderSemilavorati(){
       +'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;">Costo</th></tr></thead><tbody>'
       +s.componenti.map(function(c){
         var costo=(c.conv===0||c.unit==='q.b.')?0:c.qtaBase*c.conv*gp(c.magIdx);
-        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+c.nome+'</td>'
+        var mRef=magazzino[c.magIdx];
+        var codMp=mRef&&mRef.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+mRef.codice+'</span>':'';
+        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+codMp+c.nome+'</td>'
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td></tr>';
       }).join('')+'</tbody></table>'
@@ -3781,12 +3783,14 @@ function printPiatto(idx){
         var qNecessaria=qtaScalata*(c.unit==='g'||c.unit==='ml'?1:(c.conv?c.conv*1000:1));
         var resaBase=s.resaQta||1;
         var fatt=qNecessaria/resaBase;
-        righe+='<tr><td colspan="2" style="padding:8px 10px 2px;font-weight:700;font-size:12px;color:#555;border-bottom:1px solid #f0ede6;">'+s.nome+' ('+fmtQ(qtaScalata,c.unit)+')</td></tr>';
+        var codSl=s.codice?'<span style="color:#aaa;font-weight:400;margin-right:5px;">'+s.codice+'</span>':'';
+        righe+='<tr><td colspan="2" style="padding:8px 10px 2px;font-weight:700;font-size:12px;color:#555;border-bottom:1px solid #f0ede6;">'+codSl+s.nome+' ('+fmtQ(qtaScalata,c.unit)+')</td></tr>';
         s.componenti.forEach(function(sc){
           var m=magazzino[sc.magIdx];
           var nomeMp=m?m.nome:(sc.nome||'?');
+          var codMpSc=m&&m.codice?'<span style="color:#bbb;font-weight:400;margin-right:5px;">'+m.codice+'</span>':'';
           var qSc=sc.qtaBase*fatt;
-          righe+='<tr><td style="padding:4px 10px 4px 26px;border-bottom:1px solid #f5f3ef;color:#666;font-size:13px;">&#8627; '+nomeMp+'</td>'
+          righe+='<tr><td style="padding:4px 10px 4px 26px;border-bottom:1px solid #f5f3ef;color:#666;font-size:13px;">&#8627; '+codMpSc+nomeMp+'</td>'
             +'<td style="padding:4px 10px;border-bottom:1px solid #f5f3ef;text-align:right;color:#666;font-size:13px;">'+fmtQ(qSc,sc.unit)+'</td></tr>';
         });
         if(s.procedimento){
@@ -3799,7 +3803,9 @@ function printPiatto(idx){
           +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+fmtQ(qtaScalata,c.unit)+'</td></tr>';
       }
     } else {
-      righe+='<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+c.nome+'</td>'
+      var mDir=magazzino[c.magIdx];
+      var codMpDir=mDir&&mDir.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+mDir.codice+'</span>':'';
+      righe+='<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+codMpDir+c.nome+'</td>'
         +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+fmtQ(qtaScalata,c.unit)+'</td></tr>';
     }
   });
@@ -3851,8 +3857,9 @@ function printSemilavorato(idx){
   var righe=(s.componenti||[]).map(function(c){
     var m=magazzino[c.magIdx];
     var nome=m?m.nome:(c.nome||'?');
+    var codMp=m&&m.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+m.codice+'</span>':'';
     var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':(c.qtaBase+' '+(c.unit||'g'));
-    return '<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+nome+'</td>'
+    return '<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+codMp+nome+'</td>'
       +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+qFmt+'</td></tr>';
   }).join('');
   var procHtml='';
