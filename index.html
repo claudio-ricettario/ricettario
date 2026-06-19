@@ -1238,6 +1238,7 @@ function loadSaved(){
   try{var sv=localStorage.getItem('rc_semilavorati');if(sv)semilavorati=JSON.parse(sv);}catch(e){}
   /* carica piatti */
   try{var pf=localStorage.getItem('rc_piatti');if(pf)piatti=JSON.parse(pf);}catch(e){}
+  loadCodiceCounters();
 }
 
 var _saveCount=0;
@@ -1520,7 +1521,7 @@ function renderMagazzino(){
           +'onclick="toggleExpand('+mi+')">'
           +'<span style="font-size:13px;color:#aaa;width:16px;">&#9654;</span>'
           +statusDot
-          +'<span style="flex:1;font-size:14px;font-weight:500;">'+m.nome+'</span>'
+          +'<span style="flex:1;font-size:14px;font-weight:500;"><span style="color:#aaa;font-weight:400;font-size:11px;margin-right:6px;">'+(m.codice||'')+'</span>'+m.nome+'</span>'
           +'<span style="font-size:12px;color:#888;min-width:120px;">'+act.nome+'</span>'
           +(scarto>0?'<span style="font-size:11px;color:#b45309;font-weight:600;min-width:50px;text-align:right;">-'+scarto+'%</span>':'<span style="min-width:50px;"></span>')
           +'<span style="font-size:13px;font-weight:600;min-width:80px;text-align:right;">'+eur(prezzoNetto)+'/'+m.um+'</span>'
@@ -2564,7 +2565,10 @@ function salvaSemilavorato(){
   if(!smComps.length) errs.push('Aggiungi almeno un ingrediente.');
   if(isNaN(resaQta)||resaQta<=0) errs.push('Inserisci la resa (quantita prodotta).');
   if(errs.length){alert(errs.join('\n'));return;}
+  var idx=parseInt(document.getElementById('semi-modal-idx').value);
+  var codiceEsistente=(idx>=0&&semilavorati[idx])?semilavorati[idx].codice:null;
   var s={
+    codice:codiceEsistente||nuovoCodice('sl'),
     nome:nome,
     categoria:document.getElementById('sm-cat').value,
     resaQta:resaQta,
@@ -2572,9 +2576,8 @@ function salvaSemilavorato(){
     tempo:document.getElementById('sm-tempo').value||'',
     procedimento:document.getElementById('sm-procedimento').value.trim(),
     componenti:JSON.parse(JSON.stringify(smComps)),
-    dataCreazione:today()
+    dataCreazione:(idx>=0&&semilavorati[idx])?semilavorati[idx].dataCreazione:today()
   };
-  var idx=parseInt(document.getElementById('semi-modal-idx').value);
   if(idx===-1) semilavorati.push(s); else semilavorati[idx]=s;
   semilavorati.sort(function(a,b){return a.nome.localeCompare(b.nome,'it');});
   saveSemilavorati();
@@ -2613,7 +2616,7 @@ function renderSemilavorati(){
     return '<div class="semi-card" onclick="toggleSemiDetail('+realIdx+',this)">'
       +'<div class="semi-card-header">'
       +'<div style="flex:1;">'
-      +'<div class="semi-card-nome">'+s.nome+'</div>'
+      +'<div class="semi-card-nome"><span style="color:#aaa;font-weight:400;font-size:11px;margin-right:6px;">'+(s.codice||'')+'</span>'+s.nome+'</div>'
       +'<div class="semi-card-meta">'+s.categoria+(s.tempo?' &middot; '+s.tempo+' min':'')+'</div>'
       +'</div>'
       +'<div style="text-align:right;margin-right:12px;">'
@@ -2959,7 +2962,7 @@ function renderHome(){
     .concat(piatti.map(function(p,i){return {r:{
       nome:p.nome,categoria:p.categoria,sottocategoria:p.sottocategoria,
       pax:p.pax,prezzoVendita:p.prezzoVendita,foto:p.foto||'',_isPiatto:true,
-      _piattoIdx:i,componenti:p.componenti
+      _piattoIdx:i,componenti:p.componenti,codice:p.codice,dataCreazione:p.dataCreazione
     },i:i,_tipo:'piatto'};}));
 
   var grouped={};
@@ -3042,7 +3045,7 @@ function homeRicettaRow(r,i){
   return '<div class="home-ricetta-row" onclick="'+clickFn+'">'
     +'<div class="home-ricetta-thumb">'+thumbHtml+'</div>'
     +'<div class="home-ricetta-info">'
-    +'<div class="home-ricetta-nome">'+r.nome+'</div>'
+    +'<div class="home-ricetta-nome">'+(r.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:6px;">'+r.codice+'</span>':'')+r.nome+'</div>'
     +'<div class="home-ricetta-meta">'+r.pax+' porzioni'+(r._isBase?' &middot; ricetta base':r.dataCreazione?' &middot; '+r.dataCreazione:'')+'</div>'
     +'</div>'
     +'<span class="home-ricetta-fc">'+fcBadge+'</span>'
@@ -3509,6 +3512,7 @@ function mpSalva(){
   };
   if(mpEditIdx===-1){
     magazzino.push({
+      codice:nuovoCodice('mp'),
       nome:nome,categoria:document.getElementById('mp-cat').value,
       um:document.getElementById('mp-um').value,
       iva:parseInt(document.getElementById('mp-iva').value)||10,
@@ -3885,6 +3889,43 @@ function printSemilavorato(idx){
     setTimeout(function(){URL.revokeObjectURL(url);},5000);
   }
 }
+
+var codiceCounters={mp:0,sl:0,pf:0};
+
+function loadCodiceCounters(){
+  try{
+    var c=localStorage.getItem('rc_codice_counters');
+    if(c) codiceCounters=JSON.parse(c);
+  }catch(e){}
+  /* sicurezza: ricalcola il massimo esistente per non duplicare codici se il contatore si perde */
+  var maxMp=0;
+  magazzino.forEach(function(m){
+    if(m.codice){var n=parseInt(m.codice.split('-')[1]);if(n>maxMp)maxMp=n;}
+  });
+  if(maxMp>codiceCounters.mp) codiceCounters.mp=maxMp;
+  var maxSl=0;
+  semilavorati.forEach(function(s){
+    if(s.codice){var n=parseInt(s.codice.split('-')[1]);if(n>maxSl)maxSl=n;}
+  });
+  if(maxSl>codiceCounters.sl) codiceCounters.sl=maxSl;
+  var maxPf=0;
+  piatti.forEach(function(p){
+    if(p.codice){var n=parseInt(p.codice.split('-')[1]);if(n>maxPf)maxPf=n;}
+  });
+  if(maxPf>codiceCounters.pf) codiceCounters.pf=maxPf;
+}
+
+function saveCodiceCounters(){
+  try{localStorage.setItem('rc_codice_counters',JSON.stringify(codiceCounters));}catch(e){}
+}
+
+function nuovoCodice(tipo){
+  codiceCounters[tipo]=(codiceCounters[tipo]||0)+1;
+  saveCodiceCounters();
+  var prefix=tipo==='mp'?'MP':(tipo==='sl'?'SL':'PF');
+  var num=String(codiceCounters[tipo]).padStart(3,'0');
+  return prefix+'-'+num;
+}
 /* ===== RICERCA GLOBALE ===== */
 function globalSearch(q){
   var overlay=document.getElementById('search-overlay');
@@ -4216,7 +4257,9 @@ function npSalva(){
   if(!nome) errs.push('Inserisci il nome del piatto.');
   if(!npComps.length) errs.push('Aggiungi almeno un componente.');
   if(errs.length){npShowAlert(errs.join(' '));return;}
+  var codiceEsistente=(npEditIdx>=0&&piatti[npEditIdx])?piatti[npEditIdx].codice:null;
   var p={
+    codice:codiceEsistente||nuovoCodice('pf'),
     nome:nome,
     categoria:document.getElementById('np-cat').value,
     sottocategoria:document.getElementById('np-sottocat').value||'',
@@ -4225,7 +4268,7 @@ function npSalva(){
     foto:npFotoData||'',
     steps:JSON.parse(JSON.stringify(npSteps)),
     componenti:JSON.parse(JSON.stringify(npComps)),
-    dataCreazione:today()
+    dataCreazione:(npEditIdx>=0&&piatti[npEditIdx])?piatti[npEditIdx].dataCreazione:today()
   };
   if(npEditIdx>=0){
     piatti[npEditIdx]=p;
