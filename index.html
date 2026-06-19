@@ -3750,11 +3750,49 @@ document.addEventListener('click',function(e){
 function printPiatto(idx){
   if(idx===undefined||idx<0||!piatti[idx]){alert('Salva prima il piatto per poterlo stampare.');return;}
   var p=piatti[idx];
-  var righe=(p.componenti||[]).map(function(c){
-    var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':(c.qtaBase+(c.unit==='g'||c.unit==='ml'||c.unit==='kg'||c.unit==='lt'?c.unit:(' '+c.unit)));
-    return '<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+c.nome+'</td>'
-      +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+qFmt+'</td></tr>';
-  }).join('');
+  var paxInput=prompt('Per quante porzioni vuoi stampare la ricetta?',p.pax||4);
+  if(paxInput===null)return;
+  var paxStampa=parseInt(paxInput)||p.pax||4;
+  var mult=paxStampa/(p.pax||4);
+
+  function fmtQ(qta,unit){
+    if(unit==='g'||unit==='ml'){var v=qta>=100?Math.round(qta/5)*5:Math.round(qta*10)/10;return v+unit;}
+    if(unit==='kg'||unit==='lt')return qta.toFixed(2).replace(/\.?0+$/,'')+' '+unit;
+    return Math.round(qta*100)/100+' '+unit;
+  }
+
+  var righe='';
+  (p.componenti||[]).forEach(function(c){
+    if(c.conv===0||c.unit==='q.b.'){
+      righe+='<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+c.nome+'</td>'
+        +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">q.b.</td></tr>';
+      return;
+    }
+    var qtaScalata=c.qtaBase*mult;
+    if(c.tipo==='sl'){
+      var s=semilavorati[c.semiIdx];
+      if(s&&s.componenti&&s.componenti.length){
+        /* quantita di semilavorato necessaria (in grammi/ml equivalenti) */
+        var qNecessaria=qtaScalata*(c.unit==='g'||c.unit==='ml'?1:(c.conv?c.conv*1000:1));
+        var resaBase=s.resaQta||1;
+        var fatt=qNecessaria/resaBase;
+        righe+='<tr><td colspan="2" style="padding:8px 10px 2px;font-weight:700;font-size:12px;color:#555;border-bottom:1px solid #f0ede6;">'+s.nome+' ('+fmtQ(qtaScalata,c.unit)+')</td></tr>';
+        s.componenti.forEach(function(sc){
+          var m=magazzino[sc.magIdx];
+          var nomeMp=m?m.nome:(sc.nome||'?');
+          var qSc=sc.qtaBase*fatt;
+          righe+='<tr><td style="padding:4px 10px 4px 26px;border-bottom:1px solid #f5f3ef;color:#666;font-size:13px;">&#8627; '+nomeMp+'</td>'
+            +'<td style="padding:4px 10px;border-bottom:1px solid #f5f3ef;text-align:right;color:#666;font-size:13px;">'+fmtQ(qSc,sc.unit)+'</td></tr>';
+        });
+      } else {
+        righe+='<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+c.nome+'</td>'
+          +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+fmtQ(qtaScalata,c.unit)+'</td></tr>';
+      }
+    } else {
+      righe+='<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+c.nome+'</td>'
+        +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+fmtQ(qtaScalata,c.unit)+'</td></tr>';
+    }
+  });
   var procHtml='';
   if(p.steps&&p.steps.length){
     procHtml='<h2 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#555;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid #1a1a1a;">Procedimento</h2>'
@@ -3779,11 +3817,11 @@ function printPiatto(idx){
     +'</style></head><body>'
     +'<div style="overflow:hidden;">'+fotoHtml
     +'<h1>'+p.nome+'</h1>'
-    +'<p class="sub">'+subLabel+' &nbsp;&middot;&nbsp; <strong>'+(p.pax||4)+' porzioni</strong></p>'
+    +'<p class="sub">'+subLabel+' &nbsp;&middot;&nbsp; <strong>'+paxStampa+' porzioni</strong></p>'
     +'</div>'
     +'<table><thead><tr><th>Ingrediente</th><th style="text-align:right;">Dose</th></tr></thead>'
     +'<tbody>'+righe+'</tbody></table>'
-    +'<p class="footer-note">Dosi calcolate per '+(p.pax||4)+' porzioni</p>'
+    +'<p class="footer-note">Dosi calcolate per '+paxStampa+' porzioni</p>'
     +procHtml
     +'<scr'+'ipt>window.onload=function(){window.print();}</scr'+'ipt>'
     +'</body></html>';
