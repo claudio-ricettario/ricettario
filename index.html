@@ -4425,7 +4425,7 @@ function npSalva(){
     </div>
     <div class="modal-btns">
       <button class="btn-danger" id="sm-btn-elimina" onclick="eliminaSemilavorato()" style="display:none;">Elimina</button>
-      <button class="btn-secondary" id="sm-print-btn" onclick="printSemilavorato(smEditIdx)" style="display:none;">&#128438; Stampa / PDF</button>
+      <button class="btn-secondary" id="sm-print-btn" onclick="printSemilavorato(parseInt(document.getElementById(&quot;semi-modal-idx&quot;).value))" style="display:none;">&#128438; Stampa / PDF</button>
       <button class="btn-secondary" onclick="closeSemiModal()">Annulla</button>
       <button class="btn-primary" onclick="salvaSemilavorato()">&#10003; Salva</button>
     </div>
