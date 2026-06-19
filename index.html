@@ -2644,6 +2644,33 @@ function renderSemilavorati(){
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td></tr>';
       }).join('')+'</tbody></table>'
       +(s.procedimento?'<div style="margin-top:10px;font-size:13px;color:#555;line-height:1.6;white-space:pre-wrap;">'+s.procedimento+'</div>':'')
+      +(function(){
+        var allerg=calcolaAllergeniSemilavorato(s);
+        if(!allerg.length)return '';
+        return '<div style="margin-top:14px;padding-top:10px;border-top:1px solid #f0ede6;">'
+          +'<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Allergeni</div>'
+          +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+          +allerg.map(function(a){
+            return '<span style="font-size:12px;padding:3px 8px;background:#fef3f2;border-radius:12px;display:inline-flex;align-items:center;gap:4px;">'
+              +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
+          }).join('')
+          +'</div></div>';
+      })()
+      +(function(){
+        var n=calcolaNutrizionaliSemilavorato(s);
+        return '<div style="margin-top:12px;padding-top:10px;border-top:1px solid #f0ede6;">'
+          +'<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Valori nutrizionali (per 100g)</div>'
+          +'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;font-size:12px;">'
+          +'<div>Energia<br><strong>'+n.energia+' kcal</strong></div>'
+          +'<div>Grassi<br><strong>'+n.grassi+' g</strong></div>'
+          +'<div>di cui saturi<br><strong>'+n.grassiSaturi+' g</strong></div>'
+          +'<div>Carboidrati<br><strong>'+n.carboidrati+' g</strong></div>'
+          +'<div>di cui zuccheri<br><strong>'+n.zuccheri+' g</strong></div>'
+          +'<div>Fibre<br><strong>'+n.fibre+' g</strong></div>'
+          +'<div>Proteine<br><strong>'+n.proteine+' g</strong></div>'
+          +'<div>Sale<br><strong>'+n.sale+' g</strong></div>'
+          +'</div></div>';
+      })()
       +'</div>'
       +'</div>';
   }).join('');
@@ -3951,6 +3978,100 @@ function assegnaCodiciRetroattivi(){
   renderMagazzino();
   renderSemilavorati();
   renderHome();
+}
+
+var ALLERGENI_ICONE={
+  'Glutine':'\ud83c\udf3e',
+  'Crostacei':'\ud83e\udd90',
+  'Uova':'\ud83e\udd5a',
+  'Pesce':'\ud83d\udc1f',
+  'Arachidi':'\ud83e\udd5c',
+  'Soia':'\ud83e\udada',
+  'Latte e lattosio':'\ud83e\udd5b',
+  'Frutta a guscio':'\ud83c\udf30',
+  'Sedano':'\ud83c\udf3f',
+  'Senape':'\ud83d\udfe1',
+  'Sesamo':'\u26aa',
+  'Anidride solforosa e solfiti':'\ud83c\udf77',
+  'Lupini':'\ud83c\udf31',
+  'Molluschi':'\ud83d\udc1a'
+};
+
+function calcolaAllergeniSemilavorato(s){
+  var set={};
+  (s.componenti||[]).forEach(function(c){
+    var m=magazzino[c.magIdx];
+    if(m&&m.allergeni) m.allergeni.forEach(function(a){set[a]=true;});
+    if(m&&m.tracce) m.tracce.forEach(function(a){set[a]=true;});
+  });
+  return Object.keys(set);
+}
+
+function calcolaNutrizionaliSemilavorato(s){
+  var tot={energia:0,grassi:0,grassiSaturi:0,carboidrati:0,zuccheri:0,fibre:0,proteine:0,sale:0};
+  var pesoTotale=0;
+  (s.componenti||[]).forEach(function(c){
+    var m=magazzino[c.magIdx];
+    if(!m||!m.nutrizionali)return;
+    if(c.conv===0||c.unit==='q.b.')return;
+    var pesoG=c.qtaBase*(c.unit==='g'||c.unit==='ml'?1:(c.conv?c.conv*1000:1));
+    pesoTotale+=pesoG;
+    var fatt=pesoG/100;
+    Object.keys(tot).forEach(function(k){tot[k]+=(m.nutrizionali[k]||0)*fatt;});
+  });
+  /* valori per 100g del semilavorato prodotto (resa) */
+  var resa=s.resaQta||pesoTotale||1;
+  var fattResa=100/resa;
+  var per100={};
+  Object.keys(tot).forEach(function(k){per100[k]=Math.round(tot[k]*fattResa*10)/10;});
+  return per100;
+}
+
+function calcolaAllergeniPiatto(p){
+  var set={};
+  (p.componenti||[]).forEach(function(c){
+    if(c.tipo==='mp'){
+      var m=magazzino[c.magIdx];
+      if(m&&m.allergeni) m.allergeni.forEach(function(a){set[a]=true;});
+      if(m&&m.tracce) m.tracce.forEach(function(a){set[a]=true;});
+    } else if(c.tipo==='sl'){
+      var s=semilavorati[c.semiIdx];
+      if(s){
+        calcolaAllergeniSemilavorato(s).forEach(function(a){set[a]=true;});
+      }
+    }
+  });
+  return Object.keys(set);
+}
+
+function calcolaNutrizionaliPiatto(p){
+  var tot={energia:0,grassi:0,grassiSaturi:0,carboidrati:0,zuccheri:0,fibre:0,proteine:0,sale:0};
+  var pesoTotale=0;
+  (p.componenti||[]).forEach(function(c){
+    if(c.conv===0||c.unit==='q.b.')return;
+    var pesoG=c.qtaBase*(c.unit==='g'||c.unit==='ml'?1:(c.conv?c.conv*1000:1));
+    pesoTotale+=pesoG;
+    var fatt=pesoG/100;
+    if(c.tipo==='mp'){
+      var m=magazzino[c.magIdx];
+      if(m&&m.nutrizionali) Object.keys(tot).forEach(function(k){tot[k]+=(m.nutrizionali[k]||0)*fatt;});
+    } else if(c.tipo==='sl'){
+      var s=semilavorati[c.semiIdx];
+      if(s){
+        var nutrSl=calcolaNutrizionaliSemilavorato(s);
+        Object.keys(tot).forEach(function(k){tot[k]+=(nutrSl[k]||0)*fatt;});
+      }
+    }
+  });
+  /* valori totali per porzione */
+  var pax=p.pax||4;
+  var perPorzione={};
+  Object.keys(tot).forEach(function(k){perPorzione[k]=Math.round((tot[k]/pax)*10)/10;});
+  /* valori per 100g del piatto totale */
+  var fattResa=pesoTotale>0?100/pesoTotale:0;
+  var per100={};
+  Object.keys(tot).forEach(function(k){per100[k]=Math.round(tot[k]*fattResa*10)/10;});
+  return {perPorzione:perPorzione,per100:per100,pesoTotale:Math.round(pesoTotale),pesoPorzione:Math.round(pesoTotale/pax)};
 }
 /* ===== RICERCA GLOBALE ===== */
 function globalSearch(q){
