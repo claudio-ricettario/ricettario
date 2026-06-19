@@ -2550,7 +2550,7 @@ function smAddIng(){
   if(isNaN(qta)||qta<0){alert('Inserisci una quantita valida.');return;}
   var m=magazzino[mi];
   var conv=unit==='g'||unit==='ml'?0.001:(unit==='q.b.'?0:1);
-  smComps.push({magIdx:mi,nome:m.nome,qtaBase:qta,unit:unit,conv:conv});
+  smComps.push({magIdx:mi,codiceMp:m.codice||null,nome:m.nome,qtaBase:qta,unit:unit,conv:conv});
   document.getElementById('sm-qta').value='';
   document.getElementById('sm-sel-ing').value='';
   smRenderComps();
@@ -2817,7 +2817,8 @@ function pm2AddComp(){
   var tipo=parts[0]; var idx=parseInt(parts[1]);
   var nome=tipo==='mp'?magazzino[idx].nome:semilavorati[idx].nome;
   var comp={tipo:tipo,nome:nome,qtaBase:qta,unit:unit,conv:conv};
-  if(tipo==='mp') comp.magIdx=idx; else comp.semiIdx=idx;
+  if(tipo==='mp'){comp.magIdx=idx;comp.codiceMp=magazzino[idx].codice||null;}
+  else{comp.semiIdx=idx;comp.codiceSl=semilavorati[idx].codice||null;}
   pm2Comps.push(comp);
   document.getElementById('pm2-qta').value='';
   document.getElementById('pm2-sel-comp').value='';
@@ -3804,7 +3805,7 @@ function printPiatto(idx){
     }
     var qtaScalata=c.qtaBase*mult;
     if(c.tipo==='sl'){
-      var s=semilavorati[c.semiIdx];
+      var s=semilavorati[resolveSemiIdx(c)];
       if(s&&s.componenti&&s.componenti.length){
         /* quantita di semilavorato necessaria (in grammi/ml equivalenti) */
         var qNecessaria=qtaScalata*(c.unit==='g'||c.unit==='ml'?1:(c.conv?c.conv*1000:1));
@@ -3813,7 +3814,7 @@ function printPiatto(idx){
         var codSl=s.codice?'<span style="color:#aaa;font-weight:400;margin-right:5px;">'+s.codice+'</span>':'';
         righe+='<tr><td colspan="2" style="padding:8px 10px 2px;font-weight:700;font-size:12px;color:#555;border-bottom:1px solid #f0ede6;">'+codSl+s.nome+' ('+fmtQ(qtaScalata,c.unit)+')</td></tr>';
         s.componenti.forEach(function(sc){
-          var m=magazzino[sc.magIdx];
+          var m=magazzino[resolveMagIdx(sc)];
           var nomeMp=m?m.nome:(sc.nome||'?');
           var codMpSc=m&&m.codice?'<span style="color:#bbb;font-weight:400;margin-right:5px;">'+m.codice+'</span>':'';
           var qSc=sc.qtaBase*fatt;
@@ -3830,7 +3831,7 @@ function printPiatto(idx){
           +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+fmtQ(qtaScalata,c.unit)+'</td></tr>';
       }
     } else {
-      var mDir=magazzino[c.magIdx];
+      var mDir=magazzino[resolveMagIdx(c)];
       var codMpDir=mDir&&mDir.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+mDir.codice+'</span>':'';
       righe+='<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+codMpDir+c.nome+'</td>'
         +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+fmtQ(qtaScalata,c.unit)+'</td></tr>';
@@ -3883,7 +3884,7 @@ function printSemilavorato(idx){
   if(idx===undefined||idx<0||!semilavorati[idx]){alert('Salva prima il semilavorato per poterlo stampare.');return;}
   var s=semilavorati[idx];
   var righe=(s.componenti||[]).map(function(c){
-    var m=magazzino[c.magIdx];
+    var m=magazzino[resolveMagIdx(c)];
     var nome=m?m.nome:(c.nome||'?');
     var codMp=m&&m.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+m.codice+'</span>':'';
     var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':(c.qtaBase+' '+(c.unit||'g'));
@@ -4031,7 +4032,7 @@ var ALLERGENI_ICONE={
 function calcolaAllergeniSemilavorato(s){
   var set={};
   (s.componenti||[]).forEach(function(c){
-    var m=magazzino[c.magIdx];
+    var m=magazzino[resolveMagIdx(c)];
     if(m&&m.allergeni) m.allergeni.forEach(function(a){set[a]=true;});
     if(m&&m.tracce) m.tracce.forEach(function(a){set[a]=true;});
   });
@@ -4042,7 +4043,7 @@ function calcolaNutrizionaliSemilavorato(s){
   var tot={energia:0,grassi:0,grassiSaturi:0,carboidrati:0,zuccheri:0,fibre:0,proteine:0,sale:0};
   var pesoTotale=0;
   (s.componenti||[]).forEach(function(c){
-    var m=magazzino[c.magIdx];
+    var m=magazzino[resolveMagIdx(c)];
     if(!m||!m.nutrizionali)return;
     if(c.conv===0||c.unit==='q.b.')return;
     var pesoG=c.qtaBase*(c.unit==='g'||c.unit==='ml'?1:(c.conv?c.conv*1000:1));
@@ -4062,11 +4063,11 @@ function calcolaAllergeniPiatto(p){
   var set={};
   (p.componenti||[]).forEach(function(c){
     if(c.tipo==='mp'){
-      var m=magazzino[c.magIdx];
+      var m=magazzino[resolveMagIdx(c)];
       if(m&&m.allergeni) m.allergeni.forEach(function(a){set[a]=true;});
       if(m&&m.tracce) m.tracce.forEach(function(a){set[a]=true;});
     } else if(c.tipo==='sl'){
-      var s=semilavorati[c.semiIdx];
+      var s=semilavorati[resolveSemiIdx(c)];
       if(s){
         calcolaAllergeniSemilavorato(s).forEach(function(a){set[a]=true;});
       }
@@ -4084,10 +4085,10 @@ function calcolaNutrizionaliPiatto(p){
     pesoTotale+=pesoG;
     var fatt=pesoG/100;
     if(c.tipo==='mp'){
-      var m=magazzino[c.magIdx];
+      var m=magazzino[resolveMagIdx(c)];
       if(m&&m.nutrizionali) Object.keys(tot).forEach(function(k){tot[k]+=(m.nutrizionali[k]||0)*fatt;});
     } else if(c.tipo==='sl'){
-      var s=semilavorati[c.semiIdx];
+      var s=semilavorati[resolveSemiIdx(c)];
       if(s){
         var nutrSl=calcolaNutrizionaliSemilavorato(s);
         Object.keys(tot).forEach(function(k){tot[k]+=(nutrSl[k]||0)*fatt;});
@@ -4136,6 +4137,27 @@ function printAllergeniNutrizionaliHtml(p,paxStampa){
     +'<p style="font-size:11px;color:#aaa;margin-top:6px;">Valori indicativi calcolati su '+(nutr.pesoPorzione||0)+'g a porzione</p>'
     +'</div>';
   return html;
+}
+
+function mpByCodice(codice){
+  if(!codice)return -1;
+  for(var i=0;i<magazzino.length;i++){if(magazzino[i].codice===codice)return i;}
+  return -1;
+}
+function slByCodice(codice){
+  if(!codice)return -1;
+  for(var i=0;i<semilavorati.length;i++){if(semilavorati[i].codice===codice)return i;}
+  return -1;
+}
+/* risolve l'indice attuale di una materia prima da un componente, usando il codice se presente */
+function resolveMagIdx(c){
+  if(c.codiceMp){var idx=mpByCodice(c.codiceMp);if(idx>=0)return idx;}
+  return c.magIdx;
+}
+/* risolve l'indice attuale di un semilavorato da un componente, usando il codice se presente */
+function resolveSemiIdx(c){
+  if(c.codiceSl){var idx=slByCodice(c.codiceSl);if(idx>=0)return idx;}
+  return c.semiIdx;
 }
 /* ===== RICERCA GLOBALE ===== */
 function globalSearch(q){
@@ -4381,7 +4403,8 @@ function npAddComp(){
   var parts=val.split(':'); var tipo=parts[0]; var idx=parseInt(parts[1]);
   var nome=tipo==='mp'?magazzino[idx].nome:semilavorati[idx].nome;
   var comp={tipo:tipo,nome:nome,qtaBase:qta,unit:unit,conv:conv};
-  if(tipo==='mp') comp.magIdx=idx; else comp.semiIdx=idx;
+  if(tipo==='mp'){comp.magIdx=idx;comp.codiceMp=magazzino[idx].codice||null;}
+  else{comp.semiIdx=idx;comp.codiceSl=semilavorati[idx].codice||null;}
   npComps.push(comp);
   document.getElementById('np-qta').value='';
   document.getElementById('np-sel-comp').value='';
