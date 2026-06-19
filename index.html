@@ -801,6 +801,7 @@ var CAT_ICONS_MAG={
 };
 var CAT_ORDER_MAG=['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi','Generale'];
 var semilavorati=[];
+var codiceCounters={mp:0,sl:0,pf:0};
 var piatti=[];
 /* magExpanded declared globally above */
 
@@ -3889,8 +3890,6 @@ function printSemilavorato(idx){
     setTimeout(function(){URL.revokeObjectURL(url);},5000);
   }
 }
-
-var codiceCounters={mp:0,sl:0,pf:0};
 
 function loadCodiceCounters(){
   try{
