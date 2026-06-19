@@ -3866,6 +3866,7 @@ function printPiatto(idx){
     +'<tbody>'+righe+'</tbody></table>'
     +'<p class="footer-note">Dosi calcolate per '+paxStampa+' porzioni</p>'
     +procHtml
+    +printAllergeniNutrizionaliHtml(p,paxStampa)
     +'<scr'+'ipt>window.onload=function(){window.print();}</scr'+'ipt>'
     +'</body></html>';
   var win=window.open('','_blank','width=750,height=900');
@@ -3913,6 +3914,7 @@ function printSemilavorato(idx){
     +'<table><thead><tr><th>Ingrediente</th><th style="text-align:right;">Dose</th></tr></thead>'
     +'<tbody>'+righe+'</tbody></table>'
     +procHtml
+    +printAllergeniNutrizionaliSemiHtml(s)
     +'<scr'+'ipt>window.onload=function(){window.print();}</scr'+'ipt>'
     +'</body></html>';
   var win=window.open('','_blank','width=750,height=900');
@@ -3923,6 +3925,35 @@ function printSemilavorato(idx){
     var a=document.createElement('a');a.href=url;a.target='_blank';a.click();
     setTimeout(function(){URL.revokeObjectURL(url);},5000);
   }
+}
+
+function printAllergeniNutrizionaliSemiHtml(s){
+  var allerg=calcolaAllergeniSemilavorato(s);
+  var n=calcolaNutrizionaliSemilavorato(s);
+  var html='';
+  if(allerg.length){
+    html+='<div style="margin-top:20px;padding-top:14px;border-top:1px solid #1a1a1a;">'
+      +'<h2 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#555;margin-bottom:10px;">Allergeni</h2>'
+      +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+      +allerg.map(function(a){
+        return '<span style="font-size:12px;padding:4px 10px;background:#fef3f2;border-radius:14px;display:inline-flex;align-items:center;gap:5px;border:1px solid #fcd5d2;">'
+          +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
+      }).join('')
+      +'</div></div>';
+  }
+  html+='<div style="margin-top:16px;padding-top:14px;border-top:1px solid #e0ded8;">'
+    +'<h2 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#555;margin-bottom:10px;">Valori nutrizionali (per 100g)</h2>'
+    +'<table style="width:100%;border-collapse:collapse;font-size:12px;">'
+    +'<tr><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">Energia</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+n.energia+' kcal</td>'
+    +'<td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">Fibre</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+n.fibre+' g</td></tr>'
+    +'<tr><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">Grassi</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+n.grassi+' g</td>'
+    +'<td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">Proteine</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+n.proteine+' g</td></tr>'
+    +'<tr><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">di cui saturi</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+n.grassiSaturi+' g</td>'
+    +'<td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">Sale</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+n.sale+' g</td></tr>'
+    +'<tr><td style="padding:4px 8px;">Carboidrati</td><td style="padding:4px 8px;text-align:right;font-weight:600;">'+n.carboidrati+' g</td>'
+    +'<td style="padding:4px 8px;">di cui zuccheri</td><td style="padding:4px 8px;text-align:right;font-weight:600;">'+n.zuccheri+' g</td></tr>'
+    +'</table></div>';
+  return html;
 }
 
 function loadCodiceCounters(){
@@ -4072,6 +4103,39 @@ function calcolaNutrizionaliPiatto(p){
   var per100={};
   Object.keys(tot).forEach(function(k){per100[k]=Math.round(tot[k]*fattResa*10)/10;});
   return {perPorzione:perPorzione,per100:per100,pesoTotale:Math.round(pesoTotale),pesoPorzione:Math.round(pesoTotale/pax)};
+}
+
+function printAllergeniNutrizionaliHtml(p,paxStampa){
+  var allerg=calcolaAllergeniPiatto(p);
+  var nutr=calcolaNutrizionaliPiatto(p);
+  var paxBase=p.pax||4;
+  var mult=paxStampa/paxBase;
+  var html='';
+  if(allerg.length){
+    html+='<div style="margin-top:20px;padding-top:14px;border-top:1px solid #1a1a1a;">'
+      +'<h2 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#555;margin-bottom:10px;">Allergeni</h2>'
+      +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+      +allerg.map(function(a){
+        return '<span style="font-size:12px;padding:4px 10px;background:#fef3f2;border-radius:14px;display:inline-flex;align-items:center;gap:5px;border:1px solid #fcd5d2;">'
+          +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
+      }).join('')
+      +'</div></div>';
+  }
+  html+='<div style="margin-top:16px;padding-top:14px;border-top:1px solid #e0ded8;">'
+    +'<h2 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#555;margin-bottom:10px;">Valori nutrizionali (a porzione)</h2>'
+    +'<table style="width:100%;border-collapse:collapse;font-size:12px;">'
+    +'<tr><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">Energia</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+nutr.perPorzione.energia+' kcal</td>'
+    +'<td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">Fibre</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+nutr.perPorzione.fibre+' g</td></tr>'
+    +'<tr><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">Grassi</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+nutr.perPorzione.grassi+' g</td>'
+    +'<td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">Proteine</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+nutr.perPorzione.proteine+' g</td></tr>'
+    +'<tr><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">di cui saturi</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+nutr.perPorzione.grassiSaturi+' g</td>'
+    +'<td style="padding:4px 8px;border-bottom:1px solid #f0ede6;">Sale</td><td style="padding:4px 8px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+nutr.perPorzione.sale+' g</td></tr>'
+    +'<tr><td style="padding:4px 8px;">Carboidrati</td><td style="padding:4px 8px;text-align:right;font-weight:600;">'+nutr.perPorzione.carboidrati+' g</td>'
+    +'<td style="padding:4px 8px;">di cui zuccheri</td><td style="padding:4px 8px;text-align:right;font-weight:600;">'+nutr.perPorzione.zuccheri+' g</td></tr>'
+    +'</table>'
+    +'<p style="font-size:11px;color:#aaa;margin-top:6px;">Valori indicativi calcolati su '+(nutr.pesoPorzione||0)+'g a porzione</p>'
+    +'</div>';
+  return html;
 }
 /* ===== RICERCA GLOBALE ===== */
 function globalSearch(q){
