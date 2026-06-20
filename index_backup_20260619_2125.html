@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Ricettario Food Cost</title>
+<script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f4f0;color:#1a1a1a;min-height:100vh;}
@@ -277,9 +278,6 @@ textarea{resize:vertical;min-height:60px;}
 .print-btn{padding:7px 16px;background:#fff;color:#1a1a1a;border:1px solid #d0cec8;border-radius:8px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;}
 .print-btn:hover{background:#f5f4f0;}
 
-.tab-disabled{opacity:0.4;cursor:not-allowed!important;pointer-events:none;}
-.tab-lock{opacity:0.85;}
-.tab-lock:hover{opacity:1;}
 </style>
 </head>
 <body>
@@ -293,7 +291,7 @@ textarea{resize:vertical;min-height:60px;}
       onfocus="this.style.background='#fff';this.style.borderColor='#1a1a1a';"
       onblur="this.style.background='#f5f4f0';this.style.borderColor='#d0cec8';if(!this.value)closeSearch();"/>
   </div>
-  <div id="admin-toolbar" style="margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+  <div style="margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
     <span id="backup-status" style="font-size:11px;color:#2d7d46;display:none;">&#10003; Salvato</span>
     <button onclick="esportaDati()" style="padding:6px 12px;font-size:12px;font-weight:500;background:#fff;border:1px solid #d0cec8;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:5px;">&#128229; Esporta</button>
     <label style="padding:6px 12px;font-size:12px;font-weight:500;background:#fff;border:1px solid #d0cec8;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:5px;">
@@ -301,7 +299,10 @@ textarea{resize:vertical;min-height:60px;}
       <input type="file" accept=".json" onchange="importaDati(this)" style="display:none;"/>
     </label>
     <div style="width:1px;height:20px;background:#e0ded8;"></div>
-    <button onclick="pubblicaDatiPubblici()" id="btn-pubblica" style="padding:6px 12px;font-size:12px;font-weight:600;background:#2d7d46;border:1px solid #2d7d46;color:#fff;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;" title="Genera dati-pubblici.json per i collaboratori">&#128228; Pubblica</button>
+    <button onclick="dropboxConnetti()" id="btn-dbx-conn" style="padding:6px 12px;font-size:12px;font-weight:500;background:#0061ff;color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:5px;">&#9729; Connetti Dropbox</button>
+    <button onclick="dropboxSalva()" id="btn-dbx-save" style="padding:6px 12px;font-size:12px;font-weight:500;background:#0061ff;color:#fff;border:none;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;">&#9729; Salva</button>
+    <button onclick="dropboxCarica()" id="btn-dbx-load" style="padding:6px 12px;font-size:12px;font-weight:500;background:#fff;border:1px solid #0061ff;color:#0061ff;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;">&#9729; Carica</button>
+    <button onclick="dropboxDisconnetti()" id="btn-dbx-disc" style="padding:6px 12px;font-size:12px;font-weight:500;background:#fff;border:1px solid #d0cec8;color:#888;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;" title="Disconnetti Dropbox">&#9729; &#10005;</button>
   </div>
 </header>
 <div id="search-overlay" style="display:none;position:fixed;top:57px;left:0;right:0;bottom:0;background:rgba(0,0,0,.3);z-index:50;" onclick="closeSearch()"></div>
@@ -314,7 +315,6 @@ textarea{resize:vertical;min-height:60px;}
     <div class="tab" onclick="showTab('foodcost')">&#128202; Food cost</div>
     <div class="tab" onclick="showTab('fornitori')">&#127978; Fornitori</div>
     <div class="tab" onclick="showTab('nuovo-piatto')">&#43; Nuovo piatto</div>
-    <div id="admin-lock-btn" class="tab-lock" onclick="checkPassword()" title="Accedi come admin" style="margin-left:auto;cursor:pointer;font-size:18px;">&#128274;</div>
   </div>
 
   <!-- HOME -->
@@ -991,8 +991,6 @@ function importaDati(input){
       magazzino=data.magazzino;
       if(data.ingredienti&&data.ingredienti.length===ingredienti.length) ingredienti=data.ingredienti;
       if(data.ricetteSalvate) ricetteSalvate=data.ricetteSalvate;
-      if(data.semilavorati) semilavorati=data.semilavorati;
-      if(data.piatti) piatti=data.piatti;
       if(data.fornitori) fornitori=data.fornitori;
       if(data.baseFoto){
         baseFotoData=data.baseFoto;
@@ -1007,16 +1005,12 @@ function importaDati(input){
       /* save all to localStorage */
       saveMagazzino();
       nrSaveAll();
-      saveSemilavorati();
-      savePiatti();
       saveFornitori();
       saveIngredienti();
       /* refresh UI */
       updateAll();
       renderMagazzino();
       renderFornitori();
-      renderSemilavorati();
-      renderPiatti();
       renderRicetteSalvate();
       renderHome();
       input.value='';
@@ -1038,7 +1032,169 @@ function flashBackup(msg){
   setTimeout(function(){el.style.display='none';},3000);
 }
 
+/* ===== DROPBOX INTEGRATION ===== */
+var DBX_APP_KEY='ttrnf6b4sj3sbkl';
+var DBX_REDIRECT_URI='https://claudio-ricettario.github.io/ricettario/index.html';
+var DBX_FILE_PATH='/ricettario_foodcost_backup.json';
+var dbxAccessToken=localStorage.getItem('rc_dbx_token')||null;
 
+function getDbx(){
+  if(!window.Dropbox){alert('SDK Dropbox non caricato. Controlla la connessione internet.');return null;}
+  if(!dbxAccessToken){alert('Non sei connesso a Dropbox. Usa prima "Connetti Dropbox".');return null;}
+  return new Dropbox.Dropbox({accessToken:dbxAccessToken});
+}
+
+function dropboxConnetti(){
+  var dbx=new Dropbox.Dropbox({clientId:DBX_APP_KEY});
+  dbx.auth.getAuthenticationUrl(DBX_REDIRECT_URI,null,'token')
+    .then(function(url){
+      localStorage.setItem('rc_dbx_intent','connect');
+      window.location.href=url;
+    }).catch(function(e){alert('Errore connessione Dropbox: '+e.message);});
+}
+
+function dropboxHandleCallback(){
+  /* check for token in URL hash after OAuth redirect */
+  var hash=window.location.hash;
+  if(!hash||hash.indexOf('access_token')<0)return;
+  var params=new URLSearchParams(hash.replace('#',''));
+  var token=params.get('access_token');
+  if(!token)return;
+  /* save token and clean URL */
+  dbxAccessToken=token;
+  localStorage.setItem('rc_dbx_token',token);
+  window.history.replaceState({},'',window.location.pathname);
+  updateDropboxUI();
+  flashBackup('&#9729; Dropbox connesso!');
+  /* execute pending intent */
+  var intent=localStorage.getItem('rc_dbx_intent')||'';
+  localStorage.removeItem('rc_dbx_intent');
+  if(intent==='save') dropboxSalvaEsegui();
+  else if(intent==='load') dropboxCaricaEsegui();
+}
+
+function updateDropboxUI(){
+  var connected=!!dbxAccessToken;
+  var btnConn=document.getElementById('btn-dbx-conn');
+  var btnSave=document.getElementById('btn-dbx-save');
+  var btnLoad=document.getElementById('btn-dbx-load');
+  if(btnConn){btnConn.style.display=connected?'none':'flex';}
+  if(btnSave){btnSave.style.display=connected?'flex':'none';}
+  if(btnLoad){btnLoad.style.display=connected?'flex':'none';}
+}
+
+function dropboxSalva(){
+  if(!dbxAccessToken){
+    localStorage.setItem('rc_dbx_intent','save');
+    dropboxConnetti();
+    return;
+  }
+  dropboxSalvaEsegui();
+}
+
+function dropboxSalvaEsegui(){
+  var dbx=getDbx();if(!dbx)return;
+  var data={
+    version:6,
+    exportDate:today(),
+    magazzino:magazzino,
+    ingredienti:ingredienti,
+    ricetteSalvate:ricetteSalvate,
+    semilavorati:semilavorati,
+    piatti:piatti,
+    fornitori:fornitori,
+    baseFoto:baseFotoData||'',
+    prezzoVenditaBase:document.getElementById('prezzo-vendita')?document.getElementById('prezzo-vendita').value:''
+  };
+  var json=JSON.stringify(data,null,2);
+  var btn=document.getElementById('btn-dbx-save');
+  if(btn){btn.textContent='Salvataggio...';}
+  dbx.filesUpload({
+    path:DBX_FILE_PATH,
+    contents:json,
+    mode:{'.tag':'overwrite'},
+    autorename:false
+  }).then(function(){
+    flashBackup('&#9729; Salvato su Dropbox — '+today());
+    if(btn){btn.innerHTML='&#9729; Salva Dropbox';}
+  }).catch(function(e){
+    if(e.status===401){
+      dbxAccessToken=null;
+      localStorage.removeItem('rc_dbx_token');
+      updateDropboxUI();
+      alert('Sessione Dropbox scaduta. Riconnettiti.');
+    } else {
+      alert('Errore Dropbox: '+(e.message||JSON.stringify(e)));
+      if(btn){btn.innerHTML='&#9729; Salva Dropbox';}
+    }
+  });
+}
+
+function dropboxCarica(){
+  if(!dbxAccessToken){
+    localStorage.setItem('rc_dbx_intent','load');
+    dropboxConnetti();
+    return;
+  }
+  dropboxCaricaEsegui();
+}
+
+function dropboxCaricaEsegui(){
+  var dbx=getDbx();if(!dbx)return;
+  var btn=document.getElementById('btn-dbx-load');
+  if(btn){btn.textContent='Caricamento...';}
+  dbx.filesDownload({path:DBX_FILE_PATH})
+    .then(function(resp){
+      var reader=new FileReader();
+      reader.onload=function(e){
+        try{
+          var data=JSON.parse(e.target.result);
+          if(!confirm('Caricare il backup Dropbox del '+data.exportDate+'?\n\nI dati attuali verranno sostituiti.'))
+            {if(btn)btn.innerHTML='&#9729; Carica Dropbox';return;}
+          magazzino=data.magazzino;
+          if(data.ingredienti&&data.ingredienti.length===ingredienti.length) ingredienti=data.ingredienti;
+          if(data.ricetteSalvate) ricetteSalvate=data.ricetteSalvate;
+          if(data.semilavorati) semilavorati=data.semilavorati;
+          if(data.piatti) piatti=data.piatti;
+          if(data.fornitori) fornitori=data.fornitori;
+          if(data.baseFoto){
+            baseFotoData=data.baseFoto;
+            var img=document.getElementById('base-foto-img');
+            if(img){img.src=baseFotoData;document.getElementById('base-foto-preview').style.display='block';document.getElementById('base-foto-clear').style.display='inline-block';document.getElementById('base-foto-nome').textContent='Foto caricata';}
+            localStorage.setItem('rc_base_foto',baseFotoData);
+          }
+          if(data.prezzoVenditaBase){var pvEl=document.getElementById('prezzo-vendita');if(pvEl)pvEl.value=data.prezzoVenditaBase;}
+          saveMagazzino();nrSaveAll();saveSemilavorati();savePiatti();saveFornitori();saveIngredienti();
+          updateAll();renderMagazzino();renderFornitori();renderSemilavorati();renderPiatti();renderRicetteSalvate();renderHome();
+          flashBackup('&#9729; Caricato da Dropbox — '+data.exportDate);
+          if(btn)btn.innerHTML='&#9729; Carica Dropbox';
+        }catch(err){
+          alert('Errore lettura backup: '+err.message);
+          if(btn)btn.innerHTML='&#9729; Carica Dropbox';
+        }
+      };
+      reader.readAsText(resp.result.fileBlob);
+    }).catch(function(e){
+      if(e.status===409||e.status===404){
+        alert('Nessun backup trovato su Dropbox.\nEsegui prima "Salva Dropbox".');
+      } else if(e.status===401){
+        dbxAccessToken=null;localStorage.removeItem('rc_dbx_token');
+        updateDropboxUI();
+        alert('Sessione Dropbox scaduta. Riconnettiti.');
+      } else {
+        alert('Errore Dropbox: '+(e.message||JSON.stringify(e)));
+      }
+      if(btn)btn.innerHTML='&#9729; Carica Dropbox';
+    });
+}
+
+function dropboxDisconnetti(){
+  if(!confirm('Disconnettere Dropbox?\nDovrai riconnetterti per usare salva/carica.'))return;
+  dbxAccessToken=null;
+  localStorage.removeItem('rc_dbx_token');
+  updateDropboxUI();
+  flashBackup('Dropbox disconnesso');
+}
 
 
 var MAGAZZINO_VERSION=9;
@@ -1762,9 +1918,6 @@ function renderFoodCost(){
 }
 
 function showTab(name){
-  if(!isAdmin && ADMIN_ONLY_TABS.indexOf(name) >= 0){
-    return;
-  }
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   var tabs=['home','semilavorati','magazzino','foodcost','fornitori','nuovo-piatto'];
@@ -1782,155 +1935,9 @@ function showTab(name){
   else{updateAll();}
 }
 
-/* ===== ADMIN MODE ===== */
-var ADMIN_PASSWORD = "ricettario_claudioP70@";
-var isAdmin = false;
-
-function checkAdminSession(){
-  try{
-    isAdmin = sessionStorage.getItem('rc_admin') === '1';
-  }catch(e){ isAdmin = false; }
-}
-
-function checkPassword(){
-  if(isAdmin){
-    if(confirm('Vuoi uscire dalla modalit\u00e0 amministratore?')){
-      logoutAdmin();
-    }
-    return;
-  }
-  var pwd = prompt('Password amministratore:');
-  if(pwd === null) return;
-  if(pwd === ADMIN_PASSWORD){
-    isAdmin = true;
-    try{ sessionStorage.setItem('rc_admin','1'); }catch(e){}
-    applyAdminUI();
-    alert('Accesso amministratore attivato.');
-  } else {
-    alert('Password errata.');
-  }
-}
-
-function logoutAdmin(){
-  isAdmin = false;
-  try{ sessionStorage.removeItem('rc_admin'); }catch(e){}
-  applyAdminUI();
-  showTab('home');
-}
-
-var ADMIN_ONLY_TABS = ['magazzino','foodcost','fornitori','nuovo-piatto'];
-
-function applyAdminUI(){
-  var tabs = document.querySelectorAll('.tab');
-  var tabNames = ['home','semilavorati','magazzino','foodcost','fornitori','nuovo-piatto'];
-  tabs.forEach(function(t, i){
-    var name = tabNames[i];
-    if(ADMIN_ONLY_TABS.indexOf(name) >= 0){
-      if(isAdmin){
-        t.classList.remove('tab-disabled');
-        t.removeAttribute('title');
-      } else {
-        t.classList.add('tab-disabled');
-        t.setAttribute('title','Richiede accesso amministratore');
-      }
-    }
-  });
-  var lockBtn = document.getElementById('admin-lock-btn');
-  if(lockBtn){
-    lockBtn.innerHTML = isAdmin ? '&#128275;' : '&#128274;';
-    lockBtn.title = isAdmin ? 'Esci da admin' : 'Accedi come admin';
-  }
-  var pubBtn = document.getElementById('btn-pubblica');
-  if(pubBtn){ pubBtn.style.display = isAdmin ? 'flex' : 'none'; }
-  var toolbar = document.getElementById('admin-toolbar');
-  if(toolbar){ toolbar.style.display = isAdmin ? 'flex' : 'none'; }
-  var currentActive = document.querySelector('.section.active');
-  if(currentActive && !isAdmin){
-    var id = currentActive.id.replace('tab-','');
-    if(ADMIN_ONLY_TABS.indexOf(id) >= 0){
-      showTab('home');
-    }
-  }
-}
-
 loadSaved();
 updateAll();
 renderMagazzino();
-checkAdminSession();
-applyAdminUI();
-
-function caricaDatiPubblici(){
-  if(isAdmin) return;
-  fetch('./dati-pubblici.json')
-    .then(function(resp){
-      if(!resp.ok) throw new Error('File non trovato');
-      return resp.json();
-    })
-    .then(function(data){
-      if(data.magazzino) magazzino = data.magazzino;
-      if(data.semilavorati) semilavorati = data.semilavorati;
-      if(data.piatti) piatti = data.piatti;
-      if(data.ricetteSalvate) ricetteSalvate = data.ricetteSalvate;
-      if(data.fornitori) fornitori = data.fornitori;
-      updateAll();
-      renderMagazzino();
-      renderSemilavorati();
-      renderHome();
-      console.log('Dati pubblici caricati, versione del', data.exportDate);
-    })
-    .catch(function(err){
-      console.log('Nessun dati-pubblici.json trovato o errore di caricamento:', err.message);
-    });
-}
-
-if(!isAdmin){
-  caricaDatiPubblici();
-}
-
-function pubblicaDatiPubblici(){
-  var data={
-    version:1,
-    exportDate:today(),
-    magazzino:magazzino,
-    semilavorati:semilavorati,
-    piatti:piatti,
-    ricetteSalvate:ricetteSalvate,
-    fornitori:fornitori
-  };
-  var json=JSON.stringify(data,null,2);
-
-  function avvisaGitHub(){
-    alert('File salvato!\n\nProssimo passo:\n1. Apri GitHub Desktop\n2. Verifica che dati-pubblici.json sia nella cartella del progetto\n3. Fai Commit e poi Push origin\n\nSolo dopo il push i collaboratori vedranno i dati aggiornati.');
-  }
-
-  if(window.showSaveFilePicker){
-    window.showSaveFilePicker({suggestedName:'dati-pubblici.json',types:[{description:'JSON',accept:{'application/json':['.json']}}]})
-      .then(function(handle){ return handle.createWritable(); })
-      .then(function(writable){ return writable.write(json).then(function(){return writable.close();}); })
-      .then(function(){ avvisaGitHub(); })
-      .catch(function(err){
-        if(err && err.name==='AbortError') return;
-        /* fallback al download classico se il salvataggio diretto fallisce */
-        var blob=new Blob([json],{type:'application/json'});
-        var url=URL.createObjectURL(blob);
-        var a=document.createElement('a');
-        a.download='dati-pubblici.json';
-        a.href=url;
-        a.click();
-        setTimeout(function(){URL.revokeObjectURL(url);},3000);
-        avvisaGitHub();
-      });
-  } else {
-    var blob=new Blob([json],{type:'application/json'});
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement('a');
-    a.download='dati-pubblici.json';
-    a.href=url;
-    a.click();
-    setTimeout(function(){URL.revokeObjectURL(url);},3000);
-    avvisaGitHub();
-  }
-}
 
 /* ===== NUOVA RICETTA ===== */
 var nrIngs=[], nrSteps=[], ricetteSalvate=[], nrEditIdx=-1;
@@ -2384,6 +2391,8 @@ renderRicetteSalvate();
 /* defer home render until DOM fully ready */
 setTimeout(function(){
   baseLoadFotoFromStorage();
+  updateDropboxUI();
+  dropboxHandleCallback();
   renderHome();
 },0);
 loadIngredienti();
@@ -2449,7 +2458,6 @@ function loadSemilavorati(){
 }
 
 function saveSemilavorati(){
-  console.log('saveSemilavorati chiamata, semilavorati.length =', semilavorati.length, new Error().stack);
   try{ localStorage.setItem('rc_semilavorati', JSON.stringify(semilavorati)); }catch(e){}
 }
 
@@ -2612,34 +2620,28 @@ function renderSemilavorati(){
       +'<div class="semi-card-nome"><span style="color:#aaa;font-weight:400;font-size:11px;margin-right:6px;">'+(s.codice||'')+'</span>'+s.nome+'</div>'
       +'<div class="semi-card-meta">'+s.categoria+(s.tempo?' &middot; '+s.tempo+' min':'')+'</div>'
       +'</div>'
-      +(isAdmin?(
-        '<div style="text-align:right;margin-right:12px;">'
-        +'<div style="font-size:13px;font-weight:600;">'+eur(totCosto)+'</div>'
-        +'<div style="font-size:11px;color:#888;">costo MP totale</div>'
-        +'</div>'
-        +'<div style="text-align:right;margin-right:12px;">'
-        +'<div style="font-size:13px;font-weight:600;color:#2d7d46;">'+costoLabel+'</div>'
-        +'<div style="font-size:11px;color:#888;">costo / resa '+resaLabel+'</div>'
-        +'</div>'
-        +'<button class="btn-sm" onclick="event.stopPropagation();openSemiModal('+realIdx+')" style="flex-shrink:0;">&#9998;</button>'
-      ):(
-        '<div style="text-align:right;margin-right:12px;">'
-        +'<div style="font-size:11px;color:#888;">resa '+resaLabel+'</div>'
-        +'</div>'
-      ))
+      +'<div style="text-align:right;margin-right:12px;">'
+      +'<div style="font-size:13px;font-weight:600;">'+eur(totCosto)+'</div>'
+      +'<div style="font-size:11px;color:#888;">costo MP totale</div>'
+      +'</div>'
+      +'<div style="text-align:right;margin-right:12px;">'
+      +'<div style="font-size:13px;font-weight:600;color:#2d7d46;">'+costoLabel+'</div>'
+      +'<div style="font-size:11px;color:#888;">costo / resa '+resaLabel+'</div>'
+      +'</div>'
+      +'<button class="btn-sm" onclick="event.stopPropagation();openSemiModal('+realIdx+')" style="flex-shrink:0;">&#9998;</button>'
       +'</div>'
       +'<div class="semi-detail" id="semi-detail-'+realIdx+'">'
       +'<table style="width:100%;border-collapse:collapse;font-size:13px;">'
       +'<thead><tr><th style="text-align:left;padding:5px 8px;font-size:11px;color:#888;">Ingrediente</th>'
       +'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;">Dose</th>'
-      +(isAdmin?'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;">Costo</th>':'')+'</tr></thead><tbody>'
+      +'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;">Costo</th></tr></thead><tbody>'
       +s.componenti.map(function(c){
         var costo=(c.conv===0||c.unit==='q.b.')?0:c.qtaBase*c.conv*gp(c.magIdx);
         var mRef=magazzino[c.magIdx];
         var codMp=mRef&&mRef.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+mRef.codice+'</span>':'';
         return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+codMp+c.nome+'</td>'
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
-          +(isAdmin?'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td>':'')+'</tr>';
+          +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td></tr>';
       }).join('')+'</tbody></table>'
       +(s.procedimento?'<div style="margin-top:10px;font-size:13px;color:#555;line-height:1.6;white-space:pre-wrap;">'+s.procedimento+'</div>':'')
       +(function(){
@@ -3070,7 +3072,7 @@ function homeRicettaRow(r,i){
   var thumbHtml=r.foto
     ?'<img src="'+r.foto+'" style="width:100%;height:100%;object-fit:cover;"/>'
     :'<span style="font-size:20px;">&#127869;</span>';
-  var clickFn=r._isBase?'showTab(&quot;ricetta&quot;)':(r._isPiatto?(isAdmin?'npModifica('+r._piattoIdx+')':'printPiatto('+r._piattoIdx+')'):'openRicettaSalvata('+i+')');
+  var clickFn=r._isBase?'showTab(&quot;ricetta&quot;)':(r._isPiatto?'npModifica('+r._piattoIdx+')':'openRicettaSalvata('+i+')');
   return '<div class="home-ricetta-row" onclick="'+clickFn+'">'
     +'<div class="home-ricetta-thumb">'+thumbHtml+'</div>'
     +'<div class="home-ricetta-info">'
@@ -4207,7 +4209,7 @@ function globalSearch(q){
     piattiFiltrati.forEach(function(p){
       var idx=piatti.indexOf(p);
       var fc='';
-      if(isAdmin && p.prezzoVendita>0){
+      if(p.prezzoVendita>0){
         var tot=(p.componenti||[]).reduce(function(t,c){
     if(!c||c.conv===undefined) return t;
     if(c.tipo==='mp'&&(c.magIdx===undefined||c.magIdx>=magazzino.length||!magazzino[c.magIdx]))return t;
@@ -4220,7 +4222,7 @@ function globalSearch(q){
         var pct=tot/p.pax/p.prezzoVendita*100;
         fc=' &middot; FC '+pct.toFixed(1)+'%';
       }
-      html+='<div class="search-result-row" onclick="closeSearch();'+(isAdmin?'npModifica('+idx+')':'printPiatto('+idx+')')+'">'
+      html+='<div class="search-result-row" onclick="closeSearch();npModifica('+idx+')">'
         +'<span class="search-result-icon">&#127869;</span>'
         +'<div class="search-result-info">'
         +'<div class="search-result-nome">'+p.nome+'</div>'
@@ -4254,10 +4256,10 @@ function globalSearch(q){
   }
 
   /* Materie prime */
-  var mpFiltrate=isAdmin?magazzino.filter(function(m){
+  var mpFiltrate=magazzino.filter(function(m){
     return m.nome.toLowerCase().indexOf(q)>=0
       ||(activeSupplier(m).nome||'').toLowerCase().indexOf(q)>=0;
-  }):[];
+  });
   if(mpFiltrate.length){
     html+='<div class="search-result-group">Materie prime</div>';
     mpFiltrate.forEach(function(m){
@@ -4275,11 +4277,11 @@ function globalSearch(q){
   }
 
   /* Fornitori */
-  var fornFiltrati=isAdmin?fornitori.filter(function(f){
+  var fornFiltrati=fornitori.filter(function(f){
     return f.nome.toLowerCase().indexOf(q)>=0
       ||(f.tipo||'').toLowerCase().indexOf(q)>=0
       ||(f.referente||'').toLowerCase().indexOf(q)>=0;
-  }):[];
+  });
   if(fornFiltrati.length){
     html+='<div class="search-result-group">Fornitori</div>';
     fornFiltrati.forEach(function(f){
