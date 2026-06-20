@@ -1,0 +1,2054 @@
+{
+  "version": 1,
+  "exportDate": "20/6/2026",
+  "magazzino": [
+    {
+      "nome": "Carne manzo (reale/cappello)",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 179,
+        "grassi": 9.5,
+        "grassiSaturi": 3.8,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 22,
+        "sale": 0.07
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Macelleria locale",
+          "prezzoKg": 12,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Midollo di bue",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": false,
+      "tracce": [],
+      "tracceOk": false,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Macelleria locale",
+          "prezzoKg": 8.5,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Ossa di vitello",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 52,
+        "grassi": 2.5,
+        "grassiSaturi": 1,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 7.2,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Macelleria locale",
+          "prezzoKg": 2.5,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Acqua",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 4,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 999,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Produzione interna",
+          "prezzoKg": 0.001,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Alloro (foglie)",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 313,
+        "grassi": 8.4,
+        "grassiSaturi": 2.3,
+        "carboidrati": 48,
+        "zuccheri": 0,
+        "fibre": 26,
+        "proteine": 7.6,
+        "sale": 0.04
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Ingrosso spezie",
+          "prezzoKg": 15,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Concentrato di pomodoro",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 82,
+        "grassi": 0.5,
+        "grassiSaturi": 0.1,
+        "carboidrati": 16,
+        "zuccheri": 11,
+        "fibre": 2.5,
+        "proteine": 4.5,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Ingrosso alimentare",
+          "prezzoKg": 3.2,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Farina\"00\"",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 366,
+        "grassi": 1.48,
+        "grassiSaturi": 0.302,
+        "carboidrati": 76.22,
+        "zuccheri": 0.49,
+        "fibre": 2.4,
+        "proteine": 9.71,
+        "sale": 0.002
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Olio EVO",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 10,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 884,
+        "grassi": 100,
+        "grassiSaturi": 14,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Ingrosso alimentare",
+          "prezzoKg": 5.5,
+          "storico": []
+        },
+        {
+          "nome": "Frantoio diretto",
+          "prezzoKg": 6.8,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Pepe nero",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 0,
+      "resa": 100,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 251,
+        "grassi": 3.3,
+        "grassiSaturi": 1,
+        "carboidrati": 64,
+        "zuccheri": 0.6,
+        "fibre": 25,
+        "proteine": 10,
+        "sale": 0.04
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Ingrosso spezie",
+          "prezzoKg": 12,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Pistilli di zafferano",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 310,
+        "grassi": 5.9,
+        "grassiSaturi": 1.6,
+        "carboidrati": 65,
+        "zuccheri": 0,
+        "fibre": 3.9,
+        "proteine": 11,
+        "sale": 0.15
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Ingrosso spezie",
+          "prezzoKg": 180,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Riso arborio",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": false,
+      "tracce": [],
+      "tracceOk": false,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Riso Gallo / Ingrosso",
+          "prezzoKg": 2.8,
+          "storico": []
+        },
+        {
+          "nome": "Cash&Carry Metro",
+          "prezzoKg": 2.55,
+          "storico": []
+        },
+        {
+          "nome": "Cooperativa agricola",
+          "prezzoKg": 2.95,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Sale fino",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 0,
+      "resa": 100,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 38.7
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Ingrosso",
+          "prezzoKg": 1,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Vino bianco",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 22,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 82,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 2.6,
+        "zuccheri": 0.9,
+        "fibre": 0,
+        "proteine": 0.1,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Cantina San Giorgio",
+          "prezzoKg": 3.5,
+          "storico": []
+        },
+        {
+          "nome": "Ingrosso bevande",
+          "prezzoKg": 3.1,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Vino rosso",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 22,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 85,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 2.6,
+        "zuccheri": 0.6,
+        "fibre": 0,
+        "proteine": 0.1,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Cantina San Giorgio",
+          "prezzoKg": 4,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Zafferano (bustina)",
+      "categoria": "Generale",
+      "um": "bustina",
+      "iva": 10,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 310,
+        "grassi": 5.9,
+        "grassiSaturi": 1.6,
+        "carboidrati": 65,
+        "zuccheri": 0,
+        "fibre": 3.9,
+        "proteine": 11,
+        "sale": 0.15
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Ingrosso spezie",
+          "prezzoKg": 0.65,
+          "storico": []
+        },
+        {
+          "nome": "Grossista alimentare",
+          "prezzoKg": 0.72,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Burro della lessinia da kg",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 717,
+        "grassi": 81,
+        "grassiSaturi": 51,
+        "carboidrati": 0.1,
+        "zuccheri": 0.1,
+        "fibre": 0,
+        "proteine": 0.6,
+        "sale": 0.02
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Latteria / Cash&Carry",
+          "prezzoKg": 9,
+          "storico": []
+        },
+        {
+          "nome": "Consorzio lattiero",
+          "prezzoKg": 5.9,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Grana grattugiato",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 392,
+        "grassi": 29,
+        "grassiSaturi": 18,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 33,
+        "sale": 1.6
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Latteria / Cash&Carry",
+          "prezzoKg": 12.5,
+          "storico": []
+        },
+        {
+          "nome": "Consorzio Parmigiano",
+          "prezzoKg": 13.2,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Latte intero",
+      "categoria": "Latticini e formaggi",
+      "um": "lt",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 61,
+        "grassi": 3.27,
+        "grassiSaturi": 1.865,
+        "carboidrati": 4.78,
+        "zuccheri": 505,
+        "fibre": 0,
+        "proteine": 3.15,
+        "sale": 43
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Ricotta Fresca da 1kg",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 174,
+        "grassi": 12.98,
+        "grassiSaturi": 8.295,
+        "carboidrati": 304,
+        "zuccheri": 0.27,
+        "fibre": 0,
+        "proteine": 11.26,
+        "sale": 0.084
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Aglio",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 5,
+      "resa": 95,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Asparagi bianchi",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 40,
+      "resa": 60,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 4.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Asparagi verdi",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 18,
+      "resa": 82,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Bieta",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 20,
+      "resa": 80,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Broccoli",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 30,
+      "resa": 70,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Carciofi",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 80,
+      "resa": 20,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 3,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Carota",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 41,
+        "grassi": 0.2,
+        "grassiSaturi": 0,
+        "carboidrati": 10,
+        "zuccheri": 4.7,
+        "fibre": 2.8,
+        "proteine": 0.9,
+        "sale": 0.07
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Ortofrutticolo",
+          "prezzoKg": 0.8,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Carota",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 20,
+      "resa": 80,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 41,
+        "grassi": 0.2,
+        "grassiSaturi": 0,
+        "carboidrati": 10,
+        "zuccheri": 4.7,
+        "fibre": 2.8,
+        "proteine": 0.9,
+        "sale": 0.07
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 0.8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Cavolfiore",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 25,
+      "resa": 75,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.6,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Cavolini di Bruxelles",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 15,
+      "resa": 85,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 2.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Cavolo",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 15,
+      "resa": 85,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.4,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Cetriolo",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 8,
+      "resa": 92,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Cipolla",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 40,
+        "grassi": 0.1,
+        "grassiSaturi": 0,
+        "carboidrati": 9,
+        "zuccheri": 4.2,
+        "fibre": 1.7,
+        "proteine": 1.1,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Ortofrutticolo",
+          "prezzoKg": 0.9,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Cipolla",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 10,
+      "resa": 90,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 40,
+        "grassi": 0.1,
+        "grassiSaturi": 0,
+        "carboidrati": 9,
+        "zuccheri": 4.2,
+        "fibre": 1.7,
+        "proteine": 1.1,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 0.9,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Concasse di pomodoro",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 50,
+      "resa": 50,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Finocchio",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 20,
+      "resa": 80,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Funghi champignon",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 10,
+      "resa": 90,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 3.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Indivia belga",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 10,
+      "resa": 90,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 2.8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Lattuga",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 10,
+      "resa": 90,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Melanzana",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 15,
+      "resa": 85,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.6,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Patata",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 12,
+      "resa": 88,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 0.7,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Peperone",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 30,
+      "resa": 70,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 2.2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Piselli (freschi)",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 15,
+      "resa": 85,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 3,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Pomodoro",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 5,
+      "resa": 95,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Porro",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 10,
+      "resa": 90,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.9,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Radicchio rosso",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 15,
+      "resa": 85,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Sedano",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "allergeni": [
+        "Sedano"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 16,
+        "grassi": 0.2,
+        "grassiSaturi": 0,
+        "carboidrati": 2.4,
+        "zuccheri": 1.8,
+        "fibre": 1.6,
+        "proteine": 0.7,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Ortofrutticolo",
+          "prezzoKg": 1.2,
+          "storico": []
+        }
+      ],
+      "scarto": 0,
+      "resa": 100
+    },
+    {
+      "nome": "Sedano",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 20,
+      "resa": 80,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Sedano rapa",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 30,
+      "resa": 70,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Spinaci",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 12,
+      "resa": 88,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 2.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Taccole",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 5,
+      "resa": 95,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 3.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Zucca",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 25,
+      "resa": 75,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 0.9,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "nome": "Zucchina",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "activeIdx": 0,
+      "scarto": 10,
+      "resa": 90,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Negozio frutta e verdura",
+          "prezzoKg": 1.4,
+          "storico": []
+        }
+      ]
+    }
+  ],
+  "semilavorati": [
+    {
+      "nome": "Burro Nocciola",
+      "categoria": "Salse e sughi",
+      "resaQta": 850,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Sciogliere e portare a color nocciola, colare con passino fino e tenere al caldo",
+      "componenti": [
+        {
+          "magIdx": 15,
+          "nome": "Burro della lessinia da kg",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "18/6/2026"
+    },
+    {
+      "nome": "Gnocchi di Malga",
+      "categoria": "Pasta e impasti",
+      "resaQta": 2150,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Usare una planetaria con foglia, mettere la farina, ricotta e il sale, accendere e lentamente versa il latte tiepido, aumenta la velocità e lavora per 5 minuti. Cuocere in acqua salata e a bollore , servi 200 gr a persona, con burro nocciola e grana",
+      "componenti": [
+        {
+          "magIdx": 6,
+          "nome": "Farina\"00\"",
+          "qtaBase": 940,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 18,
+          "nome": "Ricotta Fresca da 1kg",
+          "qtaBase": 400,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 17,
+          "nome": "Latte intero",
+          "qtaBase": 800,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 11,
+          "nome": "Sale fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "19/6/2026"
+    }
+  ],
+  "piatti": [
+    {
+      "nome": "Gnocchi di Malga",
+      "categoria": "Primi piatti",
+      "sottocategoria": "Vegetariano",
+      "pax": 10,
+      "prezzoVendita": 9.6,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Gnocchi di Malga",
+          "qtaBase": 2150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 1
+        },
+        {
+          "tipo": "sl",
+          "nome": "Burro Nocciola",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 0
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana grattugiato",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 16
+        }
+      ],
+      "dataCreazione": "19/6/2026"
+    }
+  ],
+  "ricetteSalvate": [],
+  "fornitori": [
+    {
+      "nome": "Supermercato / Generico",
+      "tipo": "Placeholder",
+      "referente": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "giorniOrdine": [],
+      "giorniConsegna": [],
+      "frequenza": "Su richiesta",
+      "leadtime": "",
+      "minimo": "",
+      "pagamento": "",
+      "note": "Fornitore provvisorio. Sostituire con il fornitore ufficiale appena disponibile."
+    },
+    {
+      "nome": "Riso Gallo / Ingrosso cereali",
+      "tipo": "Ingrosso alimentare",
+      "referente": "Mario Rossi",
+      "tel": "+39 045 000 0001",
+      "email": "ordini@risogallo.it",
+      "web": "www.risogallo.it",
+      "giorniOrdine": [
+        "Lun",
+        "Mer"
+      ],
+      "giorniConsegna": [
+        "Mar",
+        "Gio"
+      ],
+      "frequenza": "2x settimana",
+      "leadtime": "1",
+      "minimo": "80 euro",
+      "pagamento": "Bonifico 30gg",
+      "note": "Sconto 5% su ordini superiori a 200kg"
+    },
+    {
+      "nome": "Macelleria Bianchi",
+      "tipo": "Macelleria / Carni",
+      "referente": "Gianni Bianchi",
+      "tel": "+39 045 000 0002",
+      "email": "macelleria@bianchi.it",
+      "web": "",
+      "giorniOrdine": [
+        "Lun",
+        "Gio"
+      ],
+      "giorniConsegna": [
+        "Mar",
+        "Ven"
+      ],
+      "frequenza": "2x settimana",
+      "leadtime": "1",
+      "minimo": "30 euro",
+      "pagamento": "Contanti alla consegna",
+      "note": "Prodotti freschi - ordinare entro le 10:00"
+    },
+    {
+      "nome": "Latteria Valle Verde",
+      "tipo": "Latteria / Caseificio",
+      "referente": "Anna Verdi",
+      "tel": "+39 045 000 0003",
+      "email": "ordini@valleverde.it",
+      "web": "www.valleverde.it",
+      "giorniOrdine": [
+        "Lun",
+        "Mer",
+        "Ven"
+      ],
+      "giorniConsegna": [
+        "Mar",
+        "Gio",
+        "Sab"
+      ],
+      "frequenza": "3x settimana",
+      "leadtime": "1",
+      "minimo": "50 euro",
+      "pagamento": "RiBa 30gg",
+      "note": "Grana DOP"
+    },
+    {
+      "nome": "Ortofrutticolo Mercato",
+      "tipo": "Ortofrutticolo",
+      "referente": "Luca Neri",
+      "tel": "+39 045 000 0004",
+      "email": "",
+      "web": "",
+      "giorniOrdine": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Gio",
+        "Ven",
+        "Sab"
+      ],
+      "giorniConsegna": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Gio",
+        "Ven",
+        "Sab"
+      ],
+      "frequenza": "Giornaliera",
+      "leadtime": "0",
+      "minimo": "20 euro",
+      "pagamento": "Contanti alla consegna",
+      "note": "Consegna mattina presto"
+    },
+    {
+      "nome": "Cantina San Giorgio",
+      "tipo": "Vini e distillati",
+      "referente": "Paolo Greco",
+      "tel": "+39 045 000 0005",
+      "email": "cantina@sangiorgio.it",
+      "web": "www.cantinasangiorgio.it",
+      "giorniOrdine": [
+        "Lun",
+        "Ven"
+      ],
+      "giorniConsegna": [
+        "Mer"
+      ],
+      "frequenza": "Settimanale",
+      "leadtime": "2",
+      "minimo": "100 euro o 6 bottiglie",
+      "pagamento": "Bonifico 60gg",
+      "note": ""
+    }
+  ]
+}
