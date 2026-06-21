@@ -1,9 +1,628 @@
 {
   "version": 1,
   "exportDate": "21/6/2026",
-  "magazzino": [],
-  "semilavorati": [],
-  "piatti": [],
+  "magazzino": [
+    {
+      "codice": "MP-065",
+      "nome": "Burro della Lessinia",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 717,
+        "grassi": 81.11,
+        "grassiSaturi": 51.368,
+        "carboidrati": 0.06,
+        "zuccheri": 6,
+        "fibre": 0,
+        "proteine": 0.85,
+        "sale": 0.011
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 12,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-060",
+      "nome": "Farina \"00\"",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 366,
+        "grassi": 1.48,
+        "grassiSaturi": 0.302,
+        "carboidrati": 76.22,
+        "zuccheri": 0.49,
+        "fibre": 2.4,
+        "proteine": 9.71,
+        "sale": 0.002
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-063",
+      "nome": "Noce Moscata",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 525,
+        "grassi": 36.31,
+        "grassiSaturi": 25.94,
+        "carboidrati": 49.29,
+        "zuccheri": 28.49,
+        "fibre": 20.8,
+        "proteine": 5.84,
+        "sale": 0.016
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 35,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-064",
+      "nome": "Olio extra vergine d'oliva",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 824,
+        "grassi": 91.6,
+        "grassiSaturi": 13.25,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-054",
+      "nome": "Pane a cubetti Bianco",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 238,
+        "grassi": 2.15,
+        "grassiSaturi": 0.63,
+        "carboidrati": 43.91,
+        "zuccheri": 5,
+        "fibre": 9.2,
+        "proteine": 10.66,
+        "sale": 0.478
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 6,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-058",
+      "nome": "Pepe Nero Macinato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 300,
+        "grassi": 5,
+        "grassiSaturi": 1,
+        "carboidrati": 60,
+        "zuccheri": 0.6,
+        "fibre": 20,
+        "proteine": 11,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-057",
+      "nome": "sale Fino",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 98
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-059",
+      "nome": "Uova Pastorizzate",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 128,
+        "grassi": 8.7,
+        "grassiSaturi": 4,
+        "carboidrati": 0.5,
+        "zuccheri": 0.5,
+        "fibre": 0,
+        "proteine": 12,
+        "sale": 0.34
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-056",
+      "nome": "Grana Padano Dop",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 398,
+        "grassi": 29,
+        "grassiSaturi": 18,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 33,
+        "sale": 1.5
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 14,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-062",
+      "nome": "Latte Intero UHT",
+      "categoria": "Latticini e formaggi",
+      "um": "lt",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 61,
+        "grassi": 3.27,
+        "grassiSaturi": 1.865,
+        "carboidrati": 4.78,
+        "zuccheri": 5.05,
+        "fibre": 0,
+        "proteine": 3.15,
+        "sale": 0.043
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-055",
+      "nome": "Monte Veronese d'allevo",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 407,
+        "grassi": 32.5,
+        "grassiSaturi": 24,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 28.5,
+        "sale": 1.9
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-061",
+      "nome": "Porri",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 15,
+      "resa": 85,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 61,
+        "grassi": 0.3,
+        "grassiSaturi": 0.04,
+        "carboidrati": 14.15,
+        "zuccheri": 3.9,
+        "fibre": 1.8,
+        "proteine": 1.5,
+        "sale": 0.02
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3,
+          "storico": []
+        }
+      ]
+    }
+  ],
+  "semilavorati": [
+    {
+      "codice": "SL-004",
+      "nome": "Burro Nocciola",
+      "categoria": "Salse e sughi",
+      "resaQta": 900,
+      "resaUm": "g",
+      "tempo": "15",
+      "procedimento": "Portare il burro fino al color dorato/nocciola, filtrare con un colino fine e tenere in caldo",
+      "componenti": [
+        {
+          "magIdx": 0,
+          "codiceMp": "MP-065",
+          "nome": "Burro della Lessinia",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "21/6/2026"
+    },
+    {
+      "codice": "SL-005",
+      "nome": "Canederli ai Formaggi Base",
+      "categoria": "Pasta e impasti",
+      "resaQta": 7109,
+      "resaUm": "g",
+      "tempo": "45",
+      "procedimento": "Mettere tutti gli ingredienti secchi in un contenitore adatto, aggiungere le uova ed il latte, mescolando piano dal basso verso l'alto, lasciar riposare 15 min poi formare i canederli da 50 gr l'uno, a questo punto si possono usare cosi o abbattere a -18 per una conservazione piu lunga",
+      "componenti": [
+        {
+          "magIdx": 4,
+          "codiceMp": "MP-054",
+          "nome": "Pane a cubetti Bianco",
+          "qtaBase": 2000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 10,
+          "codiceMp": "MP-055",
+          "nome": "Monte Veronese d'allevo",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 8,
+          "codiceMp": "MP-056",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 7,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 480,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 1,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 9,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 2,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "magIdx": 6,
+          "codiceMp": "MP-057",
+          "nome": "sale Fino",
+          "qtaBase": 25,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 5,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 2,
+          "codiceMp": "MP-063",
+          "nome": "Noce Moscata",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 2,
+          "nome": "Porri stufati",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "21/6/2026"
+    },
+    {
+      "codice": "SL-003",
+      "nome": "Porri stufati",
+      "categoria": "Altro",
+      "resaQta": 500,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Stufare i porri senza bruciarli per 15 min circa, devono risultare morbidi",
+      "componenti": [
+        {
+          "magIdx": 10,
+          "codiceMp": "MP-061",
+          "nome": "Porri",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 2,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "21/6/2026"
+    }
+  ],
+  "piatti": [
+    {
+      "codice": "PF-001",
+      "nome": "Canederli di Monte Veronese al burro fuso",
+      "categoria": "Primi piatti",
+      "sottocategoria": "Vegetariano",
+      "pax": 4,
+      "prezzoVendita": 12,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Canederli ai Formaggi Base",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 1,
+          "codiceSl": "SL-005"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Burro Nocciola",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 0,
+          "codiceSl": "SL-004"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 8,
+          "codiceMp": "MP-056"
+        }
+      ],
+      "dataCreazione": "21/6/2026"
+    }
+  ],
   "ricetteSalvate": [],
   "fornitori": [
     {

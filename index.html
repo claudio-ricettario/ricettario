@@ -1065,9 +1065,9 @@ function loadSaved(){
         if(sm.resa===undefined) sm.resa=100;
         if(!sm.categoria) sm.categoria='Generale';
       });
-      /* version guard: if saved has fewer items than default, reset */
-      if(saved.length < magazzino.length){
-        console.log('Magazzino reset: saved had '+saved.length+' items, default has '+magazzino.length);
+      /* carica sempre i dati salvati, a meno che non siano vuoti (probabile errore) */
+      if(saved.length === 0){
+        console.log('Magazzino: salvato vuoto, mantengo i dati attuali per sicurezza.');
       } else {
         magazzino=saved;
       }
@@ -2458,6 +2458,11 @@ function costoSemi(si){
   var s=semilavorati[si];if(!s)return 0;
   var totCosto=s.componenti.reduce(function(tot,c){
     if(c.conv===0||c.unit==='q.b.') return tot;
+    if(c.tipo==='sl'){
+      var costoUnitSl=costoSemi(c.semiIdx);
+      var qtaKg=c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1);
+      return tot+costoUnitSl*qtaKg;
+    }
     var costo=c.qtaBase*c.conv*gp(c.magIdx);
     return tot+costo;
   },0);
@@ -2511,7 +2516,22 @@ function openSemiModal(idx){
   document.getElementById('semi-modal').classList.add('open');
 }
 
-function closeSemiModal(){ document.getElementById('semi-modal').classList.remove('open'); }
+function closeSemiModal(force){
+  if(!force && smComps.length>0){
+    if(!confirm('Hai modifiche non salvate. Vuoi davvero chiudere senza salvare?'))return;
+  }
+  document.getElementById('semi-modal').classList.remove('open');
+}
+
+function costoCompSm(c){
+  if(c.conv===0||c.unit==='q.b.') return 0;
+  if(c.tipo==='sl'){
+    var costoUnitSl=costoSemi(c.semiIdx);
+    var qtaKg=c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1);
+    return costoUnitSl*qtaKg;
+  }
+  return c.qtaBase*c.conv*gp(c.magIdx);
+}
 
 function smRenderComps(){
   var el=document.getElementById('sm-comp-list');
@@ -2522,30 +2542,64 @@ function smRenderComps(){
     +'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;border-bottom:1px solid #f0ede6;">Costo</th>'
     +'<th style="width:24px;border-bottom:1px solid #f0ede6;"></th></tr></thead><tbody>'
     +smComps.map(function(c,i){
-      var costo=(c.conv===0||c.unit==='q.b.')?0:c.qtaBase*c.conv*gp(c.magIdx);
-      return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;font-weight:500;">'+c.nome+'</td>'
+      var costo=costoCompSm(c);
+      var iconaTipo=c.tipo==='sl'?'&#9881; ':'';
+      return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;font-weight:500;">'+iconaTipo+c.nome+'</td>'
         +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
         +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td>'
         +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:center;">'
         +'<span style="cursor:pointer;color:#d0cec8;font-size:15px;" onclick="smRemoveComp('+i+')">&#10005;</span></td></tr>';
     }).join('')+'</tbody>'
     +'<tfoot><tr><td colspan="2" style="padding:8px 8px;font-weight:600;border-top:1px solid #e0ded8;">Costo totale ingredienti</td>'
-    +'<td style="padding:8px 8px;text-align:right;font-weight:600;border-top:1px solid #e0ded8;">'+eur(smComps.reduce(function(t,c){return t+(c.conv===0||c.unit==='q.b.'?0:c.qtaBase*c.conv*gp(c.magIdx));},0))+'</td>'
+    +'<td style="padding:8px 8px;text-align:right;font-weight:600;border-top:1px solid #e0ded8;">'+eur(smComps.reduce(function(t,c){return t+costoCompSm(c);},0))+'</td>'
     +'<td style="border-top:1px solid #e0ded8;"></td></tr></tfoot></table>';
 }
 
 function smAddIng(){
   var mi=parseInt(document.getElementById('sm-sel-ing').value);
+  var tipo=document.getElementById('sm-sel-tipo').value||'mp';
   var qta=parseFloat(document.getElementById('sm-qta').value);
   var unit=document.getElementById('sm-unit').value;
   if(isNaN(mi)||document.getElementById('sm-sel-ing').value===''){alert('Seleziona un ingrediente.');return;}
   if(isNaN(qta)||qta<0){alert('Inserisci una quantita valida.');return;}
-  var m=magazzino[mi];
   var conv=unit==='g'||unit==='ml'?0.001:(unit==='q.b.'?0:1);
-  smComps.push({magIdx:mi,codiceMp:m.codice||null,nome:m.nome,qtaBase:qta,unit:unit,conv:conv});
+  if(tipo==='sl'){
+    var editIdx=parseInt(document.getElementById('semi-modal-idx').value);
+    if(rilevaCicloSemilavorato(mi,editIdx)){
+      alert('Impossibile aggiungere: creerebbe un riferimento circolare tra semilavorati.');
+      return;
+    }
+    var sRef=semilavorati[mi];
+    smComps.push({tipo:'sl',semiIdx:mi,nome:sRef.nome,qtaBase:qta,unit:unit,conv:conv});
+  } else {
+    var m=magazzino[mi];
+    smComps.push({tipo:'mp',magIdx:mi,codiceMp:m.codice||null,nome:m.nome,qtaBase:qta,unit:unit,conv:conv});
+  }
   document.getElementById('sm-qta').value='';
   document.getElementById('sm-sel-ing').value='';
+  document.getElementById('sm-sel-tipo').value='';
   smRenderComps();
+}
+
+/* verifica se aggiungere semiIdxDaAggiungere come componente di editIdx creerebbe un ciclo */
+function rilevaCicloSemilavorato(semiIdxDaAggiungere, editIdx){
+  if(semiIdxDaAggiungere===editIdx) return true;
+  function contieneRiferimento(si, target, visitati){
+    if(visitati.indexOf(si)>=0) return false; /* evita loop infinito nella verifica stessa */
+    visitati.push(si);
+    var s=semilavorati[si];
+    if(!s||!s.componenti) return false;
+    for(var i=0;i<s.componenti.length;i++){
+      var c=s.componenti[i];
+      if(c.tipo==='sl'){
+        if(c.semiIdx===target) return true;
+        if(contieneRiferimento(c.semiIdx,target,visitati)) return true;
+      }
+    }
+    return false;
+  }
+  if(editIdx<0) return false;
+  return contieneRiferimento(semiIdxDaAggiungere, editIdx, []);
 }
 
 function smRemoveComp(i){ smComps.splice(i,1); smRenderComps(); }
@@ -2574,7 +2628,7 @@ function salvaSemilavorato(){
   if(idx===-1) semilavorati.push(s); else semilavorati[idx]=s;
   semilavorati.sort(function(a,b){return a.nome.localeCompare(b.nome,'it');});
   saveSemilavorati();
-  closeSemiModal();
+  closeSemiModal(true);
   renderSemilavorati();
   /* update piatto modal selector */
   pm2PopulateSelector();
@@ -2585,7 +2639,7 @@ function eliminaSemilavorato(){
   if(!confirm('Eliminare il semilavorato "'+semilavorati[idx].nome+'"?\nSe usato in piatti finiti il costo non sara piu calcolato.'))return;
   semilavorati.splice(idx,1);
   saveSemilavorati();
-  closeSemiModal();
+  closeSemiModal(true);
   renderSemilavorati();
 }
 
@@ -2634,10 +2688,16 @@ function renderSemilavorati(){
       +'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;">Dose</th>'
       +(isAdmin?'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;">Costo</th>':'')+'</tr></thead><tbody>'
       +s.componenti.map(function(c){
-        var costo=(c.conv===0||c.unit==='q.b.')?0:c.qtaBase*c.conv*gp(c.magIdx);
-        var mRef=magazzino[c.magIdx];
-        var codMp=mRef&&mRef.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+mRef.codice+'</span>':'';
-        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+codMp+c.nome+'</td>'
+        var costo=costoCompSm(c);
+        var codRef='';
+        if(c.tipo==='sl'){
+          var sRef=semilavorati[c.semiIdx];
+          codRef=sRef&&sRef.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+sRef.codice+'</span>':'';
+        } else {
+          var mRef=magazzino[c.magIdx];
+          codRef=mRef&&mRef.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+mRef.codice+'</span>':'';
+        }
+        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+codRef+c.nome+'</td>'
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
           +(isAdmin?'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td>':'')+'</tr>';
       }).join('')+'</tbody></table>'
@@ -3744,7 +3804,13 @@ function smSearchIng(q){
   var matches=[];
   magazzino.forEach(function(m,i){
     if(m.nome.toLowerCase().indexOf(ql)>=0)
-      matches.push({label:m.nome,sub:(m.categoria||'')+' - '+eur(gp(i))+'/'+m.um+(m.scarto>0?' (-'+m.scarto+'%)':''),value:i});
+      matches.push({label:m.nome,sub:(m.categoria||'')+' - '+eur(gp(i))+'/'+m.um+(m.scarto>0?' (-'+m.scarto+'%)':''),value:i,tipo:'mp'});
+  });
+  var editIdx=parseInt(document.getElementById('semi-modal-idx').value);
+  semilavorati.forEach(function(s,i){
+    if(i===editIdx) return; /* evita auto-riferimento diretto */
+    if(s.nome.toLowerCase().indexOf(ql)>=0)
+      matches.push({label:s.nome,sub:'Semilavorato - '+eur(costoSemi(i))+'/'+(s.resaUm==='g'||s.resaUm==='ml'?'kg':s.resaUm),value:i,tipo:'sl'});
   });
   if(!matches.length){
     res.innerHTML='<div style="padding:10px 14px;font-size:13px;color:#aaa;">Nessun risultato</div>';
@@ -3767,6 +3833,7 @@ function smSearchIng(q){
       var idx=parseInt(this.dataset.idx);
       var it=matches[idx];
       document.getElementById('sm-sel-ing').value=it.value;
+      document.getElementById('sm-sel-tipo').value=it.tipo;
       document.getElementById('sm-search-ing').value=it.label;
       res.style.display='none';
     });
@@ -3812,12 +3879,27 @@ function printPiatto(idx){
         var codSl=s.codice?'<span style="color:#aaa;font-weight:400;margin-right:5px;">'+s.codice+'</span>':'';
         righe+='<tr><td colspan="2" style="padding:8px 10px 2px;font-weight:700;font-size:12px;color:#555;border-bottom:1px solid #f0ede6;">'+codSl+s.nome+' ('+fmtQ(qtaScalata,c.unit)+')</td></tr>';
         s.componenti.forEach(function(sc){
-          var m=magazzino[resolveMagIdx(sc)];
-          var nomeMp=m?m.nome:(sc.nome||'?');
-          var codMpSc=m&&m.codice?'<span style="color:#bbb;font-weight:400;margin-right:5px;">'+m.codice+'</span>':'';
+          var nomeMp,codMpSc;
+          if(sc.tipo==='sl'){
+            var scRif=semilavorati[sc.semiIdx];
+            nomeMp=scRif?scRif.nome:(sc.nome||'?');
+            codMpSc=scRif&&scRif.codice?'<span style="color:#bbb;font-weight:400;margin-right:5px;">'+scRif.codice+'</span>':'';
+          } else {
+            var m=magazzino[resolveMagIdx(sc)];
+            nomeMp=m?m.nome:(sc.nome||'?');
+            codMpSc=m&&m.codice?'<span style="color:#bbb;font-weight:400;margin-right:5px;">'+m.codice+'</span>':'';
+          }
           var qSc=sc.qtaBase*fatt;
           righe+='<tr><td style="padding:4px 10px 4px 26px;border-bottom:1px solid #f5f3ef;color:#666;font-size:13px;">&#8627; '+codMpSc+nomeMp+'</td>'
             +'<td style="padding:4px 10px;border-bottom:1px solid #f5f3ef;text-align:right;color:#666;font-size:13px;">'+fmtQ(qSc,sc.unit)+'</td></tr>';
+          if(sc.tipo==='sl'){
+            var scRifProc=semilavorati[sc.semiIdx];
+            if(scRifProc&&scRifProc.procedimento){
+              righe+='<tr><td colspan="2" style="padding:6px 10px 10px 40px;border-bottom:1px solid #f5f3ef;color:#777;font-size:11px;line-height:1.6;white-space:pre-wrap;background:#fbfafa;">'
+                +'<strong style="display:block;margin-bottom:3px;color:#999;font-size:10px;text-transform:uppercase;letter-spacing:.04em;">Procedimento '+scRifProc.nome+'</strong>'
+                +scRifProc.procedimento+'</td></tr>';
+            }
+          }
         });
         if(s.procedimento){
           righe+='<tr><td colspan="2" style="padding:8px 10px 14px 26px;border-bottom:1px solid #f0ede6;color:#555;font-size:12px;line-height:1.6;white-space:pre-wrap;background:#fafaf8;">'
@@ -3882,11 +3964,18 @@ function printSemilavorato(idx){
   if(idx===undefined||idx<0||!semilavorati[idx]){alert('Salva prima il semilavorato per poterlo stampare.');return;}
   var s=semilavorati[idx];
   var righe=(s.componenti||[]).map(function(c){
-    var m=magazzino[resolveMagIdx(c)];
-    var nome=m?m.nome:(c.nome||'?');
-    var codMp=m&&m.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+m.codice+'</span>':'';
+    var nome,codRif;
+    if(c.tipo==='sl'){
+      var sRif=semilavorati[c.semiIdx];
+      nome=sRif?sRif.nome:(c.nome||'?');
+      codRif=sRif&&sRif.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+sRif.codice+'</span>':'';
+    } else {
+      var m=magazzino[resolveMagIdx(c)];
+      nome=m?m.nome:(c.nome||'?');
+      codRif=m&&m.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+m.codice+'</span>':'';
+    }
     var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':(c.qtaBase+' '+(c.unit||'g'));
-    return '<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+codMp+nome+'</td>'
+    return '<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+codRif+nome+'</td>'
       +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+qFmt+'</td></tr>';
   }).join('');
   var procHtml='';
@@ -4739,7 +4828,7 @@ function npSalva(){
   </div>
 </div>
 <!-- MODAL SEMILAVORATO -->
-<div class="modal-overlay" id="semi-modal" onclick="if(event.target===this)closeSemiModal()">
+<div class="modal-overlay" id="semi-modal" onclick="if(event.target===this)closeSemiModal(false)">
   <div class="modal" style="max-width:620px;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
       <h3 id="semi-modal-title" style="margin:0;">Nuovo semilavorato</h3>
@@ -4783,6 +4872,7 @@ function npSalva(){
               <div id="sm-search-results" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #d0cec8;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:200;max-height:200px;overflow-y:auto;margin-top:2px;"></div>
             </div>
             <input type="hidden" id="sm-sel-ing" value=""/>
+            <input type="hidden" id="sm-sel-tipo" value=""/>
         </div>
         <div class="fg"><label style="font-size:11px;color:#888;display:block;margin-bottom:3px;">Quantit&agrave;</label>
           <input type="number" id="sm-qta" placeholder="es. 1000" min="0" step="0.1" style="width:100%;font-size:13px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;text-align:left;"/>
