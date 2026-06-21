@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "exportDate": "21/6/2026",
+  "magazzino": [],
+  "semilavorati": [],
+  "piatti": [],
+  "ricetteSalvate": [],
+  "fornitori": [
+    {
+      "nome": "Supermercato / Generico",
+      "tipo": "Placeholder",
+      "referente": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "giorniOrdine": [],
+      "giorniConsegna": [],
+      "frequenza": "Su richiesta",
+      "leadtime": "",
+      "minimo": "",
+      "pagamento": "",
+      "note": "Fornitore provvisorio. Sostituire con il fornitore ufficiale appena disponibile."
+    },
+    {
+      "nome": "Riso Gallo / Ingrosso cereali",
+      "tipo": "Ingrosso alimentare",
+      "referente": "Mario Rossi",
+      "tel": "+39 045 000 0001",
+      "email": "ordini@risogallo.it",
+      "web": "www.risogallo.it",
+      "giorniOrdine": [
+        "Lun",
+        "Mer"
+      ],
+      "giorniConsegna": [
+        "Mar",
+        "Gio"
+      ],
+      "frequenza": "2x settimana",
+      "leadtime": "1",
+      "minimo": "80 euro",
+      "pagamento": "Bonifico 30gg",
+      "note": "Sconto 5% su ordini superiori a 200kg"
+    },
+    {
+      "nome": "Macelleria Bianchi",
+      "tipo": "Macelleria / Carni",
+      "referente": "Gianni Bianchi",
+      "tel": "+39 045 000 0002",
+      "email": "macelleria@bianchi.it",
+      "web": "",
+      "giorniOrdine": [
+        "Lun",
+        "Gio"
+      ],
+      "giorniConsegna": [
+        "Mar",
+        "Ven"
+      ],
+      "frequenza": "2x settimana",
+      "leadtime": "1",
+      "minimo": "30 euro",
+      "pagamento": "Contanti alla consegna",
+      "note": "Prodotti freschi - ordinare entro le 10:00"
+    },
+    {
+      "nome": "Latteria Valle Verde",
+      "tipo": "Latteria / Caseificio",
+      "referente": "Anna Verdi",
+      "tel": "+39 045 000 0003",
+      "email": "ordini@valleverde.it",
+      "web": "www.valleverde.it",
+      "giorniOrdine": [
+        "Lun",
+        "Mer",
+        "Ven"
+      ],
+      "giorniConsegna": [
+        "Mar",
+        "Gio",
+        "Sab"
+      ],
+      "frequenza": "3x settimana",
+      "leadtime": "1",
+      "minimo": "50 euro",
+      "pagamento": "RiBa 30gg",
+      "note": "Grana DOP"
+    },
+    {
+      "nome": "Ortofrutticolo Mercato",
+      "tipo": "Ortofrutticolo",
+      "referente": "Luca Neri",
+      "tel": "+39 045 000 0004",
+      "email": "",
+      "web": "",
+      "giorniOrdine": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Gio",
+        "Ven",
+        "Sab"
+      ],
+      "giorniConsegna": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Gio",
+        "Ven",
+        "Sab"
+      ],
+      "frequenza": "Giornaliera",
+      "leadtime": "0",
+      "minimo": "20 euro",
+      "pagamento": "Contanti alla consegna",
+      "note": "Consegna mattina presto"
+    },
+    {
+      "nome": "Cantina San Giorgio",
+      "tipo": "Vini e distillati",
+      "referente": "Paolo Greco",
+      "tel": "+39 045 000 0005",
+      "email": "cantina@sangiorgio.it",
+      "web": "www.cantinasangiorgio.it",
+      "giorniOrdine": [
+        "Lun",
+        "Ven"
+      ],
+      "giorniConsegna": [
+        "Mer"
+      ],
+      "frequenza": "Settimanale",
+      "leadtime": "2",
+      "minimo": "100 euro o 6 bottiglie",
+      "pagamento": "Bonifico 60gg",
+      "note": ""
+    }
+  ]
+}
