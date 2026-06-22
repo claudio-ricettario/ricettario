@@ -1,7 +1,42 @@
 {
   "version": 1,
-  "exportDate": "21/6/2026",
+  "exportDate": "22/6/2026",
   "magazzino": [
+    {
+      "codice": "MP-070",
+      "nome": "Macinato Anatra",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 135,
+        "grassi": 5.95,
+        "grassiSaturi": 2.32,
+        "carboidrati": 0.94,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 18.28,
+        "sale": 0.074
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10.9,
+          "storico": []
+        }
+      ]
+    },
     {
       "codice": "MP-065",
       "nome": "Burro della Lessinia",
@@ -293,6 +328,43 @@
       ]
     },
     {
+      "codice": "MP-071",
+      "nome": "Vino Rosso Cucina",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 85,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 2.61,
+        "zuccheri": 0.62,
+        "fibre": 0,
+        "proteine": 0.07,
+        "sale": 0.004
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-056",
       "nome": "Grana Padano Dop",
       "categoria": "Latticini e formaggi",
@@ -404,13 +476,118 @@
       ]
     },
     {
+      "codice": "MP-069",
+      "nome": "Aglio",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 10,
+      "resa": 90,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 149,
+        "grassi": 0.5,
+        "grassiSaturi": 0.089,
+        "carboidrati": 33.6,
+        "zuccheri": 1,
+        "fibre": 2.1,
+        "proteine": 6.36,
+        "sale": 0.017
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-066",
+      "nome": "Carote",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 20,
+      "resa": 80,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 41,
+        "grassi": 0.24,
+        "grassiSaturi": 0.037,
+        "carboidrati": 9.58,
+        "zuccheri": 4.74,
+        "fibre": 2.8,
+        "proteine": 0.93,
+        "sale": 0.069
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-067",
+      "nome": "Cipolle",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 10,
+      "resa": 90,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 40,
+        "grassi": 0.1,
+        "grassiSaturi": 0.042,
+        "carboidrati": 9.34,
+        "zuccheri": 4.24,
+        "fibre": 1.7,
+        "proteine": 1.1,
+        "sale": 0.004
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.5,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-061",
       "nome": "Porri",
       "categoria": "Verdura",
       "um": "kg",
       "iva": 4,
-      "scarto": 15,
-      "resa": 85,
+      "scarto": 20,
+      "resa": 80,
       "activeIdx": 0,
       "allergeni": [],
       "allergeniOk": true,
@@ -434,6 +611,43 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 3,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-068",
+      "nome": "Sedano",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 20,
+      "resa": 80,
+      "activeIdx": 0,
+      "allergeni": [
+        "Sedano"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 16,
+        "grassi": 0.17,
+        "grassiSaturi": 0.042,
+        "carboidrati": 2.97,
+        "zuccheri": 1.83,
+        "fibre": 1.6,
+        "proteine": 0.69,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1,
           "storico": []
         }
       ]

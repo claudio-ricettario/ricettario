@@ -1314,6 +1314,27 @@ function removeSupplier(mi,si){
 }
 
 /* ---- MAGAZZINO RENDER ---- */
+function aggiungiLotto(mi){
+  var m=magazzino[mi];if(!m)return;
+  var numero=document.getElementById('new-lotto-num-'+mi).value.trim();
+  var qta=parseFloat(document.getElementById('new-lotto-qta-'+mi).value);
+  var scadenza=document.getElementById('new-lotto-scad-'+mi).value;
+  if(!numero){alert('Inserisci il numero del lotto.');return;}
+  if(isNaN(qta)||qta<=0){alert('Inserisci una quantita valida.');return;}
+  if(!m.lotti) m.lotti=[];
+  m.lotti.push({numero:numero,qta:qta,scadenza:scadenza||null});
+  saveMagazzino();
+  renderMagazzino();
+}
+
+function rimuoviLotto(mi,li){
+  var m=magazzino[mi];if(!m||!m.lotti)return;
+  if(!confirm('Rimuovere il lotto "'+m.lotti[li].numero+'"?'))return;
+  m.lotti.splice(li,1);
+  saveMagazzino();
+  renderMagazzino();
+}
+
 function renderGiacenzaAlerts(){var c=document.getElementById("giacenza-alerts-container");if(c)c.innerHTML="";}
 function renderMagazzino(){
   var cont=document.getElementById('mag-categorie-container');
