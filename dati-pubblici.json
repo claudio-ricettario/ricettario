@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "22/6/2026",
+  "exportDate": "23/6/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -222,10 +222,10 @@
     },
     {
       "codice": "MP-058",
-      "nome": "Pepe Nero Macinato",
+      "nome": "Pepe Nero Macinato Wiber",
       "categoria": "Generale",
       "um": "kg",
-      "iva": 4,
+      "iva": 10,
       "scarto": 0,
       "resa": 100,
       "activeIdx": 0,
@@ -234,14 +234,14 @@
       "tracce": [],
       "tracceOk": true,
       "nutrizionali": {
-        "energia": 300,
-        "grassi": 5,
-        "grassiSaturi": 1,
-        "carboidrati": 60,
-        "zuccheri": 0.6,
-        "fibre": 20,
+        "energia": 308,
+        "grassi": 3,
+        "grassiSaturi": 0.86,
+        "carboidrati": 52,
+        "zuccheri": 49.4,
+        "fibre": 13.1,
         "proteine": 11,
-        "sale": 0.05
+        "sale": 0.1
       },
       "nutrizionaliOk": true,
       "giacenza": 0,
@@ -250,7 +250,42 @@
       "suppliers": [
         {
           "nome": "Supermercato / Generico",
-          "prezzoKg": 5,
+          "prezzoKg": 42.7,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-072",
+      "nome": "Rosmarino liofilizzato Wiber",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 377,
+        "grassi": 15.2,
+        "grassiSaturi": 2.8,
+        "carboidrati": 46.4,
+        "zuccheri": 45.9,
+        "fibre": 17.7,
+        "proteine": 4.88,
+        "sale": 0.13
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 275,
           "storico": []
         }
       ]
@@ -286,6 +321,76 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 1,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-073",
+      "nome": "Salvia liofilizzata Wiber",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 364,
+        "grassi": 12.7,
+        "grassiSaturi": 7.04,
+        "carboidrati": 42.7,
+        "zuccheri": 42.3,
+        "fibre": 18.1,
+        "proteine": 10.6,
+        "sale": 0.03
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 367,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-074",
+      "nome": "Timo liofilizzato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 321,
+        "grassi": 7.4,
+        "grassiSaturi": 3.7,
+        "carboidrati": 45.3,
+        "zuccheri": 44.8,
+        "fibre": 18.6,
+        "proteine": 9.1,
+        "sale": 0.15
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 376,
           "storico": []
         }
       ]
