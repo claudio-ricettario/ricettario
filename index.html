@@ -2480,11 +2480,11 @@ function costoSemi(si){
   var totCosto=s.componenti.reduce(function(tot,c){
     if(c.conv===0||c.unit==='q.b.') return tot;
     if(c.tipo==='sl'){
-      var costoUnitSl=costoSemi(c.semiIdx);
+      var costoUnitSl=costoSemi(resolveSemiIdx(c));
       var qtaKg=c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1);
       return tot+costoUnitSl*qtaKg;
     }
-    var costo=c.qtaBase*c.conv*gp(c.magIdx);
+    var costo=c.qtaBase*c.conv*gp(resolveMagIdx(c));
     return tot+costo;
   },0);
   /* costo per unità di resa */
@@ -2547,11 +2547,11 @@ function closeSemiModal(force){
 function costoCompSm(c){
   if(c.conv===0||c.unit==='q.b.') return 0;
   if(c.tipo==='sl'){
-    var costoUnitSl=costoSemi(c.semiIdx);
+    var costoUnitSl=costoSemi(resolveSemiIdx(c));
     var qtaKg=c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1);
     return costoUnitSl*qtaKg;
   }
-  return c.qtaBase*c.conv*gp(c.magIdx);
+  return c.qtaBase*c.conv*gp(resolveMagIdx(c));
 }
 
 function smRenderComps(){
@@ -2677,10 +2677,10 @@ function renderSemilavorati(){
   }
   el.innerHTML=list.map(function(s,li){
     var realIdx=semilavorati.indexOf(s);
-    var totCosto=s.componenti.reduce(function(t,c){return t+(c.conv===0||c.unit==='q.b.'?0:c.qtaBase*c.conv*gp(c.magIdx));},0);
+    var totCosto=s.componenti.reduce(function(t,c){return t+costoCompSm(c);},0);
     var resaLabel=s.resaQta+' '+s.resaUm;
     var costoUnitario=costoSemi(realIdx);
-    var costoLabel=s.resaUm==='g'||s.resaUm==='ml'?eur(costoUnitario)+'/kg':eur(costoUnitario)+'/'+(s.resaUm==='pz'?'pz':'porz.');
+    var costoLabel=(s.resaUm==='g'||s.resaUm==='ml'||s.resaUm==='kg'||s.resaUm==='lt')?eur(costoUnitario)+'/kg':eur(costoUnitario)+'/'+(s.resaUm==='pz'?'pz':'porz.');
     return '<div class="semi-card" onclick="toggleSemiDetail('+realIdx+',this)">'
       +'<div class="semi-card-header">'
       +'<div style="flex:1;">'
@@ -3895,7 +3895,7 @@ function printPiatto(idx){
       if(s&&s.componenti&&s.componenti.length){
         /* quantita di semilavorato necessaria (in grammi/ml equivalenti) */
         var qNecessaria=qtaScalata*(c.unit==='g'||c.unit==='ml'?1:(c.conv?c.conv*1000:1));
-        var resaBase=s.resaQta||1;
+        var resaBase=s.resaQta?(s.resaUm==='kg'||s.resaUm==='lt'?s.resaQta*1000:s.resaQta):1;
         var fatt=qNecessaria/resaBase;
         var codSl=s.codice?'<span style="color:#aaa;font-weight:400;margin-right:5px;">'+s.codice+'</span>':'';
         righe+='<tr><td colspan="2" style="padding:8px 10px 2px;font-weight:700;font-size:12px;color:#555;border-bottom:1px solid #f0ede6;">'+codSl+s.nome+' ('+fmtQ(qtaScalata,c.unit)+')</td></tr>';
@@ -4137,9 +4137,18 @@ var ALLERGENI_ICONE={
   'Molluschi':'\ud83d\udc1a'
 };
 
-function calcolaAllergeniSemilavorato(s){
+function calcolaAllergeniSemilavorato(s,visitati){
+  visitati=visitati||[];
   var set={};
   (s.componenti||[]).forEach(function(c){
+    if(c.tipo==='sl'){
+      var siRes=resolveSemiIdx(c);
+      if(visitati.indexOf(siRes)>=0)return;
+      var sRif=semilavorati[siRes];
+      if(!sRif)return;
+      calcolaAllergeniSemilavorato(sRif,visitati.concat([siRes])).forEach(function(a){set[a]=true;});
+      return;
+    }
     var m=magazzino[resolveMagIdx(c)];
     if(m&&m.allergeni) m.allergeni.forEach(function(a){set[a]=true;});
     if(m&&m.tracce) m.tracce.forEach(function(a){set[a]=true;});
@@ -4147,21 +4156,33 @@ function calcolaAllergeniSemilavorato(s){
   return Object.keys(set);
 }
 
-function calcolaNutrizionaliSemilavorato(s){
+function calcolaNutrizionaliSemilavorato(s,visitati){
+  visitati=visitati||[];
   var tot={energia:0,grassi:0,grassiSaturi:0,carboidrati:0,zuccheri:0,fibre:0,proteine:0,sale:0};
   var pesoTotale=0;
   (s.componenti||[]).forEach(function(c){
-    var m=magazzino[resolveMagIdx(c)];
-    if(!m||!m.nutrizionali)return;
     if(c.conv===0||c.unit==='q.b.')return;
     var pesoG=c.qtaBase*(c.unit==='g'||c.unit==='ml'?1:(c.conv?c.conv*1000:1));
+    if(c.tipo==='sl'){
+      var siRes=resolveSemiIdx(c);
+      if(visitati.indexOf(siRes)>=0)return; /* evita loop infinito */
+      var sRif=semilavorati[siRes];
+      if(!sRif)return;
+      var nutrSl=calcolaNutrizionaliSemilavorato(sRif,visitati.concat([siRes]));
+      pesoTotale+=pesoG;
+      var fattSl=pesoG/100;
+      Object.keys(tot).forEach(function(k){tot[k]+=(nutrSl[k]||0)*fattSl;});
+      return;
+    }
+    var m=magazzino[resolveMagIdx(c)];
+    if(!m||!m.nutrizionali)return;
     pesoTotale+=pesoG;
     var fatt=pesoG/100;
     Object.keys(tot).forEach(function(k){tot[k]+=(m.nutrizionali[k]||0)*fatt;});
   });
-  /* valori per 100g del semilavorato prodotto (resa) */
-  var resa=s.resaQta||pesoTotale||1;
-  var fattResa=100/resa;
+  /* valori per 100g del semilavorato prodotto (resa), convertendo la resa in grammi se espressa in kg/lt */
+  var resaG=s.resaQta?(s.resaUm==='kg'||s.resaUm==='lt'?s.resaQta*1000:s.resaQta):(pesoTotale||1);
+  var fattResa=100/resaG;
   var per100={};
   Object.keys(tot).forEach(function(k){per100[k]=Math.round(tot[k]*fattResa*10)/10;});
   return per100;

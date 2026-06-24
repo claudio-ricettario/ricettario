@@ -1530,6 +1530,126 @@
         }
       ],
       "dataCreazione": "21/6/2026"
+    },
+    {
+      "codice": "SL-006",
+      "nome": "Ragù di carne",
+      "categoria": "Salse e sughi",
+      "resaQta": 28.4,
+      "resaUm": "kg",
+      "tempo": "2400",
+      "procedimento": "In una padella rosola leggermente le verdure con 100 di olio, in una pentola ampia e larga rosola la carne con 400 di olio, unisci le verdure , sfuma con il vino rosso finchè non evapora del tutto. Aggiungi la Polpa, il concentrato, e tutti gli altri ingredienti, copri e cuoci a fuoco basso per 3/4 ore. Abbatti e conserva in frigo a +4, o surgela.",
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 2,
+          "codiceMp": "MP-089",
+          "nome": "Macinato di Manzo",
+          "qtaBase": 5,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 1,
+          "codiceMp": "MP-090",
+          "nome": "Macinato di Maiale",
+          "qtaBase": 5,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 27,
+          "codiceMp": "MP-088",
+          "nome": "Soffritto Misto Gelo",
+          "qtaBase": 2,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 4,
+          "codiceMp": "MP-081",
+          "nome": "Aglio Wiberg – in polvere",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-092",
+          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "qtaBase": 880,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 22,
+          "codiceMp": "MP-093",
+          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "qtaBase": 15,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 24,
+          "codiceMp": "MP-057",
+          "nome": "sale Fino",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 20,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 23,
+          "codiceMp": "MP-072",
+          "nome": "Rosmarino liofilizzato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 25,
+          "codiceMp": "MP-073",
+          "nome": "Salvia liofilizzata Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 30,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso Cucina",
+          "qtaBase": 2,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 15,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 0.5,
+          "unit": "lt",
+          "conv": 1
+        }
+      ],
+      "dataCreazione": "24/6/2026"
     }
   ],
   "piatti": [
