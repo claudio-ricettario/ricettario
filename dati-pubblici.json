@@ -38,6 +38,111 @@
       ]
     },
     {
+      "codice": "MP-090",
+      "nome": "Macinato di Maiale",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 361,
+        "grassi": 30.86,
+        "grassiSaturi": 9.242,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 20.89,
+        "sale": 0.091
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-089",
+      "nome": "Macinato di Manzo",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 332,
+        "grassi": 30,
+        "grassiSaturi": 11.29,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 14.35,
+        "sale": 0.067
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 14,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-091",
+      "nome": "Macinato di Vitello",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 144,
+        "grassi": 6.77,
+        "grassiSaturi": 2.79,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 19.35,
+        "sale": 0.082
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 16,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-081",
       "nome": "Aglio Wiberg – in polvere",
       "categoria": "Generale",
@@ -210,6 +315,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 12,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-092",
+      "nome": "Concentrato pomodoro Mutti da 440 gr",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 96,
+        "grassi": 0.2,
+        "grassiSaturi": 0.1,
+        "carboidrati": 17,
+        "zuccheri": 12.3,
+        "fibre": 0,
+        "proteine": 4.2,
+        "sale": 0.85
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
           "storico": []
         }
       ]
@@ -641,6 +781,41 @@
       ]
     },
     {
+      "codice": "MP-093",
+      "nome": "Polpa Pomodoro Mutti da kg 4,05",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 26,
+        "grassi": 0.2,
+        "grassiSaturi": 0.1,
+        "carboidrati": 3.9,
+        "zuccheri": 2.8,
+        "fibre": 0,
+        "proteine": 1.2,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.5,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-072",
       "nome": "Rosmarino liofilizzato Wiberg",
       "categoria": "Generale",
@@ -776,6 +951,43 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 25.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-088",
+      "nome": "Soffritto Misto Gelo",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Sedano"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 21,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 3.5,
+        "zuccheri": 3.5,
+        "fibre": 2,
+        "proteine": 0.7,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 4,
           "storico": []
         }
       ]
