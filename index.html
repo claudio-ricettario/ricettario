@@ -325,7 +325,7 @@ textarea{resize:vertical;min-height:60px;}
         <h1 class="home-title">Il mio Ricettario</h1>
         <p class="home-subtitle">Seleziona una categoria per vedere le ricette</p>
       </div>
-      <button class="btn-primary no-print" onclick="showTab('nuovo-piatto')" style="margin-left:auto;white-space:nowrap;">&#43; Nuovo piatto</button>
+      <button id="btn-nuovo-piatto-home" class="btn-primary no-print" onclick="showTab('nuovo-piatto')" style="margin-left:auto;white-space:nowrap;">&#43; Nuovo piatto</button>
     </div>
     <div id="home-cats-container"></div>
   </div>
@@ -525,7 +525,7 @@ textarea{resize:vertical;min-height:60px;}
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
       <div><h2 style="margin-bottom:2px;">Semilavorati</h2>
       <p class="muted" style="margin-bottom:0;">Preparazioni di base usate nei piatti finiti</p></div>
-      <button class="btn-primary" onclick="openSemiModal(-1)">+ Nuovo semilavorato</button>
+      <button id="btn-nuovo-semilavorato" class="btn-primary" onclick="openSemiModal(-1)">+ Nuovo semilavorato</button>
     </div>
 
     <div id="semi-list"></div>
@@ -1865,6 +1865,10 @@ function applyAdminUI(){
   if(pubBtn){ pubBtn.style.display = isAdmin ? 'flex' : 'none'; }
   var toolbar = document.getElementById('admin-toolbar');
   if(toolbar){ toolbar.style.display = isAdmin ? 'flex' : 'none'; }
+  var btnNP = document.getElementById('btn-nuovo-piatto-home');
+  if(btnNP){ btnNP.style.display = isAdmin ? 'flex' : 'none'; }
+  var btnNS = document.getElementById('btn-nuovo-semilavorato');
+  if(btnNS){ btnNS.style.display = isAdmin ? 'flex' : 'none'; }
   var currentActive = document.querySelector('.section.active');
   if(currentActive && !isAdmin){
     var id = currentActive.id.replace('tab-','');
@@ -1920,15 +1924,18 @@ function pubblicaDatiPubblici(){
   };
   var json=JSON.stringify(data,null,2);
 
-  function avvisaGitHub(){
-    alert('File salvato!\n\nProssimo passo:\n1. Apri GitHub Desktop\n2. Verifica che dati-pubblici.json sia nella cartella del progetto\n3. Fai Commit e poi Push origin\n\nSolo dopo il push i collaboratori vedranno i dati aggiornati.');
+  function avvisaGitHub(viaDownload){
+    var msg=viaDownload
+      ? 'File salvato nella cartella Download!\n\nProssimo passo:\n1. Sposta dati-pubblici.json da Download alla cartella del progetto (es. con cp da Terminale)\n2. Apri GitHub Desktop\n3. Verifica che dati-pubblici.json sia tra le modifiche\n4. Fai Commit e poi Push origin\n\nSolo dopo il push i collaboratori vedranno i dati aggiornati.'
+      : 'File salvato nella cartella scelta!\n\nProssimo passo:\n1. Apri GitHub Desktop\n2. Verifica che dati-pubblici.json sia tra le modifiche\n3. Fai Commit e poi Push origin\n\nSolo dopo il push i collaboratori vedranno i dati aggiornati.';
+    alert(msg);
   }
 
   if(window.showSaveFilePicker){
     window.showSaveFilePicker({suggestedName:'dati-pubblici.json',types:[{description:'JSON',accept:{'application/json':['.json']}}]})
       .then(function(handle){ return handle.createWritable(); })
       .then(function(writable){ return writable.write(json).then(function(){return writable.close();}); })
-      .then(function(){ avvisaGitHub(); })
+      .then(function(){ avvisaGitHub(false); })
       .catch(function(err){
         if(err && err.name==='AbortError') return;
         /* fallback al download classico se il salvataggio diretto fallisce */
@@ -1939,7 +1946,7 @@ function pubblicaDatiPubblici(){
         a.href=url;
         a.click();
         setTimeout(function(){URL.revokeObjectURL(url);},3000);
-        avvisaGitHub();
+        avvisaGitHub(true);
       });
   } else {
     var blob=new Blob([json],{type:'application/json'});
@@ -1949,7 +1956,7 @@ function pubblicaDatiPubblici(){
     a.href=url;
     a.click();
     setTimeout(function(){URL.revokeObjectURL(url);},3000);
-    avvisaGitHub();
+    avvisaGitHub(true);
   }
 }
 
@@ -2470,7 +2477,6 @@ function loadSemilavorati(){
 }
 
 function saveSemilavorati(){
-  console.log('saveSemilavorati chiamata, semilavorati.length =', semilavorati.length, new Error().stack);
   try{ localStorage.setItem('rc_semilavorati', JSON.stringify(semilavorati)); }catch(e){}
 }
 

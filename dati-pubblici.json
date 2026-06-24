@@ -1521,10 +1521,11 @@
           "conv": 0.001
         },
         {
-          "magIdx": 2,
+          "tipo": "mp",
+          "magIdx": 15,
           "codiceMp": "MP-064",
           "nome": "Olio extra vergine d'oliva",
-          "qtaBase": 100,
+          "qtaBase": 30,
           "unit": "g",
           "conv": 0.001
         }
