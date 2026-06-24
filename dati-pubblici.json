@@ -38,9 +38,9 @@
       ]
     },
     {
-      "codice": "MP-066",
-      "nome": "Macinato di Maiale",
-      "categoria": "Carne e pollame",
+      "codice": "MP-081",
+      "nome": "Aglio Wiberg – in polvere",
+      "categoria": "Generale",
       "um": "kg",
       "iva": 10,
       "scarto": 0,
@@ -51,14 +51,14 @@
       "tracce": [],
       "tracceOk": true,
       "nutrizionali": {
-        "energia": 263,
-        "grassi": 21.19,
-        "grassiSaturi": 7.87,
-        "carboidrati": 0,
-        "zuccheri": 0,
-        "fibre": 0,
-        "proteine": 16.88,
-        "sale": 0.056
+        "energia": 357,
+        "grassi": 0.3,
+        "grassiSaturi": 0.06,
+        "carboidrati": 70.3,
+        "zuccheri": 21,
+        "fibre": 4.7,
+        "proteine": 15.8,
+        "sale": 0.1
       },
       "nutrizionaliOk": true,
       "giacenza": 0,
@@ -67,15 +67,15 @@
       "suppliers": [
         {
           "nome": "Supermercato / Generico",
-          "prezzoKg": 10,
+          "prezzoKg": 40,
           "storico": []
         }
       ]
     },
     {
-      "codice": "MP-065",
-      "nome": "Macinato di Manzo",
-      "categoria": "Carne e pollame",
+      "codice": "MP-083",
+      "nome": "Aneto liofilizzato Wiberg",
+      "categoria": "Generale",
       "um": "kg",
       "iva": 10,
       "scarto": 0,
@@ -86,14 +86,14 @@
       "tracce": [],
       "tracceOk": true,
       "nutrizionali": {
-        "energia": 254,
-        "grassi": 20,
-        "grassiSaturi": 7.673,
-        "carboidrati": 0,
-        "zuccheri": 0,
-        "fibre": 0,
-        "proteine": 17.17,
-        "sale": 0.067
+        "energia": 315,
+        "grassi": 4.4,
+        "grassiSaturi": 0.81,
+        "carboidrati": 42.2,
+        "zuccheri": 41.8,
+        "fibre": 13.6,
+        "proteine": 19.9,
+        "sale": 0.53
       },
       "nutrizionaliOk": true,
       "giacenza": 0,
@@ -102,15 +102,15 @@
       "suppliers": [
         {
           "nome": "Supermercato / Generico",
-          "prezzoKg": 12,
+          "prezzoKg": 305,
           "storico": []
         }
       ]
     },
     {
-      "codice": "MP-067",
-      "nome": "Macinato di Vitello",
-      "categoria": "Carne e pollame",
+      "codice": "MP-080",
+      "nome": "Bacche di ginepro Wiberg",
+      "categoria": "Generale",
       "um": "kg",
       "iva": 10,
       "scarto": 0,
@@ -121,14 +121,14 @@
       "tracce": [],
       "tracceOk": true,
       "nutrizionali": {
-        "energia": 144,
-        "grassi": 6.77,
-        "grassiSaturi": 2.79,
-        "carboidrati": 0,
-        "zuccheri": 0,
-        "fibre": 0,
-        "proteine": 19.35,
-        "sale": 0.082
+        "energia": 385,
+        "grassi": 14.6,
+        "grassiSaturi": 0.62,
+        "carboidrati": 37.3,
+        "zuccheri": 7.5,
+        "fibre": 12.7,
+        "proteine": 19.8,
+        "sale": 0.05
       },
       "nutrizionaliOk": true,
       "giacenza": 0,
@@ -137,7 +137,42 @@
       "suppliers": [
         {
           "nome": "Supermercato / Generico",
-          "prezzoKg": 14,
+          "prezzoKg": 55.25,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-082",
+      "nome": "Basilico liofilizzato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 300,
+        "grassi": 4,
+        "grassiSaturi": 0.74,
+        "carboidrati": 43,
+        "zuccheri": 42.6,
+        "fibre": 17.8,
+        "proteine": 14,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 295,
           "storico": []
         }
       ]
@@ -180,8 +215,8 @@
       ]
     },
     {
-      "codice": "MP-069",
-      "nome": "Concentrato di pomodoro Mutti da 440 gr",
+      "codice": "MP-079",
+      "nome": "Dragoncello liofilizzato Wiberg",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -193,14 +228,14 @@
       "tracce": [],
       "tracceOk": true,
       "nutrizionali": {
-        "energia": 96,
-        "grassi": 0.2,
-        "grassiSaturi": 0.1,
-        "carboidrati": 17,
-        "zuccheri": 12.3,
-        "fibre": 0,
-        "proteine": 4.2,
-        "sale": 0.85
+        "energia": 342,
+        "grassi": 7.2,
+        "grassiSaturi": 1.33,
+        "carboidrati": 42.8,
+        "zuccheri": 42.4,
+        "fibre": 7.4,
+        "proteine": 22.8,
+        "sale": 0.15
       },
       "nutrizionaliOk": true,
       "giacenza": 0,
@@ -209,7 +244,42 @@
       "suppliers": [
         {
           "nome": "Supermercato / Generico",
-          "prezzoKg": 8.8,
+          "prezzoKg": 400,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-077",
+      "nome": "Erba cipollina liofilizzata Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 264,
+        "grassi": 4.2,
+        "grassiSaturi": 0.61,
+        "carboidrati": 10.6,
+        "zuccheri": 10.5,
+        "fibre": 41.8,
+        "proteine": 25,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 349,
           "storico": []
         }
       ]
@@ -254,8 +324,8 @@
       ]
     },
     {
-      "codice": "MP-063",
-      "nome": "Noce Moscata",
+      "codice": "MP-075",
+      "nome": "Maggiorana liofilizzata Wiberg",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -267,14 +337,14 @@
       "tracce": [],
       "tracceOk": true,
       "nutrizionali": {
-        "energia": 525,
-        "grassi": 36.31,
-        "grassiSaturi": 25.94,
-        "carboidrati": 49.29,
-        "zuccheri": 28.49,
-        "fibre": 20.8,
-        "proteine": 5.84,
-        "sale": 0.016
+        "energia": 320,
+        "grassi": 7,
+        "grassiSaturi": 1.29,
+        "carboidrati": 42.5,
+        "zuccheri": 42.1,
+        "fibre": 18.1,
+        "proteine": 12.7,
+        "sale": 0.2
       },
       "nutrizionaliOk": true,
       "giacenza": 0,
@@ -283,7 +353,42 @@
       "suppliers": [
         {
           "nome": "Supermercato / Generico",
-          "prezzoKg": 35,
+          "prezzoKg": 466,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-076",
+      "nome": "Noce moscata macinata Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 538,
+        "grassi": 36.3,
+        "grassiSaturi": 25.94,
+        "carboidrati": 45,
+        "zuccheri": 22.5,
+        "fibre": 4,
+        "proteine": 5.8,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 100,
           "storico": []
         }
       ]
@@ -319,6 +424,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-078",
+      "nome": "Origano tritato essiccato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 365,
+        "grassi": 10.3,
+        "grassiSaturi": 1.9,
+        "carboidrati": 49.5,
+        "zuccheri": 49,
+        "fibre": 15,
+        "proteine": 11,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 113,
           "storico": []
         }
       ]
@@ -361,8 +501,78 @@
       ]
     },
     {
+      "codice": "MP-086",
+      "nome": "Paprica affumicata Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 319,
+        "grassi": 12.9,
+        "grassiSaturi": 2.1,
+        "carboidrati": 19.1,
+        "zuccheri": 10.3,
+        "fibre": 34.9,
+        "proteine": 14.1,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 50.3,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-085",
+      "nome": "Paprica rubino delicata Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 358,
+        "grassi": 13,
+        "grassiSaturi": 2.11,
+        "carboidrati": 34.9,
+        "zuccheri": 33.2,
+        "fibre": 20.9,
+        "proteine": 14.8,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 33.5,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-058",
-      "nome": "Pepe Nero Macinato Wiber",
+      "nome": "Pepe Nero Macinato Wiberg",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -396,8 +606,8 @@
       ]
     },
     {
-      "codice": "MP-068",
-      "nome": "Polpa Mutti da  kg 4,05",
+      "codice": "MP-087",
+      "nome": "Peperoncino rosso tritato Wiberg",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -409,14 +619,14 @@
       "tracce": [],
       "tracceOk": true,
       "nutrizionali": {
-        "energia": 26,
-        "grassi": 0.2,
-        "grassiSaturi": 0.1,
-        "carboidrati": 3.9,
-        "zuccheri": 2.8,
-        "fibre": 0,
-        "proteine": 1.2,
-        "sale": 0.2
+        "energia": 379,
+        "grassi": 17,
+        "grassiSaturi": 3.22,
+        "carboidrati": 32,
+        "zuccheri": 30.4,
+        "fibre": 24.9,
+        "proteine": 12,
+        "sale": 0.08
       },
       "nutrizionaliOk": true,
       "giacenza": 0,
@@ -425,14 +635,14 @@
       "suppliers": [
         {
           "nome": "Supermercato / Generico",
-          "prezzoKg": 1.4,
+          "prezzoKg": 61.6,
           "storico": []
         }
       ]
     },
     {
       "codice": "MP-072",
-      "nome": "Rosmarino liofilizzato Wiber",
+      "nome": "Rosmarino liofilizzato Wiberg",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -502,7 +712,7 @@
     },
     {
       "codice": "MP-073",
-      "nome": "Salvia liofilizzata Wiber",
+      "nome": "Salvia liofilizzata Wiberg",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -531,6 +741,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 367,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-084",
+      "nome": "Semi di cumino interi Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 384,
+        "grassi": 14.6,
+        "grassiSaturi": 0.6,
+        "carboidrati": 37.3,
+        "zuccheri": 7.5,
+        "fibre": 12.7,
+        "proteine": 19.8,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 25.5,
           "storico": []
         }
       ]
