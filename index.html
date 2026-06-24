@@ -2731,15 +2731,29 @@ function renderSemilavorati(){
       +(s.procedimento?'<div style="margin-top:10px;font-size:13px;color:#555;line-height:1.6;white-space:pre-wrap;">'+s.procedimento+'</div>':'')
       +(function(){
         var allerg=calcolaAllergeniSemilavorato(s);
-        if(!allerg.length)return '';
-        return '<div style="margin-top:14px;padding-top:10px;border-top:1px solid #f0ede6;">'
-          +'<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Allergeni</div>'
-          +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
-          +allerg.map(function(a){
-            return '<span style="font-size:12px;padding:3px 8px;background:#fef3f2;border-radius:12px;display:inline-flex;align-items:center;gap:4px;">'
-              +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
-          }).join('')
-          +'</div></div>';
+        if(!allerg.certi.length&&!allerg.tracce.length)return '';
+        var out='';
+        if(allerg.certi.length){
+          out+='<div style="margin-top:14px;padding-top:10px;border-top:1px solid #f0ede6;">'
+            +'<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Allergeni</div>'
+            +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+            +allerg.certi.map(function(a){
+              return '<span style="font-size:12px;padding:3px 8px;background:#fef3f2;border-radius:12px;display:inline-flex;align-items:center;gap:4px;">'
+                +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
+            }).join('')
+            +'</div></div>';
+        }
+        if(allerg.tracce.length){
+          out+='<div style="margin-top:'+(allerg.certi.length?'8px':'14px')+';'+(allerg.certi.length?'':'padding-top:10px;border-top:1px solid #f0ede6;')+'">'
+            +'<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Pu\u00f2 contenere tracce di</div>'
+            +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+            +allerg.tracce.map(function(a){
+              return '<span style="font-size:12px;padding:3px 8px;background:#fdf8ed;border-radius:12px;display:inline-flex;align-items:center;gap:4px;color:#8a6d1f;">'
+                +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
+            }).join('')
+            +'</div></div>';
+        }
+        return out;
       })()
       +(function(){
         var n=calcolaNutrizionaliSemilavorato(s);
@@ -4046,12 +4060,22 @@ function printAllergeniNutrizionaliSemiHtml(s){
   var allerg=calcolaAllergeniSemilavorato(s);
   var n=calcolaNutrizionaliSemilavorato(s);
   var html='';
-  if(allerg.length){
+  if(allerg.certi.length){
     html+='<div style="margin-top:20px;padding-top:14px;border-top:1px solid #1a1a1a;">'
       +'<h2 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#555;margin-bottom:10px;">Allergeni</h2>'
       +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
-      +allerg.map(function(a){
+      +allerg.certi.map(function(a){
         return '<span style="font-size:12px;padding:4px 10px;background:#fef3f2;border-radius:14px;display:inline-flex;align-items:center;gap:5px;border:1px solid #fcd5d2;">'
+          +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
+      }).join('')
+      +'</div></div>';
+  }
+  if(allerg.tracce.length){
+    html+='<div style="margin-top:'+(allerg.certi.length?'10px':'20px')+';'+(allerg.certi.length?'':'padding-top:14px;border-top:1px solid #1a1a1a;')+'">'
+      +'<h2 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#555;margin-bottom:10px;">Pu\u00f2 contenere tracce di</h2>'
+      +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+      +allerg.tracce.map(function(a){
+        return '<span style="font-size:12px;padding:4px 10px;background:#fdf8ed;border-radius:14px;display:inline-flex;align-items:center;gap:5px;border:1px solid #f0e0b8;color:#8a6d1f;">'
           +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
       }).join('')
       +'</div></div>';
@@ -4145,21 +4169,25 @@ var ALLERGENI_ICONE={
 
 function calcolaAllergeniSemilavorato(s,visitati){
   visitati=visitati||[];
-  var set={};
+  var certi={},tracce={};
   (s.componenti||[]).forEach(function(c){
     if(c.tipo==='sl'){
       var siRes=resolveSemiIdx(c);
       if(visitati.indexOf(siRes)>=0)return;
       var sRif=semilavorati[siRes];
       if(!sRif)return;
-      calcolaAllergeniSemilavorato(sRif,visitati.concat([siRes])).forEach(function(a){set[a]=true;});
+      var rSl=calcolaAllergeniSemilavorato(sRif,visitati.concat([siRes]));
+      rSl.certi.forEach(function(a){certi[a]=true;});
+      rSl.tracce.forEach(function(a){tracce[a]=true;});
       return;
     }
     var m=magazzino[resolveMagIdx(c)];
-    if(m&&m.allergeni) m.allergeni.forEach(function(a){set[a]=true;});
-    if(m&&m.tracce) m.tracce.forEach(function(a){set[a]=true;});
+    if(m&&m.allergeni) m.allergeni.forEach(function(a){certi[a]=true;});
+    if(m&&m.tracce) m.tracce.forEach(function(a){tracce[a]=true;});
   });
-  return Object.keys(set);
+  /* il certo vince sulla traccia */
+  Object.keys(certi).forEach(function(a){delete tracce[a];});
+  return {certi:Object.keys(certi),tracce:Object.keys(tracce)};
 }
 
 function calcolaNutrizionaliSemilavorato(s,visitati){
@@ -4195,20 +4223,23 @@ function calcolaNutrizionaliSemilavorato(s,visitati){
 }
 
 function calcolaAllergeniPiatto(p){
-  var set={};
+  var certi={},tracce={};
   (p.componenti||[]).forEach(function(c){
     if(c.tipo==='mp'){
       var m=magazzino[resolveMagIdx(c)];
-      if(m&&m.allergeni) m.allergeni.forEach(function(a){set[a]=true;});
-      if(m&&m.tracce) m.tracce.forEach(function(a){set[a]=true;});
+      if(m&&m.allergeni) m.allergeni.forEach(function(a){certi[a]=true;});
+      if(m&&m.tracce) m.tracce.forEach(function(a){tracce[a]=true;});
     } else if(c.tipo==='sl'){
       var s=semilavorati[resolveSemiIdx(c)];
       if(s){
-        calcolaAllergeniSemilavorato(s).forEach(function(a){set[a]=true;});
+        var r=calcolaAllergeniSemilavorato(s);
+        r.certi.forEach(function(a){certi[a]=true;});
+        r.tracce.forEach(function(a){tracce[a]=true;});
       }
     }
   });
-  return Object.keys(set);
+  Object.keys(certi).forEach(function(a){delete tracce[a];});
+  return {certi:Object.keys(certi),tracce:Object.keys(tracce)};
 }
 
 function calcolaNutrizionaliPiatto(p){
@@ -4247,12 +4278,22 @@ function printAllergeniNutrizionaliHtml(p,paxStampa){
   var paxBase=p.pax||4;
   var mult=paxStampa/paxBase;
   var html='';
-  if(allerg.length){
+  if(allerg.certi.length){
     html+='<div style="margin-top:20px;padding-top:14px;border-top:1px solid #1a1a1a;">'
       +'<h2 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#555;margin-bottom:10px;">Allergeni</h2>'
       +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
-      +allerg.map(function(a){
+      +allerg.certi.map(function(a){
         return '<span style="font-size:12px;padding:4px 10px;background:#fef3f2;border-radius:14px;display:inline-flex;align-items:center;gap:5px;border:1px solid #fcd5d2;">'
+          +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
+      }).join('')
+      +'</div></div>';
+  }
+  if(allerg.tracce.length){
+    html+='<div style="margin-top:'+(allerg.certi.length?'10px':'20px')+';'+(allerg.certi.length?'':'padding-top:14px;border-top:1px solid #1a1a1a;')+'">'
+      +'<h2 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#555;margin-bottom:10px;">Pu\u00f2 contenere tracce di</h2>'
+      +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+      +allerg.tracce.map(function(a){
+        return '<span style="font-size:12px;padding:4px 10px;background:#fdf8ed;border-radius:14px;display:inline-flex;align-items:center;gap:5px;border:1px solid #f0e0b8;color:#8a6d1f;">'
           +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
       }).join('')
       +'</div></div>';
@@ -4612,12 +4653,22 @@ function npAllergeniNutrizionaliHtml(){
   var allerg=calcolaAllergeniPiatto(pTemp);
   var nutr=calcolaNutrizionaliPiatto(pTemp);
   var html='';
-  if(allerg.length){
+  if(allerg.certi.length){
     html+='<div style="margin-top:16px;padding-top:12px;border-top:1px solid #e0ded8;">'
       +'<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Allergeni nel piatto</div>'
       +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
-      +allerg.map(function(a){
+      +allerg.certi.map(function(a){
         return '<span style="font-size:12px;padding:3px 8px;background:#fef3f2;border-radius:12px;display:inline-flex;align-items:center;gap:4px;">'
+          +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
+      }).join('')
+      +'</div></div>';
+  }
+  if(allerg.tracce.length){
+    html+='<div style="margin-top:'+(allerg.certi.length?'8px':'16px')+';padding-top:12px;border-top:1px solid #e0ded8;">'
+      +'<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Pu\u00f2 contenere tracce di</div>'
+      +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+      +allerg.tracce.map(function(a){
+        return '<span style="font-size:12px;padding:3px 8px;background:#fdf8ed;border-radius:12px;display:inline-flex;align-items:center;gap:4px;color:#8a6d1f;">'
           +(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';
       }).join('')
       +'</div></div>';
