@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "24/6/2026",
+  "exportDate": "25/6/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -1485,9 +1485,10 @@
           "conv": 0.001
         },
         {
-          "magIdx": 2,
-          "codiceMp": "MP-063",
-          "nome": "Noce Moscata",
+          "tipo": "mp",
+          "magIdx": 14,
+          "codiceMp": "MP-076",
+          "nome": "Noce moscata macinata Wiberg",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
