@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "25/6/2026",
+  "exportDate": "26/6/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -283,6 +283,43 @@
       ]
     },
     {
+      "codice": "MP-095",
+      "nome": "Burro da Kg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 758,
+        "grassi": 82,
+        "grassiSaturi": 58,
+        "carboidrati": 0.5,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0.5,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-065",
       "nome": "Burro della Lessinia",
       "categoria": "Generale",
@@ -302,7 +339,7 @@
         "grassi": 81.11,
         "grassiSaturi": 51.368,
         "carboidrati": 0.06,
-        "zuccheri": 6,
+        "zuccheri": 0,
         "fibre": 0,
         "proteine": 0.85,
         "sale": 0.011
@@ -711,6 +748,46 @@
       ]
     },
     {
+      "codice": "MP-094",
+      "nome": "Pasta Per Lasagne Koch (10 fogli x 2 kg) gn",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 216,
+        "grassi": 1.9,
+        "grassiSaturi": 0.5,
+        "carboidrati": 41,
+        "zuccheri": 1.4,
+        "fibre": 1.8,
+        "proteine": 7.9,
+        "sale": 0.4
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 4,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-058",
       "nome": "Pepe Nero Macinato Wiberg",
       "categoria": "Generale",
@@ -951,43 +1028,6 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 25.5,
-          "storico": []
-        }
-      ]
-    },
-    {
-      "codice": "MP-088",
-      "nome": "Soffritto Misto Gelo",
-      "categoria": "Generale",
-      "um": "kg",
-      "iva": 10,
-      "scarto": 0,
-      "resa": 100,
-      "activeIdx": 0,
-      "allergeni": [
-        "Sedano"
-      ],
-      "allergeniOk": true,
-      "tracce": [],
-      "tracceOk": true,
-      "nutrizionali": {
-        "energia": 21,
-        "grassi": 0,
-        "grassiSaturi": 0,
-        "carboidrati": 3.5,
-        "zuccheri": 3.5,
-        "fibre": 2,
-        "proteine": 0.7,
-        "sale": 0.1
-      },
-      "nutrizionaliOk": true,
-      "giacenza": 0,
-      "giacenzaMin": 0,
-      "lotti": [],
-      "suppliers": [
-        {
-          "nome": "Supermercato / Generico",
-          "prezzoKg": 4,
           "storico": []
         }
       ]
@@ -1388,9 +1428,112 @@
           "storico": []
         }
       ]
+    },
+    {
+      "codice": "MP-088",
+      "nome": "Soffritto Misto Gelo",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Sedano"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 21,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 3.5,
+        "zuccheri": 3.5,
+        "fibre": 2,
+        "proteine": 0.7,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 4,
+          "storico": []
+        }
+      ]
     }
   ],
   "semilavorati": [
+    {
+      "codice": "SL-007",
+      "nome": "Besciamella",
+      "categoria": "Salse e sughi",
+      "resaQta": 2957.5,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Scaldare il latte fino a 80°C, fare un roux con burro e farina, aggiungerlo al latte , portare a bollore e far sobbollire qualche minuto tenendo mescolato e facendo attenzione che non attacchi, aggiugi gli altri ingredienti, usa subito o abbatti in positivo.",
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 33,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 2.5,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 8,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 220,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 13,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 220,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 26,
+          "codiceMp": "MP-057",
+          "nome": "sale Fino",
+          "qtaBase": 15,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 15,
+          "codiceMp": "MP-076",
+          "nome": "Noce moscata macinata Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 22,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 0.5,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "26/6/2026"
+    },
     {
       "codice": "SL-004",
       "nome": "Burro Nocciola",
@@ -1495,7 +1638,7 @@
         },
         {
           "tipo": "sl",
-          "semiIdx": 2,
+          "semiIdx": 3,
           "nome": "Porri stufati",
           "qtaBase": 500,
           "unit": "g",
@@ -1694,6 +1837,66 @@
         }
       ],
       "dataCreazione": "21/6/2026"
+    },
+    {
+      "codice": "PF-002",
+      "nome": "Lasagne al Ragù",
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 18,
+      "prezzoVendita": 12,
+      "foto": "",
+      "steps": [
+        "Con la metà del burro ungere una placca GN 1/1, iniziare gli strati con la besciamella via via alternandoli con il ragù e ogni strato una spolverata di grana, fino a fare 6 strati di pasta.L'ultimo strato farlo misto, spolverare con il grana e mettere dei pezzetti di burro con quello rimanenta. Cuocere a 150/160°C per 45 min, se c'è la sonda arrivare a 85/90°C al cuore. Far riposare coperto 10 min e servire"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Pasta Per Lasagne Koch (10 fogli x 2 kg) gn",
+          "qtaBase": 1200,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 21,
+          "codiceMp": "MP-094"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Ragù di carne",
+          "qtaBase": 3,
+          "unit": "kg",
+          "conv": 1,
+          "semiIdx": 4,
+          "codiceSl": "SL-006"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Besciamella",
+          "qtaBase": 3,
+          "unit": "kg",
+          "conv": 1,
+          "semiIdx": 0,
+          "codiceSl": "SL-007"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 32,
+          "codiceMp": "MP-056"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Burro da Kg",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 8,
+          "codiceMp": "MP-095"
+        }
+      ],
+      "dataCreazione": "26/6/2026"
     }
   ],
   "ricetteSalvate": [],

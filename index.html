@@ -1690,6 +1690,7 @@ function setIva(on){
   });
   updateAll();
   if(document.getElementById('tab-magazzino').classList.contains('active'))renderMagazzino();
+  if(document.getElementById('tab-foodcost').classList.contains('active'))renderFoodCost();
 }
 
 function syncSlider(el){
@@ -1714,6 +1715,13 @@ function fcPopulateSelector(){
 
 function fcSelectPiatto(){
   renderFoodCost();
+}
+
+function fmtQtaFC(qta,unit){
+  if(unit==='g'||unit==='ml') return Math.round(qta)+unit;
+  if(unit==='kg'||unit==='lt') return (Math.round(qta*100)/100)+unit;
+  if(unit==='pz') return Math.round(qta)+unit;
+  return (Math.round(qta*100)/100)+unit;
 }
 
 function renderFoodCost(){
@@ -1761,7 +1769,7 @@ function renderFoodCost(){
   /* detail rows */
   var sorted=p.componenti.map(function(c){
     var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*mult*c.conv*gp(c.magIdx):costoSemi(c.semiIdx)*(c.qtaBase*mult*(c.unit==='g'||c.unit==='ml'?0.001:1)));
-    var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':(c.qtaBase*mult)+(c.unit==='g'||c.unit==='ml'||c.unit==='kg'||c.unit==='lt'?c.unit:'');
+    var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':fmtQtaFC(c.qtaBase*mult,c.unit);
     return {nome:c.nome,tipo:c.tipo,qFmt:qFmt,costo:costo};
   }).sort(function(a,b){return b.costo-a.costo;});
 
