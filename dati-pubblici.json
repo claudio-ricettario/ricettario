@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "26/6/2026",
+  "exportDate": "5/7/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -1476,6 +1476,7 @@
       "resaUm": "g",
       "tempo": "10",
       "procedimento": "Scaldare il latte fino a 80°C, fare un roux con burro e farina, aggiungerlo al latte , portare a bollore e far sobbollire qualche minuto tenendo mescolato e facendo attenzione che non attacchi, aggiugi gli altri ingredienti, usa subito o abbatti in positivo.",
+      "coefficiente": 2,
       "componenti": [
         {
           "tipo": "mp",
@@ -1542,6 +1543,7 @@
       "resaUm": "g",
       "tempo": "15",
       "procedimento": "Portare il burro fino al color dorato/nocciola, filtrare con un colino fine e tenere in caldo",
+      "coefficiente": 1,
       "componenti": [
         {
           "magIdx": 0,
@@ -1562,6 +1564,7 @@
       "resaUm": "g",
       "tempo": "45",
       "procedimento": "Mettere tutti gli ingredienti secchi in un contenitore adatto, aggiungere le uova ed il latte, mescolando piano dal basso verso l'alto, lasciar riposare 15 min poi formare i canederli da 50 gr l'uno, a questo punto si possono usare cosi o abbattere a -18 per una conservazione piu lunga",
+      "coefficiente": 6,
       "componenti": [
         {
           "magIdx": 4,
@@ -1655,6 +1658,7 @@
       "resaUm": "g",
       "tempo": "",
       "procedimento": "Stufare i porri senza bruciarli per 15 min circa, devono risultare morbidi",
+      "coefficiente": 2,
       "componenti": [
         {
           "magIdx": 10,
@@ -1684,6 +1688,7 @@
       "resaUm": "kg",
       "tempo": "2400",
       "procedimento": "In una padella rosola leggermente le verdure con 100 di olio, in una pentola ampia e larga rosola la carne con 400 di olio, unisci le verdure , sfuma con il vino rosso finchè non evapora del tutto. Aggiungi la Polpa, il concentrato, e tutti gli altri ingredienti, copri e cuoci a fuoco basso per 3/4 ore. Abbatti e conserva in frigo a +4, o surgela.",
+      "coefficiente": 6,
       "componenti": [
         {
           "tipo": "mp",
@@ -1805,6 +1810,7 @@
       "sottocategoria": "Vegetariano",
       "pax": 4,
       "prezzoVendita": 12,
+      "coefficiente": 5,
       "foto": "",
       "steps": [],
       "componenti": [
@@ -1845,6 +1851,7 @@
       "sottocategoria": "",
       "pax": 18,
       "prezzoVendita": 12,
+      "coefficiente": 5,
       "foto": "",
       "steps": [
         "Con la metà del burro ungere una placca GN 1/1, iniziare gli strati con la besciamella via via alternandoli con il ragù e ogni strato una spolverata di grana, fino a fare 6 strati di pasta.L'ultimo strato farlo misto, spolverare con il grana e mettere dei pezzetti di burro con quello rimanenta. Cuocere a 150/160°C per 45 min, se c'è la sonda arrivare a 85/90°C al cuore. Far riposare coperto 10 min e servire"

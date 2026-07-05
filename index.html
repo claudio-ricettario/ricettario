@@ -453,6 +453,10 @@ textarea{resize:vertical;min-height:60px;}
         <div class="form-row"><label>Prezzo di vendita (&euro;/pax)</label>
           <input type="number" id="np-pv" placeholder="0.00" min="0" step="0.50" style="width:100%;text-align:left;"/>
         </div>
+        <div>
+          <label>Coefficiente complessità (1-10) <span id="np-coeff-hint" style="font-size:11px;color:#aaa;font-weight:400;"></span></label>
+          <input type="number" id="np-coeff" value="1" min="1" max="10" step="1" style="width:100%;text-align:left;" title="1 = semplice, 10 = alta complessità tecnica/tempo uomo"/>
+        </div>
         <div class="form-row">
           <label>Foto del piatto <span style="font-weight:400;color:#aaa;font-size:11px;">(opzionale)</span></label>
           <div style="display:flex;gap:8px;align-items:center;">
@@ -1717,6 +1721,30 @@ function fcSelectPiatto(){
   renderFoodCost();
 }
 
+function calcolaCoeffSuggerito(){
+  var comps=(typeof npComps!=='undefined'?npComps:[]).filter(function(c){return c.tipo==='sl';});
+  if(!comps.length) return null;
+  var tot=0,n=0;
+  comps.forEach(function(c){
+    var si=resolveSemiIdx(c);
+    var s=semilavorati[si];
+    if(s&&s.coefficiente){tot+=s.coefficiente;n++;}
+  });
+  if(!n) return null;
+  return Math.round(tot/n);
+}
+
+function aggiornaSuggerimentoCoeff(){
+  var sug=calcolaCoeffSuggerito();
+  var hint=document.getElementById('np-coeff-hint');
+  var campo=document.getElementById('np-coeff');
+  if(sug&&hint&&campo){
+    hint.textContent='(suggerito: '+sug+' da semilavorati)';
+  } else if(hint){
+    hint.textContent='';
+  }
+}
+
 function fmtQtaFC(qta,unit){
   if(unit==='g'||unit==='ml') return Math.round(qta)+unit;
   if(unit==='kg'||unit==='lt') return (Math.round(qta*100)/100)+unit;
@@ -2533,6 +2561,7 @@ function openSemiModal(idx){
     document.getElementById('sm-resa-um').value='g';
     document.getElementById('sm-tempo').value='';
     document.getElementById('sm-procedimento').value='';
+    document.getElementById('sm-coeff').value='1';
   } else {
     var s=semilavorati[idx];
     document.getElementById('sm-nome').value=s.nome;
@@ -2541,6 +2570,7 @@ function openSemiModal(idx){
     document.getElementById('sm-resa-um').value=s.resaUm||'g';
     document.getElementById('sm-tempo').value=s.tempo||'';
     document.getElementById('sm-procedimento').value=s.procedimento||'';
+    document.getElementById('sm-coeff').value=s.coefficiente||1;
     smComps=JSON.parse(JSON.stringify(s.componenti||[]));
   }
   /* populate select */
@@ -2657,6 +2687,7 @@ function salvaSemilavorato(){
     resaUm:document.getElementById('sm-resa-um').value,
     tempo:document.getElementById('sm-tempo').value||'',
     procedimento:document.getElementById('sm-procedimento').value.trim(),
+    coefficiente:parseInt(document.getElementById('sm-coeff').value)||1,
     componenti:JSON.parse(JSON.stringify(smComps)),
     dataCreazione:(idx>=0&&semilavorati[idx])?semilavorati[idx].dataCreazione:today()
   };
@@ -2935,6 +2966,8 @@ function pm2AddComp(){
 }
 
 function pm2RemoveComp(i){ pm2Comps.splice(i,1); pm2RenderComps(); }
+
+function pm2RemoveCompAndUpdate(i){ pm2Comps.splice(i,1); pm2RenderComps(); aggiornaSuggerimentoCoeff(); }
 
 function salvaPiatto(){
   var nome=document.getElementById('pm2-nome').value.trim();
@@ -4542,6 +4575,8 @@ function npModifica(idx){
   document.getElementById('np-sottocat').value=p.sottocategoria||'';
   document.getElementById('np-pax').value=p.pax||4;
   document.getElementById('np-pv').value=p.prezzoVendita||'';
+  document.getElementById('np-coeff').value=p.coefficiente||1;
+  setTimeout(aggiornaSuggerimentoCoeff,50);
   document.getElementById('np-title').textContent='Modifica piatto';
   var delBtn=document.getElementById('np-delete-btn');
   if(delBtn) delBtn.style.display='block';
@@ -4571,6 +4606,8 @@ function npReset(){
   f.forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
   var paxEl=document.getElementById('np-pax');if(paxEl)paxEl.value='4';
   var pvEl=document.getElementById('np-pv');if(pvEl)pvEl.value='';
+  var coeffEl=document.getElementById('np-coeff');if(coeffEl)coeffEl.value='1';
+  aggiornaSuggerimentoCoeff();
   var catEl=document.getElementById('np-cat');if(catEl)catEl.value='Primi piatti';
   var subEl=document.getElementById('np-sottocat');if(subEl)subEl.value='';
   var titleEl=document.getElementById('np-title');if(titleEl)titleEl.textContent='Nuovo piatto';
@@ -4750,6 +4787,7 @@ function npSalva(){
     sottocategoria:document.getElementById('np-sottocat').value||'',
     pax:parseInt(document.getElementById('np-pax').value)||4,
     prezzoVendita:parseFloat(document.getElementById('np-pv').value)||0,
+    coefficiente:parseInt(document.getElementById('np-coeff').value)||1,
     foto:npFotoData||'',
     steps:JSON.parse(JSON.stringify(npSteps)),
     componenti:JSON.parse(JSON.stringify(npComps)),
@@ -4965,6 +5003,9 @@ function npSalva(){
       </div>
       <div class="form-row"><label>Tempo prep. (min)</label>
         <input type="number" id="sm-tempo" placeholder="es. 45" min="0" style="width:100%;text-align:left;"/>
+      </div>
+      <div class="form-row"><label>Coefficiente complessità (1-10)</label>
+        <input type="number" id="sm-coeff" value="1" min="1" max="10" step="1" style="width:100%;text-align:left;" title="1 = semplice, 10 = alta complessità tecnica/tempo uomo"/>
       </div>
     </div>
     <div class="section-label">Ingredienti (materie prime dal magazzino)</div>
