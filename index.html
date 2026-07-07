@@ -301,6 +301,7 @@ textarea{resize:vertical;min-height:60px;}
       <input type="file" accept=".json" onchange="importaDati(this)" style="display:none;"/>
     </label>
     <div style="width:1px;height:20px;background:#e0ded8;"></div>
+    <button onclick="ripristinaSnapshot()" id="btn-snapshot" style="padding:6px 12px;font-size:12px;font-weight:500;background:#fff;border:1px solid #d0cec8;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;" title="Ripristina ultimo backup automatico">&#128268; Ripristina</button>
     <button onclick="pubblicaDatiPubblici()" id="btn-pubblica" style="padding:6px 12px;font-size:12px;font-weight:600;background:#2d7d46;border:1px solid #2d7d46;color:#fff;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;" title="Genera dati-pubblici.json per i collaboratori">&#128228; Pubblica</button>
   </div>
 </header>
@@ -1899,6 +1900,8 @@ function applyAdminUI(){
   }
   var pubBtn = document.getElementById('btn-pubblica');
   if(pubBtn){ pubBtn.style.display = isAdmin ? 'flex' : 'none'; }
+  var snapBtn = document.getElementById('btn-snapshot');
+  if(snapBtn){ snapBtn.style.display = isAdmin ? 'flex' : 'none'; }
   var toolbar = document.getElementById('admin-toolbar');
   if(toolbar){ toolbar.style.display = isAdmin ? 'flex' : 'none'; }
   var btnNP = document.getElementById('btn-nuovo-piatto-home');
@@ -1946,6 +1949,33 @@ function caricaDatiPubblici(){
 
 if(!isAdmin){
   caricaDatiPubblici();
+}
+
+function salvaSnapshotAutomatico(){
+  try{
+    var snapshot={
+      timestamp:new Date().toISOString(),
+      semilavorati:JSON.stringify(semilavorati),
+      piatti:JSON.stringify(piatti),
+      magazzino:JSON.stringify(magazzino)
+    };
+    localStorage.setItem('rc_snapshot',JSON.stringify(snapshot));
+  }catch(e){console.warn('Snapshot automatico fallito:',e);}
+}
+
+function ripristinaSnapshot(){
+  try{
+    var raw=localStorage.getItem('rc_snapshot');
+    if(!raw){alert('Nessun backup automatico disponibile.');return;}
+    var snap=JSON.parse(raw);
+    if(!confirm('Ripristinare il backup automatico del '+snap.timestamp+'?\n\nI dati attuali verranno sostituiti.'))return;
+    semilavorati=JSON.parse(snap.semilavorati);
+    piatti=JSON.parse(snap.piatti);
+    magazzino=JSON.parse(snap.magazzino);
+    saveSemilavorati();savePiatti();saveMagazzino();
+    updateAll();renderMagazzino();renderSemilavorati();renderHome();
+    alert('Backup automatico ripristinato con successo!');
+  }catch(e){alert('Errore nel ripristino: '+e.message);}
 }
 
 function pubblicaDatiPubblici(){
@@ -2630,7 +2660,9 @@ function smAddIng(){
   var conv=unit==='g'||unit==='ml'?0.001:(unit==='q.b.'?0:1);
   if(tipo==='sl'){
     var editIdx=parseInt(document.getElementById('semi-modal-idx').value);
-    if(rilevaCicloSemilavorato(mi,editIdx)){
+    /* se editIdx<0 siamo in creazione nuovo: l'indice futuro sarà semilavorati.length */
+    var checkIdx=editIdx>=0?editIdx:semilavorati.length;
+    if(mi===checkIdx||rilevaCicloSemilavorato(mi,checkIdx)){
       alert('Impossibile aggiungere: creerebbe un riferimento circolare tra semilavorati.');
       return;
     }
@@ -2691,6 +2723,11 @@ function salvaSemilavorato(){
     componenti:JSON.parse(JSON.stringify(smComps)),
     dataCreazione:(idx>=0&&semilavorati[idx])?semilavorati[idx].dataCreazione:today()
   };
+  /* verifica finale: nessun componente sl deve puntare all'indice che riceverà questo semilavorato */
+  var futuroIdx=idx===-1?semilavorati.length:idx;
+  var hasCiclo=smComps.some(function(c){return c.tipo==='sl'&&(c.semiIdx===futuroIdx||rilevaCicloSemilavorato(c.semiIdx,futuroIdx));});
+  if(hasCiclo){alert('Errore: rilevato riferimento circolare nei componenti. Correggi prima di salvare.');return;}
+  salvaSnapshotAutomatico();
   if(idx===-1) semilavorati.push(s); else semilavorati[idx]=s;
   semilavorati.sort(function(a,b){return a.nome.localeCompare(b.nome,'it');});
   saveSemilavorati();
@@ -4799,6 +4836,7 @@ function npSalva(){
     piatti.push(p);
     piatti.sort(function(a,b){return a.nome.localeCompare(b.nome,'it');});
   }
+  salvaSnapshotAutomatico();
   savePiatti();
   npReset();
   showTab('home');
