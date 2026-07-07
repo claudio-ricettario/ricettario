@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "5/7/2026",
+  "exportDate": "7/7/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -138,6 +138,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 16,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-096",
+      "nome": "Acqua",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 0,
           "storico": []
         }
       ]
@@ -496,6 +531,82 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 1,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-098",
+      "nome": "Fecola di Patate",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 357,
+        "grassi": 0.34,
+        "grassiSaturi": 0.09,
+        "carboidrati": 83.1,
+        "zuccheri": 3.52,
+        "fibre": 5.9,
+        "proteine": 6.9,
+        "sale": 0.055
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-099",
+      "nome": "Fiocchi di Patate",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Glutine",
+        "Soia",
+        "Latte e lattosio"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 349,
+        "grassi": 1,
+        "grassiSaturi": 0.1,
+        "carboidrati": 73,
+        "zuccheri": 1.5,
+        "fibre": 8,
+        "proteine": 8,
+        "sale": 0.045
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5,
           "storico": []
         }
       ]
@@ -1358,6 +1469,41 @@
       ]
     },
     {
+      "codice": "MP-097",
+      "nome": "Patate per Gnocchi",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 77,
+        "grassi": 0.09,
+        "grassiSaturi": 0.026,
+        "carboidrati": 17.47,
+        "zuccheri": 0.78,
+        "fibre": 2.2,
+        "proteine": 2.02,
+        "sale": 0.006
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.5,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-061",
       "nome": "Porri",
       "categoria": "Verdura",
@@ -1651,6 +1797,103 @@
       "dataCreazione": "21/6/2026"
     },
     {
+      "codice": "SL-010",
+      "nome": "Gnocchi di Patate",
+      "categoria": "Salse e sughi",
+      "resaQta": 10087,
+      "resaUm": "g",
+      "tempo": "30",
+      "procedimento": "Passare le patate cotte, aggiungere la farina e arieggiare un po', fare una fontana e mettere tutti gli altri ingredienti, impastare fino ad ottenere un impasto ben formato che non appiccichi. Formare dei cilindri e tagliere gli gnocchi  a piacere, si possono abbattere in negativo e conservare per 6 mesi, si possono usare espressi crudi o si possono sbianchire e raffreddare in acqua fredda per usare un servizio, conservare in frigo coperti e leggermente unti per max 12 ore. 220 gr per porzione circa",
+      "coefficiente": 5,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 16,
+          "codiceMp": "MP-099",
+          "nome": "Fiocchi di Patate",
+          "qtaBase": 350,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 15,
+          "codiceMp": "MP-098",
+          "nome": "Fecola di Patate",
+          "qtaBase": 350,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 33,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 560,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 29,
+          "codiceMp": "MP-057",
+          "nome": "sale Fino",
+          "qtaBase": 70,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 18,
+          "codiceMp": "MP-076",
+          "nome": "Noce moscata macinata Wiberg",
+          "qtaBase": 7,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 14,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 1750,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 4,
+          "nome": "Patate cotte",
+          "qtaBase": 7000,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "7/7/2026"
+    },
+    {
+      "codice": "SL-009",
+      "nome": "Patate cotte",
+      "categoria": "Verdure lavorate",
+      "resaQta": 700,
+      "resaUm": "g",
+      "tempo": "45",
+      "procedimento": "Cuoci le patate in forno a vapore finche non raggiungono al cuore 92°C , una volta pelate e raffreddate conserva in frigo, max 48 ore",
+      "coefficiente": 2,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 39,
+          "codiceMp": "MP-097",
+          "nome": "Patate per Gnocchi",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "7/7/2026"
+    },
+    {
       "codice": "SL-003",
       "nome": "Porri stufati",
       "categoria": "Altro",
@@ -1810,7 +2053,6 @@
       "sottocategoria": "Vegetariano",
       "pax": 4,
       "prezzoVendita": 12,
-      "coefficiente": 5,
       "foto": "",
       "steps": [],
       "componenti": [
@@ -1845,13 +2087,44 @@
       "dataCreazione": "21/6/2026"
     },
     {
+      "codice": "PF-003",
+      "nome": "Gnocchi al Ragu'",
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 9.9,
+      "coefficiente": 6,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Gnocchi di Patate",
+          "qtaBase": 2200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 3,
+          "codiceSl": "SL-010"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Ragù di carne",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 6,
+          "codiceSl": "SL-006"
+        }
+      ],
+      "dataCreazione": "7/7/2026"
+    },
+    {
       "codice": "PF-002",
       "nome": "Lasagne al Ragù",
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 18,
       "prezzoVendita": 12,
-      "coefficiente": 5,
       "foto": "",
       "steps": [
         "Con la metà del burro ungere una placca GN 1/1, iniziare gli strati con la besciamella via via alternandoli con il ragù e ogni strato una spolverata di grana, fino a fare 6 strati di pasta.L'ultimo strato farlo misto, spolverare con il grana e mettere dei pezzetti di burro con quello rimanenta. Cuocere a 150/160°C per 45 min, se c'è la sonda arrivare a 85/90°C al cuore. Far riposare coperto 10 min e servire"
