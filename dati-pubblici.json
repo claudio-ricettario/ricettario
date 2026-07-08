@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "7/7/2026",
+  "exportDate": "8/7/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -1364,6 +1364,43 @@
       ]
     },
     {
+      "codice": "MP-100",
+      "nome": "Ricotta Fresca",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 174,
+        "grassi": 12.98,
+        "grassiSaturi": 8.295,
+        "carboidrati": 3.04,
+        "zuccheri": 0.27,
+        "fibre": 0,
+        "proteine": 11.26,
+        "sale": 0.084
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 12,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-069",
       "nome": "Aglio",
       "categoria": "Verdura",
@@ -1704,7 +1741,7 @@
     },
     {
       "codice": "SL-005",
-      "nome": "Canederli ai Formaggi Base",
+      "nome": "Canederli ai Formaggi (Base)",
       "categoria": "Pasta e impasti",
       "resaQta": 7109,
       "resaUm": "g",
@@ -1797,8 +1834,57 @@
       "dataCreazione": "21/6/2026"
     },
     {
+      "codice": "SL-011",
+      "nome": "Gnocchi di Malga (base)",
+      "categoria": "Pasta e impasti",
+      "resaQta": 5500,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Mettere in planetaria con la foglia la farina , la ricotta e il sale, versare il latte tiepido ed accendere prima lentamente poi veloce, per circa 5 minuti. colare in acqua bollente o con i chucchiai o con l'apposita mandolina, si può usare espresso o cuocere alcuni minuti in acqua bollente e raffreddare subito in acqua fredda, tenere in frigo ed usare entro 4/6 ore.",
+      "coefficiente": 3,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 14,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 2450,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 2000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 38,
+          "codiceMp": "MP-100",
+          "nome": "Ricotta Fresca",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 29,
+          "codiceMp": "MP-057",
+          "nome": "sale Fino",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "7/7/2026"
+    },
+    {
       "codice": "SL-010",
-      "nome": "Gnocchi di Patate",
+      "nome": "Gnocchi di Patate (base)",
       "categoria": "Salse e sughi",
       "resaQta": 10087,
       "resaUm": "g",
@@ -1861,9 +1947,10 @@
           "conv": 0.001
         },
         {
-          "tipo": "sl",
-          "semiIdx": 4,
-          "nome": "Patate cotte",
+          "tipo": "mp",
+          "magIdx": 42,
+          "codiceMp": "MP-097",
+          "nome": "Patate per Gnocchi",
           "qtaBase": 7000,
           "unit": "g",
           "conv": 0.001
@@ -2053,6 +2140,7 @@
       "sottocategoria": "Vegetariano",
       "pax": 4,
       "prezzoVendita": 12,
+      "coefficiente": 4,
       "foto": "",
       "steps": [],
       "componenti": [
@@ -2114,6 +2202,47 @@
           "conv": 0.001,
           "semiIdx": 6,
           "codiceSl": "SL-006"
+        }
+      ],
+      "dataCreazione": "7/7/2026"
+    },
+    {
+      "codice": "PF-004",
+      "nome": "Gnocchi di Malga al Burro fuso",
+      "categoria": "Primi piatti",
+      "sottocategoria": "Vegetariano",
+      "pax": 10,
+      "prezzoVendita": 9.6,
+      "coefficiente": 4,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Gnocchi di Malga (base)",
+          "qtaBase": 2200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 3,
+          "codiceSl": "SL-011"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 35,
+          "codiceMp": "MP-056"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Burro Nocciola",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 1,
+          "codiceSl": "SL-004"
         }
       ],
       "dataCreazione": "7/7/2026"
