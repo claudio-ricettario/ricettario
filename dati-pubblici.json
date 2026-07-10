@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "8/7/2026",
+  "exportDate": "10/7/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -173,6 +173,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 0,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-104",
+      "nome": "Agar Agar",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 26,
+        "grassi": 0.03,
+        "grassiSaturi": 0.006,
+        "carboidrati": 6.75,
+        "zuccheri": 0.28,
+        "fibre": 0.5,
+        "proteine": 0.54,
+        "sale": 0.009
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 50,
           "storico": []
         }
       ]
@@ -1040,7 +1075,7 @@
     },
     {
       "codice": "MP-057",
-      "nome": "sale Fino",
+      "nome": "Sale Fino",
       "categoria": "Generale",
       "um": "kg",
       "iva": 4,
@@ -1179,6 +1214,43 @@
       ]
     },
     {
+      "codice": "MP-102",
+      "nome": "Tuorlo Pastorizzato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 294,
+        "grassi": 26,
+        "grassiSaturi": 8.4,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 15,
+        "sale": 0.8
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8.5,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-059",
       "nome": "Uova Pastorizzate",
       "categoria": "Generale",
@@ -1216,6 +1288,41 @@
       ]
     },
     {
+      "codice": "MP-105",
+      "nome": "Vaniglia in Polvere",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 324,
+        "grassi": 11.6,
+        "grassiSaturi": 1.58,
+        "carboidrati": 26.7,
+        "zuccheri": 8.1,
+        "fibre": 42.7,
+        "proteine": 6.9,
+        "sale": 0.13
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 500,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-071",
       "nome": "Vino Rosso Cucina",
       "categoria": "Generale",
@@ -1248,6 +1355,76 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-103",
+      "nome": "Zucchero di canna",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 380,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 98.09,
+        "zuccheri": 97.02,
+        "fibre": 0,
+        "proteine": 0.12,
+        "sale": 0.028
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-106",
+      "nome": "Zucchero Semolato da Kg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 380,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 98,
+        "zuccheri": 97,
+        "fibre": 0.2,
+        "proteine": 0.15,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1,
           "storico": []
         }
       ]
@@ -1350,6 +1527,43 @@
         "fibre": 0,
         "proteine": 28.5,
         "sale": 1.9
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-101",
+      "nome": "Panna Fresca",
+      "categoria": "Latticini e formaggi",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 337,
+        "grassi": 35,
+        "grassiSaturi": 25,
+        "carboidrati": 3.2,
+        "zuccheri": 2.8,
+        "fibre": 0,
+        "proteine": 2.2,
+        "sale": 0.07
       },
       "nutrizionaliOk": true,
       "giacenza": 0,
@@ -1834,6 +2048,73 @@
       "dataCreazione": "21/6/2026"
     },
     {
+      "codice": "SL-013",
+      "nome": "Creme Brulè",
+      "categoria": "Dolci e creme",
+      "resaQta": 1627,
+      "resaUm": "g",
+      "tempo": "5",
+      "procedimento": "Mescolare tutti gli ingredienti tranne lo zucchero di canna, passarli al colino fine e mettere negli stampini di ceramica, cuocere a forno misto130°C per 13 minuti oppure forno a vapore a 89°C per 60 minuti. Tieni in frigo e al momento di servire , spolvera con zucchero di canna e brucia con il cannello.",
+      "coefficiente": 2,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 34,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 140,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 41,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 39,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 175,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 38,
+          "codiceMp": "MP-103",
+          "nome": "Zucchero di canna",
+          "qtaBase": 60,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "10/7/2026"
+    },
+    {
       "codice": "SL-011",
       "nome": "Gnocchi di Malga (base)",
       "categoria": "Pasta e impasti",
@@ -1959,6 +2240,55 @@
       "dataCreazione": "7/7/2026"
     },
     {
+      "codice": "SL-012",
+      "nome": "Panna Cotta Vegana",
+      "categoria": "Dolci e creme",
+      "resaQta": 1214,
+      "resaUm": "g",
+      "tempo": "5",
+      "procedimento": "Versare tutti gli ingredienti in un pentolino e, mescolando con una frusta a mano, far cuocere a fiamma moderata fino a bollore. Abbassare quindi la fiamma e continuare a mescolare per altri 3/4 minuti.\nTogliere dal fuoco, versare negli stampini e fare addensare in Abbattitore positivo per 60 min. Tenere in frigo coperta e usare entro 7 giorni",
+      "coefficiente": 1,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 39,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 5,
+          "codiceMp": "MP-104",
+          "nome": "Agar Agar",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "9/7/2026"
+    },
+    {
       "codice": "SL-009",
       "nome": "Patate cotte",
       "categoria": "Verdure lavorate",
@@ -1966,7 +2296,7 @@
       "resaUm": "g",
       "tempo": "45",
       "procedimento": "Cuoci le patate in forno a vapore finche non raggiungono al cuore 92°C , una volta pelate e raffreddate conserva in frigo, max 48 ore",
-      "coefficiente": 2,
+      "coefficiente": 1,
       "componenti": [
         {
           "tipo": "mp",
