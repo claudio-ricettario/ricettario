@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "10/7/2026",
+  "exportDate": "12/7/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -1144,6 +1144,46 @@
       ]
     },
     {
+      "codice": "MP-107",
+      "nome": "Savoiardi",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 378,
+        "grassi": 3.8,
+        "grassiSaturi": 1.1,
+        "carboidrati": 77,
+        "zuccheri": 42,
+        "fibre": 1.7,
+        "proteine": 8.5,
+        "sale": 0.25
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 6,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-084",
       "nome": "Semi di cumino interi Wiberg",
       "categoria": "Generale",
@@ -1499,6 +1539,43 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 1.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-108",
+      "nome": "Mascarpone",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 383,
+        "grassi": 39,
+        "grassiSaturi": 27,
+        "carboidrati": 4,
+        "zuccheri": 3.4,
+        "fibre": 0,
+        "proteine": 4,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
           "storico": []
         }
       ]
