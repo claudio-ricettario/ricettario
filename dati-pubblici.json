@@ -2766,7 +2766,9 @@
       "prezzoVendita": 12,
       "coefficiente": 4,
       "foto": "",
-      "steps": [],
+      "steps": [
+        "Cuocere i canederli almeno 15 min in acqua che bolle, scola, impiatta 3 canederli a porzione spolverare con grana e alla fine il burro nocciola"
+      ],
       "componenti": [
         {
           "tipo": "sl",
@@ -2807,7 +2809,9 @@
       "prezzoVendita": 9.9,
       "coefficiente": 6,
       "foto": "",
-      "steps": [],
+      "steps": [
+        "Cuocere gli gnocchi, circa 220 gr a persona , saltare con ragù circa 100 gr a persona"
+      ],
       "componenti": [
         {
           "tipo": "sl",
@@ -2839,7 +2843,9 @@
       "prezzoVendita": 9.6,
       "coefficiente": 4,
       "foto": "",
-      "steps": [],
+      "steps": [
+        "Cuocere gli gnocchi (220gr a persona) almeno 5  min in acqua che bolle, scola, in una padella con il burro nocciola, impiatta e spolvera con grana"
+      ],
       "componenti": [
         {
           "tipo": "sl",
@@ -2940,7 +2946,9 @@
       "prezzoVendita": 6,
       "coefficiente": 3,
       "foto": "",
-      "steps": [],
+      "steps": [
+        "Prendere un bicchiere adatto, inzuppare 2 savoiardi per persona, iniziare con savoiardo,crema,savoiardo,crema e prima di servire una spolverata di cacao"
+      ],
       "componenti": [
         {
           "tipo": "sl",
