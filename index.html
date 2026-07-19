@@ -1324,12 +1324,27 @@ function aggiungiLotto(mi){
   var numero=document.getElementById('new-lotto-num-'+mi).value.trim();
   var qta=parseFloat(document.getElementById('new-lotto-qta-'+mi).value);
   var scadenza=document.getElementById('new-lotto-scad-'+mi).value;
+
   if(!numero){alert('Inserisci il numero del lotto.');return;}
   if(isNaN(qta)||qta<=0){alert('Inserisci una quantita valida.');return;}
   if(!m.lotti) m.lotti=[];
-  m.lotti.push({numero:numero,qta:qta,scadenza:scadenza||null});
+  m.lotti.push({numero:numero,qta:qta,scadenza:scadenza||null,dataInizio:null,dataFine:null});
   saveMagazzino();
   renderMagazzino();
+}
+
+function apriLotto(mi,li){
+  var m=magazzino[mi];if(!m||!m.lotti||!m.lotti[li])return;
+  var oggi=new Date().toISOString().split('T')[0];
+  m.lotti[li].dataInizio=oggi;
+  saveMagazzino();renderMagazzino();
+}
+
+function chiudiLotto(mi,li){
+  var m=magazzino[mi];if(!m||!m.lotti||!m.lotti[li])return;
+  var oggi=new Date().toISOString().split('T')[0];
+  m.lotti[li].dataFine=oggi;
+  saveMagazzino();renderMagazzino();
 }
 
 function rimuoviLotto(mi,li){
@@ -1488,10 +1503,15 @@ function renderMagazzino(){
               var diff=scad?Math.round((scad-oggi)/(1000*60*60*24)):null;
               var scadCls=!scad?'':diff<=0?'lotto-scad-danger':diff<=30?'lotto-scad-warn':'lotto-scad-ok';
               var scadLbl=!scad?'Nessuna scadenza':diff<=0?'SCADUTO':'Scade tra '+diff+' gg ('+l.scadenza+')';
+              var inizioLbl=l.dataInizio?'&#128197; Aperto: '+l.dataInizio:'&#128197; Inizio: non registrato';
+              var fineLbl=l.dataFine?'&#128197; Chiuso: '+l.dataFine:'';
               out+='<div class="lotto-row">'
                 +'<span style="font-weight:500;">Lotto '+l.numero+'</span>'
                 +'<span style="color:#666;">'+l.qta+' '+m.um+'</span>'
                 +'<span class="'+scadCls+'">'+scadLbl+'</span>'
+                +(l.dataInizio?'<span style="font-size:11px;color:#2d7d46;margin-left:6px;">&#9654; Aperto: '+l.dataInizio+'</span>':'<button class="btn-sm" style="margin-left:6px;" onclick="event.stopPropagation();apriLotto('+mi+','+li+')">&#9654; Apri</button>')
+                +(l.dataInizio&&!l.dataFine?'<button class="btn-sm" style="margin-left:4px;background:#e8f4e8;" onclick="event.stopPropagation();chiudiLotto('+mi+','+li+')">&#9632; Chiudi</button>':'')
+                +(l.dataFine?'<span style="font-size:11px;color:#888;margin-left:6px;">&#9632; Chiuso: '+l.dataFine+'</span>':'')
                 +'<button class="btn-sm danger-sm" onclick="event.stopPropagation();rimuoviLotto('+mi+','+li+')">&#10005;</button>'
                 +'</div>';
             });
