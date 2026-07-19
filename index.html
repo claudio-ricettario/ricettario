@@ -1329,14 +1329,23 @@ function aggiungiLotto(mi){
   if(isNaN(qta)||qta<=0){alert('Inserisci una quantita valida.');return;}
   if(!m.lotti) m.lotti=[];
   m.lotti.push({numero:numero,qta:qta,scadenza:scadenza||null,dataInizio:null,dataFine:null});
+  ricalcolaGiacenza(mi);
   saveMagazzino();
   renderMagazzino();
+}
+
+function ricalcolaGiacenza(mi){
+  var m=magazzino[mi];if(!m)return;
+  var tot=(m.lotti||[]).filter(function(l){return !l.dataFine;})
+    .reduce(function(sum,l){return sum+(l.qta||0);},0);
+  m.giacenza=Math.round(tot*100)/100;
 }
 
 function apriLotto(mi,li){
   var m=magazzino[mi];if(!m||!m.lotti||!m.lotti[li])return;
   var oggi=new Date().toISOString().split('T')[0];
   m.lotti[li].dataInizio=oggi;
+  ricalcolaGiacenza(mi);
   saveMagazzino();renderMagazzino();
 }
 
@@ -1344,6 +1353,7 @@ function chiudiLotto(mi,li){
   var m=magazzino[mi];if(!m||!m.lotti||!m.lotti[li])return;
   var oggi=new Date().toISOString().split('T')[0];
   m.lotti[li].dataFine=oggi;
+  ricalcolaGiacenza(mi);
   saveMagazzino();renderMagazzino();
 }
 
@@ -1351,6 +1361,7 @@ function rimuoviLotto(mi,li){
   var m=magazzino[mi];if(!m||!m.lotti)return;
   if(!confirm('Rimuovere il lotto "'+m.lotti[li].numero+'"?'))return;
   m.lotti.splice(li,1);
+  ricalcolaGiacenza(mi);
   saveMagazzino();
   renderMagazzino();
 }
@@ -1496,25 +1507,44 @@ function renderMagazzino(){
             +'</div>';
 
           /* lotti */
-          if((m.lotti||[]).length){
-            m.lotti.forEach(function(l,li){
+          var lottiAttivi=(m.lotti||[]).filter(function(l){return !l.dataFine;});
+          var lottiChiusi=(m.lotti||[]).filter(function(l){return !!l.dataFine;});
+          var showStorico=false; /* default: storico nascosto */
+          if(lottiAttivi.length||lottiChiusi.length){
+            if(!lottiAttivi.length){
+              out+='<div style="font-size:12px;color:#aaa;padding:4px 0;">Nessun lotto attivo.</div>';
+            }
+            lottiAttivi.forEach(function(l){
+              var li=(m.lotti||[]).indexOf(l);
               var oggi=new Date();oggi.setHours(0,0,0,0);
               var scad=l.scadenza?new Date(l.scadenza):null;
               var diff=scad?Math.round((scad-oggi)/(1000*60*60*24)):null;
               var scadCls=!scad?'':diff<=0?'lotto-scad-danger':diff<=30?'lotto-scad-warn':'lotto-scad-ok';
               var scadLbl=!scad?'Nessuna scadenza':diff<=0?'SCADUTO':'Scade tra '+diff+' gg ('+l.scadenza+')';
-              var inizioLbl=l.dataInizio?'&#128197; Aperto: '+l.dataInizio:'&#128197; Inizio: non registrato';
-              var fineLbl=l.dataFine?'&#128197; Chiuso: '+l.dataFine:'';
               out+='<div class="lotto-row">'
                 +'<span style="font-weight:500;">Lotto '+l.numero+'</span>'
                 +'<span style="color:#666;">'+l.qta+' '+m.um+'</span>'
                 +'<span class="'+scadCls+'">'+scadLbl+'</span>'
                 +(l.dataInizio?'<span style="font-size:11px;color:#2d7d46;margin-left:6px;">&#9654; Aperto: '+l.dataInizio+'</span>':'<button class="btn-sm" style="margin-left:6px;" onclick="event.stopPropagation();apriLotto('+mi+','+li+')">&#9654; Apri</button>')
                 +(l.dataInizio&&!l.dataFine?'<button class="btn-sm" style="margin-left:4px;background:#e8f4e8;" onclick="event.stopPropagation();chiudiLotto('+mi+','+li+')">&#9632; Chiudi</button>':'')
-                +(l.dataFine?'<span style="font-size:11px;color:#888;margin-left:6px;">&#9632; Chiuso: '+l.dataFine+'</span>':'')
                 +'<button class="btn-sm danger-sm" onclick="event.stopPropagation();rimuoviLotto('+mi+','+li+')">&#10005;</button>'
                 +'</div>';
             });
+            if(lottiChiusi.length){
+              out+='<div style="margin-top:6px;">'
+                +'<button class="btn-sm" style="font-size:11px;color:#888;" onclick="event.stopPropagation();var el=document.getElementById(&quot;storico-'+mi+'&quot;);el.style.display=el.style.display===&quot;none&quot;?&quot;block&quot;:&quot;none&quot;;">&#128337; Storico ('+lottiChiusi.length+' chiusi)</button>'
+                +'<div id="storico-'+mi+'" style="display:none;margin-top:6px;">';
+              lottiChiusi.forEach(function(l){
+                var li=(m.lotti||[]).indexOf(l);
+                out+='<div class="lotto-row" style="opacity:0.6;">'
+                  +'<span style="font-weight:500;">Lotto '+l.numero+'</span>'
+                  +'<span style="color:#666;">'+l.qta+' '+m.um+'</span>'
+                  +'<span style="font-size:11px;color:#888;">&#9654; '+l.dataInizio+' &rarr; &#9632; '+l.dataFine+'</span>'
+                  +'<button class="btn-sm danger-sm" onclick="event.stopPropagation();rimuoviLotto('+mi+','+li+')">&#10005;</button>'
+                  +'</div>';
+              });
+              out+='</div></div>';
+            }
           } else {
             out+='<div style="font-size:12px;color:#aaa;padding:4px 0;">Nessun lotto registrato.</div>';
           }
