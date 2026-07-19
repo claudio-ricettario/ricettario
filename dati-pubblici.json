@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "13/7/2026",
+  "exportDate": "19/7/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -428,7 +428,7 @@
     },
     {
       "codice": "MP-109",
-      "nome": "Cacao Amaro Polvere",
+      "nome": "Caffè Solubile",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -440,49 +440,14 @@
       "tracce": [],
       "tracceOk": true,
       "nutrizionali": {
-        "energia": 394,
-        "grassi": 21,
-        "grassiSaturi": 13,
-        "carboidrati": 8.7,
-        "zuccheri": 0.5,
-        "fibre": 28,
-        "proteine": 20,
-        "sale": 0.08
-      },
-      "nutrizionaliOk": true,
-      "giacenza": 0,
-      "giacenzaMin": 0,
-      "lotti": [],
-      "suppliers": [
-        {
-          "nome": "Supermercato / Generico",
-          "prezzoKg": 10,
-          "storico": []
-        }
-      ]
-    },
-    {
-      "codice": "MP-110",
-      "nome": "Caffè Solubile Nescafè",
-      "categoria": "Generale",
-      "um": "kg",
-      "iva": 22,
-      "scarto": 0,
-      "resa": 100,
-      "activeIdx": 0,
-      "allergeni": [],
-      "allergeniOk": true,
-      "tracce": [],
-      "tracceOk": true,
-      "nutrizionali": {
-        "energia": 127,
-        "grassi": 1.19,
-        "grassiSaturi": 0.58,
-        "carboidrati": 3.01,
-        "zuccheri": 3.01,
-        "fibre": 34.2,
-        "proteine": 7.69,
-        "sale": 0.25
+        "energia": 1,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0.3,
+        "zuccheri": 0,
+        "fibre": 23.8,
+        "proteine": 0.2,
+        "sale": 0
       },
       "nutrizionaliOk": true,
       "giacenza": 0,
@@ -2102,23 +2067,14 @@
     },
     {
       "codice": "SL-014",
-      "nome": "Caffè per tiramisù",
-      "categoria": "Altro",
-      "resaQta": 1110,
+      "nome": "Caffè Per Tiramisù",
+      "categoria": "Pasta e impasti",
+      "resaQta": 1010,
       "resaUm": "g",
-      "tempo": "5",
-      "procedimento": "Far freddare prima di usare",
+      "tempo": "1",
+      "procedimento": "Porta l'acqua a 80° ed aggiungi il caffè, fai freddare prima di usare",
       "coefficiente": 1,
       "componenti": [
-        {
-          "tipo": "mp",
-          "magIdx": 13,
-          "codiceMp": "MP-110",
-          "nome": "Caffè Solubile Nescafè",
-          "qtaBase": 10,
-          "unit": "g",
-          "conv": 0.001
-        },
         {
           "tipo": "mp",
           "magIdx": 4,
@@ -2130,55 +2086,15 @@
         },
         {
           "tipo": "mp",
-          "magIdx": 42,
-          "codiceMp": "MP-106",
-          "nome": "Zucchero Semolato da Kg",
-          "qtaBase": 100,
-          "unit": "g",
-          "conv": 0.001
-        }
-      ],
-      "dataCreazione": "13/7/2026"
-    },
-    {
-      "codice": "SL-015",
-      "nome": "Caffè per Tiramisù",
-      "categoria": "Altro",
-      "resaQta": 1110,
-      "resaUm": "g",
-      "tempo": "2",
-      "procedimento": "",
-      "coefficiente": 1,
-      "componenti": [
-        {
-          "tipo": "mp",
-          "magIdx": 13,
-          "codiceMp": "MP-110",
-          "nome": "Caffè Solubile Nescafè",
+          "magIdx": 12,
+          "codiceMp": "MP-109",
+          "nome": "Caffè Solubile",
           "qtaBase": 10,
           "unit": "g",
           "conv": 0.001
-        },
-        {
-          "tipo": "mp",
-          "magIdx": 4,
-          "codiceMp": "MP-096",
-          "nome": "Acqua",
-          "qtaBase": 1000,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
-          "tipo": "mp",
-          "magIdx": 42,
-          "codiceMp": "MP-106",
-          "nome": "Zucchero Semolato da Kg",
-          "qtaBase": 100,
-          "unit": "g",
-          "conv": 0.001
         }
       ],
-      "dataCreazione": "13/7/2026"
+      "dataCreazione": "12/7/2026"
     },
     {
       "codice": "SL-005",
@@ -2189,6 +2105,9 @@
       "tempo": "45",
       "procedimento": "Mettere tutti gli ingredienti secchi in un contenitore adatto, aggiungere le uova ed il latte, mescolando piano dal basso verso l'alto, lasciar riposare 15 min poi formare i canederli da 50 gr l'uno, a questo punto si possono usare cosi o abbattere a -18 per una conservazione piu lunga",
       "coefficiente": 6,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
       "componenti": [
         {
           "magIdx": 4,
@@ -2255,91 +2174,25 @@
           "conv": 0.001
         },
         {
+          "tipo": "sl",
+          "semiIdx": 9,
+          "codiceSl": "SL-003",
+          "nome": "Porri stufati",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
           "tipo": "mp",
-          "magIdx": 14,
+          "magIdx": 20,
           "codiceMp": "MP-076",
           "nome": "Noce moscata macinata Wiberg",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
-        },
-        {
-          "tipo": "sl",
-          "semiIdx": 3,
-          "nome": "Porri stufati",
-          "qtaBase": 500,
-          "unit": "g",
-          "conv": 0.001
         }
       ],
       "dataCreazione": "21/6/2026"
-    },
-    {
-      "codice": "SL-016",
-      "nome": "Crema Mascarpone Vegetariana",
-      "categoria": "Dolci e creme",
-      "resaQta": 2800,
-      "resaUm": "g",
-      "tempo": "10",
-      "procedimento": "Mescola a freddo latte ed agar agar, porta a bollore per attivare l'agar. Monta insieme tutti gli altri ingredienti, quando è cremoso aggiungere il latte con l'agar a filo, continuare a montare fino ad una crema ferma e liscia.",
-      "coefficiente": 4,
-      "componenti": [
-        {
-          "tipo": "mp",
-          "magIdx": 45,
-          "codiceMp": "MP-108",
-          "nome": "Mascarpone",
-          "qtaBase": 1200,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
-          "tipo": "mp",
-          "magIdx": 47,
-          "codiceMp": "MP-101",
-          "nome": "Panna Fresca",
-          "qtaBase": 800,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
-          "tipo": "mp",
-          "magIdx": 42,
-          "codiceMp": "MP-106",
-          "nome": "Zucchero Semolato da Kg",
-          "qtaBase": 300,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
-          "tipo": "mp",
-          "magIdx": 37,
-          "codiceMp": "MP-102",
-          "nome": "Tuorlo Pastorizzato",
-          "qtaBase": 200,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
-          "tipo": "mp",
-          "magIdx": 44,
-          "codiceMp": "MP-062",
-          "nome": "Latte Intero UHT",
-          "qtaBase": 100,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
-          "tipo": "mp",
-          "magIdx": 5,
-          "codiceMp": "MP-104",
-          "nome": "Agar Agar",
-          "qtaBase": 4,
-          "unit": "g",
-          "conv": 0.001
-        }
-      ],
-      "dataCreazione": "13/7/2026"
     },
     {
       "codice": "SL-013",
@@ -2766,9 +2619,7 @@
       "prezzoVendita": 12,
       "coefficiente": 4,
       "foto": "",
-      "steps": [
-        "Cuocere i canederli almeno 15 min in acqua che bolle, scola, impiatta 3 canederli a porzione spolverare con grana e alla fine il burro nocciola"
-      ],
+      "steps": [],
       "componenti": [
         {
           "tipo": "sl",
@@ -2809,9 +2660,7 @@
       "prezzoVendita": 9.9,
       "coefficiente": 6,
       "foto": "",
-      "steps": [
-        "Cuocere gli gnocchi, circa 220 gr a persona , saltare con ragù circa 100 gr a persona"
-      ],
+      "steps": [],
       "componenti": [
         {
           "tipo": "sl",
@@ -2843,9 +2692,7 @@
       "prezzoVendita": 9.6,
       "coefficiente": 4,
       "foto": "",
-      "steps": [
-        "Cuocere gli gnocchi (220gr a persona) almeno 5  min in acqua che bolle, scola, in una padella con il burro nocciola, impiatta e spolvera con grana"
-      ],
+      "steps": [],
       "componenti": [
         {
           "tipo": "sl",
@@ -2936,58 +2783,6 @@
         }
       ],
       "dataCreazione": "26/6/2026"
-    },
-    {
-      "codice": "PF-005",
-      "nome": "Tiramisù nel Bicchiere",
-      "categoria": "Dolci",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 6,
-      "coefficiente": 3,
-      "foto": "",
-      "steps": [
-        "Prendere un bicchiere adatto, inzuppare 2 savoiardi per persona, iniziare con savoiardo,crema,savoiardo,crema e prima di servire una spolverata di cacao"
-      ],
-      "componenti": [
-        {
-          "tipo": "sl",
-          "nome": "Crema Mascarpone Vegetariana",
-          "qtaBase": 100,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 5,
-          "codiceSl": "SL-016"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Savoiardi",
-          "qtaBase": 20,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 34,
-          "codiceMp": "MP-107"
-        },
-        {
-          "tipo": "sl",
-          "nome": "Caffè per tiramisù",
-          "qtaBase": 20,
-          "unit": "ml",
-          "conv": 0.001,
-          "semiIdx": 2,
-          "codiceSl": "SL-014"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Cacao Amaro Polvere",
-          "qtaBase": 2,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 12,
-          "codiceMp": "MP-109"
-        }
-      ],
-      "dataCreazione": "13/7/2026"
     }
   ],
   "ricetteSalvate": [],

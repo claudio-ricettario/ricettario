@@ -2592,6 +2592,9 @@ function openSemiModal(idx){
     document.getElementById('sm-tempo').value='';
     document.getElementById('sm-procedimento').value='';
     document.getElementById('sm-coeff').value='1';
+    document.getElementById('sm-sl-frigo').value='3';
+    document.getElementById('sm-sl-sottovuoto').value='7';
+    document.getElementById('sm-sl-congelato').value='90';
   } else {
     var s=semilavorati[idx];
     document.getElementById('sm-nome').value=s.nome;
@@ -2601,6 +2604,9 @@ function openSemiModal(idx){
     document.getElementById('sm-tempo').value=s.tempo||'';
     document.getElementById('sm-procedimento').value=s.procedimento||'';
     document.getElementById('sm-coeff').value=s.coefficiente||1;
+    document.getElementById('sm-sl-frigo').value=s.shelfLifeFrigo||3;
+    document.getElementById('sm-sl-sottovuoto').value=s.shelfLifeSottovuoto||7;
+    document.getElementById('sm-sl-congelato').value=s.shelfLifeCongelato||90;
     smComps=JSON.parse(JSON.stringify(s.componenti||[]));
   }
   /* populate select */
@@ -2667,7 +2673,7 @@ function smAddIng(){
       return;
     }
     var sRef=semilavorati[mi];
-    smComps.push({tipo:'sl',semiIdx:mi,nome:sRef.nome,qtaBase:qta,unit:unit,conv:conv});
+    smComps.push({tipo:'sl',semiIdx:mi,codiceSl:sRef.codice||null,nome:sRef.nome,qtaBase:qta,unit:unit,conv:conv});
   } else {
     var m=magazzino[mi];
     smComps.push({tipo:'mp',magIdx:mi,codiceMp:m.codice||null,nome:m.nome,qtaBase:qta,unit:unit,conv:conv});
@@ -2720,6 +2726,9 @@ function salvaSemilavorato(){
     tempo:document.getElementById('sm-tempo').value||'',
     procedimento:document.getElementById('sm-procedimento').value.trim(),
     coefficiente:parseInt(document.getElementById('sm-coeff').value)||1,
+    shelfLifeFrigo:parseInt(document.getElementById('sm-sl-frigo').value)||3,
+    shelfLifeSottovuoto:parseInt(document.getElementById('sm-sl-sottovuoto').value)||7,
+    shelfLifeCongelato:parseInt(document.getElementById('sm-sl-congelato').value)||90,
     componenti:JSON.parse(JSON.stringify(smComps)),
     dataCreazione:(idx>=0&&semilavorati[idx])?semilavorati[idx].dataCreazione:today()
   };
@@ -4418,9 +4427,14 @@ function riparaComponenti(){
   var fixSl=0, fixPf=0;
   semilavorati.forEach(function(s){
     (s.componenti||[]).forEach(function(c){
-      if(!c.codiceMp){
-        var m=magazzino.find(function(x){return x.nome===c.nome;});
-        if(m){c.codiceMp=m.codice||null;c.magIdx=magazzino.indexOf(m);fixSl++;}
+      if(c.tipo==='sl'&&!c.codiceSl){
+        var sRif=semilavorati.find(function(x){return x.nome===c.nome;});
+        if(sRif){c.codiceSl=sRif.codice||null;c.semiIdx=semilavorati.indexOf(sRif);fixSl++;}
+      } else if(!c.tipo||c.tipo==='mp'){
+        if(!c.codiceMp){
+          var m=magazzino.find(function(x){return x.nome===c.nome;});
+          if(m){c.codiceMp=m.codice||null;c.magIdx=magazzino.indexOf(m);fixSl++;}
+        }
       }
     });
   });
@@ -5048,6 +5062,24 @@ function npSalva(){
           <span style="color:#2d7d46;font-weight:600;">1-3</span> Semplice &mdash; poca tecnica, pochi componenti, nessuna attrezzatura dedicata<br/>
           <span style="color:#e6a817;font-weight:600;">4-6</span> Medio &mdash; tecnica standard, più lavorazioni, attrezzatura standard<br/>
           <span style="color:#c0392b;font-weight:600;">7-10</span> Complesso &mdash; alta tecnica, molti componenti, attrezzatura dedicata
+        </div>
+      </div>
+    </div>
+    <div class="section-label">Conservazione (shelf life)</div>
+    <div style="background:#f5f4f0;border-radius:10px;padding:12px 14px;margin-bottom:14px;">
+      <div style="font-size:12px;color:#888;margin-bottom:8px;">Giorni di conservazione per metodo &mdash; usati per calcolare la scadenza al momento della produzione</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+        <div>
+          <label style="font-size:11px;color:#888;display:block;margin-bottom:3px;">&#10052; Refrigerato &lt;4&deg;C (gg)</label>
+          <input type="number" id="sm-sl-frigo" value="3" min="1" max="365" step="1" style="width:100%;text-align:left;"/>
+        </div>
+        <div>
+          <label style="font-size:11px;color:#888;display:block;margin-bottom:3px;">&#128230; Sottovuoto &lt;4&deg;C (gg)</label>
+          <input type="number" id="sm-sl-sottovuoto" value="7" min="1" max="365" step="1" style="width:100%;text-align:left;"/>
+        </div>
+        <div>
+          <label style="font-size:11px;color:#888;display:block;margin-bottom:3px;">&#10052;&#10052; Congelato &lt;-18&deg;C (gg)</label>
+          <input type="number" id="sm-sl-congelato" value="90" min="1" max="730" step="1" style="width:100%;text-align:left;"/>
         </div>
       </div>
     </div>
