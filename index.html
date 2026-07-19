@@ -1589,7 +1589,8 @@ function updateAll(){
     var c=costoIng(ing,p);tot+=c;return c;
   });
   var pv=parseFloat(document.getElementById('prezzo-vendita').value)||0;
-  var ricavo=pv*p,pax=tot/p,fcP=ricavo>0?(tot/ricavo*100):0;
+  var pvNetto=ivaOn?pv:pv/1.10;
+  var ricavo=pvNetto*p,pax=tot/p,fcP=ricavo>0?(tot/ricavo*100):0;
 
   document.getElementById('ricetta-tbody').innerHTML=ingredienti.map(function(ing,i){
     if(ing.magIdx>=magazzino.length)return '<tr><td>'+ing.nome+'</td><td class="sm" colspan="4" style="color:#e0ded8;">ingrediente rimosso dal magazzino</td></tr>';
@@ -1834,7 +1835,8 @@ function renderFoodCost(){
   },0);
 
   var pv=p.prezzoVendita||0;
-  var ricavo=pv*pax;
+  var pvNetto=ivaOn?pv:pv/1.10;
+  var ricavo=pvNetto*pax;
   var pax1=tot/pax;
   var fcP=ricavo>0?(tot/ricavo*100):0;
 

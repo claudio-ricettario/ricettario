@@ -2704,15 +2704,6 @@
           "codiceSl": "SL-011"
         },
         {
-          "tipo": "mp",
-          "nome": "Grana Padano Dop",
-          "qtaBase": 200,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 35,
-          "codiceMp": "MP-056"
-        },
-        {
           "tipo": "sl",
           "nome": "Burro Nocciola",
           "qtaBase": 200,
@@ -2720,6 +2711,15 @@
           "conv": 0.001,
           "semiIdx": 1,
           "codiceSl": "SL-004"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 42,
+          "codiceMp": "MP-056"
         }
       ],
       "dataCreazione": "7/7/2026"
@@ -2731,6 +2731,7 @@
       "sottocategoria": "",
       "pax": 18,
       "prezzoVendita": 12,
+      "coefficiente": 1,
       "foto": "",
       "steps": [
         "Con la metà del burro ungere una placca GN 1/1, iniziare gli strati con la besciamella via via alternandoli con il ragù e ogni strato una spolverata di grana, fino a fare 6 strati di pasta.L'ultimo strato farlo misto, spolverare con il grana e mettere dei pezzetti di burro con quello rimanenta. Cuocere a 150/160°C per 45 min, se c'è la sonda arrivare a 85/90°C al cuore. Far riposare coperto 10 min e servire"
@@ -2765,21 +2766,21 @@
         },
         {
           "tipo": "mp",
-          "nome": "Grana Padano Dop",
-          "qtaBase": 200,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 32,
-          "codiceMp": "MP-056"
-        },
-        {
-          "tipo": "mp",
           "nome": "Burro da Kg",
           "qtaBase": 50,
           "unit": "g",
           "conv": 0.001,
           "magIdx": 8,
           "codiceMp": "MP-095"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 42,
+          "codiceMp": "MP-056"
         }
       ],
       "dataCreazione": "26/6/2026"
