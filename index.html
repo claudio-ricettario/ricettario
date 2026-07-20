@@ -4057,7 +4057,21 @@ function mpSalva(){
 
 function mpElimina(){
   if(mpEditIdx<0)return;
-  if(!confirm('Eliminare "'+magazzino[mpEditIdx].nome+'"?'))return;
+  var mp=magazzino[mpEditIdx];
+  var usedSemi=(semilavorati||[]).filter(function(s){
+    return (s.componenti||[]).some(function(c){return c.tipo==='mp'&&c.magIdx===mpEditIdx;});
+  });
+  var usedPiatti=(piatti||[]).filter(function(p){
+    return (p.componenti||[]).some(function(c){return c.tipo==='mp'&&c.magIdx===mpEditIdx;});
+  });
+  var msg='Eliminare "'+mp.nome+'"?';
+  if(usedSemi.length||usedPiatti.length){
+    msg+='\n\nATTENZIONE: questa materia prima e usata in:';
+    if(usedSemi.length) msg+='\n\nSemilavorati:\n'+usedSemi.map(function(s){return '  - '+s.nome;}).join('\n');
+    if(usedPiatti.length) msg+='\n\nPiatti:\n'+usedPiatti.map(function(p){return '  - '+p.nome;}).join('\n');
+    msg+='\n\nSe la elimini il costo non verra piu calcolato correttamente in quelle ricette.';
+  }
+  if(!confirm(msg))return;
   magazzino.splice(mpEditIdx,1);
   saveMagazzino();
   closeNuovaMPModal();
