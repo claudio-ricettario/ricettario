@@ -10,7 +10,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 header{background:#fff;border-bottom:1px solid #e0ded8;padding:12px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 header h1{font-size:18px;font-weight:600;}
 header span{font-size:12px;color:#888;background:#f0ede6;padding:3px 10px;border-radius:20px;}
-.container{max-width:960px;margin:0 auto;padding:24px 16px;}
+.container{max-width:960px;margin:0 auto;padding:24px 32px;}
 .tab-bar{display:flex;gap:4px;margin-bottom:20px;background:#fff;border-radius:12px;padding:6px;border:1px solid #e0ded8;flex-wrap:wrap;}
 .tab{flex:1;min-width:80px;text-align:center;font-size:13px;font-weight:500;color:#888;padding:8px 10px;cursor:pointer;border-radius:8px;transition:all .15s;white-space:nowrap;}
 .tab.active{background:#1a1a1a;color:#fff;}
@@ -309,11 +309,12 @@ textarea{resize:vertical;min-height:60px;}
 <div id="search-results" style="display:none;position:fixed;top:57px;left:50%;transform:translateX(-50%);width:100%;max-width:680px;background:#fff;border-radius:0 0 14px 14px;box-shadow:0 8px 32px rgba(0,0,0,.15);z-index:51;max-height:70vh;overflow-y:auto;"></div>
 <div class="container">
   <div class="tab-bar">
-    <div class="tab active" onclick="showTab('home')">&#127374; Piatti Finiti</div>
-    <div class="tab" onclick="showTab('semilavorati')">&#9881; Semilavorati</div>
-    <div class="tab" onclick="showTab('magazzino')">&#128230; Magazzino</div>
-    <div class="tab" onclick="showTab('foodcost')">&#128202; Food cost</div>
-    <div class="tab" onclick="showTab('fornitori')">&#127978; Fornitori</div>
+    <div class="tab" id="tab-btn-produzioni" onclick="showTab('produzioni')">&#9654; Avvia Produzione</div>
+    <div class="tab active" id="tab-btn-home" onclick="showTab('home')">&#127374; Piatti Finiti</div>
+    <div class="tab" id="tab-btn-semilavorati" onclick="showTab('semilavorati')">&#9881; Semilavorati</div>
+    <div class="tab" id="tab-btn-magazzino" onclick="showTab('magazzino')">&#128230; Magazzino</div>
+    <div class="tab" id="tab-btn-foodcost" onclick="showTab('foodcost')">&#128202; Food cost</div>
+    <div class="tab" id="tab-btn-fornitori" onclick="showTab('fornitori')">&#127978; Fornitori</div>
 
     <div id="admin-lock-btn" class="tab-lock" onclick="checkPassword()" title="Accedi come admin" style="margin-left:auto;cursor:pointer;font-size:18px;">&#128274;</div>
   </div>
@@ -632,7 +633,19 @@ textarea{resize:vertical;min-height:60px;}
   </div>
 </div>
 
-  <!-- NUOVA RICETTA -->
+  <!-- AVVIA PRODUZIONE -->
+  <div id="tab-produzioni" class="section">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:16px;">
+      <div>
+        <h1 class="home-title">Avvia Produzione</h1>
+        <p class="home-subtitle">Registra le produzioni di semilavorati e piatti &mdash; lotti, date e scadenze</p>
+      </div>
+      <button class="btn-primary" onclick="openNuovaProduzione()">&#9654; Nuova produzione</button>
+    </div>
+    <div id="produzioni-list" style="margin-top:8px;"></div>
+  </div>
+
+    <!-- NUOVA RICETTA -->
   <div id="tab-nuova-ricetta" class="section">
     <h2>Nuova ricetta</h2>
     <p class="muted">Compila i campi e aggiungi gli ingredienti uno per uno</p>
@@ -1877,9 +1890,9 @@ function showTab(name){
   }
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
-  var tabs=['home','semilavorati','magazzino','foodcost','fornitori','nuovo-piatto'];
-  var idx=tabs.indexOf(name);
-  if(idx>=0) document.querySelectorAll('.tab')[idx].classList.add('active');
+  var tabs=['home','semilavorati','magazzino','foodcost','fornitori','nuovo-piatto','produzioni'];
+  var tabBtn=document.getElementById('tab-btn-'+name);
+  if(tabBtn) tabBtn.classList.add('active');
   var el=document.getElementById('tab-'+name);
   if(el) el.classList.add('active');
   if(name==='home'){renderHome();}
@@ -1887,6 +1900,7 @@ function showTab(name){
   else if(name==='magazzino'){renderMagazzino();}
   else if(name==='semilavorati'){renderSemilavorati();}
   else if(name==='nuovo-piatto'){npInit();}
+  else if(name==='produzioni'){renderProduzioni();}
   else if(name==='ricetta'){updateAll();}
   else if(name==='foodcost'){fcPopulateSelector();renderFoodCost();}
   else{updateAll();}
@@ -1932,7 +1946,7 @@ var ADMIN_ONLY_TABS = ['magazzino','foodcost','fornitori','nuovo-piatto'];
 
 function applyAdminUI(){
   var tabs = document.querySelectorAll('.tab');
-  var tabNames = ['home','semilavorati','magazzino','foodcost','fornitori','nuovo-piatto'];
+  var tabNames = ['produzioni','home','semilavorati','magazzino','foodcost','fornitori'];
   tabs.forEach(function(t, i){
     var name = tabNames[i];
     if(ADMIN_ONLY_TABS.indexOf(name) >= 0){
@@ -1972,6 +1986,7 @@ function applyAdminUI(){
 loadSaved();
 updateAll();
 renderMagazzino();
+loadProduzioni();
 checkAdminSession();
 applyAdminUI();
 
@@ -2028,6 +2043,233 @@ function ripristinaSnapshot(){
     updateAll();renderMagazzino();renderSemilavorati();renderHome();
     alert('Backup automatico ripristinato con successo!');
   }catch(e){alert('Errore nel ripristino: '+e.message);}
+}
+
+/* ===== PRODUZIONI ===== */
+var produzioni=[];
+
+function saveProduzioni(){
+  try{localStorage.setItem('rc_produzioni',JSON.stringify(produzioni));}catch(e){}
+}
+
+function loadProduzioni(){
+  try{
+    var raw=localStorage.getItem('rc_produzioni');
+    if(raw){produzioni=JSON.parse(raw);}
+  }catch(e){produzioni=[];}
+}
+
+function renderProduzioni(){
+  var el=document.getElementById('produzioni-list');
+  if(!el)return;
+  var cerca=(document.getElementById('prod-cerca')||{}).value||'';
+  var lista=produzioni.filter(function(pr){
+    return !cerca||pr.nomeSemilavorato.toLowerCase().indexOf(cerca.toLowerCase())>=0||pr.numeroLotto.toLowerCase().indexOf(cerca.toLowerCase())>=0;
+  });
+  if(!lista.length){
+    el.innerHTML='<div style="font-size:13px;color:#aaa;padding:16px 0;">'+(cerca?'Nessun risultato per "'+cerca+'"':'Nessuna produzione registrata. Clicca &quot;Nuova produzione&quot; per iniziare.')+'</div>';
+    return;
+  }
+  var oggi=new Date();oggi.setHours(0,0,0,0);
+  el.innerHTML=lista.map(function(pr,i){
+    var scad=pr.dataScadenza?new Date(pr.dataScadenza):null;
+    var diff=scad?Math.round((scad-oggi)/(1000*60*60*24)):null;
+    var scadCls=!scad?'':diff<=0?'lotto-scad-danger':diff<=3?'lotto-scad-warn':'lotto-scad-ok';
+    var scadLbl=!scad?'Nessuna scadenza':diff<=0?'SCADUTA':'Scade tra '+diff+' gg ('+pr.dataScadenza+')';
+    var statoIcon=pr.completata?'&#9632;':'&#9654;';
+    var statoCol=pr.completata?'#888':'#2d7d46';
+    return '<div class="card" style="margin-bottom:10px;">'
+      +'<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">'
+      +'<div>'
+      +'<div style="font-weight:700;font-size:15px;">'+pr.nomeSemilavorato+'</div>'
+      +'<div style="font-size:12px;color:#888;margin-top:2px;">Lotto: <strong>'+pr.numeroLotto+'</strong> &mdash; Prodotto: '+pr.dataProduzione+' &mdash; '+pr.metodo+'</div>'
+      +'</div>'
+      +'<div style="display:flex;align-items:center;gap:8px;">'
+      +'<span class="'+scadCls+'" style="font-size:12px;">'+scadLbl+'</span>'
+      +(pr.completata?'<span style="font-size:11px;color:#888;">Completata</span>':'<button class="btn-sm" style="background:#e8f4e8;" onclick="completaProduzione('+i+')">&#9632; Completa</button>')
+      +'<button class="btn-sm" onclick="stampaEtichetta('+i+')">&#128438; Etichetta</button>'
+      +'<button class="btn-sm danger-sm" onclick="eliminaProduzione('+i+')">&#10005;</button>'
+      +'</div>'
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+function fmtDataIta(d){
+  if(!d)return '';
+  var p=d.split('-');
+  return p.length===3?p[2]+'-'+p[1]+'-'+p[0]:d;
+}
+
+function stampaEtichetta(i){
+  var pr=produzioni[i];if(!pr)return;
+  var html='<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"/>'
+    +'<title>Etichetta '+pr.nomeSemilavorato+'</title><style>'
+    +'*{box-sizing:border-box;margin:0;padding:0;}'
+    +'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:16px;max-width:300px;}'
+    +'h1{font-size:18px;font-weight:700;margin-bottom:8px;}'
+    +'.row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid #eee;}'
+    +'.label{color:#888;}'
+    +'.scad{font-size:16px;font-weight:700;color:#c0392b;margin-top:8px;}'
+    +'@media print{body{padding:8px;}}'
+    +'</style></head><body>'
+    +'<h1>'+pr.nomeSemilavorato+'</h1>'
+    +(pr.codiceSl?'<div style="font-size:12px;color:#888;margin-bottom:8px;">'+pr.codiceSl+'</div>':'')
+    +'<div class="row"><span class="label">Lotto</span><strong>'+pr.numeroLotto+'</strong></div>'
+    +'<div class="row"><span class="label">Prodotto il</span><span>'+fmtDataIta(pr.dataProduzione)+'</span></div>'
+    +'<div class="row"><span class="label">Conservazione</span><span>'+pr.metodo+'</span></div>'
+    +(pr.qta?'<div class="row"><span class="label">Quantità</span><span>'+pr.qta+' '+pr.um+'</span></div>':'')
+    +'<div class="scad">Scade: '+fmtDataIta(pr.dataScadenza)+'</div>'
+    +'<script>window.onload=function(){window.print();}<\/script>'
+    +'</body></html>';
+  var win=window.open('','_blank','width=400,height=500');
+  if(win){win.document.write(html);win.document.close();}
+}
+
+function completaProduzione(i){
+  produzioni[i].completata=true;
+  saveProduzioni();
+  renderProduzioni();
+}
+
+function eliminaProduzione(i){
+  if(!confirm('Eliminare questa produzione?'))return;
+  produzioni.splice(i,1);
+  saveProduzioni();
+  renderProduzioni();
+}
+
+function openNuovaProduzione(){
+  /* apre modal nuova produzione */
+  var nomi='<optgroup label="Semilavorati">'+semilavorati.map(function(s,i){return '<option value="sl-'+i+'">'+s.codice+' '+s.nome+'</option>';}).join('')+'</optgroup>'
+    +'<optgroup label="Piatti Finiti">'+piatti.map(function(p,i){return '<option value="pf-'+i+'">'+p.nome+'</option>';}).join('')+'</optgroup>';
+  var html='<div style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:300;display:flex;align-items:center;justify-content:center;" id="prod-modal-overlay">'
+    +'<div style="background:#fff;border-radius:14px;padding:24px;width:100%;max-width:480px;box-shadow:0 8px 32px rgba(0,0,0,.2);">'
+    +'<h3 style="margin:0 0 16px;">Nuova produzione</h3>'
+    +'<div class="form-row"><label>Cerca e seleziona</label>'
+    +'<input type="text" id="prod-cerca-modal" placeholder="&#128269; Cerca..." oninput="filtraProdSel()" style="width:100%;font-size:13px;padding:7px 12px;border:1px solid #d0cec8;border-radius:20px;background:#f5f4f0;outline:none;margin-bottom:6px;"/>'
+    +'<select id="prod-sl" onchange="aggiornaShelfLife()" size="6" style="width:100%;border:1px solid #d0cec8;border-radius:8px;padding:4px;">'+nomi+'</select></div>'
+    +'<div class="form-row"><label>Quantità prodotta <span id="prod-qta-hint" style="font-size:11px;color:#aaa;font-weight:400;"></span></label>'
+    +'<div style="display:flex;gap:8px;align-items:center;">'
+    +'<input type="number" id="prod-qta" placeholder="es. 2" min="0" step="0.1" style="flex:1;"/>'
+    +'<select id="prod-um" style="width:80px;"><option>kg</option><option>lt</option><option>g</option><option>pz</option><option>porz.</option></select>'
+    +'</div></div>'
+    +'<div class="form-row"><label>Metodo conservazione</label>'
+    +'<select id="prod-metodo" onchange="aggiornaShelfLife()" style="width:100%;">'
+    +'<option value="Refrigerato">&#10052; Refrigerato &lt;4°C</option>'
+    +'<option value="Sottovuoto">&#128230; Sottovuoto &lt;4°C</option>'
+    +'<option value="Congelato">&#10052;&#10052; Congelato &lt;-18°C</option>'
+    +'</select></div>'
+    +'<div class="form-row"><label>Data produzione</label>'
+    +'<input type="date" id="prod-data" style="width:100%;"/></div>'
+    +'<div class="form-row"><label>Data scadenza <span id="prod-scad-hint" style="font-size:11px;color:#2d7d46;font-weight:400;"></span></label>'
+    +'<input type="date" id="prod-scad" style="width:100%;"/></div>'
+    +'<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px;">'
+    +'<button class="btn-secondary" onclick="document.getElementById(&quot;prod-modal-overlay&quot;).remove()">Annulla</button>'
+    +'<button class="btn-primary" onclick="salvaProduzione()">&#9654; Avvia</button>'
+    +'</div></div></div>';
+  document.body.insertAdjacentHTML('beforeend',html);
+  /* data produzione default oggi */
+  var oggi=new Date().toISOString().split('T')[0];
+  document.getElementById('prod-data').value=oggi;
+  aggiornaShelfLife();
+}
+
+function aggiornaShelfLife(){
+  var slEl=document.getElementById('prod-sl');
+  var metodoEl=document.getElementById('prod-metodo');
+  var dataEl=document.getElementById('prod-data');
+  var scadEl=document.getElementById('prod-scad');
+  var hint=document.getElementById('prod-scad-hint');
+  if(!slEl||!metodoEl||!dataEl||!scadEl)return;
+  var val=slEl.value;
+  var sl=null;
+  if(val.startsWith('sl-')) sl=semilavorati[parseInt(val.replace('sl-',''))];
+  var metodo=metodoEl.value;
+  var giorni=metodo==='Refrigerato'?(sl&&sl.shelfLifeFrigo||3):metodo==='Sottovuoto'?(sl&&sl.shelfLifeSottovuoto||7):(sl&&sl.shelfLifeCongelato||90);
+  var data=new Date(dataEl.value||new Date());
+  data.setDate(data.getDate()+giorni);
+  scadEl.value=data.toISOString().split('T')[0];
+  if(hint)hint.textContent='(calcolata: '+giorni+' gg)';
+  var qtaHint=document.getElementById('prod-qta-hint');
+  var qtaEl=document.getElementById('prod-qta');
+  var umEl=document.getElementById('prod-um');
+  if(qtaHint){
+    var val2=document.getElementById('prod-sl')?document.getElementById('prod-sl').value:'';
+    var qtaSug=null,umSug=null;
+    if(val2&&val2.startsWith('sl-')){
+      var slS=semilavorati[parseInt(val2.replace('sl-',''))];
+      if(slS){qtaSug=slS.resaQta;umSug=slS.resaUm;}
+    } else if(val2&&val2.startsWith('pf-')){
+      var pfS=piatti[parseInt(val2.replace('pf-',''))];
+      if(pfS){qtaSug=pfS.pax;umSug='porz.';}
+    }
+    if(qtaSug){
+      qtaHint.textContent='(suggerito: '+qtaSug+' '+(umSug||'')+' dalla ricetta)';
+      if(qtaEl){qtaEl.value=qtaSug;
+        if(umEl&&umSug){for(var oi=0;oi<umEl.options.length;oi++){if(umEl.options[oi].value===umSug){umEl.selectedIndex=oi;break;}}}
+      }
+    } else {qtaHint.textContent='';}
+  }
+}
+
+function filtraProdSel(){
+  var cerca=document.getElementById('prod-cerca-modal');
+  var sel=document.getElementById('prod-sl');
+  if(!cerca||!sel)return;
+  var q=cerca.value.toLowerCase();
+  for(var i=0;i<sel.options.length;i++){
+    var opt=sel.options[i];
+    if(opt.value==='')continue;
+    opt.style.display=(!q||opt.text.toLowerCase().indexOf(q)>=0)?'':'none';
+  }
+}
+
+function generaNumeroLotto(){
+  var oggi=new Date();
+  var data=oggi.toISOString().split('T')[0].replace(/-/g,'_');
+  var count=(produzioni.filter(function(p){return p.dataProduzione===oggi.toISOString().split('T')[0];}).length+1);
+  var prog=String(count).padStart(3,'0');
+  return data+'-'+prog;
+}
+
+function salvaProduzione(){
+  var val=document.getElementById('prod-sl').value;
+  var sl=null,pf=null,nomeP='',codiceP='';
+  if(val.startsWith('sl-')){
+    var slIdx=parseInt(val.replace('sl-',''));
+    sl=semilavorati[slIdx];
+    if(sl){nomeP=sl.nome;codiceP=sl.codice||'';}
+  } else if(val.startsWith('pf-')){
+    var pfIdx=parseInt(val.replace('pf-',''));
+    pf=piatti[pfIdx];
+    if(pf){nomeP=pf.nome;codiceP=pf.codice||'';}
+  }
+  if(!nomeP){alert('Seleziona un semilavorato o piatto finito.');return;}
+  var qta=parseFloat(document.getElementById('prod-qta').value)||0;
+  var um=document.getElementById('prod-um').value;
+  var metodo=document.getElementById('prod-metodo').value;
+  var dataProd=document.getElementById('prod-data').value;
+  var dataScad=document.getElementById('prod-scad').value;
+  if(!dataProd){alert('Inserisci la data di produzione.');return;}
+  if(!dataScad){alert('Inserisci la data di scadenza.');return;}
+  var pr={
+    nomeSemilavorato:nomeP,
+    codiceSl:codiceP,
+    semiIdx:slIdx,
+    numeroLotto:generaNumeroLotto(),
+    qta:qta,
+    um:um,
+    metodo:metodo,
+    dataProduzione:dataProd,
+    dataScadenza:dataScad,
+    completata:false,
+    dataCreazione:new Date().toISOString()
+  };
+  produzioni.unshift(pr);
+  saveProduzioni();
+  document.getElementById('prod-modal-overlay').remove();
+  renderProduzioni();
 }
 
 function pubblicaDatiPubblici(){
