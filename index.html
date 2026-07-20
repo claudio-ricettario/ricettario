@@ -309,12 +309,12 @@ textarea{resize:vertical;min-height:60px;}
 <div id="search-results" style="display:none;position:fixed;top:57px;left:50%;transform:translateX(-50%);width:100%;max-width:680px;background:#fff;border-radius:0 0 14px 14px;box-shadow:0 8px 32px rgba(0,0,0,.15);z-index:51;max-height:70vh;overflow-y:auto;"></div>
 <div class="container">
   <div class="tab-bar">
-    <div class="tab active" onclick="showTab('home')">&#127968; Home</div>
+    <div class="tab active" onclick="showTab('home')">&#127374; Piatti Finiti</div>
     <div class="tab" onclick="showTab('semilavorati')">&#9881; Semilavorati</div>
     <div class="tab" onclick="showTab('magazzino')">&#128230; Magazzino</div>
     <div class="tab" onclick="showTab('foodcost')">&#128202; Food cost</div>
     <div class="tab" onclick="showTab('fornitori')">&#127978; Fornitori</div>
-    <div class="tab" onclick="showTab('nuovo-piatto')">&#43; Nuovo piatto</div>
+
     <div id="admin-lock-btn" class="tab-lock" onclick="checkPassword()" title="Accedi come admin" style="margin-left:auto;cursor:pointer;font-size:18px;">&#128274;</div>
   </div>
 
@@ -621,13 +621,13 @@ textarea{resize:vertical;min-height:60px;}
 
   <!-- FORNITORI -->
   <div id="tab-fornitori" class="section">
-    <h2>Fornitori</h2>
-    <p class="muted">Anagrafica completa &mdash; contatti, ordini e consegne</p>
-    <div class="save-bar">
-      <span>Dati salvati nel browser</span>
-      <span class="saved" id="save-status-f"></span>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+      <div>
+        <h2 style="margin:0;">Fornitori</h2>
+        <p class="muted" style="margin:2px 0 0;">Anagrafica completa &mdash; contatti, ordini e consegne</p>
+      </div>
+      <button class="btn-primary" onclick="openFornModal(-1)">+ Nuovo fornitore</button>
     </div>
-    <button class="add-btn" onclick="openFornModal(-1)">+ Aggiungi fornitore</button>
     <div class="fornitori-grid" id="fornitori-grid"></div>
   </div>
 </div>
