@@ -633,17 +633,42 @@ textarea{resize:vertical;min-height:60px;}
   </div>
 
   <div id="gestione-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);z-index:1000;overflow-y:auto;">
-    <div style="background:#fff;border-radius:12px;max-width:560px;margin:40px auto;padding:28px 24px;position:relative;">
+    <div style="background:#fff;border-radius:12px;max-width:640px;margin:40px auto;padding:28px 24px 24px;position:relative;">
       <button onclick="closeGestioneModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#888;">&times;</button>
       <h3 style="margin:0 0 20px;">&#9881; Costi di gestione</h3>
-      <div style="margin-bottom:16px;">
-        <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;">Periodo di riferimento</label>
-        <input type="text" id="gest-periodo" placeholder="es. Luglio 2026" style="width:100%;box-sizing:border-box;padding:8px 10px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;"/>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;color:#666;">Periodo</label>
+          <input type="text" id="gest-periodo" placeholder="es. Luglio 2026" style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;"/>
+        </div>
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;color:#666;">Scontrino medio &euro;</label>
+          <input type="number" id="gest-scontrino" min="0" step="0.5" placeholder="0,00" oninput="gestioneUpdateBEP()" style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;"/>
+        </div>
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;color:#666;">Coperti periodo</label>
+          <input type="number" id="gest-coperti" min="0" step="1" placeholder="0" oninput="gestioneUpdateBEP()" style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;"/>
+        </div>
       </div>
-      <div class="section-label" style="margin-bottom:8px;">Voci di costo</div>
-      <div id="gest-voci-list"></div>
-      <button class="btn-sm" onclick="gestioneAddVoce()" style="margin-top:8px;">+ Aggiungi voce</button>
-      <div style="margin-top:10px;font-size:13px;">Totale costi: <strong id="gest-totale">€ 0,00</strong></div>
+      <div class="section-label" style="margin-bottom:6px;">Costi fissi</div>
+      <div style="font-size:12px;color:#999;margin-bottom:8px;">Affitto, utenze, mutuo, assicurazioni, tasse, consulenti, personale t.ind., ammortamenti&hellip;</div>
+      <div id="gest-fissi-list"></div>
+      <button class="btn-sm" onclick="gestioneAddVoceFissa()" style="margin-top:6px;">+ Aggiungi voce fissa</button>
+      <div style="margin-top:8px;font-size:13px;">Totale costi fissi: <strong id="gest-fissi-tot">&euro; 0,00</strong></div>
+      <div class="section-label" style="margin:20px 0 6px;">Costi variabili</div>
+      <div style="font-size:12px;color:#999;margin-bottom:8px;">Mat. prime e beverage, personale a chiamata, pulizie, lavanderia, commissioni POS&hellip;</div>
+      <div id="gest-variabili-list"></div>
+      <button class="btn-sm" onclick="gestioneAddVoceVariabile()" style="margin-top:6px;">+ Aggiungi voce variabile</button>
+      <div style="margin-top:8px;font-size:13px;">Totale costi variabili: <strong id="gest-variabili-tot">&euro; 0,00</strong></div>
+      <div style="background:#f5f4f0;border-radius:10px;padding:16px;margin:20px 0 0;">
+        <div style="font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">Riepilogo &amp; Break-even point</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;">
+          <div><div style="font-size:11px;color:#888;margin-bottom:4px;">Fatturato stimato</div><div style="font-size:15px;font-weight:700;" id="gest-fatturato">-</div></div>
+          <div><div style="font-size:11px;color:#888;margin-bottom:4px;">Marg. contribuz.</div><div style="font-size:15px;font-weight:700;" id="gest-mc">-</div></div>
+          <div><div style="font-size:11px;color:#888;margin-bottom:4px;">BEP Fatturato</div><div style="font-size:15px;font-weight:700;" id="gest-bep-euro">-</div></div>
+          <div><div style="font-size:11px;color:#888;margin-bottom:4px;">BEP Coperti</div><div style="font-size:15px;font-weight:700;" id="gest-bep-coperti">-</div></div>
+        </div>
+      </div>
       <div class="section-label" style="margin:20px 0 8px;">Porzioni vendute nel periodo</div>
       <table style="width:100%;font-size:13px;border-collapse:collapse;">
         <thead><tr style="color:#888;font-size:11px;text-transform:uppercase;border-bottom:1px solid #e0ded8;">
@@ -658,8 +683,12 @@ textarea{resize:vertical;min-height:60px;}
           <td style="text-align:right;padding:8px 6px;" id="gest-unita-pond">-</td>
         </tr></tfoot>
       </table>
-      <div style="margin-top:8px;font-size:13px;color:#666;">Costo per unit&agrave; pond.: <strong id="gest-costo-unita">-</strong></div>
-      <div style="margin-top:20px;text-align:right;">
+      <div style="margin-top:8px;font-size:13px;color:#666;">Costo per unit&agrave; pond. (costi fissi): <strong id="gest-costo-unita">-</strong></div>
+      <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;gap:8px;">
+          <button class="btn-sm" onclick="gestioneNuovoPeriodo()" style="color:#b91c1c;">&#128465; Nuovo periodo</button>
+          <button class="btn-sm" onclick="stampaGestione()">&#128438; Stampa</button>
+        </div>
         <button class="btn-primary" onclick="saveGestione()">Salva</button>
       </div>
     </div>
@@ -1938,9 +1967,9 @@ function renderFoodCost(){
 
 function renderFoodCostVero(p,totPrimario,pax,ricavo){
   var gestione=JSON.parse(localStorage.getItem('rc_gestione')||'{}');
-  var gVoci=gestione.voci||[];
+  var gCostiFissi=gestione.costiFissi||[];
   var gVendite=gestione.vendite||{};
-  var totaleCostiFissi=gVoci.reduce(function(s,v){return s+(parseFloat(v.importo)||0);},0);
+  var totaleCostiFissi=gCostiFissi.reduce(function(s,v){return s+(parseFloat(v.importo)||0);},0);
   var totUnitaPond=piatti.reduce(function(s,pp){
     var porz=parseFloat(gVendite[pp.nome]||0);
     return s+porz*(pp.coefficiente||1);
@@ -1966,10 +1995,17 @@ function renderFoodCostVero(p,totPrimario,pax,ricavo){
 function openGestioneModal(){
   var gestione=JSON.parse(localStorage.getItem('rc_gestione')||'{}');
   document.getElementById('gest-periodo').value=gestione.periodo||'';
-  var list=document.getElementById('gest-voci-list');
-  list.innerHTML='';
-  (gestione.voci||[]).forEach(function(v){list.appendChild(gestioneCreaRigaVoce(v.nome,v.importo));});
-  gestioneUpdateTotale();
+  document.getElementById('gest-scontrino').value=gestione.scontrinoMedio||'';
+  document.getElementById('gest-coperti').value=gestione.copertiPeriodo||'';
+  var listF=document.getElementById('gest-fissi-list');
+  listF.innerHTML='';
+  (gestione.costiFissi||[]).forEach(function(v){listF.appendChild(gestioneCreaRigaVoce(v.nome,v.importo,'gestioneUpdateCostiFissi'));});
+  gestioneUpdateCostiFissi();
+  var listV=document.getElementById('gest-variabili-list');
+  listV.innerHTML='';
+  (gestione.costiVariabili||[]).forEach(function(v){listV.appendChild(gestioneCreaRigaVoce(v.nome,v.importo,'gestioneUpdateCostiVariabili'));});
+  gestioneUpdateCostiVariabili();
+  gestioneUpdateBEP();
   var gVendite=gestione.vendite||{};
   document.getElementById('gest-piatti-tbody').innerHTML=piatti.map(function(p,i){
     var porz=gVendite[p.nome]||0;
@@ -1989,54 +2025,95 @@ function closeGestioneModal(){
   document.getElementById('gestione-modal').style.display='none';
 }
 
-function gestioneCreaRigaVoce(nome,importo){
+function gestioneCreaRigaVoce(nome,importo,updateFn){
   var div=document.createElement('div');
   div.style.cssText='display:flex;gap:8px;margin-bottom:6px;align-items:center;';
-  div.innerHTML='<input type="text" placeholder="Voce (es. Affitto)" value="'+(nome||'').replace(/"/g,'&quot;')+'" style="flex:1;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;" oninput="gestioneUpdateTotale()">'
-    +'<input type="number" min="0" step="1" placeholder="0" value="'+(importo||'')+'" style="width:90px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;text-align:right;" oninput="gestioneUpdateTotale()">'
-    +'<button style="background:#fee2e2;color:#b91c1c;border:none;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:16px;line-height:1;" onclick="this.parentElement.remove();gestioneUpdateTotale();">&times;</button>';
+  div.innerHTML='<input type="text" placeholder="Nome voce" value="'+(nome||'').replace(/"/g,'&quot;')+'" style="flex:1;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;" oninput="'+updateFn+'()">'
+    +'<input type="number" min="0" step="1" placeholder="0" value="'+(importo||'')+'" style="width:90px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;text-align:right;" oninput="'+updateFn+'()">'
+    +'<button style="background:#fee2e2;color:#b91c1c;border:none;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:16px;line-height:1;" onclick="this.parentElement.remove();'+updateFn+'();">&times;</button>';
   return div;
 }
 
-function gestioneAddVoce(){
-  document.getElementById('gest-voci-list').appendChild(gestioneCreaRigaVoce('',''));
+function gestioneAddVoceFissa(){
+  document.getElementById('gest-fissi-list').appendChild(gestioneCreaRigaVoce('','','gestioneUpdateCostiFissi'));
 }
 
-function gestioneUpdateTotale(){
+function gestioneAddVoceVariabile(){
+  document.getElementById('gest-variabili-list').appendChild(gestioneCreaRigaVoce('','','gestioneUpdateCostiVariabili'));
+}
+
+function gestioneUpdateCostiFissi(){
   var tot=0;
-  document.querySelectorAll('#gest-voci-list > div').forEach(function(row){
+  document.querySelectorAll('#gest-fissi-list > div').forEach(function(row){
     tot+=parseFloat(row.querySelectorAll('input')[1].value)||0;
   });
-  document.getElementById('gest-totale').textContent=eur(tot);
+  document.getElementById('gest-fissi-tot').textContent=eur(tot);
+  gestioneUpdateBEP();
   gestioneUpdateUnitePond();
 }
 
+function gestioneUpdateCostiVariabili(){
+  var tot=0;
+  document.querySelectorAll('#gest-variabili-list > div').forEach(function(row){
+    tot+=parseFloat(row.querySelectorAll('input')[1].value)||0;
+  });
+  document.getElementById('gest-variabili-tot').textContent=eur(tot);
+  gestioneUpdateBEP();
+}
+
+function gestioneUpdateBEP(){
+  var scontrino=parseFloat(document.getElementById('gest-scontrino').value)||0;
+  var coperti=parseFloat(document.getElementById('gest-coperti').value)||0;
+  var totFissi=0;
+  document.querySelectorAll('#gest-fissi-list > div').forEach(function(row){
+    totFissi+=parseFloat(row.querySelectorAll('input')[1].value)||0;
+  });
+  var totVariabili=0;
+  document.querySelectorAll('#gest-variabili-list > div').forEach(function(row){
+    totVariabili+=parseFloat(row.querySelectorAll('input')[1].value)||0;
+  });
+  var fatturato=scontrino*coperti;
+  var mc=fatturato>0?((fatturato-totVariabili)/fatturato*100):0;
+  var bepEuro=mc>0?(totFissi/(mc/100)):0;
+  var bepCoperti=scontrino>0?(bepEuro/scontrino):0;
+  document.getElementById('gest-fatturato').textContent=fatturato>0?eur(fatturato):'-';
+  var mcEl=document.getElementById('gest-mc');
+  if(mc>0){mcEl.textContent=mc.toFixed(1)+'%';mcEl.style.color=mc>=60?'#16a34a':mc>=40?'#d97706':'#dc2626';}
+  else{mcEl.textContent='-';mcEl.style.color='';}
+  document.getElementById('gest-bep-euro').textContent=bepEuro>0?eur(bepEuro):'-';
+  document.getElementById('gest-bep-coperti').textContent=bepCoperti>0?Math.ceil(bepCoperti).toString():'-';
+}
+
 function gestioneUpdateUnitePond(){
-  var totUp=0;var totCosti=0;
-  document.querySelectorAll('#gest-voci-list > div').forEach(function(row){
-    totCosti+=parseFloat(row.querySelectorAll('input')[1].value)||0;
+  var totUp=0;var totCostiFissi=0;
+  document.querySelectorAll('#gest-fissi-list > div').forEach(function(row){
+    totCostiFissi+=parseFloat(row.querySelectorAll('input')[1].value)||0;
   });
   document.querySelectorAll('#gest-piatti-tbody input').forEach(function(inp){
     var idx=parseInt(inp.dataset.idx);
     var porz=parseFloat(inp.value)||0;
     var coeff=(piatti[idx]&&piatti[idx].coefficiente)||1;
-    var up=porz*coeff;
-    totUp+=up;
+    var up=porz*coeff;totUp+=up;
     var cell=document.getElementById('gest-up-'+idx);
     if(cell)cell.textContent=up.toFixed(1);
   });
   document.getElementById('gest-unita-pond').textContent=totUp.toFixed(1);
-  var cpu=totUp>0?totCosti/totUp:0;
+  var cpu=totUp>0?totCostiFissi/totUp:0;
   document.getElementById('gest-costo-unita').textContent=totUp>0?(eur(cpu)+'/unità pond.'):'-';
 }
 
 function saveGestione(){
-  var voci=[];
-  document.querySelectorAll('#gest-voci-list > div').forEach(function(row){
+  var costiFissi=[];
+  document.querySelectorAll('#gest-fissi-list > div').forEach(function(row){
     var inputs=row.querySelectorAll('input');
-    var nome=inputs[0].value.trim();
-    var importo=parseFloat(inputs[1].value)||0;
-    if(nome||importo>0)voci.push({nome:nome,importo:importo});
+    var nome=inputs[0].value.trim();var importo=parseFloat(inputs[1].value)||0;
+    if(nome||importo>0)costiFissi.push({nome:nome,importo:importo});
+  });
+  var costiVariabili=[];
+  document.querySelectorAll('#gest-variabili-list > div').forEach(function(row){
+    var inputs=row.querySelectorAll('input');
+    var nome=inputs[0].value.trim();var importo=parseFloat(inputs[1].value)||0;
+    if(nome||importo>0)costiVariabili.push({nome:nome,importo:importo});
   });
   var vendite={};
   document.querySelectorAll('#gest-piatti-tbody input').forEach(function(inp){
@@ -2046,9 +2123,112 @@ function saveGestione(){
   });
   localStorage.setItem('rc_gestione',JSON.stringify({
     periodo:document.getElementById('gest-periodo').value.trim(),
-    voci:voci,vendite:vendite
+    scontrinoMedio:parseFloat(document.getElementById('gest-scontrino').value)||0,
+    copertiPeriodo:parseFloat(document.getElementById('gest-coperti').value)||0,
+    costiFissi:costiFissi,
+    costiVariabili:costiVariabili,
+    vendite:vendite
   }));
   closeGestioneModal();
+  renderFoodCost();
+}
+
+function stampaGestione(){
+  var g=JSON.parse(localStorage.getItem('rc_gestione')||'{}');
+  var cf=g.costiFissi||[];
+  var cv=g.costiVariabili||[];
+  var vendite=g.vendite||{};
+  var totFissi=cf.reduce(function(s,v){return s+(parseFloat(v.importo)||0);},0);
+  var totVar=cv.reduce(function(s,v){return s+(parseFloat(v.importo)||0);},0);
+  var scontrino=parseFloat(g.scontrinoMedio)||0;
+  var coperti=parseFloat(g.copertiPeriodo)||0;
+  var fatturato=scontrino*coperti;
+  var mc=fatturato>0?((fatturato-totVar)/fatturato*100):0;
+  var bepEuro=mc>0?(totFissi/(mc/100)):0;
+  var bepCop=scontrino>0?Math.ceil(bepEuro/scontrino):0;
+  function feur(v){return v.toLocaleString('it-IT',{style:'currency',currency:'EUR'});}
+  var righeF=cf.map(function(v){
+    return '<tr><td>'+v.nome+'</td><td style="text-align:right;">'+feur(parseFloat(v.importo)||0)+'</td></tr>';
+  }).join('');
+  var righeV=cv.map(function(v){
+    return '<tr><td>'+v.nome+'</td><td style="text-align:right;">'+feur(parseFloat(v.importo)||0)+'</td></tr>';
+  }).join('');
+  var righeP=piatti.map(function(p){
+    var porz=parseFloat(vendite[p.nome]||0);
+    var coeff=p.coefficiente||1;
+    return '<tr><td>'+p.nome+'</td><td style="text-align:center;">'+coeff+'</td><td style="text-align:right;">'+porz+'</td><td style="text-align:right;">'+(porz*coeff).toFixed(1)+'</td></tr>';
+  }).filter(function(r){return r.indexOf('>0<')<0||true;}).join('');
+  var totUP=piatti.reduce(function(s,p){return s+(parseFloat(vendite[p.nome]||0))*(p.coefficiente||1);},0);
+  var html='<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8">'
+    +'<title>Costi di gestione - '+( g.periodo||'')+'</title>'
+    +'<style>'
+    +'body{font-family:system-ui,sans-serif;font-size:13px;color:#222;padding:24px;max-width:700px;margin:0 auto;}'
+    +'h1{font-size:18px;margin:0 0 4px;}'
+    +'.sub{color:#888;font-size:12px;margin-bottom:24px;}'
+    +'h2{font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:#888;margin:20px 0 8px;border-bottom:1px solid #e0ded8;padding-bottom:4px;}'
+    +'table{width:100%;border-collapse:collapse;margin-bottom:4px;}'
+    +'td,th{padding:5px 6px;}'
+    +'th{text-align:left;font-size:11px;color:#888;text-transform:uppercase;}'
+    +'tr:nth-child(even){background:#f9f8f5;}'
+    +'.tot{font-weight:700;border-top:2px solid #d0cec8;}'
+    +'.bep{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;background:#f5f4f0;border-radius:8px;padding:16px;margin:20px 0;}'
+    +'.bep-item{text-align:center;}'
+    +'.bep-label{font-size:10px;text-transform:uppercase;color:#888;margin-bottom:4px;}'
+    +'.bep-val{font-size:16px;font-weight:700;}'
+    +'@media print{body{padding:0;}button{display:none;}}'
+    +'</style></head><body>'
+    +'<h1>Costi di gestione &mdash; '+(g.periodo||'&mdash;')+'</h1>'
+    +'<div class="sub">Scontrino medio: '+feur(scontrino)+' &nbsp;&middot;&nbsp; Coperti: '+coperti+' &nbsp;&middot;&nbsp; Stampato il: '+new Date().toLocaleDateString('it-IT')+'</div>'
+    +'<h2>Costi fissi</h2>'
+    +'<table><thead><tr><th>Voce</th><th style="text-align:right;">Importo</th></tr></thead><tbody>'
+    +righeF
+    +'<tr class="tot"><td>Totale costi fissi</td><td style="text-align:right;">'+feur(totFissi)+'</td></tr>'
+    +'</tbody></table>'
+    +'<h2>Costi variabili</h2>'
+    +'<table><thead><tr><th>Voce</th><th style="text-align:right;">Importo</th></tr></thead><tbody>'
+    +righeV
+    +'<tr class="tot"><td>Totale costi variabili</td><td style="text-align:right;">'+feur(totVar)+'</td></tr>'
+    +'</tbody></table>'
+    +'<h2>Break-even point</h2>'
+    +'<div class="bep">'
+    +'<div class="bep-item"><div class="bep-label">Fatturato stimato</div><div class="bep-val">'+feur(fatturato)+'</div></div>'
+    +'<div class="bep-item"><div class="bep-label">Marg. contribuzione</div><div class="bep-val">'+mc.toFixed(1)+'%</div></div>'
+    +'<div class="bep-item"><div class="bep-label">BEP Fatturato</div><div class="bep-val">'+feur(bepEuro)+'</div></div>'
+    +'<div class="bep-item"><div class="bep-label">BEP Coperti</div><div class="bep-val">'+bepCop+'</div></div>'
+    +'</div>'
+    +'<h2>Porzioni vendute nel periodo</h2>'
+    +'<table><thead><tr><th>Piatto</th><th style="text-align:center;">Coeff.</th><th style="text-align:right;">Porzioni</th><th style="text-align:right;">Unit. pond.</th></tr></thead><tbody>'
+    +righeP
+    +'<tr class="tot"><td colspan="3">Totale unit&agrave; ponderate</td><td style="text-align:right;">'+totUP.toFixed(1)+'</td></tr>'
+    +'</tbody></table>'
+    +'</body></html>';
+  var win=window.open('','_blank');
+  win.document.write(html);
+  win.document.close();
+  win.focus();
+  setTimeout(function(){win.print();},400);
+}
+
+function gestioneNuovoPeriodo(){
+  if(!confirm('Azzerare tutti i dati del periodo corrente?'))return;
+  localStorage.removeItem('rc_gestione');
+  document.getElementById('gest-periodo').value='';
+  document.getElementById('gest-scontrino').value='';
+  document.getElementById('gest-coperti').value='';
+  document.getElementById('gest-fissi-list').innerHTML='';
+  document.getElementById('gest-variabili-list').innerHTML='';
+  gestioneUpdateCostiFissi();
+  gestioneUpdateCostiVariabili();
+  document.getElementById('gest-piatti-tbody').innerHTML=piatti.map(function(p,i){
+    var coeff=p.coefficiente||1;
+    return '<tr>'
+      +'<td style="padding:5px 6px;">'+p.nome+'</td>'
+      +'<td style="text-align:center;padding:5px 6px;">'+coeff+'</td>'
+      +'<td style="text-align:right;padding:5px 6px;"><input type="number" min="0" step="1" value="0" data-idx="'+i+'" onchange="gestioneUpdateUnitePond()" style="width:70px;text-align:right;border:1px solid #d0cec8;border-radius:4px;padding:3px 6px;font-size:13px;"></td>'
+      +'<td style="text-align:right;padding:5px 6px;" id="gest-up-'+i+'">0.0</td>'
+      +'</tr>';
+  }).join('');
+  gestioneUpdateUnitePond();
   renderFoodCost();
 }
 
