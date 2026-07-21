@@ -2731,7 +2731,7 @@
       "sottocategoria": "",
       "pax": 18,
       "prezzoVendita": 12,
-      "coefficiente": 1,
+      "coefficiente": 5,
       "foto": "",
       "steps": [
         "Con la metà del burro ungere una placca GN 1/1, iniziare gli strati con la besciamella via via alternandoli con il ragù e ogni strato una spolverata di grana, fino a fare 6 strati di pasta.L'ultimo strato farlo misto, spolverare con il grana e mettere dei pezzetti di burro con quello rimanenta. Cuocere a 150/160°C per 45 min, se c'è la sonda arrivare a 85/90°C al cuore. Far riposare coperto 10 min e servire"
@@ -2784,47 +2784,6 @@
         }
       ],
       "dataCreazione": "26/6/2026"
-    },
-    {
-      "codice": "PF-005",
-      "nome": "prova1",
-      "categoria": "Primi piatti",
-      "sottocategoria": "",
-      "pax": 20,
-      "prezzoVendita": 15,
-      "coefficiente": 1,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "sl",
-          "nome": "Besciamella",
-          "qtaBase": 1234,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 0,
-          "codiceSl": "SL-007"
-        },
-        {
-          "tipo": "sl",
-          "nome": "Ragù di carne",
-          "qtaBase": 1234,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 10,
-          "codiceSl": "SL-006"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Burro da Kg",
-          "qtaBase": 1,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 10,
-          "codiceMp": "MP-095"
-        }
-      ],
-      "dataCreazione": "20/7/2026"
     }
   ],
   "ricetteSalvate": [],

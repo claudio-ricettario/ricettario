@@ -594,6 +594,9 @@ textarea{resize:vertical;min-height:60px;}
           <button id="btn-iva2" onclick="setIva(true)">10% inclusa</button>
         </div>
       </div>
+      <div class="ctrl-group">
+        <button class="btn-sm" onclick="openGestioneModal()" style="white-space:nowrap;">&#9881; Costi di gestione</button>
+      </div>
     </div>
     <div class="metrics">
       <div class="metric"><div class="metric-label">Costo MP totale</div><div class="metric-value" id="fc-costo">-</div></div>
@@ -615,8 +618,50 @@ textarea{resize:vertical;min-height:60px;}
         <tbody id="benchmark-tbody"></tbody>
       </table>
     </div>
+    <div class="card" id="fc-vero-card" style="display:none;">
+      <div class="section-label">Food cost vero &mdash; periodo: <span id="fc-vero-periodo" style="font-weight:500;">-</span></div>
+      <div class="metrics" style="margin:12px 0 8px;">
+        <div class="metric"><div class="metric-label">Costo fisso / pax</div><div class="metric-value" id="fc-fisso-pax">-</div></div>
+        <div class="metric"><div class="metric-label">Food cost vero totale</div><div class="metric-value" id="fc-vero-tot">-</div></div>
+        <div class="metric"><div class="metric-label">Food cost vero %</div><div class="metric-value" id="fc-vero-perc">-</div></div>
+      </div>
+      <div style="font-size:12px;color:#888;padding:0 2px;">Coeff. piatto: <span id="fc-vero-coeff">-</span> &nbsp;&middot;&nbsp; Costo/unit&agrave; pond.: <span id="fc-vero-cupp">-</span></div>
+    </div>
     <div class="card">
       <p style="font-size:13px;color:#666;line-height:1.7;"><strong>Food cost primario</strong>: considera solo il costo delle materie prime. Non include manodopera, utenze e ammortamenti (FC reale totale tipicamente +15&ndash;25%).</p>
+    </div>
+  </div>
+
+  <div id="gestione-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);z-index:1000;overflow-y:auto;">
+    <div style="background:#fff;border-radius:12px;max-width:560px;margin:40px auto;padding:28px 24px;position:relative;">
+      <button onclick="closeGestioneModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#888;">&times;</button>
+      <h3 style="margin:0 0 20px;">&#9881; Costi di gestione</h3>
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;">Periodo di riferimento</label>
+        <input type="text" id="gest-periodo" placeholder="es. Luglio 2026" style="width:100%;box-sizing:border-box;padding:8px 10px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;"/>
+      </div>
+      <div class="section-label" style="margin-bottom:8px;">Voci di costo</div>
+      <div id="gest-voci-list"></div>
+      <button class="btn-sm" onclick="gestioneAddVoce()" style="margin-top:8px;">+ Aggiungi voce</button>
+      <div style="margin-top:10px;font-size:13px;">Totale costi: <strong id="gest-totale">€ 0,00</strong></div>
+      <div class="section-label" style="margin:20px 0 8px;">Porzioni vendute nel periodo</div>
+      <table style="width:100%;font-size:13px;border-collapse:collapse;">
+        <thead><tr style="color:#888;font-size:11px;text-transform:uppercase;border-bottom:1px solid #e0ded8;">
+          <th style="text-align:left;padding:6px;">Piatto</th>
+          <th style="text-align:center;padding:6px;">Coeff.</th>
+          <th style="text-align:right;padding:6px;">Porzioni</th>
+          <th style="text-align:right;padding:6px;">Unit. pond.</th>
+        </tr></thead>
+        <tbody id="gest-piatti-tbody"></tbody>
+        <tfoot><tr style="font-weight:600;border-top:2px solid #e0ded8;">
+          <td colspan="3" style="padding:8px 6px;">Totale unit&agrave; ponderate</td>
+          <td style="text-align:right;padding:8px 6px;" id="gest-unita-pond">-</td>
+        </tr></tfoot>
+      </table>
+      <div style="margin-top:8px;font-size:13px;color:#666;">Costo per unit&agrave; pond.: <strong id="gest-costo-unita">-</strong></div>
+      <div style="margin-top:20px;text-align:right;">
+        <button class="btn-primary" onclick="saveGestione()">Salva</button>
+      </div>
     </div>
   </div>
 
@@ -1831,6 +1876,7 @@ function renderFoodCost(){
     });
     var tb=document.getElementById('fc-tbody');if(tb)tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:#aaa;padding:16px;">Seleziona un piatto per vedere il food cost</td></tr>';
     var bb=document.getElementById('benchmark-tbody');if(bb)bb.innerHTML='';
+    var vc=document.getElementById('fc-vero-card');if(vc)vc.style.display='none';
     return;
   }
   var pi=parseInt(sel.value);
@@ -1887,6 +1933,123 @@ function renderFoodCost(){
     var badge=pv>0?(ok?'<span class="badge badge-green">Ok</span>':(pv<mn?'<span class="badge badge-red">Basso</span>':'<span class="badge badge-amber">Alto</span>')):'—';
     return '<tr><td>'+b.label+'</td><td class="r">'+b.min+'-'+b.max+'%</td><td class="r">'+eur(mn)+' – '+eur(mx)+'</td><td class="r">'+badge+'</td></tr>';
   }).join('');
+  renderFoodCostVero(p,tot,pax,ricavo);
+}
+
+function renderFoodCostVero(p,totPrimario,pax,ricavo){
+  var gestione=JSON.parse(localStorage.getItem('rc_gestione')||'{}');
+  var gVoci=gestione.voci||[];
+  var gVendite=gestione.vendite||{};
+  var totaleCostiFissi=gVoci.reduce(function(s,v){return s+(parseFloat(v.importo)||0);},0);
+  var totUnitaPond=piatti.reduce(function(s,pp){
+    var porz=parseFloat(gVendite[pp.nome]||0);
+    return s+porz*(pp.coefficiente||1);
+  },0);
+  var veroCard=document.getElementById('fc-vero-card');
+  if(!veroCard)return;
+  if(totaleCostiFissi<=0||totUnitaPond<=0){veroCard.style.display='none';return;}
+  veroCard.style.display='';
+  var costoPerUnita=totaleCostiFissi/totUnitaPond;
+  var costoFissoPax=costoPerUnita*(p.coefficiente||1);
+  var totVero=totPrimario+(costoFissoPax*pax);
+  var fcVeroP=ricavo>0?(totVero/ricavo*100):0;
+  document.getElementById('fc-fisso-pax').textContent=eur(costoFissoPax);
+  document.getElementById('fc-vero-tot').textContent=eur(totVero);
+  var vpEl=document.getElementById('fc-vero-perc');
+  if(fcVeroP>0){vpEl.textContent=fcVeroP.toFixed(1)+'%';vpEl.className='metric-value '+fcC(fcVeroP);}
+  else{vpEl.textContent='-';vpEl.className='metric-value';}
+  document.getElementById('fc-vero-periodo').textContent=gestione.periodo||'-';
+  document.getElementById('fc-vero-coeff').textContent=p.coefficiente||1;
+  document.getElementById('fc-vero-cupp').textContent=eur(costoPerUnita)+'/unità pond.';
+}
+
+function openGestioneModal(){
+  var gestione=JSON.parse(localStorage.getItem('rc_gestione')||'{}');
+  document.getElementById('gest-periodo').value=gestione.periodo||'';
+  var list=document.getElementById('gest-voci-list');
+  list.innerHTML='';
+  (gestione.voci||[]).forEach(function(v){list.appendChild(gestioneCreaRigaVoce(v.nome,v.importo));});
+  gestioneUpdateTotale();
+  var gVendite=gestione.vendite||{};
+  document.getElementById('gest-piatti-tbody').innerHTML=piatti.map(function(p,i){
+    var porz=gVendite[p.nome]||0;
+    var coeff=p.coefficiente||1;
+    return '<tr>'
+      +'<td style="padding:5px 6px;">'+p.nome+'</td>'
+      +'<td style="text-align:center;padding:5px 6px;">'+coeff+'</td>'
+      +'<td style="text-align:right;padding:5px 6px;"><input type="number" min="0" step="1" value="'+porz+'" data-idx="'+i+'" onchange="gestioneUpdateUnitePond()" style="width:70px;text-align:right;border:1px solid #d0cec8;border-radius:4px;padding:3px 6px;font-size:13px;"></td>'
+      +'<td style="text-align:right;padding:5px 6px;" id="gest-up-'+i+'">'+(parseFloat(porz)*coeff).toFixed(1)+'</td>'
+      +'</tr>';
+  }).join('');
+  gestioneUpdateUnitePond();
+  document.getElementById('gestione-modal').style.display='';
+}
+
+function closeGestioneModal(){
+  document.getElementById('gestione-modal').style.display='none';
+}
+
+function gestioneCreaRigaVoce(nome,importo){
+  var div=document.createElement('div');
+  div.style.cssText='display:flex;gap:8px;margin-bottom:6px;align-items:center;';
+  div.innerHTML='<input type="text" placeholder="Voce (es. Affitto)" value="'+(nome||'').replace(/"/g,'&quot;')+'" style="flex:1;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;" oninput="gestioneUpdateTotale()">'
+    +'<input type="number" min="0" step="1" placeholder="0" value="'+(importo||'')+'" style="width:90px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;text-align:right;" oninput="gestioneUpdateTotale()">'
+    +'<button style="background:#fee2e2;color:#b91c1c;border:none;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:16px;line-height:1;" onclick="this.parentElement.remove();gestioneUpdateTotale();">&times;</button>';
+  return div;
+}
+
+function gestioneAddVoce(){
+  document.getElementById('gest-voci-list').appendChild(gestioneCreaRigaVoce('',''));
+}
+
+function gestioneUpdateTotale(){
+  var tot=0;
+  document.querySelectorAll('#gest-voci-list > div').forEach(function(row){
+    tot+=parseFloat(row.querySelectorAll('input')[1].value)||0;
+  });
+  document.getElementById('gest-totale').textContent=eur(tot);
+  gestioneUpdateUnitePond();
+}
+
+function gestioneUpdateUnitePond(){
+  var totUp=0;var totCosti=0;
+  document.querySelectorAll('#gest-voci-list > div').forEach(function(row){
+    totCosti+=parseFloat(row.querySelectorAll('input')[1].value)||0;
+  });
+  document.querySelectorAll('#gest-piatti-tbody input').forEach(function(inp){
+    var idx=parseInt(inp.dataset.idx);
+    var porz=parseFloat(inp.value)||0;
+    var coeff=(piatti[idx]&&piatti[idx].coefficiente)||1;
+    var up=porz*coeff;
+    totUp+=up;
+    var cell=document.getElementById('gest-up-'+idx);
+    if(cell)cell.textContent=up.toFixed(1);
+  });
+  document.getElementById('gest-unita-pond').textContent=totUp.toFixed(1);
+  var cpu=totUp>0?totCosti/totUp:0;
+  document.getElementById('gest-costo-unita').textContent=totUp>0?(eur(cpu)+'/unità pond.'):'-';
+}
+
+function saveGestione(){
+  var voci=[];
+  document.querySelectorAll('#gest-voci-list > div').forEach(function(row){
+    var inputs=row.querySelectorAll('input');
+    var nome=inputs[0].value.trim();
+    var importo=parseFloat(inputs[1].value)||0;
+    if(nome||importo>0)voci.push({nome:nome,importo:importo});
+  });
+  var vendite={};
+  document.querySelectorAll('#gest-piatti-tbody input').forEach(function(inp){
+    var idx=parseInt(inp.dataset.idx);
+    var porz=parseFloat(inp.value)||0;
+    if(porz>0&&piatti[idx])vendite[piatti[idx].nome]=porz;
+  });
+  localStorage.setItem('rc_gestione',JSON.stringify({
+    periodo:document.getElementById('gest-periodo').value.trim(),
+    voci:voci,vendite:vendite
+  }));
+  closeGestioneModal();
+  renderFoodCost();
 }
 
 function showTab(name){
