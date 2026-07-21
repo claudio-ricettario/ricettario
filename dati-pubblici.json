@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "20/7/2026",
+  "exportDate": "21/7/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -2784,6 +2784,47 @@
         }
       ],
       "dataCreazione": "26/6/2026"
+    },
+    {
+      "codice": "PF-005",
+      "nome": "prova1",
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 20,
+      "prezzoVendita": 15,
+      "coefficiente": 1,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Besciamella",
+          "qtaBase": 1234,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 0,
+          "codiceSl": "SL-007"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Ragù di carne",
+          "qtaBase": 1234,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 10,
+          "codiceSl": "SL-006"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Burro da Kg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 10,
+          "codiceMp": "MP-095"
+        }
+      ],
+      "dataCreazione": "20/7/2026"
     }
   ],
   "ricetteSalvate": [],

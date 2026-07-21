@@ -1196,12 +1196,17 @@ function aggiungiIngrediente(){
 
 function eliminaIngrediente(mi){
   var m=magazzino[mi];
+  var mNome=m.nome;
   var usedIn=(ricetteSalvate||[]).filter(function(r){return r.ingredienti.some(function(i){return i.magIdx===mi;});});
+  var usedSemi=(semilavorati||[]).filter(function(s){return (s.componenti||[]).some(function(c){return c.tipo==='mp'&&(c.magIdx===mi||c.nome===mNome);});});
+  var usedPiatti=(piatti||[]).filter(function(p){return (p.componenti||[]).some(function(c){return c.tipo==='mp'&&(c.magIdx===mi||c.nome===mNome);});});
   var msg='Vuoi eliminare "'+m.nome+'" dal magazzino?';
-  if(usedIn.length){
-    msg+='\n\nATTENZIONE: questo ingrediente e usato nelle seguenti ricette:\n';
-    msg+=usedIn.map(function(r){return '  - '+r.nome;}).join('\n');
-    msg+='\n\nSe lo elimini il costo non verra piu calcolato in quelle ricette.';
+  if(usedIn.length||usedSemi.length||usedPiatti.length){
+    msg+='\n\nATTENZIONE: questa materia prima e usata in:';
+    if(usedIn.length) msg+='\n\nRicette (legacy):\n'+usedIn.map(function(r){return '  - '+r.nome;}).join('\n');
+    if(usedSemi.length) msg+='\n\nSemilavorati:\n'+usedSemi.map(function(s){return '  - '+s.nome;}).join('\n');
+    if(usedPiatti.length) msg+='\n\nPiatti:\n'+usedPiatti.map(function(p){return '  - '+p.nome;}).join('\n');
+    msg+='\n\nSe la elimini il costo non verra piu calcolato correttamente.';
   }
   if(!confirm(msg))return;
   magazzino.splice(mi,1);
@@ -4058,11 +4063,12 @@ function mpSalva(){
 function mpElimina(){
   if(mpEditIdx<0)return;
   var mp=magazzino[mpEditIdx];
+  var mpNome=mp.nome;
   var usedSemi=(semilavorati||[]).filter(function(s){
-    return (s.componenti||[]).some(function(c){return c.tipo==='mp'&&c.magIdx===mpEditIdx;});
+    return (s.componenti||[]).some(function(c){return c.tipo==='mp'&&(c.magIdx===mpEditIdx||c.nome===mpNome);});
   });
   var usedPiatti=(piatti||[]).filter(function(p){
-    return (p.componenti||[]).some(function(c){return c.tipo==='mp'&&c.magIdx===mpEditIdx;});
+    return (p.componenti||[]).some(function(c){return c.tipo==='mp'&&(c.magIdx===mpEditIdx||c.nome===mpNome);});
   });
   var msg='Eliminare "'+mp.nome+'"?';
   if(usedSemi.length||usedPiatti.length){
