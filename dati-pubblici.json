@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "21/7/2026",
+  "exportDate": "23/7/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -2649,7 +2649,8 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "21/6/2026"
+      "dataCreazione": "21/6/2026",
+      "nelMenu": false
     },
     {
       "codice": "PF-003",
@@ -2659,6 +2660,7 @@
       "pax": 10,
       "prezzoVendita": 9.9,
       "coefficiente": 6,
+      "nelMenu": false,
       "foto": "",
       "steps": [],
       "componenti": [
@@ -2783,7 +2785,8 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "26/6/2026"
+      "dataCreazione": "26/6/2026",
+      "nelMenu": false
     }
   ],
   "ricetteSalvate": [],
