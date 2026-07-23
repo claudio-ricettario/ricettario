@@ -459,6 +459,10 @@ textarea{resize:vertical;min-height:60px;}
           <label>Coefficiente complessità (1-10) <span id="np-coeff-hint" style="font-size:11px;color:#aaa;font-weight:400;"></span></label>
           <input type="number" id="np-coeff" value="1" min="1" max="10" step="1" style="width:100%;text-align:left;" title="1 = semplice, 10 = alta complessità tecnica/tempo uomo"/>
         </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #f0ede8;margin-top:4px;">
+          <input type="checkbox" id="np-nel-menu" style="width:16px;height:16px;cursor:pointer;accent-color:#16a34a;"/>
+          <label style="margin:0;cursor:pointer;font-size:13px;" for="np-nel-menu">Includi nel menu attivo</label>
+        </div>
         <div class="form-row">
           <label>Foto del piatto <span style="font-weight:400;color:#aaa;font-size:11px;">(opzionale)</span></label>
           <div style="display:flex;gap:8px;align-items:center;">
@@ -2007,16 +2011,17 @@ function openGestioneModal(){
   gestioneUpdateCostiVariabili();
   gestioneUpdateBEP();
   var gVendite=gestione.vendite||{};
-  document.getElementById('gest-piatti-tbody').innerHTML=piatti.map(function(p,i){
-    var porz=gVendite[p.nome]||0;
-    var coeff=p.coefficiente||1;
-    return '<tr>'
-      +'<td style="padding:5px 6px;">'+p.nome+'</td>'
-      +'<td style="text-align:center;padding:5px 6px;">'+coeff+'</td>'
-      +'<td style="text-align:right;padding:5px 6px;"><input type="number" min="0" step="1" value="'+porz+'" data-idx="'+i+'" onchange="gestioneUpdateUnitePond()" style="width:70px;text-align:right;border:1px solid #d0cec8;border-radius:4px;padding:3px 6px;font-size:13px;"></td>'
-      +'<td style="text-align:right;padding:5px 6px;" id="gest-up-'+i+'">'+(parseFloat(porz)*coeff).toFixed(1)+'</td>'
-      +'</tr>';
-  }).join('');
+  var _mp=piatti.reduce(function(a,p,i){if(p.nelMenu)a.push({p:p,i:i});return a;},[]);
+  document.getElementById('gest-piatti-tbody').innerHTML=_mp.length
+    ?_mp.map(function(item){var p=item.p;var i=item.i;
+      var porz=gVendite[p.nome]||0;var coeff=p.coefficiente||1;
+      return '<tr>'
+        +'<td style="padding:5px 6px;">'+p.nome+'</td>'
+        +'<td style="text-align:center;padding:5px 6px;">'+coeff+'</td>'
+        +'<td style="text-align:right;padding:5px 6px;"><input type="number" min="0" step="1" value="'+porz+'" data-idx="'+i+'" onchange="gestioneUpdateUnitePond()" style="width:70px;text-align:right;border:1px solid #d0cec8;border-radius:4px;padding:3px 6px;font-size:13px;"></td>'
+        +'<td style="text-align:right;padding:5px 6px;" id="gest-up-'+i+'">'+(parseFloat(porz)*coeff).toFixed(1)+'</td>'
+        +'</tr>';}).join('')
+    :'<tr><td colspan="4" style="text-align:center;color:#aaa;padding:12px;font-size:13px;">Nessun piatto nel menu. Attiva ★ nel tab Piatti.</td></tr>';
   gestioneUpdateUnitePond();
   document.getElementById('gestione-modal').style.display='';
 }
@@ -2153,7 +2158,7 @@ function stampaGestione(){
   var righeV=cv.map(function(v){
     return '<tr><td>'+v.nome+'</td><td style="text-align:right;">'+feur(parseFloat(v.importo)||0)+'</td></tr>';
   }).join('');
-  var righeP=piatti.map(function(p){
+  var righeP=piatti.filter(function(p){return p.nelMenu;}).map(function(p){
     var porz=parseFloat(vendite[p.nome]||0);
     var coeff=p.coefficiente||1;
     return '<tr><td>'+p.nome+'</td><td style="text-align:center;">'+coeff+'</td><td style="text-align:right;">'+porz+'</td><td style="text-align:right;">'+(porz*coeff).toFixed(1)+'</td></tr>';
@@ -2219,15 +2224,17 @@ function gestioneNuovoPeriodo(){
   document.getElementById('gest-variabili-list').innerHTML='';
   gestioneUpdateCostiFissi();
   gestioneUpdateCostiVariabili();
-  document.getElementById('gest-piatti-tbody').innerHTML=piatti.map(function(p,i){
-    var coeff=p.coefficiente||1;
-    return '<tr>'
-      +'<td style="padding:5px 6px;">'+p.nome+'</td>'
-      +'<td style="text-align:center;padding:5px 6px;">'+coeff+'</td>'
-      +'<td style="text-align:right;padding:5px 6px;"><input type="number" min="0" step="1" value="0" data-idx="'+i+'" onchange="gestioneUpdateUnitePond()" style="width:70px;text-align:right;border:1px solid #d0cec8;border-radius:4px;padding:3px 6px;font-size:13px;"></td>'
-      +'<td style="text-align:right;padding:5px 6px;" id="gest-up-'+i+'">0.0</td>'
-      +'</tr>';
-  }).join('');
+  var _mp2=piatti.reduce(function(a,p,i){if(p.nelMenu)a.push({p:p,i:i});return a;},[]);
+  document.getElementById('gest-piatti-tbody').innerHTML=_mp2.length
+    ?_mp2.map(function(item){var p=item.p;var i=item.i;
+      var coeff=p.coefficiente||1;
+      return '<tr>'
+        +'<td style="padding:5px 6px;">'+p.nome+'</td>'
+        +'<td style="text-align:center;padding:5px 6px;">'+coeff+'</td>'
+        +'<td style="text-align:right;padding:5px 6px;"><input type="number" min="0" step="1" value="0" data-idx="'+i+'" onchange="gestioneUpdateUnitePond()" style="width:70px;text-align:right;border:1px solid #d0cec8;border-radius:4px;padding:3px 6px;font-size:13px;"></td>'
+        +'<td style="text-align:right;padding:5px 6px;" id="gest-up-'+i+'">0.0</td>'
+        +'</tr>';}).join('')
+    :'<tr><td colspan="4" style="text-align:center;color:#aaa;padding:12px;font-size:13px;">Nessun piatto nel menu. Attiva ★ nel tab Piatti.</td></tr>';
   gestioneUpdateUnitePond();
   renderFoodCost();
 }
@@ -3674,6 +3681,7 @@ function salvaPiatto(){
     dataCreazione:today()
   };
   var idx=parseInt(document.getElementById('piatto-modal-idx').value);
+  p.nelMenu=(idx>=0&&piatti[idx])?piatti[idx].nelMenu||false:false;
   if(idx===-1) piatti.push(p); else piatti[idx]=p;
   piatti.sort(function(a,b){return a.nome.localeCompare(b.nome,'it');});
   savePiatti();
@@ -3727,6 +3735,7 @@ function renderPiatti(){
       +'</div>'
       +'<div style="margin-right:12px;">'+fcBadge+'</div>'
       +'<button class="btn-sm" onclick="event.stopPropagation();openPiattoModal('+realIdx+')" style="flex-shrink:0;">&#9998;</button>'
+      +'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+realIdx+')" style="flex-shrink:0;margin-left:4px;background:'+(p.nelMenu?'#dcfce7;color:#16a34a':'#f5f4f0;color:#aaa')+';font-size:14px;" title="'+(p.nelMenu?'Nel menu attivo - clicca per rimuovere':'Non nel menu - clicca per aggiungere')+'">'+( p.nelMenu?'★':'☆')+'</button>'
       +'</div>'
       +'<div class="semi-detail" id="piatto-detail-'+realIdx+'">'
       +'<table style="width:100%;border-collapse:collapse;font-size:13px;">'
@@ -3745,6 +3754,14 @@ function renderPiatti(){
       +'</div>'
       +'</div>';
   }).join('');
+}
+
+function toggleNelMenu(idx){
+  if(!piatti[idx])return;
+  piatti[idx].nelMenu=!piatti[idx].nelMenu;
+  savePiatti();
+  renderPiatti();
+  renderHome();
 }
 
 function togglePiattoDetail(idx,el){
@@ -3908,6 +3925,7 @@ function homeRicettaRow(r,i){
     +'<div class="home-ricetta-meta">'+r.pax+' porzioni'+(r._isBase?' &middot; ricetta base':r.dataCreazione?' &middot; '+r.dataCreazione:'')+'</div>'
     +'</div>'
     +'<span class="home-ricetta-fc">'+fcBadge+'</span>'
+    +(r._isPiatto?'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+r._piattoIdx+')" style="margin-left:6px;flex-shrink:0;background:'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'#dcfce7;color:#16a34a':'#f5f4f0;color:#aaa')+';font-size:14px;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;" title="'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'Nel menu':'Non nel menu')+'">'+( piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'&#9733;':'&#9734;')+'</button>':'')
     +'</div>';
 }
 
@@ -5284,6 +5302,7 @@ function npModifica(idx){
   document.getElementById('np-pax').value=p.pax||4;
   document.getElementById('np-pv').value=p.prezzoVendita||'';
   document.getElementById('np-coeff').value=p.coefficiente||1;
+  document.getElementById('np-nel-menu').checked=p.nelMenu||false;
   setTimeout(aggiornaSuggerimentoCoeff,50);
   document.getElementById('np-title').textContent='Modifica piatto';
   var delBtn=document.getElementById('np-delete-btn');
@@ -5496,6 +5515,7 @@ function npSalva(){
     pax:parseInt(document.getElementById('np-pax').value)||4,
     prezzoVendita:parseFloat(document.getElementById('np-pv').value)||0,
     coefficiente:parseInt(document.getElementById('np-coeff').value)||1,
+    nelMenu:document.getElementById('np-nel-menu').checked||false,
     foto:npFotoData||'',
     steps:JSON.parse(JSON.stringify(npSteps)),
     componenti:JSON.parse(JSON.stringify(npComps)),
