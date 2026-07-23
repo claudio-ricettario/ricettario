@@ -709,17 +709,16 @@ textarea{resize:vertical;min-height:60px;}
       <button class="btn-primary" onclick="openFornModal(-1)">+ Nuovo fornitore</button>
     </div>
     <div class="fornitori-grid" id="fornitori-grid"></div>
-  </div>
 </div>
 
   <!-- AVVIA PRODUZIONE -->
   <div id="tab-produzioni" class="section">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:16px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
       <div>
-        <h1 class="home-title">Avvia Produzione</h1>
-        <p class="home-subtitle">Registra le produzioni di semilavorati e piatti &mdash; lotti, date e scadenze</p>
+        <h2 style="margin-bottom:2px;">&#9654; Avvia Produzione</h2>
+        <p class="muted" style="margin-bottom:0;">Registra le produzioni di semilavorati e piatti &mdash; lotti, date e scadenze</p>
       </div>
-      <button class="btn-primary" onclick="openNuovaProduzione()">&#9654; Nuova produzione</button>
+      <button class="btn-primary" onclick="openNuovaProduzione()">+ Nuova produzione</button>
     </div>
     <div id="produzioni-list" style="margin-top:8px;"></div>
   </div>
@@ -824,6 +823,7 @@ textarea{resize:vertical;min-height:60px;}
       <button class="btn-primary" style="padding:10px 24px;font-size:14px;" onclick="nrSalva()">&#10003; Salva ricetta</button>
     </div>
   </div>
+</div>
 
 
 <!-- MODAL FORNITORE -->
@@ -2630,7 +2630,9 @@ function renderProduzioni(){
     return !cerca||pr.nomeSemilavorato.toLowerCase().indexOf(cerca.toLowerCase())>=0||pr.numeroLotto.toLowerCase().indexOf(cerca.toLowerCase())>=0;
   });
   if(!lista.length){
-    el.innerHTML='<div style="font-size:13px;color:#aaa;padding:16px 0;">'+(cerca?'Nessun risultato per "'+cerca+'"':'Nessuna produzione registrata. Clicca &quot;Nuova produzione&quot; per iniziare.')+'</div>';
+    el.innerHTML=cerca
+      ?'<div class="card" style="margin-bottom:10px;"><div style="display:flex;align-items:center;gap:12px;"><span style="font-size:22px;">&#128269;</span><div><div style="font-weight:600;font-size:15px;">Nessun risultato</div><div style="font-size:12px;color:#888;margin-top:2px;">Nessuna produzione corrisponde a &ldquo;'+cerca+'&rdquo;</div></div></div></div>'
+      :'<div class="card" style="margin-bottom:10px;"><div style="display:flex;align-items:center;gap:14px;"><span style="font-size:26px;">&#9654;</span><div><div style="font-weight:600;font-size:15px;">Nessuna produzione registrata</div><div style="font-size:12px;color:#888;margin-top:2px;">Clicca <strong>+ Nuova produzione</strong> per iniziare a registrare lotti e scadenze.</div></div></div></div>';
     return;
   }
   var oggi=new Date();oggi.setHours(0,0,0,0);
