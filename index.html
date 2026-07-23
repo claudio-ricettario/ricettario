@@ -315,6 +315,7 @@ textarea{resize:vertical;min-height:60px;}
     <div class="tab" id="tab-btn-magazzino" onclick="showTab('magazzino')">&#128230; Magazzino</div>
     <div class="tab" id="tab-btn-foodcost" onclick="showTab('foodcost')">&#128202; Food cost</div>
     <div class="tab" id="tab-btn-fornitori" onclick="showTab('fornitori')">&#127978; Fornitori</div>
+    <div class="tab" id="tab-btn-guida" onclick="showTab('guida')">&#128214; Guida</div>
 
     <div id="admin-lock-btn" class="tab-lock" onclick="checkPassword()" title="Accedi come admin" style="margin-left:auto;cursor:pointer;font-size:18px;">&#128274;</div>
   </div>
@@ -724,6 +725,9 @@ textarea{resize:vertical;min-height:60px;}
   </div>
 
     <!-- NUOVA RICETTA -->
+  <div id="tab-guida" class="section">
+    <div id="guida-content" style="max-width:800px;margin:0 auto;padding:20px 16px;"></div>
+  </div>
   <div id="tab-nuova-ricetta" class="section">
     <h2>Nuova ricetta</h2>
     <p class="muted">Compila i campi e aggiungi gli ingredienti uno per uno</p>
@@ -2245,7 +2249,7 @@ function showTab(name){
   }
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
-  var tabs=['home','semilavorati','magazzino','foodcost','fornitori','nuovo-piatto','produzioni'];
+  var tabs=['home','semilavorati','magazzino','foodcost','fornitori','nuovo-piatto','produzioni','guida'];
   var tabBtn=document.getElementById('tab-btn-'+name);
   if(tabBtn) tabBtn.classList.add('active');
   var el=document.getElementById('tab-'+name);
@@ -2258,8 +2262,212 @@ function showTab(name){
   else if(name==='produzioni'){renderProduzioni();}
   else if(name==='ricetta'){updateAll();}
   else if(name==='foodcost'){fcPopulateSelector();renderFoodCost();}
+  else if(name==='guida'){renderGuida();}
   else{updateAll();}
 }
+
+function renderGuida(){
+  var el=document.getElementById('guida-content');
+  if(!el)return;
+  var h='';
+  var css='<style>'
+    +'.gs{border:1px solid #e5e2d9;border-radius:10px;margin-bottom:12px;overflow:hidden;}'
+    +'.gs summary{padding:14px 18px;font-weight:600;font-size:15px;cursor:pointer;background:#faf9f6;list-style:none;display:flex;align-items:center;gap:10px;user-select:none;}'
+    +'.gs summary::-webkit-details-marker{display:none;}'
+    +'.gs summary::after{content:"\\25B8";margin-left:auto;color:#aaa;transition:transform .2s;font-style:normal;}'
+    +'.gs[open] summary::after{transform:rotate(90deg);}'
+    +'.gb{padding:16px 18px;font-size:14px;line-height:1.75;color:#333;border-top:1px solid #e5e2d9;}'
+    +'.gb h4{margin:14px 0 6px;font-size:13px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.5px;}'
+    +'.gb ol,.gb ul{padding-left:20px;margin:6px 0;}'
+    +'.gb li{margin-bottom:5px;}'
+    +'.gnote{background:#fef9c3;border-left:3px solid #f59e0b;padding:8px 12px;border-radius:4px;margin:10px 0;font-size:13px;}'
+    +'.gtip{background:#dcfce7;border-left:3px solid #16a34a;padding:8px 12px;border-radius:4px;margin:10px 0;font-size:13px;}'
+    +'.gb table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;}'
+    +'.gb th{background:#f5f4f0;padding:7px 10px;text-align:left;font-weight:600;}'
+    +'.gb td{padding:7px 10px;border-bottom:1px solid #f0ede6;}'
+    +'.gcod{font-family:monospace;font-size:12px;background:#f5f4f0;padding:10px 12px;border-radius:6px;margin:8px 0;line-height:1.8;}'
+    +'</style>';
+  h+=css;
+  h+='<h2 style="font-size:20px;margin:0 0 6px;color:#222;">&#128214; Guida — Ricettario Food Cost Pro</h2>';
+
+  if(!isAdmin){
+    h+='<p style="color:#888;font-size:13px;margin-bottom:20px;">Operazioni disponibili per il tuo profilo.</p>';
+
+    h+='<details class="gs"><summary>&#127869; Consultare ricette e piatti</summary><div class="gb">'
+      +'<p>Dalla schermata principale vedi tutti i piatti organizzati per categoria.</p>'
+      +'<ol>'
+      +'<li>Usa la <strong>barra di ricerca</strong> in alto per trovare un piatto per nome.</li>'
+      +'<li>Clicca sul piatto per aprire la scheda con ingredienti, procedimento e allergeni.</li>'
+      +'</ol>'
+      +'<div class="gtip">I piatti contrassegnati con &#9733; sono quelli attualmente nel menu attivo.</div>'
+      +'</div></details>';
+
+    h+='<details class="gs"><summary>&#128438; Stampare una ricetta</summary><div class="gb">'
+      +'<ol>'
+      +'<li>Apri la scheda del piatto.</li>'
+      +'<li>Clicca <strong>&#128438; Stampa</strong> in alto a destra.</li>'
+      +'<li>Si apre l\'anteprima di stampa — seleziona la stampante e conferma.</li>'
+      +'</ol>'
+      +'<div class="gnote">La stampa include ingredienti, procedimento e allergeni. I dati di costo non vengono stampati.</div>'
+      +'</div></details>';
+
+    h+='<details class="gs"><summary>&#9654; Avviare la produzione</summary><div class="gb">'
+      +'<ol>'
+      +'<li>Clicca su <strong>Avvia Produzione</strong> nella barra in alto.</li>'
+      +'<li>Clicca <strong>Nuova produzione</strong>.</li>'
+      +'<li>Cerca e seleziona il semilavorato o piatto da produrre.</li>'
+      +'<li>Inserisci la quantità (le dosi sono preimpostate, modificabili).</li>'
+      +'<li>Scegli il metodo di conservazione — la scadenza viene calcolata in automatico.</li>'
+      +'<li>Clicca <strong>Avvia</strong> per registrare il lotto.</li>'
+      +'<li>Clicca <strong>&#128438; Etichetta</strong> per stampare l\'etichetta da applicare sul contenitore.</li>'
+      +'</ol>'
+      +'<div class="gnote">Il numero lotto viene generato automaticamente nel formato <code>AAAA_MM_GG-001</code>.</div>'
+      +'</div></details>';
+
+  } else {
+    h+='<p style="color:#888;font-size:13px;margin-bottom:20px;">Guida completa alla gestione del ricettario.</p>';
+
+    // Backup e strumenti admin
+    h+='<details class="gs"><summary>&#128736; Backup, importa e pubblica</summary><div class="gb">'
+      +'<table><tr><th>Pulsante</th><th>Funzione</th><th>Quando usarlo</th></tr>'
+      +'<tr><td>&#128229; Esporta</td><td>Salva backup JSON in Download</td><td>Prima di ogni sessione importante</td></tr>'
+      +'<tr><td>&#128228; Importa</td><td>Carica backup JSON, sovrascrive tutti i dati</td><td>Ripristino o allineamento tra dispositivi</td></tr>'
+      +'<tr><td>&#128268; Ripristina</td><td>Ripristina ultimo salvataggio automatico</td><td>Se qualcosa va storto durante una sessione</td></tr>'
+      +'<tr><td>&#128228; Pubblica</td><td>Genera dati-pubblici.json per lo staff</td><td>Dopo ogni modifica da condividere</td></tr>'
+      +'</table>'
+      +'<h4>Pubblicare su GitHub (per lo staff)</h4>'
+      +'<ol>'
+      +'<li>Clicca <strong>Pubblica</strong> — il file viene salvato nella cartella del ricettario.</li>'
+      +'<li>Apri <strong>GitHub Desktop</strong>.</li>'
+      +'<li>Scrivi un breve messaggio di commit (es. "Aggiunto piatto luglio").</li>'
+      +'<li>Clicca <strong>Commit</strong> poi <strong>Push origin</strong> — le modifiche sono online.</li>'
+      +'</ol>'
+      +'<div class="gtip">In Safari: se i dati sembrano vecchi, premi <strong>Cmd+Shift+R</strong> per ricaricare senza cache.</div>'
+      +'</div></details>';
+
+    // Magazzino
+    h+='<details class="gs"><summary>&#128230; Magazzino — materie prime</summary><div class="gb">'
+      +'<h4>Inserire una nuova materia prima</h4>'
+      +'<ol>'
+      +'<li>Tab <strong>Magazzino</strong> &#x2192; <strong>+ Nuova materia prima</strong>.</li>'
+      +'<li>Compila: nome, categoria, unità di misura, aliquota IVA, fornitore e prezzo <strong>IVA ESCLUSA</strong>.</li>'
+      +'<li>Dopo il salvataggio aggiungi: allergeni/tracce, valori nutrizionali, giacenza e soglia minima.</li>'
+      +'</ol>'
+      +'<h4>Gestione lotti (da DDT)</h4>'
+      +'<ol>'
+      +'<li>Nella scheda materia prima &#x2192; sezione <strong>Lotti</strong>.</li>'
+      +'<li>Inserisci numero lotto, quantità e data scadenza &#x2192; <strong>+ Lotto</strong>.</li>'
+      +'<li>Clicca <strong>&#x25B6; Apri</strong> quando inizi ad usarlo, <strong>&#x25A0; Chiudi</strong> quando è esaurito.</li>'
+      +'<li>Lotti chiusi &#x2192; clicca <strong>Storico</strong> per consultarli (conservare 2 anni per HACCP).</li>'
+      +'</ol>'
+      +'<div class="gtip">Il prezzo delle materie prime aggiorna automaticamente il food cost di tutte le ricette che le contengono.</div>'
+      +'</div></details>';
+
+    // Semilavorati
+    h+='<details class="gs"><summary>&#9881; Semilavorati — ricette base</summary><div class="gb">'
+      +'<h4>Creare un semilavorato</h4>'
+      +'<ol>'
+      +'<li>Tab <strong>Semilavorati</strong> &#x2192; <strong>+ Nuova ricetta base</strong>.</li>'
+      +'<li>Inserisci nome, categoria, resa (%), unità di misura del risultato.</li>'
+      +'<li>Aggiungi ingredienti dal magazzino con le grammature.</li>'
+      +'<li>Scrivi il procedimento e imposta il <strong>coefficiente di complessità</strong>.</li>'
+      +'</ol>'
+      +'<h4>Coefficiente di complessità (1&#x2013;10)</h4>'
+      +'<p>Misura l\'impegno attivo (tempo uomo + attrezzatura occupata). <strong>NON</strong> include cotture passive.</p>'
+      +'<table><tr><th>Fascia</th><th>Significato</th></tr>'
+      +'<tr><td>1&#x2013;3 Semplice</td><td>Poca tecnica, pochi passaggi, nessuna attrezzatura dedicata</td></tr>'
+      +'<tr><td>4&#x2013;6 Medio</td><td>Tecnica standard, più lavorazioni, attrezzatura standard</td></tr>'
+      +'<tr><td>7&#x2013;10 Complesso</td><td>Alta tecnica, molti componenti, attrezzatura dedicata</td></tr>'
+      +'</table>'
+      +'<h4>Shelf life default (HACCP)</h4>'
+      +'<table><tr><th>Prodotto</th><th>Frigo &lt;4°C</th><th>Sottovuoto &lt;4°C</th><th>Congelato &lt;−18°C</th></tr>'
+      +'<tr><td>Sughi di carne</td><td>4 gg</td><td>10 gg</td><td>90 gg</td></tr>'
+      +'<tr><td>Salse vegetali</td><td>5 gg</td><td>12 gg</td><td>90 gg</td></tr>'
+      +'<tr><td>Creme a base uova</td><td>3 gg</td><td>7 gg</td><td>60 gg</td></tr>'
+      +'<tr><td>Verdure cotte</td><td>3 gg</td><td>7 gg</td><td>90 gg</td></tr>'
+      +'<tr><td>Creme lattiero-casearie</td><td>3 gg</td><td>7 gg</td><td>60 gg</td></tr>'
+      +'</table>'
+      +'</div></details>';
+
+    // Piatti finiti
+    h+='<details class="gs"><summary>&#127869; Piatti finiti</summary><div class="gb">'
+      +'<h4>Creare un piatto finito</h4>'
+      +'<ol>'
+      +'<li>Clicca <strong>+ Nuovo Piatto</strong> dalla home.</li>'
+      +'<li>Inserisci nome, categoria, numero di porzioni, prezzo di vendita IVA inclusa.</li>'
+      +'<li>Aggiungi i componenti: materie prime e/o semilavorati con grammature.</li>'
+      +'<li>Imposta il coefficiente di complessità del piatto.</li>'
+      +'<li>Salva — il food cost viene calcolato automaticamente.</li>'
+      +'</ol>'
+      +'<h4>Stellina &#x2605; — Nel menu</h4>'
+      +'<p>Indica che il piatto è nel menu attivo. Solo i piatti nel menu appaiono nella sezione <em>Porzioni vendute</em> dei Costi di gestione.</p>'
+      +'<p>Clicca &#x2605;/&#x2606; accanto al piatto per attivare/disattivare il flag (solo in modalità admin).</p>'
+      +'</div></details>';
+
+    // Food cost
+    h+='<details class="gs"><summary>&#128202; Food Cost</summary><div class="gb">'
+      +'<p>Il tab Food Cost mostra l\'analisi economica per ogni piatto.</p>'
+      +'<ul>'
+      +'<li><strong>Food cost %</strong> = costo materie prime / prezzo di vendita &times; 100</li>'
+      +'<li>Verde ≤28% &middot; Giallo 28&#x2013;35% &middot; Rosso &gt;35%</li>'
+      +'<li>Il <strong>benchmark</strong> mostra la media del locale rispetto agli standard di settore.</li>'
+      +'</ul>'
+      +'<h4>Food cost "vero"</h4>'
+      +'<p>Appare solo se hai salvato i Costi di gestione del periodo. Include la quota di costi fissi attribuita a ogni piatto, ponderata per coefficiente di complessità.</p>'
+      +'</div></details>';
+
+    // Costi di gestione e BEP
+    h+='<details class="gs"><summary>&#9881; Costi di gestione e BEP</summary><div class="gb">'
+      +'<p>Accessibile da <strong>Food Cost</strong> &#x2192; <strong>&#9881; Costi di gestione</strong>.</p>'
+      +'<h4>Come compilare il periodo</h4>'
+      +'<ol>'
+      +'<li>Inserisci l\'etichetta del periodo (es. "Luglio 2026").</li>'
+      +'<li>Aggiungi <strong>costi fissi</strong> (affitto, stipendi, ammortamenti…) e <strong>costi variabili</strong> (materie prime, beverage…) con nome e importo IVA inclusa.</li>'
+      +'<li>Inserisci lo <strong>scontrino medio</strong> e i <strong>coperti del periodo</strong>.</li>'
+      +'<li>Per ogni piatto nel menu, inserisci le <strong>porzioni vendute</strong>.</li>'
+      +'<li>Clicca <strong>Salva</strong>.</li>'
+      +'</ol>'
+      +'<h4>Break-Even Point (BEP)</h4>'
+      +'<div class="gcod">'
+      +'MC% = (Fatturato &minus; Costi variabili) / Fatturato &times; 100<br>'
+      +'BEP € = Costi fissi / (MC% / 100)<br>'
+      +'BEP coperti = BEP € / scontrino medio'
+      +'</div>'
+      +'<h4>Unità ponderate</h4>'
+      +'<p>I costi fissi vengono distribuiti in proporzione alla complessità dei piatti, non in parti uguali.</p>'
+      +'<div class="gcod">'
+      +'Unità pond. piatto = porzioni vendute &times; coefficiente<br>'
+      +'Costo per unità pond. = totale costi fissi / &Sigma;(unità ponderate)<br>'
+      +'Costo fisso / pax = costo per unità pond. &times; coefficiente piatto'
+      +'</div>'
+      +'<div class="gtip">Usa <strong>Nuovo periodo</strong> a fine mese per azzerare i dati. Esporta prima se vuoi conservarli.</div>'
+      +'</div></details>';
+
+    // Fornitori
+    h+='<details class="gs"><summary>&#127978; Fornitori</summary><div class="gb">'
+      +'<ul>'
+      +'<li>Aggiungi fornitori con ragione sociale, contatti e categoria merceologica.</li>'
+      +'<li>I fornitori inseriti sono selezionabili quando crei una materia prima in magazzino.</li>'
+      +'<li>Dalla scheda fornitore vedi tutte le materie prime associate.</li>'
+      +'</ul>'
+      +'</div></details>';
+
+    // Avvia Produzione
+    h+='<details class="gs"><summary>&#9654; Avvia Produzione</summary><div class="gb">'
+      +'<ol>'
+      +'<li>Tab <strong>Avvia Produzione</strong> &#x2192; <strong>Nuova produzione</strong>.</li>'
+      +'<li>Cerca e seleziona il semilavorato o piatto finito.</li>'
+      +'<li>Inserisci la quantità (dosi preimpostate, modificabili).</li>'
+      +'<li>Scegli il metodo di conservazione — scadenza calcolata automaticamente.</li>'
+      +'<li>Clicca <strong>Avvia</strong> &#x2192; lotto registrato (formato <code>AAAA_MM_GG-001</code>).</li>'
+      +'<li>Clicca <strong>&#128438; Etichetta</strong> per stampare l\'etichetta HACCP.</li>'
+      +'</ol>'
+      +'</div></details>';
+  }
+
+  el.innerHTML=h;
+}
+
 
 /* ===== ADMIN MODE ===== */
 var ADMIN_PASSWORD = "ricettario_claudioP70@";
@@ -3925,7 +4133,7 @@ function homeRicettaRow(r,i){
     +'<div class="home-ricetta-meta">'+r.pax+' porzioni'+(r._isBase?' &middot; ricetta base':r.dataCreazione?' &middot; '+r.dataCreazione:'')+'</div>'
     +'</div>'
     +'<span class="home-ricetta-fc">'+fcBadge+'</span>'
-    +(r._isPiatto?'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+r._piattoIdx+')" style="margin-left:6px;flex-shrink:0;background:'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'#dcfce7;color:#16a34a':'#f5f4f0;color:#aaa')+';font-size:14px;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;" title="'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'Nel menu':'Non nel menu')+'">'+( piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'&#9733;':'&#9734;')+'</button>':'')
+    +(r._isPiatto&&isAdmin?'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+r._piattoIdx+')" style="margin-left:6px;flex-shrink:0;background:'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'#dcfce7;color:#16a34a':'#f5f4f0;color:#aaa')+';font-size:14px;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;" title="'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'Nel menu':'Non nel menu')+'">'+( piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'&#9733;':'&#9734;')+'</button>':'')
     +'</div>';
 }
 

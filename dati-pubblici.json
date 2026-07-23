@@ -1986,6 +1986,9 @@
       "tempo": "10",
       "procedimento": "Scaldare il latte fino a 80°C, fare un roux con burro e farina, aggiungerlo al latte , portare a bollore e far sobbollire qualche minuto tenendo mescolato e facendo attenzione che non attacchi, aggiugi gli altri ingredienti, usa subito o abbatti in positivo.",
       "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
       "componenti": [
         {
           "tipo": "mp",
