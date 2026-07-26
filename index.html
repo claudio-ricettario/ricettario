@@ -915,10 +915,12 @@ var CAT_ICONS_MAG={
   'Pesce e frutti di mare':'&#127825;','Latticini e formaggi':'&#129472;',
   'Salumi':'&#129363;','Generale':'&#129778;',
   'Vini':'&#127863;','Birre e bibite':'&#127866;','Spirits e liquori':'&#129346;',
-  'Caffetteria':'&#9749;','Soft drink':'&#129380;','Ingredienti cocktail':'&#127481;'
+  'Caffetteria':'&#9749;','Soft drink':'&#129380;','Ingredienti cocktail':'&#127481;',
+  'Prodotti pulizia':'&#129529;','Contenitori asporto':'&#129377;','Igienico-sanitari':'&#129531;','Non alim. vario':'&#128230;'
 };
-var CAT_ORDER_MAG=['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi',
-  'Vini','Birre e bibite','Spirits e liquori','Caffetteria','Soft drink','Ingredienti cocktail','Generale'];
+var CAT_ORDER_MAG=['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi','Generale',
+  'Vini','Birre e bibite','Spirits e liquori','Caffetteria','Soft drink','Ingredienti cocktail',
+  'Prodotti pulizia','Contenitori asporto','Igienico-sanitari','Non alim. vario'];
 var semilavorati=[];
 var codiceCounters={mp:0,sl:0,pf:0};
 var piatti=[];
@@ -1501,7 +1503,19 @@ function renderMagazzino(){
   });
 
   var out='';
+  var _gm={
+    'Verdura':'&#129367; Food','Frutta':'&#129367; Food','Carne e pollame':'&#129367; Food',
+    'Pesce e frutti di mare':'&#129367; Food','Latticini e formaggi':'&#129367; Food',
+    'Salumi':'&#129367; Food','Generale':'&#129367; Food',
+    'Vini':'&#127863; Beverage','Birre e bibite':'&#127863; Beverage','Spirits e liquori':'&#127863; Beverage',
+    'Caffetteria':'&#127863; Beverage','Soft drink':'&#127863; Beverage','Ingredienti cocktail':'&#127863; Beverage',
+    'Prodotti pulizia':'&#129529; Non alimentari','Contenitori asporto':'&#129529; Non alimentari',
+    'Igienico-sanitari':'&#129529; Non alimentari','Non alim. vario':'&#129529; Non alimentari'
+  };
+  var _lg='';
   CAT_ORDER_MAG.forEach(function(cat){
+    var _g=_gm[cat]||'';
+    if(_g&&_g!==_lg){out+='<div style="margin:18px 0 8px;font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.8px;padding:0 4px;">'+_g+'</div>';_lg=_g;}
     var items=grouped[cat]||[];
     var isOpen=magExpanded[cat];
     out+='<div class="mag-cat-block">'
@@ -1554,7 +1568,9 @@ function renderMagazzino(){
           out+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:13px;">'
             +'<label style="color:#666;font-weight:500;">Categoria:</label>'
             +'<select onchange="updateCategoria('+mi+',this.value)" onclick="event.stopPropagation();" style="font-size:13px;padding:4px 8px;border:1px solid #d0cec8;border-radius:6px;">'
-            +['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi','Generale','Vini','Birre e bibite','Spirits e liquori','Caffetteria','Soft drink','Ingredienti cocktail'].map(function(c){
+            +['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi','Generale',
+              'Vini','Birre e bibite','Spirits e liquori','Caffetteria','Soft drink','Ingredienti cocktail',
+              'Prodotti pulizia','Contenitori asporto','Igienico-sanitari','Non alim. vario'].map(function(c){
               return '<option value="'+c+'"'+(m.categoria===c?' selected':'')+'>'+c+'</option>';
             }).join('')
             +'</select></div>';
@@ -4146,7 +4162,9 @@ var CAT_ICONS={
   'Contorni':'&#129367;',
   'Dolci':'&#127856;',
   'Pane e lievitati':'&#129360;',
-  'Altro':'&#127869;'
+  'Altro':'&#127869;',
+  'Vini':'&#127863;','Birre':'&#127866;','Cocktail':'&#127481;',
+  'Caffetteria':'&#9749;','Soft drink':'&#129380;','Beverage vario':'&#127863;'
 };
 var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Pane e lievitati','Altro','Vini','Birre','Cocktail','Caffetteria','Soft drink','Beverage vario'];
 var homeExpanded={};   /* cat -> bool */
@@ -5903,6 +5921,11 @@ function npSalva(){
           <option value="Caffetteria">&#9749; Caffetteria</option>
           <option value="Soft drink">&#129380; Soft drink</option>
           <option value="Ingredienti cocktail">&#127481; Ingredienti cocktail</option>
+          <option disabled>──────────</option>
+          <option value="Prodotti pulizia">&#129529; Prodotti pulizia</option>
+          <option value="Contenitori asporto">&#129377; Contenitori asporto</option>
+          <option value="Igienico-sanitari">&#129531; Igienico-sanitari</option>
+          <option value="Non alim. vario">&#128230; Non alim. vario</option>
         </select>
       </div>
     </div>
@@ -5964,6 +5987,11 @@ function npSalva(){
           <option value="Caffetteria">&#9749; Caffetteria</option>
           <option value="Soft drink">&#129380; Soft drink</option>
           <option value="Ingredienti cocktail">&#127481; Ingredienti cocktail</option>
+          <option disabled>──────────</option>
+          <option value="Prodotti pulizia">&#129529; Prodotti pulizia</option>
+          <option value="Contenitori asporto">&#129377; Contenitori asporto</option>
+          <option value="Igienico-sanitari">&#129531; Igienico-sanitari</option>
+          <option value="Non alim. vario">&#128230; Non alim. vario</option>
         </select>
       </div>
     </div>
