@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "23/7/2026",
+  "exportDate": "26/7/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -1974,6 +1974,76 @@
           "storico": []
         }
       ]
+    },
+    {
+      "codice": "MP-110",
+      "nome": "Bardolino...prova",
+      "categoria": "Vini",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 126,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 65,
+        "zuccheri": 34,
+        "fibre": 1,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-111",
+      "nome": "Ripasso allegrini prova",
+      "categoria": "Vini",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 6,
+          "storico": []
+        }
+      ]
     }
   ],
   "semilavorati": [
@@ -2790,6 +2860,31 @@
       ],
       "dataCreazione": "26/6/2026",
       "nelMenu": false
+    },
+    {
+      "codice": "PF-006",
+      "nome": "Ripasso",
+      "categoria": "Vini",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 21,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Ripasso allegrini prova",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
+          "magIdx": 56,
+          "codiceMp": "MP-111"
+        }
+      ],
+      "dataCreazione": "26/7/2026"
     }
   ],
   "ricetteSalvate": [],

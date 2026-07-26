@@ -435,9 +435,16 @@ textarea{resize:vertical;min-height:60px;}
       <div class="form-grid">
         <div class="form-row"><label>Nome piatto *</label><input type="text" id="np-nome" placeholder="es. Gnocchi al rag&ugrave; di vitello"/></div>
         <div class="form-row"><label>Categoria</label>
-          <select id="np-cat">
+          <select id="np-cat" onchange="npCatChange(this.value)">
             <option>Antipasti</option><option selected>Primi piatti</option><option>Secondi piatti</option>
             <option>Contorni</option><option>Dolci</option><option>Pane e lievitati</option><option>Altro</option>
+            <option disabled>──── Beverage ────</option>
+            <option value="Vini">&#127863; Vini</option>
+            <option value="Birre">&#127866; Birre</option>
+            <option value="Cocktail">&#127481; Cocktail</option>
+            <option value="Caffetteria">&#9749; Caffetteria</option>
+            <option value="Soft drink">&#129380; Soft drink</option>
+            <option value="Beverage vario">&#127863; Beverage vario</option>
           </select>
         </div>
       </div>
@@ -463,6 +470,10 @@ textarea{resize:vertical;min-height:60px;}
         <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #f0ede8;margin-top:4px;">
           <input type="checkbox" id="np-nel-menu" style="width:16px;height:16px;cursor:pointer;accent-color:#16a34a;"/>
           <label style="margin:0;cursor:pointer;font-size:13px;" for="np-nel-menu">Includi nel menu attivo</label>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:6px 0;">
+          <input type="checkbox" id="np-bev" style="width:16px;height:16px;cursor:pointer;accent-color:#7c3aed;"/>
+          <label style="margin:0;cursor:pointer;font-size:13px;" for="np-bev">&#127863; Beverage (usa soglie bar cost)</label>
         </div>
         <div class="form-row">
           <label>Foto del piatto <span style="font-weight:400;color:#aaa;font-size:11px;">(opzionale)</span></label>
@@ -720,7 +731,12 @@ textarea{resize:vertical;min-height:60px;}
       </div>
       <button class="btn-primary" onclick="openNuovaProduzione()">+ Nuova produzione</button>
     </div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="btn-secondary" onclick="toggleStoricoProd()" id="btn-storico-prod" style="font-size:12px;padding:5px 12px;">&#128193; Storico (<span id="storico-count">0</span>)</button></div>
     <div id="produzioni-list" style="margin-top:8px;"></div>
+    <div id="produzioni-storico-box" style="display:none;margin-top:16px;">
+      <h3 style="font-size:14px;color:#888;margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">&#128193; Storico produzioni archiviate</h3>
+      <div id="produzioni-storico-list"></div>
+    </div>
   </div>
 
     <!-- NUOVA RICETTA -->
@@ -897,9 +913,12 @@ var magExpanded={};
 var CAT_ICONS_MAG={
   'Verdura':'&#129367;','Frutta':'&#127820;','Carne e pollame':'&#129385;',
   'Pesce e frutti di mare':'&#127825;','Latticini e formaggi':'&#129472;',
-  'Salumi':'&#129363;','Generale':'&#129778;'
+  'Salumi':'&#129363;','Generale':'&#129778;',
+  'Vini':'&#127863;','Birre e bibite':'&#127866;','Spirits e liquori':'&#129346;',
+  'Caffetteria':'&#9749;','Soft drink':'&#129380;','Ingredienti cocktail':'&#127481;'
 };
-var CAT_ORDER_MAG=['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi','Generale'];
+var CAT_ORDER_MAG=['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi',
+  'Vini','Birre e bibite','Spirits e liquori','Caffetteria','Soft drink','Ingredienti cocktail','Generale'];
 var semilavorati=[];
 var codiceCounters={mp:0,sl:0,pf:0};
 var piatti=[];
@@ -1535,7 +1554,7 @@ function renderMagazzino(){
           out+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:13px;">'
             +'<label style="color:#666;font-weight:500;">Categoria:</label>'
             +'<select onchange="updateCategoria('+mi+',this.value)" onclick="event.stopPropagation();" style="font-size:13px;padding:4px 8px;border:1px solid #d0cec8;border-radius:6px;">'
-            +['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi','Generale'].map(function(c){
+            +['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare','Latticini e formaggi','Salumi','Generale','Vini','Birre e bibite','Spirits e liquori','Caffetteria','Soft drink','Ingredienti cocktail'].map(function(c){
               return '<option value="'+c+'"'+(m.categoria===c?' selected':'')+'>'+c+'</option>';
             }).join('')
             +'</select></div>';
@@ -2404,6 +2423,39 @@ function renderGuida(){
       +'<p>Clicca &#x2605;/&#x2606; accanto al piatto per attivare/disattivare il flag (solo in modalità admin).</p>'
       +'</div></details>';
 
+    // Beverage
+    h+='<details class="gs"><summary>&#127863; Beverage — vino, cocktail, caffetteria</summary><div class="gb">'
+      +'<p>Ogni bevanda si crea come un piatto finito: spunta <strong>&#127863; Beverage (usa soglie bar cost)</strong> nel form. '
+      +'Le soglie saranno diverse da quelle food:</p>'
+      +'<table><tr><th>Bar cost %</th><th>Valutazione</th></tr>'
+      +'<tr><td>&#x2264;22%</td><td style="color:#16a34a">&#9679; Ottimo</td></tr>'
+      +'<tr><td>22&#x2013;28%</td><td style="color:#d97706">&#9679; Attenzione</td></tr>'
+      +'<tr><td>&gt;28%</td><td style="color:#dc2626">&#9679; Critico</td></tr>'
+      +'</table>'
+      +'<h4>Vino a calice</h4>'
+      +'<ol>'
+      +'<li>Componente: 1 bottiglia dal magazzino (categoria Vini).</li>'
+      +'<li><strong>Porzioni: 7</strong> (calici per bottiglia — standard ristorazione).</li>'
+      +'<li>Prezzo di vendita: prezzo del <em>singolo calice</em>.</li>'
+      +'<li>Coefficiente: 1 (nessuna preparazione).</li>'
+      +'</ol>'
+      +'<div class="gcod">Bar cost = costo bottiglia &divide; 7 &divide; prezzo calice &times; 100</div>'
+      +'<h4>Vino a bottiglia</h4>'
+      +'<ol>'
+      +'<li>Componente: 1 bottiglia dal magazzino.</li>'
+      +'<li><strong>Porzioni: 1</strong>.</li>'
+      +'<li>Prezzo di vendita: prezzo della bottiglia intera.</li>'
+      +'<li>Coefficiente: 1.</li>'
+      +'</ol>'
+      +'<h4>Cocktail</h4>'
+      +'<ol>'
+      +'<li>Aggiungi tutti i componenti (spirits, succhi, guarnizioni) dal magazzino.</li>'
+      +'<li>Porzioni: 1.</li>'
+      +'<li>Coefficiente: 2&#x2013;4 in base alla complessità di preparazione.</li>'
+      +'</ol>'
+      +'<div class="gtip">Il coefficiente per beverage semplici (calice di vino, birra, caffè) è sempre <strong>1</strong>. Usalo &gt;1 solo per drink con preparazione (shaker, infusioni, ecc.).</div>'
+      +'</div></details>';
+
     // Food cost
     h+='<details class="gs"><summary>&#128202; Food Cost</summary><div class="gb">'
       +'<p>Il tab Food Cost mostra l\'analisi economica per ogni piatto.</p>'
@@ -2610,9 +2662,13 @@ function ripristinaSnapshot(){
 
 /* ===== PRODUZIONI ===== */
 var produzioni=[];
+var produzioniStorico=[];
 
 function saveProduzioni(){
   try{localStorage.setItem('rc_produzioni',JSON.stringify(produzioni));}catch(e){}
+}
+function saveStorico(){
+  try{localStorage.setItem('rc_produzioni_storico',JSON.stringify(produzioniStorico));}catch(e){}
 }
 
 function loadProduzioni(){
@@ -2620,11 +2676,17 @@ function loadProduzioni(){
     var raw=localStorage.getItem('rc_produzioni');
     if(raw){produzioni=JSON.parse(raw);}
   }catch(e){produzioni=[];}
+  try{
+    var rawS=localStorage.getItem('rc_produzioni_storico');
+    if(rawS){produzioniStorico=JSON.parse(rawS);}
+  }catch(e){produzioniStorico=[];}
 }
 
 function renderProduzioni(){
   var el=document.getElementById('produzioni-list');
   if(!el)return;
+  var cnt=document.getElementById('storico-count');
+  if(cnt)cnt.textContent=produzioniStorico.length;
   var cerca=(document.getElementById('prod-cerca')||{}).value||'';
   var lista=produzioni.filter(function(pr){
     return !cerca||pr.nomeSemilavorato.toLowerCase().indexOf(cerca.toLowerCase())>=0||pr.numeroLotto.toLowerCase().indexOf(cerca.toLowerCase())>=0;
@@ -2652,8 +2714,9 @@ function renderProduzioni(){
       +'<div style="display:flex;align-items:center;gap:8px;">'
       +'<span class="'+scadCls+'" style="font-size:12px;">'+scadLbl+'</span>'
       +(pr.completata?'<span style="font-size:11px;color:#888;">Completata</span>':'<button class="btn-sm" style="background:#e8f4e8;" onclick="completaProduzione('+i+')">&#9632; Completa</button>')
+      +(pr.completata?'<button class="btn-sm" style="background:#f0ede6;color:#666;" onclick="eliminaProduzione('+i+')" title="Sposta nello storico">&#128193; Archivia</button>':'')
       +'<button class="btn-sm" onclick="stampaEtichetta('+i+')">&#128438; Etichetta</button>'
-      +'<button class="btn-sm danger-sm" onclick="eliminaProduzione('+i+')">&#10005;</button>'
+      +(!pr.completata?'<button class="btn-sm danger-sm" onclick="eliminaProduzione('+i+')">&#10005;</button>':'')
       +'</div>'
       +'</div>'
       +'</div>';
@@ -2698,11 +2761,63 @@ function completaProduzione(i){
 }
 
 function eliminaProduzione(i){
-  if(!confirm('Eliminare questa produzione?'))return;
-  produzioni.splice(i,1);
-  saveProduzioni();
-  renderProduzioni();
+  if(produzioni[i]&&produzioni[i].completata){
+    produzioniStorico.unshift(produzioni[i]);
+    produzioni.splice(i,1);
+    saveProduzioni();
+    saveStorico();
+    renderProduzioni();
+  } else {
+    if(!confirm('Eliminare questa produzione?'))return;
+    produzioni.splice(i,1);
+    saveProduzioni();
+    renderProduzioni();
+  }
 }
+
+function toggleStoricoProd(){
+  var box=document.getElementById('produzioni-storico-box');
+  if(!box)return;
+  var visible=box.style.display==='block';
+  box.style.display=visible?'none':'block';
+  if(!visible)renderStoricoProd();
+}
+
+function renderStoricoProd(){
+  var el=document.getElementById('produzioni-storico-list');
+  var cnt=document.getElementById('storico-count');
+  if(cnt)cnt.textContent=produzioniStorico.length;
+  if(!el)return;
+  if(!produzioniStorico.length){
+    el.innerHTML='<div class="card" style="margin-bottom:10px;color:#aaa;font-size:13px;">Nessuna produzione archiviata.</div>';
+    return;
+  }
+  el.innerHTML=produzioniStorico.map(function(pr,i){
+    var scad=pr.dataScadenza?new Date(pr.dataScadenza):null;
+    return '<div class="card" style="margin-bottom:10px;opacity:.8;">'
+      +'<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">'
+      +'<div>'
+      +'<div style="font-weight:700;font-size:15px;">'+pr.nomeSemilavorato+'</div>'
+      +'<div style="font-size:12px;color:#888;margin-top:2px;">Lotto: <strong>'+pr.numeroLotto+'</strong> &mdash; Prodotto: '+pr.dataProduzione+' &mdash; '+pr.metodo+'</div>'
+      +'</div>'
+      +'<div style="display:flex;align-items:center;gap:8px;">'
+      +'<span style="font-size:11px;color:#888;">Archiviata</span>'
+      +'<button class="btn-sm danger-sm" onclick="eliminaStorico('+i+')" title="Elimina definitivamente">&#10005;</button>'
+      +'</div>'
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+function eliminaStorico(i){
+  if(!confirm('Eliminare definitivamente questa produzione dallo storico?'))return;
+  produzioniStorico.splice(i,1);
+  saveStorico();
+  renderStoricoProd();
+  var cnt=document.getElementById('storico-count');
+  if(cnt)cnt.textContent=produzioniStorico.length;
+}
+
 
 function openNuovaProduzione(){
   /* apre modal nuova produzione */
@@ -3932,7 +4047,7 @@ function renderPiatti(){
     },0);
     var pax4=totCosto/pax;
     var fc=p.prezzoVendita>0?(pax4/p.prezzoVendita*100):0;
-    var fcBadge=fc>0?'<span class="badge badge-'+(fc<=28?'green':fc<=35?'amber':'red')+'">FC '+fc.toFixed(1)+'%</span>':'';
+    var fcBadge=fcBadgeHtml(fc,p&&p.tipoBeverage||false);
     return '<div class="piatto-card" onclick="togglePiattoDetail('+realIdx+',this)">'
       +'<div class="piatto-card-header">'
       +'<div style="flex:1;">'
@@ -4033,7 +4148,7 @@ var CAT_ICONS={
   'Pane e lievitati':'&#129360;',
   'Altro':'&#127869;'
 };
-var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Pane e lievitati','Altro'];
+var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Pane e lievitati','Altro','Vini','Birre','Cocktail','Caffetteria','Soft drink','Beverage vario'];
 var homeExpanded={};   /* cat -> bool */
 var homeSubExp={};     /* cat+sub -> bool */
 
@@ -4123,7 +4238,7 @@ function homeRicettaRow(r,i){
   var fcBadge=r._isBase
     ?'<span class="badge badge-gray">base</span>'
     :(r._isPiatto?'<span class="badge badge-blue">piatto</span>':'')
-    +(fc>0?'<span class="badge badge-'+(fc<=28?'green':fc<=35?'amber':'red')+'">FC '+fc.toFixed(1)+'%</span>':'');
+    +(fc>0?fcBadgeHtml(fc,(r._isPiatto&&piatti[r._piattoIdx]&&piatti[r._piattoIdx].tipoBeverage)||false):'');
   var thumbHtml=r.foto
     ?'<img src="'+r.foto+'" style="width:100%;height:100%;object-fit:cover;"/>'
     :'<span style="font-size:20px;">&#127869;</span>';
@@ -4267,7 +4382,7 @@ function renderRicetteSalvate(){
   }
 
   /* group by categoria */
-  var CATS=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Pane e lievitati','Altro'];
+  var CATS=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Pane e lievitati','Altro','Vini','Birre','Cocktail','Caffetteria','Soft drink','Beverage vario'];
   var grouped={};
   filtered.forEach(function(r,origIdx){
     var cat=r.categoria||'Altro';
@@ -5513,6 +5628,8 @@ function npModifica(idx){
   document.getElementById('np-pv').value=p.prezzoVendita||'';
   document.getElementById('np-coeff').value=p.coefficiente||1;
   document.getElementById('np-nel-menu').checked=p.nelMenu||false;
+  var bevCb=document.getElementById('np-bev');
+  if(bevCb)bevCb.checked=p.tipoBeverage||false;
   setTimeout(aggiornaSuggerimentoCoeff,50);
   document.getElementById('np-title').textContent='Modifica piatto';
   var delBtn=document.getElementById('np-delete-btn');
@@ -5709,6 +5826,20 @@ function npElimina(){
   renderHome();
 }
 
+
+function fcBadgeHtml(fc,isBev){
+  if(fc<=0)return '';
+  var low=isBev?22:28, mid=isBev?28:35;
+  var cls=fc<=low?'green':fc<=mid?'amber':'red';
+  var lbl=isBev?'Bar cost':'FC';
+  return '<span class="badge badge-'+cls+'">'+lbl+' '+fc.toFixed(1)+'%</span>';
+}
+
+function npCatChange(val){
+  var bevCats=['Vini','Birre','Cocktail','Caffetteria','Soft drink','Beverage vario'];
+  var cb=document.getElementById('np-bev');
+  if(cb&&bevCats.indexOf(val)>=0)cb.checked=true;
+}
 function npSalva(){
   npClearAlert();
   var nome=document.getElementById('np-nome').value.trim();
@@ -5726,6 +5857,7 @@ function npSalva(){
     prezzoVendita:parseFloat(document.getElementById('np-pv').value)||0,
     coefficiente:parseInt(document.getElementById('np-coeff').value)||1,
     nelMenu:document.getElementById('np-nel-menu').checked||false,
+    tipoBeverage:document.getElementById('np-bev')&&document.getElementById('np-bev').checked||false,
     foto:npFotoData||'',
     steps:JSON.parse(JSON.stringify(npSteps)),
     componenti:JSON.parse(JSON.stringify(npComps)),
@@ -5764,6 +5896,13 @@ function npSalva(){
           <option value="Latticini e formaggi">&#129472; Latticini e formaggi</option>
           <option value="Salumi">&#129363; Salumi</option>
           <option value="Generale" selected>&#129778; Generale</option>
+          <option disabled>──────────</option>
+          <option value="Vini">&#127863; Vini</option>
+          <option value="Birre e bibite">&#127866; Birre e bibite</option>
+          <option value="Spirits e liquori">&#129346; Spirits e liquori</option>
+          <option value="Caffetteria">&#9749; Caffetteria</option>
+          <option value="Soft drink">&#129380; Soft drink</option>
+          <option value="Ingredienti cocktail">&#127481; Ingredienti cocktail</option>
         </select>
       </div>
     </div>
@@ -5818,6 +5957,13 @@ function npSalva(){
           <option value="Latticini e formaggi">Latticini e formaggi</option>
           <option value="Salumi">Salumi</option>
           <option value="Generale" selected>Generale</option>
+          <option disabled>──────────</option>
+          <option value="Vini">&#127863; Vini</option>
+          <option value="Birre e bibite">&#127866; Birre e bibite</option>
+          <option value="Spirits e liquori">&#129346; Spirits e liquori</option>
+          <option value="Caffetteria">&#9749; Caffetteria</option>
+          <option value="Soft drink">&#129380; Soft drink</option>
+          <option value="Ingredienti cocktail">&#127481; Ingredienti cocktail</option>
         </select>
       </div>
     </div>
@@ -6022,6 +6168,13 @@ function npSalva(){
         <select id="pm2-cat">
           <option>Antipasti</option><option>Primi piatti</option><option>Secondi piatti</option>
           <option>Contorni</option><option>Dolci</option><option>Pane e lievitati</option><option>Altro</option>
+          <option disabled>──── Beverage ────</option>
+          <option value="Vini">&#127863; Vini</option>
+          <option value="Birre">&#127866; Birre</option>
+          <option value="Cocktail">&#127481; Cocktail</option>
+          <option value="Caffetteria">&#9749; Caffetteria</option>
+          <option value="Soft drink">&#129380; Soft drink</option>
+          <option value="Beverage vario">&#127863; Beverage vario</option>
         </select>
       </div>
     </div>
