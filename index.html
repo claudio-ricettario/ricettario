@@ -1787,7 +1787,7 @@ function updateAll(){
     return '<tr><td>'+x.ing.nome+'</td><td class="r">'+fmtQta(x.ing,p)+'</td><td class="r">'+eur(x.c)+'</td><td class="r">'+bar+pp.toFixed(1)+'%</td></tr>';
   }).join('');
 
-  var bench=[{label:'Trattoria / osteria',min:25,max:35},{label:'Ristorante medio',min:28,max:38},{label:'Fine dining',min:20,max:28}];
+  var bench=p.tipoBeverage?[{label:'Bar / Caffetteria',min:15,max:22},{label:'Cocktail bar',min:18,max:25},{label:'Ristorante bar',min:20,max:28}]:[{label:'Trattoria / osteria',min:25,max:35},{label:'Ristorante medio',min:28,max:38},{label:'Fine dining',min:20,max:28}];
   document.getElementById('benchmark-tbody').innerHTML=bench.map(function(b){
     var mn=pax/(b.max/100),mx=pax/(b.min/100);
     var ok=pv>=mn&&pv<=mx;
@@ -1998,7 +1998,7 @@ function renderFoodCost(){
   }).join('');
 
   /* benchmark */
-  var bench=[{label:'Trattoria / osteria',min:25,max:35},{label:'Ristorante medio',min:28,max:38},{label:'Fine dining',min:20,max:28}];
+  var bench=p.tipoBeverage?[{label:'Bar / Caffetteria',min:15,max:22},{label:'Cocktail bar',min:18,max:25},{label:'Ristorante bar',min:20,max:28}]:[{label:'Trattoria / osteria',min:25,max:35},{label:'Ristorante medio',min:28,max:38},{label:'Fine dining',min:20,max:28}];
   document.getElementById('benchmark-tbody').innerHTML=bench.map(function(b){
     var mn=pax1/(b.max/100);var mx=pax1/(b.min/100);
     var ok=pv>=mn&&pv<=mx;

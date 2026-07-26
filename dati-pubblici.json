@@ -2860,6 +2860,31 @@
       ],
       "dataCreazione": "26/6/2026",
       "nelMenu": false
+    },
+    {
+      "codice": "PF-007",
+      "nome": "Ripasso",
+      "categoria": "Vini",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 25,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Ripasso allegrini prova",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
+          "magIdx": 56,
+          "codiceMp": "MP-111"
+        }
+      ],
+      "dataCreazione": "26/7/2026"
     }
   ],
   "ricetteSalvate": [],
