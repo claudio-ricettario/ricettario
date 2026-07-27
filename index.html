@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ricettario Food Cost</title>
+<title>MiseEnPlace</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f4f0;color:#1a1a1a;min-height:100vh;}
@@ -284,8 +284,7 @@ textarea{resize:vertical;min-height:60px;}
 </head>
 <body>
 <header>
-  <h1>Ricettario</h1>
-  <span>Food Cost Pro</span>
+  <h1>MiseEnPlace</h1>
   <div style="flex:1;max-width:320px;min-width:140px;margin:0 8px;">
     <input type="text" id="global-search" placeholder="&#128269; Cerca..." 
       oninput="globalSearch(this.value)"
@@ -310,7 +309,7 @@ textarea{resize:vertical;min-height:60px;}
 <div class="container">
   <div class="tab-bar">
     <div class="tab" id="tab-btn-produzioni" onclick="showTab('produzioni')">&#9654; Avvia Produzione</div>
-    <div class="tab active" id="tab-btn-home" onclick="showTab('home')">&#127374; Piatti Finiti</div>
+    <div class="tab active" id="tab-btn-home" onclick="showTab('home')">&#127374; Carte</div>
     <div class="tab" id="tab-btn-semilavorati" onclick="showTab('semilavorati')">&#9881; Semilavorati</div>
     <div class="tab" id="tab-btn-magazzino" onclick="showTab('magazzino')">&#128230; Magazzino</div>
     <div class="tab" id="tab-btn-foodcost" onclick="showTab('foodcost')">&#128202; Food cost</div>
@@ -325,7 +324,7 @@ textarea{resize:vertical;min-height:60px;}
     <div class="home-header">
       <div class="home-logo">&#127869;</div>
       <div>
-        <h1 class="home-title">Il mio Ricettario</h1>
+        <h1 class="home-title">Carte</h1>
         <p class="home-subtitle">Seleziona una categoria per vedere le ricette</p>
       </div>
       <button id="btn-nuovo-piatto-home" class="btn-primary no-print" onclick="showTab('nuovo-piatto')" style="margin-left:auto;white-space:nowrap;">&#43; Nuovo piatto</button>
@@ -408,7 +407,7 @@ textarea{resize:vertical;min-height:60px;}
     </div>
     <hr style="border:none;border-top:1px solid #e0ded8;margin:8px 0 20px;"/>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
-      <h2 style="font-size:16px;">Il mio ricettario</h2>
+      <h2 style="font-size:16px;">Carte</h2>
       <div style="display:flex;gap:6px;flex-wrap:wrap;" id="ricette-filtri">
         <button class="filtro-btn active" onclick="setFiltro('',this)">Tutti</button>
         <button class="filtro-btn" onclick="setFiltro('Antipasti',this)">Antipasti</button>
@@ -2347,7 +2346,7 @@ function renderGuida(){
     +'.gcod{font-family:monospace;font-size:12px;background:#f5f4f0;padding:10px 12px;border-radius:6px;margin:8px 0;line-height:1.8;}'
     +'</style>';
   h+=css;
-  h+='<h2 style="font-size:20px;margin:0 0 6px;color:#222;">&#128214; Guida — Ricettario Food Cost Pro</h2>';
+  h+='<h2 style="font-size:20px;margin:0 0 6px;color:#222;">&#128214; Guida — MiseEnPlace</h2>';
 
   if(!isAdmin){
     h+='<p style="color:#888;font-size:13px;margin-bottom:20px;">Operazioni disponibili per il tuo profilo.</p>';

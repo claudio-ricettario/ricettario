@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "26/7/2026",
+  "exportDate": "27/7/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -348,80 +348,6 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 295,
-          "storico": []
-        }
-      ]
-    },
-    {
-      "codice": "MP-095",
-      "nome": "Burro da Kg",
-      "categoria": "Generale",
-      "um": "kg",
-      "iva": 4,
-      "scarto": 0,
-      "resa": 100,
-      "activeIdx": 0,
-      "allergeni": [
-        "Latte e lattosio"
-      ],
-      "allergeniOk": true,
-      "tracce": [],
-      "tracceOk": true,
-      "nutrizionali": {
-        "energia": 758,
-        "grassi": 82,
-        "grassiSaturi": 58,
-        "carboidrati": 0.5,
-        "zuccheri": 0,
-        "fibre": 0,
-        "proteine": 0.5,
-        "sale": 0.01
-      },
-      "nutrizionaliOk": true,
-      "giacenza": 0,
-      "giacenzaMin": 0,
-      "lotti": [],
-      "suppliers": [
-        {
-          "nome": "Supermercato / Generico",
-          "prezzoKg": 10,
-          "storico": []
-        }
-      ]
-    },
-    {
-      "codice": "MP-065",
-      "nome": "Burro della Lessinia",
-      "categoria": "Generale",
-      "um": "kg",
-      "iva": 4,
-      "scarto": 0,
-      "resa": 100,
-      "activeIdx": 0,
-      "allergeni": [
-        "Latte e lattosio"
-      ],
-      "allergeniOk": true,
-      "tracce": [],
-      "tracceOk": true,
-      "nutrizionali": {
-        "energia": 717,
-        "grassi": 81.11,
-        "grassiSaturi": 51.368,
-        "carboidrati": 0.06,
-        "zuccheri": 0,
-        "fibre": 0,
-        "proteine": 0.85,
-        "sale": 0.011
-      },
-      "nutrizionaliOk": true,
-      "giacenza": 0,
-      "giacenzaMin": 0,
-      "lotti": [],
-      "suppliers": [
-        {
-          "nome": "Supermercato / Generico",
-          "prezzoKg": 12,
           "storico": []
         }
       ]
@@ -1505,6 +1431,80 @@
       ]
     },
     {
+      "codice": "MP-095",
+      "nome": "Burro da Kg",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 758,
+        "grassi": 82,
+        "grassiSaturi": 58,
+        "carboidrati": 0.5,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0.5,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-065",
+      "nome": "Burro della Lessinia",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 717,
+        "grassi": 81.11,
+        "grassiSaturi": 51.368,
+        "carboidrati": 0.06,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0.85,
+        "sale": 0.011
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 12,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-056",
       "nome": "Grana Padano Dop",
       "categoria": "Latticini e formaggi",
@@ -1971,76 +1971,6 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 4,
-          "storico": []
-        }
-      ]
-    },
-    {
-      "codice": "MP-110",
-      "nome": "Bardolino...prova",
-      "categoria": "Vini",
-      "um": "lt",
-      "iva": 10,
-      "scarto": 0,
-      "resa": 100,
-      "activeIdx": 0,
-      "allergeni": [],
-      "allergeniOk": true,
-      "tracce": [],
-      "tracceOk": true,
-      "nutrizionali": {
-        "energia": 126,
-        "grassi": 0,
-        "grassiSaturi": 0,
-        "carboidrati": 65,
-        "zuccheri": 34,
-        "fibre": 1,
-        "proteine": 0,
-        "sale": 0
-      },
-      "nutrizionaliOk": true,
-      "giacenza": 0,
-      "giacenzaMin": 0,
-      "lotti": [],
-      "suppliers": [
-        {
-          "nome": "Supermercato / Generico",
-          "prezzoKg": 5,
-          "storico": []
-        }
-      ]
-    },
-    {
-      "codice": "MP-111",
-      "nome": "Ripasso allegrini prova",
-      "categoria": "Vini",
-      "um": "kg",
-      "iva": 10,
-      "scarto": 0,
-      "resa": 100,
-      "activeIdx": 0,
-      "allergeni": [],
-      "allergeniOk": true,
-      "tracce": [],
-      "tracceOk": true,
-      "nutrizionali": {
-        "energia": 0,
-        "grassi": 0,
-        "grassiSaturi": 0,
-        "carboidrati": 0,
-        "zuccheri": 0,
-        "fibre": 0,
-        "proteine": 0,
-        "sale": 0
-      },
-      "nutrizionaliOk": true,
-      "giacenza": 0,
-      "giacenzaMin": 0,
-      "lotti": [],
-      "suppliers": [
-        {
-          "nome": "Supermercato / Generico",
-          "prezzoKg": 6,
           "storico": []
         }
       ]
