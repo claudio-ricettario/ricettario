@@ -906,6 +906,17 @@ textarea{resize:vertical;min-height:60px;}
   </div>
 </div>
 
+<div class="modal-overlay" id="ordine-modal-overlay" onclick="if(event.target===this)closeOrdineModal()">
+  <div class="modal" style="max-width:660px;max-height:85vh;overflow-y:auto;">
+    <h3>&#128196; Ordine fornitore</h3>
+    <div id="ordine-modal-body"></div>
+    <div class="modal-btns">
+      <button class="btn-secondary" onclick="closeOrdineModal()">Chiudi</button>
+      <button class="btn-primary" onclick="stampaOrdine()">&#128438; Stampa / PDF</button>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ===== GLOBALS ===== */
 var magExpanded={};
@@ -1063,6 +1074,7 @@ var FORNITORI_DEFAULT=[
 ];
 
 var BASE=4,ivaOn=false,fornitori=[],expanded={},dismissedAlerts={};
+var ordiniStorico=[];
 var GC={Lun:'lun',Mar:'mar',Mer:'mer',Gio:'gio',Ven:'ven',Sab:'sab',Dom:'dom'};
 
 function today(){var d=new Date();return d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();}
@@ -1872,6 +1884,37 @@ function renderFornitori(){
       +(f.minimo?'<div class="frow"><span class="flabel">Min. ordine</span><span class="fvalue">'+f.minimo+'</span></div>':'')
       +(f.pagamento?'<div class="frow"><span class="flabel">Pagamento</span><span class="fvalue">'+f.pagamento+'</span></div>':'')
       +(f.note?'<div class="frow"><span class="flabel">Note</span><span class="fvalue" style="color:#666;">'+f.note+'</span></div>':'')
+      +(function(){
+        var ords=(ordiniStorico||[]).filter(function(o){return o.fornitore===f.nome;});
+        var btnStor=ords.length
+          ?'<button style="background:#f5f4f0;border:1px solid #d0cec8;border-radius:7px;padding:6px 14px;font-size:12px;color:#555;cursor:pointer;font-weight:600;margin-left:8px;" onclick="toggleStoricoOrdiniCard('+i+')">&#128203; Storico ('+ords.length+')</button>'
+          :'';
+        var righeHtml=ords.length
+          ?'<div id="storico-card-'+i+'" style="display:none;margin-top:10px;padding:10px;background:#faf9f6;border-radius:8px;font-size:12px;">'
+            +'<div style="font-weight:700;color:#555;margin-bottom:7px;">&#128203; Storico ordini &mdash; '+f.nome+'</div>'
+            +ords.map(function(o,oi){
+              var globalIdx=(ordiniStorico||[]).indexOf(o);
+              var dateFmt=o.data?o.data.split('-').reverse().join('/'):'—';
+              return '<div style="padding:5px 0;border-bottom:1px solid #f0ede6;">'
+                +'<div style="display:flex;align-items:center;gap:6px;font-size:12px;">'
+                +'<span style="font-family:monospace;font-weight:600;min-width:110px;">'+o.nOrd+'</span>'
+                +'<span style="color:#888;min-width:70px;">'+dateFmt+'</span>'
+                +'<span style="color:#666;">'+(o.righe?o.righe.length:0)+' voci</span>'
+                +'</div>'
+                +'<div style="display:flex;gap:4px;margin-top:3px;">'
+                +'<button style="font-size:10px;padding:1px 7px;background:#f0f4ff;border:1px solid #bfdbfe;border-radius:4px;cursor:pointer;color:#1e3a8a;" onclick="ristampaOrdine('+globalIdx+')">&#128438; ristampa</button>'
+                +'<button style="font-size:10px;padding:1px 7px;background:#fff0f0;border:1px solid #fca5a5;border-radius:4px;cursor:pointer;color:#b91c1c;" onclick="eliminaOrdine('+globalIdx+');renderFornitori()">&#10005; elimina</button>'
+                +'</div>'
+                +'</div>';
+            }).join('')
+            +'</div>'
+          :'';
+        return '<div style="margin-top:12px;padding-top:10px;border-top:1px solid #f0ede6;">'
+          +'<button style="background:#f0f7ff;border:1px solid #bfdbfe;border-radius:7px;padding:6px 14px;font-size:12px;color:#1e3a8a;cursor:pointer;font-weight:600;" onclick="apriOrdineFornitore('+i+')">&#128196; Genera ordine</button>'
+          +btnStor
+          +righeHtml
+          +'</div>';
+      }())
       +'</div>';
   }).join('');
 }
@@ -1924,6 +1967,346 @@ function eliminaFornitore(){
   if(!confirm(msg))return;
   fornitori.splice(idx,1);
   saveFornitori();renderFornitori();closeFornModal();
+}
+
+/* ── ORDINE FORNITORE ── */
+var _ordFi=-1;
+function apriOrdineFornitore(fi){
+  _ordFi=fi;
+  var f=fornitori[fi];
+  var items=magazzino.filter(function(m){
+    return m.suppliers&&m.suppliers.some(function(s){return s.nome===f.nome;});
+  }).map(function(m){
+    var si=-1;
+    m.suppliers.forEach(function(s,i){if(s.nome===f.nome)si=i;});
+    var sup=m.suppliers[si];
+    var giacenza=m.giacenza||0;
+    var min=m.giacenzaMin||0;
+    var suggerita=Math.max(0,Math.round((min-giacenza)*100)/100);
+    return {nome:m.nome,um:m.um,giacenza:giacenza,min:min,suggerita:suggerita,prezzo:sup.prezzoKg};
+  });
+  window._ordItems=items;
+  var oggi=new Date().toISOString().split('T')[0];
+  var seq=(window._ordSeq=(window._ordSeq||0)+1);
+  var nOrd='ORD-'+oggi.replace(/-/g,'')+'-'+String(seq).padStart(3,'0');
+  var html='<div style="margin-bottom:14px;padding:10px 12px;background:#f5f4f0;border-radius:8px;">'
+    +'<div style="font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:2px;">'+f.nome+'</div>'
+    +(f.referente?'<div style="font-size:12px;color:#666;">Ref: '+f.referente+'</div>':'')
+    +(f.tel?'<div style="font-size:12px;color:#666;">Tel: '+f.tel+'</div>':'')
+    +(f.email?'<div style="font-size:12px;color:#1e3a8a;">'+f.email+'</div>':'')
+    +'</div>'
+    +'<div style="display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap;">'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">Data ordine</label>'
+    +'<input type="date" id="ord-data" value="'+oggi+'" style="font-size:13px;padding:4px 8px;border:1px solid #d0cec8;border-radius:6px;"/></div>'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">N° ordine</label>'
+    +'<input type="text" id="ord-num" value="'+nOrd+'" style="font-size:13px;padding:4px 8px;border:1px solid #d0cec8;border-radius:6px;width:160px;"/></div>'
+    +'<div style="flex:1;min-width:160px;"><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">Nome attivit\u00e0 / Mittente</label>'
+    +'<input type="text" id="ord-nome-att" placeholder="es. Ristorante La Torre" style="font-size:13px;padding:4px 8px;border:1px solid #d0cec8;border-radius:6px;width:100%;"/></div>'
+    +'</div>';
+  if(!items.length){
+    html+='<p style="color:#888;font-size:13px;padding:12px 0;">Nessun ingrediente in magazzino collegato a questo fornitore.</p>';
+  } else {
+    html+='<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;margin-bottom:6px;">Articoli</div>'
+      +'<div style="overflow-x:auto;">'
+      +'<table style="width:100%;border-collapse:collapse;font-size:12px;">'
+      +'<thead><tr style="background:#f5f4f0;">'
+      +'<th style="text-align:left;padding:7px 8px;border-bottom:2px solid #d0cec8;">Ingrediente</th>'
+      +'<th style="text-align:right;padding:7px 8px;border-bottom:2px solid #d0cec8;">Giacenza</th>'
+      +'<th style="text-align:right;padding:7px 8px;border-bottom:2px solid #d0cec8;">Min</th>'
+      +'<th style="text-align:right;padding:7px 8px;border-bottom:2px solid #d0cec8;min-width:110px;">Qtà ordine</th>'
+      +'<th style="text-align:right;padding:7px 8px;border-bottom:2px solid #d0cec8;">€/UM</th>'
+      +'<th style="text-align:right;padding:7px 8px;border-bottom:2px solid #d0cec8;">Totale</th>'
+      +'</tr></thead><tbody>';
+    items.forEach(function(it,ii){
+      var lowBg=(it.min>0&&it.giacenza<it.min)?'background:#fff7ed;':'';
+      html+='<tr style="'+lowBg+'">'
+        +'<td style="padding:6px 8px;border-bottom:1px solid #f0ede6;">'+it.nome+'</td>'
+        +'<td style="text-align:right;padding:6px 8px;border-bottom:1px solid #f0ede6;color:#666;">'+it.giacenza+' '+it.um+'</td>'
+        +'<td style="text-align:right;padding:6px 8px;border-bottom:1px solid #f0ede6;color:#888;">'+it.min+' '+it.um+'</td>'
+        +'<td style="text-align:right;padding:6px 8px;border-bottom:1px solid #f0ede6;">'
+        +'<input type="number" id="ord-qta-'+ii+'" value="'+it.suggerita+'" min="0" step="0.1" '
+        +'oninput="aggiornaOrdTot()" '
+        +'style="width:76px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;text-align:right;"/> '+it.um
+        +'</td>'
+        +'<td style="text-align:right;padding:6px 8px;border-bottom:1px solid #f0ede6;">'+it.prezzo.toFixed(2)+'</td>'
+        +'<td id="ord-tot-'+ii+'" style="text-align:right;padding:6px 8px;border-bottom:1px solid #f0ede6;font-weight:600;">'
+        +(it.suggerita*it.prezzo).toFixed(2)+'</td>'
+        +'</tr>';
+    });
+    html+='</tbody></table></div>'
+      +'<div style="text-align:right;margin-top:10px;font-size:14px;font-weight:700;color:#1a1a1a;">'
+      +'Totale stimato: € <span id="ord-grand-tot">0.00</span></div>';
+  }
+  html+='<div style="margin-top:14px;">'
+    +'<label style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;display:block;margin-bottom:4px;">Note</label>'
+    +'<textarea id="ord-note" rows="2" style="width:100%;font-size:12px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;box-sizing:border-box;resize:vertical;" placeholder="Urgenze, accordi di consegna, modalità di pagamento..."></textarea>'
+    +'</div>';
+  document.getElementById('ordine-modal-body').innerHTML=html;
+  document.getElementById('ordine-modal-overlay').classList.add('open');
+  aggiornaOrdTot();
+}
+function aggiornaOrdTot(){
+  var items=window._ordItems||[];
+  var grand=0;
+  items.forEach(function(it,ii){
+    var el=document.getElementById('ord-qta-'+ii);
+    var qta=el?parseFloat(el.value)||0:0;
+    var tot=qta*it.prezzo;grand+=tot;
+    var tEl=document.getElementById('ord-tot-'+ii);
+    if(tEl)tEl.textContent=tot.toFixed(2);
+  });
+  var gEl=document.getElementById('ord-grand-tot');
+  if(gEl)gEl.textContent=grand.toFixed(2);
+}
+function closeOrdineModal(){document.getElementById('ordine-modal-overlay').classList.remove('open');}
+
+/* ── STORICO ORDINI ── */
+function loadOrdiniStorico(){
+  try{ordiniStorico=JSON.parse(localStorage.getItem('rc_ordini')||'[]');}catch(e){ordiniStorico=[];}
+  var c=document.getElementById('ord-count');
+  if(c)c.textContent=ordiniStorico.length;
+}
+function saveOrdineStorico(ord){
+  try{
+    var st=JSON.parse(localStorage.getItem('rc_ordini')||'[]');
+    st.unshift(ord);
+    if(st.length>200)st=st.slice(0,200);
+    localStorage.setItem('rc_ordini',JSON.stringify(st));
+    ordiniStorico=st;
+  }catch(e){}
+  var c=document.getElementById('ord-count');
+  if(c)c.textContent=ordiniStorico.length;
+}
+function toggleStoricoOrdini(){
+  var sec=document.getElementById('storico-ordini-section');
+  if(!sec)return;
+  var isOpen=sec.style.display!=='none';
+  sec.style.display=isOpen?'none':'block';
+  if(!isOpen){loadOrdiniStorico();renderStoricoOrdini();}
+}
+function renderStoricoOrdini(){
+  var el=document.getElementById('storico-ordini-body');
+  if(!el)return;
+  loadOrdiniStorico();
+  if(!ordiniStorico.length){
+    el.innerHTML='<p style="color:#888;font-size:13px;padding:12px 0;">Nessun ordine registrato ancora.</p>';
+    return;
+  }
+  var html='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">'
+    +'<h3 style="margin:0;font-size:16px;">&#128203; Storico ordini ('+ordiniStorico.length+')</h3>'
+    +'<button class="btn-sm danger-sm" onclick="if(confirm(\'Eliminare tutto lo storico ordini?\'))'
+    +'{localStorage.removeItem(\'rc_ordini\');ordiniStorico=[];renderStoricoOrdini();'
+    +'var c=document.getElementById(\'ord-count\');if(c)c.textContent=0;}">&#128465; Svuota tutto</button>'
+    +'</div>'
+    +'<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;">'
+    +'<thead><tr style="background:#f5f4f0;">'
+    +'<th style="text-align:left;padding:8px 10px;border-bottom:2px solid #d0cec8;">N° ordine</th>'
+    +'<th style="text-align:left;padding:8px 10px;border-bottom:2px solid #d0cec8;">Data</th>'
+    +'<th style="text-align:left;padding:8px 10px;border-bottom:2px solid #d0cec8;">Fornitore</th>'
+    +'<th style="text-align:left;padding:8px 10px;border-bottom:2px solid #d0cec8;">Mittente</th>'
+    +'<th style="text-align:right;padding:8px 10px;border-bottom:2px solid #d0cec8;">Articoli</th>'
+    +'<th style="padding:8px 10px;border-bottom:2px solid #d0cec8;"></th>'
+    +'</tr></thead><tbody>';
+  ordiniStorico.forEach(function(o,i){
+    var dateFmt=o.data?o.data.split('-').reverse().join('/'):'—';
+    html+='<tr style="border-bottom:1px solid #f0ede6;">'
+      +'<td style="padding:7px 10px;font-weight:600;font-family:monospace;">'+o.nOrd+'</td>'
+      +'<td style="padding:7px 10px;color:#666;">'+dateFmt+'</td>'
+      +'<td style="padding:7px 10px;">'+o.fornitore+'</td>'
+      +'<td style="padding:7px 10px;color:#888;font-size:12px;">'+o.nomeAtt+'</td>'
+      +'<td style="padding:7px 10px;text-align:right;color:#666;">'+(o.righe?o.righe.length:0)+' voci</td>'
+      +'<td style="padding:7px 10px;display:flex;gap:6px;justify-content:flex-end;">'
+      +'<button class="btn-sm" onclick="ristampaOrdine('+i+')">&#128438; Ristampa</button>'
+      +'<button class="btn-sm danger-sm" onclick="eliminaOrdine('+i+')">&#10005;</button>'
+      +'</td></tr>';
+  });
+  html+='</tbody></table></div>';
+  el.innerHTML=html;
+}
+function eliminaOrdine(i){
+  if(!confirm('Eliminare questo ordine dallo storico?'))return;
+  ordiniStorico.splice(i,1);
+  try{localStorage.setItem('rc_ordini',JSON.stringify(ordiniStorico));}catch(e){}
+  renderStoricoOrdini();
+}
+function toggleStoricoOrdiniCard(fi){
+  var el=document.getElementById('storico-card-'+fi);
+  if(el)el.style.display=el.style.display==='none'?'block':'none';
+}
+function ristampaOrdine(i){
+  var o=ordiniStorico[i];if(!o)return;
+  var f=fornitori.find(function(fn){return fn.nome===o.fornitore;})||{nome:o.fornitore,tipo:'',referente:'',tel:'',email:'',minimo:'',leadtime:'',pagamento:'',giorniConsegna:[]};
+  var righe=o.righe||[];
+  var dateFmt=o.data?o.data.split('-').reverse().join('/'):'—';
+  var nomeAtt=o.nomeAtt||'Nome Cliente';
+  var nOrd=o.nOrd||'';
+  var note=o.note||'';
+  var html='<!DOCTYPE html><html lang="it"><head><meta charset="utf-8">'
+    +'<title>Ordine '+nOrd+'</title>'
+    +'<style>'
+    +'*{box-sizing:border-box;margin:0;padding:0;}'
+    +'body{font-family:Georgia,serif;color:#1a1a1a;padding:32px 40px;max-width:820px;margin:0 auto;font-size:13px;}'
+    +'h1{font-size:22px;font-weight:700;letter-spacing:.02em;}'
+    +'.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid #1a1a1a;}'
+    +'.subtitle{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px;}'
+    +'.block-title{font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;padding-bottom:3px;border-bottom:1px solid #e0ded8;}'
+    +'.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;}'
+    +'.info-line{font-size:12px;color:#333;margin-bottom:3px;}'
+    +'table{width:100%;border-collapse:collapse;margin-bottom:16px;}'
+    +'thead th{background:#f5f4f0;text-align:left;padding:8px 10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid #d0cec8;}'
+    +'thead th.r{text-align:right;}'
+    +'tbody td{padding:8px 10px;border-bottom:1px solid #eeecea;font-size:13px;}'
+    +'tbody td.r{text-align:right;}'
+    +'.note-box{background:#f9f7f3;border:1px solid #e0ded8;border-radius:6px;padding:12px;margin:16px 0;}'
+    +'.sign-box{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;}'
+    +'.sign-line{border-top:1px solid #888;padding-top:4px;font-size:11px;color:#888;text-align:center;margin-top:48px;}'
+    +'.footer{margin-top:24px;padding-top:12px;border-top:1px solid #e0ded8;display:flex;justify-content:space-between;font-size:10px;color:#aaa;}'
+    +'@media print{body{padding:16px 20px;}}'
+    +'</style></head><body>'
+    +'<div class="header">'
+    +'<div><div class="subtitle">Ordine d\'acquisto</div><h1>'+nomeAtt+'</h1></div>'
+    +'<div style="text-align:right;"><div style="font-size:18px;font-weight:700;font-family:monospace;">N\u00b0 '+nOrd+'</div>'
+    +'<div style="font-size:13px;color:#666;margin-top:2px;">Data: '+dateFmt+'</div></div>'
+    +'</div>'
+    +'<div class="two-col">'
+    +'<div><div class="block-title">Fornitore</div>'
+    +'<div class="info-line" style="font-weight:700;font-size:14px;">'+f.nome+'</div>'
+    +(f.referente?'<div class="info-line">Ref: '+f.referente+'</div>':'')
+    +(f.tel?'<div class="info-line">Tel: '+f.tel+'</div>':'')
+    +(f.email?'<div class="info-line">'+f.email+'</div>':'')
+    +'</div>'
+    +'<div><div class="block-title">Condizioni</div>'
+    +(f.minimo?'<div class="info-line">Min. ordine: <strong>'+f.minimo+'</strong></div>':'')
+    +(f.leadtime?'<div class="info-line">Lead time: <strong>'+f.leadtime+' gg</strong></div>':'')
+    +(f.pagamento?'<div class="info-line">Pagamento: <strong>'+f.pagamento+'</strong></div>':'')
+    +(f.giorniConsegna&&f.giorniConsegna.length?'<div class="info-line">Consegna: '+f.giorniConsegna.join(', ')+'</div>':'')
+    +'</div></div>';
+  if(righe.length){
+    html+='<table><thead><tr>'
+      +'<th style="width:28px;">#</th>'
+      +'<th>Articolo</th>'
+      +'<th class="r" style="width:100px;">Qt\u00e0</th>'
+      +'<th class="r" style="width:70px;">UM</th>'
+      +'<th style="width:140px;">Note</th>'
+      +'</tr></thead><tbody>';
+    righe.forEach(function(r,i){
+      html+='<tr><td style="color:#888;">'+(i+1)+'</td>'
+        +'<td>'+r.nome+'</td>'
+        +'<td class="r">'+r.qta+'</td>'
+        +'<td class="r">'+r.um+'</td>'
+        +'<td></td></tr>';
+    });
+    html+='</tbody></table>';
+  }
+  if(note){
+    html+='<div class="note-box"><div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;margin-bottom:5px;">Note</div>'
+      +'<div style="font-size:12px;white-space:pre-wrap;">'+note+'</div></div>';
+  }
+  html+='<div class="sign-box">'
+    +'<div><div class="sign-line">Firma mittente</div></div>'
+    +'<div><div class="sign-line">Firma / timbro fornitore</div></div>'
+    +'</div>'
+    +'<div class="footer"><span>'+nomeAtt+' \u2014 Ordine d\'acquisto</span>'
+    +'<span>N\u00b0 '+nOrd+' del '+dateFmt+'</span></div>'
+    +'<scr'+'ipt>window.onload=function(){window.print();};<\/scr'+'ipt>'
+    +'</body></html>';
+  var w=window.open('','_blank','width=860,height=940');
+  if(w){w.document.write(html);w.document.close();}
+}
+
+function stampaOrdine(){
+  var fi=_ordFi;if(fi<0||!fornitori[fi])return;
+  var f=fornitori[fi];
+  var items=window._ordItems||[];
+  var data=document.getElementById('ord-data').value||new Date().toISOString().split('T')[0];
+  var nOrd=document.getElementById('ord-num').value||'';
+  var note=document.getElementById('ord-note').value||'';
+  var nomeAtt=(document.getElementById('ord-nome-att').value||'').trim()||'Nome Cliente';
+  var righe=items.map(function(it,ii){
+    var el=document.getElementById('ord-qta-'+ii);
+    var qta=el?parseFloat(el.value)||0:0;
+    return {nome:it.nome,um:it.um,qta:qta};
+  }).filter(function(r){return r.qta>0;});
+  var dateFmt=data.split('-').reverse().join('/');
+  var html='<!DOCTYPE html><html lang="it"><head><meta charset="utf-8">'
+    +'<title>Ordine '+nOrd+'</title>'
+    +'<style>'
+    +'*{box-sizing:border-box;margin:0;padding:0;}'
+    +'body{font-family:Georgia,serif;color:#1a1a1a;padding:32px 40px;max-width:820px;margin:0 auto;font-size:13px;}'
+    +'h1{font-size:22px;font-weight:700;letter-spacing:.02em;}'
+    +'.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid #1a1a1a;}'
+    +'.subtitle{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px;}'
+    +'.block-title{font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;padding-bottom:3px;border-bottom:1px solid #e0ded8;}'
+    +'.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;}'
+    +'.info-line{font-size:12px;color:#333;margin-bottom:3px;}'
+    +'table{width:100%;border-collapse:collapse;margin-bottom:16px;}'
+    +'thead th{background:#f5f4f0;text-align:left;padding:8px 10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid #d0cec8;}'
+    +'thead th.r{text-align:right;}'
+    +'tbody td{padding:8px 10px;border-bottom:1px solid #eeecea;font-size:13px;}'
+    +'tbody td.r{text-align:right;}'
+    +'.tot-row td{font-weight:700;border-top:2px solid #1a1a1a;border-bottom:none;font-size:14px;padding-top:10px;}'
+    +'.note-box{background:#f9f7f3;border:1px solid #e0ded8;border-radius:6px;padding:12px;margin:16px 0;}'
+    +'.sign-box{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;}'
+    +'.sign-line{border-top:1px solid #888;padding-top:4px;font-size:11px;color:#888;text-align:center;margin-top:48px;}'
+    +'.footer{margin-top:24px;padding-top:12px;border-top:1px solid #e0ded8;display:flex;justify-content:space-between;font-size:10px;color:#aaa;}'
+    +'@media print{body{padding:16px 20px;}}'
+    +'</style></head><body>'
+    +'<div class="header">'
+    +'<div><div class="subtitle">Ordine d\'acquisto</div><h1>'+nomeAtt+'</h1></div>'
+    +'<div style="text-align:right;"><div style="font-size:18px;font-weight:700;font-family:monospace;">N° '+nOrd+'</div>'
+    +'<div style="font-size:13px;color:#666;margin-top:2px;">Data: '+dateFmt+'</div></div>'
+    +'</div>'
+    +'<div class="two-col">'
+    +'<div><div class="block-title">Fornitore</div>'
+    +'<div class="info-line" style="font-weight:700;font-size:14px;">'+f.nome+'</div>'
+    +(f.tipo&&f.tipo!=='Placeholder'?'<div class="info-line" style="color:#888;">'+f.tipo+'</div>':'')
+    +(f.referente?'<div class="info-line">Ref: '+f.referente+'</div>':'')
+    +(f.tel?'<div class="info-line">Tel: '+f.tel+'</div>':'')
+    +(f.email?'<div class="info-line">'+f.email+'</div>':'')
+    +'</div>'
+    +'<div><div class="block-title">Condizioni</div>'
+    +(f.minimo?'<div class="info-line">Min. ordine: <strong>'+f.minimo+'</strong></div>':'')
+    +(f.leadtime?'<div class="info-line">Lead time: <strong>'+f.leadtime+' gg</strong></div>':'')
+    +(f.pagamento?'<div class="info-line">Pagamento: <strong>'+f.pagamento+'</strong></div>':'')
+    +(f.giorniConsegna&&f.giorniConsegna.length?'<div class="info-line">Consegna: '+f.giorniConsegna.join(', ')+'</div>':'')
+    +'</div>'
+    +'</div>';
+  if(righe.length){
+    html+='<table><thead><tr>'
+      +'<th style="width:28px;">#</th>'
+      +'<th>Articolo</th>'
+      +'<th class="r" style="width:100px;">Qtà</th>'
+      +'<th class="r" style="width:70px;">UM</th>'
+      +'<th style="width:140px;">Note</th>'
+      +'</tr></thead><tbody>';
+    righe.forEach(function(r,i){
+      html+='<tr><td style="color:#888;">'+(i+1)+'</td>'
+        +'<td>'+r.nome+'</td>'
+        +'<td class="r">'+r.qta+'</td>'
+        +'<td class="r">'+r.um+'</td>'
+        +'<td></td>'
+        +'</tr>';
+    });
+    html+='</tbody></table>';
+  } else {
+    html+='<p style="color:#888;font-style:italic;margin:20px 0;">Nessun articolo inserito nell\'ordine.</p>';
+  }
+  if(note){
+    html+='<div class="note-box"><div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;margin-bottom:5px;">Note</div>'
+      +'<div style="font-size:12px;white-space:pre-wrap;">'+note+'</div></div>';
+  }
+  html+='<div class="sign-box">'
+    +'<div><div class="sign-line">Firma mittente</div></div>'
+    +'<div><div class="sign-line">Firma / timbro fornitore</div></div>'
+    +'</div>'
+    +'<div class="footer"><span>'+nomeAtt+' — Ordine d\'acquisto</span>'
+    +'<span>N° '+nOrd+' del '+dateFmt+'</span></div>'
+    +'<scr'+'ipt>window.onload=function(){window.print();};<\/scr'+'ipt>'
+    +'</body></html>';
+  saveOrdineStorico({nOrd:nOrd,data:data,fi:fi,fornitore:f.nome,nomeAtt:nomeAtt,righe:righe,note:note,ts:Date.now()});
+  renderFornitori();
+  var w=window.open('','_blank','width=860,height=940');
+  if(w){w.document.write(html);w.document.close();}
 }
 
 function setIva(on){
@@ -2448,6 +2831,13 @@ function renderGuida(){
       +'<li>Clicca <strong>&#x25B6; Apri</strong> quando inizi ad usarlo, <strong>&#x25A0; Chiudi</strong> quando è esaurito.</li>'
       +'<li>Lotti chiusi &#x2192; clicca <strong>Storico</strong> per consultarli (conservare 2 anni per HACCP).</li>'
       +'</ol>'
+      +'<h4>Storico prezzi per fornitore</h4>'
+      +'<p>Ogni volta che modifichi il prezzo di un fornitore nella scheda materia prima, il vecchio prezzo viene salvato automaticamente con la data.</p>'
+      +'<ul>'
+      +'<li>Se un fornitore ha uno storico, appare il bottone <strong>&#128200; N</strong> accanto alla X di rimozione.</li>'
+      +'<li>Cliccalo per espandere il pannello con tutte le variazioni (dal più recente), con la % di scostamento rispetto alla rilevazione precedente in rosso (+) o verde (−).</li>'
+      +'<li>Vengono conservate fino a 36 rilevazioni per fornitore.</li>'
+      +'</ul>'
       +'<div class="gtip">Il prezzo delle materie prime aggiorna automaticamente il food cost di tutte le ricette che le contengono.</div>'
       +'</div></details>';
 
@@ -2569,8 +2959,24 @@ function renderGuida(){
       +'<ul>'
       +'<li>Aggiungi fornitori con ragione sociale, contatti e categoria merceologica.</li>'
       +'<li>I fornitori inseriti sono selezionabili quando crei una materia prima in magazzino.</li>'
-      +'<li>Dalla scheda fornitore vedi tutte le materie prime associate.</li>'
+      +'<li>Ogni fornitore mostra giorni di ordine/consegna, lead time, minimo d\'ordine e condizioni di pagamento.</li>'
       +'</ul>'
+      +'<h4>&#128196; Genera ordine PDF</h4>'
+      +'<p>In fondo a ogni scheda fornitore c\'è il bottone <strong>&#128196; Genera ordine</strong>. Permette di creare rapidamente un ordine d\'acquisto in PDF:</p>'
+      +'<ol>'
+      +'<li>Inserisci il tuo <strong>nome attività / mittente</strong>, la data e il numero ordine (pre-compilati).</li>'
+      +'<li>La tabella mostra tutti gli ingredienti collegati a quel fornitore, con giacenza attuale e soglia minima — le righe sotto soglia sono evidenziate in arancione.</li>'
+      +'<li>Le quantità da ordinare sono pre-calcolate come <em>max(0, soglia minima − giacenza)</em>, ma sono modificabili.</li>'
+      +'<li>Il totale stimato si aggiorna in tempo reale (solo per tua consultazione — non appare nel PDF).</li>'
+      +'<li>Clicca <strong>&#128438; Stampa / PDF</strong>: si apre il documento pronto per la stampa (Articolo, Qtà, UM, colonna Note vuota per eventuali annotazioni del fornitore). Salva come PDF dal browser.</li>'
+      +'<li>Dopo la stampa, la scheda fornitore si aggiorna automaticamente mostrando il nuovo ordine nello storico — senza bisogno di ricaricare la pagina.</li>'
+      +'</ol>'
+      +'<div class="gnote">I prezzi non vengono inclusi nel PDF inviato al fornitore: conosce già i suoi prezzi e la riservatezza è garantita.</div>'
+      +'<h4>&#128203; Storico ordini per fornitore</h4>'
+      +'<p>Ogni ordine stampato viene salvato automaticamente. Nella scheda di ogni fornitore compare il bottone <strong>&#128203; Storico (N)</strong>: apre la lista degli ordini effettuati con quel fornitore. Per ogni ordine sono disponibili, su riga separata sotto i dati:</p>'
+      +'<ul><li><strong>&#128438; ristampa</strong> — riapre il PDF dell\'ordine originale</li>'
+      +'<li><strong>&#10005; elimina</strong> — rimuove l\'ordine dallo storico</li></ul>'
+      +'<div class="gnote">Lo storico conserva fino a 200 ordini totali (tutti i fornitori).</div>'
       +'</div></details>';
 
     // Avvia Produzione
@@ -2668,6 +3074,7 @@ function applyAdminUI(){
 }
 
 loadSaved();
+loadOrdiniStorico();
 updateAll();
 renderMagazzino();
 checkAdminSession();
@@ -2723,6 +3130,7 @@ function ripristinaSnapshot(){
     piatti=JSON.parse(snap.piatti);
     magazzino=JSON.parse(snap.magazzino);
     saveSemilavorati();savePiatti();saveMagazzino();
+  loadOrdiniStorico();
     updateAll();renderMagazzino();renderSemilavorati();renderHome();
     alert('Backup automatico ripristinato con successo!');
   }catch(e){alert('Errore nel ripristino: '+e.message);}
