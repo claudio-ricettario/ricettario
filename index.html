@@ -1462,6 +1462,11 @@ function ricalcolaGiacenza(mi){
   m.giacenza=Math.round(tot*100)/100;
 }
 
+function updateGiacenzaMin(mi,val){
+  if(magazzino[mi])magazzino[mi].giacenzaMin=val;
+  saveMagazzino();
+}
+
 function apriLotto(mi,li){
   var m=magazzino[mi];if(!m||!m.lotti||!m.lotti[li])return;
   var oggi=new Date().toISOString().split('T')[0];
@@ -1487,7 +1492,26 @@ function rimuoviLotto(mi,li){
   renderMagazzino();
 }
 
-function renderGiacenzaAlerts(){var c=document.getElementById("giacenza-alerts-container");if(c)c.innerHTML="";}
+function renderGiacenzaAlerts(){
+  var c=document.getElementById('giacenza-alerts-container');
+  if(!c)return;
+  var sotto=magazzino.filter(function(m){
+    return (m.giacenzaMin||0)>0 && (m.giacenza||0)<(m.giacenzaMin||0);
+  });
+  if(!sotto.length){c.innerHTML='';return;}
+  c.innerHTML='<div style="margin-bottom:12px;">'
+    +'<div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:6px;">'
+    +'&#9888; Scorte sotto soglia minima ('+sotto.length+')</div>'
+    +sotto.map(function(m){
+      return '<div class="magazzino-alert-giacenza">'
+        +'<span>&#9888;</span>'
+        +'<span><strong>'+m.nome+'</strong> &mdash; '
+        +'giacenza: <strong>'+( m.giacenza||0)+' '+m.um+'</strong>'
+        +' / minimo: '+(m.giacenzaMin||0)+' '+m.um+'</span>'
+        +'</div>';
+    }).join('')
+    +'</div>';
+}
 function renderMagazzino(){
   var cont=document.getElementById('mag-categorie-container');
   if(!cont)return;
@@ -2617,7 +2641,6 @@ function applyAdminUI(){
 loadSaved();
 updateAll();
 renderMagazzino();
-loadProduzioni();
 checkAdminSession();
 applyAdminUI();
 
@@ -2679,6 +2702,7 @@ function ripristinaSnapshot(){
 /* ===== PRODUZIONI ===== */
 var produzioni=[];
 var produzioniStorico=[];
+loadProduzioni();
 
 function saveProduzioni(){
   try{localStorage.setItem('rc_produzioni',JSON.stringify(produzioni));}catch(e){}
@@ -2771,9 +2795,45 @@ function stampaEtichetta(i){
 }
 
 function completaProduzione(i){
-  produzioni[i].completata=true;
+  var pr=produzioni[i];
+  if(!pr.giacenzaScalata){
+    scalaGiacenzeProduzioni(pr);
+    pr.giacenzaScalata=true;
+  }
+  pr.completata=true;
   saveProduzioni();
   renderProduzioni();
+  renderGiacenzaAlerts();
+}
+
+function scalaGiacenzeProduzioni(pr){
+  var componenti=[];
+  var scale=1;
+  function convUm(u){return(u==='g'||u==='ml')?0.001:1;}
+  /* fallback per produzioni vecchie senza tipoProd */
+  var tipoProd=pr.tipoProd||(pr.semiIdx!==undefined?'sl':(pr.pfIdx!==undefined?'pf':''));
+  if(tipoProd==='sl'){
+    if(pr.semiIdx===undefined||!semilavorati[pr.semiIdx])return;
+    var sl=semilavorati[pr.semiIdx];
+    componenti=sl.componenti||[];
+    var baseKg=(sl.resaQta||1)*convUm(sl.resaUm||'kg');
+    var prodKg=(pr.qta||1)*convUm(pr.um||'kg');
+    scale=baseKg>0?prodKg/baseKg:1;
+  } else if(tipoProd==='pf'){
+    if(pr.pfIdx===undefined||!piatti[pr.pfIdx])return;
+    var pf=piatti[pr.pfIdx];
+    componenti=pf.componenti||[];
+    scale=(pr.qta||1)/(pf.porzioni||1);
+  } else return;
+  if(!componenti.length)return;
+  componenti.forEach(function(c){
+    if(c.tipo!=='mp'||c.conv===0||c.unit==='q.b.')return;
+    var idx=resolveMagIdx(c);
+    if(idx===undefined||idx<0||idx>=magazzino.length)return;
+    var deduct=c.qtaBase*c.conv*scale;
+    magazzino[idx].giacenza=Math.max(0,Math.round(((magazzino[idx].giacenza||0)-deduct)*1000)/1000);
+  });
+  saveMagazzino();
 }
 
 function eliminaProduzione(i){
@@ -2952,7 +3012,9 @@ function salvaProduzione(){
   var pr={
     nomeSemilavorato:nomeP,
     codiceSl:codiceP,
-    semiIdx:slIdx,
+    tipoProd:sl?'sl':'pf',
+    semiIdx:sl?slIdx:undefined,
+    pfIdx:pf?pfIdx:undefined,
     numeroLotto:generaNumeroLotto(),
     qta:qta,
     um:um,
@@ -2960,6 +3022,7 @@ function salvaProduzione(){
     dataProduzione:dataProd,
     dataScadenza:dataScad,
     completata:false,
+    giacenzaScalata:false,
     dataCreazione:new Date().toISOString()
   };
   produzioni.unshift(pr);
