@@ -1384,7 +1384,14 @@ function setActiveSupplier(mi,si){
   renderMagazzino();
 }
 function updateSupplierPrice(mi,si,val){
-  magazzino[mi].suppliers[si].prezzoKg=val;
+  var sup=magazzino[mi].suppliers[si];
+  var old=sup.prezzoKg;
+  if(typeof old==='number'&&old>0&&old!==val){
+    if(!sup.storico)sup.storico=[];
+    sup.storico.push({prezzo:old,data:new Date().toISOString().split('T')[0]});
+    if(sup.storico.length>36)sup.storico=sup.storico.slice(-36);
+  }
+  sup.prezzoKg=val;
   saveMagazzino();
   renderMagazzino();
 }
@@ -1612,13 +1619,36 @@ function renderMagazzino(){
           out+='<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Fornitori</div>';
           m.suppliers.forEach(function(sup,si){
             var isAct=si===m.activeIdx;
-            out+='<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #f0ede6;font-size:13px;" onclick="event.stopPropagation();">'
+            var stor=sup.storico||[];
+            var storId='sp-'+mi+'-'+si;
+            out+='<div onclick="event.stopPropagation();">'
+              +'<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:'+(stor.length?'none':'1px solid #f0ede6')+';font-size:13px;">'
               +'<input type="radio" name="sup-'+mi+'" '+(isAct?'checked':'')+' onchange="setActiveSupplier('+mi+','+si+')" />'
               +'<span style="flex:1;font-weight:'+(isAct?'600':'400')+';">'+sup.nome+'</span>'
               +'<input type="number" value="'+sup.prezzoKg+'" step="0.01" min="0" '
               +'onchange="updateSupplierPrice('+mi+','+si+',parseFloat(this.value)||0)" '
               +'style="width:80px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;text-align:right;"/> €/'+m.um
               +' <button class="btn-sm danger-sm" onclick="rimuoviFornitore('+mi+','+si+')">&#10005;</button>'
+              +(stor.length?' <button class="btn-sm" style="font-size:10px;padding:2px 6px;color:#7c5c2e;" onclick="var el=document.getElementById(&quot;'+storId+'&quot;);el.style.display=el.style.display===&quot;none&quot;?&quot;block&quot;:&quot;none&quot;;">&#128200; '+stor.length+'</button>':'')
+              +'</div>'
+              +(stor.length
+                ? '<div id="'+storId+'" style="display:none;margin:0 0 8px 28px;padding:8px 10px;background:#fef9f0;border-radius:6px;border-bottom:1px solid #f0ede6;font-size:11px;">'
+                  +'<div style="font-weight:700;color:#92400e;margin-bottom:5px;">&#128200; Storico prezzi &mdash; '+sup.nome+'</div>'
+                  +stor.slice().reverse().map(function(h,hi){
+                    var pct=hi<stor.slice().reverse().length-1
+                      ?((h.prezzo-stor.slice().reverse()[hi+1].prezzo)/stor.slice().reverse()[hi+1].prezzo*100)
+                      :null;
+                    var pctHtml=pct!==null
+                      ?' <span style="color:'+(pct>0?'#e53e3e':'#2d7d46')+';">('+(pct>0?'+':'')+pct.toFixed(1)+'%)</span>'
+                      :'';
+                    return '<div style="display:flex;gap:10px;padding:3px 0;border-bottom:1px solid #f5ede0;">'
+                      +'<span style="color:#888;min-width:90px;">'+h.data+'</span>'
+                      +'<span style="color:#555;font-weight:600;">'+h.prezzo.toFixed(2)+' €/'+m.um+'</span>'
+                      +pctHtml
+                      +'</div>';
+                  }).join('')
+                  +'</div>'
+                : '')
               +'</div>';
           });
 
