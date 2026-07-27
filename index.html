@@ -558,7 +558,10 @@ textarea{resize:vertical;min-height:60px;}
   <div id="tab-magazzino" class="section">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px;">
       <h2 style="margin:0;">Magazzino</h2>
-      <button class="btn-primary" onclick="openNuovaMPModal(-1)">+ Nuova materia prima</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn-secondary" onclick="stampaInventarioValorizzato()" style="font-size:12px;">&#128202; Inventario valorizzato</button>
+        <button class="btn-primary" onclick="openNuovaMPModal(-1)">+ Nuova materia prima</button>
+      </div>
     </div>
     <p class="muted">Espandi per gestire fornitori, prezzi, giacenza, lotti e scadenze</p>
     <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#666;margin-bottom:12px;align-items:center;">
@@ -1583,9 +1586,9 @@ function renderMagazzino(){
         var statusDot=ok
           ?'<span class="ing-status-ok"></span>'
           :'<span class="ing-status-warn"></span>';
-        var giac=m.giacenza||0;
+        var giac=typeof m.giacenza==='number'?m.giacenza:0;
         var giacMin=m.giacenzaMin||0;
-        var giacClass=giacMin<=0?'#555':(giac<=0?'#e53e3e':giac<giacMin?'#b45309':'#2d7d46');
+        var giacClass=giac<0?'#e53e3e':(giacMin<=0?'#555':(giac===0?'#e53e3e':giac<giacMin?'#b45309':'#2d7d46'));
 
         out+='<div style="border-bottom:1px solid #f0ede6;">';
         /* main row */
@@ -2986,9 +2989,23 @@ function renderGuida(){
       +'<li>Cerca e seleziona il semilavorato o piatto finito.</li>'
       +'<li>Inserisci la quantità (dosi preimpostate, modificabili).</li>'
       +'<li>Scegli il metodo di conservazione — scadenza calcolata automaticamente.</li>'
-      +'<li>Clicca <strong>Avvia</strong> &#x2192; lotto registrato (formato <code>AAAA_MM_GG-001</code>).</li>'
+      +'<li>Clicca <strong>Avvia</strong> &#x2192; lotto registrato (formato <code>AAAA_MM_GG-001</code>). Le giacenze degli ingredienti vengono scalate automaticamente in quel momento.</li>'
+      +'<li>Se un ingrediente va in negativo, compare un avviso — aggiorna la giacenza in Magazzino.</li>'
       +'<li>Clicca <strong>&#128438; Etichetta</strong> per stampare l\'etichetta HACCP.</li>'
       +'</ol>'
+      +'<div class="gnote">Le giacenze negative appaiono in rosso in Magazzino — indicano che la scorta era insufficiente al momento della produzione.</div>'
+      +'</div></details>';
+
+    // Inventario valorizzato
+    h+='<details class="gs"><summary>&#128202; Inventario valorizzato</summary><div class="gb">'
+      +'<p>Il bottone <strong>&#128202; Inventario valorizzato</strong> in cima al tab Magazzino genera un report stampabile con:</p>'
+      +'<ul>'
+      +'<li>Tutte le materie prime raggruppate per categoria</li>'
+      +'<li>Giacenza attuale, unità di misura e prezzo per unità</li>'
+      +'<li>Valore di magazzino (giacenza × prezzo) per ogni ingrediente</li>'
+      +'<li>Subtotale per categoria e <strong>totale inventario</strong> in evidenza</li>'
+      +'</ul>'
+      +'<div class="gnote">Il report riporta la data del giorno — utile per la valorizzazione di fine anno da consegnare al commercialista. Le righe con giacenza negativa o prezzo non configurato mostrano "—" invece del valore.</div>'
       +'</div></details>';
   }
 
@@ -3268,9 +3285,88 @@ function scalaGiacenzeProduzioni(pr){
     var idx=resolveMagIdx(c);
     if(idx===undefined||idx<0||idx>=magazzino.length)return;
     var deduct=c.qtaBase*c.conv*scale;
-    magazzino[idx].giacenza=Math.max(0,Math.round(((magazzino[idx].giacenza||0)-deduct)*1000)/1000);
+    magazzino[idx].giacenza=Math.round(((magazzino[idx].giacenza||0)-deduct)*1000)/1000;
   });
   saveMagazzino();
+}
+
+function stampaInventarioValorizzato(){
+  var oggi=new Date();
+  var dataStr=oggi.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric'});
+  /* raggruppa per categoria */
+  var cats={};
+  magazzino.forEach(function(m){
+    var cat=m.categoria||'Generale';
+    if(!cats[cat])cats[cat]=[];
+    var giac=typeof m.giacenza==='number'?m.giacenza:0;
+    var sup=m.suppliers&&m.suppliers[m.activeIdx||0];
+    var prezzo=sup?((sup.prezzoKg||0)):0;
+    cats[cat].push({nome:m.nome,um:m.um,giac:giac,prezzo:prezzo,val:Math.round(giac*prezzo*100)/100});
+  });
+  var grandTotal=0;
+  magazzino.forEach(function(m){
+    var giac=typeof m.giacenza==='number'?m.giacenza:0;
+    var sup=m.suppliers&&m.suppliers[m.activeIdx||0];
+    var prezzo=sup?((sup.prezzoKg||0)):0;
+    if(giac>0)grandTotal+=giac*prezzo;
+  });
+  grandTotal=Math.round(grandTotal*100)/100;
+
+  var righeHtml='';
+  Object.keys(cats).sort().forEach(function(cat){
+    var items=cats[cat];
+    var catTot=items.reduce(function(s,r){return s+(r.giac>0?r.val:0);},0);
+    righeHtml+='<tr><td colspan="5" style="background:#f5f4f0;font-weight:700;font-size:12px;color:#555;padding:6px 10px;border-bottom:1px solid #ddd;">'+cat+'</td></tr>';
+    items.forEach(function(r){
+      if(r.giac===0)return;
+      var negStyle=r.giac<0?'color:#e53e3e;font-weight:700;':'';
+      var negNote=r.giac<0?' ⚠':'';
+      righeHtml+='<tr>'
+        +'<td style="padding:5px 10px;border-bottom:1px solid #eee;">'+r.nome+'</td>'
+        +'<td class="r" style="padding:5px 10px;border-bottom:1px solid #eee;'+negStyle+'">'+r.giac+negNote+'</td>'
+        +'<td class="r" style="padding:5px 10px;border-bottom:1px solid #eee;">'+r.um+'</td>'
+        +'<td class="r" style="padding:5px 10px;border-bottom:1px solid #eee;">'+(r.prezzo>0?r.prezzo.toFixed(2)+' €/'+r.um:'—')+'</td>'
+        +'<td class="r" style="padding:5px 10px;border-bottom:1px solid #eee;font-weight:600;">'+(r.giac>0&&r.prezzo>0?r.val.toFixed(2)+' €':'—')+'</td>'
+        +'</tr>';
+    });
+    if(catTot>0){
+      righeHtml+='<tr><td colspan="4" style="text-align:right;padding:4px 10px;font-size:11px;color:#888;">Subtotale '+cat+'</td>'
+        +'<td class="r" style="padding:4px 10px;font-size:11px;color:#555;font-weight:600;">'+catTot.toFixed(2)+' €</td></tr>';
+    }
+  });
+
+  var html='<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"/>'
+    +'<title>Inventario valorizzato — '+dataStr+'</title><style>'
+    +'*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}'
+    +'body{padding:32px;color:#222;font-size:13px;}'
+    +'.r{text-align:right;}'
+    +'h1{font-size:22px;font-weight:700;margin-bottom:4px;}'
+    +'.sub{font-size:13px;color:#888;margin-bottom:24px;}'
+    +'table{width:100%;border-collapse:collapse;margin-bottom:24px;}'
+    +'thead th{background:#3d2b1f;color:#fff;padding:7px 10px;font-size:12px;text-align:left;}'
+    +'thead th.r{text-align:right;}'
+    +'.tot-row td{border-top:2px solid #3d2b1f;padding:8px 10px;font-size:15px;font-weight:700;background:#fef9f0;}'
+    +'.footer{margin-top:30px;border-top:1px solid #ddd;padding-top:12px;font-size:11px;color:#aaa;display:flex;justify-content:space-between;}'
+    +'@media print{body{padding:16px;}button{display:none;}}'
+    +'</style></head><body>'
+    +'<h1>&#128202; Inventario valorizzato</h1>'
+    +'<div class="sub">Data: '+dataStr+' &mdash; MiseEnPlace</div>'
+    +'<table><thead><tr>'
+    +'<th>Ingrediente</th>'
+    +'<th class="r">Giacenza</th>'
+    +'<th class="r">UM</th>'
+    +'<th class="r">Prezzo</th>'
+    +'<th class="r">Valore</th>'
+    +'</tr></thead><tbody>'+righeHtml
+    +'<tr class="tot-row"><td colspan="4" style="text-align:right;padding-right:10px;">TOTALE INVENTARIO</td>'
+    +'<td class="r" style="padding:8px 10px;font-size:15px;font-weight:700;">'+grandTotal.toFixed(2)+' €</td></tr>'
+    +'</tbody></table>'
+    +'<div style="font-size:11px;color:#888;margin-bottom:16px;">⚠ = giacenza negativa (materia prima esaurita — aggiornare le giacenze)</div>'
+    +'<div class="footer"><span>MiseEnPlace — Inventario valorizzato al '+dataStr+'</span><span>Riservato uso interno</span></div>'
+    +'<script>window.onload=function(){window.print();}<\/script>'
+    +'</body></html>';
+  var w=window.open('','_blank','width=860,height=940');
+  if(w){w.document.write(html);w.document.close();}
 }
 
 function eliminaProduzione(i){
@@ -3459,11 +3555,32 @@ function salvaProduzione(){
     dataProduzione:dataProd,
     dataScadenza:dataScad,
     completata:false,
-    giacenzaScalata:false,
+    giacenzaScalata:true,
     dataCreazione:new Date().toISOString()
   };
+  scalaGiacenzeProduzioni(pr);
+  /* avvisa se qualche ingrediente è andato in negativo */
+  var negativ=[];
+  (function(){
+    var comp=[];
+    var tipoProd=sl?'sl':'pf';
+    if(tipoProd==='sl'&&sl){comp=sl.componenti||[];}
+    else if(pf){comp=pf.componenti||[];}
+    comp.forEach(function(c){
+      if(c.tipo!=='mp'||c.conv===0||c.unit==='q.b.')return;
+      var idx=resolveMagIdx(c);
+      if(idx!==undefined&&idx>=0&&idx<magazzino.length&&(magazzino[idx].giacenza||0)<0){
+        negativ.push(magazzino[idx].nome);
+      }
+    });
+  }());
+  if(negativ.length){
+    alert('⚠️ Attenzione: le seguenti materie prime sono andate in negativo:\n\n• '+negativ.join('\n• ')+'\n\nAggiorna le giacenze in Magazzino.');
+  }
   produzioni.unshift(pr);
   saveProduzioni();
+  renderMagazzino();
+  renderGiacenzaAlerts();
   document.getElementById('prod-modal-overlay').remove();
   renderProduzioni();
 }
