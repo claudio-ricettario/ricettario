@@ -560,6 +560,8 @@ textarea{resize:vertical;min-height:60px;}
       <h2 style="margin:0;">Magazzino</h2>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <button class="btn-secondary" onclick="stampaInventarioValorizzato()" style="font-size:12px;">&#128202; Inventario valorizzato</button>
+        <button class="btn-secondary" onclick="document.getElementById('xml-fattura-input').click()" style="font-size:12px;">&#128229; Importa fattura XML</button>
+        <input type="file" id="xml-fattura-input" accept=".xml" style="display:none" onchange="importaFatturaXML(this)">
         <button class="btn-primary" onclick="openNuovaMPModal(-1)">+ Nuova materia prima</button>
       </div>
     </div>
@@ -3005,7 +3007,20 @@ function renderGuida(){
       +'<li>Valore di magazzino (giacenza × prezzo) per ogni ingrediente</li>'
       +'<li>Subtotale per categoria e <strong>totale inventario</strong> in evidenza</li>'
       +'</ul>'
-      +'<div class="gnote">Il report riporta la data del giorno — utile per la valorizzazione di fine anno da consegnare al commercialista. Le righe con giacenza negativa o prezzo non configurato mostrano "—" invece del valore.</div>'
+      +'<div class="gnote">Il report riporta la data del giorno — utile per la valorizzazione di fine anno da consegnare al commercialista. Le righe con giacenza 0 sono escluse; quelle con giacenza negativa appaiono evidenziate in rosso.</div>'
+      +'</div></details>';
+
+    // Importa fattura XML
+    h+='<details class="gs"><summary>&#128229; Importa fattura XML</summary><div class="gb">'
+      +'<p>Il bottone <strong>&#128229; Importa fattura XML</strong> in cima al tab Magazzino permette di aggiornare i prezzi delle materie prime importando direttamente una fattura elettronica in formato FatturaPA (.xml), il formato obbligatorio per tutti i fornitori italiani con partita IVA.</p>'
+      +'<ol>'
+      +'<li>Scarica il file XML della fattura dal tuo cassetto fiscale (es. Aruba, InfoCert, ecc.) o richiedilo al fornitore.</li>'
+      +'<li>Clicca <strong>&#128229; Importa fattura XML</strong> e seleziona il file.</li>'
+      +'<li>Si apre una finestra con tutte le righe della fattura. Per ogni riga viene suggerito automaticamente il match con un ingrediente del magazzino (basato sulla somiglianza del nome).</li>'
+      +'<li>Verifica i match — puoi correggerli dal menu a tendina. Le righe con spunta vengono aggiornate.</li>'
+      +'<li>Clicca <strong>&#10003; Applica aggiornamenti</strong>: i prezzi vengono aggiornati e il vecchio prezzo salvato nello storico prezzi.</li>'
+      +'</ol>'
+      +'<div class="gnote">Il match automatico funziona per somiglianza del nome — verifica sempre prima di applicare, soprattutto per descrizioni generiche come "Farina" o "Olio".</div>'
       +'</div></details>';
   }
 
@@ -3368,6 +3383,168 @@ function stampaInventarioValorizzato(){
   var w=window.open('','_blank','width=860,height=940');
   if(w){w.document.write(html);w.document.close();}
 }
+
+/* ===== #12 IMPORTA FATTURA XML ===== */
+function importaFatturaXML(input){
+  var file=input.files[0];
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      var parser=new DOMParser();
+      var doc=parser.parseFromString(e.target.result,'text/xml');
+      var err=doc.querySelector('parsererror');
+      if(err)throw new Error('XML non valido');
+      /* fornitore */
+      var den=doc.querySelector('CedentePrestatore Denominazione');
+      var nomEl=doc.querySelector('CedentePrestatore Nome');
+      var cogEl=doc.querySelector('CedentePrestatore Cognome');
+      var nomeFornitore=den?den.textContent.trim()
+        :((nomEl?nomEl.textContent.trim():'')+' '+(cogEl?cogEl.textContent.trim():'')).trim()||'Sconosciuto';
+      /* metadata fattura */
+      var numEl=doc.querySelector('DatiGeneraliDocumento Numero');
+      var datEl=doc.querySelector('DatiGeneraliDocumento Data');
+      var nFattura=numEl?numEl.textContent.trim():'—';
+      var dataFattura=datEl?datEl.textContent.trim():'—';
+      /* righe */
+      var righe=[];
+      doc.querySelectorAll('DettaglioLinee').forEach(function(l){
+        var desc=(l.querySelector('Descrizione')||{}).textContent||'';
+        var um=(l.querySelector('UnitaMisura')||{}).textContent||'';
+        var prezzo=parseFloat((l.querySelector('PrezzoUnitario')||{}).textContent||'0')||0;
+        if(prezzo>0&&desc.trim())
+          righe.push({desc:desc.trim(),um:um.trim().toUpperCase(),prezzo:prezzo,match:-1});
+      });
+      if(!righe.length){alert('Nessuna riga con prezzo trovata nella fattura.');input.value='';return;}
+      righe.forEach(function(r){r.match=_fatturaFindMatch(r.desc);});
+      _fatturaShowModal(nomeFornitore,nFattura,dataFattura,righe);
+    }catch(err){alert('Errore nella lettura del file XML:\n'+err.message);}
+    input.value='';
+  };
+  reader.readAsText(file,'UTF-8');
+}
+
+function _fatturaNorm(s){
+  return (s||'').toLowerCase()
+    .replace(/[àá]/g,'a').replace(/[èé]/g,'e').replace(/[ìí]/g,'i')
+    .replace(/[òó]/g,'o').replace(/[ùú]/g,'u')
+    .replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();
+}
+
+function _fatturaFindMatch(desc){
+  var nd=_fatturaFindMatch._norm=_fatturaFindMatch._norm||{};
+  var normDesc=_fatturaNorm(desc);
+  var wordsDesc=normDesc.split(' ').filter(function(w){return w.length>2;});
+  var best=0,bestIdx=-1;
+  magazzino.forEach(function(m,i){
+    var nm=_fatturaNorm(m.nome);
+    var wm=nm.split(' ').filter(function(w){return w.length>2;});
+    var score=0;
+    wm.forEach(function(w){if(normDesc.indexOf(w)>=0)score+=2;});
+    wordsDesc.forEach(function(w){if(nm.indexOf(w)>=0)score+=1;});
+    if(normDesc.indexOf(nm)>=0)score+=3;
+    if(score>best){best=score;bestIdx=i;}
+  });
+  return best>=2?bestIdx:-1;
+}
+
+function _fatturaShowModal(nomeFornitore,nFattura,dataFattura,righe){
+  window._importRighe=righe;
+  var dataFmt=dataFattura.split('-').reverse().join('/');
+  var opts=magazzino.map(function(m,mi){return '<option value="'+mi+'">'+m.nome+'</option>';}).join('');
+
+  var righeHtml=righe.map(function(r,ri){
+    var selHtml='<select id="match-'+ri+'" onchange="_fatturaAggiornaPrezzoAtt('+ri+')" style="font-size:11px;padding:2px 4px;border:1px solid #d0cec8;border-radius:4px;max-width:200px;">'
+      +'<option value="-1">— nessun match —</option>'+opts+'</select>';
+    /* set selected */
+    if(r.match>=0)selHtml=selHtml.replace('value="'+r.match+'"','value="'+r.match+'" selected');
+    var attuale=r.match>=0?_fatturaGetPrezzo(r.match):'—';
+    var autoChk=r.match>=0?'checked':'';
+    return '<tr style="border-bottom:1px solid #f0ede6;">'
+      +'<td style="padding:5px 8px;font-size:12px;max-width:220px;">'+r.desc+'</td>'
+      +'<td style="padding:5px 8px;font-size:12px;text-align:right;font-weight:600;white-space:nowrap;">'+r.prezzo.toFixed(3)+'</td>'
+      +'<td style="padding:5px 8px;font-size:11px;color:#888;">'+r.um+'</td>'
+      +'<td style="padding:5px 8px;">'+selHtml+'</td>'
+      +'<td style="padding:5px 8px;font-size:12px;text-align:right;color:#888;" id="att-'+ri+'">'+attuale+'</td>'
+      +'<td style="padding:5px 8px;text-align:center;"><input type="checkbox" id="chk-'+ri+'" '+autoChk+'></td>'
+      +'</tr>';
+  }).join('');
+
+  var old=document.getElementById('import-fattura-modal');
+  if(old)old.remove();
+  var overlay=document.createElement('div');
+  overlay.className='modal-overlay';
+  overlay.id='import-fattura-modal';
+  overlay.innerHTML='<div class="modal" style="max-width:860px;max-height:88vh;overflow-y:auto;">'
+    +'<h3>&#128229; Importa fattura XML</h3>'
+    +'<div style="margin-bottom:14px;">'
+    +'<div style="font-size:13px;color:#555;">Fornitore: <strong>'+nomeFornitore+'</strong></div>'
+    +'<div style="font-size:12px;color:#888;margin-top:2px;">Fattura n° '+nFattura+' del '+dataFmt+'</div>'
+    +'</div>'
+    +'<div style="overflow-x:auto;">'
+    +'<table style="width:100%;border-collapse:collapse;">'
+    +'<thead><tr style="background:#f5f4f0;font-size:11px;color:#888;text-align:left;">'
+    +'<th style="padding:6px 8px;">Descrizione fattura</th>'
+    +'<th style="padding:6px 8px;text-align:right;">€/UM</th>'
+    +'<th style="padding:6px 8px;">UM</th>'
+    +'<th style="padding:6px 8px;">Ingrediente magazzino</th>'
+    +'<th style="padding:6px 8px;text-align:right;">Prezzo attuale</th>'
+    +'<th style="padding:6px 8px;text-align:center;">Aggiorna</th>'
+    +'</tr></thead><tbody>'+righeHtml+'</tbody></table>'
+    +'</div>'
+    +'<div style="font-size:11px;color:#888;margin-top:10px;">Verifica i match suggeriti, correggili se necessario, poi clicca Applica.</div>'
+    +'<div class="modal-btns">'
+    +'<button class="btn-secondary" onclick="document.getElementById(\'import-fattura-modal\').remove()">Annulla</button>'
+    +'<button class="btn-primary" onclick="applicaAggiornamentiFattura()">&#10003; Applica aggiornamenti</button>'
+    +'</div></div>';
+  document.body.appendChild(overlay);
+}
+
+function _fatturaGetPrezzo(mi){
+  var m=magazzino[mi];
+  if(!m||!m.suppliers||!m.suppliers.length)return '—';
+  var sup=m.suppliers[m.activeIdx||0];
+  return sup&&sup.prezzoKg>0?sup.prezzoKg.toFixed(3)+' €':'—';
+}
+
+function _fatturaAggiornaPrezzoAtt(ri){
+  var mi=parseInt(document.getElementById('match-'+ri).value);
+  document.getElementById('att-'+ri).textContent=mi>=0?_fatturaGetPrezzo(mi):'—';
+  var chk=document.getElementById('chk-'+ri);
+  if(chk&&mi>=0)chk.checked=true;
+}
+
+function applicaAggiornamentiFattura(){
+  var righe=window._importRighe||[];
+  var count=0;
+  righe.forEach(function(r,ri){
+    var chk=document.getElementById('chk-'+ri);
+    if(!chk||!chk.checked)return;
+    var mi=parseInt(document.getElementById('match-'+ri).value);
+    if(mi<0||!magazzino[mi])return;
+    var m=magazzino[mi];
+    var si=m.activeIdx||0;
+    if(!m.suppliers||!m.suppliers[si])return;
+    var sup=m.suppliers[si];
+    var old=sup.prezzoKg;
+    if(typeof old==='number'&&old>0&&old!==r.prezzo){
+      if(!sup.storico)sup.storico=[];
+      sup.storico.push({prezzo:old,data:new Date().toISOString().split('T')[0]});
+      if(sup.storico.length>36)sup.storico=sup.storico.slice(-36);
+    }
+    sup.prezzoKg=r.prezzo;
+    count++;
+  });
+  if(count>0){
+    saveMagazzino();
+    renderMagazzino();
+    document.getElementById('import-fattura-modal').remove();
+    alert('✓ '+count+' prezzo'+(count===1?'':'i')+' aggiornato'+(count===1?'':'i')+' con successo.');
+  } else {
+    alert('Nessun aggiornamento selezionato.');
+  }
+}
+/* ===== fine #12 ===== */
 
 function eliminaProduzione(i){
   if(produzioni[i]&&produzioni[i].completata){
