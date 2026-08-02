@@ -11,8 +11,11 @@ header{background:#fff;border-bottom:1px solid #e0ded8;padding:12px 24px;display
 header h1{font-size:18px;font-weight:600;}
 header span{font-size:12px;color:#888;background:#f0ede6;padding:3px 10px;border-radius:20px;}
 .container{max-width:960px;margin:0 auto;padding:24px 32px;}
-.tab-bar{display:flex;gap:4px;margin-bottom:20px;background:#fff;border-radius:12px;padding:6px;border:1px solid #e0ded8;flex-wrap:wrap;}
-.tab{flex:1;min-width:80px;text-align:center;font-size:13px;font-weight:500;color:#888;padding:8px 10px;cursor:pointer;border-radius:8px;transition:all .15s;white-space:nowrap;}
+.tab-bar{display:flex;flex-direction:column;gap:3px;margin-bottom:20px;background:#fff;border-radius:12px;padding:6px;border:1px solid #e0ded8;}
+.tab-row{display:flex;gap:4px;align-items:center;}
+.tab-row-label{font-size:9px;font-weight:700;color:#bbb;letter-spacing:.08em;text-transform:uppercase;padding:0 6px;white-space:nowrap;min-width:52px;}
+.tab-row-divider{height:1px;background:#f0ede6;margin:1px 0;}
+.tab{flex:1;text-align:center;font-size:12px;font-weight:500;color:#888;padding:7px 8px;cursor:pointer;border-radius:8px;transition:all .15s;white-space:nowrap;}
 .tab.active{background:#1a1a1a;color:#fff;}
 .section{display:none;}.section.active{display:block;}
 h2{font-size:20px;font-weight:600;margin-bottom:4px;}
@@ -308,15 +311,32 @@ textarea{resize:vertical;min-height:60px;}
 <div id="search-results" style="display:none;position:fixed;top:57px;left:50%;transform:translateX(-50%);width:100%;max-width:680px;background:#fff;border-radius:0 0 14px 14px;box-shadow:0 8px 32px rgba(0,0,0,.15);z-index:51;max-height:70vh;overflow-y:auto;"></div>
 <div class="container">
   <div class="tab-bar">
-    <div class="tab" id="tab-btn-produzioni" onclick="showTab('produzioni')">&#9654; Avvia Produzione</div>
-    <div class="tab active" id="tab-btn-home" onclick="showTab('home')">&#127374; Carte</div>
-    <div class="tab" id="tab-btn-semilavorati" onclick="showTab('semilavorati')">&#9881; Semilavorati</div>
-    <div class="tab" id="tab-btn-magazzino" onclick="showTab('magazzino')">&#128230; Magazzino</div>
-    <div class="tab" id="tab-btn-foodcost" onclick="showTab('foodcost')">&#128202; Food cost</div>
-    <div class="tab" id="tab-btn-fornitori" onclick="showTab('fornitori')">&#127978; Fornitori</div>
-    <div class="tab" id="tab-btn-guida" onclick="showTab('guida')">&#128214; Guida</div>
+    <div class="tab-row">
+      <span class="tab-row-label">Cucina</span>
+      <div class="tab" id="tab-btn-produzioni" onclick="showTab('produzioni')">&#9654; Produzioni</div>
+      <div class="tab active" id="tab-btn-home" onclick="showTab('home')">&#127374; La Carte</div>
+      <div class="tab" id="tab-btn-semilavorati" onclick="showTab('semilavorati')">&#9881; Semilavorati</div>
+    </div>
+    <div class="tab-row-divider"></div>
+    <div class="tab-row">
+      <span class="tab-row-label">Gestione</span>
+      <div class="tab" id="tab-btn-magazzino" onclick="showTab('magazzino')">&#128230; Magazzino</div>
+      <div class="tab" id="tab-btn-foodcost" onclick="showTab('foodcost')">&#128202; Food cost</div>
+      <div class="tab" id="tab-btn-fornitori" onclick="showTab('fornitori')">&#127978; Fornitori</div>
+      <div class="tab" id="tab-btn-menu-prev" onclick="showTab('menu-prev')">&#128203; Preventivi</div>
+      <div class="tab" id="tab-btn-guida" onclick="showTab('guida')">&#128214; Guida</div>
+      <div id="admin-lock-btn" class="tab-lock" onclick="checkPassword()" title="Accedi come admin" style="margin-left:auto;cursor:pointer;font-size:18px;">&#128274;</div>
+    </div>
+  </div>
 
-    <div id="admin-lock-btn" class="tab-lock" onclick="checkPassword()" title="Accedi come admin" style="margin-left:auto;cursor:pointer;font-size:18px;">&#128274;</div>
+  <!-- MENU PREVENTIVI -->
+  <div id="tab-menu-prev" class="section">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px;">
+      <h2 style="margin:0;">&#128203; Menu &amp; Preventivi</h2>
+      <button class="btn-primary" onclick="apriNuovoMenu()">+ Nuovo menu</button>
+    </div>
+    <p class="muted">Crea menu personalizzati per preventivi — il food cost è visibile solo internamente</p>
+    <div id="menu-prev-list" style="margin-top:16px;"></div>
   </div>
 
   <!-- HOME -->
@@ -2738,6 +2758,7 @@ function showTab(name){
   else if(name==='produzioni'){renderProduzioni();}
   else if(name==='ricetta'){updateAll();}
   else if(name==='foodcost'){fcPopulateSelector();renderFoodCost();}
+  else if(name==='menu-prev'){renderMenuPreventivi();}
   else if(name==='guida'){renderGuida();}
   else{updateAll();}
 }
@@ -3010,6 +3031,22 @@ function renderGuida(){
       +'<div class="gnote">Il report riporta la data del giorno — utile per la valorizzazione di fine anno da consegnare al commercialista. Le righe con giacenza 0 sono escluse; quelle con giacenza negativa appaiono evidenziate in rosso.</div>'
       +'</div></details>';
 
+    // Menu e Preventivi
+    h+='<details class="gs"><summary>&#128203; Menu &amp; Preventivi</summary><div class="gb">'
+      +'<p>Il tab <strong>&#128203; Menu &amp; Preventivi</strong> permette di creare menu personalizzati per eventi, catering e preventivi. Il food cost è calcolato internamente ma non appare mai nel PDF inviato al cliente.</p>'
+      +'<h4>Creare un menu</h4>'
+      +'<ol>'
+      +'<li>Clicca <strong>+ Nuovo menu</strong> e inserisci nome, cliente/evento, data e numero coperti.</li>'
+      +'<li>Aggiungi le voci con i tre bottoni: <strong>+ Sezione</strong> (intestazione, es. Antipasti), <strong>+ Piatto</strong> (collegato alle ricette), <strong>+ Voce libera</strong> (bevande, pane, ecc.).</li>'
+      +'<li>Per ogni piatto puoi modificare la descrizione per il cliente e il prezzo di vendita. Il campo <em>Porzioni</em> indica quante volte la voce appare nel conto totale.</li>'
+      +'<li>In fondo alla finestra compare il pannello interno con food cost%, margine stimato per coperto e totale ricavo — visibile solo a te.</li>'
+      +'<li>Clicca <strong>&#10003; Salva</strong> — il menu è salvato e appare nella lista.</li>'
+      +'</ol>'
+      +'<h4>Stampare il preventivo</h4>'
+      +'<p>Clicca <strong>&#128438; Stampa PDF</strong> sulla scheda del menu. Si apre un documento pulito con nome, cliente, data, sezioni e piatti con prezzi. Note finali se presenti. Nessun riferimento a costi interni o food cost.</p>'
+      +'<div class="gnote">Il colore del food cost% nella lista: verde sotto 28%, arancione tra 28-35%, rosso sopra 35%.</div>'
+      +'</div></details>';
+
     // Importa fattura XML
     h+='<details class="gs"><summary>&#128229; Importa fattura XML</summary><div class="gb">'
       +'<p>Il bottone <strong>&#128229; Importa fattura XML</strong> in cima al tab Magazzino permette di aggiornare i prezzi delle materie prime importando direttamente una fattura elettronica in formato FatturaPA (.xml), il formato obbligatorio per tutti i fornitori italiani con partita IVA.</p>'
@@ -3027,6 +3064,419 @@ function renderGuida(){
   el.innerHTML=h;
 }
 
+
+
+/* ===== #11 MENU & PREVENTIVI ===== */
+var menuPreventivi=[];
+var _ibanDefault='';
+var _intestatarioDefault='';
+
+function _loadIban(){try{_ibanDefault=localStorage.getItem('rc_iban')||'';}catch(e){}}
+function _saveIban(v){try{localStorage.setItem('rc_iban',v);}catch(e){}}_ibanDefault=localStorage.getItem('rc_iban')||'';
+function _saveIntestatario(v){try{localStorage.setItem('rc_intestatario',v);}catch(e){}}_intestatarioDefault=localStorage.getItem('rc_intestatario')||'';
+
+function generaNumPrev(){
+  var d=new Date();
+  var year=d.getFullYear();
+  var maxN=(menuPreventivi||[]).reduce(function(max,m){
+    if(!m.nPrev||!m.nPrev.startsWith('PREV-'+year+'-'))return max;
+    var n=parseInt((m.nPrev||'').split('-')[2])||0;
+    return Math.max(max,n);
+  },0);
+  return 'PREV-'+year+'-'+String(maxN+1).padStart(3,'0');
+}
+
+function loadMenuPreventivi(){
+  try{menuPreventivi=JSON.parse(localStorage.getItem('rc_menu_prev')||'[]');}catch(e){menuPreventivi=[];}
+}
+function saveMenuPreventivi(){
+  try{localStorage.setItem('rc_menu_prev',JSON.stringify(menuPreventivi));}catch(e){}
+}
+
+function renderMenuPreventivi(){
+  var el=document.getElementById('menu-prev-list');
+  if(!el)return;
+  if(!menuPreventivi.length){
+    el.innerHTML='<div class="card" style="margin-bottom:10px;"><div style="display:flex;align-items:center;gap:14px;"><span style="font-size:26px;">&#128203;</span><div><div style="font-weight:600;font-size:15px;">Nessun menu creato</div><div style="font-size:12px;color:#888;margin-top:2px;">Clicca <strong>+ Nuovo menu</strong> per iniziare.</div></div></div></div>';
+    return;
+  }
+  el.innerHTML=menuPreventivi.map(function(m,i){
+    var nVoci=m.voci.filter(function(v){return v.tipo==='piatto'||v.tipo==='libera';}).length;
+    var fc=_menuCalcFC(m);
+    var dataFmt=m.data?m.data.split('-').reverse().join('/'):'—';
+    return '<div class="card" style="margin-bottom:10px;">'
+      +'<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">'
+      +'<div>'
+      +'<div style="font-weight:700;font-size:15px;">'+m.nome+'</div>'
+      +'<div style="font-size:12px;color:#888;margin-top:2px;">'
+      +(m.cliente?m.cliente+' &mdash; ':'')
+      +dataFmt
+      +(m.coperti?' &mdash; '+m.coperti+' coperti':'')
+      +' &mdash; '+nVoci+' voci'
+      +'</div>'
+      +(m.prezzoPerPax>0&&fc.totCosto>0?'<div style="font-size:11px;color:#888;margin-top:4px;">€ '+parseFloat(m.prezzoPerPax).toFixed(2)+'/pax &mdash; FC: <strong style="color:'+(fc.pct>35?'#e53e3e':fc.pct>28?'#b45309':'#2d7d46')+';">'+fc.pct.toFixed(1)+'%</strong> &mdash; Margine: <strong>'+fc.margine.toFixed(2)+' €/cop</strong></div>':m.prezzoPerPax>0?'<div style="font-size:11px;color:#888;margin-top:4px;">€ '+parseFloat(m.prezzoPerPax).toFixed(2)+'/pax &mdash; Totale: '+( parseFloat(m.prezzoPerPax)*(m.coperti||1)).toFixed(2)+' €</div>':'')
+      +'</div>'
+      +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+      +'<button class="btn-sm" onclick="apriModificaMenu('+i+')">&#9998; Modifica</button>'
+      +'<button class="btn-sm" onclick="stampaMenuPDF('+i+')">&#128438; Stampa PDF</button>'
+      +'<button class="btn-sm danger-sm" onclick="eliminaMenu('+i+')">&#10005;</button>'
+      +'</div>'
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+function _menuCalcFC(m){
+  var totCosto=0;
+  var coperti=parseInt(m.coperti)||1;
+  var prezzoPerPax=parseFloat(m.prezzoPerPax)||0;
+  var totRicavo=prezzoPerPax*coperti;
+  (m.voci||[]).forEach(function(v){
+    if(v.tipo==='piatto'){
+      var p=piatti[v.piattoIdx];
+      if(p) totCosto+=calcolaFoodCostPiatto(p)/Math.max(1,v.porzioni||1)*coperti;
+    }
+  });
+  var pct=totRicavo>0?totCosto/totRicavo*100:0;
+  var margine=totRicavo>0?(totRicavo-totCosto)/coperti:0;
+  return {totCosto:totCosto,totRicavo:totRicavo,pct:pct,margine:margine,coperti:coperti,prezzoPerPax:prezzoPerPax};
+}
+
+function calcolaFoodCostPiatto(p){
+  var pax=p.pax||1;
+  var tot=(p.componenti||[]).reduce(function(sum,c){
+    if(c.conv===0||c.unit==='q.b.')return sum;
+    if(c.tipo==='mp'){
+      if(c.magIdx===undefined||c.magIdx<0||c.magIdx>=magazzino.length)return sum;
+      return sum+c.qtaBase*c.conv*gp(c.magIdx);
+    }
+    var si=c.semiIdx;if(si===undefined||si<0||si>=semilavorati.length)return sum;
+    return sum+costoSemi(si)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1));
+  },0);
+  return tot/pax; /* costo per porzione */
+}
+
+function apriNuovoMenu(){
+  _apriMenuModal({
+    nome:'',cliente:'',data:new Date().toISOString().split('T')[0],
+    coperti:1,voci:[],note:'',prezzoPerPax:0,
+    nPrev:generaNumPrev(),iban:_ibanDefault,intestatario:_intestatarioDefault
+  },-1);
+}
+function apriModificaMenu(i){
+  _apriMenuModal(JSON.parse(JSON.stringify(menuPreventivi[i])),i);
+}
+function eliminaMenu(i){
+  if(!confirm('Eliminare il menu "'+menuPreventivi[i].nome+'"?'))return;
+  menuPreventivi.splice(i,1);
+  saveMenuPreventivi();
+  renderMenuPreventivi();
+}
+
+function _apriMenuModal(m,idx){
+  window._menuEdit={data:m,idx:idx};
+  var old=document.getElementById('menu-prev-modal');
+  if(old)old.remove();
+  var overlay=document.createElement('div');
+  overlay.className='modal-overlay open';
+  overlay.id='menu-prev-modal';
+  overlay.onclick=function(e){if(e.target===overlay)overlay.remove();};
+  overlay.innerHTML='<div class="modal" style="max-width:720px;max-height:90vh;overflow-y:auto;">'
+    +'<h3>&#128203; '+(idx<0?'Nuovo menu':'Modifica menu')+'</h3>'
+    +'<div id="menu-modal-body"></div>'
+    +'<div class="modal-btns">'
+    +'<button class="btn-secondary" onclick="document.getElementById(\'menu-prev-modal\').remove()">Annulla</button>'
+    +'<button class="btn-primary" onclick="salvaMenuFromModal()">&#10003; Salva</button>'
+    +'</div></div>';
+  document.body.appendChild(overlay);
+  _renderMenuModalBody();
+}
+
+function _renderMenuModalBody(){
+  var m=window._menuEdit.data;
+  var piattiOpts='<option value="">— seleziona piatto —</option>'
+    +piatti.map(function(p,i){return '<option value="'+i+'">'+p.nome+'</option>';}).join('');
+
+  var vociHtml=(m.voci||[]).map(function(v,vi){
+    if(v.tipo==='sezione'){
+      return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;background:#f5f4f0;border-radius:8px;padding:8px 10px;">'
+        +'<span style="font-size:11px;color:#888;min-width:60px;">SEZIONE</span>'
+        +'<input type="text" value="'+v.testo+'" placeholder="es. Antipasti" '
+        +'onchange="window._menuEdit.data.voci['+vi+'].testo=this.value" '
+        +'style="flex:1;font-size:13px;font-weight:700;padding:4px 8px;border:1px solid #d0cec8;border-radius:6px;background:#fff;"/>'
+        +'<button class="btn-sm danger-sm" onclick="_menuRemoveVoce('+vi+')">&#10005;</button>'
+        +'</div>';
+    } else if(v.tipo==='piatto'){
+      var p=piatti[v.piattoIdx];
+      var fcP=p?calcolaFoodCostPiatto(p):0;
+      var porz=v.porzioni||1;
+      var fcStr=fcP>0?(' &mdash; FC mini-porz.: <strong>'+(fcP/porz).toFixed(2)+' €</strong>'+(porz>1?' (÷'+porz+')':'')):'';
+      return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:8px 10px;border:1px solid #f0ede6;border-radius:8px;">'
+        +'<span style="font-size:11px;color:#1e3a8a;min-width:50px;font-weight:600;">PIATTO</span>'
+        +'<div style="flex:1;min-width:0;">'
+        +'<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap;">'
+        +'<select onchange="_menuChangePiatto('+vi+',this.value)" style="flex:1;min-width:140px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;">'+piattiOpts.replace('value="'+v.piattoIdx+'"','value="'+v.piattoIdx+'" selected')+'</select>'
+        +'<span style="font-size:10px;color:#888;">'+fcStr+'</span>'
+        +'</div>'
+        +'<input type="text" value="'+v.descrizione+'" placeholder="Descrizione per il cliente (opzionale)" '
+        +'onchange="window._menuEdit.data.voci['+vi+'].descrizione=this.value" '
+        +'style="width:100%;font-size:12px;padding:3px 8px;border:1px solid #d0cec8;border-radius:6px;margin-bottom:4px;"/>'
+        +'<div style="display:flex;gap:10px;align-items:center;font-size:11px;color:#888;">'
+        +'<label>Bis/Tris (porz.)</label>'
+        +'<input type="number" value="'+(v.porzioni||1)+'" min="1" step="1" '
+        +'onchange="window._menuEdit.data.voci['+vi+'].porzioni=parseInt(this.value)||1" '
+        +'style="width:55px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;"/>'
+        +'<span style="color:#aaa;">(1=singolo, 2=bis, 3=tris)</span>'
+        +'</div></div>'
+        +'<button class="btn-sm danger-sm" onclick="_menuRemoveVoce('+vi+')">&#10005;</button>'
+        +'</div>';
+    } else if(v.tipo==='libera'){
+      return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:8px 10px;border:1px solid #f0ede6;border-radius:8px;">'
+        +'<span style="font-size:11px;color:#2d7d46;min-width:60px;font-weight:600;">VOCE</span>'
+        +'<div style="flex:1;min-width:0;">'
+        +'<input type="text" value="'+v.nome+'" placeholder="Nome (es. Acqua, Vino, Pane...)" '
+        +'onchange="window._menuEdit.data.voci['+vi+'].nome=this.value" '
+        +'style="width:100%;font-size:12px;padding:3px 8px;border:1px solid #d0cec8;border-radius:6px;margin-bottom:4px;"/>'
+        +'<input type="text" value="'+v.descrizione+'" placeholder="Descrizione (opzionale)" '
+        +'onchange="window._menuEdit.data.voci['+vi+'].descrizione=this.value" '
+        +'style="width:100%;font-size:12px;padding:3px 8px;border:1px solid #d0cec8;border-radius:6px;margin-bottom:4px;"/>'
+        +'<div style="display:flex;gap:8px;align-items:center;">'
+        +'<label style="font-size:11px;color:#888;">Prezzo €</label>'
+        +'<input type="number" value="'+v.prezzoVendita+'" min="0" step="0.5" '
+        +'onchange="window._menuEdit.data.voci['+vi+'].prezzoVendita=parseFloat(this.value)||0" '
+        +'style="width:80px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;"/>'
+        +'</div></div>'
+        +'<button class="btn-sm danger-sm" onclick="_menuRemoveVoce('+vi+')">&#10005;</button>'
+        +'</div>';
+    }
+    return '';
+  }).join('');
+
+  var fc=_menuCalcFC(m);
+  var fcHtml=(fc.totRicavo>0||fc.totCosto>0)
+    ?'<div id="mp-fc-panel" style="background:#fef9f0;border:1px solid #f0ede6;border-radius:8px;padding:10px 14px;margin-top:14px;font-size:12px;">'
+      +'<div style="font-weight:700;color:#92400e;margin-bottom:6px;">&#128202; Analisi interna (non appare nel PDF)</div>'
+      +'<div style="display:flex;gap:20px;flex-wrap:wrap;">'
+      +(fc.prezzoPerPax>0?'<span>Ricavo totale: <strong>'+fc.totRicavo.toFixed(2)+' €</strong> ('+fc.coperti+' cop. × '+fc.prezzoPerPax.toFixed(2)+' €)</span>':'<span style="color:#b45309;">⚠ Inserisci € a persona per calcolare FC%</span>')
+      +(fc.totCosto>0?'<span>Food cost: <strong>'+fc.totCosto.toFixed(2)+' €</strong> ('+( fc.totCosto/fc.coperti).toFixed(2)+' €/cop)</span>':'')
+      +(fc.totRicavo>0&&fc.totCosto>0?'<span>FC%: <strong style="color:'+(fc.pct>35?'#e53e3e':fc.pct>28?'#b45309':'#2d7d46')+';">'+fc.pct.toFixed(1)+'%</strong></span>':'')
+      +(fc.totRicavo>0&&fc.totCosto>0?'<span>Margine/coperto: <strong>'+fc.margine.toFixed(2)+' €</strong></span>':'')
+      +'</div></div>'
+    :'';
+
+  var html='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">Nome menu *</label>'
+    +'<input type="text" id="mp-nome" value="'+m.nome+'" placeholder="es. Menu degustazione primavera" '
+    +'oninput="window._menuEdit.data.nome=this.value" '
+    +'style="width:100%;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/></div>'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">Cliente / Evento</label>'
+    +'<input type="text" id="mp-cliente" value="'+m.cliente+'" placeholder="es. Matrimonio Rossi" '
+    +'oninput="window._menuEdit.data.cliente=this.value" '
+    +'style="width:100%;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/></div>'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">Data</label>'
+    +'<input type="date" id="mp-data" value="'+m.data+'" '
+    +'onchange="window._menuEdit.data.data=this.value" '
+    +'style="width:100%;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/></div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">Coperti</label>'
+    +'<input type="number" id="mp-coperti" value="'+(m.coperti||1)+'" min="1" '
+    +'onchange="window._menuEdit.data.coperti=parseInt(this.value)||1;_menuRefreshFC()" '
+    +'style="width:100%;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/></div>'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">€ a persona</label>'
+    +'<input type="number" id="mp-pax-price" value="'+(m.prezzoPerPax||'')+'" min="0" step="0.5" placeholder="es. 35" '
+    +'oninput="window._menuEdit.data.prezzoPerPax=parseFloat(this.value)||0;_menuRefreshFC()" '
+    +'style="width:100%;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/></div>'
+    +'</div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">N° Proposta</label>'
+    +'<input type="text" id="mp-nprev" value="'+(m.nPrev||'')+'" '
+    +'oninput="window._menuEdit.data.nPrev=this.value" '
+    +'style="width:100%;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;font-family:monospace;"/></div>'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">IBAN (per caparra)</label>'
+    +'<input type="text" id="mp-iban" value="'+(m.iban||_ibanDefault)+'" placeholder="IT__________________" '
+    +'oninput="window._menuEdit.data.iban=this.value;_ibanDefault=this.value;_saveIban(this.value)" '
+    +'style="width:100%;font-size:12px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;font-family:monospace;"/></div>'
+    +'</div>'
+    +'<div style="margin-top:8px;">'
+    +'<label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">Intestato a</label>'
+    +'<input type="text" id="mp-intestatario" value="'+(m.intestatario||_intestatarioDefault)+'" placeholder="Nome / Ragione sociale" '
+    +'oninput="window._menuEdit.data.intestatario=this.value;_intestatarioDefault=this.value;_saveIntestatario(this.value)" '
+    +'style="width:100%;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/>'
+    +'</div>'
+    +'</div>'
+    +'<div style="margin-bottom:10px;">'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
+    +'<span style="font-size:13px;font-weight:600;color:#555;">Voci del menu</span>'
+    +'<div style="display:flex;gap:6px;">'
+    +'<button class="btn-sm" onclick="_menuAddVoce(\'sezione\')" style="font-size:11px;">+ Sezione</button>'
+    +'<button class="btn-sm" onclick="_menuAddVoce(\'piatto\')" style="font-size:11px;color:#1e3a8a;">+ Piatto</button>'
+    +'<button class="btn-sm" onclick="_menuAddVoce(\'libera\')" style="font-size:11px;color:#2d7d46;">+ Voce libera</button>'
+    +'</div></div>'
+    +'<div id="mp-voci">'+vociHtml+'</div>'
+    +'</div>'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">Note (appaiono nel PDF)</label>'
+    +'<textarea id="mp-note" rows="2" oninput="window._menuEdit.data.note=this.value" '
+    +'style="width:100%;font-size:12px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;resize:vertical;">'+m.note+'</textarea></div>'
+    +fcHtml;
+
+  document.getElementById('menu-modal-body').innerHTML=html;
+}
+
+var _SEZIONI_DEFAULT=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci'];
+function _menuAddVoce(tipo){
+  var m=window._menuEdit.data;
+  if(tipo==='sezione'){
+    _menuScelgliSezione();
+    return;
+  } else if(tipo==='piatto'){
+    m.voci.push({tipo:'piatto',piattoIdx:0,nome:piatti[0]?piatti[0].nome:'',descrizione:'',prezzoVendita:piatti[0]?piatti[0].prezzoVendita||0:0,porzioni:1});
+  } else {
+    m.voci.push({tipo:'libera',nome:'',descrizione:'',prezzoVendita:0,porzioni:1});
+  }
+  _renderMenuModalBody();
+}
+function _menuScelgliSezione(){
+  var old=document.getElementById('sezione-chooser');
+  if(old){old.remove();return;}
+  var div=document.createElement('div');
+  div.id='sezione-chooser';
+  div.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.2);padding:20px 24px;z-index:999;min-width:280px;';
+  div.innerHTML='<div style="font-weight:700;font-size:14px;color:#3d2b1f;margin-bottom:14px;">Scegli sezione</div>'
+    +_SEZIONI_DEFAULT.map(function(s,si){
+      var count=piatti.filter(function(p){return (p.categoria||'').toLowerCase()===s.toLowerCase();}).length;
+      return '<button onclick="_menuAddSezioneConPiatti('+si+')" style="display:block;width:100%;text-align:left;padding:9px 12px;margin-bottom:6px;background:#f5f4f0;border:1px solid #e0ded8;border-radius:8px;cursor:pointer;font-size:13px;">'
+        +'<strong>'+s+'</strong><span style="font-size:11px;color:#888;margin-left:8px;">'+count+' piatti</span></button>';
+    }).join('')
+    +'<button onclick="document.getElementById(\'sezione-chooser\').remove()" style="margin-top:6px;font-size:12px;color:#888;background:none;border:none;cursor:pointer;width:100%;text-align:center;">Annulla</button>';
+  document.body.appendChild(div);
+}
+function _menuAddSezioneConPiatti(idx){
+  var sezione=_SEZIONI_DEFAULT[idx]||'';
+  var old=document.getElementById('sezione-chooser');if(old)old.remove();
+  var m=window._menuEdit.data;
+  m.voci.push({tipo:'sezione',testo:sezione});
+  var matching=piatti.filter(function(p){return (p.categoria||'').toLowerCase()===sezione.toLowerCase();});
+  matching.forEach(function(p){
+    var pi=piatti.indexOf(p);
+    m.voci.push({tipo:'piatto',piattoIdx:pi,nome:p.nome,descrizione:'',prezzoVendita:p.prezzoVendita||0,porzioni:1});
+  });
+  _renderMenuModalBody();
+}
+function _menuRefreshFC(){
+  var m=window._menuEdit.data;
+  var fc=_menuCalcFC(m);
+  var panel=document.getElementById('mp-fc-panel');
+  if(!panel)return;
+  var html='<div style="font-weight:700;color:#92400e;margin-bottom:6px;">&#128202; Analisi interna (non appare nel PDF)</div>'
+    +'<div style="display:flex;gap:20px;flex-wrap:wrap;">'
+    +(fc.prezzoPerPax>0?'<span>Ricavo totale: <strong>'+fc.totRicavo.toFixed(2)+' €</strong> ('+fc.coperti+' cop. × '+fc.prezzoPerPax.toFixed(2)+' €)</span>':'<span style="color:#b45309;">⚠ Inserisci € a persona per calcolare FC%</span>')
+    +(fc.totCosto>0?'<span>Food cost: <strong>'+fc.totCosto.toFixed(2)+' €</strong> ('+(fc.totCosto/fc.coperti).toFixed(2)+' €/cop)</span>':'')
+    +(fc.totRicavo>0&&fc.totCosto>0?'<span>FC%: <strong style="color:'+(fc.pct>35?'#e53e3e':fc.pct>28?'#b45309':'#2d7d46')+';">'+fc.pct.toFixed(1)+'%</strong></span>':'')
+    +(fc.totRicavo>0&&fc.totCosto>0?'<span>Margine/coperto: <strong>'+fc.margine.toFixed(2)+' €</strong></span>':'')
+    +'</div>';
+  panel.innerHTML=html;
+}
+function _menuRemoveVoce(vi){
+  window._menuEdit.data.voci.splice(vi,1);
+  _renderMenuModalBody();
+}
+function _menuChangePiatto(vi,val){
+  var pi=parseInt(val);
+  var v=window._menuEdit.data.voci[vi];
+  v.piattoIdx=pi;
+  if(piatti[pi]){
+    v.nome=piatti[pi].nome;
+    if(!v.prezzoVendita||v.prezzoVendita===0) v.prezzoVendita=piatti[pi].prezzoVendita||0;
+  }
+  _renderMenuModalBody();
+}
+
+function salvaMenuFromModal(){
+  var m=window._menuEdit.data;
+  if(!m.nome.trim()){alert('Inserisci il nome del menu.');return;}
+  if(window._menuEdit.idx<0) menuPreventivi.unshift(m);
+  else menuPreventivi[window._menuEdit.idx]=m;
+  saveMenuPreventivi();
+  document.getElementById('menu-prev-modal').remove();
+  renderMenuPreventivi();
+}
+
+function stampaMenuPDF(i){
+  var m=menuPreventivi[i];
+  var dataFmt=m.data?m.data.split('-').reverse().join('/'):'';
+  var righeHtml='';
+  (m.voci||[]).forEach(function(v){
+    if(v.tipo==='sezione'){
+      righeHtml+='<tr><td style="padding:10px 0 4px;font-size:15px;font-weight:700;color:#3d2b1f;border-bottom:2px solid #3d2b1f;letter-spacing:.03em;">'+v.testo.toUpperCase()+'</td></tr>';
+    } else if(v.tipo==='piatto'||v.tipo==='libera'){
+      var nome=v.tipo==='piatto'?(v.nome||(piatti[v.piattoIdx]?piatti[v.piattoIdx].nome:'')):v.nome;
+      var desc=v.descrizione||'';
+      righeHtml+='<tr>'
+        +'<td style="padding:8px 0;vertical-align:top;border-bottom:1px solid #f0ede6;">'
+        +'<div style="font-weight:600;font-size:14px;">'+nome+'</div>'
+        +(desc?'<div style="font-size:12px;color:#888;margin-top:2px;font-style:italic;">'+desc+'</div>':'')
+        +'</td>'
+        +'</tr>';
+    }
+  });
+
+  var prezzoPerPax=parseFloat(m.prezzoPerPax)||0;
+  var copertiPDF=parseInt(m.coperti)||1;
+  var totPDF=prezzoPerPax*copertiPDF;
+  var nPrev=m.nPrev||'';
+  var ibanPDF=m.iban||_ibanDefault||'___________________';
+  var intestatarioPDF=m.intestatario||_intestatarioDefault||'';
+  var caparraPDF=totPDF>0?(totPDF*0.2).toFixed(2):'';
+
+  /* clausole contrattuali */
+  var clausole='<div style="margin-top:32px;padding:14px 18px;background:#faf9f6;border:1px solid #e8e5de;border-radius:8px;font-size:9px;color:#555;line-height:1.6;">'
+    +'<div style="font-weight:700;font-size:10px;color:#3d2b1f;margin-bottom:6px;letter-spacing:.04em;">CONDIZIONI DI PRENOTAZIONE</div>'
+    +'<p>Proposta riservata al destinatario, non cedibile a terzi, valida 15 giorni dal ricevimento.</p>'
+    +'<p style="margin-top:6px;">Il preventivo è calcolato per il numero di commensali indicato. In caso di numero inferiore, il corrispettivo rimane invariato al 100%. In caso di numero superiore, verrà applicato il prezzo per persona concordato per ogni commensale aggiuntivo.</p>'
+    +'<p style="margin-top:6px;">Qualsiasi variazione di menu, servizi, data o numero di commensali comporta una revisione del presente preventivo.</p>'
+    +'<p style="margin-top:6px;">Per confermare la prenotazione rispondere a questa email. La proposta si intende accettata solo al ricevimento del 20% dell&#39;importo totale'+(caparraPDF?' (<strong>€ '+caparraPDF+'</strong>)':'')+' a titolo di caparra confirmatoria, tramite bonifico bancario intestato a <strong>'+(intestatarioPDF||'_______________')+'</strong>, IBAN <strong>'+ibanPDF+'</strong>, causale: numero preventivo indicato in calce. Il saldo sarà versato in loco il giorno dell&#39;evento'+(dataFmt?' del <strong>'+dataFmt+'</strong>':'')+'.</p>'
+    +'<p style="margin-top:6px;">In caso di annullamento, la caparra versata non sarà rimborsabile.</p>'
+    +'<p style="margin-top:6px;">Rispondendo a questa email con &ldquo;<strong>Accetto</strong>&rdquo; e provvedendo al versamento della caparra, il destinatario dichiara di aver letto e accettato integralmente le condizioni indicate nel presente preventivo.</p>'
+    +(nPrev?'<div style="margin-top:12px;font-size:10px;color:#3d2b1f;font-family:monospace;letter-spacing:.03em;"><span style="font-weight:400;">Numero preventivo: </span><strong>'+nPrev+'</strong></div>':'')
+    +'</div>';
+
+  var html='<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"/>'
+    +'<title>'+(nPrev?nPrev+' — ':'')+m.nome+'</title><style>'
+    +'*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}'
+    +'body{padding:40px;max-width:680px;margin:0 auto;color:#222;}'
+    +'.header{border-bottom:3px solid #3d2b1f;padding-bottom:18px;margin-bottom:24px;}'
+    +'h1{font-size:26px;font-weight:700;color:#3d2b1f;margin-bottom:4px;}'
+    +'.nprev{font-size:12px;font-family:monospace;color:#888;margin-bottom:6px;letter-spacing:.05em;}'
+    +'.meta{font-size:13px;color:#888;}'
+    +'table{width:100%;border-collapse:collapse;}'
+    +'.note-box{margin-top:20px;font-size:12px;color:#888;}'
+    +'@media print{body{padding:20px;}}'
+    +'</style></head><body>'
+    +'<div class="header">'
+    +(nPrev?'<div class="nprev">'+nPrev+'</div>':'')
+    +'<h1>'+m.nome+'</h1>'
+    +'<div class="meta">'
+    +(m.cliente?'<span>'+m.cliente+'</span> &mdash; ':'')
+    +(dataFmt?'<span>'+dataFmt+'</span>':'')
+    +(m.coperti?' &mdash; <span>'+m.coperti+' coperti</span>':'')
+    +'</div>'
+    +'</div>'
+    +'<table>'+righeHtml+'</table>'
+    +(prezzoPerPax>0
+      ?'<div style="margin-top:24px;padding:14px 18px;background:#faf9f6;border-radius:8px;border:1px solid #e8e5de;">'
+        +'<div style="font-size:13px;color:#888;margin-bottom:4px;">Prezzo</div>'
+        +'<div style="font-size:22px;font-weight:700;color:#3d2b1f;">'+prezzoPerPax.toFixed(2)+' € <span style="font-size:14px;font-weight:400;color:#888;">a persona</span></div>'
+        +(copertiPDF>1?'<div style="font-size:14px;color:#555;margin-top:4px;">Totale '+copertiPDF+' coperti: <strong>'+totPDF.toFixed(2)+' €</strong></div>':'')
+        +'</div>'
+      :'')
+    +(m.note?'<div class="note-box">'+m.note+'</div>':'')
+    +clausole
+    +'<script>window.onload=function(){window.print();}<\/script>'
+    +'</body></html>';
+  var w=window.open('','_blank','width=780,height=940');
+  if(w){w.document.write(html);w.document.close();}
+}
+/* ===== fine #11 ===== */
 
 /* ===== ADMIN MODE ===== */
 var ADMIN_PASSWORD = "ricettario_claudioP70@";
@@ -3064,11 +3514,11 @@ function logoutAdmin(){
   showTab('home');
 }
 
-var ADMIN_ONLY_TABS = ['magazzino','foodcost','fornitori','nuovo-piatto'];
+var ADMIN_ONLY_TABS = ['magazzino','foodcost','fornitori','nuovo-piatto','menu-prev'];
 
 function applyAdminUI(){
   var tabs = document.querySelectorAll('.tab');
-  var tabNames = ['produzioni','home','semilavorati','magazzino','foodcost','fornitori'];
+  var tabNames = ['produzioni','home','semilavorati','magazzino','foodcost','fornitori','menu-prev','guida'];
   tabs.forEach(function(t, i){
     var name = tabNames[i];
     if(ADMIN_ONLY_TABS.indexOf(name) >= 0){
@@ -3107,6 +3557,7 @@ function applyAdminUI(){
 
 loadSaved();
 loadOrdiniStorico();
+loadMenuPreventivi();
 updateAll();
 renderMagazzino();
 checkAdminSession();
@@ -3473,7 +3924,7 @@ function _fatturaShowModal(nomeFornitore,nFattura,dataFattura,righe){
   var old=document.getElementById('import-fattura-modal');
   if(old)old.remove();
   var overlay=document.createElement('div');
-  overlay.className='modal-overlay';
+  overlay.className='modal-overlay open';
   overlay.id='import-fattura-modal';
   overlay.innerHTML='<div class="modal" style="max-width:860px;max-height:88vh;overflow-y:auto;">'
     +'<h3>&#128229; Importa fattura XML</h3>'
