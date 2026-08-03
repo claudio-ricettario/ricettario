@@ -3426,17 +3426,20 @@ function stampaMenuPDF(i){
   var nPrev=m.nPrev||'';
   var ibanPDF=m.iban||_ibanDefault||'___________________';
   var intestatarioPDF=m.intestatario||_intestatarioDefault||'';
-  var caparraPDF=totPDF>0?(totPDF*0.2).toFixed(2):'';
+  var caparraPDF=totPDF>0?(totPDF*0.3).toFixed(2):'';
 
   /* clausole contrattuali */
   var clausole='<div style="margin-top:32px;padding:14px 18px;background:#faf9f6;border:1px solid #e8e5de;border-radius:8px;font-size:9px;color:#555;line-height:1.6;">'
-    +'<div style="font-weight:700;font-size:10px;color:#3d2b1f;margin-bottom:6px;letter-spacing:.04em;">CONDIZIONI DI PRENOTAZIONE</div>'
-    +'<p>Proposta riservata al destinatario, non cedibile a terzi, valida 15 giorni dal ricevimento.</p>'
-    +'<p style="margin-top:6px;">Il preventivo è calcolato per il numero di commensali indicato. In caso di numero inferiore, il corrispettivo rimane invariato al 100%. In caso di numero superiore, verrà applicato il prezzo per persona concordato per ogni commensale aggiuntivo.</p>'
-    +'<p style="margin-top:6px;">Qualsiasi variazione di menu, servizi, data o numero di commensali comporta una revisione del presente preventivo.</p>'
-    +'<p style="margin-top:6px;">Per confermare la prenotazione rispondere a questa email. La proposta si intende accettata solo al ricevimento del 20% dell&#39;importo totale'+(caparraPDF?' (<strong>€ '+caparraPDF+'</strong>)':'')+' a titolo di caparra confirmatoria, tramite bonifico bancario intestato a <strong>'+(intestatarioPDF||'_______________')+'</strong>, IBAN <strong>'+ibanPDF+'</strong>, causale: numero preventivo indicato in calce. Il saldo sarà versato in loco il giorno dell&#39;evento'+(dataFmt?' del <strong>'+dataFmt+'</strong>':'')+'.</p>'
-    +'<p style="margin-top:6px;">In caso di annullamento, la caparra versata non sarà rimborsabile.</p>'
-    +'<p style="margin-top:6px;">Rispondendo a questa email con &ldquo;<strong>Accetto</strong>&rdquo; e provvedendo al versamento della caparra, il destinatario dichiara di aver letto e accettato integralmente le condizioni indicate nel presente preventivo.</p>'
+    +'<div style="font-weight:700;font-size:10px;color:#3d2b1f;margin-bottom:8px;letter-spacing:.04em;">CONDIZIONI DI PRENOTAZIONE</div>'
+    +'<p>La presente proposta è riservata esclusivamente al destinatario, non è cedibile a terzi ed è valida per 15 (quindici) giorni dalla data di ricevimento.</p>'
+    +'<p style="margin-top:5px;">Il presente preventivo è formulato sulla base del numero di commensali indicato. In caso di partecipazione di un numero inferiore di persone, il corrispettivo pattuito rimarrà invariato. In caso di partecipazione di un numero superiore, verrà applicato il prezzo concordato per ciascun commensale aggiuntivo.</p>'
+    +'<p style="margin-top:5px;">Qualsiasi variazione relativa al menu, ai servizi richiesti, alla data dell&#39;evento o al numero dei commensali comporterà la revisione del presente preventivo.</p>'
+    +'<p style="margin-top:5px;">Per confermare la prenotazione è necessario rispondere a questa email e versare una caparra confirmatoria pari al 30% dell&#39;importo complessivo'+(caparraPDF?', corrispondente a <strong>€ '+caparraPDF+'</strong>,':',')+' mediante bonifico bancario intestato a <strong>'+(intestatarioPDF||'_______________')+'</strong>, IBAN <strong>'+ibanPDF+'</strong>, indicando come causale il numero del preventivo riportato in calce.</p>'
+    +'<p style="margin-top:5px;">Il versamento della caparra dovrà essere effettuato entro il termine di validità del presente preventivo, e comunque entro 15 (quindici) giorni dalla data di ricevimento della presente proposta. Decorso tale termine senza il ricevimento della caparra, il preventivo si intenderà decaduto e il ristorante sarà libero di disporre della disponibilità della data senza ulteriore comunicazione.</p>'
+    +'<p style="margin-top:5px;">La prenotazione si intende confermata esclusivamente al ricevimento della caparra confirmatoria.</p>'
+    +'<p style="margin-top:5px;">Il saldo dovrà essere effettuato presso il ristorante il giorno dell&#39;evento'+(dataFmt?', <strong>'+dataFmt+'</strong>':'')+'.</p>'
+    +'<p style="margin-top:5px;">In caso di annullamento della prenotazione da parte del cliente, la caparra confirmatoria versata sarà trattenuta ai sensi dell&#39;art. 1385 del Codice Civile.</p>'
+    +'<p style="margin-top:5px;">Il versamento della caparra confirmatoria e la risposta a questa email con la dicitura &ldquo;<strong>Accetto</strong>&rdquo; costituiscono accettazione integrale del presente preventivo e delle presenti condizioni di prenotazione.</p>'
     +(nPrev?'<div style="margin-top:12px;font-size:10px;color:#3d2b1f;font-family:monospace;letter-spacing:.03em;"><span style="font-weight:400;">Numero preventivo: </span><strong>'+nPrev+'</strong></div>':'')
     +'</div>';
 
