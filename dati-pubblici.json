@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "3/8/2026",
+  "exportDate": "8/8/2026",
   "magazzino": [
     {
       "codice": "MP-070",
@@ -2653,7 +2653,8 @@
         }
       ],
       "dataCreazione": "21/6/2026",
-      "nelMenu": false
+      "nelMenu": false,
+      "porzioniVendute": 100
     },
     {
       "codice": "PF-003",
@@ -2686,7 +2687,8 @@
           "codiceSl": "SL-006"
         }
       ],
-      "dataCreazione": "7/7/2026"
+      "dataCreazione": "7/7/2026",
+      "porzioniVendute": 100
     },
     {
       "codice": "PF-004",
@@ -2727,7 +2729,8 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "7/7/2026"
+      "dataCreazione": "7/7/2026",
+      "porzioniVendute": 200
     },
     {
       "codice": "PF-002",
@@ -2789,7 +2792,8 @@
         }
       ],
       "dataCreazione": "26/6/2026",
-      "nelMenu": false
+      "nelMenu": false,
+      "porzioniVendute": 150
     },
     {
       "codice": "PF-007",
@@ -2814,7 +2818,8 @@
           "codiceMp": "MP-111"
         }
       ],
-      "dataCreazione": "26/7/2026"
+      "dataCreazione": "26/7/2026",
+      "porzioniVendute": 0
     }
   ],
   "ricetteSalvate": [],

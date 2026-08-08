@@ -348,7 +348,9 @@ textarea{resize:vertical;min-height:60px;}
         <p class="home-subtitle">Seleziona una categoria per vedere le ricette</p>
       </div>
       <button id="btn-nuovo-piatto-home" class="btn-primary no-print" onclick="showTab('nuovo-piatto')" style="margin-left:auto;white-space:nowrap;">&#43; Nuovo piatto</button>
+      <button id="btn-me" class="btn-secondary no-print" onclick="toggleMenuEngineering()" style="white-space:nowrap;">&#128202; Menu Engineering</button>
     </div>
+    <div id="me-panel" style="display:none;margin-bottom:20px;background:#fff;border-radius:12px;padding:16px;border:1px solid #e0ded8;"></div>
     <div id="home-cats-container"></div>
   </div>
 
@@ -3482,6 +3484,227 @@ function stampaMenuPDF(i){
   if(w){w.document.write(html);w.document.close();}
 }
 /* ===== fine #11 ===== */
+
+/* ===== #10 MENU ENGINEERING ===== */
+var _mePeriodo='';
+var _meCat='Tutte';
+try{_mePeriodo=localStorage.getItem('rc_me_periodo')||'';}catch(e){}
+function _meSavePeriodo(v){_mePeriodo=v;try{localStorage.setItem('rc_me_periodo',v);}catch(e){}}
+function _meSetCat(cat){_meCat=cat;renderMenuEngineering();}
+
+function meSavePorzioni(idx,val){
+  if(piatti[idx]){
+    piatti[idx].porzioniVendute=parseInt(val)||0;
+    savePiatti();
+    renderMenuEngineering();
+  }
+}
+
+function toggleMenuEngineering(){
+  var panel=document.getElementById('me-panel');
+  var btn=document.getElementById('btn-me');
+  if(!panel)return;
+  var isOpen=panel.style.display!=='none';
+  panel.style.display=isOpen?'none':'block';
+  if(btn)btn.style.background=isOpen?'':'#1a1a1a',btn.style.color=isOpen?'':'#fff';
+  if(!isOpen)renderMenuEngineering();
+}
+
+function renderMenuEngineering(){
+  var cont=document.getElementById('me-panel');
+  if(!cont||cont.style.display==='none')return;
+
+  var items=piatti.map(function(p,i){
+    var fc=calcolaFoodCostPiatto(p);
+    var pv=parseFloat(p.prezzoVendita)||0;
+    var margine=pv>0?pv-fc:null;
+    var pop=parseInt(p.porzioniVendute)||0;
+    return {idx:i,nome:p.nome,cat:p.categoria||'',pv:pv,fc:fc,margine:margine,pop:pop};
+  }).filter(function(it){return it.pv>0&&it.margine!==null;});
+
+  if(!items.length){
+    cont.innerHTML='<div style="padding:20px;color:#888;text-align:center;">Nessun piatto con prezzo di vendita impostato.</div>';
+    return;
+  }
+
+  /* medie calcolate solo sui piatti con almeno 1 porzione venduta */
+  /* filter by selected category */
+  if(_meCat&&_meCat!=='Tutte') items=items.filter(function(it){return it.cat===_meCat;});
+  if(!items.length){
+    cont.innerHTML='<div style="padding:20px;color:#888;text-align:center;">Nessun piatto con prezzo di vendita in questa categoria.</div>';
+    return;
+  }
+
+  var soldItems=items.filter(function(it){return it.pop>0;});
+  var avgMargine=soldItems.length?soldItems.reduce(function(s,it){return s+it.margine;},0)/soldItems.length:0;
+  var avgPop=soldItems.length?soldItems.reduce(function(s,it){return s+it.pop;},0)/soldItems.length:0;
+
+  items.forEach(function(it){
+    if(it.pop===0){it.classe='nd';return;}
+    var hiM=it.margine>=avgMargine, hiP=it.pop>=avgPop;
+    it.classe=hiM&&hiP?'star':hiM&&!hiP?'puzzle':!hiM&&hiP?'plowhorse':'dog';
+  });
+
+  var CI={
+    star:      {label:'Star',      emoji:'⭐',color:'#b45309',bg:'#fefce8'},
+    puzzle:    {label:'Puzzle',    emoji:'?',     color:'#6366f1',bg:'#eef2ff'},
+    plowhorse: {label:'Plowhorse', emoji:'🐴',color:'#15803d',bg:'#f0fdf4'},
+    dog:       {label:'Dog',       emoji:'🐕',color:'#6b7280',bg:'#f3f4f6'},
+    nd:        {label:'N/D',       emoji:'—',     color:'#aaa',  bg:'#f9f9f9'}
+  };
+
+  /* SVG chart */
+  var W=520,H=300,ml=58,mt=20,mr=20,mb=46;
+  var cw=W-ml-mr, ch=H-mt-mb;
+  /* scala grafico solo sui piatti effettivamente venduti */
+  var chartItems=soldItems.length?soldItems:items;
+  var maxPop=Math.max.apply(null,chartItems.map(function(it){return it.pop;}))||1;
+  var minM=Math.min.apply(null,chartItems.map(function(it){return it.margine;}));
+  var maxM=Math.max.apply(null,chartItems.map(function(it){return it.margine;}));
+  maxPop*=1.12; var padM=(maxM-minM)*0.12||0.5; minM-=padM; maxM+=padM;
+  var rangeM=maxM-minM;
+  function xP(p){return ml+(p/maxPop)*cw;}
+  function yP(m){return mt+ch-((m-minM)/rangeM)*ch;}
+  var acx=xP(avgPop), acy=yP(avgMargine);
+
+  var svg='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;max-width:'+W+'px;display:block;margin:0 auto;font-family:inherit;">'
+    /* quadrant backgrounds */
+    +'<rect x="'+ml+'" y="'+acy+'" width="'+(acx-ml)+'" height="'+(mt+ch-acy)+'" fill="#f3f4f6"/>'
+    +'<rect x="'+acx+'" y="'+acy+'" width="'+(ml+cw-acx)+'" height="'+(mt+ch-acy)+'" fill="#f0fdf4"/>'
+    +'<rect x="'+ml+'" y="'+mt+'" width="'+(acx-ml)+'" height="'+(acy-mt)+'" fill="#eef2ff"/>'
+    +'<rect x="'+acx+'" y="'+mt+'" width="'+(ml+cw-acx)+'" height="'+(acy-mt)+'" fill="#fefce8"/>'
+    /* border */
+    +'<rect x="'+ml+'" y="'+mt+'" width="'+cw+'" height="'+ch+'" fill="none" stroke="#e5e7eb" stroke-width="1"/>'
+    /* crosshair */
+    +'<line x1="'+acx+'" y1="'+mt+'" x2="'+acx+'" y2="'+(mt+ch)+'" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,3"/>'
+    +'<line x1="'+ml+'" y1="'+acy+'" x2="'+(ml+cw)+'" y2="'+acy+'" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,3"/>'
+    /* quadrant labels */
+    +'<text x="'+(ml+6)+'" y="'+(mt+14)+'" font-size="10" fill="#6366f1" font-weight="700">? Puzzle</text>'
+    +'<text x="'+(acx+6)+'" y="'+(mt+14)+'" font-size="10" fill="#b45309" font-weight="700">⭐ Star</text>'
+    +'<text x="'+(ml+6)+'" y="'+(mt+ch-6)+'" font-size="10" fill="#6b7280" font-weight="700">Dog</text>'
+    +'<text x="'+(acx+6)+'" y="'+(mt+ch-6)+'" font-size="10" fill="#15803d" font-weight="700">Plowhorse</text>'
+    /* axis labels */
+    +'<text x="'+(ml+cw/2)+'" y="'+(H-6)+'" font-size="9" fill="#9ca3af" text-anchor="middle">POPOLARITÀ (porzioni vendute)</text>'
+    +'<text x="14" y="'+(mt+ch/2)+'" font-size="9" fill="#9ca3af" text-anchor="middle" transform="rotate(-90,14,'+(mt+ch/2)+')">MARGINE (€/pz)</text>';
+
+  /* dots — solo piatti con porzioni > 0 */
+  items.filter(function(it){return it.pop>0;}).forEach(function(it){
+    var x=xP(it.pop), y=yP(it.margine);
+    var col=CI[it.classe].color;
+    var nome=it.nome.length>15?it.nome.substring(0,14)+'…':it.nome;
+    var tx=x+10, anchor='start';
+    if(tx+nome.length*5.5>W-5){tx=x-10;anchor='end';}
+    svg+='<circle cx="'+x+'" cy="'+y+'" r="7" fill="'+col+'" fill-opacity="0.85" stroke="#fff" stroke-width="1.5"/>'
+      +'<text x="'+tx+'" y="'+(y+4)+'" font-size="9" fill="#374151" text-anchor="'+anchor+'">'+nome+'</text>';
+  });
+  svg+='</svg>';
+
+  /* table */
+  var order={star:0,plowhorse:1,puzzle:2,dog:3};
+  var rows=items.slice().sort(function(a,b){return order[a.classe]-order[b.classe];}).map(function(it){
+    var ci=CI[it.classe];
+    var fcPct=it.pv>0?(it.fc/it.pv*100).toFixed(1)+'%':'-';
+    return '<tr style="border-bottom:1px solid #f0ede6;">'
+      +'<td style="padding:6px 8px;font-weight:500;">'+it.nome+'</td>'
+      +'<td style="padding:6px 8px;color:#888;font-size:11px;">'+it.cat+'</td>'
+      +'<td style="padding:6px 8px;text-align:center;"><input type="number" min="0" value="'+it.pop+'" onchange="meSavePorzioni('+it.idx+',this.value)" style="width:62px;text-align:center;border:1px solid #e0ded8;border-radius:5px;padding:2px 4px;font-size:12px;"/></td>'
+      +'<td style="padding:6px 8px;text-align:right;">€ '+it.pv.toFixed(2)+'</td>'
+      +'<td style="padding:6px 8px;text-align:right;color:#888;">€ '+it.fc.toFixed(2)+'</td>'
+      +'<td style="padding:6px 8px;text-align:right;font-weight:600;">€ '+it.margine.toFixed(2)+'</td>'
+      +'<td style="padding:6px 8px;text-align:right;color:#888;">'+fcPct+'</td>'
+      +'<td style="padding:6px 8px;text-align:center;"><span style="background:'+ci.bg+';color:'+ci.color+';font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;">'+ci.emoji+' '+ci.label+'</span></td>'
+      +'</tr>';
+  }).join('');
+
+  /* salva svg e rows per la stampa */
+  window._mePrintData={svg:svg,rows:rows,avgMargine:avgMargine,avgPop:avgPop,periodo:_mePeriodo};
+
+  /* build category selector — only cats present in items (pre-filter) */
+  var allItems2=piatti.map(function(p,i){
+    var pv=parseFloat(p.prezzoVendita)||0;
+    return {cat:p.categoria||'',pv:pv};
+  }).filter(function(it){return it.pv>0;});
+  var catsPresent=['Tutte'].concat(CAT_ORDER.filter(function(c){
+    return allItems2.some(function(it){return it.cat===c;});
+  }));
+  var catBtns=catsPresent.map(function(c){
+    var active=(_meCat===c);
+    return '<button onclick="_meSetCat(\'' +c+ '\')" style="font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid '+(active?'#3d2b1f':'#d0cec8')+';background:'+(active?'#3d2b1f':'#fff')+';color:'+(active?'#fff':'#555')+';cursor:pointer;white-space:nowrap;">'+c+'</button>';
+  }).join('');
+
+  cont.innerHTML=
+    '<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">'
+    +'<span style="font-size:13px;font-weight:600;color:#3d2b1f;">&#128202; Menu Engineering</span>'
+    +'<input type="text" placeholder="Periodo es. Luglio 2026" value="'+_mePeriodo+'" oninput="_meSavePeriodo(this.value);if(window._mePrintData)window._mePrintData.periodo=this.value;" style="font-size:12px;padding:5px 10px;border:1px solid #d0cec8;border-radius:8px;"/>'
+    +'<button onclick="stampaME()" style="font-size:12px;padding:5px 12px;border:1px solid #3d2b1f;border-radius:8px;background:#3d2b1f;color:#fff;cursor:pointer;">&#128438; Stampa PDF</button>'
+    +'<span style="margin-left:auto;font-size:11px;color:#888;">Media margine: <strong>€ '+avgMargine.toFixed(2)+'</strong> &nbsp;|&nbsp; Media popolarità: <strong>'+Math.round(avgPop)+' pz</strong></span>'
+    +'</div>'
+    +'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">'+catBtns+'</div>'
+    +svg
+    +'<div style="margin-top:16px;overflow-x:auto;">'
+    +'<table style="width:100%;border-collapse:collapse;font-size:12px;">'
+    +'<thead><tr style="background:#faf9f6;border-bottom:2px solid #e8e5de;">'
+    +'<th style="padding:7px 8px;text-align:left;font-weight:600;">Piatto</th>'
+    +'<th style="padding:7px 8px;text-align:left;font-weight:600;">Cat.</th>'
+    +'<th style="padding:7px 8px;text-align:center;font-weight:600;">Porzioni vendute</th>'
+    +'<th style="padding:7px 8px;text-align:right;font-weight:600;">Prezzo</th>'
+    +'<th style="padding:7px 8px;text-align:right;font-weight:600;">FC</th>'
+    +'<th style="padding:7px 8px;text-align:right;font-weight:600;">Margine</th>'
+    +'<th style="padding:7px 8px;text-align:right;font-weight:600;">FC%</th>'
+    +'<th style="padding:7px 8px;text-align:center;font-weight:600;">Classe</th>'
+    +'</tr></thead>'
+    +'<tbody>'+rows+'</tbody>'
+    +'</table></div>'
+    +'<div style="margin-top:12px;padding:10px 14px;background:#faf9f6;border-radius:8px;border:1px solid #e8e5de;font-size:10px;color:#888;line-height:1.7;">'
+    +'⭐ <strong>Star</strong>: alta popolarità + alto margine — mantieni e promuovi &nbsp;&nbsp;'
+    +'<span style="color:#15803d;">🐴 <strong>Plowhorse</strong></span>: alta popolarità + basso margine — riduci i costi o ritocca il prezzo &nbsp;&nbsp;'
+    +'<span style="color:#6366f1;">? <strong>Puzzle</strong></span>: poco venduto + alto margine — promuovi di più &nbsp;&nbsp;'
+    +'<span style="color:#6b7280;">🐕 <strong>Dog</strong></span>: poco venduto + basso margine — valuta se mantenerlo'
+    +'</div>';
+}
+
+function stampaME(){
+  var d=window._mePrintData;
+  if(!d){alert('Nessun dato da stampare.');return;}
+  var periodo=d.periodo||'';
+  var oggi=new Date().toLocaleDateString('it-IT');
+  /* tabella PDF: sostituisce input con testo statico */
+  var rowsPDF=d.rows.replace(/<input[^>]*value="(\d+)"[^>]*>/g,function(m,v){
+    return '<span>'+v+'</span>';
+  });
+  var html='<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"/>'
+    +'<title>Menu Engineering'+(periodo?' — '+periodo:'')+'</title><style>'
+    +'*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}'
+    +'body{padding:32px;max-width:820px;margin:0 auto;color:#222;}'
+    +'h1{font-size:20px;font-weight:700;color:#3d2b1f;margin-bottom:4px;}'
+    +'.meta{font-size:12px;color:#888;margin-bottom:20px;}'
+    +'table{width:100%;border-collapse:collapse;font-size:11px;margin-top:16px;}'
+    +'th{padding:6px 8px;background:#faf9f6;border-bottom:2px solid #e8e5de;text-align:left;font-weight:600;}'
+    +'td{padding:5px 8px;border-bottom:1px solid #f0ede6;}'
+    +'.legend{margin-top:14px;font-size:10px;color:#888;line-height:1.8;padding:10px 14px;background:#faf9f6;border-radius:8px;border:1px solid #e8e5de;}'
+    +'@media print{body{padding:16px;}}'
+    +'</style></head><body>'
+    +'<h1>&#128202; Menu Engineering</h1>'
+    +'<div class="meta">'+(periodo?'Periodo: <strong>'+periodo+'</strong> &nbsp;|&nbsp; ':'')+'Stampato il '+oggi
+    +' &nbsp;|&nbsp; Media margine: <strong>€ '+d.avgMargine.toFixed(2)+'</strong>'
+    +' &nbsp;|&nbsp; Media popolarità: <strong>'+Math.round(d.avgPop)+' pz</strong></div>'
+    +d.svg
+    +'<table><thead><tr>'
+    +'<th>Piatto</th><th>Cat.</th><th style="text-align:center;">Porzioni</th>'
+    +'<th style="text-align:right;">Prezzo</th><th style="text-align:right;">FC</th>'
+    +'<th style="text-align:right;">Margine</th><th style="text-align:right;">FC%</th>'
+    +'<th style="text-align:center;">Classe</th>'
+    +'</tr></thead><tbody>'+rowsPDF+'</tbody></table>'
+    +'<div class="legend">⭐ <strong>Star</strong>: alta popolarità + alto margine &nbsp;|&nbsp; '
+    +'🐴 <strong>Plowhorse</strong>: alta popolarità + basso margine &nbsp;|&nbsp; '
+    +'? <strong>Puzzle</strong>: poco venduto + alto margine &nbsp;|&nbsp; '
+    +'🐕 <strong>Dog</strong>: poco venduto + basso margine</div>'
+    +'<script>window.onload=function(){window.print();}<\/script>'
+    +'</body></html>';
+  var w=window.open('','_blank','width=860,height=940');
+  if(w){w.document.write(html);w.document.close();}
+}
+/* ===== fine #10 ===== */
 
 /* ===== ADMIN MODE ===== */
 var ADMIN_PASSWORD = "ricettario_claudioP70@";
