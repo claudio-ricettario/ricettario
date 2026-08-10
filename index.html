@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>MiseEnPlace</title>
+<title>MiseEnPlace PRO</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f4f0;color:#1a1a1a;min-height:100vh;}
@@ -287,7 +287,7 @@ textarea{resize:vertical;min-height:60px;}
 </head>
 <body>
 <header>
-  <h1>MiseEnPlace</h1>
+  <h1>MiseEnPlace PRO</h1>
   <div style="flex:1;max-width:320px;min-width:140px;margin:0 8px;">
     <input type="text" id="global-search" placeholder="&#128269; Cerca..." 
       oninput="globalSearch(this.value)"
@@ -305,6 +305,9 @@ textarea{resize:vertical;min-height:60px;}
     <div style="width:1px;height:20px;background:#e0ded8;"></div>
     <button onclick="ripristinaSnapshot()" id="btn-snapshot" style="padding:6px 12px;font-size:12px;font-weight:500;background:#fff;border:1px solid #d0cec8;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;" title="Ripristina ultimo backup automatico">&#128268; Ripristina</button>
     <button onclick="pubblicaDatiPubblici()" id="btn-pubblica" style="padding:6px 12px;font-size:12px;font-weight:600;background:#2d7d46;border:1px solid #2d7d46;color:#fff;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;" title="Genera dati-pubblici.json per i collaboratori">&#128228; Pubblica</button>
+    <div style="width:1px;height:20px;background:#e0ded8;"></div>
+    <button id="sync-btn" onclick="apriSyncSettings()" title="Sincronizzazione cloud" style="padding:6px 10px;font-size:15px;background:#fff;border:1px solid #d0cec8;border-radius:8px;cursor:pointer;line-height:1;color:#bbb;">&#9729;</button>
+    <span id="sync-status-dot" style="font-size:10px;color:#aaa;display:none;margin-left:-4px;"></span>
   </div>
 </header>
 <div id="search-overlay" style="display:none;position:fixed;top:57px;left:0;right:0;bottom:0;background:rgba(0,0,0,.3);z-index:50;" onclick="closeSearch()"></div>
@@ -344,7 +347,7 @@ textarea{resize:vertical;min-height:60px;}
     <div class="home-header">
       <div class="home-logo">&#127869;</div>
       <div>
-        <h1 class="home-title">Carte</h1>
+        <h1 class="home-title">MiseEnPlace PRO</h1>
         <p class="home-subtitle">Seleziona una categoria per vedere le ricette</p>
       </div>
       <button id="btn-nuovo-piatto-home" class="btn-primary no-print" onclick="showTab('nuovo-piatto')" style="margin-left:auto;white-space:nowrap;">&#43; Nuovo piatto</button>
@@ -1243,9 +1246,24 @@ function loadSaved(){
   /* carica piatti */
   try{var pf=localStorage.getItem('rc_piatti');if(pf)piatti=JSON.parse(pf);}catch(e){}
   loadCodiceCounters();
+  /* avvia sync dal cloud solo al primo caricamento (non nei reload interni) */
+  if(!window._syncInitDone){
+    window._syncInitDone=true;
+    setTimeout(function(){if(_ghPAT&&_ghGistId)syncFromGist();else _setSyncUI('none');},600);
+  }
 }
 
 var _saveCount=0;
+
+function renderAll(){
+  try{renderMagazzino();}catch(e){}
+  try{renderMenuPreventivi();}catch(e){}
+  try{if(typeof renderProduzioni==='function')renderProduzioni();}catch(e){}
+  try{if(typeof renderSemilavorati==='function')renderSemilavorati();}catch(e){}
+  try{if(typeof renderFoodCost==='function')renderFoodCost();}catch(e){}
+  try{if(typeof renderMenuEngineering==='function')renderMenuEngineering();}catch(e){}
+}
+
 function saveMagazzino(){
   try{
     localStorage.setItem('rc_magazzino4',JSON.stringify(magazzino));
@@ -1259,8 +1277,9 @@ function saveMagazzino(){
       if(el){el.innerHTML='&#9888; Ricorda di esportare il backup!';el.style.color='#b45309';el.style.display='inline';setTimeout(function(){el.style.display='none';el.style.color='#2d7d46';},5000);}
     }
   }catch(e){}
+  scheduleSyncToGist();
 }
-function saveFornitori(){try{localStorage.setItem('rc_fornitori',JSON.stringify(fornitori));flash('save-status-f');}catch(e){}}
+function saveFornitori(){try{localStorage.setItem('rc_fornitori',JSON.stringify(fornitori));flash('save-status-f');}catch(e){}scheduleSyncToGist();}
 function saveDismissed(){try{localStorage.setItem('rc_dismissed',JSON.stringify(dismissedAlerts));}catch(e){}}
 
 function flash(id){var el=document.getElementById(id);if(el){el.textContent='Salvato';setTimeout(function(){el.textContent='';},2000);}}
@@ -2787,7 +2806,7 @@ function renderGuida(){
     +'.gcod{font-family:monospace;font-size:12px;background:#f5f4f0;padding:10px 12px;border-radius:6px;margin:8px 0;line-height:1.8;}'
     +'</style>';
   h+=css;
-  h+='<h2 style="font-size:20px;margin:0 0 6px;color:#222;">&#128214; Guida — MiseEnPlace</h2>';
+  h+='<h2 style="font-size:20px;margin:0 0 6px;color:#222;">&#128214; Guida — MiseEnPlace PRO</h2>';
 
   if(!isAdmin){
     h+='<p style="color:#888;font-size:13px;margin-bottom:20px;">Operazioni disponibili per il tuo profilo.</p>';
@@ -2825,23 +2844,49 @@ function renderGuida(){
 
   } else {
     h+='<p style="color:#888;font-size:13px;margin-bottom:20px;">Guida completa alla gestione del ricettario.</p>';
+    h+='<details class="gs"><summary>&#128204; Barra di navigazione</summary><div class="gb">'
+      +'<p>La barra in cima è organizzata in due righe tematiche:</p>'
+      +'<table><tr><th>Riga</th><th>Tab disponibili</th></tr>'
+      +'<tr><td><strong>Cucina</strong></td><td>&#9654; Produzioni &nbsp;&#127374; La Carte &nbsp;&#9881; Semilavorati</td></tr>'
+      +'<tr><td><strong>Gestione</strong></td><td>&#128230; Magazzino &nbsp;&#128202; Food cost &nbsp;&#127978; Fornitori &nbsp;&#128203; Preventivi &nbsp;&#128214; Guida &nbsp;&#128274; Admin</td></tr>'
+      +'</table>'
+      +'<div class="gnote">I tab nella riga Gestione sono visibili solo in modalità amministratore. Il lucchetto &#128274; in fondo alla riga li attiva.</div>'
+      +'</div></details>';
 
     // Backup e strumenti admin
-    h+='<details class="gs"><summary>&#128736; Backup, importa e pubblica</summary><div class="gb">'
+    h+='<details class="gs"><summary>&#128736; Backup e ripristino</summary><div class="gb">'
       +'<table><tr><th>Pulsante</th><th>Funzione</th><th>Quando usarlo</th></tr>'
-      +'<tr><td>&#128229; Esporta</td><td>Salva backup JSON in Download</td><td>Prima di ogni sessione importante</td></tr>'
-      +'<tr><td>&#128228; Importa</td><td>Carica backup JSON, sovrascrive tutti i dati</td><td>Ripristino o allineamento tra dispositivi</td></tr>'
-      +'<tr><td>&#128268; Ripristina</td><td>Ripristina ultimo salvataggio automatico</td><td>Se qualcosa va storto durante una sessione</td></tr>'
-      +'<tr><td>&#128228; Pubblica</td><td>Genera dati-pubblici.json per lo staff</td><td>Dopo ogni modifica da condividere</td></tr>'
+      +'<tr><td>&#128229; Esporta</td><td>Salva backup JSON in Download</td><td>Piano B: backup locale indipendente dal cloud</td></tr>'
+      +'<tr><td>&#128228; Importa</td><td>Carica backup JSON, sovrascrive tutti i dati</td><td>Ripristino da file esportato</td></tr>'
+      +'<tr><td>&#128268; Ripristina</td><td>Ripristina l&#39;ultimo salvataggio automatico locale</td><td>Se qualcosa va storto durante una sessione</td></tr>'
       +'</table>'
-      +'<h4>Pubblicare su GitHub (per lo staff)</h4>'
+      +'<div class="gnote">Con la sincronizzazione cloud attiva (&#9729;) i dati sono già al sicuro. Esporta/Importa restano utili come ulteriore piano di riserva.</div>'
+      +'</div></details>';
+
+    // Sincronizzazione cloud
+    h+='<details class="gs"><summary>&#9729; Sincronizzazione cloud (multi-dispositivo)</summary><div class="gb">'
+      +'<p>MiseEnPlace PRO può sincronizzare automaticamente tutti i dati tra dispositivi diversi tramite un <strong>Gist GitHub privato</strong>. Ogni volta che salvi qualcosa, i dati vengono caricati sul cloud entro 2 secondi.</p>'
+      +'<h4>Configurazione (una volta sola)</h4>'
       +'<ol>'
-      +'<li>Clicca <strong>Pubblica</strong> — il file viene salvato nella cartella del ricettario.</li>'
-      +'<li>Apri <strong>GitHub Desktop</strong>.</li>'
-      +'<li>Scrivi un breve messaggio di commit (es. "Aggiunto piatto luglio").</li>'
-      +'<li>Clicca <strong>Commit</strong> poi <strong>Push origin</strong> — le modifiche sono online.</li>'
+      +'<li>Vai su <strong>github.com/settings/tokens/new</strong>, crea un token con scope <strong>gist</strong> e copialo.</li>'
+      +'<li>Vai su <strong>gist.github.com</strong>, crea un Gist <strong>privato</strong> con un file chiamato <code>miseenplace_data.json</code> (contenuto iniziale: <code>{}</code>).</li>'
+      +'<li>Copia l&#39;ID del Gist dall&#39;URL (la stringa alfanumerica dopo il tuo username).</li>'
+      +'<li>Nell&#39;app clicca &#9729; in alto a destra &#x2192; incolla <strong>PAT</strong> e <strong>Gist ID</strong> &#x2192; <strong>Salva e attiva</strong>.</li>'
       +'</ol>'
-      +'<div class="gtip">In Safari: se i dati sembrano vecchi, premi <strong>Cmd+Shift+R</strong> per ricaricare senza cache.</div>'
+      +'<h4>Su ogni nuovo dispositivo</h4>'
+      +'<ol>'
+      +'<li>Apri l&#39;app dall&#39;URL GitHub Pages.</li>'
+      +'<li>Clicca &#9729; &#x2192; inserisci gli stessi PAT e Gist ID &#x2192; <strong>&#8659; Scarica da cloud</strong>.</li>'
+      +'<li>Da quel momento il dispositivo è sincronizzato automaticamente.</li>'
+      +'</ol>'
+      +'<h4>Indicatore &#9729; — significato dei colori</h4>'
+      +'<table><tr><th>Colore</th><th>Stato</th></tr>'
+      +'<tr><td style="color:#bbb">&#9729; Grigio</td><td>Sync non configurato</td></tr>'
+      +'<tr><td style="color:#1d4ed8">&#9729; Blu</td><td>Sincronizzazione in corso</td></tr>'
+      +'<tr><td style="color:#2d7d46">&#9729; Verde</td><td>Sync completato con successo</td></tr>'
+      +'<tr><td style="color:#dc2626">&#9729; Rosso</td><td>Errore — token scaduto o Gist ID errato</td></tr>'
+      +'</table>'
+      +'<div class="gtip">PAT e Gist ID vengono salvati nel browser locale: non devi reinserirli ad ogni apertura. Se cambi browser o lo ripristini, dovrai reintrodurli.</div>'
       +'</div></details>';
 
     // Magazzino
@@ -3034,19 +3079,63 @@ function renderGuida(){
       +'</div></details>';
 
     // Menu e Preventivi
-    h+='<details class="gs"><summary>&#128203; Menu &amp; Preventivi</summary><div class="gb">'
-      +'<p>Il tab <strong>&#128203; Menu &amp; Preventivi</strong> permette di creare menu personalizzati per eventi, catering e preventivi. Il food cost è calcolato internamente ma non appare mai nel PDF inviato al cliente.</p>'
-      +'<h4>Creare un menu</h4>'
+    h+='<details class="gs"><summary>&#128203; Preventivi eventi</summary><div class="gb">'
+      +'<p>Il tab <strong>&#128203; Preventivi</strong> permette di creare menu personalizzati per eventi e catering. Il food cost è calcolato internamente ma non appare mai nel PDF inviato al cliente.</p>'
+      +'<h4>Creare un preventivo</h4>'
       +'<ol>'
-      +'<li>Clicca <strong>+ Nuovo menu</strong> e inserisci nome, cliente/evento, data e numero coperti.</li>'
-      +'<li>Aggiungi le voci con i tre bottoni: <strong>+ Sezione</strong> (intestazione, es. Antipasti), <strong>+ Piatto</strong> (collegato alle ricette), <strong>+ Voce libera</strong> (bevande, pane, ecc.).</li>'
-      +'<li>Per ogni piatto puoi modificare la descrizione per il cliente e il prezzo di vendita. Il campo <em>Porzioni</em> indica quante volte la voce appare nel conto totale.</li>'
-      +'<li>In fondo alla finestra compare il pannello interno con food cost%, margine stimato per coperto e totale ricavo — visibile solo a te.</li>'
-      +'<li>Clicca <strong>&#10003; Salva</strong> — il menu è salvato e appare nella lista.</li>'
+      +'<li>Clicca <strong>+ Nuovo menu</strong>.</li>'
+      +'<li>Compila: nome evento, cliente, data, coperti, prezzo a persona.</li>'
+      +'<li>Il <strong>N° Proposta</strong> (PREV-AAAA-NNN) viene generato automaticamente in progressivo per anno — basato solo sui preventivi salvati, non sulle prove.</li>'
+      +'<li>Inserisci l&#39;<strong>IBAN</strong> e il campo <strong>Intestato a</strong> per il bonifico caparra — vengono memorizzati e pre-compilati nei preventivi successivi.</li>'
+      +'<li>Aggiungi le voci: <strong>+ Sezione</strong> (intestazione categoria), <strong>+ Piatto</strong> (collegato alle ricette), <strong>+ Voce libera</strong>.</li>'
+      +'<li>Il pannello interno mostra food cost%, margine e ricavo — visibile solo a te, non nel PDF.</li>'
+      +'<li>Clicca <strong>&#10003; Salva</strong>.</li>'
       +'</ol>'
-      +'<h4>Stampare il preventivo</h4>'
-      +'<p>Clicca <strong>&#128438; Stampa PDF</strong> sulla scheda del menu. Si apre un documento pulito con nome, cliente, data, sezioni e piatti con prezzi. Note finali se presenti. Nessun riferimento a costi interni o food cost.</p>'
-      +'<div class="gnote">Il colore del food cost% nella lista: verde sotto 28%, arancione tra 28-35%, rosso sopra 35%.</div>'
+      +'<h4>PDF preventivo — struttura in 2 pagine</h4>'
+      +'<p><strong>Pagina 1:</strong> intestazione con N° proposta, cliente, data e coperti, elenco piatti per sezione, blocco prezzo con totale.</p>'
+      +'<p><strong>Pagina 2:</strong> Condizioni di prenotazione complete con sezioni in grassetto:</p>'
+      +'<ul>'
+      +'<li><strong>Validità</strong> — 15 giorni dal ricevimento, non cedibile</li>'
+      +'<li><strong>Partecipanti</strong> — corrispettivo invariato per numero inferiore; supplemento per ogni aggiuntivo</li>'
+      +'<li><strong>Variazioni</strong> — qualsiasi modifica comporta revisione del preventivo</li>'
+      +'<li><strong>Conferma e Caparra</strong> — 30% dell&#39;importo (calcolato automaticamente in €), bonifico su IBAN intestato a, causale = N° preventivo; decadenza automatica dopo 15 gg senza caparra</li>'
+      +'<li><strong>Saldo</strong> — in loco il giorno dell&#39;evento (data inserita nel form)</li>'
+      +'<li><strong>Extra</strong> — tutto ciò non incluso nel preventivo è a parte</li>'
+      +'<li><strong>Orario dell&#39;Evento</strong> — ritardo >30 min: cucina non garantisce i tempi; assenza >1h: evento annullato, caparra trattenuta</li>'
+      +'<li><strong>Annullamento</strong> — caparra trattenuta ai sensi dell&#39;art. 1385 c.c.</li>'
+      +'<li><strong>Prodotti Esterni</strong> — vietati salvo accordo scritto; torta solo con fattura (no casalinga, HACCP); taglio €2/pax; tappo €1,50/pax</li>'
+      +'<li><strong>Allergie e Intolleranze</strong> — comunicare al momento della conferma; ristorante non responsabile per omissioni</li>'
+      +'<li><strong>Accettazione</strong> — risposta email "Accetto" + caparra = accettazione integrale</li>'
+      +'</ul>'
+      +'<p>In calce: <strong>Numero preventivo: PREV-AAAA-NNN</strong>.</p>'
+      +'<div class="gnote">Il colore del food cost% nella lista preventivi: verde &le;28%, arancione 28-35%, rosso &gt;35%. Questi dati sono solo interni.</div>'
+      +'</div></details>';
+
+    // Menu Engineering
+    h+='<details class="gs"><summary>&#128202; Menu Engineering</summary><div class="gb">'
+      +'<p>Accessibile dal tab <strong>La Carte</strong> &#x2192; bottone <strong>&#128202; Menu Engineering</strong>. Classifica i piatti in 4 categorie secondo il metodo Kasavana &amp; Smith, basandosi su margine di contribuzione e popolarità.</p>'
+      +'<h4>Come funziona</h4>'
+      +'<ol>'
+      +'<li>Apri Menu Engineering e inserisci il <strong>periodo di riferimento</strong> (es. "Luglio 2026").</li>'
+      +'<li>Nella tabella, inserisci le <strong>porzioni vendute</strong> per ogni piatto (ricavale dal tuo gestionale di cassa).</li>'
+      +'<li>Il grafico e la classificazione si aggiornano automaticamente.</li>'
+      +'<li>Usa il <strong>selettore per categoria</strong> (Tutte / Antipasti / Primi…) per analizzare ogni sezione separatamente — le medie vengono ricalcolate all&#39;interno della categoria selezionata.</li>'
+      +'</ol>'
+      +'<h4>Le 4 classi</h4>'
+      +'<table><tr><th>Classe</th><th>Popolarità</th><th>Margine</th><th>Azione consigliata</th></tr>'
+      +'<tr><td>&#11088; Star</td><td>Alta</td><td>Alto</td><td>Mantieni, metti in evidenza nel menu</td></tr>'
+      +'<tr><td>&#128052; Plowhorse</td><td>Alta</td><td>Basso</td><td>Riduci i costi o ritocca il prezzo</td></tr>'
+      +'<tr><td>? Puzzle</td><td>Bassa</td><td>Alto</td><td>Promuovi di più, migliora la posizione nel menu</td></tr>'
+      +'<tr><td>&#128021; Dog</td><td>Bassa</td><td>Basso</td><td>Valuta se mantenerlo in carta</td></tr>'
+      +'</table>'
+      +'<h4>Note tecniche</h4>'
+      +'<ul>'
+      +'<li>Le medie (margine e popolarità) sono calcolate <strong>solo sui piatti con almeno 1 porzione venduta</strong> — i piatti a zero non distorcono le soglie.</li>'
+      +'<li>La scala del grafico si adatta automaticamente ai valori presenti.</li>'
+      +'<li>I piatti senza vendite appaiono in tabella con classe <strong>N/D</strong> (grigio) e non compaiono nel grafico.</li>'
+      +'<li>Il margine usato è il <strong>margine di contribuzione</strong> (prezzo vendita − food cost), non il margine netto.</li>'
+      +'</ul>'
+      +'<div class="gtip">Clicca <strong>&#128438; Stampa PDF</strong> per esportare matrice e tabella con il periodo di riferimento indicato.</div>'
       +'</div></details>';
 
     // Importa fattura XML
@@ -3077,6 +3166,126 @@ function _loadIban(){try{_ibanDefault=localStorage.getItem('rc_iban')||'';}catch
 function _saveIban(v){try{localStorage.setItem('rc_iban',v);}catch(e){}}_ibanDefault=localStorage.getItem('rc_iban')||'';
 function _saveIntestatario(v){try{localStorage.setItem('rc_intestatario',v);}catch(e){}}_intestatarioDefault=localStorage.getItem('rc_intestatario')||'';
 
+/* ═══════════════════════════════════════════════════
+   GIST SYNC  — sincronizzazione cloud automatica
+   ═══════════════════════════════════════════════════ */
+var _ghPAT='';
+var _ghGistId='';
+var _syncTimer=null;
+var _syncBusy=false;
+try{_ghPAT=localStorage.getItem('rc_gh_pat')||'';}catch(e){}
+try{_ghGistId=localStorage.getItem('rc_gh_gist_id')||'';}catch(e){}
+
+var _SYNC_KEYS=['rc_magazzino4','rc_mag_ver','rc_fornitori','rc_ordini',
+  'rc_menu_prev','rc_iban','rc_intestatario','rc_piatti','rc_semilavorati',
+  'rc_produzioni','rc_ricette','rc_me_periodo','rc_pv','rc_dismissed'];
+
+function _setSyncUI(state){
+  var btn=document.getElementById('sync-btn');
+  var dot=document.getElementById('sync-status-dot');
+  if(!btn)return;
+  if(state==='none'){btn.style.color='#bbb';btn.title='Sync cloud non configurato — clicca per configurare';if(dot)dot.style.display='none';}
+  else if(state==='ok'){btn.style.color='#2d7d46';btn.title='Sync cloud OK';if(dot){dot.textContent='OK';dot.style.color='#2d7d46';dot.style.display='inline';setTimeout(function(){dot.style.display='none';},3000);}}
+  else if(state==='busy'){btn.style.color='#1d4ed8';btn.title='Sincronizzazione in corso...';}
+  else if(state==='error'){btn.style.color='#dc2626';btn.title='Errore sync — clicca per i dettagli';if(dot){dot.textContent='ERR';dot.style.color='#dc2626';dot.style.display='inline';}}
+}
+
+function scheduleSyncToGist(){
+  if(!_ghPAT||!_ghGistId)return;
+  clearTimeout(_syncTimer);
+  _syncTimer=setTimeout(syncToGist,2000);
+}
+
+async function syncToGist(){
+  if(!_ghPAT||!_ghGistId)return;
+  if(_syncBusy)return;
+  _syncBusy=true;
+  _setSyncUI('busy');
+  try{
+    var data={};
+    _SYNC_KEYS.forEach(function(k){var v=localStorage.getItem(k);if(v!==null)data[k]=v;});
+    var body=JSON.stringify({files:{'miseenplace_data.json':{content:JSON.stringify(data)}}});
+    var resp=await fetch('https://api.github.com/gists/'+_ghGistId,{
+      method:'PATCH',
+      headers:{'Authorization':'token '+_ghPAT,'Content-Type':'application/json'},
+      body:body
+    });
+    if(resp.ok){_setSyncUI('ok');}
+    else{console.error('Gist sync error',resp.status);_setSyncUI('error');}
+  }catch(err){console.error('Gist sync exception',err);_setSyncUI('error');}
+  _syncBusy=false;
+}
+
+async function syncFromGist(){
+  if(!_ghPAT||!_ghGistId){_setSyncUI('none');return;}
+  _setSyncUI('busy');
+  try{
+    var resp=await fetch('https://api.github.com/gists/'+_ghGistId,{
+      headers:{'Authorization':'token '+_ghPAT}
+    });
+    if(!resp.ok){_setSyncUI('error');return;}
+    var json=await resp.json();
+    var fileObj=json.files&&json.files['miseenplace_data.json'];
+    if(!fileObj){_setSyncUI('error');return;}
+    var data=JSON.parse(fileObj.content);
+    var count=0;
+    _SYNC_KEYS.forEach(function(k){if(data[k]!==undefined){localStorage.setItem(k,data[k]);count++;}});
+    if(count>0){loadSaved();renderAll();}
+    _setSyncUI('ok');
+  }catch(err){console.error('syncFromGist exception',err);_setSyncUI('error');}
+}
+
+function apriSyncSettings(){
+  var patVal=_ghPAT||'';
+  var gidVal=_ghGistId||'';
+  var overlay=document.createElement('div');
+  overlay.className='modal-overlay open';
+  overlay.innerHTML='<div class="modal" style="max-width:480px;">'
+    +'<div class="modal-header"><span style="font-weight:700;font-size:16px;">&#9729; Sincronizzazione Cloud</span>'
+    +'<button class="modal-close" onclick="this.closest(\'.modal-overlay\').remove()">&#10005;</button></div>'
+    +'<div style="padding:16px 20px;">'
+    +'<p style="font-size:13px;color:#555;margin:0 0 14px;">Sincronizza i dati tra tutti i tuoi dispositivi tramite un Gist GitHub privato.</p>'
+    +'<div style="background:#f5f4f0;border-radius:8px;padding:12px 14px;font-size:12px;color:#666;margin-bottom:16px;">'
+    +'<strong>Come configurare (una volta sola):</strong><br>'
+    +'1. Vai su <a href=\"https://github.com/settings/tokens/new\" target=\"_blank\" style=\"color:#1d4ed8;\">github.com/settings/tokens/new</a><br>'
+    +'2. Seleziona scope <strong>gist</strong>, genera il token e copialo qui sotto<br>'
+    +'3. Vai su <a href=\"https://gist.github.com\" target=\"_blank\" style=\"color:#1d4ed8;\">gist.github.com</a>, crea un Gist <strong>privato</strong> con un file chiamato <code>miseenplace_data.json</code><br>'
+    +'4. Copia l&#39;ID del Gist dall&#39;URL (es. <code>abc123...</code>) e incollalo qui sotto'
+    +'</div>'
+    +'<label style="font-size:12px;font-weight:600;color:#3d2b1f;display:block;margin-bottom:4px;">GitHub PAT (Personal Access Token)</label>'
+    +'<input id="sync-pat-input" type="password" value="'+patVal+'" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" '
+    +'style="width:100%;box-sizing:border-box;padding:8px 10px;border:1px solid #d0cec8;border-radius:8px;font-size:13px;margin-bottom:12px;">'
+    +'<label style="font-size:12px;font-weight:600;color:#3d2b1f;display:block;margin-bottom:4px;">Gist ID</label>'
+    +'<input id="sync-gist-input" type="text" value="'+gidVal+'" placeholder="es. a1b2c3d4e5f6..." '
+    +'style="width:100%;box-sizing:border-box;padding:8px 10px;border:1px solid #d0cec8;border-radius:8px;font-size:13px;margin-bottom:16px;">'
+    +'<div style="display:flex;gap:8px;flex-wrap:wrap;">'
+    +'<button onclick="_saveSyncCreds()" style="flex:1;padding:9px;font-size:13px;font-weight:600;background:#1a1a1a;color:#fff;border:none;border-radius:8px;cursor:pointer;">Salva e attiva</button>'
+    +'<button onclick="syncFromGist()" style="flex:1;padding:9px;font-size:13px;font-weight:600;background:#1d4ed8;color:#fff;border:none;border-radius:8px;cursor:pointer;">&#8659; Scarica da cloud</button>'
+    +'<button onclick="syncToGist()" style="flex:1;padding:9px;font-size:13px;font-weight:600;background:#2d7d46;color:#fff;border:none;border-radius:8px;cursor:pointer;">&#8657; Carica su cloud</button>'
+    +'</div>'
+    +(patVal&&gidVal?'<div style=\"text-align:center;margin-top:10px;\"><button onclick=\"_disableSyncCreds()\" style=\"font-size:11px;color:#dc2626;background:none;border:none;cursor:pointer;text-decoration:underline;\">Disabilita sync</button></div>':'')
+    +'</div></div>';
+  document.body.appendChild(overlay);
+}
+
+function _saveSyncCreds(){
+  var pat=document.getElementById('sync-pat-input').value.trim();
+  var gid=document.getElementById('sync-gist-input').value.trim();
+  if(!pat||!gid){alert('Inserisci sia il PAT che il Gist ID.');return;}
+  _ghPAT=pat;_ghGistId=gid;
+  try{localStorage.setItem('rc_gh_pat',pat);localStorage.setItem('rc_gh_gist_id',gid);}catch(e){}
+  var ov=document.querySelector('.modal-overlay');if(ov)ov.remove();
+  syncToGist();
+}
+
+function _disableSyncCreds(){
+  if(!confirm('Disabilitare la sincronizzazione cloud?'))return;
+  _ghPAT='';_ghGistId='';
+  try{localStorage.removeItem('rc_gh_pat');localStorage.removeItem('rc_gh_gist_id');}catch(e){}
+  var ov=document.querySelector('.modal-overlay');if(ov)ov.remove();
+  _setSyncUI('none');
+}
+
 function generaNumPrev(){
   var d=new Date();
   var year=d.getFullYear();
@@ -3093,6 +3302,7 @@ function loadMenuPreventivi(){
 }
 function saveMenuPreventivi(){
   try{localStorage.setItem('rc_menu_prev',JSON.stringify(menuPreventivi));}catch(e){}
+  scheduleSyncToGist();
 }
 
 function renderMenuPreventivi(){
@@ -3765,7 +3975,7 @@ function applyAdminUI(){
     lockBtn.title = isAdmin ? 'Esci da admin' : 'Accedi come admin';
   }
   var pubBtn = document.getElementById('btn-pubblica');
-  if(pubBtn){ pubBtn.style.display = isAdmin ? 'flex' : 'none'; }
+  if(pubBtn){ pubBtn.style.display = 'none'; }
   var snapBtn = document.getElementById('btn-snapshot');
   if(snapBtn){ snapBtn.style.display = isAdmin ? 'flex' : 'none'; }
   var toolbar = document.getElementById('admin-toolbar');
@@ -3774,6 +3984,9 @@ function applyAdminUI(){
   if(btnNP){ btnNP.style.display = isAdmin ? 'flex' : 'none'; }
   var btnNS = document.getElementById('btn-nuovo-semilavorato');
   if(btnNS){ btnNS.style.display = isAdmin ? 'flex' : 'none'; }
+  var btnME = document.getElementById('btn-me');
+  if(btnME){ btnME.style.display = isAdmin ? 'inline-flex' : 'none'; }
+  if(!isAdmin){ var mePanel=document.getElementById('me-panel');if(mePanel)mePanel.style.display='none'; }
   var currentActive = document.querySelector('.section.active');
   if(currentActive && !isAdmin){
     var id = currentActive.id.replace('tab-','');
@@ -3854,6 +4067,7 @@ loadProduzioni();
 
 function saveProduzioni(){
   try{localStorage.setItem('rc_produzioni',JSON.stringify(produzioni));}catch(e){}
+  scheduleSyncToGist();
 }
 function saveStorico(){
   try{localStorage.setItem('rc_produzioni_storico',JSON.stringify(produzioniStorico));}catch(e){}
@@ -4044,7 +4258,7 @@ function stampaInventarioValorizzato(){
     +'@media print{body{padding:16px;}button{display:none;}}'
     +'</style></head><body>'
     +'<h1>&#128202; Inventario valorizzato</h1>'
-    +'<div class="sub">Data: '+dataStr+' &mdash; MiseEnPlace</div>'
+    +'<div class="sub">Data: '+dataStr+' &mdash; MiseEnPlace PRO</div>'
     +'<table><thead><tr>'
     +'<th>Ingrediente</th>'
     +'<th class="r">Giacenza</th>'
@@ -4056,7 +4270,7 @@ function stampaInventarioValorizzato(){
     +'<td class="r" style="padding:8px 10px;font-size:15px;font-weight:700;">'+grandTotal.toFixed(2)+' €</td></tr>'
     +'</tbody></table>'
     +'<div style="font-size:11px;color:#888;margin-bottom:16px;">⚠ = giacenza negativa (materia prima esaurita — aggiornare le giacenze)</div>'
-    +'<div class="footer"><span>MiseEnPlace — Inventario valorizzato al '+dataStr+'</span><span>Riservato uso interno</span></div>'
+    +'<div class="footer"><span>MiseEnPlace PRO — Inventario valorizzato al '+dataStr+'</span><span>Riservato uso interno</span></div>'
     +'<script>window.onload=function(){window.print();}<\/script>'
     +'</body></html>';
   var w=window.open('','_blank','width=860,height=940');
@@ -5007,6 +5221,7 @@ function loadSemilavorati(){
 
 function saveSemilavorati(){
   try{ localStorage.setItem('rc_semilavorati', JSON.stringify(semilavorati)); }catch(e){}
+  scheduleSyncToGist();
 }
 
 /* costo per unità di un semilavorato (per g/kg/lt/ml/pz) */
@@ -5338,6 +5553,7 @@ function loadPiatti(){
 
 function savePiatti(){
   try{ localStorage.setItem('rc_piatti', JSON.stringify(piatti)); }catch(e){}
+  scheduleSyncToGist();
 }
 
 function costoPiatto(pi){
