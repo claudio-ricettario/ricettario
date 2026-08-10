@@ -449,7 +449,7 @@ textarea{resize:vertical;min-height:60px;}
   <!-- NUOVO PIATTO -->
   <div id="tab-nuovo-piatto" class="section">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px;">
-      <div><h2 id="np-title" style="margin-bottom:2px;">Nuovo piatto</h2>
+      <div><h2 id="np-title" style="margin-bottom:2px;">Aggiungi nuova voce</h2>
       <p class="muted" style="margin-bottom:0;">Componi il piatto con materie prime e/o semilavorati</p></div>
     </div>
     <div id="np-alert" style="margin-bottom:8px;"></div>
@@ -2944,7 +2944,7 @@ function renderGuida(){
     h+='<details class="gs"><summary>&#127869; Piatti finiti</summary><div class="gb">'
       +'<h4>Creare un piatto finito</h4>'
       +'<ol>'
-      +'<li>Clicca <strong>+ Nuovo Piatto</strong> dalla home.</li>'
+      +'<li>Clicca <strong>+ Aggiungi nuova voce</strong> dalla home.</li>'
       +'<li>Inserisci nome, categoria, numero di porzioni, prezzo di vendita IVA inclusa.</li>'
       +'<li>Aggiungi i componenti: materie prime e/o semilavorati con grammature.</li>'
       +'<li>Imposta il coefficiente di complessità del piatto.</li>'
@@ -5613,7 +5613,7 @@ function openPiattoModal(idx){
   pm2Comps=[];
   var isNew=idx===-1;
   document.getElementById('piatto-modal-idx').value=idx;
-  document.getElementById('piatto-modal-title').textContent=isNew?'Nuovo piatto finito':'Modifica piatto';
+  document.getElementById('piatto-modal-title').textContent=isNew?'Aggiungi nuova voce':'Modifica voce';
   document.getElementById('pm2-btn-elimina').style.display=isNew?'none':'block';
   if(isNew){
     document.getElementById('pm2-nome').value='';
@@ -5741,7 +5741,7 @@ function renderPiatti(){
   var list=piatti.filter(function(p){return !q||p.nome.toLowerCase().indexOf(q.toLowerCase())>=0;});
   if(!list.length){
     el.innerHTML='<div class="card" style="text-align:center;padding:32px;color:#aaa;">'
-      +(piatti.length?'Nessun risultato per "'+q+'"':'Nessun piatto. Premi "+ Nuovo piatto" per iniziare.')
+      +(piatti.length?'Nessun risultato per "'+q+'"':'Nessun voce. Premi &quot;+ Aggiungi nuova voce&quot; per iniziare.')
       +'</div>';
     return;
   }
@@ -7375,7 +7375,7 @@ function npReset(){
   aggiornaSuggerimentoCoeff();
   var catEl=document.getElementById('np-cat');if(catEl)catEl.value='Primi piatti';
   var subEl=document.getElementById('np-sottocat');if(subEl)subEl.value='';
-  var titleEl=document.getElementById('np-title');if(titleEl)titleEl.textContent='Nuovo piatto';
+  var titleEl=document.getElementById('np-title');if(titleEl)titleEl.textContent='Aggiungi nuova voce';
   var btnEl=document.getElementById('np-save-btn');if(btnEl)btnEl.textContent='✓ Salva piatto';
   npClearFoto();npRenderComps();npRenderSteps();npClearAlert();
   /* re-init selector */
@@ -7879,7 +7879,7 @@ function npSalva(){
 <div class="modal-overlay" id="piatto-modal" onclick="if(event.target===this)closePiattoModal()">
   <div class="modal" style="max-width:620px;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-      <h3 id="piatto-modal-title" style="margin:0;">Nuovo piatto finito</h3>
+      <h3 id="piatto-modal-title" style="margin:0;">Aggiungi nuova voce</h3>
       <button class="btn-secondary" onclick="closePiattoModal()">&#10005;</button>
     </div>
     <input type="hidden" id="piatto-modal-idx" value="-1"/>
