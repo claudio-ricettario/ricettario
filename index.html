@@ -450,14 +450,14 @@ textarea{resize:vertical;min-height:60px;}
   <div id="tab-nuovo-piatto" class="section">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px;">
       <div><h2 id="np-title" style="margin-bottom:2px;">Aggiungi nuova voce</h2>
-      <p class="muted" style="margin-bottom:0;">Componi il piatto con materie prime e/o semilavorati</p></div>
+      <p class="muted" style="margin-bottom:0;">Aggiungi materie prime e/o semilavorati per calcolare il food cost</p></div>
     </div>
     <div id="np-alert" style="margin-bottom:8px;"></div>
 
     <div class="card">
       <div class="section-label">Informazioni generali</div>
       <div class="form-grid">
-        <div class="form-row"><label>Nome piatto *</label><input type="text" id="np-nome" placeholder="es. Gnocchi al rag&ugrave; di vitello"/></div>
+        <div class="form-row"><label>Nome voce *</label><input type="text" id="np-nome" placeholder="es. Gnocchi al rag&ugrave; di vitello"/></div>
         <div class="form-row"><label>Categoria</label>
           <select id="np-cat" onchange="npCatChange(this.value)">
             <option>Antipasti</option><option selected>Primi piatti</option><option>Secondi piatti</option>
@@ -559,10 +559,11 @@ textarea{resize:vertical;min-height:60px;}
     </div>
 
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-bottom:24px;flex-wrap:wrap;">
-      <button class="btn-danger" id="np-delete-btn" onclick="npElimina()" style="display:none;margin-right:auto;">&#128465; Elimina piatto</button>
+      <button class="btn-danger" id="np-delete-btn" onclick="npElimina()" style="display:none;margin-right:auto;">&#128465; Elimina voce</button>
       <button class="btn-secondary" id="np-print-btn" onclick="printPiatto(npEditIdx)" style="display:none;">&#128438; Stampa / PDF</button>
+      <button class="btn-secondary" onclick="showTab('home')">&#8592; Annulla</button>
       <button class="btn-secondary" onclick="npReset()">&#10005; Svuota</button>
-      <button class="btn-primary" id="np-save-btn" style="padding:10px 24px;font-size:14px;" onclick="npSalva()">&#10003; Salva piatto</button>
+      <button class="btn-primary" id="np-save-btn" style="padding:10px 24px;font-size:14px;" onclick="npSalva()">&#10003; Salva voce</button>
     </div>
   </div>
 
