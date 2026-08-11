@@ -7643,6 +7643,9 @@ function npSalva(){
    ═══════════════════════════════════════════════════ */
 var _APP_PW = 'Y3VjaW5hMjAyNg=='; // btoa('cucina2026')
 
+/* cancella auth alla chiusura — evita che Chrome ripristini la sessione autenticata */
+window.addEventListener('beforeunload',function(){try{sessionStorage.removeItem('mep_auth');}catch(e){}});
+
 function _landingCheck(){
   var ok=false;
   try{ok=sessionStorage.getItem('mep_auth')==='1';}catch(e){}
