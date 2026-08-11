@@ -286,6 +286,54 @@ textarea{resize:vertical;min-height:60px;}
 </style>
 </head>
 <body>
+<!-- LANDING PAGE -->
+<div id="landing-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#1a1a1a 0%,#3d2b1f 60%,#1a1a1a 100%);overflow-y:auto;">
+  <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;">
+    <!-- Logo / titolo -->
+    <div style="text-align:center;margin-bottom:40px;">
+      <div style="font-size:48px;margin-bottom:12px;">&#127869;</div>
+      <h1 style="font-size:36px;font-weight:700;color:#fff;letter-spacing:.04em;margin-bottom:6px;">MiseEnPlace PRO</h1>
+      <p style="font-size:15px;color:#b8a99a;letter-spacing:.06em;text-transform:uppercase;">Gestione professionale per la ristorazione</p>
+    </div>
+
+    <!-- Feature cards -->
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;max-width:760px;margin-bottom:48px;">
+      <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:20px 24px;min-width:200px;flex:1;max-width:220px;">
+        <div style="font-size:28px;margin-bottom:10px;">&#128230;</div>
+        <div style="font-weight:600;color:#fff;margin-bottom:6px;">Magazzino</div>
+        <div style="font-size:13px;color:#b8a99a;line-height:1.5;">Giacenze, lotti, scadenze e storico prezzi per ogni materia prima.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:20px 24px;min-width:200px;flex:1;max-width:220px;">
+        <div style="font-size:28px;margin-bottom:10px;">&#128202;</div>
+        <div style="font-weight:600;color:#fff;margin-bottom:6px;">Food Cost</div>
+        <div style="font-size:13px;color:#b8a99a;line-height:1.5;">Calcolo automatico del food cost per ogni piatto, con BEP e costi di gestione.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:20px 24px;min-width:200px;flex:1;max-width:220px;">
+        <div style="font-size:28px;margin-bottom:10px;">&#128203;</div>
+        <div style="font-weight:600;color:#fff;margin-bottom:6px;">Preventivi</div>
+        <div style="font-size:13px;color:#b8a99a;line-height:1.5;">Menu personalizzati per eventi con PDF professionale e condizioni contrattuali.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:20px 24px;min-width:200px;flex:1;max-width:220px;">
+        <div style="font-size:28px;margin-bottom:10px;">&#9729;</div>
+        <div style="font-weight:600;color:#fff;margin-bottom:6px;">Sync Cloud</div>
+        <div style="font-size:13px;color:#b8a99a;line-height:1.5;">Dati sincronizzati automaticamente su tutti i tuoi dispositivi.</div>
+      </div>
+    </div>
+
+    <!-- Login box -->
+    <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:32px 36px;width:100%;max-width:360px;text-align:center;">
+      <h2 style="font-size:18px;font-weight:600;color:#fff;margin-bottom:6px;">Accesso</h2>
+      <p style="font-size:13px;color:#b8a99a;margin-bottom:24px;">Inserisci la password per entrare</p>
+      <input id="landing-pw" type="password" placeholder="Password" onkeydown="if(event.key==='Enter')_landingAccedi()"
+        style="width:100%;padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:15px;text-align:center;outline:none;margin-bottom:12px;"/>
+      <div id="landing-err" style="font-size:12px;color:#f87171;min-height:18px;margin-bottom:12px;"></div>
+      <button onclick="_landingAccedi()" style="width:100%;padding:13px;font-size:15px;font-weight:700;background:#fff;color:#1a1a1a;border:none;border-radius:10px;cursor:pointer;letter-spacing:.02em;">Accedi &rarr;</button>
+    </div>
+
+    <p style="margin-top:32px;font-size:11px;color:rgba(255,255,255,.25);">&copy; 2026 MiseEnPlace PRO &mdash; Tutti i diritti riservati</p>
+  </div>
+</div>
+<!-- END LANDING PAGE -->
 <header>
   <h1>MiseEnPlace PRO</h1>
   <div style="flex:1;max-width:320px;min-width:140px;margin:0 8px;">
@@ -4002,6 +4050,7 @@ function applyAdminUI(){
 }
 
 loadSaved();
+_landingCheck();
 loadOrdiniStorico();
 loadMenuPreventivi();
 updateAll();
@@ -7586,6 +7635,45 @@ function npSalva(){
   npReset();
   showTab('home');
   renderHome();
+}
+
+
+/* ═══════════════════════════════════════════════════
+   LANDING PAGE — accesso con password
+   ═══════════════════════════════════════════════════ */
+var _APP_PW = 'Y3VjaW5hMjAyNg=='; // btoa('cucina2026')
+
+function _landingCheck(){
+  var ok=false;
+  try{ok=sessionStorage.getItem('mep_auth')==='1';}catch(e){}
+  var el=document.getElementById('landing-overlay');
+  if(el) el.style.display=ok?'none':'block';
+  if(!ok){setTimeout(function(){var i=document.getElementById('landing-pw');if(i)i.focus();},100);}
+}
+
+function _landingAccedi(){
+  var pw=document.getElementById('landing-pw').value;
+  var err=document.getElementById('landing-err');
+  if(btoa(pw)===_APP_PW){
+    try{sessionStorage.setItem('mep_auth','1');}catch(e){}
+    document.getElementById('landing-overlay').style.display='none';
+  } else {
+    err.textContent='Password errata. Riprova.';
+    document.getElementById('landing-pw').value='';
+    document.getElementById('landing-pw').focus();
+    setTimeout(function(){err.textContent='';},3000);
+  }
+}
+
+function cambiaPasswordApp(){
+  var attuale=prompt('Password attuale:');
+  if(!attuale||btoa(attuale)!==_APP_PW){alert('Password attuale errata.');return;}
+  var nuova=prompt('Nuova password:');
+  if(!nuova||nuova.length<4){alert('Password troppo corta (min 4 caratteri).');return;}
+  var conferma=prompt('Conferma nuova password:');
+  if(nuova!==conferma){alert('Le password non coincidono.');return;}
+  _APP_PW=btoa(nuova);
+  alert('Password aggiornata. Nota: si resettera al prossimo aggiornamento dell app.');
 }
 
 </script>
