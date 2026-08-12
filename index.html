@@ -414,7 +414,10 @@ textarea{resize:vertical;min-height:60px;}
         <h2 style="margin:0 0 4px;font-size:22px;">&#127968; Dashboard</h2>
         <p class="muted" style="margin:0;">Scegli una sezione per iniziare</p>
       </div>
-      <div id="dash-admin-badge" style="display:none;background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:5px 14px;font-size:12px;font-weight:600;color:#b45309;">&#128275; Modalità Admin</div>
+      <div id="dash-admin-badge" style="display:none;background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:5px 8px 5px 14px;font-size:12px;font-weight:600;color:#b45309;display:none;align-items:center;gap:10px;">
+        <span>&#128275; Modalità Admin</span>
+        <button onclick="logoutAdmin()" style="padding:3px 10px;font-size:11px;font-weight:600;background:#fff;border:1px solid #f59e0b;border-radius:6px;cursor:pointer;color:#b45309;">Disconnetti</button>
+      </div>
     </div>
     <div class="dash-grid">
       <!-- La Carte -->
@@ -4109,7 +4112,7 @@ function logoutAdmin(){
   isAdmin = false;
   try{ sessionStorage.removeItem('rc_admin'); }catch(e){}
   applyAdminUI();
-  showTab('home');
+  showTab('dashboard');
 }
 
 var ADMIN_ONLY_TABS = ['magazzino','foodcost','fornitori','nuovo-piatto','menu-prev'];
@@ -4159,7 +4162,7 @@ function applyAdminUI(){
     if(lock) lock.style.display=isAdmin?'none':'flex';
   });
   var adminBadge=document.getElementById('dash-admin-badge');
-  if(adminBadge) adminBadge.style.display=isAdmin?'block':'none';
+  if(adminBadge) adminBadge.style.display=isAdmin?'flex':'none';
   var currentActive = document.querySelector('.section.active');
   if(currentActive && !isAdmin){
     var id = currentActive.id.replace('tab-','');
