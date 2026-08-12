@@ -432,12 +432,11 @@ textarea{resize:vertical;min-height:60px;}
         <div class="dash-card-title">Produzioni</div>
         <div class="dash-card-desc">Lotti di produzione, etichette HACCP e tracciabilità</div>
       </div>
-      <!-- Semilavorati — admin -->
-      <div class="dash-card admin-locked" id="dash-card-semilavorati" onclick="dashCardClick('semilavorati')">
+      <!-- Semilavorati — sempre accessibile -->
+      <div class="dash-card" onclick="showTab('semilavorati')">
         <div class="dash-card-icon">&#9881;</div>
         <div class="dash-card-title">Semilavorati</div>
         <div class="dash-card-desc">Ricette base e preparazioni riutilizzabili</div>
-        <div class="dash-lock-overlay" id="dash-lock-semilavorati"><div class="dl-icon">&#128274;</div><div class="dl-label">Admin</div></div>
       </div>
       <!-- Magazzino — admin -->
       <div class="dash-card admin-locked" id="dash-card-magazzino" onclick="dashCardClick('magazzino')">
@@ -4151,7 +4150,7 @@ function applyAdminUI(){
   if(btnME){ btnME.style.display = isAdmin ? 'inline-flex' : 'none'; }
   if(!isAdmin){ var mePanel=document.getElementById('me-panel');if(mePanel)mePanel.style.display='none'; }
   // Dashboard card lock/unlock
-  var adminCards=['semilavorati','magazzino','foodcost','fornitori','menu-prev'];
+  var adminCards=['magazzino','foodcost','fornitori','menu-prev'];
   adminCards.forEach(function(tab){
     var card=document.getElementById('dash-card-'+tab);
     var lock=document.getElementById('dash-lock-'+tab);
