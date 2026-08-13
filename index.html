@@ -2969,8 +2969,15 @@ function renderGuida(){
   if(!isAdmin){
     h+='<p style="color:#888;font-size:13px;margin-bottom:20px;">Operazioni disponibili per il tuo profilo.</p>';
 
-    h+='<details class="gs"><summary>&#127869; Consultare ricette e piatti</summary><div class="gb">'
-      +'<p>Dalla schermata principale vedi tutti i piatti organizzati per categoria.</p>'
+    h+='<details class="gs"><summary>&#127968; Come navigare</summary><div class="gb">'
+      +'<p>All\'apertura dell\'app compare la <strong>Dashboard</strong> con le card delle sezioni disponibili. Clicca una card per entrare.</p>'
+      +'<ul>'
+      +'<li>Il pulsante <strong>&#127968;</strong> in alto a sinistra riporta sempre alla dashboard.</li>'
+      +'<li>La barra di ricerca in alto trova qualsiasi piatto o semilavorato per nome.</li>'
+      +'</ul>'
+      +'</div></details>'
+      +'<details class="gs"><summary>&#127869; Consultare ricette e piatti</summary><div class="gb">'
+      +'<p>Dalla dashboard clicca <strong>&#127374; La Carte</strong> per vedere tutti i piatti organizzati per categoria.</p>'
       +'<ol>'
       +'<li>Usa la <strong>barra di ricerca</strong> in alto per trovare un piatto per nome.</li>'
       +'<li>Clicca sul piatto per aprire la scheda con ingredienti, procedimento e allergeni.</li>'
@@ -3002,13 +3009,30 @@ function renderGuida(){
 
   } else {
     h+='<p style="color:#888;font-size:13px;margin-bottom:20px;">Guida completa alla gestione del ricettario.</p>';
-    h+='<details class="gs"><summary>&#128204; Barra di navigazione</summary><div class="gb">'
-      +'<p>La barra in cima è organizzata in due righe tematiche:</p>'
-      +'<table><tr><th>Riga</th><th>Tab disponibili</th></tr>'
-      +'<tr><td><strong>Cucina</strong></td><td>&#9654; Produzioni &nbsp;&#127374; La Carte &nbsp;&#9881; Semilavorati</td></tr>'
-      +'<tr><td><strong>Gestione</strong></td><td>&#128230; Magazzino &nbsp;&#128202; Food cost &nbsp;&#127978; Fornitori &nbsp;&#128203; Preventivi &nbsp;&#128214; Guida &nbsp;&#128274; Admin</td></tr>'
+    h+='<details class="gs"><summary>&#127968; Dashboard e navigazione</summary><div class="gb">'
+      +'<p>All\'apertura dell\'app compare la <strong>Dashboard</strong> — una griglia di 9 card che dà accesso a tutte le sezioni.</p>'
+      +'<table><tr><th>Card</th><th>Accesso</th><th>Descrizione</th></tr>'
+      +'<tr><td>&#127374; La Carte</td><td>Tutti</td><td>Ricette, ingredienti, allergeni e costi</td></tr>'
+      +'<tr><td>&#9654; Produzioni</td><td>Tutti</td><td>Lotti HACCP, etichette e tracciabilità</td></tr>'
+      +'<tr><td>&#9881; Semilavorati</td><td>Tutti (modifica solo admin)</td><td>Ricette base e preparazioni riutilizzabili</td></tr>'
+      +'<tr><td>&#128230; Magazzino</td><td>&#128274; Admin</td><td>Giacenze, lotti, scadenze e storico prezzi</td></tr>'
+      +'<tr><td>&#128202; Food Cost</td><td>&#128274; Admin</td><td>Analisi costi, BEP e marginalità</td></tr>'
+      +'<tr><td>&#127978; Fornitori</td><td>&#128274; Admin</td><td>Anagrafica e gestione ordini</td></tr>'
+      +'<tr><td>&#128203; Preventivi</td><td>&#128274; Admin</td><td>Menu eventi con PDF professionale</td></tr>'
+      +'<tr><td>&#128214; Guida</td><td>Tutti</td><td>Questa guida</td></tr>'
       +'</table>'
-      +'<div class="gnote">I tab nella riga Gestione sono visibili solo in modalità amministratore. Il lucchetto &#128274; in fondo alla riga li attiva.</div>'
+      +'<h4>Navigazione</h4>'
+      +'<ul>'
+      +'<li>Clicca una card per entrare nella sezione.</li>'
+      +'<li>Le card con &#128274; mostrano un lucchetto: cliccale per inserire la password admin e sbloccarle.</li>'
+      +'<li>Il pulsante <strong>&#127968;</strong> in alto a sinistra (accanto al logo) riporta sempre alla dashboard da qualsiasi sezione.</li>'
+      +'</ul>'
+      +'<h4>Modalità Admin</h4>'
+      +'<ul>'
+      +'<li>Dalla dashboard, in modalità admin appare il badge <strong>&#128275; Modalità Admin</strong> in alto a destra.</li>'
+      +'<li>Clicca <strong>Disconnetti</strong> nel badge per uscire dalla modalità admin e tornare alla dashboard.</li>'
+      +'</ul>'
+      +'<div class="gnote">Le card admin bloccate sono visibili a tutti ma non navigabili finché non si inserisce la password amministratore.</div>'
       +'</div></details>';
 
     // Backup e strumenti admin
