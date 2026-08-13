@@ -1582,7 +1582,12 @@ function updatePriceWithHistory(mi,si,newPrice){
 
 function setActive(mi,si){magazzino[mi].activeIdx=si;saveMagazzino();updateAll();renderMagazzino();}
 
-function toggleExpand(mi){expanded[mi]=!expanded[mi];renderMagazzino();}
+function toggleExpand(mi){
+  var wasOpen=expanded[mi];
+  expanded={};
+  if(!wasOpen) expanded[mi]=true;
+  renderMagazzino();
+}
 
 
 function setActiveSupplier(mi,si){
@@ -5744,7 +5749,9 @@ function renderSemilavorati(){
 
 function toggleSemiDetail(idx,el){
   var det=document.getElementById('semi-detail-'+idx);
-  if(det) det.classList.toggle('open');
+  var wasOpen=det&&det.classList.contains('open');
+  document.querySelectorAll('.semi-detail.open').forEach(function(d){d.classList.remove('open');});
+  if(!wasOpen&&det) det.classList.add('open');
 }
 
 /* ===== PIATTI FINITI ===== */
