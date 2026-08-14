@@ -3329,6 +3329,63 @@ function renderGuida(){
       +'<div class="gtip">Clicca <strong>&#128438; Stampa PDF</strong> per esportare matrice e tabella con il periodo di riferimento indicato.</div>'
       +'</div></details>';
 
+    // Infrastruttura & Account
+    h+='<details class="gs"><summary>&#128279; Infrastruttura &amp; Account</summary><div class="gb">'
+      +'<p style="color:#888;font-size:13px;margin-bottom:16px;">Riferimenti pratici per gestire dominio, email, hosting e dati. Aggiorna questa sezione se cambi qualcosa.</p>'
+
+      +'<h4>&#127760; Dominio — miseenplacepro.it</h4>'
+      +'<table><tr><th>Cosa</th><th>Dove</th><th>Note</th></tr>'
+      +'<tr><td>Registrar</td><td><a href="https://www.ionos.it" target="_blank">IONOS</a></td><td>Account: illety70@gmail.com</td></tr>'
+      +'<tr><td>Pannello DNS</td><td>ionos.it → Dominio → DNS</td><td>Qui si modificano tutti i record</td></tr>'
+      +'<tr><td>Rinnovo</td><td>Automatico su IONOS</td><td>Verifica scadenza nel pannello</td></tr>'
+      +'</table>'
+      +'<h4>Record DNS attivi</h4>'
+      +'<table><tr><th>Tipo</th><th>Nome</th><th>Valore</th><th>Scopo</th></tr>'
+      +'<tr><td>A</td><td>@</td><td>185.199.108-111.153.153</td><td>GitHub Pages (4 record)</td></tr>'
+      +'<tr><td>CNAME</td><td>www</td><td>claudio-ricettario.github.io</td><td>GitHub Pages www</td></tr>'
+      +'<tr><td>MX</td><td>@</td><td>mx1.improvmx.com (10)</td><td>Email ImprovMX</td></tr>'
+      +'<tr><td>MX</td><td>@</td><td>mx2.improvmx.com (20)</td><td>Email ImprovMX</td></tr>'
+      +'</table>'
+
+      +'<h4>&#9993; Email</h4>'
+      +'<table><tr><th>Cosa</th><th>Dove</th><th>Note</th></tr>'
+      +'<tr><td>Provider</td><td><a href="https://app.improvmx.com" target="_blank">ImprovMX</a></td><td>Piano gratuito — solo forwarding, non si può rispondere da @miseenplacepro.it</td></tr>'
+      +'<tr><td>Account</td><td>illety70@gmail.com</td><td>Login su improvmx.com</td></tr>'
+      +'<tr><td>Alias attivi</td><td>info@ → illety70@gmail.com<br>claudio@ → illety70@gmail.com</td><td>Le email arrivano su Gmail</td></tr>'
+      +'</table>'
+      +'<div class="gnote">Se aggiungi un nuovo alias vai su app.improvmx.com → miseenplacepro.it → Alias.</div>'
+
+      +'<h4>&#128187; App web — Hosting</h4>'
+      +'<table><tr><th>Cosa</th><th>Dove</th><th>Note</th></tr>'
+      +'<tr><td>Hosting</td><td><a href="https://pages.github.com" target="_blank">GitHub Pages</a></td><td>Gratuito, aggiornamento automatico ad ogni push</td></tr>'
+      +'<tr><td>Repository</td><td><a href="https://github.com/claudio-ricettario/ricettario" target="_blank">github.com/claudio-ricettario/ricettario</a></td><td>Branch: main — cartella: ricettario/</td></tr>'
+      +'<tr><td>URL pubblica</td><td><a href="https://www.miseenplacepro.it" target="_blank">www.miseenplacepro.it</a></td><td>HTTPS attivo</td></tr>'
+      +'<tr><td>File app</td><td>ricettario/index.html</td><td>Tutto l\'app è in questo singolo file</td></tr>'
+      +'</table>'
+      +'<div class="gtip">Per aggiornare l\'app: modifica il file → <code>git add . && git commit -m "..." && git push</code> → il sito si aggiorna in 1-2 minuti.</div>'
+
+      +'<h4>&#9729; Sincronizzazione dati — GitHub Gist</h4>'
+      +'<table><tr><th>Cosa</th><th>Dove</th><th>Note</th></tr>'
+      +'<tr><td>Gist privato</td><td><a href="https://gist.github.com" target="_blank">gist.github.com</a></td><td>File: miseenplace_data.json</td></tr>'
+      +'<tr><td>PAT (token)</td><td>github.com → Settings → Tokens</td><td>Scope richiesto: gist — salvato nel browser locale</td></tr>'
+      +'<tr><td>Config nell\'app</td><td>Pulsante &#9729; in alto a destra</td><td>Inserisci PAT e Gist ID per attivare il sync</td></tr>'
+      +'</table>'
+      +'<div class="gnote">Il PAT ha una scadenza. Se il &#9729; diventa rosso, probabilmente è scaduto: generane uno nuovo su GitHub con scope gist e aggiornalo nell\'app.</div>'
+
+      +'<h4>&#128274; Password app</h4>'
+      +'<table><tr><th>Password</th><th>Dove cambiarla</th></tr>'
+      +'<tr><td>Password landing (accesso app)</td><td>Modalità admin → Guida → sezione password, oppure modifica <code>_APP_PW</code> nel codice</td></tr>'
+      +'<tr><td>Password admin</td><td>Hardcoded nel file index.html — variabile <code>ADMIN_PASSWORD</code></td></tr>'
+      +'</table>'
+
+      +'<h4>&#128190; Backup dati</h4>'
+      +'<table><tr><th>Tipo</th><th>Frequenza</th><th>Come</th></tr>'
+      +'<tr><td>Cloud automatico</td><td>Ad ogni salvataggio (2 sec)</td><td>GitHub Gist — se configurato</td></tr>'
+      +'<tr><td>Locale manuale</td><td>Quando vuoi</td><td>Modalità admin → Esporta → salva il JSON in iCloud</td></tr>'
+      +'</table>'
+      +'<div class="gtip">Fai un export manuale almeno una volta al mese come piano B extra.</div>'
+      +'</div></details>';
+
     // Importa fattura XML
     h+='<details class="gs"><summary>&#128229; Importa fattura XML</summary><div class="gb">'
       +'<p>Il bottone <strong>&#128229; Importa fattura XML</strong> in cima al tab Magazzino permette di aggiornare i prezzi delle materie prime importando direttamente una fattura elettronica in formato FatturaPA (.xml), il formato obbligatorio per tutti i fornitori italiani con partita IVA.</p>'
