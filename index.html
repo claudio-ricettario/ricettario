@@ -5742,6 +5742,9 @@ function renderSemilavorati(){
           +'<div>Sale<br><strong>'+n.sale+' g</strong></div>'
           +'</div></div>';
       })()
+      +'<div style="margin-top:14px;padding-top:12px;border-top:1px solid #f0ede6;display:flex;justify-content:flex-end;">'
+      +'<button class="print-btn" onclick="event.stopPropagation();printSemilavorato('+realIdx+')" style="font-size:12px;padding:6px 14px;">&#128438; Stampa / PDF</button>'
+      +'</div>'
       +'</div>'
       +'</div>';
   }).join('');
