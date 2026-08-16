@@ -380,6 +380,7 @@ textarea{resize:vertical;min-height:60px;}
     <div style="width:1px;height:20px;background:#e0ded8;"></div>
     <button onclick="ripristinaSnapshot()" id="btn-snapshot" style="padding:6px 12px;font-size:12px;font-weight:500;background:#fff;border:1px solid #d0cec8;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;" title="Ripristina ultimo backup automatico">&#128268; Ripristina</button>
     <button onclick="pubblicaDatiPubblici()" id="btn-pubblica" style="padding:6px 12px;font-size:12px;font-weight:600;background:#2d7d46;border:1px solid #2d7d46;color:#fff;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;" title="Genera dati-pubblici.json per i collaboratori">&#128228; Pubblica</button>
+    <button onclick="apriQrModal()" id="btn-qr" style="padding:6px 12px;font-size:12px;font-weight:600;background:#1a1a1a;border:1px solid #444;color:#fff;border-radius:8px;cursor:pointer;display:none;align-items:center;gap:5px;" title="QR Code menu digitale">&#128247; QR Menu</button>
     <div style="width:1px;height:20px;background:#e0ded8;"></div>
     <button id="sync-btn" onclick="apriSyncSettings()" title="Sincronizzazione cloud" style="padding:6px 10px;font-size:15px;background:#fff;border:1px solid #d0cec8;border-radius:8px;cursor:pointer;line-height:1;color:#bbb;">&#9729;</button>
     <span id="sync-status-dot" style="font-size:10px;color:#aaa;display:none;margin-left:-4px;"></span>
@@ -1020,6 +1021,25 @@ textarea{resize:vertical;min-height:60px;}
   </div>
 </div>
 
+
+<!-- MODAL QR CODE -->
+<div class="modal-overlay" id="qr-modal-overlay" onclick="if(event.target===this)chiudiQrModal()">
+  <div class="modal" style="max-width:380px;text-align:center;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h3 style="font-size:17px;font-weight:700;">&#128247; QR Code — Menu digitale</h3>
+      <button onclick="chiudiQrModal()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#aaa;line-height:1;">&#x2715;</button>
+    </div>
+    <div style="background:#fff;border:1px solid #e0ded8;border-radius:12px;padding:20px;margin-bottom:16px;display:inline-block;">
+      <img id="qr-img" src="" alt="QR Code" style="width:240px;height:240px;display:block;"/>
+    </div>
+    <p style="font-size:12px;color:#888;margin-bottom:16px;font-family:monospace;">https://www.miseenplacepro.it/menu.html</p>
+    <div style="display:flex;gap:10px;justify-content:center;">
+      <button onclick="scaricaQr()" style="padding:10px 20px;background:#1a1a1a;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">&#11015; Scarica PNG</button>
+      <button onclick="chiudiQrModal()" style="padding:10px 20px;background:#f5f4f0;color:#333;border:1px solid #e0ded8;border-radius:8px;font-size:13px;cursor:pointer;">Chiudi</button>
+    </div>
+    <p style="font-size:11px;color:#bbb;margin-top:14px;">Stampa il QR e posizionalo sui tavoli o all&#39;ingresso.</p>
+  </div>
+</div>
 
 <!-- MODAL FORNITORE -->
 <div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeFornModal()">
@@ -3330,6 +3350,36 @@ function renderGuida(){
       +'<div class="gtip">Clicca <strong>&#128438; Stampa PDF</strong> per esportare matrice e tabella con il periodo di riferimento indicato.</div>'
       +'</div></details>';
 
+    // Menu digitale e QR
+    h+='<details class="gs"><summary>&#128247; Menu digitale &amp; QR Code</summary><div class="gb">'
+      +'<p>MiseEnPlace PRO include un <strong>menu digitale pubblico</strong> accessibile via QR code da qualsiasi smartphone, senza login. Mostra solo i piatti che hai scelto di pubblicare, con descrizione, allergeni e prezzo.</p>'
+      +'<h4>Flusso di aggiornamento</h4>'
+      +'<ol>'
+      +'<li>Nella sezione <strong>&#127374; La Carte</strong>, attiva la <strong>&#9733; stellina</strong> sui piatti che vuoi nel menu.</li>'
+      +'<li>Assicurati che ogni piatto abbia una <strong>descrizione breve</strong> (campo nel form — max 120 caratteri).</li>'
+      +'<li>Clicca il pulsante verde <strong>&#128228; Pubblica</strong> in alto: salva il file <code>dati-pubblici.json</code> nella cartella del progetto.</li>'
+      +'<li>Apri <strong>GitHub Desktop</strong> → fai <strong>Commit</strong> e <strong>Push</strong>.</li>'
+      +'<li>Il menu digitale si aggiorna entro 1-2 minuti.</li>'
+      +'</ol>'
+      +'<h4>URL del menu digitale</h4>'
+      +'<div class="gcod">https://www.miseenplacepro.it/menu.html</div>'
+      +'<h4>QR Code</h4>'
+      +'<p>Clicca il pulsante <strong>&#128247; QR Menu</strong> in alto (accanto a Pubblica, visibile solo in modalità admin). Si apre un modal con il QR code pronto:</p>'
+      +'<ul>'
+      +'<li>Clicca <strong>&#11015; Scarica PNG</strong> per salvare il file ad alta risoluzione (600×600 px).</li>'
+      +'<li>Stampalo su tovagliette, table card, totem o aggiungi in fondo al menu cartaceo.</li>'
+      +'<li>Il QR code non cambia mai — punta sempre allo stesso URL anche quando aggiorni i piatti.</li>'
+      +'</ul>'
+      +'<h4>Struttura del menu digitale</h4>'
+      +'<ul>'
+      +'<li>Schermata iniziale: griglia delle categorie (Antipasti, Primi, Secondi…) con numero di piatti.</li>'
+      +'<li>Toccando una categoria si vedono i piatti con nome, descrizione, badge allergeni e prezzo.</li>'
+      +'<li>Freccia ← Categorie per tornare indietro.</li>'
+      +'</ul>'
+      +'<div class="gnote">Categorie senza piatti appaiono comunque nella griglia con la scritta "in aggiornamento" — utile per mostrare la struttura del menu anche prima di pubblicare tutto.</div>'
+      +'<div class="gtip">Ricorda: ogni volta che cambi prezzi, aggiungi piatti o modifichi allergeni, devi ripetere il ciclo Pubblica → Commit → Push per aggiornare il menu online.</div>'
+      +'</div></details>';
+
     // Infrastruttura & Account
     h+='<details class="gs"><summary>&#128279; Infrastruttura &amp; Account</summary><div class="gb">'
       +'<p style="color:#888;font-size:13px;margin-bottom:16px;">Riferimenti pratici per gestire dominio, email, hosting e dati. Aggiorna questa sezione se cambi qualcosa.</p>'
@@ -4229,6 +4279,8 @@ function applyAdminUI(){
   }
   var pubBtn = document.getElementById('btn-pubblica');
   if(pubBtn){ pubBtn.style.display = isAdmin ? 'flex' : 'none'; }
+  var qrBtn = document.getElementById('btn-qr');
+  if(qrBtn){ qrBtn.style.display = isAdmin ? 'flex' : 'none'; }
   var snapBtn = document.getElementById('btn-snapshot');
   if(snapBtn){ snapBtn.style.display = isAdmin ? 'flex' : 'none'; }
   var toolbar = document.getElementById('admin-toolbar');
@@ -4920,6 +4972,30 @@ function salvaProduzione(){
   renderGiacenzaAlerts();
   document.getElementById('prod-modal-overlay').remove();
   renderProduzioni();
+}
+
+var _QR_URL='https://www.miseenplacepro.it/menu.html';
+function apriQrModal(){
+  var img=document.getElementById('qr-img');
+  if(img) img.src='https://api.qrserver.com/v1/create-qr-code/?size=480x480&margin=10&data='+encodeURIComponent(_QR_URL);
+  var ov=document.getElementById('qr-modal-overlay');
+  if(ov){ov.style.display='flex';}
+}
+function chiudiQrModal(){
+  var ov=document.getElementById('qr-modal-overlay');
+  if(ov){ov.style.display='none';}
+}
+function scaricaQr(){
+  var url='https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=10&data='+encodeURIComponent(_QR_URL);
+  fetch(url)
+    .then(function(r){return r.blob();})
+    .then(function(blob){
+      var u=URL.createObjectURL(blob);
+      var a=document.createElement('a');
+      a.href=u; a.download='qr-menu-miseenplace.png'; a.click();
+      setTimeout(function(){URL.revokeObjectURL(u);},3000);
+    })
+    .catch(function(){window.open(url,'_blank');});
 }
 
 function pubblicaDatiPubblici(){
