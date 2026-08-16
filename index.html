@@ -4228,7 +4228,7 @@ function applyAdminUI(){
     lockBtn.title = isAdmin ? 'Esci da admin' : 'Accedi come admin';
   }
   var pubBtn = document.getElementById('btn-pubblica');
-  if(pubBtn){ pubBtn.style.display = 'none'; }
+  if(pubBtn){ pubBtn.style.display = isAdmin ? 'flex' : 'none'; }
   var snapBtn = document.getElementById('btn-snapshot');
   if(snapBtn){ snapBtn.style.display = isAdmin ? 'flex' : 'none'; }
   var toolbar = document.getElementById('admin-toolbar');
