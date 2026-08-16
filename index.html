@@ -1295,15 +1295,35 @@ function esportaDati(){
     prezzoVenditaBase:document.getElementById('prezzo-vendita')?document.getElementById('prezzo-vendita').value:''
   };
   var json=JSON.stringify(data,null,2);
-  var blob=new Blob([json],{type:'application/json'});
-  var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');
   var dateStr=new Date().toISOString().slice(0,10);
-  a.download='ricettario_backup_'+dateStr+'.json';
-  a.href=url;
-  a.click();
-  setTimeout(function(){URL.revokeObjectURL(url);},3000);
-  flashBackup('&#10003; Backup esportato');
+  var fileName='miseenplace_backup_'+dateStr+'.json';
+
+  function salvaData(){
+    try{localStorage.setItem('mep_last_export',Date.now());}catch(e){}
+    flashBackup('&#10003; Backup esportato');
+  }
+
+  function fallback(){
+    var blob=new Blob([json],{type:'application/json'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.download=fileName; a.href=url; a.click();
+    setTimeout(function(){URL.revokeObjectURL(url);},3000);
+    salvaData();
+  }
+
+  if(window.showSaveFilePicker){
+    window.showSaveFilePicker({
+      suggestedName:fileName,
+      types:[{description:'Backup JSON',accept:{'application/json':['.json']}}]
+    })
+    .then(function(handle){return handle.createWritable();})
+    .then(function(writable){return writable.write(json).then(function(){return writable.close();});})
+    .then(function(){salvaData();})
+    .catch(function(err){if(err&&err.name==='AbortError')return; fallback();});
+  } else {
+    fallback();
+  }
 }
 
 function importaDati(input){
