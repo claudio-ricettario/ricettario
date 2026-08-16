@@ -117,7 +117,7 @@ function showCategories(){
     html+='<div class="cat-card" onclick="showCategory(\''+catEnc+'\')">';
     html+='<span class="cat-card-icon">'+catIcon(cat)+'</span>';
     html+='<div class="cat-card-name">'+escHtml(cat)+'</div>';
-    html+='<div class="cat-card-count">'+count+(count===1?' piatto':' piatti')+'</div>';
+    html+='<div class="cat-card-count">'+(count===0?'in aggiornamento':count+(count===1?' piatto':' piatti'))+'</div>';
     html+='</div>';
   });
   html+='</div>';
@@ -166,13 +166,11 @@ function buildMenu(data){
     _grouped[cat].push(p);
   });
 
-  _catKeys=Object.keys(_grouped);
-  _catKeys.sort(function(a,b){
-    var ai=CAT_ORDER.findIndex(function(c){return c.key.toLowerCase()===a.toLowerCase();});
-    var bi=CAT_ORDER.findIndex(function(c){return c.key.toLowerCase()===b.toLowerCase();});
-    if(ai<0) ai=999; if(bi<0) bi=999;
-    return ai-bi;
+  // usa tutte le categorie definite in CAT_ORDER, più eventuali extra dai dati
+  var extraKeys=Object.keys(_grouped).filter(function(k){
+    return !CAT_ORDER.find(function(c){return c.key.toLowerCase()===k.toLowerCase();});
   });
+  _catKeys=CAT_ORDER.map(function(c){return c.key;}).concat(extraKeys);
 
   if(data.exportDate){
     document.getElementById('update-date').textContent='Aggiornato il '+data.exportDate;
