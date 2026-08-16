@@ -18,23 +18,6 @@
       ]
     },
     {
-      "nome": "Gnocchi al Ragu'",
-      "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
-      "categoria": "Primi piatti",
-      "prezzoVendita": 9.9,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Anidride solforosa e solfiti",
-        "Uova",
-        "Glutine",
-        "Sedano"
-      ],
-      "tracce": [
-        "Soia",
-        "Latte e lattosio"
-      ]
-    },
-    {
       "nome": "Gnocchi di Malga al Burro fuso",
       "descrizione": "la lessinia nel piatto",
       "categoria": "Primi piatti",
@@ -2740,7 +2723,7 @@
       "pax": 10,
       "prezzoVendita": 9.9,
       "coefficiente": 6,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [],
