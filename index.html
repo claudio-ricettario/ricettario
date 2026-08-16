@@ -3120,11 +3120,14 @@ function renderGuida(){
     // Backup e strumenti admin
     h+='<details class="gs"><summary>&#128736; Backup e ripristino</summary><div class="gb">'
       +'<table><tr><th>Pulsante</th><th>Funzione</th><th>Quando usarlo</th></tr>'
-      +'<tr><td>&#128229; Esporta</td><td>Salva backup JSON in Download</td><td>Piano B: backup locale indipendente dal cloud</td></tr>'
+      +'<tr><td>&#128229; Esporta</td><td>Apre "Salva con nome" — scegli la cartella</td><td>Backup manuale mensile in <code>iCloud Drive / MEP / backup/</code></td></tr>'
       +'<tr><td>&#128228; Importa</td><td>Carica backup JSON, sovrascrive tutti i dati</td><td>Ripristino da file esportato</td></tr>'
       +'<tr><td>&#128268; Ripristina</td><td>Ripristina l&#39;ultimo salvataggio automatico locale</td><td>Se qualcosa va storto durante una sessione</td></tr>'
       +'</table>'
-      +'<div class="gnote">Con la sincronizzazione cloud attiva (&#9729;) i dati sono già al sicuro. Esporta/Importa restano utili come ulteriore piano di riserva.</div>'
+      +'<h4>Promemoria 30 giorni</h4>'
+      +'<p>Quando sono passati 30 giorni dall\'ultimo export, compare un banner giallo &#128190; nella dashboard. Clicca <strong>Esporta ora</strong> nel banner per avviare subito il backup — si apre la finestra di salvataggio, naviga in <code>iCloud Drive / MEP / backup/</code> e salva.</p>'
+      +'<div class="gcod">iCloud Drive / MEP / backup / miseenplace_backup_AAAA-MM-GG.json</div>'
+      +'<div class="gnote">Con la sincronizzazione Gist attiva i dati sono già al sicuro in cloud. Il backup manuale è un ulteriore piano B indipendente da GitHub.</div>'
       +'</div></details>';
 
     // Sincronizzazione cloud
@@ -3499,9 +3502,12 @@ function renderGuida(){
       +'<h4>&#128190; Backup dati</h4>'
       +'<table><tr><th>Tipo</th><th>Frequenza</th><th>Come</th></tr>'
       +'<tr><td>Cloud automatico</td><td>Ad ogni salvataggio (2 sec)</td><td>GitHub Gist — se configurato</td></tr>'
-      +'<tr><td>Locale manuale</td><td>Quando vuoi</td><td>Modalità admin → Esporta → salva il JSON in iCloud</td></tr>'
+      +'<tr><td>Manuale con promemoria</td><td>Ogni 30 giorni (promemoria automatico)</td><td>Modalità admin → <strong>&#128229; Esporta</strong> → salva in <code>iCloud Drive / MEP / backup/</code></td></tr>'
       +'</table>'
-      +'<div class="gtip">Fai un export manuale almeno una volta al mese come piano B extra.</div>'
+      +'<h4>Cartella backup dedicata</h4>'
+      +'<div class="gcod">iCloud Drive / MEP / backup/</div>'
+      +'<p>I file si chiamano <code>miseenplace_backup_AAAA-MM-GG.json</code>. Conserva almeno gli ultimi 3 backup — puoi eliminare quelli più vecchi di 3 mesi.</p>'
+      +'<div class="gnote">Quando compare il banner giallo &#128190; sulla dashboard, sono passati 30 giorni dall\'ultimo export. Clicca <strong>Esporta ora</strong> nel banner, scegli la cartella <code>iCloud Drive / MEP / backup/</code> e salva.</div>'
       +'</div></details>';
 
     // Importa fattura XML
