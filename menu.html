@@ -13,20 +13,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .header img{height:48px;filter:invert(1) hue-rotate(180deg);}
 .header-sub{font-size:11px;color:rgba(255,255,255,.4);margin-top:6px;letter-spacing:.06em;text-transform:uppercase;}
 
-/* CATEGORY NAV */
-.cat-nav{background:#fff;border-bottom:1px solid #e0ded8;padding:0;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:sticky;top:88px;z-index:99;}
-.cat-nav::-webkit-scrollbar{display:none;}
-.cat-nav-inner{display:inline-flex;padding:10px 12px;gap:8px;}
-.cat-pill{display:inline-block;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid #e0ded8;color:#888;background:#fff;transition:all .2s;white-space:nowrap;}
-.cat-pill.active,.cat-pill:hover{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+/* BACK BAR */
+.back-bar{background:#fff;border-bottom:1px solid #e0ded8;padding:10px 16px;display:none;align-items:center;gap:10px;position:sticky;top:88px;z-index:99;}
+.back-btn{background:none;border:none;font-size:15px;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:600;padding:0;}
+.back-bar-cat{font-size:14px;color:#aaa;margin-left:auto;}
 
 /* CONTENT */
 .content{max-width:640px;margin:0 auto;padding:20px 12px 48px;}
 
-/* CATEGORY SECTION */
+/* CATEGORY GRID */
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:4px 0;}
+.cat-card{background:#fff;border:1px solid #e8e5df;border-radius:16px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .18s;-webkit-tap-highlight-color:transparent;}
+.cat-card:active{transform:scale(.97);}
+.cat-card-icon{font-size:36px;margin-bottom:10px;display:block;}
+.cat-card-name{font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.3;}
+.cat-card-count{font-size:11px;color:#aaa;margin-top:4px;}
+
+/* CATEGORY SECTION (dish list) */
 .cat-section{margin-bottom:36px;}
-.cat-title{font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.1em;padding:8px 0 12px;border-bottom:1px solid #e0ded8;margin-bottom:14px;}
-.cat-title span{font-size:18px;margin-right:8px;}
+.cat-section-title{font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.1em;padding:8px 0 12px;border-bottom:1px solid #e0ded8;margin-bottom:14px;}
+.cat-section-title span{font-size:18px;margin-right:8px;}
 
 /* DISH CARD */
 .dish-card{background:#fff;border:1px solid #e8e5df;border-radius:14px;padding:16px 18px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
@@ -38,27 +44,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .tracce-badge{font-size:11px;padding:2px 8px;border-radius:10px;background:#fdf8ed;color:#8a6d1f;border:1px solid #f5e0a0;font-weight:500;}
 .dish-price{font-size:18px;font-weight:700;color:#1a1a1a;white-space:nowrap;padding-top:2px;}
 
-/* EMPTY */
+/* EMPTY / LOADING */
 .empty{text-align:center;padding:60px 20px;color:#bbb;font-size:15px;}
 .empty-icon{font-size:48px;margin-bottom:12px;}
+.loading{text-align:center;padding:80px 20px;color:#bbb;font-size:15px;}
 
 /* FOOTER */
 .footer{text-align:center;padding:16px;font-size:11px;color:#bbb;border-top:1px solid #e0ded8;margin-top:8px;}
 .footer a{color:#bbb;text-decoration:none;}
-
-/* LOADING */
-.loading{text-align:center;padding:80px 20px;color:#bbb;font-size:15px;}
 </style>
 </head>
 <body>
 
 <div class="header">
   <img src="./logo.png" alt="MiseEnPlace PRO"/>
-  <div class="header-sub">Il nostro menu</div>
+  <div class="header-sub" id="header-sub">Il nostro menu</div>
 </div>
 
-<div class="cat-nav" id="cat-nav">
-  <div class="cat-nav-inner" id="cat-nav-inner"></div>
+<div class="back-bar" id="back-bar">
+  <button class="back-btn" onclick="showCategories()">&#8592; Categorie</button>
+  <span class="back-bar-cat" id="back-bar-cat"></span>
 </div>
 
 <div class="content" id="content">
@@ -86,11 +91,66 @@ var CAT_ORDER=[
   {key:'Beverage vario', icon:'🥤'}
 ];
 
+var _grouped={};
+var _catKeys=[];
+
 function eur(v){return (parseFloat(v)||0).toFixed(2).replace('.',',')+'€';}
 
 function catIcon(key){
   var found=CAT_ORDER.find(function(c){return c.key.toLowerCase()===key.toLowerCase();});
   return found?found.icon:'🍽';
+}
+
+function escHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function showCategories(){
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('back-bar').style.display='none';
+  document.getElementById('header-sub').textContent='Il nostro menu';
+
+  var html='<div class="cat-grid">';
+  _catKeys.forEach(function(cat){
+    var count=_grouped[cat].length;
+    var catEnc=encodeURIComponent(cat);
+    html+='<div class="cat-card" onclick="showCategory(\''+catEnc+'\')">';
+    html+='<span class="cat-card-icon">'+catIcon(cat)+'</span>';
+    html+='<div class="cat-card-name">'+escHtml(cat)+'</div>';
+    html+='<div class="cat-card-count">'+count+(count===1?' piatto':' piatti')+'</div>';
+    html+='</div>';
+  });
+  html+='</div>';
+  document.getElementById('content').innerHTML=html;
+}
+
+function showCategory(catEnc){
+  var cat=decodeURIComponent(catEnc);
+  var piatti=_grouped[cat]||[];
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  var backBar=document.getElementById('back-bar');
+  backBar.style.display='flex';
+  document.getElementById('back-bar-cat').textContent=catIcon(cat)+' '+cat;
+  document.getElementById('header-sub').textContent='Il nostro menu';
+
+  var html='<div class="cat-section">';
+  html+='<div class="cat-section-title"><span>'+catIcon(cat)+'</span>'+escHtml(cat)+'</div>';
+  piatti.forEach(function(p){
+    html+='<div class="dish-card">';
+    html+='<div class="dish-info">';
+    html+='<div class="dish-nome">'+escHtml(p.nome)+'</div>';
+    if(p.descrizione) html+='<div class="dish-desc">'+escHtml(p.descrizione)+'</div>';
+    var badges='';
+    (p.allergeni||[]).forEach(function(a){ badges+='<span class="allerg-badge">'+escHtml(a)+'</span>'; });
+    (p.tracce||[]).forEach(function(a){ badges+='<span class="tracce-badge">tracce: '+escHtml(a)+'</span>'; });
+    if(badges) html+='<div class="dish-allergeni">'+badges+'</div>';
+    html+='</div>';
+    html+='<div class="dish-price">'+eur(p.prezzoVendita)+'</div>';
+    html+='</div>';
+  });
+  html+='</div>';
+  document.getElementById('content').innerHTML=html;
 }
 
 function buildMenu(data){
@@ -100,110 +160,30 @@ function buildMenu(data){
     return;
   }
 
-  // group by categoria preserving CAT_ORDER
-  var grouped={};
   piatti.forEach(function(p){
     var cat=p.categoria||'Altro';
-    if(!grouped[cat]) grouped[cat]=[];
-    grouped[cat].push(p);
+    if(!_grouped[cat]) _grouped[cat]=[];
+    _grouped[cat].push(p);
   });
 
-  // sort categories
-  var catKeys=Object.keys(grouped);
-  catKeys.sort(function(a,b){
+  _catKeys=Object.keys(_grouped);
+  _catKeys.sort(function(a,b){
     var ai=CAT_ORDER.findIndex(function(c){return c.key.toLowerCase()===a.toLowerCase();});
     var bi=CAT_ORDER.findIndex(function(c){return c.key.toLowerCase()===b.toLowerCase();});
-    if(ai<0) ai=999;
-    if(bi<0) bi=999;
+    if(ai<0) ai=999; if(bi<0) bi=999;
     return ai-bi;
   });
 
-  // build nav
-  var navHtml='';
-  catKeys.forEach(function(cat){
-    navHtml+='<div class="cat-pill" onclick="scrollToCat(\''+encodeURIComponent(cat)+'\')" id="pill-'+encodeURIComponent(cat)+'">'+catIcon(cat)+' '+cat+'</div>';
-  });
-  document.getElementById('cat-nav-inner').innerHTML=navHtml;
-
-  // build content
-  var html='';
-  catKeys.forEach(function(cat){
-    var id='cat-'+encodeURIComponent(cat);
-    html+='<div class="cat-section" id="'+id+'">';
-    html+='<div class="cat-title"><span>'+catIcon(cat)+'</span>'+cat+'</div>';
-    grouped[cat].forEach(function(p){
-      html+='<div class="dish-card">';
-      html+='<div class="dish-info">';
-      html+='<div class="dish-nome">'+escHtml(p.nome)+'</div>';
-      if(p.descrizione) html+='<div class="dish-desc">'+escHtml(p.descrizione)+'</div>';
-      // allergeni
-      var badges='';
-      (p.allergeni||[]).forEach(function(a){ badges+='<span class="allerg-badge">'+escHtml(a)+'</span>'; });
-      (p.tracce||[]).forEach(function(a){ badges+='<span class="tracce-badge">tracce: '+escHtml(a)+'</span>'; });
-      if(badges) html+='<div class="dish-allergeni">'+badges+'</div>';
-      html+='</div>';
-      html+='<div class="dish-price">'+eur(p.prezzoVendita)+'</div>';
-      html+='</div>';
-    });
-    html+='</div>';
-  });
-  document.getElementById('content').innerHTML=html;
-
-  // update date
   if(data.exportDate){
     document.getElementById('update-date').textContent='Aggiornato il '+data.exportDate;
   }
 
-  // activate first pill
-  if(catKeys.length){
-    var first=document.getElementById('pill-'+encodeURIComponent(catKeys[0]));
-    if(first) first.classList.add('active');
-  }
-
-  // scroll spy
-  window.addEventListener('scroll',onScroll,{passive:true});
+  showCategories();
 }
 
-function escHtml(s){
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-function scrollToCat(catEnc){
-  var el=document.getElementById('cat-'+catEnc);
-  if(!el) return;
-  var offset=document.querySelector('.cat-nav').offsetHeight+document.querySelector('.header').offsetHeight+8;
-  var top=el.getBoundingClientRect().top+window.scrollY-offset;
-  window.scrollTo({top:top,behavior:'smooth'});
-}
-
-function onScroll(){
-  var headerH=document.querySelector('.header').offsetHeight;
-  var navH=document.querySelector('.cat-nav').offsetHeight;
-  var offset=headerH+navH+20;
-  var sections=document.querySelectorAll('.cat-section');
-  var active=null;
-  sections.forEach(function(s){
-    if(s.getBoundingClientRect().top<=offset) active=s;
-  });
-  if(!active) return;
-  document.querySelectorAll('.cat-pill').forEach(function(p){p.classList.remove('active');});
-  var pillId='pill-'+active.id.replace('cat-','');
-  var pill=document.getElementById(pillId);
-  if(pill){
-    pill.classList.add('active');
-    pill.scrollIntoView({inline:'center',behavior:'smooth'});
-  }
-}
-
-// load data
 fetch('./dati-pubblici.json?v='+Date.now())
-  .then(function(r){
-    if(!r.ok) throw new Error('File non trovato');
-    return r.json();
-  })
-  .then(function(data){
-    buildMenu(data);
-  })
+  .then(function(r){ if(!r.ok) throw new Error(); return r.json(); })
+  .then(buildMenu)
   .catch(function(){
     document.getElementById('content').innerHTML='<div class="empty"><div class="empty-icon">🍽</div>Menu temporaneamente non disponibile.<br><small>Riprova tra qualche minuto.</small></div>';
   });
