@@ -112,7 +112,7 @@ function showCategories(){
 
   var html='<div class="cat-grid">';
   _catKeys.forEach(function(cat){
-    var count=_grouped[cat].length;
+    var count=(_grouped[cat]||[]).length;
     var catEnc=encodeURIComponent(cat);
     html+='<div class="cat-card" onclick="showCategory(\''+catEnc+'\')">';
     html+='<span class="cat-card-icon">'+catIcon(cat)+'</span>';
@@ -126,7 +126,7 @@ function showCategories(){
 
 function showCategory(catEnc){
   var cat=decodeURIComponent(catEnc);
-  var piatti=_grouped[cat]||[];
+  var piatti=(_grouped[cat]||[]);
   window.scrollTo({top:0,behavior:'smooth'});
 
   var backBar=document.getElementById('back-bar');
