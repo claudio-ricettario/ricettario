@@ -606,6 +606,7 @@ textarea{resize:vertical;min-height:60px;}
       <div class="section-label">Informazioni generali</div>
       <div class="form-grid">
         <div class="form-row"><label>Nome voce *</label><input type="text" id="np-nome" placeholder="es. Gnocchi al rag&ugrave; di vitello"/></div>
+        <div class="form-row" style="grid-column:1/-1;"><label>Descrizione breve <span style="font-weight:400;color:#aaa;font-size:11px;">(per il menu digitale — max 120 caratteri)</span></label><input type="text" id="np-desc" placeholder="es. Ragù di cinghiale, polenta morbida, pecorino stagionato" maxlength="120" style="width:100%;"/></div>
         <div class="form-row"><label>Categoria</label>
           <select id="np-cat" onchange="npCatChange(this.value)">
             <option>Antipasti</option><option selected>Primi piatti</option><option>Secondi piatti</option>
@@ -7600,6 +7601,7 @@ function npModifica(idx){
   npFotoData=p.foto||'';
   showTab('nuovo-piatto');
   document.getElementById('np-nome').value=p.nome;
+  document.getElementById('np-desc').value=p.descrizione||'';
   document.getElementById('np-cat').value=p.categoria||'Primi piatti';
   document.getElementById('np-sottocat').value=p.sottocategoria||'';
   document.getElementById('np-pax').value=p.pax||4;
@@ -7634,7 +7636,7 @@ function npReset(){
   var si=document.getElementById('np-search-comp');if(si)si.value='';
   var sr=document.getElementById('np-search-results');if(sr)sr.style.display='none';
   var sc=document.getElementById('np-sel-comp');if(sc)sc.value='';
-  var f=['np-nome','np-step-text'];
+  var f=['np-nome','np-desc','np-step-text'];
   f.forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
   var paxEl=document.getElementById('np-pax');if(paxEl)paxEl.value='4';
   var pvEl=document.getElementById('np-pv');if(pvEl)pvEl.value='';
@@ -7829,6 +7831,7 @@ function npSalva(){
   var p={
     codice:codiceEsistente||nuovoCodice('pf'),
     nome:nome,
+    descrizione:(document.getElementById('np-desc').value||'').trim(),
     categoria:document.getElementById('np-cat').value,
     sottocategoria:document.getElementById('np-sottocat').value||'',
     pax:parseInt(document.getElementById('np-pax').value)||4,
