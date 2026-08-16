@@ -4923,9 +4923,22 @@ function salvaProduzione(){
 }
 
 function pubblicaDatiPubblici(){
+  var menuData=piatti.filter(function(p){return p.nelMenu;}).map(function(p){
+    var allerg=calcolaAllergeniPiatto(p);
+    return {
+      nome:p.nome,
+      descrizione:p.descrizione||'',
+      categoria:p.categoria||'',
+      prezzoVendita:p.prezzoVendita||0,
+      tipoBeverage:p.tipoBeverage||false,
+      allergeni:allerg.certi,
+      tracce:allerg.tracce
+    };
+  });
   var data={
     version:1,
     exportDate:today(),
+    menuData:menuData,
     magazzino:magazzino,
     semilavorati:semilavorati,
     piatti:piatti,

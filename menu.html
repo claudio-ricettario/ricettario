@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Menu — MiseEnPlace PRO</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#faf9f6;color:#1a1a1a;min-height:100vh;}
+
+/* HEADER */
+.header{background:#1a1a1a;padding:20px 16px 16px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.3);}
+.header img{height:48px;filter:invert(1) hue-rotate(180deg);}
+.header-sub{font-size:11px;color:rgba(255,255,255,.4);margin-top:6px;letter-spacing:.06em;text-transform:uppercase;}
+
+/* CATEGORY NAV */
+.cat-nav{background:#fff;border-bottom:1px solid #e0ded8;padding:0;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:sticky;top:88px;z-index:99;}
+.cat-nav::-webkit-scrollbar{display:none;}
+.cat-nav-inner{display:inline-flex;padding:10px 12px;gap:8px;}
+.cat-pill{display:inline-block;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid #e0ded8;color:#888;background:#fff;transition:all .2s;white-space:nowrap;}
+.cat-pill.active,.cat-pill:hover{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+
+/* CONTENT */
+.content{max-width:640px;margin:0 auto;padding:20px 12px 48px;}
+
+/* CATEGORY SECTION */
+.cat-section{margin-bottom:36px;}
+.cat-title{font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.1em;padding:8px 0 12px;border-bottom:1px solid #e0ded8;margin-bottom:14px;}
+.cat-title span{font-size:18px;margin-right:8px;}
+
+/* DISH CARD */
+.dish-card{background:#fff;border:1px solid #e8e5df;border-radius:14px;padding:16px 18px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.dish-info{flex:1;min-width:0;}
+.dish-nome{font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:4px;line-height:1.3;}
+.dish-desc{font-size:13px;color:#777;line-height:1.5;margin-bottom:8px;}
+.dish-allergeni{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+.allerg-badge{font-size:11px;padding:2px 8px;border-radius:10px;background:#fef3f2;color:#c0392b;border:1px solid #fcd5d2;font-weight:500;}
+.tracce-badge{font-size:11px;padding:2px 8px;border-radius:10px;background:#fdf8ed;color:#8a6d1f;border:1px solid #f5e0a0;font-weight:500;}
+.dish-price{font-size:18px;font-weight:700;color:#1a1a1a;white-space:nowrap;padding-top:2px;}
+
+/* EMPTY */
+.empty{text-align:center;padding:60px 20px;color:#bbb;font-size:15px;}
+.empty-icon{font-size:48px;margin-bottom:12px;}
+
+/* FOOTER */
+.footer{text-align:center;padding:16px;font-size:11px;color:#bbb;border-top:1px solid #e0ded8;margin-top:8px;}
+.footer a{color:#bbb;text-decoration:none;}
+
+/* LOADING */
+.loading{text-align:center;padding:80px 20px;color:#bbb;font-size:15px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="./logo.png" alt="MiseEnPlace PRO"/>
+  <div class="header-sub">Il nostro menu</div>
+</div>
+
+<div class="cat-nav" id="cat-nav">
+  <div class="cat-nav-inner" id="cat-nav-inner"></div>
+</div>
+
+<div class="content" id="content">
+  <div class="loading">&#8230; caricamento menu</div>
+</div>
+
+<div class="footer">
+  &copy; 2026 MiseEnPlace PRO &mdash; <a href="mailto:info@miseenplacepro.it">info@miseenplacepro.it</a>
+  <div id="update-date" style="margin-top:4px;"></div>
+</div>
+
+<script>
+var CAT_ORDER=[
+  {key:'Antipasti',      icon:'🥗'},
+  {key:'Primi piatti',   icon:'🍝'},
+  {key:'Secondi piatti', icon:'🍖'},
+  {key:'Contorni',       icon:'🥦'},
+  {key:'Dolci',          icon:'🍮'},
+  {key:'Caffetteria',    icon:'☕'},
+  {key:'Vini',           icon:'🍷'},
+  {key:'Birre',          icon:'🍺'},
+  {key:'Cocktail',       icon:'🍹'},
+  {key:'Soft drink',     icon:'🥤'},
+  {key:'Bevande',        icon:'🥤'},
+  {key:'Beverage vario', icon:'🥤'}
+];
+
+function eur(v){return (parseFloat(v)||0).toFixed(2).replace('.',',')+'€';}
+
+function catIcon(key){
+  var found=CAT_ORDER.find(function(c){return c.key.toLowerCase()===key.toLowerCase();});
+  return found?found.icon:'🍽';
+}
+
+function buildMenu(data){
+  var piatti=data.menuData||[];
+  if(!piatti.length){
+    document.getElementById('content').innerHTML='<div class="empty"><div class="empty-icon">🍽</div>Menu in aggiornamento — torna presto!</div>';
+    return;
+  }
+
+  // group by categoria preserving CAT_ORDER
+  var grouped={};
+  piatti.forEach(function(p){
+    var cat=p.categoria||'Altro';
+    if(!grouped[cat]) grouped[cat]=[];
+    grouped[cat].push(p);
+  });
+
+  // sort categories
+  var catKeys=Object.keys(grouped);
+  catKeys.sort(function(a,b){
+    var ai=CAT_ORDER.findIndex(function(c){return c.key.toLowerCase()===a.toLowerCase();});
+    var bi=CAT_ORDER.findIndex(function(c){return c.key.toLowerCase()===b.toLowerCase();});
+    if(ai<0) ai=999;
+    if(bi<0) bi=999;
+    return ai-bi;
+  });
+
+  // build nav
+  var navHtml='';
+  catKeys.forEach(function(cat){
+    navHtml+='<div class="cat-pill" onclick="scrollToCat(\''+encodeURIComponent(cat)+'\')" id="pill-'+encodeURIComponent(cat)+'">'+catIcon(cat)+' '+cat+'</div>';
+  });
+  document.getElementById('cat-nav-inner').innerHTML=navHtml;
+
+  // build content
+  var html='';
+  catKeys.forEach(function(cat){
+    var id='cat-'+encodeURIComponent(cat);
+    html+='<div class="cat-section" id="'+id+'">';
+    html+='<div class="cat-title"><span>'+catIcon(cat)+'</span>'+cat+'</div>';
+    grouped[cat].forEach(function(p){
+      html+='<div class="dish-card">';
+      html+='<div class="dish-info">';
+      html+='<div class="dish-nome">'+escHtml(p.nome)+'</div>';
+      if(p.descrizione) html+='<div class="dish-desc">'+escHtml(p.descrizione)+'</div>';
+      // allergeni
+      var badges='';
+      (p.allergeni||[]).forEach(function(a){ badges+='<span class="allerg-badge">'+escHtml(a)+'</span>'; });
+      (p.tracce||[]).forEach(function(a){ badges+='<span class="tracce-badge">tracce: '+escHtml(a)+'</span>'; });
+      if(badges) html+='<div class="dish-allergeni">'+badges+'</div>';
+      html+='</div>';
+      html+='<div class="dish-price">'+eur(p.prezzoVendita)+'</div>';
+      html+='</div>';
+    });
+    html+='</div>';
+  });
+  document.getElementById('content').innerHTML=html;
+
+  // update date
+  if(data.exportDate){
+    document.getElementById('update-date').textContent='Aggiornato il '+data.exportDate;
+  }
+
+  // activate first pill
+  if(catKeys.length){
+    var first=document.getElementById('pill-'+encodeURIComponent(catKeys[0]));
+    if(first) first.classList.add('active');
+  }
+
+  // scroll spy
+  window.addEventListener('scroll',onScroll,{passive:true});
+}
+
+function escHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function scrollToCat(catEnc){
+  var el=document.getElementById('cat-'+catEnc);
+  if(!el) return;
+  var offset=document.querySelector('.cat-nav').offsetHeight+document.querySelector('.header').offsetHeight+8;
+  var top=el.getBoundingClientRect().top+window.scrollY-offset;
+  window.scrollTo({top:top,behavior:'smooth'});
+}
+
+function onScroll(){
+  var headerH=document.querySelector('.header').offsetHeight;
+  var navH=document.querySelector('.cat-nav').offsetHeight;
+  var offset=headerH+navH+20;
+  var sections=document.querySelectorAll('.cat-section');
+  var active=null;
+  sections.forEach(function(s){
+    if(s.getBoundingClientRect().top<=offset) active=s;
+  });
+  if(!active) return;
+  document.querySelectorAll('.cat-pill').forEach(function(p){p.classList.remove('active');});
+  var pillId='pill-'+active.id.replace('cat-','');
+  var pill=document.getElementById(pillId);
+  if(pill){
+    pill.classList.add('active');
+    pill.scrollIntoView({inline:'center',behavior:'smooth'});
+  }
+}
+
+// load data
+fetch('./dati-pubblici.json?v='+Date.now())
+  .then(function(r){
+    if(!r.ok) throw new Error('File non trovato');
+    return r.json();
+  })
+  .then(function(data){
+    buildMenu(data);
+  })
+  .catch(function(){
+    document.getElementById('content').innerHTML='<div class="empty"><div class="empty-icon">🍽</div>Menu temporaneamente non disponibile.<br><small>Riprova tra qualche minuto.</small></div>';
+  });
+</script>
+</body>
+</html>
