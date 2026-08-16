@@ -1,6 +1,80 @@
 {
   "version": 1,
-  "exportDate": "8/8/2026",
+  "exportDate": "16/8/2026",
+  "menuData": [
+    {
+      "nome": "Canederli di Monte Veronese al burro fuso",
+      "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
+      "categoria": "Primi piatti",
+      "prezzoVendita": 12,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Latte e lattosio",
+        "Uova"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
+      "nome": "Gnocchi al Ragu'",
+      "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
+      "categoria": "Primi piatti",
+      "prezzoVendita": 9.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti",
+        "Uova",
+        "Glutine",
+        "Sedano"
+      ],
+      "tracce": [
+        "Soia",
+        "Latte e lattosio"
+      ]
+    },
+    {
+      "nome": "Gnocchi di Malga al Burro fuso",
+      "descrizione": "la lessinia nel piatto",
+      "categoria": "Primi piatti",
+      "prezzoVendita": 9.6,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Latte e lattosio"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
+      "nome": "Lasagne al Ragù",
+      "descrizione": "lasagnetta con la ricetta della nonna",
+      "categoria": "Primi piatti",
+      "prezzoVendita": 12,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Sedano",
+        "Anidride solforosa e solfiti",
+        "Latte e lattosio"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
+      "nome": "Ripasso",
+      "descrizione": "",
+      "categoria": "Vini",
+      "prezzoVendita": 25,
+      "tipoBeverage": true,
+      "allergeni": [],
+      "tracce": []
+    }
+  ],
   "magazzino": [
     {
       "codice": "MP-070",
@@ -1530,7 +1604,7 @@
         "sale": 1.5
       },
       "nutrizionaliOk": true,
-      "giacenza": 0,
+      "giacenza": -1.08,
       "giacenzaMin": 0,
       "lotti": [],
       "suppliers": [
@@ -2616,11 +2690,14 @@
     {
       "codice": "PF-001",
       "nome": "Canederli di Monte Veronese al burro fuso",
+      "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
       "categoria": "Primi piatti",
       "sottocategoria": "Vegetariano",
       "pax": 4,
       "prezzoVendita": 12,
       "coefficiente": 4,
+      "nelMenu": true,
+      "tipoBeverage": false,
       "foto": "",
       "steps": [],
       "componenti": [
@@ -2652,19 +2729,19 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "21/6/2026",
-      "nelMenu": false,
-      "porzioniVendute": 100
+      "dataCreazione": "21/6/2026"
     },
     {
       "codice": "PF-003",
       "nome": "Gnocchi al Ragu'",
+      "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 10,
       "prezzoVendita": 9.9,
       "coefficiente": 6,
-      "nelMenu": false,
+      "nelMenu": true,
+      "tipoBeverage": false,
       "foto": "",
       "steps": [],
       "componenti": [
@@ -2687,17 +2764,19 @@
           "codiceSl": "SL-006"
         }
       ],
-      "dataCreazione": "7/7/2026",
-      "porzioniVendute": 100
+      "dataCreazione": "7/7/2026"
     },
     {
       "codice": "PF-004",
       "nome": "Gnocchi di Malga al Burro fuso",
+      "descrizione": "la lessinia nel piatto",
       "categoria": "Primi piatti",
       "sottocategoria": "Vegetariano",
       "pax": 10,
       "prezzoVendita": 9.6,
       "coefficiente": 4,
+      "nelMenu": true,
+      "tipoBeverage": false,
       "foto": "",
       "steps": [],
       "componenti": [
@@ -2729,17 +2808,19 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "7/7/2026",
-      "porzioniVendute": 200
+      "dataCreazione": "7/7/2026"
     },
     {
       "codice": "PF-002",
       "nome": "Lasagne al Ragù",
+      "descrizione": "lasagnetta con la ricetta della nonna",
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 18,
       "prezzoVendita": 12,
       "coefficiente": 5,
+      "nelMenu": true,
+      "tipoBeverage": false,
       "foto": "",
       "steps": [
         "Con la metà del burro ungere una placca GN 1/1, iniziare gli strati con la besciamella via via alternandoli con il ragù e ogni strato una spolverata di grana, fino a fare 6 strati di pasta.L'ultimo strato farlo misto, spolverare con il grana e mettere dei pezzetti di burro con quello rimanenta. Cuocere a 150/160°C per 45 min, se c'è la sonda arrivare a 85/90°C al cuore. Far riposare coperto 10 min e servire"
@@ -2791,9 +2872,7 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "26/6/2026",
-      "nelMenu": false,
-      "porzioniVendute": 150
+      "dataCreazione": "26/6/2026"
     },
     {
       "codice": "PF-007",
