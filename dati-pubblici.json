@@ -1,10 +1,11 @@
 {
   "version": 1,
-  "exportDate": "16/8/2026",
+  "exportDate": "19/8/2026",
   "menuData": [
     {
       "nome": "Canederli di Monte Veronese al burro fuso",
       "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
+      "tags": [],
       "categoria": "Primi piatti",
       "prezzoVendita": 12,
       "tipoBeverage": false,
@@ -18,8 +19,33 @@
       ]
     },
     {
+      "nome": "Gnocchi al Ragu'",
+      "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
+      "tags": [
+        "Consigliato",
+        "Tipico"
+      ],
+      "categoria": "Primi piatti",
+      "prezzoVendita": 9.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti",
+        "Uova",
+        "Glutine",
+        "Sedano"
+      ],
+      "tracce": [
+        "Soia",
+        "Latte e lattosio"
+      ]
+    },
+    {
       "nome": "Gnocchi di Malga al Burro fuso",
       "descrizione": "la lessinia nel piatto",
+      "tags": [
+        "Vegetariano",
+        "Tipico"
+      ],
       "categoria": "Primi piatti",
       "prezzoVendita": 9.6,
       "tipoBeverage": false,
@@ -34,6 +60,7 @@
     {
       "nome": "Lasagne al Ragù",
       "descrizione": "lasagnetta con la ricetta della nonna",
+      "tags": [],
       "categoria": "Primi piatti",
       "prezzoVendita": 12,
       "tipoBeverage": false,
@@ -51,6 +78,7 @@
     {
       "nome": "Ripasso",
       "descrizione": "",
+      "tags": [],
       "categoria": "Vini",
       "prezzoVendita": 25,
       "tipoBeverage": true,
@@ -2718,12 +2746,16 @@
       "codice": "PF-003",
       "nome": "Gnocchi al Ragu'",
       "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
+      "tags": [
+        "Consigliato",
+        "Tipico"
+      ],
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 10,
       "prezzoVendita": 9.9,
       "coefficiente": 6,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [],
@@ -2753,6 +2785,10 @@
       "codice": "PF-004",
       "nome": "Gnocchi di Malga al Burro fuso",
       "descrizione": "la lessinia nel piatto",
+      "tags": [
+        "Vegetariano",
+        "Tipico"
+      ],
       "categoria": "Primi piatti",
       "sottocategoria": "Vegetariano",
       "pax": 10,
