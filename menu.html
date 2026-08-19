@@ -35,14 +35,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .cat-section-title span{font-size:18px;margin-right:8px;}
 
 /* DISH CARD */
-.dish-card{background:#fff;border:1px solid #e8e5df;border-radius:14px;padding:16px 18px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
-.dish-info{flex:1;min-width:0;}
-.dish-nome{font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:4px;line-height:1.3;}
-.dish-desc{font-size:13px;color:#777;line-height:1.5;margin-bottom:8px;}
-.dish-allergeni{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+.dish-card{background:#fff;border:1px solid #e8e5df;border-radius:14px;margin-bottom:10px;overflow:hidden;display:flex;flex-direction:column;}
+.dish-body{padding:14px 16px 12px;}
+.dish-nome{font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:6px;line-height:1.3;}
+.dish-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px;}
+.dish-tag{font-size:10px;font-weight:700;padding:2px 9px;border-radius:10px;text-transform:uppercase;letter-spacing:.04em;}
+.tag-vegetariano{background:#dcfce7;color:#15803d;}
+.tag-vegano{background:#bbf7d0;color:#14532d;}
+.tag-venduto{background:#fef3c7;color:#b45309;}
+.tag-consigliato{background:#dbeafe;color:#1d4ed8;}
+.tag-novita{background:#ede9fe;color:#7c3aed;}
+.tag-tipico{background:#fff7ed;color:#c2410c;}
+.dish-desc{font-size:13px;color:#777;line-height:1.5;}
+.dish-allergeni{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
 .allerg-badge{font-size:11px;padding:2px 8px;border-radius:10px;background:#fef3f2;color:#c0392b;border:1px solid #fcd5d2;font-weight:500;}
 .tracce-badge{font-size:11px;padding:2px 8px;border-radius:10px;background:#fdf8ed;color:#8a6d1f;border:1px solid #f5e0a0;font-weight:500;}
-.dish-price{font-size:18px;font-weight:700;color:#1a1a1a;white-space:nowrap;padding-top:2px;}
+.dish-footer{background:#f7f6f2;border-top:1px solid #eeebe4;padding:9px 16px;display:flex;justify-content:flex-end;align-items:center;}
+.dish-price{font-size:14px;font-weight:400;color:#888;}
 
 /* EMPTY / LOADING */
 .empty{text-align:center;padding:60px 20px;color:#bbb;font-size:15px;}
@@ -134,19 +143,37 @@ function showCategory(catEnc){
   document.getElementById('back-bar-cat').textContent=catIcon(cat)+' '+cat;
   document.getElementById('header-sub').textContent='Il nostro menu';
 
+  var TAG_MAP={
+    'Vegetariano':  {cls:'tag-vegetariano', icon:'🌿'},
+    'Vegano':       {cls:'tag-vegano',       icon:'🌱'},
+    'Più venduto':  {cls:'tag-venduto',      icon:'🔥'},
+    'Consigliato':  {cls:'tag-consigliato',  icon:'⭐'},
+    'Novità':       {cls:'tag-novita',       icon:'✨'},
+    'Tipico':       {cls:'tag-tipico',       icon:'🏠'}
+  };
+
   var html='<div class="cat-section">';
   html+='<div class="cat-section-title"><span>'+catIcon(cat)+'</span>'+escHtml(cat)+'</div>';
   piatti.forEach(function(p){
-    html+='<div class="dish-card">';
-    html+='<div class="dish-info">';
+    html+='<div class="dish-card"><div class="dish-body">';
     html+='<div class="dish-nome">'+escHtml(p.nome)+'</div>';
+    // tag
+    var tags=p.tags||[];
+    if(tags.length){
+      html+='<div class="dish-tags">';
+      tags.forEach(function(t){
+        var tm=TAG_MAP[t]||{cls:'tag-tipico',icon:''};
+        html+='<span class="dish-tag '+tm.cls+'">'+tm.icon+' '+escHtml(t)+'</span>';
+      });
+      html+='</div>';
+    }
     if(p.descrizione) html+='<div class="dish-desc">'+escHtml(p.descrizione)+'</div>';
     var badges='';
     (p.allergeni||[]).forEach(function(a){ badges+='<span class="allerg-badge">'+escHtml(a)+'</span>'; });
     (p.tracce||[]).forEach(function(a){ badges+='<span class="tracce-badge">tracce: '+escHtml(a)+'</span>'; });
     if(badges) html+='<div class="dish-allergeni">'+badges+'</div>';
     html+='</div>';
-    html+='<div class="dish-price">'+eur(p.prezzoVendita)+'</div>';
+    html+='<div class="dish-footer"><span class="dish-price">'+eur(p.prezzoVendita)+'</span></div>';
     html+='</div>';
   });
   html+='</div>';

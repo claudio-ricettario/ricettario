@@ -618,6 +618,17 @@ textarea{resize:vertical;min-height:60px;}
       <div class="form-grid">
         <div class="form-row"><label>Nome voce *</label><input type="text" id="np-nome" placeholder="es. Gnocchi al rag&ugrave; di vitello"/></div>
         <div class="form-row" style="grid-column:1/-1;"><label>Descrizione breve <span style="font-weight:400;color:#aaa;font-size:11px;">(per il menu digitale — max 120 caratteri)</span></label><input type="text" id="np-desc" placeholder="es. Ragù di cinghiale, polenta morbida, pecorino stagionato" maxlength="120" style="width:100%;"/></div>
+        <div class="form-row" style="grid-column:1/-1;">
+          <label>Etichette menu <span style="font-weight:400;color:#aaa;font-size:11px;">(opzionale — appaiono nel menu digitale)</span></label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="np-tags-group">
+            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500;cursor:pointer;"><input type="checkbox" value="Vegetariano" style="accent-color:#15803d;"> 🌿 Vegetariano</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500;cursor:pointer;"><input type="checkbox" value="Vegano" style="accent-color:#14532d;"> 🌱 Vegano</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500;cursor:pointer;"><input type="checkbox" value="Più venduto" style="accent-color:#b45309;"> 🔥 Più venduto</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500;cursor:pointer;"><input type="checkbox" value="Consigliato" style="accent-color:#1d4ed8;"> ⭐ Consigliato</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500;cursor:pointer;"><input type="checkbox" value="Novità" style="accent-color:#7c3aed;"> ✨ Novità</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500;cursor:pointer;"><input type="checkbox" value="Tipico" style="accent-color:#c2410c;"> 🏠 Tipico</label>
+          </div>
+        </div>
         <div class="form-row"><label>Categoria</label>
           <select id="np-cat" onchange="npCatChange(this.value)">
             <option>Antipasti</option><option selected>Primi piatti</option><option>Secondi piatti</option>
@@ -5077,6 +5088,7 @@ function pubblicaDatiPubblici(){
     return {
       nome:p.nome,
       descrizione:p.descrizione||'',
+      tags:p.tags||[],
       categoria:p.categoria||'',
       prezzoVendita:p.prezzoVendita||0,
       tipoBeverage:p.tipoBeverage||false,
@@ -7764,6 +7776,7 @@ function npModifica(idx){
   showTab('nuovo-piatto');
   document.getElementById('np-nome').value=p.nome;
   document.getElementById('np-desc').value=p.descrizione||'';
+  document.querySelectorAll('#np-tags-group input[type=checkbox]').forEach(function(cb){cb.checked=(p.tags||[]).indexOf(cb.value)>=0;});
   document.getElementById('np-cat').value=p.categoria||'Primi piatti';
   document.getElementById('np-sottocat').value=p.sottocategoria||'';
   document.getElementById('np-pax').value=p.pax||4;
@@ -7804,6 +7817,7 @@ function npReset(){
   var pvEl=document.getElementById('np-pv');if(pvEl)pvEl.value='';
   var coeffEl=document.getElementById('np-coeff');if(coeffEl)coeffEl.value='1';
   aggiornaSuggerimentoCoeff();
+  document.querySelectorAll('#np-tags-group input[type=checkbox]').forEach(function(cb){cb.checked=false;});
   var catEl=document.getElementById('np-cat');if(catEl)catEl.value='Primi piatti';
   var subEl=document.getElementById('np-sottocat');if(subEl)subEl.value='';
   var titleEl=document.getElementById('np-title');if(titleEl)titleEl.textContent='Aggiungi nuova voce';
@@ -7994,6 +8008,7 @@ function npSalva(){
     codice:codiceEsistente||nuovoCodice('pf'),
     nome:nome,
     descrizione:(document.getElementById('np-desc').value||'').trim(),
+    tags:(function(){var t=[];document.querySelectorAll('#np-tags-group input[type=checkbox]').forEach(function(cb){if(cb.checked)t.push(cb.value);});return t;})(),
     categoria:document.getElementById('np-cat').value,
     sottocategoria:document.getElementById('np-sottocat').value||'',
     pax:parseInt(document.getElementById('np-pax').value)||4,
