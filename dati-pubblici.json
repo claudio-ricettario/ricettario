@@ -8,7 +8,6 @@
       "tags": [
         "Vegetariano",
         "Più venduto",
-        "Consigliato",
         "Del territorio"
       ],
       "categoria": "Primi piatti",
@@ -27,7 +26,6 @@
       "nome": "Gnocchi al Ragu'",
       "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
       "tags": [
-        "Consigliato",
         "Novità",
         "Del territorio"
       ],
@@ -50,6 +48,7 @@
       "descrizione": "la lessinia nel piatto",
       "tags": [
         "Vegetariano",
+        "Consigliato",
         "Del territorio"
       ],
       "categoria": "Primi piatti",
@@ -68,17 +67,17 @@
       "descrizione": "lasagnetta con la ricetta della nonna",
       "tags": [
         "Più venduto",
-        "Novità"
+        "Consigliato"
       ],
       "categoria": "Primi piatti",
       "prezzoVendita": 12,
       "tipoBeverage": false,
       "allergeni": [
-        "Glutine",
-        "Uova",
         "Sedano",
         "Anidride solforosa e solfiti",
-        "Latte e lattosio"
+        "Latte e lattosio",
+        "Glutine",
+        "Uova"
       ],
       "tracce": [
         "Soia"
@@ -127,6 +126,76 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 10.9,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-110",
+      "nome": "Macinato di Coniglio",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 136,
+        "grassi": 5.55,
+        "grassiSaturi": 1.66,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 20.05,
+        "sale": 0.041
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 24,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-111",
+      "nome": "Macinato di Faraona",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 110,
+        "grassi": 2.47,
+        "grassiSaturi": 0.64,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 20.64,
+        "sale": 0.069
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 28,
           "storico": []
         }
       ]
@@ -197,6 +266,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 14,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-112",
+      "nome": "Macinato di Pollo",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 146,
+        "grassi": 7.8,
+        "grassiSaturi": 2.7,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 19,
+        "sale": 0.068
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 15,
           "storico": []
         }
       ]
@@ -2714,7 +2818,6 @@
       "tags": [
         "Vegetariano",
         "Più venduto",
-        "Consigliato",
         "Del territorio"
       ],
       "categoria": "Primi piatti",
@@ -2762,7 +2865,6 @@
       "nome": "Gnocchi al Ragu'",
       "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
       "tags": [
-        "Consigliato",
         "Novità",
         "Del territorio"
       ],
@@ -2803,6 +2905,7 @@
       "descrizione": "la lessinia nel piatto",
       "tags": [
         "Vegetariano",
+        "Consigliato",
         "Del territorio"
       ],
       "categoria": "Primi piatti",
@@ -2851,7 +2954,7 @@
       "descrizione": "lasagnetta con la ricetta della nonna",
       "tags": [
         "Più venduto",
-        "Novità"
+        "Consigliato"
       ],
       "categoria": "Primi piatti",
       "sottocategoria": "",
@@ -2865,15 +2968,6 @@
         "Con la metà del burro ungere una placca GN 1/1, iniziare gli strati con la besciamella via via alternandoli con il ragù e ogni strato una spolverata di grana, fino a fare 6 strati di pasta.L'ultimo strato farlo misto, spolverare con il grana e mettere dei pezzetti di burro con quello rimanenta. Cuocere a 150/160°C per 45 min, se c'è la sonda arrivare a 85/90°C al cuore. Far riposare coperto 10 min e servire"
       ],
       "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Pasta Per Lasagne Koch (10 fogli x 2 kg) gn",
-          "qtaBase": 1200,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 21,
-          "codiceMp": "MP-094"
-        },
         {
           "tipo": "sl",
           "nome": "Ragù di carne",
@@ -2909,6 +3003,15 @@
           "conv": 0.001,
           "magIdx": 42,
           "codiceMp": "MP-056"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pasta Per Lasagne Koch (10 fogli x 2 kg) gn",
+          "qtaBase": 1.2,
+          "unit": "kg",
+          "conv": 1,
+          "magIdx": 27,
+          "codiceMp": "MP-094"
         }
       ],
       "dataCreazione": "26/6/2026"
