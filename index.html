@@ -512,7 +512,6 @@ textarea{resize:vertical;min-height:60px;}
       <button id="btn-nuovo-piatto-home" class="btn-primary no-print" onclick="showTab('nuovo-piatto')" style="margin-left:auto;white-space:nowrap;">&#43; Aggiungi nuova voce</button>
       <button id="btn-me" class="btn-secondary no-print" onclick="toggleMenuEngineering()" style="white-space:nowrap;">&#128202; Menu Engineering</button>
     </div>
-    <div id="me-panel" style="display:none;margin-bottom:20px;background:#fff;border-radius:12px;padding:16px;border:1px solid #e0ded8;"></div>
     <div id="home-cats-container"></div>
   </div>
 
@@ -1060,6 +1059,15 @@ textarea{resize:vertical;min-height:60px;}
     </div>
     <p style="font-size:11px;color:#bbb;margin-top:14px;">Stampa il QR e posizionalo sui tavoli o all&#39;ingresso.</p>
   </div>
+</div>
+
+<!-- OVERLAY MENU ENGINEERING -->
+<div id="me-overlay" style="display:none;position:fixed;inset:0;background:#faf9f6;z-index:200;overflow-y:auto;">
+  <div style="background:#1a1a1a;padding:14px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.3);">
+    <button onclick="chiudiMenuEngineering()" style="background:none;border:none;color:#fff;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;padding:0;opacity:.8;">&#8592; La Carte</button>
+    <span style="color:#fff;font-size:15px;font-weight:700;margin-left:4px;">&#128202; Menu Engineering</span>
+  </div>
+  <div id="me-panel" style="max-width:960px;margin:0 auto;padding:20px 16px;"></div>
 </div>
 
 <!-- MODAL FORNITORE -->
@@ -4109,18 +4117,23 @@ function meSavePorzioni(idx,val){
 }
 
 function toggleMenuEngineering(){
-  var panel=document.getElementById('me-panel');
-  var btn=document.getElementById('btn-me');
-  if(!panel)return;
-  var isOpen=panel.style.display!=='none';
-  panel.style.display=isOpen?'none':'block';
-  if(btn)btn.style.background=isOpen?'':'#1a1a1a',btn.style.color=isOpen?'':'#fff';
-  if(!isOpen)renderMenuEngineering();
+  var overlay=document.getElementById('me-overlay');
+  if(!overlay)return;
+  overlay.style.display='block';
+  document.body.style.overflow='hidden';
+  window.scrollTo(0,0);
+  renderMenuEngineering();
+}
+function chiudiMenuEngineering(){
+  var overlay=document.getElementById('me-overlay');
+  if(overlay)overlay.style.display='none';
+  document.body.style.overflow='';
 }
 
 function renderMenuEngineering(){
   var cont=document.getElementById('me-panel');
-  if(!cont||cont.style.display==='none')return;
+  var overlay=document.getElementById('me-overlay');
+  if(!cont||!overlay||overlay.style.display==='none')return;
 
   var items=piatti.map(function(p,i){
     var fc=calcolaFoodCostPiatto(p);
@@ -4386,7 +4399,7 @@ function applyAdminUI(){
   if(btnNS){ btnNS.style.display = isAdmin ? 'flex' : 'none'; }
   var btnME = document.getElementById('btn-me');
   if(btnME){ btnME.style.display = isAdmin ? 'inline-flex' : 'none'; }
-  if(!isAdmin){ var mePanel=document.getElementById('me-panel');if(mePanel)mePanel.style.display='none'; }
+  if(!isAdmin){ var meOverlay=document.getElementById('me-overlay');if(meOverlay)meOverlay.style.display='none'; }
   // Dashboard card lock/unlock
   var adminCards=['magazzino','foodcost','fornitori','menu-prev'];
   adminCards.forEach(function(tab){
