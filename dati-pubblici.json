@@ -1,11 +1,16 @@
 {
   "version": 1,
-  "exportDate": "19/8/2026",
+  "exportDate": "20/8/2026",
   "menuData": [
     {
       "nome": "Canederli di Monte Veronese al burro fuso",
       "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
-      "tags": [],
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Consigliato",
+        "Del territorio"
+      ],
       "categoria": "Primi piatti",
       "prezzoVendita": 12,
       "tipoBeverage": false,
@@ -23,7 +28,8 @@
       "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
       "tags": [
         "Consigliato",
-        "Tipico"
+        "Novità",
+        "Del territorio"
       ],
       "categoria": "Primi piatti",
       "prezzoVendita": 9.9,
@@ -44,7 +50,7 @@
       "descrizione": "la lessinia nel piatto",
       "tags": [
         "Vegetariano",
-        "Tipico"
+        "Del territorio"
       ],
       "categoria": "Primi piatti",
       "prezzoVendita": 9.6,
@@ -60,7 +66,10 @@
     {
       "nome": "Lasagne al Ragù",
       "descrizione": "lasagnetta con la ricetta della nonna",
-      "tags": [],
+      "tags": [
+        "Più venduto",
+        "Novità"
+      ],
       "categoria": "Primi piatti",
       "prezzoVendita": 12,
       "tipoBeverage": false,
@@ -2702,8 +2711,14 @@
       "codice": "PF-001",
       "nome": "Canederli di Monte Veronese al burro fuso",
       "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Consigliato",
+        "Del territorio"
+      ],
       "categoria": "Primi piatti",
-      "sottocategoria": "Vegetariano",
+      "sottocategoria": "",
       "pax": 4,
       "prezzoVendita": 12,
       "coefficiente": 4,
@@ -2748,7 +2763,8 @@
       "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
       "tags": [
         "Consigliato",
-        "Tipico"
+        "Novità",
+        "Del territorio"
       ],
       "categoria": "Primi piatti",
       "sottocategoria": "",
@@ -2787,10 +2803,10 @@
       "descrizione": "la lessinia nel piatto",
       "tags": [
         "Vegetariano",
-        "Tipico"
+        "Del territorio"
       ],
       "categoria": "Primi piatti",
-      "sottocategoria": "Vegetariano",
+      "sottocategoria": "",
       "pax": 10,
       "prezzoVendita": 9.6,
       "coefficiente": 4,
@@ -2833,6 +2849,10 @@
       "codice": "PF-002",
       "nome": "Lasagne al Ragù",
       "descrizione": "lasagnetta con la ricetta della nonna",
+      "tags": [
+        "Più venduto",
+        "Novità"
+      ],
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 18,
