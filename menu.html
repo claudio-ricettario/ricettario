@@ -133,9 +133,18 @@ function showCategories(){
   document.getElementById('content').innerHTML=html;
 }
 
+var TAG_PRIORITY={'Consigliato':0,'Più venduto':1};
+function tagPriority(p){
+  var tags=p.tags||[];
+  for(var i=0;i<tags.length;i++){
+    if(TAG_PRIORITY[tags[i]]!==undefined) return TAG_PRIORITY[tags[i]];
+  }
+  return 99;
+}
+
 function showCategory(catEnc){
   var cat=decodeURIComponent(catEnc);
-  var piatti=(_grouped[cat]||[]);
+  var piatti=(_grouped[cat]||[]).slice().sort(function(a,b){return tagPriority(a)-tagPriority(b);});
   window.scrollTo({top:0,behavior:'smooth'});
 
   var backBar=document.getElementById('back-bar');
