@@ -22,15 +22,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .content{max-width:640px;margin:0 auto;padding:20px 12px 48px;}
 
 /* FUORI MENU CARD */
-.fuori-menu-card{background:#1a1a1a;border-radius:18px;padding:20px 18px 16px;margin-bottom:20px;color:#fff;}
-.fuori-menu-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:12px;}
-.fuori-menu-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);}
-.fuori-menu-badge{font-size:11px;font-weight:700;background:#c2410c;color:#fff;padding:2px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:.06em;}
-.fuori-menu-item{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+.fuori-menu-card{background:#fff;border:2px solid #b8722a;border-radius:18px;padding:20px 18px 16px;margin-bottom:20px;}
+.fuori-menu-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;border-bottom:1px solid #eeebe4;padding-bottom:12px;}
+.fuori-menu-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#b8722a;}
+.fuori-menu-badge{font-size:11px;font-weight:700;background:#b8722a;color:#fff;padding:2px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:.06em;}
+.fuori-menu-item{padding:10px 0;border-bottom:1px solid #f0ede6;}
 .fuori-menu-item:last-child{border-bottom:none;padding-bottom:0;}
-.fuori-menu-nome{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;}
-.fuori-menu-desc{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:6px;}
-.fuori-menu-price{font-size:14px;color:rgba(255,255,255,.45);font-weight:400;}
+.fuori-menu-nome{font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:4px;}
+.fuori-menu-desc{font-size:13px;color:#777;line-height:1.5;margin-bottom:6px;}
+.fuori-menu-footer{background:#f7f6f2;border-top:1px solid #eeebe4;margin:10px -18px -16px;padding:9px 18px;border-radius:0 0 16px 16px;}
+.fuori-menu-price{font-size:14px;color:#888;font-weight:400;}
 
 /* CATEGORY GRID */
 .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:4px 0;}
@@ -146,6 +147,10 @@ function showCategories(){
       html+='<div class="fuori-menu-item">';
       html+='<div class="fuori-menu-nome">'+escHtml(p.nome)+'</div>';
       if(p.descrizione) html+='<div class="fuori-menu-desc">'+escHtml(p.descrizione)+'</div>';
+      var badges='';
+      (p.allergeni||[]).forEach(function(a){badges+='<span class="allerg-badge">'+escHtml(a)+'</span>';});
+      (p.tracce||[]).forEach(function(a){badges+='<span class="tracce-badge">tracce: '+escHtml(a)+'</span>';});
+      if(badges) html+='<div class="dish-allergeni" style="margin-bottom:6px;">'+badges+'</div>';
       html+='<div class="fuori-menu-price">'+eur(p.prezzoVendita)+'</div>';
       html+='</div>';
     });
