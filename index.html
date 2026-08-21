@@ -8042,11 +8042,16 @@ function npSalva(){
   if(!npComps.length) errs.push('Aggiungi almeno un componente.');
   if(errs.length){npShowAlert(errs.join(' '));return;}
   var codiceEsistente=(npEditIdx>=0&&piatti[npEditIdx])?piatti[npEditIdx].codice:null;
+  var nuoviTags=(function(){var t=[];document.querySelectorAll('#np-tags-group input[type=checkbox]').forEach(function(cb){if(cb.checked)t.push(cb.value);});return t;})();
+  if(nuoviTags.indexOf('Fuori menù')>=0){
+    var altriConFuori=piatti.filter(function(x,i){return i!==npEditIdx&&(x.tags||[]).indexOf('Fuori menù')>=0;});
+    if(altriConFuori.length>=3){npShowAlert('Limite raggiunto: massimo 3 piatti possono avere il tag "Fuori menù". Rimuovilo da un altro piatto prima di aggiungerlo qui.');return;}
+  }
   var p={
     codice:codiceEsistente||nuovoCodice('pf'),
     nome:nome,
     descrizione:(document.getElementById('np-desc').value||'').trim(),
-    tags:(function(){var t=[];document.querySelectorAll('#np-tags-group input[type=checkbox]').forEach(function(cb){if(cb.checked)t.push(cb.value);});return t;})(),
+    tags:nuoviTags,
     categoria:document.getElementById('np-cat').value,
     sottocategoria:document.getElementById('np-sottocat').value||'',
     pax:parseInt(document.getElementById('np-pax').value)||4,
