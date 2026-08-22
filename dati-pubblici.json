@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "21/8/2026",
+  "exportDate": "22/8/2026",
   "menuData": [
     {
       "nome": "Canederli di Monte Veronese al burro fuso",
@@ -8,7 +8,8 @@
       "tags": [
         "Vegetariano",
         "Più venduto",
-        "Del territorio"
+        "Del territorio",
+        "Fuori menù"
       ],
       "categoria": "Primi piatti",
       "prezzoVendita": 12,
@@ -2817,7 +2818,8 @@
       "tags": [
         "Vegetariano",
         "Più venduto",
-        "Del territorio"
+        "Del territorio",
+        "Fuori menù"
       ],
       "categoria": "Primi piatti",
       "sottocategoria": "",
