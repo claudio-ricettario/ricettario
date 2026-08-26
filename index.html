@@ -815,11 +815,26 @@ textarea{resize:vertical;min-height:60px;}
         <button class="btn-sm" onclick="openGestioneModal()" style="white-space:nowrap;">&#9881; Costi di gestione</button>
       </div>
     </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
+      <div style="background:#fff;border:2px solid #e0ded8;border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Food cost primario</div>
+        <div style="font-size:28px;font-weight:700;" id="fc-perc">-</div>
+        <div style="font-size:11px;color:#bbb;margin-top:4px;">solo materie prime</div>
+      </div>
+      <div id="fc-vero-box" style="background:#fff;border:2px solid #1a1a1a;border-radius:12px;padding:16px;text-align:center;display:none;">
+        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Food cost vero</div>
+        <div style="font-size:28px;font-weight:700;" id="fc-vero-perc2">-</div>
+        <div style="font-size:11px;color:#bbb;margin-top:4px;">MP + costi fissi</div>
+      </div>
+      <div id="fc-vero-box-placeholder" style="background:#f7f6f2;border:2px dashed #e0ded8;border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:11px;color:#bbb;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Food cost vero</div>
+        <div style="font-size:14px;color:#ccc;margin-top:8px;">Inserisci i costi di gestione</div>
+      </div>
+    </div>
     <div class="metrics">
       <div class="metric"><div class="metric-label">Costo MP totale</div><div class="metric-value" id="fc-costo">-</div></div>
       <div class="metric"><div class="metric-label">Costo MP / pax</div><div class="metric-value" id="fc-pax">-</div></div>
       <div class="metric"><div class="metric-label">Ricavo totale</div><div class="metric-value" id="fc-ricavo">-</div></div>
-      <div class="metric"><div class="metric-label">Food cost %</div><div class="metric-value" id="fc-perc">-</div></div>
     </div>
     <div class="card">
       <div class="section-label">Voci di costo (ordinate per peso)</div>
@@ -2751,9 +2766,17 @@ function renderFoodCostVero(p,totPrimario,pax,ricavo){
     return s+porz*(pp.coefficiente||1);
   },0);
   var veroCard=document.getElementById('fc-vero-card');
-  if(!veroCard)return;
-  if(totaleCostiFissi<=0||totUnitaPond<=0){veroCard.style.display='none';return;}
-  veroCard.style.display='';
+  var veroBox=document.getElementById('fc-vero-box');
+  var veroPlaceholder=document.getElementById('fc-vero-box-placeholder');
+  if(totaleCostiFissi<=0||totUnitaPond<=0){
+    if(veroCard)veroCard.style.display='none';
+    if(veroBox)veroBox.style.display='none';
+    if(veroPlaceholder)veroPlaceholder.style.display='';
+    return;
+  }
+  if(veroCard)veroCard.style.display='';
+  if(veroBox)veroBox.style.display='';
+  if(veroPlaceholder)veroPlaceholder.style.display='none';
   var costoPerUnita=totaleCostiFissi/totUnitaPond;
   var costoFissoPax=costoPerUnita*(p.coefficiente||1);
   var totVero=totPrimario+(costoFissoPax*pax);
@@ -2763,6 +2786,8 @@ function renderFoodCostVero(p,totPrimario,pax,ricavo){
   var vpEl=document.getElementById('fc-vero-perc');
   if(fcVeroP>0){vpEl.textContent=fcVeroP.toFixed(1)+'%';vpEl.className='metric-value '+fcC(fcVeroP);}
   else{vpEl.textContent='-';vpEl.className='metric-value';}
+  var vp2El=document.getElementById('fc-vero-perc2');
+  if(vp2El){if(fcVeroP>0){vp2El.textContent=fcVeroP.toFixed(1)+'%';vp2El.style.color=fcC(fcVeroP)==='green'?'#2d7d46':fcC(fcVeroP)==='amber'?'#b45309':'#c0392b';}else{vp2El.textContent='-';}}
   document.getElementById('fc-vero-periodo').textContent=gestione.periodo||'-';
   document.getElementById('fc-vero-coeff').textContent=p.coefficiente||1;
   document.getElementById('fc-vero-cupp').textContent=eur(costoPerUnita)+'/unità pond.';
