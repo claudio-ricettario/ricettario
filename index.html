@@ -2879,7 +2879,7 @@ function gestioneUpdateUnitePond(){
   document.getElementById('gest-costo-unita').textContent=totUp>0?(eur(cpu)+'/unità pond.'):'-';
 }
 
-function saveGestione(){
+function _raccogliDatiGestione(){
   var costiFissi=[];
   document.querySelectorAll('#gest-fissi-list > div').forEach(function(row){
     var inputs=row.querySelectorAll('input');
@@ -2906,11 +2906,16 @@ function saveGestione(){
     costiVariabili:costiVariabili,
     vendite:vendite
   }));
+}
+
+function saveGestione(){
+  _raccogliDatiGestione();
   closeGestioneModal();
   renderFoodCost();
 }
 
 function stampaGestione(){
+  _raccogliDatiGestione();
   var g=JSON.parse(localStorage.getItem('rc_gestione')||'{}');
   var cf=g.costiFissi||[];
   var cv=g.costiVariabili||[];
