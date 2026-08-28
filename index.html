@@ -626,7 +626,10 @@ textarea{resize:vertical;min-height:60px;}
             <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500;cursor:pointer;"><input type="checkbox" value="Consigliato" style="accent-color:#1d4ed8;"> ⭐ Consigliato</label>
             <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500;cursor:pointer;"><input type="checkbox" value="Novità" style="accent-color:#7c3aed;"> ✨ Novità</label>
             <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500;cursor:pointer;"><input type="checkbox" value="Del territorio" style="accent-color:#c2410c;"> 🏠 Del territorio</label>
-            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid #1a1a1a;border-radius:8px;padding:4px 10px;background:#1a1a1a;color:#fff;"><input type="checkbox" value="Fuori menù" style="accent-color:#fff;"> 🍽 Fuori menù</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid #1a1a1a;border-radius:8px;padding:4px 10px;background:#1a1a1a;color:#fff;"><input type="checkbox" value="Fuori menù" style="accent-color:#fff;" onchange="document.getElementById('np-poche-porzioni-row').style.display=this.checked?'block':'none';if(!this.checked)document.getElementById('np-poche-porzioni').checked=false;"> 🍽 Fuori menù</label>
+          </div>
+          <div id="np-poche-porzioni-row" style="display:none;margin-top:8px;">
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;cursor:pointer;color:#b8722a;"><input type="checkbox" id="np-poche-porzioni" style="accent-color:#b8722a;"> ⏳ Poche porzioni disponibili — chiedi al personale</label>
           </div>
         </div>
         <div class="form-row"><label>Categoria</label>
@@ -5158,6 +5161,7 @@ function pubblicaDatiPubblici(){
       nome:p.nome,
       descrizione:p.descrizione||'',
       tags:p.tags||[],
+      pochePorzioni:p.pochePorzioni||false,
       categoria:p.categoria||'',
       prezzoVendita:p.prezzoVendita||0,
       tipoBeverage:p.tipoBeverage||false,
@@ -7853,6 +7857,9 @@ function npModifica(idx){
   document.getElementById('np-nome').value=p.nome;
   document.getElementById('np-desc').value=p.descrizione||'';
   document.querySelectorAll('#np-tags-group input[type=checkbox]').forEach(function(cb){cb.checked=(p.tags||[]).indexOf(cb.value)>=0;});
+  var hasFuori=(p.tags||[]).indexOf('Fuori menù')>=0;
+  document.getElementById('np-poche-porzioni-row').style.display=hasFuori?'block':'none';
+  document.getElementById('np-poche-porzioni').checked=p.pochePorzioni||false;
   document.getElementById('np-cat').value=p.categoria||'Primi piatti';
   document.getElementById('np-sottocat').value=p.sottocategoria||'';
   document.getElementById('np-pax').value=p.pax||4;
@@ -7894,6 +7901,8 @@ function npReset(){
   var coeffEl=document.getElementById('np-coeff');if(coeffEl)coeffEl.value='1';
   aggiornaSuggerimentoCoeff();
   document.querySelectorAll('#np-tags-group input[type=checkbox]').forEach(function(cb){cb.checked=false;});
+  document.getElementById('np-poche-porzioni-row').style.display='none';
+  document.getElementById('np-poche-porzioni').checked=false;
   var catEl=document.getElementById('np-cat');if(catEl)catEl.value='Primi piatti';
   var subEl=document.getElementById('np-sottocat');if(subEl)subEl.value='';
   var titleEl=document.getElementById('np-title');if(titleEl)titleEl.textContent='Aggiungi nuova voce';
@@ -8090,6 +8099,7 @@ function npSalva(){
     nome:nome,
     descrizione:(document.getElementById('np-desc').value||'').trim(),
     tags:nuoviTags,
+    pochePorzioni:document.getElementById('np-poche-porzioni').checked||false,
     categoria:document.getElementById('np-cat').value,
     sottocategoria:document.getElementById('np-sottocat').value||'',
     pax:parseInt(document.getElementById('np-pax').value)||4,

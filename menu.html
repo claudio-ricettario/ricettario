@@ -155,6 +155,7 @@ function showCategories(){
       (p.tracce||[]).forEach(function(a){badges+='<span class="tracce-badge">tracce: '+escHtml(a)+'</span>';});
       if(badges) html+='<div class="dish-allergeni" style="margin-bottom:6px;">'+badges+'</div>';
       html+='<div class="fuori-menu-price">'+eur(p.prezzoVendita)+'</div>';
+      if(p.pochePorzioni) html+='<div style="font-size:11px;color:#b8722a;font-style:italic;margin-top:5px;">⏳ Poche porzioni disponibili — chiedi al personale</div>';
       html+='</div>';
     });
     html+='</div>';
