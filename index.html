@@ -5920,6 +5920,13 @@ function salvaSemilavorato(){
     componenti:JSON.parse(JSON.stringify(smComps)),
     dataCreazione:(idx>=0&&semilavorati[idx])?semilavorati[idx].dataCreazione:today()
   };
+  /* ricalcola semiIdx dai codici (possono essere sfasati dopo il riordinamento) */
+  smComps.forEach(function(c){
+    if(c.tipo==='sl'&&c.codiceSl){
+      var ni=semilavorati.findIndex(function(s){return s.codice===c.codiceSl;});
+      if(ni>=0)c.semiIdx=ni;
+    }
+  });
   /* verifica finale: nessun componente sl deve puntare all'indice che riceverà questo semilavorato */
   var futuroIdx=idx===-1?semilavorati.length:idx;
   var hasCiclo=smComps.some(function(c){return c.tipo==='sl'&&(c.semiIdx===futuroIdx||rilevaCicloSemilavorato(c.semiIdx,futuroIdx));});
