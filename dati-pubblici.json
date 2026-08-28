@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "22/8/2026",
+  "exportDate": "28/8/2026",
   "menuData": [
     {
       "nome": "Canederli di Monte Veronese al burro fuso",
@@ -28,7 +28,8 @@
       "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
       "tags": [
         "Novità",
-        "Del territorio"
+        "Del territorio",
+        "Fuori menù"
       ],
       "categoria": "Primi piatti",
       "prezzoVendita": 9.9,
@@ -82,16 +83,6 @@
       "tracce": [
         "Soia"
       ]
-    },
-    {
-      "nome": "Ripasso",
-      "descrizione": "",
-      "tags": [],
-      "categoria": "Vini",
-      "prezzoVendita": 25,
-      "tipoBeverage": true,
-      "allergeni": [],
-      "tracce": []
     }
   ],
   "magazzino": [
@@ -806,6 +797,41 @@
       ]
     },
     {
+      "codice": "MP-114",
+      "nome": "Funghi Secchi con porcini \"Merlini\"",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 317,
+        "grassi": 2.7,
+        "grassiSaturi": 0.5,
+        "carboidrati": 35.3,
+        "zuccheri": 0,
+        "fibre": 15,
+        "proteine": 30.02,
+        "sale": 0.2
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 36,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-075",
       "nome": "Maggiorana liofilizzata Wiberg",
       "categoria": "Generale",
@@ -969,6 +995,49 @@
         "fibre": 9.2,
         "proteine": 10.66,
         "sale": 0.478
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 6,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-113",
+      "nome": "Pane a cubetti Integrale",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Uova",
+        "Soia",
+        "Latte e lattosio",
+        "Frutta a guscio",
+        "Sesamo"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 247,
+        "grassi": 3.35,
+        "grassiSaturi": 0.747,
+        "carboidrati": 41.29,
+        "zuccheri": 5.57,
+        "fibre": 6.8,
+        "proteine": 12.95,
+        "sale": 0.472
       },
       "nutrizionaliOk": true,
       "giacenza": 0,
@@ -1193,6 +1262,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 1.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-115",
+      "nome": "Prezzemolo liofilizzato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 296,
+        "grassi": 2,
+        "grassiSaturi": 0.26,
+        "carboidrati": 35.9,
+        "zuccheri": 23.4,
+        "fibre": 21.8,
+        "proteine": 22.7,
+        "sale": 0.14
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 230,
           "storico": []
         }
       ]
@@ -2391,9 +2495,176 @@
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 16,
+          "codiceMp": "MP-077",
+          "nome": "Erba cipollina liofilizzata Wiberg",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
         }
       ],
       "dataCreazione": "21/6/2026"
+    },
+    {
+      "codice": "SL-016",
+      "nome": "Canederli con funghi misti Secchi (Base)",
+      "categoria": "Pasta e impasti",
+      "resaQta": 1100,
+      "resaUm": "g",
+      "tempo": "30",
+      "procedimento": "Mettere in ammollo i funghi in 100 gr di acqua per 30 minuti.\nMettere a stufare la cipolla tritata con il burro, aggiungere i funghi strizzati e tritati, cuocere 5 minuti.\nMettere tutti gli ingredienti secchi in una bacinella capiente, aggiungi i funghi stufati, mescolare delicatamente.\nMetti l'acqua dell'ammollo, il latte e le uova insieme, mescola ed aggiungi agli altri ingredienti.\nMescola senza impastare e fai riposare 30 minuti. Forma dei canederli da 50 gr l'uno. Fare la prova di cottura ed eventualmente aggiungere all'impasto del pan grattato.a questo punto si possono usare cosi o abbattere a -18 per una conservazione piu lunga",
+      "coefficiente": 4,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 26,
+          "codiceMp": "MP-113",
+          "nome": "Pane a cubetti Integrale",
+          "qtaBase": 400,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 20,
+          "codiceMp": "MP-114",
+          "nome": "Funghi Secchi con porcini \"Merlini\"",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 41,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 180,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 49,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 7,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 4,
+          "codiceSl": "SL-015",
+          "nome": "Cipolla Tritata",
+          "qtaBase": 55,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 46,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 17,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 60,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 35,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 6,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 48,
+          "codiceMp": "MP-056",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 30,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 22,
+          "codiceMp": "MP-076",
+          "nome": "Noce moscata macinata Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 33,
+          "codiceMp": "MP-115",
+          "nome": "Prezzemolo liofilizzato Wiberg",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "28/8/2026"
+    },
+    {
+      "codice": "SL-015",
+      "nome": "Cipolla Tritata",
+      "categoria": "Verdure lavorate",
+      "resaQta": 1000,
+      "resaUm": "g",
+      "tempo": "5",
+      "procedimento": "Tritare a piacimento per l'uso indicato in ricetta",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 53,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 1100,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "28/8/2026"
     },
     {
       "codice": "SL-013",
@@ -2867,7 +3138,8 @@
       "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
       "tags": [
         "Novità",
-        "Del territorio"
+        "Del territorio",
+        "Fuori menù"
       ],
       "categoria": "Primi piatti",
       "sottocategoria": "",
@@ -3024,7 +3296,7 @@
       "pax": 1,
       "prezzoVendita": 25,
       "coefficiente": 1,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": true,
       "foto": "",
       "steps": [],
