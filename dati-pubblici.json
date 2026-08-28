@@ -11,6 +11,7 @@
         "Del territorio",
         "Fuori menù"
       ],
+      "pochePorzioni": true,
       "categoria": "Primi piatti",
       "prezzoVendita": 12,
       "tipoBeverage": false,
@@ -31,6 +32,7 @@
         "Del territorio",
         "Fuori menù"
       ],
+      "pochePorzioni": true,
       "categoria": "Primi piatti",
       "prezzoVendita": 9.9,
       "tipoBeverage": false,
@@ -52,6 +54,7 @@
         "Consigliato",
         "Del territorio"
       ],
+      "pochePorzioni": false,
       "categoria": "Primi piatti",
       "prezzoVendita": 9.6,
       "tipoBeverage": false,
@@ -70,6 +73,7 @@
         "Più venduto",
         "Consigliato"
       ],
+      "pochePorzioni": false,
       "categoria": "Primi piatti",
       "prezzoVendita": 12,
       "tipoBeverage": false,
@@ -3092,6 +3096,7 @@
         "Del territorio",
         "Fuori menù"
       ],
+      "pochePorzioni": true,
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 4,
@@ -3141,6 +3146,7 @@
         "Del territorio",
         "Fuori menù"
       ],
+      "pochePorzioni": true,
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 10,
