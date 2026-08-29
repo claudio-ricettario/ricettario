@@ -7851,7 +7851,14 @@ function npModifica(idx){
   npEditIdx=idx;
   var p=piatti[idx];
   npComps=JSON.parse(JSON.stringify(p.componenti||[]));
-  npSteps=JSON.parse(JSON.stringify(p.steps||[]));
+  /* migrazione: se il piatto ha il vecchio campo 'procedimento' (testo) e non ha 'steps', converti */
+  if(p.steps&&p.steps.length>0){
+    npSteps=JSON.parse(JSON.stringify(p.steps));
+  } else if(p.procedimento&&p.procedimento.trim()){
+    npSteps=[p.procedimento.trim()];
+  } else {
+    npSteps=[];
+  }
   npFotoData=p.foto||'';
   showTab('nuovo-piatto');
   document.getElementById('np-nome').value=p.nome;
@@ -8083,6 +8090,9 @@ function npCatChange(val){
 }
 function npSalva(){
   npClearAlert();
+  /* se c'è testo non confermato nel campo passo, aggiungilo automaticamente */
+  var stepPending=document.getElementById('np-step-text');
+  if(stepPending&&stepPending.value.trim()){npSteps.push(stepPending.value.trim());stepPending.value='';npRenderSteps();}
   var nome=document.getElementById('np-nome').value.trim();
   var errs=[];
   if(!nome) errs.push('Inserisci il nome del piatto.');
