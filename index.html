@@ -1506,6 +1506,8 @@ function loadSaved(){
   /* carica piatti */
   try{var pf=localStorage.getItem('rc_piatti');if(pf)piatti=JSON.parse(pf);}catch(e){}
   loadCodiceCounters();
+  /* ripara silenziosamente i codiceMp/codiceSl mancanti nei componenti */
+  try{riparaComponentiSilenzioso();}catch(e){}
   /* avvia sync dal cloud solo al primo caricamento (non nei reload interni) */
   if(!window._syncInitDone){
     window._syncInitDone=true;
@@ -2711,14 +2713,13 @@ function renderFoodCost(){
   /* calc total cost */
   var tot=(p.componenti||[]).reduce(function(t,c){
     if(!c||c.conv===undefined) return t;
-    if(c.tipo==='mp'&&(c.magIdx===undefined||c.magIdx>=magazzino.length||!magazzino[c.magIdx]))return t;
-    if(c.tipo==='sl'&&(c.semiIdx===undefined||c.semiIdx>=semilavorati.length||!semilavorati[c.semiIdx]))return t;
-    if(!c) return t;
+    var rmi=c.tipo==='mp'?resolveMagIdx(c):undefined;
+    var rsi=c.tipo==='sl'?resolveSemiIdx(c):undefined;
+    if(c.tipo==='mp'&&(rmi===undefined||rmi<0||rmi>=magazzino.length||!magazzino[rmi]))return t;
+    if(c.tipo==='sl'&&(rsi===undefined||rsi<0||rsi>=semilavorati.length||!semilavorati[rsi]))return t;
     if(c.conv===0||c.unit==='q.b.')return t;
-    if(c.tipo==='mp') return t+c.qtaBase*mult*c.conv*gp(c.magIdx);
-    var si=c.semiIdx;
-    if(si===undefined||si<0||si>=semilavorati.length)return t;
-    return t+costoSemi(si)*(c.qtaBase*mult*(c.unit==='g'||c.unit==='ml'?0.001:1));
+    if(c.tipo==='mp') return t+c.qtaBase*mult*c.conv*gp(rmi);
+    return t+costoSemi(rsi)*(c.qtaBase*mult*(c.unit==='g'||c.unit==='ml'?0.001:1));
   },0);
 
   var pv=p.prezzoVendita||0;
@@ -2736,7 +2737,7 @@ function renderFoodCost(){
 
   /* detail rows */
   var sorted=p.componenti.map(function(c){
-    var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*mult*c.conv*gp(c.magIdx):costoSemi(c.semiIdx)*(c.qtaBase*mult*(c.unit==='g'||c.unit==='ml'?0.001:1)));
+    var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*mult*c.conv*gp(resolveMagIdx(c)):costoSemi(resolveSemiIdx(c))*(c.qtaBase*mult*(c.unit==='g'||c.unit==='ml'?0.001:1)));
     var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':fmtQtaFC(c.qtaBase*mult,c.unit);
     return {nome:c.nome,tipo:c.tipo,qFmt:qFmt,costo:costo};
   }).sort(function(a,b){return b.costo-a.costo;});
@@ -6087,10 +6088,10 @@ function costoPiatto(pi){
   return p.componenti.reduce(function(tot,c){
     if(c.conv===0||c.unit==='q.b.') return tot;
     if(c.tipo==='mp'){
-      return tot+c.qtaBase*c.conv*gp(c.magIdx);
+      return tot+c.qtaBase*c.conv*gp(resolveMagIdx(c));
     } else {
       /* semilavorato */
-      var si=c.semiIdx;
+      var si=resolveSemiIdx(c);
       if(si===undefined||si<0||si>=semilavorati.length) return tot;
       var costoU=costoSemi(si);
       var s=semilavorati[si];
@@ -6272,8 +6273,8 @@ function renderPiatti(){
     var pax=p.pax||4;
     var totCosto=p.componenti.reduce(function(tot,c){
       if(c.conv===0||c.unit==='q.b.') return tot;
-      if(c.tipo==='mp') return tot+c.qtaBase*c.conv*gp(c.magIdx);
-      var si=c.semiIdx; if(si===undefined||si<0||si>=semilavorati.length) return tot;
+      if(c.tipo==='mp') return tot+c.qtaBase*c.conv*gp(resolveMagIdx(c));
+      var si=resolveSemiIdx(c); if(si===undefined||si<0||si>=semilavorati.length) return tot;
       return tot+costoSemi(si)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1));
     },0);
     var pax4=totCosto/pax;
@@ -7656,6 +7657,33 @@ function resolveSemiIdx(c){
   return c.semiIdx;
 }
 
+/* ripara silenziosamente i codici mancanti (no alert, salva solo se ci sono fix) */
+function riparaComponentiSilenzioso(){
+  var fix=0;
+  semilavorati.forEach(function(s){
+    (s.componenti||[]).forEach(function(c){
+      if(c.tipo==='sl'&&!c.codiceSl){
+        var sRif=semilavorati.find(function(x){return x.nome===c.nome;});
+        if(sRif){c.codiceSl=sRif.codice||null;c.semiIdx=semilavorati.indexOf(sRif);fix++;}
+      } else if(c.tipo==='mp'&&!c.codiceMp){
+        var m=magazzino.find(function(x){return x.nome===c.nome;});
+        if(m){c.codiceMp=m.codice||null;c.magIdx=magazzino.indexOf(m);fix++;}
+      }
+    });
+  });
+  piatti.forEach(function(p){
+    (p.componenti||[]).forEach(function(c){
+      if(c.tipo==='mp'&&!c.codiceMp){
+        var m=magazzino.find(function(x){return x.nome===c.nome;});
+        if(m){c.codiceMp=m.codice||null;c.magIdx=magazzino.indexOf(m);fix++;}
+      } else if(c.tipo==='sl'&&!c.codiceSl){
+        var s=semilavorati.find(function(x){return x.nome===c.nome;});
+        if(s){c.codiceSl=s.codice||null;c.semiIdx=semilavorati.indexOf(s);fix++;}
+      }
+    });
+  });
+  if(fix>0){saveSemilavorati();savePiatti();}
+}
 function riparaComponenti(){
   var fixSl=0, fixPf=0;
   semilavorati.forEach(function(s){
@@ -7713,12 +7741,13 @@ function globalSearch(q){
       if(isAdmin && p.prezzoVendita>0){
         var tot=(p.componenti||[]).reduce(function(t,c){
     if(!c||c.conv===undefined) return t;
-    if(c.tipo==='mp'&&(c.magIdx===undefined||c.magIdx>=magazzino.length||!magazzino[c.magIdx]))return t;
-    if(c.tipo==='sl'&&(c.semiIdx===undefined||c.semiIdx>=semilavorati.length||!semilavorati[c.semiIdx]))return t;
-    if(!c) return t;
+    var rmi=c.tipo==='mp'?resolveMagIdx(c):undefined;
+    var rsi=c.tipo==='sl'?resolveSemiIdx(c):undefined;
+    if(c.tipo==='mp'&&(rmi===undefined||rmi<0||rmi>=magazzino.length||!magazzino[rmi]))return t;
+    if(c.tipo==='sl'&&(rsi===undefined||rsi<0||rsi>=semilavorati.length||!semilavorati[rsi]))return t;
           if(c.conv===0||c.unit==='q.b.')return t;
-          if(c.tipo==='mp') return t+c.qtaBase*c.conv*gp(c.magIdx);
-          return t+costoSemi(c.semiIdx)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1));
+          if(c.tipo==='mp') return t+c.qtaBase*c.conv*gp(rmi);
+          return t+costoSemi(rsi)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1));
         },0);
         var pct=tot/p.pax/p.prezzoVendita*100;
         fc=' &middot; FC '+pct.toFixed(1)+'%';
@@ -7989,8 +8018,8 @@ function npRenderComps(){
   var pax=parseInt(document.getElementById('np-pax').value)||4;
   var tot=npComps.reduce(function(t,c){
     if(c.conv===0||c.unit==='q.b.')return t;
-    if(c.tipo==='mp') return t+c.qtaBase*c.conv*gp(c.magIdx);
-    return t+costoSemi(c.semiIdx)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1));
+    if(c.tipo==='mp') return t+c.qtaBase*c.conv*gp(resolveMagIdx(c));
+    return t+costoSemi(resolveSemiIdx(c))*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1));
   },0);
   el.innerHTML='<table style="width:100%;border-collapse:collapse;font-size:13px;">'
     +'<thead><tr>'
@@ -8000,7 +8029,7 @@ function npRenderComps(){
     +'<th style="text-align:right;padding:6px 8px;font-size:11px;color:#888;border-bottom:1px solid #f0ede6;">Costo</th>'
     +'<th style="width:24px;border-bottom:1px solid #f0ede6;"></th></tr></thead><tbody>'
     +npComps.map(function(c,i){
-      var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*c.conv*gp(c.magIdx):costoSemi(c.semiIdx)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1)));
+      var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*c.conv*gp(resolveMagIdx(c)):costoSemi(resolveSemiIdx(c))*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1)));
       return '<tr><td style="padding:7px 8px;border-bottom:1px solid #f5f3ef;font-weight:500;">'+c.nome+'</td>'
         +'<td style="padding:7px 8px;border-bottom:1px solid #f5f3ef;"><span class="comp-tipo '+(c.tipo==='mp'?'mp':'sl')+'">'+(c.tipo==='mp'?'Materia prima':'Semilavorato')+'</span></td>'
         +'<td style="padding:7px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
