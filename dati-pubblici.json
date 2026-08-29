@@ -1,7 +1,31 @@
 {
   "version": 1,
-  "exportDate": "28/8/2026",
+  "exportDate": "29/8/2026",
   "menuData": [
+    {
+      "nome": "Canederli ai Funghi e burro fuso",
+      "descrizione": "Nuova proposta da provare",
+      "tags": [
+        "Vegetariano",
+        "Consigliato",
+        "Novità",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 12,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Latte e lattosio"
+      ],
+      "tracce": [
+        "Soia",
+        "Frutta a guscio",
+        "Sesamo"
+      ]
+    },
     {
       "nome": "Canederli di Monte Veronese al burro fuso",
       "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
@@ -3087,6 +3111,59 @@
   ],
   "piatti": [
     {
+      "codice": "PF-008",
+      "nome": "Canederli ai Funghi e burro fuso",
+      "descrizione": "Nuova proposta da provare",
+      "tags": [
+        "Vegetariano",
+        "Consigliato",
+        "Novità",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 12,
+      "coefficiente": 4,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Cuocere i canederli almeno 15 minuti in acqua salata, scolarli, impiattare, spolverare con il grana, mettere il burro nocciola spumeggiante e aggiungere un po' di erba cipollina prima dell'uscita."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Canederli con funghi misti Secchi (Base)",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 4,
+          "codiceSl": "SL-016"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Burro Nocciola",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 1,
+          "codiceSl": "SL-004"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 48,
+          "codiceMp": "MP-056"
+        }
+      ],
+      "dataCreazione": "29/8/2026"
+    },
+    {
       "codice": "PF-001",
       "nome": "Canederli di Monte Veronese al burro fuso",
       "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
@@ -3105,7 +3182,9 @@
       "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
-      "steps": [],
+      "steps": [
+        "Cuocere i canederli almeno 15 minuti in acqua salata, scolarli, impiattare, spolverare con il grana, mettere il burro nocciola spumeggiante e aggiungere un po' di erba cipollina prima dell'uscita."
+      ],
       "componenti": [
         {
           "tipo": "sl",
@@ -3119,20 +3198,29 @@
         {
           "tipo": "sl",
           "nome": "Burro Nocciola",
-          "qtaBase": 40,
+          "qtaBase": 80,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 0,
+          "semiIdx": 1,
           "codiceSl": "SL-004"
         },
         {
           "tipo": "mp",
           "nome": "Grana Padano Dop",
-          "qtaBase": 20,
+          "qtaBase": 80,
           "unit": "g",
           "conv": 0.001,
-          "magIdx": 8,
+          "magIdx": 48,
           "codiceMp": "MP-056"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Erba cipollina liofilizzata Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 16,
+          "codiceMp": "MP-077"
         }
       ],
       "dataCreazione": "21/6/2026"
