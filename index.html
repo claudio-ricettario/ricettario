@@ -7957,10 +7957,31 @@ function npAddComp(){
   npComps.push(comp);
   document.getElementById('np-qta').value='';
   document.getElementById('np-sel-comp').value='';
+  var sc=document.getElementById('np-search-comp');if(sc){sc.value='';sc.focus();}
+  var res=document.getElementById('np-search-results');if(res)res.style.display='none';
   npRenderComps();
+  npAutoCoeff();
 }
 
-function npRemoveComp(i){npComps.splice(i,1);npRenderComps();}
+function npRemoveComp(i){npComps.splice(i,1);npRenderComps();npAutoCoeff();}
+
+function npAutoCoeff(){
+  var n=npComps.length;
+  if(!n)return;
+  var slComps=npComps.filter(function(c){return c.tipo==='sl';});
+  var coeff;
+  if(slComps.length){
+    var tot=0,cnt=0;
+    slComps.forEach(function(c){var si=resolveSemiIdx(c);var s=semilavorati[si];if(s&&s.coefficiente){tot+=s.coefficiente;cnt++;}});
+    coeff=cnt>0?Math.round(tot/cnt):1;
+    coeff=Math.min(10,Math.max(coeff,1+Math.floor((n-slComps.length)/3)));
+  } else {
+    coeff=Math.min(5,Math.max(1,Math.floor(n/2)));
+  }
+  var campo=document.getElementById('np-coeff');
+  if(campo) campo.value=coeff;
+  aggiornaSuggerimentoCoeff();
+}
 
 function npRenderComps(){
   var el=document.getElementById('np-comp-list');if(!el)return;
