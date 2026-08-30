@@ -5853,12 +5853,10 @@ function smRenderComps(){
       },0);
       var pesoFmt=totGrammi>=1000?(totGrammi/1000).toFixed(2).replace('.',',')+' kg':totGrammi.toFixed(0)+' g';
       return '<tfoot>'
-        +'<tr><td colspan="2" style="padding:6px 8px;font-size:12px;color:#888;border-top:1px solid #e0ded8;">Peso lordo ingredienti</td>'
-        +'<td style="padding:6px 8px;text-align:right;font-size:12px;color:#888;border-top:1px solid #e0ded8;">'+pesoFmt+'</td>'
+        +'<tr><td style="padding:8px 8px;font-weight:600;border-top:1px solid #e0ded8;">Totale</td>'
+        +'<td style="padding:8px 8px;text-align:right;font-weight:600;border-top:1px solid #e0ded8;">'+pesoFmt+'</td>'
+        +'<td style="padding:8px 8px;text-align:right;font-weight:600;border-top:1px solid #e0ded8;">'+eur(totCosto)+'</td>'
         +'<td style="border-top:1px solid #e0ded8;"></td></tr>'
-        +'<tr><td colspan="2" style="padding:8px 8px;font-weight:600;border-top:1px solid #f0ede6;">Costo totale ingredienti</td>'
-        +'<td style="padding:8px 8px;text-align:right;font-weight:600;border-top:1px solid #f0ede6;">'+eur(totCosto)+'</td>'
-        +'<td style="border-top:1px solid #f0ede6;"></td></tr>'
         +'</tfoot>';
     })()+'</table>';
 }
