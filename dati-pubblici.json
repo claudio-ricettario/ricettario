@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "29/8/2026",
+  "exportDate": "30/8/2026",
   "menuData": [
     {
       "nome": "Canederli ai Funghi e burro fuso",
@@ -13,7 +13,7 @@
       ],
       "pochePorzioni": true,
       "categoria": "Primi piatti",
-      "prezzoVendita": 12,
+      "prezzoVendita": 10.5,
       "tipoBeverage": false,
       "allergeni": [
         "Glutine",
@@ -465,6 +465,43 @@
       ]
     },
     {
+      "codice": "MP-117",
+      "nome": "Albume Pastorizzato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 43,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0.9,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 9.8,
+        "sale": 0.42
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.5,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-083",
       "nome": "Aneto liofilizzato Wiberg",
       "categoria": "Generale",
@@ -890,6 +927,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 466,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-116",
+      "nome": "Maizena",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 381,
+        "grassi": 0.05,
+        "grassiSaturi": 0.009,
+        "carboidrati": 91.27,
+        "zuccheri": 0,
+        "fibre": 0.9,
+        "proteine": 0.26,
+        "sale": 0.009
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 6,
           "storico": []
         }
       ]
@@ -2695,6 +2767,76 @@
       "dataCreazione": "28/8/2026"
     },
     {
+      "codice": "SL-017",
+      "nome": "Crema per Millefoglie (4pax circa)",
+      "categoria": "Dolci e creme",
+      "resaQta": 333,
+      "resaUm": "g",
+      "tempo": "15",
+      "procedimento": "Cuocere a bagnomaria i tuorlicon 90 gr di zucchero, il burro, la maizena e la vaniglia, portando a 82°C, raffreddare.\nIntanto preparare una meringa con gli albumi e i 30 gr di zucchero rimanenti, quindi amalgamare i due composti.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 42,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 60,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-117",
+          "nome": "Albume Pastorizzato",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 47,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 48,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 23,
+          "codiceMp": "MP-116",
+          "nome": "Maizena",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 44,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "29/8/2026"
+    },
+    {
       "codice": "SL-013",
       "nome": "Creme Brulè",
       "categoria": "Dolci e creme",
@@ -2703,6 +2845,9 @@
       "tempo": "5",
       "procedimento": "Mescolare tutti gli ingredienti tranne lo zucchero di canna, passarli al colino fine e mettere negli stampini di ceramica, cuocere a forno misto130°C per 13 minuti oppure forno a vapore a 89°C per 60 minuti. Tieni in frigo e al momento di servire , spolvera con zucchero di canna e brucia con il cannello.",
       "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
       "componenti": [
         {
           "tipo": "mp",
@@ -2936,6 +3081,58 @@
       "dataCreazione": "9/7/2026"
     },
     {
+      "codice": "SL-018",
+      "nome": "Pasta sfoglia",
+      "categoria": "Dolci e creme",
+      "resaQta": 1290,
+      "resaUm": "g",
+      "tempo": "45",
+      "procedimento": "Impastare la Farina con l'acqua, il sale e 75 gr di burro. Formare un panetto liscio e lasciar riposare 15 minuti. Con il restante burro formare una mattonella di circa 1 cm.\nCon un mattarello stendere il panetto di pasta fino a formare un rettangolo dello spessore di 4/5 mm e al centro adagiatevi la mattonella di burro, ricoprendola con i lembi laterali della pasta. Battete la forma con il mattarello, poi distendete la pasta.\nCominciate  a piegare la pasta in tre parti, sovrapponendole, poi stendetela, ripetendo l'operazione per 3 volte e lasciando riposare 10min in frigo tra un giro e l'altro.\nInfine stendere la pasta dello spessore  di 2/3 mm, ricavate dei quadrati o dei dischi di circa 8mm, cuocere su placca forate a 200°C per 10/12 min. Far Raffreddare.",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 18,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 37,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 15,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 7,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 48,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 525,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "29/8/2026"
+    },
+    {
       "codice": "SL-009",
       "nome": "Patate cotte",
       "categoria": "Verdure lavorate",
@@ -3124,7 +3321,7 @@
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 4,
-      "prezzoVendita": 12,
+      "prezzoVendita": 10.5,
       "coefficiente": 4,
       "nelMenu": true,
       "tipoBeverage": false,
@@ -3161,7 +3358,8 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "29/8/2026"
+      "dataCreazione": "29/8/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-001",
@@ -3223,7 +3421,8 @@
           "codiceMp": "MP-077"
         }
       ],
-      "dataCreazione": "21/6/2026"
+      "dataCreazione": "21/6/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-003",
@@ -3264,7 +3463,8 @@
           "codiceSl": "SL-006"
         }
       ],
-      "dataCreazione": "7/7/2026"
+      "dataCreazione": "7/7/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-004",
@@ -3312,7 +3512,8 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "7/7/2026"
+      "dataCreazione": "7/7/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-002",
@@ -3380,7 +3581,8 @@
           "codiceMp": "MP-094"
         }
       ],
-      "dataCreazione": "26/6/2026"
+      "dataCreazione": "26/6/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-007",
