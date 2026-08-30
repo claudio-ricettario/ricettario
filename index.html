@@ -1504,6 +1504,8 @@ function loadSaved(){
   loadCodiceCounters();
   /* ripara silenziosamente i codiceMp/codiceSl mancanti nei componenti */
   try{riparaComponentiSilenzioso();}catch(e){}
+  /* se un piatto è Fuori menù, disattiva la stellina */
+  try{var _fix=false;piatti.forEach(function(p){if((p.tags||[]).indexOf('Fuori menù')>=0&&p.nelMenu){p.nelMenu=false;_fix=true;}});if(_fix)savePiatti();}catch(e){}
   /* avvia sync dal cloud solo al primo caricamento (non nei reload interni) */
   if(!window._syncInitDone){
     window._syncInitDone=true;
@@ -6323,6 +6325,10 @@ function renderPiatti(){
 
 function toggleNelMenu(idx){
   if(!piatti[idx])return;
+  if((piatti[idx].tags||[]).indexOf('Fuori menù')>=0){
+    alert('I piatti "Fuori menù" non possono essere aggiunti al menu attivo — appaiono nella card speciale.');
+    return;
+  }
   piatti[idx].nelMenu=!piatti[idx].nelMenu;
   savePiatti();
   renderPiatti();
@@ -8173,7 +8179,7 @@ function npSalva(){
     pax:parseInt(document.getElementById('np-pax').value)||4,
     prezzoVendita:parseFloat(document.getElementById('np-pv').value)||0,
     coefficiente:parseInt(document.getElementById('np-coeff').value)||1,
-    nelMenu:(npEditIdx>=0&&piatti[npEditIdx])?piatti[npEditIdx].nelMenu||false:false,
+    nelMenu:npTags.indexOf('Fuori menù')>=0?false:((npEditIdx>=0&&piatti[npEditIdx])?piatti[npEditIdx].nelMenu||false:false),
     tipoBeverage:document.getElementById('np-bev')&&document.getElementById('np-bev').checked||false,
     foto:npFotoData||'',
     steps:JSON.parse(JSON.stringify(npSteps)),
