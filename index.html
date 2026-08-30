@@ -5844,9 +5844,23 @@ function smRenderComps(){
         +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:center;">'
         +'<span style="cursor:pointer;color:#d0cec8;font-size:15px;" onclick="smRemoveComp('+i+')">&#10005;</span></td></tr>';
     }).join('')+'</tbody>'
-    +'<tfoot><tr><td colspan="2" style="padding:8px 8px;font-weight:600;border-top:1px solid #e0ded8;">Costo totale ingredienti</td>'
-    +'<td style="padding:8px 8px;text-align:right;font-weight:600;border-top:1px solid #e0ded8;">'+eur(smComps.reduce(function(t,c){return t+costoCompSm(c);},0))+'</td>'
-    +'<td style="border-top:1px solid #e0ded8;"></td></tr></tfoot></table>';
+    +(function(){
+      var totCosto=smComps.reduce(function(t,c){return t+costoCompSm(c);},0);
+      var totGrammi=smComps.reduce(function(t,c){
+        if(c.unit==='g'||c.unit==='ml') return t+c.qtaBase;
+        if(c.unit==='kg'||c.unit==='lt') return t+c.qtaBase*1000;
+        return t; /* pz, bustina, porzioni, q.b. non pesabili */
+      },0);
+      var pesoFmt=totGrammi>=1000?(totGrammi/1000).toFixed(2).replace('.',',')+' kg':totGrammi.toFixed(0)+' g';
+      return '<tfoot>'
+        +'<tr><td colspan="2" style="padding:6px 8px;font-size:12px;color:#888;border-top:1px solid #e0ded8;">Peso lordo ingredienti</td>'
+        +'<td style="padding:6px 8px;text-align:right;font-size:12px;color:#888;border-top:1px solid #e0ded8;">'+pesoFmt+'</td>'
+        +'<td style="border-top:1px solid #e0ded8;"></td></tr>'
+        +'<tr><td colspan="2" style="padding:8px 8px;font-weight:600;border-top:1px solid #f0ede6;">Costo totale ingredienti</td>'
+        +'<td style="padding:8px 8px;text-align:right;font-weight:600;border-top:1px solid #f0ede6;">'+eur(totCosto)+'</td>'
+        +'<td style="border-top:1px solid #f0ede6;"></td></tr>'
+        +'</tfoot>';
+    })()+'</table>';
 }
 
 function smAddIng(){
