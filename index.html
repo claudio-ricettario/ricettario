@@ -3631,8 +3631,10 @@ function renderGuida(){
 }
 
 function apriGuidaContestuale(){
-  /* assicura che la guida sia renderizzata (per estrarne le sezioni con data-tab) */
-  renderGuida();
+  try{
+  /* renderizza la guida solo se non è già stata renderizzata */
+  var guidaEl=document.getElementById('guida-content');
+  if(guidaEl&&!guidaEl.querySelector('details[data-tab]')) renderGuida();
   var tab=_currentTab||'dashboard';
   var panel=document.getElementById('guida-ctx-panel');
   var overlay=document.getElementById('guida-ctx-overlay');
@@ -3672,11 +3674,12 @@ function apriGuidaContestuale(){
   overlay.style.display='block';
   panel.style.display='flex';
   document.body.style.overflow='hidden';
+  }catch(e){console.warn('Guida contestuale errore:',e);}
 }
 
 function chiudiGuidaContestuale(){
-  document.getElementById('guida-ctx-overlay').style.display='none';
-  document.getElementById('guida-ctx-panel').style.display='none';
+  try{document.getElementById('guida-ctx-overlay').style.display='none';}catch(e){}
+  try{document.getElementById('guida-ctx-panel').style.display='none';}catch(e){}
   document.body.style.overflow='';
 }
 
@@ -4553,6 +4556,8 @@ checkAdminSession();
 applyAdminUI();
 /* mostra bottone guida contestuale sulla tab iniziale */
 (function(){var gb=document.getElementById('guida-ctx-btn');if(gb)gb.style.display='flex';})();
+/* Escape chiude la guida contestuale e ripristina il body */
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){chiudiGuidaContestuale();}});
 
 function caricaDatiPubblici(){
   if(isAdmin) return;
