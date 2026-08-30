@@ -8260,7 +8260,7 @@ function npSalva(){
     pax:parseInt(document.getElementById('np-pax').value)||4,
     prezzoVendita:parseFloat(document.getElementById('np-pv').value)||0,
     coefficiente:parseInt(document.getElementById('np-coeff').value)||1,
-    nelMenu:npTags.indexOf('Fuori menù')>=0?false:((npEditIdx>=0&&piatti[npEditIdx])?piatti[npEditIdx].nelMenu||false:false),
+    nelMenu:nuoviTags.indexOf('Fuori menù')>=0?false:((npEditIdx>=0&&piatti[npEditIdx])?piatti[npEditIdx].nelMenu||false:false),
     tipoBeverage:document.getElementById('np-bev')&&document.getElementById('np-bev').checked||false,
     foto:npFotoData||'',
     steps:JSON.parse(JSON.stringify(npSteps)),
