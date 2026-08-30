@@ -666,10 +666,6 @@ textarea{resize:vertical;min-height:60px;}
           <input type="number" id="np-coeff" value="1" min="1" max="10" step="1" style="width:100%;text-align:left;" title="1 = semplice, 10 = alta complessità tecnica/tempo uomo"/>
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #f0ede8;margin-top:4px;">
-          <input type="checkbox" id="np-nel-menu" style="width:16px;height:16px;cursor:pointer;accent-color:#16a34a;"/>
-          <label style="margin:0;cursor:pointer;font-size:13px;" for="np-nel-menu">Includi nel menu attivo</label>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;padding:6px 0;">
           <input type="checkbox" id="np-bev" style="width:16px;height:16px;cursor:pointer;accent-color:#7c3aed;"/>
           <label style="margin:0;cursor:pointer;font-size:13px;" for="np-bev">&#127863; Beverage (usa soglie bar cost)</label>
         </div>
@@ -7913,7 +7909,7 @@ function npModifica(idx){
   document.getElementById('np-pax').value=p.pax||4;
   document.getElementById('np-pv').value=p.prezzoVendita||'';
   document.getElementById('np-coeff').value=p.coefficiente||1;
-  document.getElementById('np-nel-menu').checked=p.nelMenu||false;
+  /* nelMenu gestito dalla stellina nella lista */
   var bevCb=document.getElementById('np-bev');
   if(bevCb)bevCb.checked=p.tipoBeverage||false;
   setTimeout(aggiornaSuggerimentoCoeff,50);
@@ -8177,7 +8173,7 @@ function npSalva(){
     pax:parseInt(document.getElementById('np-pax').value)||4,
     prezzoVendita:parseFloat(document.getElementById('np-pv').value)||0,
     coefficiente:parseInt(document.getElementById('np-coeff').value)||1,
-    nelMenu:document.getElementById('np-nel-menu').checked||false,
+    nelMenu:(npEditIdx>=0&&piatti[npEditIdx])?piatti[npEditIdx].nelMenu||false:false,
     tipoBeverage:document.getElementById('np-bev')&&document.getElementById('np-bev').checked||false,
     foto:npFotoData||'',
     steps:JSON.parse(JSON.stringify(npSteps)),
