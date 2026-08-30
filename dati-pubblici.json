@@ -3,30 +3,6 @@
   "exportDate": "30/8/2026",
   "menuData": [
     {
-      "nome": "Canederli ai Funghi e burro fuso",
-      "descrizione": "Nuova proposta da provare",
-      "tags": [
-        "Vegetariano",
-        "Consigliato",
-        "Novità",
-        "Fuori menù"
-      ],
-      "pochePorzioni": true,
-      "categoria": "Primi piatti",
-      "prezzoVendita": 10.5,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Glutine",
-        "Uova",
-        "Latte e lattosio"
-      ],
-      "tracce": [
-        "Soia",
-        "Frutta a guscio",
-        "Sesamo"
-      ]
-    },
-    {
       "nome": "Canederli di Monte Veronese al burro fuso",
       "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
       "tags": [
@@ -106,27 +82,6 @@
         "Latte e lattosio",
         "Glutine",
         "Uova"
-      ],
-      "tracce": [
-        "Soia"
-      ]
-    },
-    {
-      "nome": "Mille Foglie al piatto",
-      "descrizione": "Ottima in ogni stagione",
-      "tags": [
-        "Novità",
-        "Fuori menù"
-      ],
-      "pochePorzioni": true,
-      "categoria": "Dolci",
-      "prezzoVendita": 6,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Glutine",
-        "Latte e lattosio",
-        "Uova",
-        "Frutta a guscio"
       ],
       "tracce": [
         "Soia"
@@ -3422,7 +3377,7 @@
       "pax": 4,
       "prezzoVendita": 10.5,
       "coefficiente": 4,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -3693,7 +3648,7 @@
       "pax": 1,
       "prezzoVendita": 6,
       "coefficiente": 3,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
