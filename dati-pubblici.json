@@ -3,39 +3,15 @@
   "exportDate": "30/8/2026",
   "menuData": [
     {
-      "nome": "Canederli ai Funghi e burro fuso",
-      "descrizione": "Nuova proposta da provare",
-      "tags": [
-        "Vegetariano",
-        "Consigliato",
-        "Novità",
-        "Fuori menù"
-      ],
-      "pochePorzioni": true,
-      "categoria": "Primi piatti",
-      "prezzoVendita": 10.5,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Glutine",
-        "Uova",
-        "Latte e lattosio"
-      ],
-      "tracce": [
-        "Soia",
-        "Frutta a guscio",
-        "Sesamo"
-      ]
-    },
-    {
       "nome": "Canederli di Monte Veronese al burro fuso",
       "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
       "tags": [
         "Vegetariano",
         "Più venduto",
-        "Del territorio",
-        "Fuori menù"
+        "Consigliato",
+        "Del territorio"
       ],
-      "pochePorzioni": true,
+      "pochePorzioni": false,
       "categoria": "Primi piatti",
       "prezzoVendita": 12,
       "tipoBeverage": false,
@@ -53,10 +29,9 @@
       "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
       "tags": [
         "Novità",
-        "Del territorio",
-        "Fuori menù"
+        "Del territorio"
       ],
-      "pochePorzioni": true,
+      "pochePorzioni": false,
       "categoria": "Primi piatti",
       "prezzoVendita": 9.9,
       "tipoBeverage": false,
@@ -497,6 +472,47 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 3.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-118",
+      "nome": "Amaretti Vicenzi",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova",
+        "Latte e lattosio",
+        "Frutta a guscio"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Glutine"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 432,
+        "grassi": 10,
+        "grassiSaturi": 1,
+        "carboidrati": 77,
+        "zuccheri": 76,
+        "fibre": 3,
+        "proteine": 6.9,
+        "sale": 0.13
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
           "storico": []
         }
       ]
@@ -1758,6 +1774,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-119",
+      "nome": "Zucchero a Velo da Kg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 389,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 99.8,
+        "zuccheri": 97.8,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.5,
           "storico": []
         }
       ]
@@ -3084,10 +3135,10 @@
       "codice": "SL-018",
       "nome": "Pasta sfoglia",
       "categoria": "Dolci e creme",
-      "resaQta": 1290,
+      "resaQta": 1160,
       "resaUm": "g",
       "tempo": "45",
-      "procedimento": "Impastare la Farina con l'acqua, il sale e 75 gr di burro. Formare un panetto liscio e lasciar riposare 15 minuti. Con il restante burro formare una mattonella di circa 1 cm.\nCon un mattarello stendere il panetto di pasta fino a formare un rettangolo dello spessore di 4/5 mm e al centro adagiatevi la mattonella di burro, ricoprendola con i lembi laterali della pasta. Battete la forma con il mattarello, poi distendete la pasta.\nCominciate  a piegare la pasta in tre parti, sovrapponendole, poi stendetela, ripetendo l'operazione per 3 volte e lasciando riposare 10min in frigo tra un giro e l'altro.\nInfine stendere la pasta dello spessore  di 2/3 mm, ricavate dei quadrati o dei dischi di circa 8mm, cuocere su placca forate a 200°C per 10/12 min. Far Raffreddare.",
+      "procedimento": "Impastare la Farina con l'acqua, il sale e 75 gr di burro. Formare un panetto liscio e lasciar riposare 15 minuti. Con il restante burro formare una mattonella di circa 1 cm.\nCon un mattarello stendere il panetto di pasta fino a formare un rettangolo dello spessore di 4/5 mm e al centro adagiatevi la mattonella di burro, ricoprendola con i lembi laterali della pasta. Battete la forma con il mattarello, poi distendete la pasta.\nCominciate  a piegare la pasta in tre parti, sovrapponendole, poi stendetela, ripetendo l'operazione per 3 volte e lasciando riposare 10min in frigo tra un giro e l'altro.\nInfine stendere la pasta dello spessore  di 2/3 mm, ricavate dei quadrati o dei dischi di circa 8mm, cuocere su placca forate a 200°C per 10/15min. Far Raffreddare.",
       "coefficiente": 3,
       "shelfLifeFrigo": 3,
       "shelfLifeSottovuoto": 7,
@@ -3188,11 +3239,14 @@
       "codice": "SL-006",
       "nome": "Ragù di carne",
       "categoria": "Salse e sughi",
-      "resaQta": 28.4,
+      "resaQta": 21.3,
       "resaUm": "kg",
       "tempo": "2400",
       "procedimento": "In una padella rosola leggermente le verdure con 100 di olio, in una pentola ampia e larga rosola la carne con 400 di olio, unisci le verdure , sfuma con il vino rosso finchè non evapora del tutto. Aggiungi la Polpa, il concentrato, e tutti gli altri ingredienti, copri e cuoci a fuoco basso per 3/4 ore. Abbatti e conserva in frigo a +4, o surgela.",
       "coefficiente": 6,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
       "componenti": [
         {
           "tipo": "mp",
@@ -3323,7 +3377,7 @@
       "pax": 4,
       "prezzoVendita": 10.5,
       "coefficiente": 4,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -3358,8 +3412,7 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "29/8/2026",
-      "porzioniVendute": 0
+      "dataCreazione": "29/8/2026"
     },
     {
       "codice": "PF-001",
@@ -3368,10 +3421,10 @@
       "tags": [
         "Vegetariano",
         "Più venduto",
-        "Del territorio",
-        "Fuori menù"
+        "Consigliato",
+        "Del territorio"
       ],
-      "pochePorzioni": true,
+      "pochePorzioni": false,
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 4,
@@ -3421,8 +3474,7 @@
           "codiceMp": "MP-077"
         }
       ],
-      "dataCreazione": "21/6/2026",
-      "porzioniVendute": 0
+      "dataCreazione": "21/6/2026"
     },
     {
       "codice": "PF-003",
@@ -3430,10 +3482,9 @@
       "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
       "tags": [
         "Novità",
-        "Del territorio",
-        "Fuori menù"
+        "Del territorio"
       ],
-      "pochePorzioni": true,
+      "pochePorzioni": false,
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 10,
@@ -3463,8 +3514,7 @@
           "codiceSl": "SL-006"
         }
       ],
-      "dataCreazione": "7/7/2026",
-      "porzioniVendute": 0
+      "dataCreazione": "7/7/2026"
     },
     {
       "codice": "PF-004",
@@ -3583,6 +3633,66 @@
       ],
       "dataCreazione": "26/6/2026",
       "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-009",
+      "nome": "Mille Foglie al piatto",
+      "descrizione": "Ottima in ogni stagione",
+      "tags": [
+        "Novità",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 6,
+      "coefficiente": 3,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Montare la millefoglie alternando crema e Sfoglia cotta in 3 strati, mettere un po di amaretti ai lati e spolverare con zucchero a velo."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Pasta sfoglia",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 11,
+          "codiceSl": "SL-018"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Crema per Millefoglie (4pax circa)",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 6,
+          "codiceSl": "SL-017"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Amaretti Vicenzi",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 11,
+          "codiceMp": "MP-118"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Zucchero a Velo da Kg",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 47,
+          "codiceMp": "MP-119"
+        }
+      ],
+      "dataCreazione": "30/8/2026"
     },
     {
       "codice": "PF-007",
