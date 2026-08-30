@@ -958,6 +958,21 @@ textarea{resize:vertical;min-height:60px;}
   <div id="tab-guida" class="section">
     <div id="guida-content" style="max-width:800px;margin:0 auto;padding:20px 16px;"></div>
   </div>
+  <!-- GUIDA CONTESTUALE -->
+  <button id="guida-ctx-btn" onclick="apriGuidaContestuale()" title="Guida per questa sezione"
+    style="display:none;position:fixed;bottom:24px;right:24px;z-index:1100;width:44px;height:44px;border-radius:50%;background:#1a1a1a;color:#fff;border:none;font-size:20px;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.25);line-height:1;">?</button>
+  <div id="guida-ctx-overlay" onclick="chiudiGuidaContestuale()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1200;"></div>
+  <div id="guida-ctx-panel" style="display:none;position:fixed;top:0;right:0;bottom:0;width:min(480px,95vw);background:#fff;z-index:1201;overflow-y:auto;box-shadow:-4px 0 24px rgba(0,0,0,.15);flex-direction:column;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e5e2d9;position:sticky;top:0;background:#fff;z-index:1;">
+      <span style="font-size:15px;font-weight:700;">📖 Guida</span>
+      <button onclick="chiudiGuidaContestuale()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#888;line-height:1;">&times;</button>
+    </div>
+    <div id="guida-ctx-content" style="padding:16px 20px;font-size:14px;line-height:1.75;color:#333;"></div>
+    <div style="padding:12px 20px;border-top:1px solid #e5e2d9;text-align:center;">
+      <button onclick="chiudiGuidaContestuale();showTab(\'guida\')" style="background:none;border:1px solid #d0cec8;border-radius:8px;padding:7px 16px;font-size:13px;cursor:pointer;color:#555;">Apri guida completa →</button>
+    </div>
+  </div>
+
   <div id="tab-nuova-ricetta" class="section">
     <h2>Nuova ricetta</h2>
     <p class="muted">Compila i campi e aggiungi gli ingredienti uno per uno</p>
@@ -3043,10 +3058,15 @@ function gestioneNuovoPeriodo(){
   renderFoodCost();
 }
 
+var _currentTab='dashboard';
 function showTab(name){
   if(!isAdmin && ADMIN_ONLY_TABS.indexOf(name) >= 0){
     return;
   }
+  _currentTab=name;
+  /* mostra/nascondi bottone guida contestuale */
+  var gBtn=document.getElementById('guida-ctx-btn');
+  if(gBtn) gBtn.style.display=(name==='guida'?'none':'flex');
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   var tabBtn=document.getElementById('tab-btn-'+name);
@@ -3143,7 +3163,7 @@ function renderGuida(){
 
   } else {
     h+='<p style="color:#888;font-size:13px;margin-bottom:20px;">Guida completa alla gestione del ricettario.</p>';
-    h+='<details class="gs"><summary>&#127968; Dashboard e navigazione</summary><div class="gb">'
+    h+='<details class="gs" data-tab="dashboard"><summary>&#127968; Dashboard e navigazione</summary><div class="gb">'
       +'<p>All\'apertura dell\'app compare la <strong>Dashboard</strong> — una griglia di 9 card che dà accesso a tutte le sezioni.</p>'
       +'<table><tr><th>Card</th><th>Accesso</th><th>Descrizione</th></tr>'
       +'<tr><td>&#127374; La Carte</td><td>Tutti</td><td>Ricette, ingredienti, allergeni e costi</td></tr>'
@@ -3170,7 +3190,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Backup e strumenti admin
-    h+='<details class="gs"><summary>&#128736; Backup e ripristino</summary><div class="gb">'
+    h+='<details class="gs" data-tab="dashboard"><summary>&#128736; Backup e ripristino</summary><div class="gb">'
       +'<table><tr><th>Pulsante</th><th>Funzione</th><th>Quando usarlo</th></tr>'
       +'<tr><td>&#128229; Esporta</td><td>Apre "Salva con nome" — scegli la cartella</td><td>Backup manuale mensile in <code>iCloud Drive / MEP / backup/</code></td></tr>'
       +'<tr><td>&#128228; Importa</td><td>Carica backup JSON, sovrascrive tutti i dati</td><td>Ripristino da file esportato</td></tr>'
@@ -3183,7 +3203,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Sincronizzazione cloud
-    h+='<details class="gs"><summary>&#9729; Sincronizzazione cloud (multi-dispositivo)</summary><div class="gb">'
+    h+='<details class="gs" data-tab="dashboard"><summary>&#9729; Sincronizzazione cloud (multi-dispositivo)</summary><div class="gb">'
       +'<p>MiseEnPlace PRO può sincronizzare automaticamente tutti i dati tra dispositivi diversi tramite un <strong>Gist GitHub privato</strong>. Ogni volta che salvi qualcosa, i dati vengono caricati sul cloud entro 2 secondi.</p>'
       +'<h4>Configurazione (una volta sola)</h4>'
       +'<ol>'
@@ -3209,7 +3229,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Magazzino
-    h+='<details class="gs"><summary>&#128230; Magazzino — materie prime</summary><div class="gb">'
+    h+='<details class="gs" data-tab="magazzino"><summary>&#128230; Magazzino — materie prime</summary><div class="gb">'
       +'<h4>Inserire una nuova materia prima</h4>'
       +'<ol>'
       +'<li>Tab <strong>Magazzino</strong> &#x2192; <strong>+ Nuova materia prima</strong>.</li>'
@@ -3238,7 +3258,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Semilavorati
-    h+='<details class="gs"><summary>&#9881; Semilavorati — ricette base</summary><div class="gb">'
+    h+='<details class="gs" data-tab="semilavorati"><summary>&#9881; Semilavorati — ricette base</summary><div class="gb">'
       +'<h4>Creare un semilavorato</h4>'
       +'<ol>'
       +'<li>Tab <strong>Semilavorati</strong> &#x2192; <strong>+ Nuova ricetta base</strong>.</li>'
@@ -3268,7 +3288,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Piatti finiti
-    h+='<details class="gs"><summary>&#127869; Piatti finiti</summary><div class="gb">'
+    h+='<details class="gs" data-tab="home,nuovo-piatto,ricetta"><summary>&#127869; Piatti finiti</summary><div class="gb">'
       +'<h4>Creare un piatto finito</h4>'
       +'<ol>'
       +'<li>Clicca <strong>+ Aggiungi nuova voce</strong> dalla home.</li>'
@@ -3321,7 +3341,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Beverage
-    h+='<details class="gs"><summary>&#127863; Beverage — vino, cocktail, caffetteria</summary><div class="gb">'
+    h+='<details class="gs" data-tab="home,nuovo-piatto"><summary>&#127863; Beverage — vino, cocktail, caffetteria</summary><div class="gb">'
       +'<p>Ogni bevanda si crea come un piatto finito: spunta <strong>&#127863; Beverage (usa soglie bar cost)</strong> nel form. '
       +'Le soglie saranno diverse da quelle food:</p>'
       +'<table><tr><th>Bar cost %</th><th>Valutazione</th></tr>'
@@ -3354,7 +3374,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Food cost
-    h+='<details class="gs"><summary>&#128202; Food Cost</summary><div class="gb">'
+    h+='<details class="gs" data-tab="foodcost,ricetta"><summary>&#128202; Food Cost</summary><div class="gb">'
       +'<p>Il tab Food Cost mostra l\'analisi economica per ogni piatto.</p>'
       +'<ul>'
       +'<li><strong>Food cost %</strong> = costo materie prime / prezzo di vendita &times; 100</li>'
@@ -3366,7 +3386,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Costi di gestione e BEP
-    h+='<details class="gs"><summary>&#9881; Costi di gestione e BEP</summary><div class="gb">'
+    h+='<details class="gs" data-tab="foodcost"><summary>&#9881; Costi di gestione e BEP</summary><div class="gb">'
       +'<p>Accessibile da <strong>Food Cost</strong> &#x2192; <strong>&#9881; Costi di gestione</strong>.</p>'
       +'<h4>Come compilare il periodo</h4>'
       +'<ol>'
@@ -3393,7 +3413,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Fornitori
-    h+='<details class="gs"><summary>&#127978; Fornitori</summary><div class="gb">'
+    h+='<details class="gs" data-tab="fornitori"><summary>&#127978; Fornitori</summary><div class="gb">'
       +'<ul>'
       +'<li>Aggiungi fornitori con ragione sociale, contatti e categoria merceologica.</li>'
       +'<li>I fornitori inseriti sono selezionabili quando crei una materia prima in magazzino.</li>'
@@ -3418,7 +3438,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Avvia Produzione
-    h+='<details class="gs"><summary>&#9654; Avvia Produzione</summary><div class="gb">'
+    h+='<details class="gs" data-tab="produzioni"><summary>&#9654; Avvia Produzione</summary><div class="gb">'
       +'<ol>'
       +'<li>Tab <strong>Avvia Produzione</strong> &#x2192; <strong>Nuova produzione</strong>.</li>'
       +'<li>Cerca e seleziona il semilavorato o piatto finito.</li>'
@@ -3432,7 +3452,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Inventario valorizzato
-    h+='<details class="gs"><summary>&#128202; Inventario valorizzato</summary><div class="gb">'
+    h+='<details class="gs" data-tab="foodcost,produzioni"><summary>&#128202; Inventario valorizzato</summary><div class="gb">'
       +'<p>Il bottone <strong>&#128202; Inventario valorizzato</strong> in cima al tab Magazzino genera un report stampabile con:</p>'
       +'<ul>'
       +'<li>Tutte le materie prime raggruppate per categoria</li>'
@@ -3444,7 +3464,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Menu e Preventivi
-    h+='<details class="gs"><summary>&#128203; Preventivi eventi</summary><div class="gb">'
+    h+='<details class="gs" data-tab="menu-prev"><summary>&#128203; Preventivi eventi</summary><div class="gb">'
       +'<p>Il tab <strong>&#128203; Preventivi</strong> permette di creare menu personalizzati per eventi e catering. Il food cost è calcolato internamente ma non appare mai nel PDF inviato al cliente.</p>'
       +'<h4>Creare un preventivo</h4>'
       +'<ol>'
@@ -3477,7 +3497,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Menu Engineering
-    h+='<details class="gs"><summary>&#128202; Menu Engineering</summary><div class="gb">'
+    h+='<details class="gs" data-tab="foodcost,home"><summary>&#128202; Menu Engineering</summary><div class="gb">'
       +'<p>Accessibile dal tab <strong>La Carte</strong> &#x2192; bottone <strong>&#128202; Menu Engineering</strong>. Classifica i piatti in 4 categorie secondo il metodo Kasavana &amp; Smith, basandosi su margine di contribuzione e popolarità.</p>'
       +'<h4>Come funziona</h4>'
       +'<ol>'
@@ -3504,7 +3524,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Menu digitale e QR
-    h+='<details class="gs"><summary>&#128247; Menu digitale &amp; QR Code</summary><div class="gb">'
+    h+='<details class="gs" data-tab="home,menu-prev,dashboard"><summary>&#128247; Menu digitale &amp; QR Code</summary><div class="gb">'
       +'<p>MiseEnPlace PRO include un <strong>menu digitale pubblico</strong> accessibile via QR code da qualsiasi smartphone, senza login. Mostra solo i piatti che hai scelto di pubblicare, con descrizione, allergeni e prezzo.</p>'
       +'<h4>Flusso di aggiornamento</h4>'
       +'<ol>'
@@ -3534,7 +3554,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Infrastruttura & Account
-    h+='<details class="gs"><summary>&#128279; Infrastruttura &amp; Account</summary><div class="gb">'
+    h+='<details class="gs" data-tab="dashboard"><summary>&#128279; Infrastruttura &amp; Account</summary><div class="gb">'
       +'<p style="color:#888;font-size:13px;margin-bottom:16px;">Riferimenti pratici per gestire dominio, email, hosting e dati. Aggiorna questa sezione se cambi qualcosa.</p>'
 
       +'<h4>&#127760; Dominio — miseenplacepro.it</h4>'
@@ -3594,7 +3614,7 @@ function renderGuida(){
       +'</div></details>';
 
     // Importa fattura XML
-    h+='<details class="gs"><summary>&#128229; Importa fattura XML</summary><div class="gb">'
+    h+='<details class="gs" data-tab="magazzino,fornitori"><summary>&#128229; Importa fattura XML</summary><div class="gb">'
       +'<p>Il bottone <strong>&#128229; Importa fattura XML</strong> in cima al tab Magazzino permette di aggiornare i prezzi delle materie prime importando direttamente una fattura elettronica in formato FatturaPA (.xml), il formato obbligatorio per tutti i fornitori italiani con partita IVA.</p>'
       +'<ol>'
       +'<li>Scarica il file XML della fattura dal tuo cassetto fiscale (es. Aruba, InfoCert, ecc.) o richiedilo al fornitore.</li>'
@@ -3610,7 +3630,55 @@ function renderGuida(){
   el.innerHTML=h;
 }
 
+function apriGuidaContestuale(){
+  /* assicura che la guida sia renderizzata (per estrarne le sezioni con data-tab) */
+  renderGuida();
+  var tab=_currentTab||'dashboard';
+  var panel=document.getElementById('guida-ctx-panel');
+  var overlay=document.getElementById('guida-ctx-overlay');
+  var content=document.getElementById('guida-ctx-content');
+  /* raccogli le sezioni matching */
+  var sezioni=document.querySelectorAll('#guida-content details[data-tab]');
+  var css='<style>'
+    +'.gs{border:1px solid #e5e2d9;border-radius:10px;margin-bottom:12px;overflow:hidden;}'
+    +'.gs summary{padding:14px 18px;font-weight:600;font-size:15px;cursor:pointer;background:#faf9f6;list-style:none;display:flex;align-items:center;gap:10px;user-select:none;}'
+    +'.gs summary::-webkit-details-marker{display:none;}'
+    +'.gs summary::after{content:"\\25B8";margin-left:auto;color:#aaa;transition:transform .2s;}'
+    +'.gs[open] summary::after{transform:rotate(90deg);}'
+    +'.gb{padding:16px 18px;font-size:14px;line-height:1.75;color:#333;border-top:1px solid #e5e2d9;}'
+    +'.gb h4{margin:14px 0 6px;font-size:13px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.5px;}'
+    +'.gb ol,.gb ul{padding-left:20px;margin:6px 0;}.gb li{margin-bottom:5px;}'
+    +'.gnote{background:#fef9c3;border-left:3px solid #f59e0b;padding:8px 12px;border-radius:4px;margin:10px 0;font-size:13px;}'
+    +'.gtip{background:#dcfce7;border-left:3px solid #16a34a;padding:8px 12px;border-radius:4px;margin:10px 0;font-size:13px;}'
+    +'.gb table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;}'
+    +'.gb th{background:#f5f4f0;padding:7px 10px;text-align:left;font-weight:600;}'
+    +'.gb td{padding:7px 10px;border-bottom:1px solid #f0ede6;}'
+    +'</style>';
+  var html=css;
+  var trovate=0;
+  sezioni.forEach(function(det){
+    var tabs=(det.getAttribute('data-tab')||'').split(',');
+    if(tabs.indexOf(tab)>=0){
+      var clone=det.cloneNode(true);
+      clone.open=true; /* apri il details clonato */
+      html+=clone.outerHTML;
+      trovate++;
+    }
+  });
+  if(!trovate){
+    html+='<p style="color:#aaa;font-size:14px;">Nessuna guida specifica per questa sezione.<br>Consulta la guida completa.</p>';
+  }
+  content.innerHTML=html;
+  overlay.style.display='block';
+  panel.style.display='flex';
+  document.body.style.overflow='hidden';
+}
 
+function chiudiGuidaContestuale(){
+  document.getElementById('guida-ctx-overlay').style.display='none';
+  document.getElementById('guida-ctx-panel').style.display='none';
+  document.body.style.overflow='';
+}
 
 /* ===== #11 MENU & PREVENTIVI ===== */
 var menuPreventivi=[];
@@ -4483,6 +4551,8 @@ updateAll();
 renderMagazzino();
 checkAdminSession();
 applyAdminUI();
+/* mostra bottone guida contestuale sulla tab iniziale */
+(function(){var gb=document.getElementById('guida-ctx-btn');if(gb)gb.style.display='flex';})();
 
 function caricaDatiPubblici(){
   if(isAdmin) return;
