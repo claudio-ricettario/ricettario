@@ -8204,7 +8204,10 @@ function npRenderSteps(){
 
 function npShowAlert(msg){
   var el=document.getElementById('np-alert');
-  if(el) el.innerHTML='<div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:8px 12px;font-size:13px;color:#92400e;margin-bottom:8px;">'+msg+'</div>';
+  if(el){
+    el.innerHTML='<div style="background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;padding:8px 12px;font-size:13px;color:#92400e;margin-bottom:8px;">'+msg+'</div>';
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+  }
 }
 function npClearAlert(){var el=document.getElementById('np-alert');if(el)el.innerHTML='';}
 
@@ -8234,6 +8237,7 @@ function npCatChange(val){
   if(cb&&bevCats.indexOf(val)>=0)cb.checked=true;
 }
 function npSalva(){
+  try{
   npClearAlert();
   /* se c'è testo non confermato nel campo passo, aggiungilo automaticamente */
   var stepPending=document.getElementById('np-step-text');
@@ -8241,7 +8245,7 @@ function npSalva(){
   var nome=document.getElementById('np-nome').value.trim();
   var errs=[];
   if(!nome) errs.push('Inserisci il nome del piatto.');
-  if(!npComps.length) errs.push('Aggiungi almeno un componente.');
+  if(!npComps.length) errs.push('Aggiungi almeno un componente (usa la ricerca in basso).');
   if(errs.length){npShowAlert(errs.join(' '));return;}
   var codiceEsistente=(npEditIdx>=0&&piatti[npEditIdx])?piatti[npEditIdx].codice:null;
   var nuoviTags=(function(){var t=[];document.querySelectorAll('#np-tags-group input[type=checkbox]').forEach(function(cb){if(cb.checked)t.push(cb.value);});return t;})();
@@ -8278,6 +8282,7 @@ function npSalva(){
   npReset();
   showTab('home');
   renderHome();
+  }catch(err){console.error('npSalva errore:',err);alert('Errore nel salvataggio: '+err.message+'\n\nSegnala questo messaggio.');}
 }
 
 
