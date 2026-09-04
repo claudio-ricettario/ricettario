@@ -3339,6 +3339,15 @@ function renderGuida(){
       +'</ol>'
       +'<p>Puoi usarlo strategicamente: se dal Menu Engineering scopri che un piatto è una <em>Star</em> (alta marginalità + alta popolarità), assegnagli "Consigliato" e apparirà in cima automaticamente dopo il prossimo Pubblica.</p>'
       +'<div class="gnote">Le etichette e l\'ordinamento si aggiornano nel menu online solo dopo aver fatto <strong>Pubblica</strong> e push su GitHub.</div>'
+      +'<h4>&#128438; Stampa menu (PDF A4)</h4>'
+      +'<p>Il pulsante <strong>&#128438; Stampa menu</strong> in alto nella sezione <em>La Carte</em> genera un menu cartaceo completo in formato A4, pronto per la stampa o da salvare come PDF.</p>'
+      +'<ul>'
+      +'<li>Include solo i piatti con la stellina ★ attiva, raggruppati per categoria nell\'ordine standard (Antipasti, Primi, Secondi…).</li>'
+      +'<li>I piatti con l\'etichetta <strong>⭐ Consigliato</strong> appaiono evidenziati con una cornice color ambra.</li>'
+      +'<li>Il nome di ogni piatto è in maiuscolo con i numeri degli allergeni in apice; descrizione e prezzo sono sulla stessa riga, stesso carattere.</li>'
+      +'<li>L\'ultima pagina riporta l\'elenco numerato dei 14 allergeni con le relative descrizioni, come riferimento per i clienti.</li>'
+      +'</ul>'
+      +'<div class="gtip">Dal dialogo di stampa del browser scegli <em>Salva come PDF</em>. Seleziona formato A4, orientamento verticale, scala 100%, margini predefiniti — le impostazioni del foglio sono già ottimizzate.</div>'
       +'</div></details>';
 
     // Beverage
@@ -3551,6 +3560,15 @@ function renderGuida(){
       +'<li>Freccia ← Categorie per tornare indietro.</li>'
       +'</ul>'
       +'<div class="gnote">Categorie senza piatti appaiono comunque nella griglia con la scritta "in aggiornamento" — utile per mostrare la struttura del menu anche prima di pubblicare tutto.</div>'
+      +'<h4>Allergeni nel menu digitale</h4>'
+      +'<p>Ogni piatto mostra solo i <strong>14 allergeni dichiarati</strong> effettivamente presenti tra i suoi ingredienti (materie prime e semilavorati). Le eventuali <em>tracce</em> non vengono mostrate per singolo piatto: non sono obbligatorie per legge (Reg. UE 1169/2011) e possono generare confusione.</p>'
+      +'<p>In fondo al menu digitale è presente una <strong>sezione Allergeni</strong> con:</p>'
+      +'<ul>'
+      +'<li>Un invito al cliente a segnalare allergie al personale prima di ordinare.</li>'
+      +'<li>L\'avviso generale di possibile contaminazione crociata in cucina.</li>'
+      +'<li>L\'elenco completo dei 14 allergeni con badge e descrizione.</li>'
+      +'</ul>'
+      +'<div class="gnote">Questa impostazione è in linea con la normativa vigente. Per qualsiasi dubbio su un cliente specifico, il personale di sala è il punto di riferimento corretto — non il menu digitale.</div>'
       +'<div class="gtip">Ricorda: ogni volta che cambi prezzi, aggiungi piatti o modifichi allergeni, devi ripetere il ciclo Pubblica → Commit → Push per aggiornare il menu online.</div>'
       +'</div></details>';
 
