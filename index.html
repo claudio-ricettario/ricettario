@@ -7184,20 +7184,17 @@ function printMenuCompleto(){
     +'<style>'
     +'*{box-sizing:border-box;margin:0;padding:0;}'
     +'body{font-family:Georgia,"Times New Roman",serif;background:#fff;color:#1a1a1a;}'
-    +'@page{size:A4 portrait;margin:18mm 16mm 18mm 16mm;}'
+    +'@page{size:A4 portrait;margin:20mm 22mm 20mm 22mm;}'
     +'.page{page-break-after:always;}'
-    +'.page-header{text-align:center;border-bottom:2px solid #1a1a1a;padding-bottom:10px;margin-bottom:20px;}'
-    +'.page-header h1{font-size:22pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}'
-    +'.page-header p{font-size:9pt;color:#666;margin-top:4px;letter-spacing:.06em;text-transform:uppercase;}'
-    +'.columns{column-count:2;column-gap:24pt;column-fill:auto;}'
-    +'.cat-block{break-inside:avoid-column;margin-bottom:18pt;}'
-    +'.cat-title{font-size:8pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#888;border-bottom:1px solid #ddd;padding-bottom:4pt;margin-bottom:10pt;}'
-    +'.dish{margin-bottom:12pt;break-inside:avoid;}'
-    +'.dish-nome{font-size:12pt;font-weight:700;line-height:1.3;color:#1a1a1a;}'
-    +'.dish-desc{font-size:9.5pt;color:#555;line-height:1.5;margin-top:2pt;font-style:italic;}'
-    +'.dish-tags{margin-top:3pt;display:flex;flex-wrap:wrap;gap:3pt;}'
-    +'.tag{font-size:7pt;border:1px solid #ccc;border-radius:3pt;padding:1pt 5pt;color:#666;font-style:normal;}'
-    +'.allerg{font-size:7pt;color:#c0392b;margin-top:3pt;}'
+    +'.page-header{text-align:center;border-bottom:2px solid #1a1a1a;padding-bottom:10px;margin-bottom:24pt;}'
+    +'.page-header h1{font-size:24pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}'
+    +'.page-header p{font-size:9pt;color:#888;margin-top:5px;letter-spacing:.08em;text-transform:uppercase;}'
+    +'.cat-block{margin-bottom:22pt;}'
+    +'.cat-title{font-size:8pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#999;border-bottom:1px solid #ddd;padding-bottom:5pt;margin-bottom:12pt;}'
+    +'.dish{margin-bottom:14pt;break-inside:avoid;}'
+    +'.dish-nome{font-size:12.5pt;font-weight:700;line-height:1.3;color:#1a1a1a;}'
+    +'.dish-desc{font-size:10pt;color:#555;line-height:1.55;margin-top:2pt;font-style:italic;}'
+    +'.allerg{font-size:7pt;color:#c0392b;margin-top:4pt;}'
     +'/* ALLERGEN PAGE */'
     +'.allerg-page{padding:0;}'
     +'.allerg-page h2{font-size:18pt;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#8b1a1a;margin-bottom:12pt;border-bottom:2px solid #8b1a1a;padding-bottom:8pt;}'
@@ -7212,14 +7209,10 @@ function printMenuCompleto(){
   html+='<div class="page"><div class="page-header">'
     +'<h1>Menu</h1>'
     +'<p>I nostri piatti &mdash; stagione in corso</p>'
-    +'</div><div class="columns">';
+    +'</div>';
 
   cats.forEach(function(cat){
-    var piattiCat=(grouped[cat]||[]).slice().sort(function(a,b){
-      var ta=(a.tags||[]).indexOf('Consigliato')>=0?0:((a.tags||[]).indexOf('Più venduto')>=0?1:99);
-      var tb=(b.tags||[]).indexOf('Consigliato')>=0?0:((b.tags||[]).indexOf('Più venduto')>=0?1:99);
-      return ta-tb;
-    });
+    var piattiCat=(grouped[cat]||[]).slice();
     html+='<div class="cat-block"><div class="cat-title">'+esc(cat)+'</div>';
     piattiCat.forEach(function(p){
       var allerg=calcolaAllergeniPiatto(p);
@@ -7227,15 +7220,9 @@ function printMenuCompleto(){
       if(p.descrizione&&p.descrizione.trim()) descParts.push(esc(p.descrizione.trim()));
       if(p.prezzoVendita) descParts.push(eur(p.prezzoVendita));
       var desc=descParts.join(' &nbsp;&middot;&nbsp; ');
-      var tags=(p.tags||[]).filter(function(t){return TAG_LABEL[t]&&t!=='Fuori menù';});
       html+='<div class="dish">'
         +'<div class="dish-nome">'+esc(p.nome)+'</div>';
       if(desc) html+='<div class="dish-desc">'+desc+'</div>';
-      if(tags.length){
-        html+='<div class="dish-tags">';
-        tags.forEach(function(t){html+='<span class="tag">'+esc(TAG_LABEL[t]||t)+'</span>';});
-        html+='</div>';
-      }
       if(allerg.certi.length){
         html+='<div class="allerg">'+allerg.certi.map(function(a){return esc(a);}).join(', ')+'</div>';
       }
@@ -7244,7 +7231,7 @@ function printMenuCompleto(){
     html+='</div>';
   });
 
-  html+='</div></div>'; /* fine columns e page menu */
+  html+='</div>'; /* fine page menu */
 
   /* ── PAGINA ALLERGENI ── */
   html+='<div class="page allerg-page">'
