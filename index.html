@@ -7153,14 +7153,39 @@ function creaNuovoFornIng(mi){
 function printMenuCompleto(){
   var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Pane e lievitati',
     'Vini','Birre','Cocktail','Caffetteria','Soft drink','Beverage vario'];
-  var ALLERGENI_NOMI={
+  var ALLERG_LIST=[
+    ['Cereali con glutine','grano, segale, orzo, avena, farro, kamut e i loro prodotti derivati'],
+    ['Crostacei','e prodotti a base di crostacei'],
+    ['Uova','e prodotti a base di uova'],
+    ['Pesce','e prodotti a base di pesce'],
+    ['Arachidi','e prodotti a base di arachidi'],
+    ['Soia','e prodotti a base di soia'],
+    ['Latte e lattosio','e prodotti a base di latte, incluso lattosio'],
+    ['Frutta a guscio','mandorle, nocciole, noci, pistacchi e i loro prodotti'],
+    ['Sedano','e prodotti a base di sedano'],
+    ['Senape','e prodotti a base di senape'],
+    ['Semi di sesamo','e prodotti a base di semi di sesamo'],
+    ['Anidride solforosa e solfiti','in concentrazioni superiori a 10 mg/kg'],
+    ['Lupini','e prodotti a base di lupini'],
+    ['Molluschi','e prodotti a base di molluschi']
+  ];
+  /* mappa nome allergene → numero EU (1-14) */
+  var ALLERG_NUM={};
+  ALLERG_LIST.forEach(function(r,i){ALLERG_NUM[r[0]]=i+1;});
+  /* mappa nomi allergeni dell'app → nomi nella lista EU */
+  var ALLERG_MAP={
     'Cereali con glutine':'Cereali con glutine','Crostacei':'Crostacei','Uova':'Uova',
     'Pesce':'Pesce','Arachidi':'Arachidi','Soia':'Soia','Latte e lattosio':'Latte e lattosio',
     'Frutta a guscio':'Frutta a guscio','Sedano':'Sedano','Senape':'Senape',
-    'Semi di sesamo':'Semi di sesamo','Anidride solforosa e solfiti':'Solfiti',
+    'Semi di sesamo':'Semi di sesamo','Anidride solforosa e solfiti':'Anidride solforosa e solfiti',
     'Lupini':'Lupini','Molluschi':'Molluschi'
   };
-  /* raggruppa piatti nel menu per categoria, escludi Fuori menù */
+  function allergNumeri(certi){
+    var nums=certi.map(function(a){return ALLERG_NUM[ALLERG_MAP[a]||a]||'?';}).filter(function(n){return n!=='?';});
+    nums.sort(function(a,b){return a-b;});
+    return nums.join('-');
+  }
+
   var grouped={};
   piatti.forEach(function(p){
     if(!p.nelMenu) return;
@@ -7169,92 +7194,71 @@ function printMenuCompleto(){
     if(!grouped[cat]) grouped[cat]=[];
     grouped[cat].push(p);
   });
-  /* ordina categorie */
   var cats=CAT_ORDER.filter(function(c){return grouped[c]&&grouped[c].length;});
   Object.keys(grouped).forEach(function(c){if(cats.indexOf(c)<0)cats.push(c);});
   if(!cats.length){alert('Nessun piatto nel menu attivo. Attiva almeno un piatto con la stellina.');return;}
 
-  var TAG_LABEL={'Vegetariano':'Veg','Vegano':'Vegano','Consigliato':'⭐','Più venduto':'🔥','Novità':'Novità','Del territorio':'Territorio'};
-
   function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   function eur(v){return (parseFloat(v)||0).toFixed(2).replace('.',',')+'€';}
+
+  var AMBRA='#b8722a';
 
   var html='<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"/>'
     +'<title>Menu</title>'
     +'<style>'
     +'*{box-sizing:border-box;margin:0;padding:0;}'
-    +'body{font-family:Georgia,"Times New Roman",serif;background:#fff;color:#1a1a1a;}'
+    +'body{font-family:Georgia,"Times New Roman",serif;background:#fff;color:#1a1a1a;font-size:10.5pt;}'
     +'@page{size:A4 portrait;margin:20mm 22mm 20mm 22mm;}'
     +'.page{page-break-after:always;}'
-    +'.page-header{text-align:center;border-bottom:2px solid #1a1a1a;padding-bottom:10px;margin-bottom:24pt;}'
-    +'.page-header h1{font-size:24pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}'
-    +'.page-header p{font-size:9pt;color:#888;margin-top:5px;letter-spacing:.08em;text-transform:uppercase;}'
-    +'.cat-block{margin-bottom:22pt;}'
-    +'.cat-title{font-size:8pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#999;border-bottom:1px solid #ddd;padding-bottom:5pt;margin-bottom:12pt;}'
-    +'.dish{margin-bottom:14pt;break-inside:avoid;}'
-    +'.dish-nome{font-size:12.5pt;font-weight:700;line-height:1.3;color:#1a1a1a;}'
-    +'.dish-desc{font-size:10pt;color:#555;line-height:1.55;margin-top:2pt;font-style:italic;}'
-    +'.allerg{font-size:7pt;color:#c0392b;margin-top:4pt;}'
+    +'.cat-block{margin-bottom:20pt;}'
+    +'.cat-title{font-size:7.5pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:'+AMBRA+';border-bottom:1.5px solid '+AMBRA+';padding-bottom:4pt;margin-bottom:13pt;}'
+    +'.dish{margin-bottom:13pt;break-inside:avoid;padding:0;}'
+    +'.dish.consigliato{border:1.2pt solid '+AMBRA+';border-radius:4pt;padding:8pt 10pt;margin-bottom:13pt;}'
+    +'.dish-nome{font-size:10.5pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:'+AMBRA+';line-height:1.3;}'
+    +'.dish-nome sup{font-size:6.5pt;font-weight:400;letter-spacing:0;color:#999;margin-left:2pt;vertical-align:super;}'
+    +'.dish-desc{font-size:10pt;color:#444;line-height:1.6;margin-top:3pt;}'
     +'/* ALLERGEN PAGE */'
-    +'.allerg-page{padding:0;}'
-    +'.allerg-page h2{font-size:18pt;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#8b1a1a;margin-bottom:12pt;border-bottom:2px solid #8b1a1a;padding-bottom:8pt;}'
+    +'.allerg-page h2{font-size:14pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:'+AMBRA+';border-bottom:1.5px solid '+AMBRA+';padding-bottom:6pt;margin-bottom:14pt;}'
     +'.allerg-page p{font-size:9.5pt;line-height:1.75;color:#333;margin-bottom:10pt;}'
     +'.allerg-row{display:flex;align-items:baseline;gap:8pt;margin-bottom:6pt;break-inside:avoid;}'
-    +'.allerg-badge{font-size:8pt;font-weight:700;color:#c0392b;border:1pt solid #fcd5d2;background:#fef3f2;border-radius:3pt;padding:2pt 7pt;white-space:nowrap;}'
-    +'.allerg-desc{font-size:9pt;color:#444;line-height:1.5;}'
+    +'.allerg-num{font-size:8pt;font-weight:700;color:'+AMBRA+';min-width:18pt;}'
+    +'.allerg-name{font-size:9pt;font-weight:700;color:#1a1a1a;min-width:100pt;}'
+    +'.allerg-desc{font-size:9pt;color:#666;}'
     +'.allerg-note{font-size:8.5pt;color:#888;font-style:italic;margin-top:14pt;border-top:1px solid #ddd;padding-top:10pt;}'
     +'</style></head><body>';
 
-  /* ── PAGINE MENU ── */
-  html+='<div class="page"><div class="page-header">'
-    +'<h1>Menu</h1>'
-    +'<p>I nostri piatti &mdash; stagione in corso</p>'
-    +'</div>';
-
+  /* ── PAGINA MENU ── */
+  html+='<div class="page">';
   cats.forEach(function(cat){
-    var piattiCat=(grouped[cat]||[]).slice();
     html+='<div class="cat-block"><div class="cat-title">'+esc(cat)+'</div>';
-    piattiCat.forEach(function(p){
+    (grouped[cat]||[]).forEach(function(p){
       var allerg=calcolaAllergeniPiatto(p);
+      var numStr=allerg.certi.length?allergNumeri(allerg.certi):'';
+      var consigliato=(p.tags||[]).indexOf('Consigliato')>=0;
       var descParts=[];
       if(p.descrizione&&p.descrizione.trim()) descParts.push(esc(p.descrizione.trim()));
       if(p.prezzoVendita) descParts.push(eur(p.prezzoVendita));
-      var desc=descParts.join(' &nbsp;&middot;&nbsp; ');
-      html+='<div class="dish">'
-        +'<div class="dish-nome">'+esc(p.nome)+'</div>';
+      var desc=descParts.join(' | ');
+      html+='<div class="dish'+(consigliato?' consigliato':'')+'">'
+        +'<div class="dish-nome">'+esc(p.nome.toUpperCase())+(numStr?'<sup>'+numStr+'</sup>':'')+'</div>';
       if(desc) html+='<div class="dish-desc">'+desc+'</div>';
-      if(allerg.certi.length){
-        html+='<div class="allerg">'+allerg.certi.map(function(a){return esc(a);}).join(', ')+'</div>';
-      }
       html+='</div>';
     });
     html+='</div>';
   });
-
-  html+='</div>'; /* fine page menu */
+  html+='</div>';
 
   /* ── PAGINA ALLERGENI ── */
   html+='<div class="page allerg-page">'
     +'<h2>Allergeni</h2>'
     +'<p>Se soffri di allergie o intolleranze alimentari ti chiediamo di segnalarlo al nostro personale prima di ordinare — saremo felici di guidarti nella scelta.</p>'
     +'<p>La nostra cucina lavora quotidianamente con tutti i principali allergeni. Pur adottando le necessarie precauzioni, non possiamo escludere contaminazioni crociate con le sostanze elencate di seguito.</p>'
-    +[
-      ['Cereali con glutine','grano, segale, orzo, avena, farro, kamut e i loro prodotti derivati'],
-      ['Crostacei','e prodotti a base di crostacei'],
-      ['Uova','e prodotti a base di uova'],
-      ['Pesce','e prodotti a base di pesce'],
-      ['Arachidi','e prodotti a base di arachidi'],
-      ['Soia','e prodotti a base di soia'],
-      ['Latte e lattosio','e prodotti a base di latte, incluso lattosio'],
-      ['Frutta a guscio','mandorle, nocciole, noci, pistacchi e i loro prodotti'],
-      ['Sedano','e prodotti a base di sedano'],
-      ['Senape','e prodotti a base di senape'],
-      ['Semi di sesamo','e prodotti a base di semi di sesamo'],
-      ['Anidride solforosa e solfiti','in concentrazioni superiori a 10 mg/kg'],
-      ['Lupini','e prodotti a base di lupini'],
-      ['Molluschi','e prodotti a base di molluschi']
-    ].map(function(r){
-      return '<div class="allerg-row"><span class="allerg-badge">'+r[0]+'</span><span class="allerg-desc">'+r[1]+'</span></div>';
+    +ALLERG_LIST.map(function(r,i){
+      return '<div class="allerg-row">'
+        +'<span class="allerg-num">'+(i+1)+'.</span>'
+        +'<span class="allerg-name">'+r[0]+'</span>'
+        +'<span class="allerg-desc">'+r[1]+'</span>'
+        +'</div>';
     }).join('')
     +'<p class="allerg-note">Alcuni ingredienti potrebbero aver subito un abbattimento di temperatura controllata per preservarne la freschezza e garantire la sicurezza alimentare.</p>'
     +'</div>';
