@@ -70,6 +70,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .empty-icon{font-size:48px;margin-bottom:12px;}
 .loading{text-align:center;padding:80px 20px;color:#bbb;font-size:15px;}
 
+/* ALLERGEN SECTION */
+.allerg-section{max-width:640px;margin:0 auto;padding:32px 20px 40px;border-top:2px solid #e0ded8;}
+.allerg-section h2{font-size:22px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#8b1a1a;margin-bottom:14px;}
+.allerg-section p{font-size:13px;line-height:1.75;color:#444;margin-bottom:12px;text-align:justify;}
+.allerg-list{list-style:none;margin:14px 0 20px;padding:0;}
+.allerg-list li{font-size:13px;line-height:1.75;color:#444;padding:2px 0;}
+.allerg-list li strong{color:#8b1a1a;margin-right:4px;}
+
 /* FOOTER */
 .footer{text-align:center;padding:16px;font-size:11px;color:#bbb;border-top:1px solid #e0ded8;margin-top:8px;}
 .footer a{color:#bbb;text-decoration:none;}
@@ -92,6 +100,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </div>
 <div style="max-width:640px;margin:0 auto;padding:0 12px 12px;text-align:center;">
   <p style="font-size:12px;color:#bbb;font-style:italic;">Coperto €2,00 &middot; I piatti sono serviti come da menù</p>
+</div>
+
+<div class="allerg-section">
+  <h2>Allergeni</h2>
+  <p>In caso di allergie e/o intolleranze alimentari vi chiediamo di informare il nostro staff al momento dell'ordinazione o della prenotazione telefonica.</p>
+  <p>Nelle nostre pietanze potrebbero esserci tracce di cereali contenenti glutine e prodotti derivati, crostacei, uova, pesce, arachidi, soia, latte, frutta a guscio, sedano, semi di sesamo, anidride solforosa e solfiti in concentrazioni superiori a 10&nbsp;mg/kg, lupini o molluschi.</p>
+  <ol class="allerg-list">
+    <li><strong>1.</strong> Cereali contenenti glutine come grano, segale, orzo, avena, farro, kamut e i loro ceppi derivati e i prodotti derivati.</li>
+    <li><strong>2.</strong> Crostacei e prodotti a base di crostacei.</li>
+    <li><strong>3.</strong> Uova e prodotti a base di uova.</li>
+    <li><strong>4.</strong> Pesce e prodotti a base di pesce.</li>
+    <li><strong>5.</strong> Arachidi e prodotti a base di arachidi.</li>
+    <li><strong>6.</strong> Soia e prodotti a base di soia.</li>
+    <li><strong>7.</strong> Latte e prodotti a base di latte (incluso lattosio).</li>
+    <li><strong>8.</strong> Frutta a guscio come mandorle, nocciole, noci, pistacchi e i loro prodotti.</li>
+    <li><strong>9.</strong> Sedano e prodotti a base di sedano.</li>
+    <li><strong>10.</strong> Senape e prodotti a base di senape.</li>
+    <li><strong>11.</strong> Semi di sesamo e prodotti a base di semi di sesamo.</li>
+    <li><strong>12.</strong> Anidride solforosa e solfiti in concentrazioni superiori a 10&nbsp;mg.</li>
+    <li><strong>13.</strong> Lupini e prodotti a base di lupini.</li>
+    <li><strong>14.</strong> Molluschi e prodotti a base di molluschi.</li>
+  </ol>
+  <p>Alcune degli ingredienti delle pietanze del menù possono essere congelati o aver subito un abbattimento di temperatura controllata, al fine di mantenere la freschezza del prodotto ed inalterata la qualità.</p>
 </div>
 
 <div class="footer">
@@ -152,7 +183,6 @@ function showCategories(){
       if(p.descrizione) html+='<div class="fuori-menu-desc">'+escHtml(p.descrizione)+'</div>';
       var badges='';
       (p.allergeni||[]).forEach(function(a){badges+='<span class="allerg-badge">'+escHtml(a)+'</span>';});
-      (p.tracce||[]).forEach(function(a){badges+='<span class="tracce-badge">tracce: '+escHtml(a)+'</span>';});
       if(badges) html+='<div class="dish-allergeni" style="margin-bottom:6px;">'+badges+'</div>';
       html+='<div class="fuori-menu-price">'+eur(p.prezzoVendita)+'</div>';
       if(p.pochePorzioni) html+='<div style="font-size:11px;color:#b8722a;font-style:italic;margin-top:5px;">⏳ Poche porzioni disponibili — chiedi al personale</div>';
@@ -221,7 +251,6 @@ function showCategory(catEnc){
     if(p.descrizione) html+='<div class="dish-desc">'+escHtml(p.descrizione)+'</div>';
     var badges='';
     (p.allergeni||[]).forEach(function(a){ badges+='<span class="allerg-badge">'+escHtml(a)+'</span>'; });
-    (p.tracce||[]).forEach(function(a){ badges+='<span class="tracce-badge">tracce: '+escHtml(a)+'</span>'; });
     if(badges) html+='<div class="dish-allergeni">'+badges+'</div>';
     html+='</div>';
     html+='<div class="dish-footer"><span class="dish-price">'+eur(p.prezzoVendita)+'</span></div>';
