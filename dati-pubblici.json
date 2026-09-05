@@ -1,38 +1,13 @@
 {
   "version": 1,
-  "exportDate": "30/8/2026",
+  "exportDate": "5/9/2026",
   "menuData": [
-    {
-      "nome": "Canederli ai Funghi e burro fuso",
-      "descrizione": "Nuova proposta da provare",
-      "tags": [
-        "Vegetariano",
-        "Consigliato",
-        "Novità",
-        "Fuori menù"
-      ],
-      "pochePorzioni": true,
-      "categoria": "Primi piatti",
-      "prezzoVendita": 10.5,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Glutine",
-        "Uova",
-        "Latte e lattosio"
-      ],
-      "tracce": [
-        "Soia",
-        "Frutta a guscio",
-        "Sesamo"
-      ]
-    },
     {
       "nome": "Canederli di Monte Veronese al burro fuso",
       "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
       "tags": [
         "Vegetariano",
         "Più venduto",
-        "Consigliato",
         "Del territorio"
       ],
       "pochePorzioni": false,
@@ -93,8 +68,7 @@
       "nome": "Lasagne al Ragù",
       "descrizione": "lasagnetta con la ricetta della nonna",
       "tags": [
-        "Più venduto",
-        "Consigliato"
+        "Più venduto"
       ],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
@@ -115,10 +89,10 @@
       "nome": "Mille Foglie al piatto",
       "descrizione": "Ottima in ogni stagione",
       "tags": [
-        "Novità",
-        "Fuori menù"
+        "Consigliato",
+        "Novità"
       ],
-      "pochePorzioni": true,
+      "pochePorzioni": false,
       "categoria": "Dolci",
       "prezzoVendita": 6,
       "tipoBeverage": false,
@@ -958,6 +932,44 @@
       ]
     },
     {
+      "codice": "MP-125",
+      "nome": "Giardiniera Zuccato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Sedano",
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 21,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 3.9,
+        "zuccheri": 1.1,
+        "fibre": 2.1,
+        "proteine": 0,
+        "sale": 2.1
+      },
+      "nutrizionaliOk": false,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.46,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-075",
       "nome": "Maggiorana liofilizzata Wiberg",
       "categoria": "Generale",
@@ -1023,6 +1035,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 6,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-126",
+      "nome": "Marmellata cipolle rosse",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 150,
+        "grassi": 0.2,
+        "grassiSaturi": 0,
+        "carboidrati": 32,
+        "zuccheri": 31,
+        "fibre": 1,
+        "proteine": 1,
+        "sale": 0.03
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 7,
           "storico": []
         }
       ]
@@ -2003,6 +2050,80 @@
       ]
     },
     {
+      "codice": "MP-124",
+      "nome": "Caciottina Fresca",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 343,
+        "grassi": 30,
+        "grassiSaturi": 18.5,
+        "carboidrati": 0.9,
+        "zuccheri": 0.8,
+        "fibre": 0,
+        "proteine": 7.3,
+        "sale": 1.9
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 13,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-123",
+      "nome": "Formaggio Capra Fresco",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 364,
+        "grassi": 29.84,
+        "grassiSaturi": 20.6,
+        "carboidrati": 2.54,
+        "zuccheri": 2.54,
+        "fibre": 0,
+        "proteine": 21.58,
+        "sale": 0.515
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 21,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-056",
       "nome": "Grana Padano Dop",
       "categoria": "Latticini e formaggi",
@@ -2028,7 +2149,7 @@
         "sale": 1.5
       },
       "nutrizionaliOk": true,
-      "giacenza": -1.08,
+      "giacenza": 0,
       "giacenzaMin": 0,
       "lotti": [],
       "suppliers": [
@@ -2220,6 +2341,111 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 12,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-121",
+      "nome": "Pancetta arrotolata",
+      "categoria": "Salumi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 11,
+      "resa": 89,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 418,
+        "grassi": 37,
+        "grassiSaturi": 15,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 21,
+        "sale": 2
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 12.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-122",
+      "nome": "Prosciutto cotto Alta Qualità",
+      "categoria": "Salumi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 145,
+        "grassi": 7,
+        "grassiSaturi": 2.7,
+        "carboidrati": 0.6,
+        "zuccheri": 0.6,
+        "fibre": 0,
+        "proteine": 20,
+        "sale": 1.9
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-120",
+      "nome": "Salame Nostrano",
+      "categoria": "Salumi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 349,
+        "grassi": 26.1,
+        "grassiSaturi": 10.2,
+        "carboidrati": 1.2,
+        "zuccheri": 0.1,
+        "fibre": 0,
+        "proteine": 27.4,
+        "sale": 4.9
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 17,
           "storico": []
         }
       ]
@@ -2530,15 +2756,6 @@
           "codiceMp": "MP-076",
           "nome": "Noce moscata macinata Wiberg",
           "qtaBase": 2,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
-          "tipo": "mp",
-          "magIdx": 22,
-          "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
-          "qtaBase": 0.5,
           "unit": "g",
           "conv": 0.001
         }
@@ -3407,12 +3624,107 @@
   ],
   "piatti": [
     {
+      "codice": "PF-010",
+      "nome": "Antipasto Misto per 2 persone",
+      "descrizione": "La miglior selezione locale",
+      "tags": [
+        "Consigliato",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "sottocategoria": "",
+      "pax": 2,
+      "prezzoVendita": 9,
+      "coefficiente": 4,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Scriveremo poi"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Salame Nostrano",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 64,
+          "codiceMp": "MP-120"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pancetta arrotolata",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 62,
+          "codiceMp": "MP-121"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Prosciutto cotto Alta Qualità",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 63,
+          "codiceMp": "MP-122"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Monte Veronese d'allevo",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 59,
+          "codiceMp": "MP-055"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Formaggio Capra Fresco",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 55,
+          "codiceMp": "MP-123"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Caciottina Fresca",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 54,
+          "codiceMp": "MP-124"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Giardiniera Zuccato",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 23,
+          "codiceMp": "MP-125"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Marmellata cipolle rosse",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 26,
+          "codiceMp": "MP-126"
+        }
+      ],
+      "dataCreazione": "5/9/2026"
+    },
+    {
       "codice": "PF-008",
       "nome": "Canederli ai Funghi e burro fuso",
       "descrizione": "Nuova proposta da provare",
       "tags": [
         "Vegetariano",
-        "Consigliato",
         "Novità",
         "Fuori menù"
       ],
@@ -3422,7 +3734,7 @@
       "pax": 4,
       "prezzoVendita": 10.5,
       "coefficiente": 4,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -3466,7 +3778,6 @@
       "tags": [
         "Vegetariano",
         "Più venduto",
-        "Consigliato",
         "Del territorio"
       ],
       "pochePorzioni": false,
@@ -3569,6 +3880,7 @@
         "Consigliato",
         "Del territorio"
       ],
+      "pochePorzioni": false,
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 10,
@@ -3607,22 +3919,21 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "7/7/2026",
-      "porzioniVendute": 0
+      "dataCreazione": "7/7/2026"
     },
     {
       "codice": "PF-002",
       "nome": "Lasagne al Ragù",
       "descrizione": "lasagnetta con la ricetta della nonna",
       "tags": [
-        "Più venduto",
-        "Consigliato"
+        "Più venduto"
       ],
+      "pochePorzioni": false,
       "categoria": "Primi piatti",
       "sottocategoria": "",
       "pax": 18,
       "prezzoVendita": 12,
-      "coefficiente": 5,
+      "coefficiente": 4,
       "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
@@ -3676,18 +3987,17 @@
           "codiceMp": "MP-094"
         }
       ],
-      "dataCreazione": "26/6/2026",
-      "porzioniVendute": 0
+      "dataCreazione": "26/6/2026"
     },
     {
       "codice": "PF-009",
       "nome": "Mille Foglie al piatto",
       "descrizione": "Ottima in ogni stagione",
       "tags": [
-        "Novità",
-        "Fuori menù"
+        "Consigliato",
+        "Novità"
       ],
-      "pochePorzioni": true,
+      "pochePorzioni": false,
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 1,
