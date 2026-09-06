@@ -3654,7 +3654,7 @@
       "sottocategoria": "",
       "pax": 2,
       "prezzoVendita": 8.4,
-      "coefficiente": 2,
+      "coefficiente": 4,
       "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
@@ -3728,7 +3728,7 @@
         {
           "tipo": "mp",
           "nome": "Marmellata cipolle rosse",
-          "qtaBase": 20,
+          "qtaBase": 40,
           "unit": "g",
           "conv": 0.001,
           "magIdx": 26,
