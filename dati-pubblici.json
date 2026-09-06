@@ -21,6 +21,29 @@
       "tracce": []
     },
     {
+      "nome": "Canederli ai Funghi e burro fuso",
+      "descrizione": "Nuova proposta da provare",
+      "tags": [
+        "Vegetariano",
+        "Novità",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 10.5,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Latte e lattosio"
+      ],
+      "tracce": [
+        "Soia",
+        "Frutta a guscio",
+        "Sesamo"
+      ]
+    },
+    {
       "nome": "Canederli di Monte Veronese al burro fuso",
       "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
       "tags": [
