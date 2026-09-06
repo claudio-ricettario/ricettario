@@ -1,7 +1,25 @@
 {
   "version": 1,
-  "exportDate": "5/9/2026",
+  "exportDate": "6/9/2026",
   "menuData": [
+    {
+      "nome": "Antipasto Misto per 2 persone",
+      "descrizione": "La miglior selezione locale",
+      "tags": [
+        "Consigliato",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "prezzoVendita": 8.4,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Latte e lattosio",
+        "Sedano",
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
     {
       "nome": "Canederli di Monte Veronese al burro fuso",
       "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
@@ -3635,9 +3653,9 @@
       "categoria": "Antipasti",
       "sottocategoria": "",
       "pax": 2,
-      "prezzoVendita": 9,
-      "coefficiente": 4,
-      "nelMenu": false,
+      "prezzoVendita": 8.4,
+      "coefficiente": 2,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
