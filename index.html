@@ -4289,7 +4289,7 @@ function stampaMenuPDF(i){
     +'<div class="pag1">'
     +'<div class="header-block">'
     +(nPrev?'<div class="nprev">'+nPrev+' &middot; '+esc(m.nome)+'</div>':'')
-    +'<div class="titolo">'+esc(m.nome)+'</div>'
+    +''
     +'<div class="meta">'
     +(m.cliente?esc(m.cliente)+' &mdash; ':'')
     +(dataFmt?dataFmt:'')
@@ -4299,7 +4299,7 @@ function stampaMenuPDF(i){
     +'</div>'
     +'<hr class="sep-ambra"/>'
     +'<div class="pag1-content">'
-    +(m.nome?'<div style="font-family:Georgia,serif;font-size:20pt;font-weight:700;text-transform:uppercase;color:'+AMBRA+';letter-spacing:.08em;text-align:center;border-bottom:2px solid '+AMBRA+';padding-bottom:8pt;margin-bottom:22pt;width:100%;max-width:460pt;">'+esc(m.nome)+'</div>':'')
+    +(m.nome?'<div style="font-family:Georgia,serif;font-size:20pt;font-weight:700;text-transform:uppercase;color:'+AMBRA+';letter-spacing:.08em;text-align:center;margin-top:40pt;margin-bottom:22pt;width:100%;max-width:460pt;">'+esc(m.nome)+'</div>':'')
     +'<div class="voci-wrap">'+vociHtml+'</div>'
     +(m.note?'<div class="note-box">'+esc(m.note)+'</div>':'')
     +'</div>'
