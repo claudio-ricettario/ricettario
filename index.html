@@ -4052,6 +4052,7 @@ function _renderMenuModalBody(){
       +(fc.totCosto>0?'<span>Food cost: <strong>'+fc.totCosto.toFixed(2)+' €</strong> ('+( fc.totCosto/fc.coperti).toFixed(2)+' €/cop)</span>':'')
       +(fc.totRicavo>0&&fc.totCosto>0?'<span>FC%: <strong style="color:'+(fc.pct>40?'#e53e3e':fc.pct>30?'#b45309':'#2d7d46')+';">'+fc.pct.toFixed(1)+'%</strong></span>':'')
       +(fc.totRicavo>0&&fc.totCosto>0?'<span>Margine/coperto: <strong>'+fc.margine.toFixed(2)+' €</strong></span>':'')
+      +(fc.totCosto>0?'<span style="border-left:2px solid #f0ede6;padding-left:14px;margin-left:4px;">Prezzo min. 30%: <strong style="color:'+(fc.prezzoPerPax>0&&fc.prezzoPerPax>=(fc.totCosto/fc.coperti/0.30)?'#2d7d46':'#e53e3e')+';">'+(fc.totCosto/fc.coperti/0.30).toFixed(2)+' €/pax</strong></span>':'')
       +'</div></div>'
     :'';
 
@@ -4164,6 +4165,7 @@ function _menuRefreshFC(){
     +(fc.totCosto>0?'<span>Food cost: <strong>'+fc.totCosto.toFixed(2)+' €</strong> ('+(fc.totCosto/fc.coperti).toFixed(2)+' €/cop)</span>':'')
     +(fc.totRicavo>0&&fc.totCosto>0?'<span>FC%: <strong style="color:'+(fc.pct>40?'#e53e3e':fc.pct>30?'#b45309':'#2d7d46')+';">'+fc.pct.toFixed(1)+'%</strong></span>':'')
     +(fc.totRicavo>0&&fc.totCosto>0?'<span>Margine/coperto: <strong>'+fc.margine.toFixed(2)+' €</strong></span>':'')
+    +(fc.totCosto>0?'<span style="border-left:2px solid #f0ede6;padding-left:14px;margin-left:4px;">Prezzo min. 30%: <strong style="color:'+(fc.prezzoPerPax>0&&fc.prezzoPerPax>=(fc.totCosto/fc.coperti/0.30)?'#2d7d46':'#e53e3e')+';">'+(fc.totCosto/fc.coperti/0.30).toFixed(2)+' €/pax</strong></span>':'')
     +'</div>';
   panel.innerHTML=html;
 }
