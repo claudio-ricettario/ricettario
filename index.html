@@ -4273,6 +4273,21 @@ function stampaListaProduzione(i){
     }
   });
 
+  // voci libere in fondo come sezione separata
+  var libere=(m.voci||[]).filter(function(v){return v.tipo==='libera'&&v.nome;});
+  if(libere.length){
+    righeHtml+='<tr><td colspan="4" style="padding:20px 0 4px;font-size:13px;font-weight:700;color:#b8722a;border-bottom:2px solid #b8722a;letter-spacing:.04em;text-transform:uppercase;">Extra &amp; servizi</td></tr>';
+    libere.forEach(function(v){
+      var costo=parseFloat(v.prezzoVendita)||0;
+      righeHtml+='<tr style="border-bottom:1px solid #e8e5de;">'
+        +'<td style="padding:10px 8px 10px 0;font-size:14px;font-weight:600;vertical-align:middle;">'+v.nome+(v.descrizione?'<div style="font-size:11px;color:#999;font-weight:400;margin-top:2px;">'+v.descrizione+'</div>':'')+'</td>'
+        +'<td style="padding:10px 8px;font-size:14px;font-weight:600;color:#b8722a;text-align:right;white-space:nowrap;vertical-align:middle;">'+(costo>0?costo.toFixed(2)+' €':'—')+'</td>'
+        +'<td style="padding:10px 0 10px 8px;font-size:11px;color:#aaa;vertical-align:middle;">(costo interno)</td>'
+        +'<td style="padding:10px 0;text-align:center;vertical-align:middle;"><div style="width:22px;height:22px;border:2px solid #ccc;border-radius:4px;display:inline-block;"></div></td>'
+        +'</tr>';
+    });
+  }
+
   var html='<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"/>'
     +'<title>Lista produzione — '+m.nome+'</title><style>'
     +'*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}'
