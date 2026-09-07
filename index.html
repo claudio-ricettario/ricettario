@@ -4266,7 +4266,7 @@ function stampaMenuPDF(i){
     +'.meta{font-size:9pt;color:#666;}'
     +'.sep-ambra{border:none;border-top:1.5px solid '+AMBRA+';margin:10pt 0;}'
     +'/* CENTRO — piatti centrati orizz. e vert. */'
-    +'.pag1-content{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30pt 0;}'
+    +'.pag1-content{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:10pt 0 50pt;}'
     +'.voci-wrap{width:100%;max-width:460pt;}'
     +'.sez-title{font-size:7pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:'+AMBRA+';border-bottom:1.5px solid '+AMBRA+';padding-bottom:3pt;margin:16pt 0 10pt;}'
     +'.sez-title:first-child{margin-top:0;}'
@@ -4299,7 +4299,7 @@ function stampaMenuPDF(i){
     +'</div>'
     +'<hr class="sep-ambra"/>'
     +'<div class="pag1-content">'
-    +(m.nome?'<div style="font-family:Georgia,serif;font-size:20pt;font-weight:700;text-transform:uppercase;color:'+AMBRA+';letter-spacing:.08em;text-align:center;margin-top:40pt;margin-bottom:48pt;width:100%;max-width:460pt;">'+esc(m.nome)+'</div>':'')
+    +(m.nome?'<div style="font-family:Georgia,serif;font-size:20pt;font-weight:700;text-transform:uppercase;color:'+AMBRA+';letter-spacing:.08em;text-align:center;margin-top:0;margin-bottom:48pt;width:100%;max-width:460pt;">'+esc(m.nome)+'</div>':'')
     +'<div class="voci-wrap">'+vociHtml+'</div>'
     +(m.note?'<div class="note-box">'+esc(m.note)+'</div>':'')
     +'</div>'
