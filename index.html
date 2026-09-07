@@ -3880,6 +3880,7 @@ function renderMenuPreventivi(){
       +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
       +'<button class="btn-sm" onclick="apriModificaMenu('+i+')">&#9998; Modifica</button>'
       +'<button class="btn-sm" onclick="stampaMenuPDF('+i+')">&#128438; Stampa PDF</button>'
+      +'<button class="btn-sm" onclick="stampaListaProduzione('+i+')" style="color:#2d7d46;">&#128203; Lista produzione</button>'
       +'<button class="btn-sm danger-sm" onclick="eliminaMenu('+i+')">&#10005;</button>'
       +'</div>'
       +'</div>'
@@ -3984,12 +3985,16 @@ function _renderMenuModalBody(){
         +'<input type="text" value="'+v.descrizione+'" placeholder="Descrizione per il cliente (opzionale)" '
         +'onchange="window._menuEdit.data.voci['+vi+'].descrizione=this.value" '
         +'style="width:100%;font-size:12px;padding:3px 8px;border:1px solid #d0cec8;border-radius:6px;margin-bottom:4px;"/>'
-        +'<div style="display:flex;gap:10px;align-items:center;font-size:11px;color:#888;">'
-        +'<label>Bis/Tris (porz.)</label>'
+        +'<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:11px;color:#888;">'
+        +'<label>1 ogni ___ pers.</label>'
         +'<input type="number" value="'+(v.porzioni||1)+'" min="1" step="1" '
         +'onchange="window._menuEdit.data.voci['+vi+'].porzioni=parseInt(this.value)||1;_menuRefreshFC()" '
         +'style="width:55px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;"/>'
-        +'<span style="color:#aaa;">(1=singolo, 2=bis, 3=tris)</span>'
+        +'<span style="color:#aaa;">(es. 1=singolo, 2=bis/mezza, 5=1 bottiglia ogni 5)</span>'
+        +'<label style="margin-left:8px;">Unità</label>'
+        +'<input type="text" value="'+(v.unita||'')+'" placeholder="porzioni" '
+        +'onchange="window._menuEdit.data.voci['+vi+'].unita=this.value.trim()" '
+        +'style="width:90px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;"/>'
         +'</div></div>'
         +'<button class="btn-sm danger-sm" onclick="_menuRemoveVoce('+vi+')">&#10005;</button>'
         +'</div>';
@@ -4241,6 +4246,55 @@ function stampaMenuPDF(i){
     +clausole
     +'<script>window.onload=function(){window.print();}<\/script>'
     +'</body></html>';
+  var w=window.open('','_blank','width=780,height=940');
+  if(w){w.document.write(html);w.document.close();}
+}
+function stampaListaProduzione(i){
+  var m=menuPreventivi[i];
+  var coperti=parseInt(m.coperti)||1;
+  var dataFmt=m.data?m.data.split('-').reverse().join('/'):'';
+
+  var righeHtml='';
+  (m.voci||[]).forEach(function(v){
+    if(v.tipo==='sezione'){
+      righeHtml+='<tr><td colspan="3" style="padding:14px 0 4px;font-size:13px;font-weight:700;color:#2d5a27;border-bottom:2px solid #2d5a27;letter-spacing:.04em;text-transform:uppercase;">'+v.testo+'</td></tr>';
+    } else if(v.tipo==='piatto'){
+      var nome=v.nome||(piatti[v.piattoIdx]?piatti[v.piattoIdx].nome:'—');
+      var divisore=Math.max(1,parseInt(v.porzioni)||1);
+      var qty=Math.ceil(coperti/divisore);
+      var unita=(v.unita&&v.unita.trim())||'porzioni';
+      var nota=divisore===1?'(1 per persona)':'(1 ogni '+divisore+' pers.)';
+      righeHtml+='<tr style="border-bottom:1px solid #e8e5de;">'
+        +'<td style="padding:10px 8px 10px 0;font-size:14px;font-weight:600;vertical-align:middle;">'+nome+'</td>'
+        +'<td style="padding:10px 8px;font-size:18px;font-weight:700;color:#2d5a27;text-align:right;white-space:nowrap;vertical-align:middle;">'+qty+' <span style="font-size:12px;font-weight:400;color:#555;">'+unita+'</span></td>'
+        +'<td style="padding:10px 0 10px 8px;font-size:11px;color:#aaa;vertical-align:middle;white-space:nowrap;">'+nota+'</td>'
+        +'<td style="padding:10px 0;text-align:center;vertical-align:middle;"><div style="width:22px;height:22px;border:2px solid #ccc;border-radius:4px;display:inline-block;"></div></td>'
+        +'</tr>';
+    }
+  });
+
+  var html='<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"/>'
+    +'<title>Lista produzione — '+m.nome+'</title><style>'
+    +'*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}'
+    +'body{padding:32px 40px;max-width:680px;margin:0 auto;color:#1a1a1a;}'
+    +'h1{font-size:20px;font-weight:700;color:#2d5a27;margin-bottom:4px;}'
+    +'.meta{font-size:13px;color:#888;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid #2d5a27;}'
+    +'table{width:100%;border-collapse:collapse;}'
+    +'.footer-note{margin-top:24px;font-size:11px;color:#bbb;border-top:1px solid #e0ded8;padding-top:10px;}'
+    +'@media print{body{padding:16px;}}'
+    +'</style></head><body>'
+    +'<h1>&#128203; Lista produzione</h1>'
+    +'<div class="meta">'
+    +m.nome
+    +(m.cliente?' &mdash; '+m.cliente:'')
+    +(dataFmt?' &mdash; '+dataFmt:'')
+    +' &mdash; <strong>'+coperti+' coperti</strong>'
+    +'</div>'
+    +'<table>'+righeHtml+'</table>'
+    +'<div class="footer-note">Quantità calcolate su '+coperti+' coperti. Generato il '+today()+' da MiseEnPlace PRO.</div>'
+    +'<script>window.onload=function(){window.print();}<\/script>'
+    +'</body></html>';
+
   var w=window.open('','_blank','width=780,height=940');
   if(w){w.document.write(html);w.document.close();}
 }
