@@ -4065,6 +4065,10 @@ function _renderMenuModalBody(){
     +'<input type="text" id="mp-cliente" value="'+m.cliente+'" placeholder="es. Matrimonio Rossi" '
     +'oninput="window._menuEdit.data.cliente=this.value" '
     +'style="width:100%;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/></div>'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">Nome menu PDF</label>'
+    +'<input type="text" id="mp-nomeMenu" value="'+(m.nomeMenu||'')+'" placeholder="es. Menù di San Silvestro" '
+    +'oninput="window._menuEdit.data.nomeMenu=this.value" '
+    +'style="width:100%;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/></div>'
     +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">Data</label>'
     +'<input type="date" id="mp-data" value="'+m.data+'" '
     +'onchange="window._menuEdit.data.data=this.value" '
@@ -4299,6 +4303,7 @@ function stampaMenuPDF(i){
     +'</div>'
     +'<hr class="sep-ambra"/>'
     +'<div class="pag1-content">'
+    +(m.nomeMenu?'<div style="font-family:Georgia,serif;font-size:20pt;font-weight:700;text-transform:uppercase;color:'+AMBRA+';letter-spacing:.08em;text-align:center;border-bottom:2px solid '+AMBRA+';padding-bottom:8pt;margin-bottom:22pt;width:100%;max-width:460pt;">'+esc(m.nomeMenu)+'</div>':'')
     +'<div class="voci-wrap">'+vociHtml+'</div>'
     +(m.note?'<div class="note-box">'+esc(m.note)+'</div>':'')
     +'</div>'
