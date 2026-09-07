@@ -3482,10 +3482,33 @@ function renderGuida(){
       +'<li>Compila: nome evento, cliente, data, coperti, prezzo a persona.</li>'
       +'<li>Il <strong>N° Proposta</strong> (PREV-AAAA-NNN) viene generato automaticamente in progressivo per anno — basato solo sui preventivi salvati, non sulle prove.</li>'
       +'<li>Inserisci l&#39;<strong>IBAN</strong> e il campo <strong>Intestato a</strong> per il bonifico caparra — vengono memorizzati e pre-compilati nei preventivi successivi.</li>'
-      +'<li>Aggiungi le voci: <strong>+ Sezione</strong> (intestazione categoria), <strong>+ Piatto</strong> (collegato alle ricette), <strong>+ Voce libera</strong>.</li>'
-      +'<li>Il pannello interno mostra food cost%, margine e ricavo — visibile solo a te, non nel PDF.</li>'
+      +'<li>Aggiungi le voci: <strong>+ Sezione</strong> (intestazione categoria), <strong>+ Piatto</strong> (collegato alle ricette), <strong>+ Voce libera</strong> (costi interni — vedi sotto).</li>'
+      +'<li>Il pannello interno mostra food cost%, margine e ricavo — si aggiorna in tempo reale, visibile solo a te, non nel PDF.</li>'
       +'<li>Clicca <strong>&#10003; Salva</strong>.</li>'
       +'</ol>'
+      +'<h4>Voci piatto — campo "1 ogni ___ pers."</h4>'
+      +'<p>Ogni piatto ha un campo divisore che determina quante porzioni servono per N coperti. Esempi:</p>'
+      +'<table><tr><th>Valore</th><th>Significato</th><th>Esempio con 20 coperti</th></tr>'
+      +'<tr><td>1</td><td>Porzione intera a testa</td><td>20 porzioni</td></tr>'
+      +'<tr><td>2</td><td>Mezza porzione (bis)</td><td>10 porzioni</td></tr>'
+      +'<tr><td>3</td><td>Un terzo (tris)</td><td>7 porzioni</td></tr>'
+      +'<tr><td>5</td><td>1 bottiglia ogni 5</td><td>4 bottiglie</td></tr>'
+      +'</table>'
+      +'<p>Il campo <strong>Unità</strong> (opzionale) permette di specificare "bottiglie", "lt", "pz" ecc. — se vuoto compare "porzioni". Il food cost si aggiorna in tempo reale al cambio del divisore.</p>'
+      +'<h4>Voci libere — costi interni</h4>'
+      +'<p>Usa <strong>+ Voce libera</strong> per aggiungere costi extra che <strong>non devono comparire nel PDF</strong> al cliente (fiori, noleggio tovaglie, musica, allestimento…). Il costo inserito:</p>'
+      +'<ul>'
+      +'<li>Viene sommato al food cost interno — incide su FC% e margine/coperto</li>'
+      +'<li>Non appare mai nel PDF preventivo</li>'
+      +'<li>Appare nella Lista produzione come sezione "Extra &amp; servizi" con checkbox</li>'
+      +'</ul>'
+      +'<h4>Lista produzione</h4>'
+      +'<p>Il pulsante <strong>&#128203; Lista produzione</strong> su ogni preventivo salvato genera un foglio stampabile con:</p>'
+      +'<ul>'
+      +'<li>Per ogni piatto: nome, <strong>quantità da preparare</strong> (calcolata su coperti e divisore), unità, nota e checkbox</li>'
+      +'<li>In fondo: sezione <strong>Extra &amp; servizi</strong> con le voci libere, il costo e la checkbox</li>'
+      +'</ul>'
+      +'<div class="gtip">Stampala in cucina una volta confermato l\'evento: ogni voce ha la sua casella da spuntare man mano che prepari.</div>'
       +'<h4>PDF preventivo — struttura in 2 pagine</h4>'
       +'<p><strong>Pagina 1:</strong> intestazione con N° proposta, cliente, data e coperti, elenco piatti per sezione, blocco prezzo con totale.</p>'
       +'<p><strong>Pagina 2:</strong> Condizioni di prenotazione complete con sezioni in grassetto:</p>'
@@ -3875,7 +3898,7 @@ function renderMenuPreventivi(){
       +(m.coperti?' &mdash; '+m.coperti+' coperti':'')
       +' &mdash; '+nVoci+' voci'
       +'</div>'
-      +(m.prezzoPerPax>0&&fc.totCosto>0?'<div style="font-size:11px;color:#888;margin-top:4px;">€ '+parseFloat(m.prezzoPerPax).toFixed(2)+'/pax &mdash; FC: <strong style="color:'+(fc.pct>35?'#e53e3e':fc.pct>28?'#b45309':'#2d7d46')+';">'+fc.pct.toFixed(1)+'%</strong> &mdash; Margine: <strong>'+fc.margine.toFixed(2)+' €/cop</strong></div>':m.prezzoPerPax>0?'<div style="font-size:11px;color:#888;margin-top:4px;">€ '+parseFloat(m.prezzoPerPax).toFixed(2)+'/pax &mdash; Totale: '+( parseFloat(m.prezzoPerPax)*(m.coperti||1)).toFixed(2)+' €</div>':'')
+      +(m.prezzoPerPax>0&&fc.totCosto>0?'<div style="font-size:11px;color:#888;margin-top:4px;">€ '+parseFloat(m.prezzoPerPax).toFixed(2)+'/pax &mdash; FC: <strong style="color:'+(fc.pct>40?'#e53e3e':fc.pct>30?'#b45309':'#2d7d46')+';">'+fc.pct.toFixed(1)+'%</strong> &mdash; Margine: <strong>'+fc.margine.toFixed(2)+' €/cop</strong></div>':m.prezzoPerPax>0?'<div style="font-size:11px;color:#888;margin-top:4px;">€ '+parseFloat(m.prezzoPerPax).toFixed(2)+'/pax &mdash; Totale: '+( parseFloat(m.prezzoPerPax)*(m.coperti||1)).toFixed(2)+' €</div>':'')
       +'</div>'
       +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
       +'<button class="btn-sm" onclick="apriModificaMenu('+i+')">&#9998; Modifica</button>'
@@ -4027,7 +4050,7 @@ function _renderMenuModalBody(){
       +'<div style="display:flex;gap:20px;flex-wrap:wrap;">'
       +(fc.prezzoPerPax>0?'<span>Ricavo totale: <strong>'+fc.totRicavo.toFixed(2)+' €</strong> ('+fc.coperti+' cop. × '+fc.prezzoPerPax.toFixed(2)+' €)</span>':'<span style="color:#b45309;">⚠ Inserisci € a persona per calcolare FC%</span>')
       +(fc.totCosto>0?'<span>Food cost: <strong>'+fc.totCosto.toFixed(2)+' €</strong> ('+( fc.totCosto/fc.coperti).toFixed(2)+' €/cop)</span>':'')
-      +(fc.totRicavo>0&&fc.totCosto>0?'<span>FC%: <strong style="color:'+(fc.pct>35?'#e53e3e':fc.pct>28?'#b45309':'#2d7d46')+';">'+fc.pct.toFixed(1)+'%</strong></span>':'')
+      +(fc.totRicavo>0&&fc.totCosto>0?'<span>FC%: <strong style="color:'+(fc.pct>40?'#e53e3e':fc.pct>30?'#b45309':'#2d7d46')+';">'+fc.pct.toFixed(1)+'%</strong></span>':'')
       +(fc.totRicavo>0&&fc.totCosto>0?'<span>Margine/coperto: <strong>'+fc.margine.toFixed(2)+' €</strong></span>':'')
       +'</div></div>'
     :'';
@@ -4139,7 +4162,7 @@ function _menuRefreshFC(){
     +'<div style="display:flex;gap:20px;flex-wrap:wrap;">'
     +(fc.prezzoPerPax>0?'<span>Ricavo totale: <strong>'+fc.totRicavo.toFixed(2)+' €</strong> ('+fc.coperti+' cop. × '+fc.prezzoPerPax.toFixed(2)+' €)</span>':'<span style="color:#b45309;">⚠ Inserisci € a persona per calcolare FC%</span>')
     +(fc.totCosto>0?'<span>Food cost: <strong>'+fc.totCosto.toFixed(2)+' €</strong> ('+(fc.totCosto/fc.coperti).toFixed(2)+' €/cop)</span>':'')
-    +(fc.totRicavo>0&&fc.totCosto>0?'<span>FC%: <strong style="color:'+(fc.pct>35?'#e53e3e':fc.pct>28?'#b45309':'#2d7d46')+';">'+fc.pct.toFixed(1)+'%</strong></span>':'')
+    +(fc.totRicavo>0&&fc.totCosto>0?'<span>FC%: <strong style="color:'+(fc.pct>40?'#e53e3e':fc.pct>30?'#b45309':'#2d7d46')+';">'+fc.pct.toFixed(1)+'%</strong></span>':'')
     +(fc.totRicavo>0&&fc.totCosto>0?'<span>Margine/coperto: <strong>'+fc.margine.toFixed(2)+' €</strong></span>':'')
     +'</div>';
   panel.innerHTML=html;
