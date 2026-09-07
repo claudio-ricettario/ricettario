@@ -4080,6 +4080,10 @@ function _renderMenuModalBody(){
     +'style="width:100%;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/></div>'
     +'</div>'
     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">'
+    +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">Orario evento</label>'
+    +'<input type="text" id="mp-orario" value="'+(m.orario||'')+'" placeholder="es. 19:30 – 23:30" '
+    +'oninput="window._menuEdit.data.orario=this.value" '
+    +'style="width:100%;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/></div>'
     +'<div><label style="font-size:11px;color:#888;display:block;margin-bottom:2px;">N° Proposta</label>'
     +'<input type="text" id="mp-nprev" value="'+(m.nPrev||'')+'" '
     +'oninput="window._menuEdit.data.nPrev=this.value" '
@@ -4228,7 +4232,7 @@ function stampaMenuPDF(i){
     +'<p style="margin-top:5px;"><strong>Partecipanti.</strong> Il presente preventivo è formulato sulla base del numero di commensali indicato. In caso di partecipazione di un numero inferiore di persone, il corrispettivo pattuito rimarrà invariato. In caso di partecipazione di un numero superiore, verrà applicato il prezzo concordato per ciascun commensale aggiuntivo.</p>'
     +'<p style="margin-top:5px;"><strong>Variazioni.</strong> Qualsiasi variazione relativa al menu, ai servizi richiesti, alla data dell&#39;evento o al numero dei commensali comporterà la revisione del presente preventivo.</p>'
     +'<p style="margin-top:5px;"><strong>Conferma e Caparra.</strong> Per confermare la prenotazione è necessario rispondere a questa email e versare una caparra confirmatoria pari al 30% dell&#39;importo complessivo'+(caparraPDF?', corrispondente a <strong>€ '+caparraPDF+'</strong>,':',')+' mediante bonifico bancario intestato a <strong>'+(intestatarioPDF||'_______________')+'</strong>, IBAN <strong>'+ibanPDF+'</strong>, indicando come causale il numero del preventivo riportato in calce. Il versamento dovrà avvenire entro 15 (quindici) giorni dal ricevimento della presente proposta. Decorso tale termine senza il ricevimento della caparra, il preventivo si intenderà decaduto e il ristorante sarà libero di disporre della data senza ulteriore comunicazione. La prenotazione si intende confermata esclusivamente al ricevimento della caparra confirmatoria.</p>'
-    +'<p style="margin-top:5px;"><strong>Saldo.</strong> Il saldo dovrà essere effettuato presso il ristorante il giorno dell&#39;evento'+(dataFmt?', <strong>'+dataFmt+'</strong>':'')+'.</p>'
+    +'<p style="margin-top:5px;"><strong>Saldo.</strong> Il saldo dovrà essere effettuato presso il ristorante il giorno dell&#39;evento'+(dataFmt?', <strong>'+dataFmt+'</strong>':'')+(m.orario?', con inizio previsto alle ore <strong>'+m.orario+'</strong>':'')+'.</p>'
     +'<p style="margin-top:5px;"><strong>Extra.</strong> Quanto non espressamente indicato nel presente preventivo — inclusi a titolo esemplificativo bevande, servizi aggiuntivi, allestimenti e ogni altra prestazione non concordata — è da considerarsi extra e sarà saldato separatamente il giorno dell&#39;evento.</p>'
     +'<p style="margin-top:5px;"><strong>Orario dell&#39;Evento.</strong> L&#39;orario di inizio indicato nel preventivo è da ritenersi vincolante ai fini dell&#39;organizzazione del servizio. In caso di ritardo superiore a 30 minuti non preventivamente comunicato, il ristorante non potrà garantire la qualità e la tempistica del servizio concordati e si riserva di rimodulare le portate in funzione del tempo residuo disponibile, senza che ciò costituisca motivo di riduzione del corrispettivo. In caso di mancata presentazione senza comunicazione entro l&#39;orario concordato, trascorsa un&#39;ora dall&#39;orario stabilito il ristorante si riserva il diritto di considerare l&#39;evento annullato, trattenendo l&#39;intera caparra confirmatoria.</p>'
     +'<p style="margin-top:5px;"><strong>Annullamento.</strong> In caso di annullamento della prenotazione da parte del cliente, la caparra confirmatoria versata sarà trattenuta ai sensi dell&#39;art. 1385 del Codice Civile.</p>'
@@ -4256,6 +4260,7 @@ function stampaMenuPDF(i){
     +'<div class="meta">'
     +(m.cliente?'<span>'+m.cliente+'</span> &mdash; ':'')
     +(dataFmt?'<span>'+dataFmt+'</span>':'')
+    +(m.orario?' &mdash; <span>ore '+m.orario+'</span>':'')
     +(m.coperti?' &mdash; <span>'+m.coperti+' coperti</span>':'')
     +'</div>'
     +'</div>'
@@ -4328,6 +4333,7 @@ function stampaListaProduzione(i){
     +m.nome
     +(m.cliente?' &mdash; '+m.cliente:'')
     +(dataFmt?' &mdash; '+dataFmt:'')
+    +(m.orario?' &mdash; ore '+m.orario:'')
     +' &mdash; <strong>'+coperti+' coperti</strong>'
     +'</div>'
     +'<table>'+righeHtml+'</table>'
