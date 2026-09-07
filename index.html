@@ -3896,6 +3896,8 @@ function _menuCalcFC(m){
     if(v.tipo==='piatto'){
       var p=piatti[v.piattoIdx];
       if(p) totCosto+=calcolaFoodCostPiatto(p)/Math.max(1,v.porzioni||1)*coperti;
+    } else if(v.tipo==='libera'){
+      totCosto+=(parseFloat(v.prezzoVendita)||0);
     }
   });
   var pct=totRicavo>0?totCosto/totRicavo*100:0;
@@ -3993,7 +3995,7 @@ function _renderMenuModalBody(){
         +'</div>';
     } else if(v.tipo==='libera'){
       return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:8px 10px;border:1px solid #f0ede6;border-radius:8px;">'
-        +'<span style="font-size:11px;color:#2d7d46;min-width:60px;font-weight:600;">VOCE</span>'
+        +'<span style="font-size:11px;color:#b8722a;min-width:60px;font-weight:600;">COSTO</span>'
         +'<div style="flex:1;min-width:0;">'
         +'<input type="text" value="'+v.nome+'" placeholder="Nome (es. Acqua, Vino, Pane...)" '
         +'onchange="window._menuEdit.data.voci['+vi+'].nome=this.value" '
@@ -4002,7 +4004,7 @@ function _renderMenuModalBody(){
         +'onchange="window._menuEdit.data.voci['+vi+'].descrizione=this.value" '
         +'style="width:100%;font-size:12px;padding:3px 8px;border:1px solid #d0cec8;border-radius:6px;margin-bottom:4px;"/>'
         +'<div style="display:flex;gap:8px;align-items:center;">'
-        +'<label style="font-size:11px;color:#888;">Prezzo €</label>'
+        +'<label style="font-size:11px;color:#888;">Costo interno €</label>'
         +'<input type="number" value="'+v.prezzoVendita+'" min="0" step="0.5" '
         +'onchange="window._menuEdit.data.voci['+vi+'].prezzoVendita=parseFloat(this.value)||0" '
         +'style="width:80px;font-size:12px;padding:3px 6px;border:1px solid #d0cec8;border-radius:6px;"/>'
@@ -4169,8 +4171,8 @@ function stampaMenuPDF(i){
   (m.voci||[]).forEach(function(v){
     if(v.tipo==='sezione'){
       righeHtml+='<tr><td style="padding:10px 0 4px;font-size:15px;font-weight:700;color:#3d2b1f;border-bottom:2px solid #3d2b1f;letter-spacing:.03em;">'+v.testo.toUpperCase()+'</td></tr>';
-    } else if(v.tipo==='piatto'||v.tipo==='libera'){
-      var nome=v.tipo==='piatto'?(v.nome||(piatti[v.piattoIdx]?piatti[v.piattoIdx].nome:'')):v.nome;
+    } else if(v.tipo==='piatto'){
+      var nome=v.nome||(piatti[v.piattoIdx]?piatti[v.piattoIdx].nome:'');
       var desc=v.descrizione||'';
       righeHtml+='<tr>'
         +'<td style="padding:8px 0;vertical-align:top;border-bottom:1px solid #f0ede6;">'
