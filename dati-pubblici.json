@@ -1,17 +1,16 @@
 {
   "version": 1,
-  "exportDate": "6/9/2026",
+  "exportDate": "8/9/2026",
   "menuData": [
     {
-      "nome": "Antipasto Misto per 2 persone",
-      "descrizione": "La miglior selezione locale",
+      "nome": "Affettati e formaggi misti per 2",
+      "descrizione": "Selezione Bottega Valbusa",
       "tags": [
-        "Consigliato",
         "Del territorio"
       ],
       "pochePorzioni": false,
       "categoria": "Antipasti",
-      "prezzoVendita": 8.4,
+      "prezzoVendita": 8,
       "tipoBeverage": false,
       "allergeni": [
         "Latte e lattosio",
@@ -44,49 +43,6 @@
       ]
     },
     {
-      "nome": "Canederli di Monte Veronese al burro fuso",
-      "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
-      "tags": [
-        "Vegetariano",
-        "Più venduto",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Primi piatti",
-      "prezzoVendita": 12,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Glutine",
-        "Latte e lattosio",
-        "Uova"
-      ],
-      "tracce": [
-        "Soia"
-      ]
-    },
-    {
-      "nome": "Gnocchi al Ragu'",
-      "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
-      "tags": [
-        "Novità",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Primi piatti",
-      "prezzoVendita": 9.9,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Anidride solforosa e solfiti",
-        "Uova",
-        "Glutine",
-        "Sedano"
-      ],
-      "tracce": [
-        "Soia",
-        "Latte e lattosio"
-      ]
-    },
-    {
       "nome": "Gnocchi di Malga al Burro fuso",
       "descrizione": "la lessinia nel piatto",
       "tags": [
@@ -104,6 +60,22 @@
       "tracce": [
         "Soia"
       ]
+    },
+    {
+      "nome": "Goulash con polenta",
+      "descrizione": "Con carne bovina allevata in lessinia",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "prezzoVendita": 14,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti",
+        "Sedano"
+      ],
+      "tracce": []
     },
     {
       "nome": "Lasagne al Ragù",
@@ -146,6 +118,22 @@
       "tracce": [
         "Soia"
       ]
+    },
+    {
+      "nome": "Uovo in camicia, patate schiacciate e speck croccante",
+      "descrizione": "Uova da galline felici, patate locali e speck trentino",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "prezzoVendita": 8,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Uova"
+      ],
+      "tracce": []
     }
   ],
   "magazzino": [
@@ -395,6 +383,76 @@
       ]
     },
     {
+      "codice": "MP-127",
+      "nome": "Muscolo Bovino",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 2,
+      "resa": 98,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 108,
+        "grassi": 2.4,
+        "grassiSaturi": 0.76,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 21.5,
+        "sale": 0.051
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 12,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-129",
+      "nome": "Ossa di manzo",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 15,
+        "grassi": 1,
+        "grassiSaturi": 1,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 3.5,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.5,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-096",
       "nome": "Acqua",
       "categoria": "Generale",
@@ -532,6 +590,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 3.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-128",
+      "nome": "Alloro foglie Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 353,
+        "grassi": 8.4,
+        "grassiSaturi": 2.3,
+        "carboidrati": 48.6,
+        "zuccheri": 48.1,
+        "fibre": 26.3,
+        "proteine": 7.6,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 148,
           "storico": []
         }
       ]
@@ -857,6 +950,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 1,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-130",
+      "nome": "Farina Gialla Bramata per polenta",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 362,
+        "grassi": 3.8,
+        "grassiSaturi": 0.5,
+        "carboidrati": 74.5,
+        "zuccheri": 0.5,
+        "fibre": 6.5,
+        "proteine": 8.5,
+        "sale": 0.002
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.29,
           "storico": []
         }
       ]
@@ -1803,6 +1931,43 @@
       ]
     },
     {
+      "codice": "MP-131",
+      "nome": "Uova Fresche",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 143,
+        "grassi": 9.51,
+        "grassiSaturi": 3.658,
+        "carboidrati": 0.72,
+        "zuccheri": 0.37,
+        "fibre": 0,
+        "proteine": 12.56,
+        "sale": 0.142
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 14,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-059",
       "nome": "Uova Pastorizzate",
       "categoria": "Generale",
@@ -2492,6 +2657,41 @@
       ]
     },
     {
+      "codice": "MP-132",
+      "nome": "Speck Segata",
+      "categoria": "Salumi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 10,
+      "resa": 90,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 211,
+        "grassi": 8.7,
+        "grassiSaturi": 3.1,
+        "carboidrati": 0.5,
+        "zuccheri": 0.5,
+        "fibre": 0,
+        "proteine": 33,
+        "sale": 5.3
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-069",
       "nome": "Aglio",
       "categoria": "Verdura",
@@ -2802,6 +3002,112 @@
         }
       ],
       "dataCreazione": "26/6/2026"
+    },
+    {
+      "codice": "SL-019",
+      "nome": "Brodo di manzo",
+      "categoria": "Fondi e brodi",
+      "resaQta": 2,
+      "resaUm": "lt",
+      "tempo": "180",
+      "procedimento": "Se non sai fare il brodo cambia lavoro",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 8,
+          "codiceMp": "MP-129",
+          "nome": "Ossa di manzo",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 7,
+          "codiceMp": "MP-127",
+          "nome": "Muscolo Bovino",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 70,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 73,
+          "codiceMp": "MP-068",
+          "nome": "Sedano",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 69,
+          "codiceMp": "MP-066",
+          "nome": "Carote",
+          "qtaBase": 96.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 72,
+          "codiceMp": "MP-061",
+          "nome": "Porri",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 3,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 13,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 68,
+          "codiceMp": "MP-069",
+          "nome": "Aglio",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "6/9/2026"
     },
     {
       "codice": "SL-004",
@@ -3386,6 +3692,112 @@
       "dataCreazione": "7/7/2026"
     },
     {
+      "codice": "SL-020",
+      "nome": "Goulash di manzo (base)",
+      "categoria": "Carni lavorate",
+      "resaQta": 2400,
+      "resaUm": "g",
+      "tempo": "120",
+      "procedimento": "Questo semilavorato è per circa 4 persone\nDorare le cipolle nell'olio\nTagliare la carne a dadi di 40 gr e rosolarla in padella\nAggiungere la carne rosolata alle cipolle, aggiungere il concentrato e continuare la cottura\nCospargere con la paprika, bagnare con il vino ridurre la salsa e salare\nVersare il brodo e brasare fino a cottura",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 7,
+          "codiceMp": "MP-127",
+          "nome": "Muscolo Bovino",
+          "qtaBase": 800,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 70,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 31,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 19,
+          "codiceMp": "MP-092",
+          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 51,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso Cucina",
+          "qtaBase": 125,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 1,
+          "codiceSl": "SL-019",
+          "nome": "Brodo di manzo",
+          "qtaBase": 2,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-085",
+          "nome": "Paprica rubino delicata Wiberg",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 13,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 38,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "6/9/2026"
+    },
+    {
       "codice": "SL-012",
       "nome": "Panna Cotta Vegana",
       "categoria": "Dolci e creme",
@@ -3507,6 +3919,58 @@
         }
       ],
       "dataCreazione": "7/7/2026"
+    },
+    {
+      "codice": "SL-021",
+      "nome": "Polenta morbida",
+      "categoria": "Altro",
+      "resaQta": 4430,
+      "resaUm": "g",
+      "tempo": "45",
+      "procedimento": "Con 1 kg di farina escono circa 20 porzioni",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 23,
+          "codiceMp": "MP-130",
+          "nome": "Farina Gialla Bramata per polenta",
+          "qtaBase": 1,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 4,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 44,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 32,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "6/9/2026"
     },
     {
       "codice": "SL-003",
@@ -3661,23 +4125,47 @@
         }
       ],
       "dataCreazione": "24/6/2026"
+    },
+    {
+      "codice": "SL-022",
+      "nome": "Speck croccante",
+      "categoria": "Altro",
+      "resaQta": 62,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Mettere in padella antiaderente tagliato a julienne e farlo croccante, tenere in caldo durante il servizio",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 70,
+          "codiceMp": "MP-132",
+          "nome": "Speck Segata",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "8/9/2026"
     }
   ],
   "piatti": [
     {
       "codice": "PF-010",
-      "nome": "Antipasto Misto per 2 persone",
-      "descrizione": "La miglior selezione locale",
+      "nome": "Affettati e formaggi misti per 2",
+      "descrizione": "Selezione Bottega Valbusa",
       "tags": [
-        "Consigliato",
         "Del territorio"
       ],
       "pochePorzioni": false,
       "categoria": "Antipasti",
       "sottocategoria": "",
       "pax": 2,
-      "prezzoVendita": 8.4,
-      "coefficiente": 4,
+      "prezzoVendita": 8,
+      "coefficiente": 2,
       "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
@@ -3827,7 +4315,7 @@
       "pax": 4,
       "prezzoVendita": 12,
       "coefficiente": 4,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -3887,7 +4375,7 @@
       "pax": 10,
       "prezzoVendita": 9.9,
       "coefficiente": 6,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [],
@@ -3961,6 +4449,45 @@
         }
       ],
       "dataCreazione": "7/7/2026"
+    },
+    {
+      "codice": "PF-011",
+      "nome": "Goulash con polenta",
+      "descrizione": "Con carne bovina allevata in lessinia",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "sottocategoria": "Carne",
+      "pax": 1,
+      "prezzoVendita": 14,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Polenta morbida",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 15,
+          "codiceSl": "SL-021"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Goulash di manzo (base)",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 11,
+          "codiceSl": "SL-020"
+        }
+      ],
+      "dataCreazione": "7/9/2026"
     },
     {
       "codice": "PF-002",
@@ -4115,6 +4642,93 @@
       ],
       "dataCreazione": "26/7/2026",
       "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-012",
+      "nome": "Uovo in camicia, patate schiacciate e speck croccante",
+      "descrizione": "Uova da galline felici, patate locali e speck trentino",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "sottocategoria": "Carne",
+      "pax": 1,
+      "prezzoVendita": 8,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Cuoci 3 minuti l'uovo in acqua salata con un goccio di aceto, scalda le patate nel microonde e condiscile con olio sale pepe.\nMetti le patate a tortino alla base, appoggia l'uovo in camicia e cospargi di speck croccante, finisci con erba cipollina"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Patate cotte",
+          "qtaBase": 150.2,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 14,
+          "codiceSl": "SL-009"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Uova Fresche",
+          "qtaBase": 60,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 50,
+          "codiceMp": "MP-131"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Speck croccante",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 18,
+          "codiceSl": "SL-022"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 32,
+          "codiceMp": "MP-064"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Sale Fino",
+          "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 44,
+          "codiceMp": "MP-057"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 0.5,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 39,
+          "codiceMp": "MP-058"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Erba cipollina liofilizzata Wiberg",
+          "qtaBase": 0.5,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 21,
+          "codiceMp": "MP-077"
+        }
+      ],
+      "dataCreazione": "8/9/2026"
     }
   ],
   "ricetteSalvate": [],
