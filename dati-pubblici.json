@@ -1,24 +1,7 @@
 {
   "version": 1,
-  "exportDate": "8/9/2026",
+  "exportDate": "10/9/2026",
   "menuData": [
-    {
-      "nome": "Affettati e formaggi misti per 2",
-      "descrizione": "Selezione Bottega Valbusa",
-      "tags": [
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Antipasti",
-      "prezzoVendita": 8,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Latte e lattosio",
-        "Sedano",
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
     {
       "nome": "Canederli ai Funghi e burro fuso",
       "descrizione": "Nuova proposta da provare",
@@ -29,7 +12,7 @@
       ],
       "pochePorzioni": true,
       "categoria": "Primi piatti",
-      "prezzoVendita": 10.5,
+      "prezzoVendita": 10.9,
       "tipoBeverage": false,
       "allergeni": [
         "Glutine",
@@ -43,6 +26,27 @@
       ]
     },
     {
+      "nome": "Canederli di Monte Veronese al burro fuso",
+      "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 10.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Latte e lattosio",
+        "Uova"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
       "nome": "Gnocchi di Malga al Burro fuso",
       "descrizione": "la lessinia nel piatto",
       "tags": [
@@ -51,7 +55,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
-      "prezzoVendita": 9.6,
+      "prezzoVendita": 8.9,
       "tipoBeverage": false,
       "allergeni": [
         "Glutine",
@@ -85,7 +89,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
-      "prezzoVendita": 12,
+      "prezzoVendita": 9.9,
       "tipoBeverage": false,
       "allergeni": [
         "Sedano",
@@ -93,6 +97,24 @@
         "Latte e lattosio",
         "Glutine",
         "Uova"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
+      "nome": "Maccheroni al ragù di cortile",
+      "descrizione": "Con la ricetta della nonna",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 10.4,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Sedano",
+        "Anidride solforosa e solfiti"
       ],
       "tracce": [
         "Soia"
@@ -120,6 +142,23 @@
       ]
     },
     {
+      "nome": "Salumi e formaggi del territorio",
+      "descrizione": "Selezione Bottega Valbusa con giardiniera e marmellata di nostra produzione",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "prezzoVendita": 18.4,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Latte e lattosio",
+        "Sedano",
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
       "nome": "Uovo in camicia, patate schiacciate e speck croccante",
       "descrizione": "Uova da galline felici, patate locali e speck trentino",
       "tags": [
@@ -128,7 +167,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Antipasti",
-      "prezzoVendita": 8,
+      "prezzoVendita": 8.4,
       "tipoBeverage": false,
       "allergeni": [
         "Uova"
@@ -1126,7 +1165,7 @@
         "proteine": 0,
         "sale": 2.1
       },
-      "nutrizionaliOk": false,
+      "nutrizionaliOk": true,
       "giacenza": 0,
       "giacenzaMin": 0,
       "lotti": [],
@@ -1134,6 +1173,44 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 3.46,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-134",
+      "nome": "Maccheroncini di pasta fresca",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 280,
+        "grassi": 0.2,
+        "grassiSaturi": 0.1,
+        "carboidrati": 60.1,
+        "zuccheri": 0.1,
+        "fibre": 0,
+        "proteine": 9.4,
+        "sale": 0.054
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 4,
           "storico": []
         }
       ]
@@ -2041,7 +2118,7 @@
     },
     {
       "codice": "MP-071",
-      "nome": "Vino Rosso Cucina",
+      "nome": "Vino Rosso/Bianco Cucina",
       "categoria": "Generale",
       "um": "lt",
       "iva": 10,
@@ -2687,6 +2764,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-133",
+      "nome": "Tastasal",
+      "categoria": "Salumi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 333,
+        "grassi": 29.18,
+        "grassiSaturi": 10,
+        "carboidrati": 2.85,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 13.72,
+        "sale": 1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8.4,
           "storico": []
         }
       ]
@@ -3567,6 +3679,98 @@
       "dataCreazione": "10/7/2026"
     },
     {
+      "codice": "SL-1936",
+      "nome": "Fondo bruno di manzo",
+      "categoria": "Fondi e brodi",
+      "resaQta": 1,
+      "resaUm": "lt",
+      "tempo": "360",
+      "procedimento": "1. Tostare le ossa di manzo in forno a 200°C per 40-45 minuti fino a doratura intensa.\n2. Rosolare le verdure (cipolla, carota, sedano) in olio EVO nella pentola.\n3. Aggiungere il concentrato di pomodoro e tostare 2-3 minuti.\n4. Unire le ossa tostate, sfumare con il vino rosso e deglassare bene.\n5. Coprire con acqua fredda. Portare a bollore schiumando.\n6. Sobbollire a fuoco basso per 3 ore.\n7. A metà cottura aggiungere abbondante ghiaccio (shock termico) per estrarre al meglio il collagene e la gelatina. Riprendere la cottura.\n8. Filtrare con colino a maglie fitte.\n9. Ridurre il liquido filtrato fino a consistenza sciropposa (circa 1 litro finale).\n10. Conservare in frigorifero o porzionare e congelare.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 5,
+      "shelfLifeSottovuoto": 14,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "magIdx": 8,
+          "nome": "Ossa di manzo",
+          "qtaBase": 1500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 76,
+          "nome": "Sedano",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 19,
+          "nome": "Concentrato pomodoro",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 9,
+          "nome": "Acqua",
+          "qtaBase": 4,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "magIdx": 32,
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 13,
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 39,
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 72,
+          "codiceMp": "MP-066",
+          "nome": "Carote",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 73,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 54,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "2026-09-09"
+    },
+    {
       "codice": "SL-011",
       "nome": "Gnocchi di Malga (base)",
       "categoria": "Pasta e impasti",
@@ -4107,24 +4311,143 @@
         },
         {
           "tipo": "mp",
-          "magIdx": 30,
-          "codiceMp": "MP-071",
-          "nome": "Vino Rosso Cucina",
-          "qtaBase": 2,
-          "unit": "lt",
-          "conv": 1
-        },
-        {
-          "tipo": "mp",
           "magIdx": 15,
           "codiceMp": "MP-064",
           "nome": "Olio extra vergine d'oliva",
           "qtaBase": 0.5,
           "unit": "lt",
           "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 54,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 2,
+          "unit": "lt",
+          "conv": 1
         }
       ],
       "dataCreazione": "24/6/2026"
+    },
+    {
+      "codice": "SL-7565",
+      "nome": "Ragù di cortile",
+      "categoria": "Carni lavorate",
+      "resaQta": 1260,
+      "resaUm": "g",
+      "tempo": "90",
+      "procedimento": "1. Rosolare il soffritto misto in olio EVO fino a doratura.\n2. Aggiungere il tastasal e sgranarlo bene in padella.\n3. Unire macinato di coniglio, pollo e anatra. Rosolare a fuoco vivo mescolando.\n4. Sfumare con il vino bianco e far evaporare completamente.\n5. Aggiungere alloro, rosmarino e salvia.\n6. Incorporare il fondo bruno di manzo per mantenere il ragù sugoso.\n7. Cuocere a fuoco basso con coperchio per 60-70 minuti, aggiungendo fondo se necessario.\n8. Aggiustare di sale e pepe. Il ragù deve risultare morbido e ben legato.\n9. Rimuovere gli aromi prima del servizio.",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 4,
+      "shelfLifeSottovuoto": 10,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "magIdx": 1,
+          "nome": "Macinato di Coniglio",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 5,
+          "nome": "Macinato di Pollo",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 0,
+          "nome": "Macinato di Anatra",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 71,
+          "nome": "Tastasal",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 78,
+          "nome": "Soffritto Misto Gelo",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 32,
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 9,
+          "codiceSl": "SL-1936",
+          "nome": "Fondo bruno di manzo",
+          "qtaBase": 300,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 45,
+          "nome": "Salvia",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 53,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso Cucina",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 13,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-072",
+          "nome": "Rosmarino liofilizzato Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 44,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 39,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "2026-09-09"
     },
     {
       "codice": "SL-022",
@@ -4154,101 +4477,6 @@
   ],
   "piatti": [
     {
-      "codice": "PF-010",
-      "nome": "Affettati e formaggi misti per 2",
-      "descrizione": "Selezione Bottega Valbusa",
-      "tags": [
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Antipasti",
-      "sottocategoria": "",
-      "pax": 2,
-      "prezzoVendita": 8,
-      "coefficiente": 2,
-      "nelMenu": true,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [
-        "Scriveremo poi"
-      ],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Salame Nostrano",
-          "qtaBase": 50,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 64,
-          "codiceMp": "MP-120"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Pancetta arrotolata",
-          "qtaBase": 50,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 62,
-          "codiceMp": "MP-121"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Prosciutto cotto Alta Qualità",
-          "qtaBase": 50,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 63,
-          "codiceMp": "MP-122"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Monte Veronese d'allevo",
-          "qtaBase": 50,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 59,
-          "codiceMp": "MP-055"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Formaggio Capra Fresco",
-          "qtaBase": 50,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 55,
-          "codiceMp": "MP-123"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Caciottina Fresca",
-          "qtaBase": 50,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 54,
-          "codiceMp": "MP-124"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Giardiniera Zuccato",
-          "qtaBase": 100,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 23,
-          "codiceMp": "MP-125"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Marmellata cipolle rosse",
-          "qtaBase": 40,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 26,
-          "codiceMp": "MP-126"
-        }
-      ],
-      "dataCreazione": "5/9/2026"
-    },
-    {
       "codice": "PF-008",
       "nome": "Canederli ai Funghi e burro fuso",
       "descrizione": "Nuova proposta da provare",
@@ -4259,9 +4487,9 @@
       ],
       "pochePorzioni": true,
       "categoria": "Primi piatti",
-      "sottocategoria": "",
+      "sottocategoria": "Vegetariano",
       "pax": 4,
-      "prezzoVendita": 10.5,
+      "prezzoVendita": 10.9,
       "coefficiente": 4,
       "nelMenu": false,
       "tipoBeverage": false,
@@ -4311,11 +4539,11 @@
       ],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
-      "sottocategoria": "",
+      "sottocategoria": "Vegetariano",
       "pax": 4,
-      "prezzoVendita": 12,
+      "prezzoVendita": 10.9,
       "coefficiente": 4,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -4371,9 +4599,9 @@
       ],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
-      "sottocategoria": "",
+      "sottocategoria": "Carne",
       "pax": 10,
-      "prezzoVendita": 9.9,
+      "prezzoVendita": 8.9,
       "coefficiente": 6,
       "nelMenu": false,
       "tipoBeverage": false,
@@ -4411,9 +4639,9 @@
       ],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
-      "sottocategoria": "",
+      "sottocategoria": "Vegetariano",
       "pax": 10,
-      "prezzoVendita": 9.6,
+      "prezzoVendita": 8.9,
       "coefficiente": 4,
       "nelMenu": true,
       "tipoBeverage": false,
@@ -4498,9 +4726,9 @@
       ],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
-      "sottocategoria": "",
+      "sottocategoria": "Carne",
       "pax": 18,
-      "prezzoVendita": 12,
+      "prezzoVendita": 9.9,
       "coefficiente": 4,
       "nelMenu": true,
       "tipoBeverage": false,
@@ -4556,6 +4784,45 @@
         }
       ],
       "dataCreazione": "26/6/2026"
+    },
+    {
+      "codice": "PF-013",
+      "nome": "Maccheroni al ragù di cortile",
+      "descrizione": "Con la ricetta della nonna",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "Carne",
+      "pax": 8,
+      "prezzoVendita": 10.4,
+      "coefficiente": 4,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Pasta 125 gr pax\nRaguù 100 gr pax"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Maccheroncini di pasta fresca",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 28,
+          "codiceMp": "MP-134"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Ragù di cortile",
+          "qtaBase": 800,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 19,
+          "codiceSl": "SL-7565"
+        }
+      ],
+      "dataCreazione": "10/9/2026"
     },
     {
       "codice": "PF-009",
@@ -4644,6 +4911,101 @@
       "porzioniVendute": 0
     },
     {
+      "codice": "PF-010",
+      "nome": "Salumi e formaggi del territorio",
+      "descrizione": "Selezione Bottega Valbusa con giardiniera e marmellata di nostra produzione",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 18.4,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Scriveremo poi"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Salame Nostrano",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 64,
+          "codiceMp": "MP-120"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pancetta arrotolata",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 62,
+          "codiceMp": "MP-121"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Prosciutto cotto Alta Qualità",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 63,
+          "codiceMp": "MP-122"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Monte Veronese d'allevo",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 59,
+          "codiceMp": "MP-055"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Formaggio Capra Fresco",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 55,
+          "codiceMp": "MP-123"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Caciottina Fresca",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 54,
+          "codiceMp": "MP-124"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Giardiniera Zuccato",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 23,
+          "codiceMp": "MP-125"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Marmellata cipolle rosse",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 26,
+          "codiceMp": "MP-126"
+        }
+      ],
+      "dataCreazione": "5/9/2026"
+    },
+    {
       "codice": "PF-012",
       "nome": "Uovo in camicia, patate schiacciate e speck croccante",
       "descrizione": "Uova da galline felici, patate locali e speck trentino",
@@ -4655,8 +5017,8 @@
       "categoria": "Antipasti",
       "sottocategoria": "Carne",
       "pax": 1,
-      "prezzoVendita": 8,
-      "coefficiente": 2,
+      "prezzoVendita": 8.4,
+      "coefficiente": 3,
       "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
