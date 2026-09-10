@@ -7793,23 +7793,21 @@ function loadCodiceCounters(){
     var c=localStorage.getItem('rc_codice_counters');
     if(c) codiceCounters=JSON.parse(c);
   }catch(e){}
-  /* ricalcola sempre il massimo dai dati reali — il localStorage è solo un fallback iniziale,
-     ma se risulta molto più alto del massimo nei dati (contatore corrotto) si usa il dato reale */
-  var maxMp=0;
-  magazzino.forEach(function(m){
-    if(m.codice){var n=parseInt(m.codice.split('-')[1]);if(!isNaN(n)&&n>maxMp)maxMp=n;}
-  });
-  codiceCounters.mp=Math.max(maxMp, maxMp>0&&codiceCounters.mp<=maxMp*3?codiceCounters.mp:maxMp);
-  var maxSl=0;
-  semilavorati.forEach(function(s){
-    if(s.codice){var n=parseInt(s.codice.split('-')[1]);if(!isNaN(n)&&n>maxSl)maxSl=n;}
-  });
-  codiceCounters.sl=Math.max(maxSl, maxSl>0&&codiceCounters.sl<=maxSl*3?codiceCounters.sl:maxSl);
-  var maxPf=0;
-  piatti.forEach(function(p){
-    if(p.codice){var n=parseInt(p.codice.split('-')[1]);if(!isNaN(n)&&n>maxPf)maxPf=n;}
-  });
-  codiceCounters.pf=Math.max(maxPf, maxPf>0&&codiceCounters.pf<=maxPf*3?codiceCounters.pf:maxPf);
+  /* ricalcola il contatore dai dati reali; se il massimo trovato è anomalo
+     (>10x il numero di voci = contatore corrotto), usa il numero di voci come base */
+  function _saneCodiceMax(arr, prefix){
+    var max=0;
+    arr.forEach(function(x){
+      if(x.codice&&x.codice.indexOf(prefix+'-')===0){
+        var n=parseInt(x.codice.split('-')[1]);
+        if(!isNaN(n)&&n>max)max=n;
+      }
+    });
+    return max>arr.length*10?arr.length:max;
+  }
+  codiceCounters.mp=_saneCodiceMax(magazzino,'MP');
+  codiceCounters.sl=_saneCodiceMax(semilavorati,'SL');
+  codiceCounters.pf=_saneCodiceMax(piatti,'PF');
 }
 
 function saveCodiceCounters(){
