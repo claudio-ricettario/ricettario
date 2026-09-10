@@ -7793,22 +7793,23 @@ function loadCodiceCounters(){
     var c=localStorage.getItem('rc_codice_counters');
     if(c) codiceCounters=JSON.parse(c);
   }catch(e){}
-  /* sicurezza: ricalcola il massimo esistente per non duplicare codici se il contatore si perde */
+  /* ricalcola sempre il massimo dai dati reali — il localStorage è solo un fallback iniziale,
+     ma se risulta molto più alto del massimo nei dati (contatore corrotto) si usa il dato reale */
   var maxMp=0;
   magazzino.forEach(function(m){
-    if(m.codice){var n=parseInt(m.codice.split('-')[1]);if(n>maxMp)maxMp=n;}
+    if(m.codice){var n=parseInt(m.codice.split('-')[1]);if(!isNaN(n)&&n>maxMp)maxMp=n;}
   });
-  if(maxMp>codiceCounters.mp) codiceCounters.mp=maxMp;
+  codiceCounters.mp=Math.max(maxMp, maxMp>0&&codiceCounters.mp<=maxMp*3?codiceCounters.mp:maxMp);
   var maxSl=0;
   semilavorati.forEach(function(s){
-    if(s.codice){var n=parseInt(s.codice.split('-')[1]);if(n>maxSl)maxSl=n;}
+    if(s.codice){var n=parseInt(s.codice.split('-')[1]);if(!isNaN(n)&&n>maxSl)maxSl=n;}
   });
-  if(maxSl>codiceCounters.sl) codiceCounters.sl=maxSl;
+  codiceCounters.sl=Math.max(maxSl, maxSl>0&&codiceCounters.sl<=maxSl*3?codiceCounters.sl:maxSl);
   var maxPf=0;
   piatti.forEach(function(p){
-    if(p.codice){var n=parseInt(p.codice.split('-')[1]);if(n>maxPf)maxPf=n;}
+    if(p.codice){var n=parseInt(p.codice.split('-')[1]);if(!isNaN(n)&&n>maxPf)maxPf=n;}
   });
-  if(maxPf>codiceCounters.pf) codiceCounters.pf=maxPf;
+  codiceCounters.pf=Math.max(maxPf, maxPf>0&&codiceCounters.pf<=maxPf*3?codiceCounters.pf:maxPf);
 }
 
 function saveCodiceCounters(){
