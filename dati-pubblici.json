@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "10/9/2026",
+  "exportDate": "11/9/2026",
   "menuData": [
     {
       "nome": "Canederli ai Funghi e burro fuso",
@@ -113,12 +113,10 @@
       "allergeni": [
         "Glutine",
         "Uova",
-        "Sedano",
+        "Soia",
         "Anidride solforosa e solfiti"
       ],
-      "tracce": [
-        "Soia"
-      ]
+      "tracce": []
     },
     {
       "nome": "Mille Foglie al piatto",
@@ -142,7 +140,23 @@
       ]
     },
     {
-      "nome": "Salumi e formaggi del territorio",
+      "nome": "Panna Cotta Vegana",
+      "descrizione": "Con caramello salato",
+      "tags": [
+        "Vegano",
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 5.4,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Soia"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Salumi e formaggi del territorio per 2 persone",
       "descrizione": "Selezione Bottega Valbusa con giardiniera e marmellata di nostra produzione",
       "tags": [
         "Del territorio"
@@ -885,6 +899,45 @@
       ]
     },
     {
+      "codice": "MP-137",
+      "nome": "Cremor tartaro",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia",
+        "Latte e lattosio",
+        "Frutta a guscio"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 51,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 24.1,
+        "zuccheri": 0,
+        "fibre": 0.2,
+        "proteine": 0.1,
+        "sale": 7.89
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 53.13,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-079",
       "nome": "Dragoncello liofilizzato Wiberg",
       "categoria": "Generale",
@@ -1173,6 +1226,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 3.46,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-136",
+      "nome": "Latte di cocco",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 168,
+        "grassi": 18,
+        "grassiSaturi": 15,
+        "carboidrati": 1.8,
+        "zuccheri": 1.2,
+        "fibre": 0,
+        "proteine": 0.7,
+        "sale": 0.03
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5,
           "storico": []
         }
       ]
@@ -1501,6 +1589,43 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 6,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-135",
+      "nome": "Panna di soia Valsoia",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Soia"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 141,
+        "grassi": 12,
+        "grassiSaturi": 1.6,
+        "carboidrati": 6.3,
+        "zuccheri": 3.8,
+        "fibre": 0.2,
+        "proteine": 1.8,
+        "sale": 0.23
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 6.5,
           "storico": []
         }
       ]
@@ -3514,6 +3639,58 @@
       "dataCreazione": "28/8/2026"
     },
     {
+      "codice": "SL-7566",
+      "nome": "Caramello Salato Vegano",
+      "categoria": "Dolci e creme",
+      "resaQta": 350,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Fai un caramello a secco o con l'acqua fino a colore ambrato scuro, togli dal fuoco e aggiungi il latte di cocco caldo a filo mescolando velocemente (attenzione agli schizzi), rimetti sul fuoco 1-2 minuti per amalgamare, aggiungi il sale. Si addensa raffreddando.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 59,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 28,
+          "codiceMp": "MP-136",
+          "nome": "Latte di cocco",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 47,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "10/9/2026"
+    },
+    {
       "codice": "SL-015",
       "nome": "Cipolla Tritata",
       "categoria": "Verdure lavorate",
@@ -3607,6 +3784,76 @@
         }
       ],
       "dataCreazione": "29/8/2026"
+    },
+    {
+      "codice": "SL-7568",
+      "nome": "Crema Tiramisù",
+      "categoria": "Dolci e creme",
+      "resaQta": 1500,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Mescola il Cremor con lo zucchero, metti in planetaria tutti gli ingredienti e monta fino al risultato desiderato",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 67,
+          "codiceMp": "MP-108",
+          "nome": "Mascarpone",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 69,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 60,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 55,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 56,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 20,
+          "codiceMp": "MP-137",
+          "nome": "Cremor tartaro",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "10/9/2026"
     },
     {
       "codice": "SL-013",
@@ -4003,13 +4250,16 @@
     },
     {
       "codice": "SL-012",
-      "nome": "Panna Cotta Vegana",
+      "nome": "Panna Cotta (base)",
       "categoria": "Dolci e creme",
-      "resaQta": 1214,
+      "resaQta": 1100,
       "resaUm": "g",
-      "tempo": "5",
+      "tempo": "10",
       "procedimento": "Versare tutti gli ingredienti in un pentolino e, mescolando con una frusta a mano, far cuocere a fiamma moderata fino a bollore. Abbassare quindi la fiamma e continuare a mescolare per altri 3/4 minuti.\nTogliere dal fuoco, versare negli stampini e fare addensare in Abbattitore positivo per 60 min. Tenere in frigo coperta e usare entro 7 giorni",
       "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
       "componenti": [
         {
           "tipo": "mp",
@@ -4049,6 +4299,58 @@
         }
       ],
       "dataCreazione": "9/7/2026"
+    },
+    {
+      "codice": "SL-7567",
+      "nome": "Panna Cotta Vegana (base)",
+      "categoria": "Dolci e creme",
+      "resaQta": 1000,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Scaldi la panna con lo zucchero e la vaniglia, aggiungi l'agar mescolando bene, porti a bollore per 2 minuti, versi subito nei bicchierini e lasci raffreddare. In bicchierino il servizio è anche più veloce",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 38,
+          "codiceMp": "MP-135",
+          "nome": "Panna di soia Valsoia",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 59,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-104",
+          "nome": "Agar Agar",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 55,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "10/9/2026"
     },
     {
       "codice": "SL-018",
@@ -4885,6 +5187,48 @@
       "dataCreazione": "30/8/2026"
     },
     {
+      "codice": "PF-014",
+      "nome": "Panna Cotta Vegana",
+      "descrizione": "Con caramello salato",
+      "tags": [
+        "Vegano",
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "Vegano",
+      "pax": 6,
+      "prezzoVendita": 5.4,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Non credo serva spiegone"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Panna Cotta Vegana (base)",
+          "qtaBase": 900,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 15,
+          "codiceSl": "SL-7567"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Caramello Salato Vegano",
+          "qtaBase": 180,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 6,
+          "codiceSl": "SL-7566"
+        }
+      ],
+      "dataCreazione": "10/9/2026"
+    },
+    {
       "codice": "PF-007",
       "nome": "Ripasso",
       "categoria": "Vini",
@@ -4912,7 +5256,7 @@
     },
     {
       "codice": "PF-010",
-      "nome": "Salumi e formaggi del territorio",
+      "nome": "Salumi e formaggi del territorio per 2 persone",
       "descrizione": "Selezione Bottega Valbusa con giardiniera e marmellata di nostra produzione",
       "tags": [
         "Del territorio"
