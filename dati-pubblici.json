@@ -173,6 +173,27 @@
       "tracce": []
     },
     {
+      "nome": "Sbrisolona",
+      "descrizione": "Provala con la nostra grappa Morbida +2€",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 4.4,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Latte e lattosio",
+        "Uova",
+        "Frutta a guscio"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
       "nome": "Tiramisù della Malga",
       "descrizione": "Con prodotti del territorio",
       "tags": [
@@ -4949,6 +4970,112 @@
       "dataCreazione": "2026-09-09"
     },
     {
+      "codice": "SL-027",
+      "nome": "Sbrisolona (base)",
+      "categoria": "Dolci e creme",
+      "resaQta": 1800,
+      "resaUm": "g",
+      "tempo": "45",
+      "procedimento": "Mescola a mano in una ciotola capiente farina, farina di mais fioretto, zucchero, mandorle tritate grossolanamente, scorza di limone grattugiata e un pizzico di sale. Aggiungi il burro freddo a pezzetti e lavora velocemente con le dita sfregando gli ingredienti tra i palmi fino a ottenere un composto sabbioso e granuloso — non impastare, deve rimanere briciole irregolari. Aggiungi i tuorli e la vaniglia e amalgama ancora brevemente senza compattare. Versa il composto in una teglia imburrata premendo leggermente in modo non uniforme, lasciando la superficie rustica e irregolare. Cuoci in forno a 170°C per 30-35 minuti fino a doratura uniforme. Lascia raffreddare completamente prima di rompere a pezzi a mano.",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 25,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 420,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 27,
+          "codiceMp": "MP-139",
+          "nome": "Farina Gialla Fioretto per Polenta",
+          "qtaBase": 220,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 64,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 320,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 65,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 400,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 57,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-140",
+          "nome": "Mandorle Sgusciate",
+          "qtaBase": 320,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 23,
+          "codiceSl": "SL-7569",
+          "nome": "Scorza Limone Grattugiata",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 52,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 60,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 80,
+          "codiceMp": "MP-141",
+          "nome": "Grappa Morbida",
+          "qtaBase": 18,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "12/9/2026"
+    },
+    {
       "codice": "SL-7569",
       "nome": "Scorza Limone Grattugiata",
       "categoria": "Altro",
@@ -5418,7 +5545,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Dolci",
-      "sottocategoria": "Vegano",
+      "sottocategoria": "",
       "pax": 6,
       "prezzoVendita": 5.4,
       "coefficiente": 2,
@@ -5570,6 +5697,37 @@
         }
       ],
       "dataCreazione": "5/9/2026"
+    },
+    {
+      "codice": "PF-016",
+      "nome": "Sbrisolona",
+      "descrizione": "Provala con la nostra grappa Morbida +2€",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 4.4,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Sbrisolona (base)",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 23,
+          "codiceSl": "SL-027"
+        }
+      ],
+      "dataCreazione": "12/9/2026"
     },
     {
       "codice": "PF-015",
