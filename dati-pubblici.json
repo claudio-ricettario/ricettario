@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "11/9/2026",
+  "exportDate": "12/9/2026",
   "menuData": [
     {
       "nome": "Canederli ai Funghi e burro fuso",
@@ -113,7 +113,7 @@
       "allergeni": [
         "Glutine",
         "Uova",
-        "Soia",
+        "Latte e lattosio",
         "Anidride solforosa e solfiti"
       ],
       "tracce": []
@@ -171,6 +171,26 @@
         "Anidride solforosa e solfiti"
       ],
       "tracce": []
+    },
+    {
+      "nome": "Tiramisù della Malga",
+      "descrizione": "Con prodotti del territorio",
+      "tags": [
+        "Più venduto"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 5.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Latte e lattosio",
+        "Uova",
+        "Glutine"
+      ],
+      "tracce": [
+        "Soia",
+        "Frutta a guscio"
+      ]
     },
     {
       "nome": "Uovo in camicia, patate schiacciate e speck croccante",
@@ -506,6 +526,41 @@
       ]
     },
     {
+      "codice": "MP-142",
+      "nome": "Limoni",
+      "categoria": "Frutta",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 29,
+        "grassi": 0.3,
+        "grassiSaturi": 0.04,
+        "carboidrati": 9.32,
+        "zuccheri": 2.5,
+        "fibre": 2.8,
+        "proteine": 1.1,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-096",
       "nome": "Acqua",
       "categoria": "Generale",
@@ -829,6 +884,41 @@
       ]
     },
     {
+      "codice": "MP-138",
+      "nome": "Cacao Amaro",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 419,
+        "grassi": 23,
+        "grassiSaturi": 14,
+        "carboidrati": 18,
+        "zuccheri": 0.5,
+        "fibre": 27,
+        "proteine": 21.5,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 15,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-109",
       "nome": "Caffè Solubile",
       "categoria": "Generale",
@@ -1077,6 +1167,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 1.29,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-139",
+      "nome": "Farina Gialla Fioretto per Polenta",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 347,
+        "grassi": 2.1,
+        "grassiSaturi": 0.34,
+        "carboidrati": 72.3,
+        "zuccheri": 1.07,
+        "fibre": 6,
+        "proteine": 7.7,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.4,
           "storico": []
         }
       ]
@@ -1369,6 +1494,43 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 6,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-140",
+      "nome": "Mandorle Sgusciate",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Frutta a guscio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 575,
+        "grassi": 49.42,
+        "grassiSaturi": 3.73,
+        "carboidrati": 21.67,
+        "zuccheri": 3.89,
+        "fibre": 12.2,
+        "proteine": 21.22,
+        "sale": 0.001
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.2,
           "storico": []
         }
       ]
@@ -2924,6 +3086,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 8.4,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-141",
+      "nome": "Grappa Morbida",
+      "categoria": "Spirits e liquori",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 242,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 7,
+        "zuccheri": 7,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 15,
           "storico": []
         }
       ]
@@ -4752,6 +4949,31 @@
       "dataCreazione": "2026-09-09"
     },
     {
+      "codice": "SL-7569",
+      "nome": "Scorza Limone Grattugiata",
+      "categoria": "Altro",
+      "resaQta": 20,
+      "resaUm": "g",
+      "tempo": "2",
+      "procedimento": "gratta gratta",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-142",
+          "nome": "Limoni",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "12/9/2026"
+    },
+    {
       "codice": "SL-022",
       "nome": "Speck croccante",
       "categoria": "Altro",
@@ -5348,6 +5570,65 @@
         }
       ],
       "dataCreazione": "5/9/2026"
+    },
+    {
+      "codice": "PF-015",
+      "nome": "Tiramisù della Malga",
+      "descrizione": "Con prodotti del territorio",
+      "tags": [
+        "Più venduto"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 5.9,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Crea gli strati come di solito e spolvera solo all'ultimo momento con il cacao"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Crema Tiramisù",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 9,
+          "codiceSl": "SL-7568"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Savoiardi",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 51,
+          "codiceMp": "MP-107"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Caffè Per Tiramisù",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 3,
+          "codiceSl": "SL-014"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Cacao Amaro",
+          "qtaBase": 4,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 18,
+          "codiceMp": "MP-138"
+        }
+      ],
+      "dataCreazione": "12/9/2026"
     },
     {
       "codice": "PF-012",
