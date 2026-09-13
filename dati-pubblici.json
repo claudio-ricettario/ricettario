@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "12/9/2026",
+  "exportDate": "13/9/2026",
   "menuData": [
     {
       "nome": "Canederli ai Funghi e burro fuso",
@@ -114,7 +114,8 @@
         "Glutine",
         "Uova",
         "Latte e lattosio",
-        "Anidride solforosa e solfiti"
+        "Anidride solforosa e solfiti",
+        "Soia"
       ],
       "tracce": []
     },
@@ -191,6 +192,31 @@
       ],
       "tracce": [
         "Soia"
+      ]
+    },
+    {
+      "nome": "Semifreddo all'Amaretto",
+      "descrizione": "Con Prodotti locali",
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Consigliato",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Dolci",
+      "prezzoVendita": 5.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Uova",
+        "Latte e lattosio",
+        "Frutta a guscio",
+        "Glutine",
+        "Soia"
+      ],
+      "tracce": [
+        "Arachidi",
+        "Senape"
       ]
     },
     {
@@ -759,6 +785,47 @@
       ]
     },
     {
+      "codice": "MP-143",
+      "nome": "Amaretti Bonomi",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova",
+        "Frutta a guscio"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Glutine",
+        "Latte e lattosio"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 432,
+        "grassi": 9.5,
+        "grassiSaturi": 1,
+        "carboidrati": 78,
+        "zuccheri": 77,
+        "fibre": 0,
+        "proteine": 7,
+        "sale": 0.13
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 7,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-118",
       "nome": "Amaretti Vicenzi",
       "categoria": "Generale",
@@ -970,6 +1037,50 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 32,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-145",
+      "nome": "Cialda per Gelato",
+      "categoria": "Generale",
+      "um": "pz",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Soia",
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Arachidi",
+        "Frutta a guscio",
+        "Senape"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 487,
+        "grassi": 21,
+        "grassiSaturi": 5.1,
+        "carboidrati": 68,
+        "zuccheri": 45,
+        "fibre": 0,
+        "proteine": 6.1,
+        "sale": 0.11
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 0.03,
           "storico": []
         }
       ]
@@ -3112,6 +3223,41 @@
       ]
     },
     {
+      "codice": "MP-144",
+      "nome": "Amaretto di saronno",
+      "categoria": "Spirits e liquori",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 272,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 17,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-141",
       "nome": "Grappa Morbida",
       "categoria": "Spirits e liquori",
@@ -4467,6 +4613,49 @@
       "dataCreazione": "6/9/2026"
     },
     {
+      "codice": "SL-028",
+      "nome": "Meringa all'italiana",
+      "categoria": "Dolci e creme",
+      "resaQta": 1650,
+      "resaUm": "g",
+      "tempo": "30",
+      "procedimento": "In un tegame porta l'acqua e lo zucchero a 115/118 °C, quando lo zucchero comincia a bollire sbattere a parte gli albumi  aneve ben ferma ed appena lo zucchero è pronto versarlo adagio a filo negli albumi continuando la sbattitura.\nQuando tutto lo zucchero è stato versato ridurre la velocità e continuare fino al completo raffreddamento. Per velocizzare si può versare su di un tavolo ben pulito, poi mettere in un contenitore chiuso e conservare in frigo.",
+      "coefficiente": 4,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 64,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 13,
+          "codiceMp": "MP-117",
+          "nome": "Albume Pastorizzato",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "13/9/2026"
+    },
+    {
       "codice": "SL-012",
       "nome": "Panna Cotta (base)",
       "categoria": "Dolci e creme",
@@ -5101,6 +5290,76 @@
       "dataCreazione": "12/9/2026"
     },
     {
+      "codice": "SL-029",
+      "nome": "Semifreddo all'Amaretto",
+      "categoria": "Dolci e creme",
+      "resaQta": 4.5,
+      "resaUm": "kg",
+      "tempo": "30",
+      "procedimento": "Frullare gli amaretti e tenerli da parte.\nFrullare i tuorli, l'Amaretto e scaldare a 20°C, raffreddare ed aggiungere il mascarpone e mescolare bene con la frusta.\nAmalgamare alla meringa, aggiungere gli amaretti sbriciolati ed in fine aggiungere la panna montata poco alla volta incorporandola molto lentamente.\nRaffreddare a -18°C . \nCirca 150 gr per porzione dessert",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 58,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 375,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 81,
+          "codiceMp": "MP-144",
+          "nome": "Amaretto di saronno",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 72,
+          "codiceMp": "MP-108",
+          "nome": "Mascarpone",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 15,
+          "codiceSl": "SL-028",
+          "nome": "Meringa all'italiana",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 74,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 2100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 15,
+          "codiceMp": "MP-143",
+          "nome": "Amaretti Bonomi",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "13/9/2026"
+    },
+    {
       "codice": "SL-022",
       "nome": "Speck croccante",
       "categoria": "Altro",
@@ -5730,6 +5989,50 @@
       "dataCreazione": "12/9/2026"
     },
     {
+      "codice": "PF-017",
+      "nome": "Semifreddo all'Amaretto",
+      "descrizione": "Con Prodotti locali",
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Consigliato",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 5.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Fare una mattonella di 150 gr di semifreddo, racchiusa tra le due cialde, servire come al bar Milano de na volta"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Semifreddo all'Amaretto",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 26,
+          "codiceSl": "SL-029"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Cialda per Gelato",
+          "qtaBase": 2,
+          "unit": "pz",
+          "conv": 1,
+          "magIdx": 22,
+          "codiceMp": "MP-145"
+        }
+      ],
+      "dataCreazione": "13/9/2026"
+    },
+    {
       "codice": "PF-015",
       "nome": "Tiramisù della Malga",
       "descrizione": "Con prodotti del territorio",
@@ -5739,7 +6042,7 @@
       "pochePorzioni": false,
       "categoria": "Dolci",
       "sottocategoria": "",
-      "pax": 4,
+      "pax": 1,
       "prezzoVendita": 5.9,
       "coefficiente": 2,
       "nelMenu": true,
