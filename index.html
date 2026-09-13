@@ -8144,7 +8144,7 @@ function globalSearch(q){
     html+='<div class="search-result-group">Semilavorati</div>';
     semiFiltrati.forEach(function(s){
       var idx=semilavorati.indexOf(s);
-      html+='<div class="search-result-row" onclick="closeSearch();showTab(&quot;semilavorati&quot;)">'
+      html+='<div class="search-result-row" onclick="closeSearch();showTab(&quot;semilavorati&quot;);openSemiModal('+idx+')">'
         +'<span class="search-result-icon">&#9881;</span>'
         +'<div class="search-result-info">'
         +'<div class="search-result-nome">'+s.nome+'</div>'
@@ -8165,7 +8165,8 @@ function globalSearch(q){
     html+='<div class="search-result-group">Materie prime</div>';
     mpFiltrate.forEach(function(m){
       var act=activeSupplier(m);
-      html+='<div class="search-result-row" onclick="closeSearch();showTab(&quot;magazzino&quot;)">'
+      var mpIdx=magazzino.indexOf(m);
+      html+='<div class="search-result-row" onclick="closeSearch();showTab(&quot;magazzino&quot;);openNuovaMPModal('+mpIdx+')">'
         +'<span class="search-result-icon">&#129746;</span>'
         +'<div class="search-result-info">'
         +'<div class="search-result-nome">'+m.nome+'</div>'
