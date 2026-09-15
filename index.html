@@ -7105,6 +7105,20 @@ function magToggleCat(cat,el){
 }
 
 
+function _mpIvaHint(){
+  var iva=parseFloat(document.getElementById('mp-iva').value)||0;
+  var lordo=parseFloat(document.getElementById('mp-prezzo').value);
+  var hint=document.getElementById('mp-iva-hint');
+  if(!hint)return;
+  var mult=(1+iva/100).toFixed(2);
+  if(!isNaN(lordo)&&lordo>0){
+    var netto=(lordo/(1+iva/100));
+    hint.innerHTML='Hai il prezzo lordo? → <strong>'+lordo.toFixed(2)+' ÷ '+mult+' = '+netto.toFixed(4)+'</strong> netto';
+  } else {
+    hint.innerHTML='Hai il lordo? → dividi per <strong>'+mult+'</strong> (IVA '+iva+'%)';
+  }
+}
+
 function openNuovaMPModal(editIdx){
   var isNew=(editIdx===-1||editIdx===undefined);
   mpEditIdx=isNew?-1:editIdx;
@@ -8735,7 +8749,7 @@ function cambiaPasswordApp(){
         </select>
       </div>
       <div class="form-row"><label>IVA %</label>
-        <select id="mp-iva">
+        <select id="mp-iva" onchange="_mpIvaHint()">
           <option value="4">4%</option><option value="10" selected>10%</option><option value="22">22%</option>
         </select>
       </div>
@@ -8774,8 +8788,10 @@ function cambiaPasswordApp(){
           <button class="btn-sm" onclick="document.getElementById('mp-nuovo-forn-form').style.display='none';document.getElementById('mp-forn').value='';">Annulla</button>
         </div>
       </div>
-      <div class="form-row"><label>Prezzo (euro/um) *</label>
-        <input type="number" id="mp-prezzo" placeholder="0.00" min="0" step="0.01" style="text-align:left;"/>
+      <div class="form-row">
+        <label>Prezzo (euro/um) * <span style="font-size:10px;font-weight:700;color:#2d7d46;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:4px;padding:1px 5px;vertical-align:middle;">IVA ESCLUSA</span></label>
+        <input type="number" id="mp-prezzo" placeholder="0.00" min="0" step="0.01" style="text-align:left;" oninput="_mpIvaHint()"/>
+        <div id="mp-iva-hint" style="font-size:11px;color:#888;margin-top:4px;"></div>
       </div>
     </div>
     <div class="section-label" style="margin-top:14px;">Allergeni</div>
