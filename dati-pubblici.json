@@ -256,6 +256,81 @@
         "Uova"
       ],
       "tracce": []
+    },
+    {
+      "nome": "Vino  Rosso della Casa  1 Litro",
+      "descrizione": "Corvina Veronese igt Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "prezzoVendita": 12.5,
+      "tipoBeverage": true,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Vino Bianco della Casa 1 Litro",
+      "descrizione": "Garganega IGT Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "prezzoVendita": 12.5,
+      "tipoBeverage": true,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Vino Bianco della Casa 1/2 Litro",
+      "descrizione": "Garganega IGT Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "prezzoVendita": 7.5,
+      "tipoBeverage": true,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Vino Rosso della Casa  1/4 Litro",
+      "descrizione": "Corvina IGT Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "prezzoVendita": 4,
+      "tipoBeverage": true,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Vino Rosso della Casa 1/2 Litro",
+      "descrizione": "Corvina Veronese igt Cantine di verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "prezzoVendita": 7.5,
+      "tipoBeverage": true,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
     }
   ],
   "magazzino": [
@@ -5915,32 +5990,6 @@
       "dataCreazione": "10/9/2026"
     },
     {
-      "codice": "PF-007",
-      "nome": "Ripasso",
-      "categoria": "Vini",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 25,
-      "coefficiente": 1,
-      "nelMenu": false,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Ripasso allegrini prova",
-          "qtaBase": 1,
-          "unit": "lt",
-          "conv": 1,
-          "magIdx": 56,
-          "codiceMp": "MP-111"
-        }
-      ],
-      "dataCreazione": "26/7/2026",
-      "porzioniVendute": 0
-    },
-    {
       "codice": "PF-010",
       "nome": "Salumi e formaggi del territorio per 2 persone",
       "descrizione": "Selezione Bottega Valbusa con giardiniera e marmellata di nostra produzione",
@@ -6258,16 +6307,18 @@
     },
     {
       "codice": "PF-018",
-      "nome": "Vino della casa Corvina 1 Litro",
+      "nome": "Vino  Rosso della Casa  1 Litro",
       "descrizione": "Corvina Veronese igt Cantine di Verona",
-      "tags": [],
+      "tags": [
+        "Del territorio"
+      ],
       "pochePorzioni": false,
       "categoria": "Vini",
       "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 13,
+      "prezzoVendita": 12.5,
       "coefficiente": 1,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": true,
       "foto": "",
       "steps": [],
@@ -6285,8 +6336,98 @@
       "dataCreazione": "15/9/2026"
     },
     {
+      "codice": "PF-021",
+      "nome": "Vino Bianco della Casa 1 Litro",
+      "descrizione": "Garganega IGT Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 12.5,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Garganega igt Bag in Box",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
+          "magIdx": 92,
+          "codiceMp": "MP-147"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
+    },
+    {
+      "codice": "PF-022",
+      "nome": "Vino Bianco della Casa 1/2 Litro",
+      "descrizione": "Garganega IGT Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 7.5,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Garganega igt Bag in Box",
+          "qtaBase": 500,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 92,
+          "codiceMp": "MP-147"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
+    },
+    {
+      "codice": "PF-020",
+      "nome": "Vino Rosso della Casa  1/4 Litro",
+      "descrizione": "Corvina IGT Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 4,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Corvina igt bag in box 10L",
+          "qtaBase": 250,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 91,
+          "codiceMp": "MP-146"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
+    },
+    {
       "codice": "PF-019",
-      "nome": "Vino della Casa Mezzo Litro",
+      "nome": "Vino Rosso della Casa 1/2 Litro",
       "descrizione": "Corvina Veronese igt Cantine di verona",
       "tags": [
         "Del territorio"
@@ -6297,7 +6438,7 @@
       "pax": 1,
       "prezzoVendita": 7.5,
       "coefficiente": 1,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": true,
       "foto": "",
       "steps": [],
