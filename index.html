@@ -6232,6 +6232,10 @@ function renderSemilavorati(){
         +'<div style="font-size:13px;font-weight:600;color:#2d7d46;">'+costoLabel+'</div>'
         +'<div style="font-size:11px;color:#888;">costo / resa '+resaLabel+'</div>'
         +'</div>'
+        +(isAdmin&&!q?'<div style="display:flex;flex-direction:column;gap:2px;margin-right:4px;">'
+          +'<button class="btn-sm" onclick="event.stopPropagation();moveSemilavorato('+realIdx+',-1)" style="padding:1px 6px;font-size:10px;line-height:1.4;" title="Sposta su">▲</button>'
+          +'<button class="btn-sm" onclick="event.stopPropagation();moveSemilavorato('+realIdx+',1)" style="padding:1px 6px;font-size:10px;line-height:1.4;" title="Sposta giù">▼</button>'
+          +'</div>':'')
         +'<button class="btn-sm" onclick="event.stopPropagation();openSemiModal('+realIdx+')" style="flex-shrink:0;">&#9998;</button>'
       ):(
         '<div style="text-align:right;margin-right:12px;">'
@@ -6536,6 +6540,10 @@ function renderPiatti(){
       +'<div style="font-size:11px;color:#888;">costo per '+pax+' porz.</div>'
       +'</div>'
       +'<div style="margin-right:12px;">'+fcBadge+'</div>'
+      +(isAdmin&&!q?'<div style="display:flex;flex-direction:column;gap:2px;margin-right:4px;">'
+        +'<button class="btn-sm" onclick="event.stopPropagation();movePiatto('+realIdx+',-1)" style="padding:1px 6px;font-size:10px;line-height:1.4;" title="Sposta su">▲</button>'
+        +'<button class="btn-sm" onclick="event.stopPropagation();movePiatto('+realIdx+',1)" style="padding:1px 6px;font-size:10px;line-height:1.4;" title="Sposta giù">▼</button>'
+        +'</div>':'')
       +'<button class="btn-sm" onclick="event.stopPropagation();openPiattoModal('+realIdx+')" style="flex-shrink:0;">&#9998;</button>'
       +'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+realIdx+')" style="flex-shrink:0;margin-left:4px;background:'+(p.nelMenu?'#dcfce7;color:#16a34a':'#f5f4f0;color:#aaa')+';font-size:14px;" title="'+(p.nelMenu?'Nel menu attivo - clicca per rimuovere':'Non nel menu - clicca per aggiungere')+'">'+( p.nelMenu?'★':'☆')+'</button>'
       +'</div>'
@@ -6556,6 +6564,30 @@ function renderPiatti(){
       +'</div>'
       +'</div>';
   }).join('');
+}
+
+function movePiatto(idx,dir){
+  var newIdx=idx+dir;
+  if(newIdx<0||newIdx>=piatti.length)return;
+  var tmp=piatti[idx];piatti[idx]=piatti[newIdx];piatti[newIdx]=tmp;
+  /* aggiorna piattoIdx nei preventivi */
+  menuPreventivi.forEach(function(m){
+    (m.voci||[]).forEach(function(v){
+      if(v.tipo==='piatto'){
+        if(v.piattoIdx===idx)v.piattoIdx=newIdx;
+        else if(v.piattoIdx===newIdx)v.piattoIdx=idx;
+      }
+    });
+  });
+  savePiatti();saveMenuPreventivi();renderPiatti();
+}
+
+function moveSemilavorato(idx,dir){
+  var newIdx=idx+dir;
+  if(newIdx<0||newIdx>=semilavorati.length)return;
+  var tmp=semilavorati[idx];semilavorati[idx]=semilavorati[newIdx];semilavorati[newIdx]=tmp;
+  /* i componenti usano codiceSl per resolve — nessun aggiornamento manuale necessario */
+  saveSemilavorati();renderSemilavorati();
 }
 
 function toggleNelMenu(idx){
