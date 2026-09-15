@@ -6232,10 +6232,6 @@ function renderSemilavorati(){
         +'<div style="font-size:13px;font-weight:600;color:#2d7d46;">'+costoLabel+'</div>'
         +'<div style="font-size:11px;color:#888;">costo / resa '+resaLabel+'</div>'
         +'</div>'
-        +(isAdmin&&!q?'<div style="display:flex;flex-direction:column;gap:2px;margin-right:4px;">'
-          +'<button class="btn-sm" onclick="event.stopPropagation();moveSemilavorato('+realIdx+',-1)" style="padding:1px 6px;font-size:10px;line-height:1.4;" title="Sposta su">▲</button>'
-          +'<button class="btn-sm" onclick="event.stopPropagation();moveSemilavorato('+realIdx+',1)" style="padding:1px 6px;font-size:10px;line-height:1.4;" title="Sposta giù">▼</button>'
-          +'</div>':'')
         +'<button class="btn-sm" onclick="event.stopPropagation();openSemiModal('+realIdx+')" style="flex-shrink:0;">&#9998;</button>'
       ):(
         '<div style="text-align:right;margin-right:12px;">'
