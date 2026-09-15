@@ -6766,6 +6766,10 @@ function homeRicettaRow(r,i){
     +'</div>'
     +'<span class="home-ricetta-fc">'+fcBadge+'</span>'
     +(r._isPiatto&&isAdmin?'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+r._piattoIdx+')" style="margin-left:6px;flex-shrink:0;background:'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'#dcfce7;color:#16a34a':'#f5f4f0;color:#aaa')+';font-size:14px;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;" title="'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'Nel menu':'Non nel menu')+'">'+( piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'&#9733;':'&#9734;')+'</button>':'')
+    +(r._isPiatto&&isAdmin?'<div style="display:flex;flex-direction:column;gap:1px;margin-left:4px;">'
+      +'<button class="btn-sm" onclick="event.stopPropagation();movePiatto('+r._piattoIdx+',-1)" style="padding:1px 5px;font-size:9px;line-height:1.4;" title="Sposta su">▲</button>'
+      +'<button class="btn-sm" onclick="event.stopPropagation();movePiatto('+r._piattoIdx+',1)" style="padding:1px 5px;font-size:9px;line-height:1.4;" title="Sposta giù">▼</button>'
+      +'</div>':'')
     +'</div>';
 }
 
