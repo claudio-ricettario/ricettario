@@ -6762,7 +6762,7 @@ function homeRicettaRow(r,i){
     +'<div class="home-ricetta-thumb">'+thumbHtml+'</div>'
     +'<div class="home-ricetta-info">'
     +'<div class="home-ricetta-nome">'+(r.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:6px;">'+r.codice+'</span>':'')+r.nome+'</div>'
-    +'<div class="home-ricetta-meta">'+r.pax+' porzioni'+(r._isBase?' &middot; ricetta base':r.dataCreazione?' &middot; '+r.dataCreazione:'')+'</div>'
+    +'<div class="home-ricetta-meta">'+r.pax+' porzioni'+(r._isBase?' &middot; ricetta base':r.dataCreazione?' &middot; '+r.dataCreazione:'')+(r._isPiatto&&r.prezzoVendita>0?' &middot; <strong style="color:#2d7d46;">€&nbsp;'+parseFloat(r.prezzoVendita).toFixed(2)+'/pax</strong>':'')+'</div>'
     +'</div>'
     +'<span class="home-ricetta-fc">'+fcBadge+'</span>'
     +(r._isPiatto&&isAdmin?'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+r._piattoIdx+')" style="margin-left:6px;flex-shrink:0;background:'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'#dcfce7;color:#16a34a':'#f5f4f0;color:#aaa')+';font-size:14px;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;" title="'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'Nel menu':'Non nel menu')+'">'+( piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'&#9733;':'&#9734;')+'</button>':'')
