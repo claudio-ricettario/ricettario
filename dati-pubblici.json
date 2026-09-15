@@ -258,21 +258,6 @@
       "tracce": []
     },
     {
-      "nome": "Vino  Rosso della Casa  1 Litro",
-      "descrizione": "Corvina Veronese igt Cantine di Verona",
-      "tags": [
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Vini",
-      "prezzoVendita": 12.5,
-      "tipoBeverage": true,
-      "allergeni": [
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
       "nome": "Vino Bianco della Casa 1 Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
       "tags": [
@@ -303,14 +288,27 @@
       "tracce": []
     },
     {
-      "nome": "Vino Rosso della Casa  1/4 Litro",
-      "descrizione": "Corvina IGT Cantine di Verona",
+      "nome": "Vino Bianco della Casa 1/4 di Litro",
+      "descrizione": "Garganega IGT Cantine di Verona",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "prezzoVendita": 4,
+      "tipoBeverage": true,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Vino  Rosso della Casa  1 Litro",
+      "descrizione": "Corvina Veronese igt Cantine di Verona",
       "tags": [
         "Del territorio"
       ],
       "pochePorzioni": false,
       "categoria": "Vini",
-      "prezzoVendita": 4,
+      "prezzoVendita": 12.5,
       "tipoBeverage": true,
       "allergeni": [
         "Anidride solforosa e solfiti"
@@ -326,6 +324,21 @@
       "pochePorzioni": false,
       "categoria": "Vini",
       "prezzoVendita": 7.5,
+      "tipoBeverage": true,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Vino Rosso della Casa  1/4 Litro",
+      "descrizione": "Corvina IGT Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "prezzoVendita": 4,
       "tipoBeverage": true,
       "allergeni": [
         "Anidride solforosa e solfiti"
@@ -5550,7 +5563,7 @@
       ],
       "pochePorzioni": true,
       "categoria": "Primi piatti",
-      "sottocategoria": "Vegetariano",
+      "sottocategoria": "",
       "pax": 4,
       "prezzoVendita": 10.9,
       "coefficiente": 4,
@@ -5602,7 +5615,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
-      "sottocategoria": "Vegetariano",
+      "sottocategoria": "",
       "pax": 4,
       "prezzoVendita": 10.9,
       "coefficiente": 4,
@@ -5662,7 +5675,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
-      "sottocategoria": "Carne",
+      "sottocategoria": "",
       "pax": 10,
       "prezzoVendita": 8.9,
       "coefficiente": 6,
@@ -5702,7 +5715,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
-      "sottocategoria": "Vegetariano",
+      "sottocategoria": "",
       "pax": 10,
       "prezzoVendita": 8.9,
       "coefficiente": 4,
@@ -5789,7 +5802,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
-      "sottocategoria": "Carne",
+      "sottocategoria": "",
       "pax": 18,
       "prezzoVendita": 9.9,
       "coefficiente": 4,
@@ -5855,7 +5868,7 @@
       "tags": [],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
-      "sottocategoria": "Carne",
+      "sottocategoria": "",
       "pax": 8,
       "prezzoVendita": 10.4,
       "coefficiente": 4,
@@ -6306,36 +6319,6 @@
       "dataCreazione": "8/9/2026"
     },
     {
-      "codice": "PF-018",
-      "nome": "Vino  Rosso della Casa  1 Litro",
-      "descrizione": "Corvina Veronese igt Cantine di Verona",
-      "tags": [
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Vini",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 12.5,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Corvina igt bag in box 10L",
-          "qtaBase": 1,
-          "unit": "lt",
-          "conv": 1,
-          "magIdx": 91,
-          "codiceMp": "MP-146"
-        }
-      ],
-      "dataCreazione": "15/9/2026"
-    },
-    {
       "codice": "PF-021",
       "nome": "Vino Bianco della Casa 1 Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
@@ -6396,12 +6379,10 @@
       "dataCreazione": "15/9/2026"
     },
     {
-      "codice": "PF-020",
-      "nome": "Vino Rosso della Casa  1/4 Litro",
-      "descrizione": "Corvina IGT Cantine di Verona",
-      "tags": [
-        "Del territorio"
-      ],
+      "codice": "PF-023",
+      "nome": "Vino Bianco della Casa 1/4 di Litro",
+      "descrizione": "Garganega IGT Cantine di Verona",
+      "tags": [],
       "pochePorzioni": false,
       "categoria": "Vini",
       "sottocategoria": "",
@@ -6415,10 +6396,40 @@
       "componenti": [
         {
           "tipo": "mp",
-          "nome": "Corvina igt bag in box 10L",
+          "nome": "Garganega igt Bag in Box",
           "qtaBase": 250,
           "unit": "ml",
           "conv": 0.001,
+          "magIdx": 92,
+          "codiceMp": "MP-147"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
+    },
+    {
+      "codice": "PF-018",
+      "nome": "Vino  Rosso della Casa  1 Litro",
+      "descrizione": "Corvina Veronese igt Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 12.5,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Corvina igt bag in box 10L",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
           "magIdx": 91,
           "codiceMp": "MP-146"
         }
@@ -6447,6 +6458,36 @@
           "tipo": "mp",
           "nome": "Corvina igt bag in box 10L",
           "qtaBase": 500,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 91,
+          "codiceMp": "MP-146"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
+    },
+    {
+      "codice": "PF-020",
+      "nome": "Vino Rosso della Casa  1/4 Litro",
+      "descrizione": "Corvina IGT Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 4,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Corvina igt bag in box 10L",
+          "qtaBase": 250,
           "unit": "ml",
           "conv": 0.001,
           "magIdx": 91,
