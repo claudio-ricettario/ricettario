@@ -8339,6 +8339,7 @@ function npModifica(idx){
   document.getElementById('np-poche-porzioni-row').style.display=hasFuori?'block':'none';
   document.getElementById('np-poche-porzioni').checked=p.pochePorzioni||false;
   document.getElementById('np-cat').value=p.categoria||'Primi piatti';
+  npCatChange(p.categoria||'Primi piatti');
   document.getElementById('np-sottocat').value=p.sottocategoria||'';
   document.getElementById('np-pax').value=p.pax||4;
   document.getElementById('np-pv').value=p.prezzoVendita||'';
@@ -8582,6 +8583,15 @@ function npCatChange(val){
   var bevCats=['Vini','Birre','Cocktail','Caffetteria','Soft drink','Beverage vario'];
   var cb=document.getElementById('np-bev');
   if(cb&&bevCats.indexOf(val)>=0)cb.checked=true;
+  /* Sottocategorie dinamiche */
+  var sel=document.getElementById('np-sottocat');
+  if(!sel)return;
+  var cur=sel.value;
+  var opts=val==='Vini'
+    ?['','Bollicine','Bianchi','Rossi','Dolce','Della casa']
+    :['','Carne','Pesce','Vegetariano','Vegano'];
+  sel.innerHTML=opts.map(function(o){return '<option value="'+o+'">'+(o||'-- nessuna --')+'</option>';}).join('');
+  if(opts.indexOf(cur)>=0)sel.value=cur;
 }
 function npSalva(){
   try{
