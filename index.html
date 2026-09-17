@@ -6424,8 +6424,8 @@ function pm2RenderComps(){
   if(!pm2Comps.length){ el.innerHTML='<p style="font-size:13px;color:#aaa;padding:4px 0;">Nessun componente aggiunto.</p>'; return; }
   var totale=pm2Comps.reduce(function(t,c){
     if(c.conv===0||c.unit==='q.b.') return t;
-    if(c.tipo==='mp') return t+c.qtaBase*c.conv*gp(c.magIdx);
-    var si=c.semiIdx; if(si===undefined||si<0) return t;
+    if(c.tipo==='mp') return t+c.qtaBase*c.conv*gp(resolveMagIdx(c));
+    var si=resolveSemiIdx(c); if(si===undefined||si<0) return t;
     var costoU=costoSemi(si);
     var qtaN=c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1);
     return t+costoU*qtaN;
@@ -6437,7 +6437,7 @@ function pm2RenderComps(){
     +'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;border-bottom:1px solid #f0ede6;">Costo</th>'
     +'<th style="width:24px;border-bottom:1px solid #f0ede6;"></th></tr></thead><tbody>'
     +pm2Comps.map(function(c,i){
-      var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*c.conv*gp(c.magIdx):costoSemi(c.semiIdx)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1)));
+      var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*c.conv*gp(resolveMagIdx(c)):costoSemi(resolveSemiIdx(c))*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1)));
       var tipoLabel=c.tipo==='mp'?'Materia prima':'Semilavorato';
       var tipoCls=c.tipo==='mp'?'mp':'sl';
       return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;font-weight:500;">'+c.nome+'</td>'
@@ -6561,7 +6561,7 @@ function renderPiatti(){
       +'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;">Dose</th>'
       +'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;">Costo</th></tr></thead><tbody>'
       +p.componenti.map(function(c){
-        var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*c.conv*gp(c.magIdx):costoSemi(c.semiIdx)*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1)));
+        var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*c.conv*gp(resolveMagIdx(c)):costoSemi(resolveSemiIdx(c))*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1)));
         return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+c.nome+'</td>'
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;"><span class="comp-tipo '+(c.tipo==='mp'?'mp':'sl')+'">'+(c.tipo==='mp'?'MP':'Semil.')+'</span></td>'
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
