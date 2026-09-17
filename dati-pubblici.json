@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "15/9/2026",
+  "exportDate": "17/9/2026",
   "menuData": [
     {
       "nome": "Canederli ai Funghi e burro fuso",
@@ -114,10 +114,13 @@
         "Glutine",
         "Uova",
         "Latte e lattosio",
-        "Anidride solforosa e solfiti",
-        "Soia"
+        "Anidride solforosa e solfiti"
       ],
-      "tracce": []
+      "tracce": [
+        "Soia",
+        "Frutta a guscio",
+        "Sesamo"
+      ]
     },
     {
       "nome": "Mille Foglie al piatto",
@@ -208,14 +211,15 @@
       "prezzoVendita": 5.9,
       "tipoBeverage": false,
       "allergeni": [
-        "Uova",
-        "Latte e lattosio",
-        "Frutta a guscio",
         "Glutine",
-        "Soia"
+        "Uova",
+        "Soia",
+        "Latte e lattosio",
+        "Sedano"
       ],
       "tracce": [
         "Arachidi",
+        "Frutta a guscio",
         "Senape",
         "Sesamo",
         "Lupini"
@@ -254,6 +258,21 @@
       "tipoBeverage": false,
       "allergeni": [
         "Uova"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Vino  Rosso della Casa  1 Litro",
+      "descrizione": "Corvina Veronese igt Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "prezzoVendita": 12.5,
+      "tipoBeverage": true,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
       ],
       "tracce": []
     },
@@ -301,14 +320,14 @@
       "tracce": []
     },
     {
-      "nome": "Vino  Rosso della Casa  1 Litro",
-      "descrizione": "Corvina Veronese igt Cantine di Verona",
+      "nome": "Vino Rosso della Casa  1/4 Litro",
+      "descrizione": "Corvina IGT Cantine di Verona",
       "tags": [
         "Del territorio"
       ],
       "pochePorzioni": false,
       "categoria": "Vini",
-      "prezzoVendita": 12.5,
+      "prezzoVendita": 4,
       "tipoBeverage": true,
       "allergeni": [
         "Anidride solforosa e solfiti"
@@ -324,21 +343,6 @@
       "pochePorzioni": false,
       "categoria": "Vini",
       "prezzoVendita": 7.5,
-      "tipoBeverage": true,
-      "allergeni": [
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Vino Rosso della Casa  1/4 Litro",
-      "descrizione": "Corvina IGT Cantine di Verona",
-      "tags": [
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Vini",
-      "prezzoVendita": 4,
       "tipoBeverage": true,
       "allergeni": [
         "Anidride solforosa e solfiti"
@@ -1900,6 +1904,45 @@
       ]
     },
     {
+      "codice": "MP-148",
+      "nome": "Orzo perlato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia",
+        "Senape",
+        "Lupini"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 319,
+        "grassi": 2.2,
+        "grassiSaturi": 0.22,
+        "carboidrati": 59.85,
+        "zuccheri": 0.8,
+        "fibre": 9.2,
+        "proteine": 15.4,
+        "sale": 0.007
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.27,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-054",
       "nome": "Pane a cubetti Bianco",
       "categoria": "Generale",
@@ -3385,6 +3428,41 @@
       ]
     },
     {
+      "codice": "MP-149",
+      "nome": "Grappa Mugo",
+      "categoria": "Spirits e liquori",
+      "um": "lt",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 31,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-069",
       "nome": "Aglio",
       "categoria": "Verdura",
@@ -3875,6 +3953,58 @@
         }
       ],
       "dataCreazione": "6/9/2026"
+    },
+    {
+      "codice": "SL-029",
+      "nome": "Brodo Vegetale",
+      "categoria": "Fondi e brodi",
+      "resaQta": 2.2,
+      "resaUm": "lt",
+      "tempo": "60",
+      "procedimento": "'1. Mondare e tagliare grossolanamente cipolla, carota e sedano.\n'2. Mettere le verdure in una pentola capiente con l\\'acqua fredda e la foglia di alloro e un gambo di prezzemolo e mezzo pomodoro.\n'3. Portare a bollore, abbassare la fiamma e sobbollire per 60 minuti schiumando di tanto in tanto.\n      '4. Aggiustare di sale a fine cottura.\n      '5. Filtrare con colino a maglie fitte.\n      '6. Raffreddare rapidamente e conservare in frigo o porzionare e congelare.",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 4,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 87,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 86,
+          "codiceMp": "MP-066",
+          "nome": "Carote",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 90,
+          "codiceMp": "MP-068",
+          "nome": "Sedano",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 3,
+          "unit": "lt",
+          "conv": 1
+        }
+      ],
+      "dataCreazione": "16/9/2026"
     },
     {
       "codice": "SL-004",
@@ -5431,6 +5561,40 @@
       "dataCreazione": "12/9/2026"
     },
     {
+      "codice": "SL-030",
+      "nome": "Sciroppo zucchero 36 °Bè",
+      "categoria": "Pasta e impasti",
+      "resaQta": 1900,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Portare ad ebollizione, raffreddare e conservare in frigo",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 67,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 900,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "17/9/2026"
+    },
+    {
       "codice": "SL-7569",
       "nome": "Scorza Limone Grattugiata",
       "categoria": "Altro",
@@ -5459,11 +5623,11 @@
       "codice": "SL-029",
       "nome": "Semifreddo all'Amaretto",
       "categoria": "Dolci e creme",
-      "resaQta": 4.5,
-      "resaUm": "kg",
+      "resaQta": 4500,
+      "resaUm": "g",
       "tempo": "30",
       "procedimento": "Frullare gli amaretti e tenerli da parte.\nFrullare i tuorli, l'Amaretto e scaldare a 20°C, raffreddare ed aggiungere il mascarpone e mescolare bene con la frusta.\nAmalgamare alla meringa, aggiungere gli amaretti sbriciolati ed in fine aggiungere la panna montata poco alla volta incorporandola molto lentamente.\nRaffreddare a -18°C . \nCirca 150 gr per porzione dessert",
-      "coefficiente": 2,
+      "coefficiente": 4,
       "shelfLifeFrigo": 3,
       "shelfLifeSottovuoto": 7,
       "shelfLifeCongelato": 90,
@@ -5524,6 +5688,76 @@
         }
       ],
       "dataCreazione": "13/9/2026"
+    },
+    {
+      "codice": "SL-031",
+      "nome": "Semifreddo alla grappa di Pino Mugo",
+      "categoria": "Dolci e creme",
+      "resaQta": 4280,
+      "resaUm": "g",
+      "tempo": "20",
+      "procedimento": "-Frullare i tuorli, la grappa e lo sciroppo, scaldare a circa 20°C, \n-Raffreddare ed aggiungere il mascarpone, mescolare bene con la frusta\n-Incorporare piano nella meringa\n- Montare la panna ed aggiungere piano al resto degli ingredienti\n-Abbattere in negativo , porzione di circa 150 gr a persona",
+      "coefficiente": 4,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 60,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 375,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 85,
+          "codiceMp": "MP-149",
+          "nome": "Grappa Mugo",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 26,
+          "codiceSl": "SL-030",
+          "nome": "Sciroppo zucchero 36 °Bè",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 74,
+          "codiceMp": "MP-108",
+          "nome": "Mascarpone",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 16,
+          "codiceSl": "SL-028",
+          "nome": "Meringa all'italiana",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 76,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 2000,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "17/9/2026"
     },
     {
       "codice": "SL-022",
@@ -5602,7 +5836,8 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "29/8/2026"
+      "dataCreazione": "29/8/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-001",
@@ -5663,7 +5898,8 @@
           "codiceMp": "MP-077"
         }
       ],
-      "dataCreazione": "21/6/2026"
+      "dataCreazione": "21/6/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-003",
@@ -5703,7 +5939,8 @@
           "codiceSl": "SL-006"
         }
       ],
-      "dataCreazione": "7/7/2026"
+      "dataCreazione": "7/7/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-004",
@@ -5752,7 +5989,8 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "7/7/2026"
+      "dataCreazione": "7/7/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-011",
@@ -5859,7 +6097,8 @@
           "codiceMp": "MP-094"
         }
       ],
-      "dataCreazione": "26/6/2026"
+      "dataCreazione": "26/6/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-013",
@@ -5898,7 +6137,8 @@
           "codiceSl": "SL-7565"
         }
       ],
-      "dataCreazione": "10/9/2026"
+      "dataCreazione": "10/9/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-009",
@@ -5958,7 +6198,112 @@
           "codiceMp": "MP-119"
         }
       ],
-      "dataCreazione": "30/8/2026"
+      "dataCreazione": "30/8/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-024",
+      "nome": "Minestra di orzo",
+      "descrizione": "Per scelta non mettiamo carne",
+      "tags": [
+        "Vegetariano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 7.9,
+      "coefficiente": 3,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "-Rosolare il soffritto con il burro per 5 minuti\n-Lavare l'orzo in acqua fredda e versarlo nella pentola con le verdure \n-Aggiungere il brodo, la foglia di alloro e cuocere 90 minuti\n-Aggiungere le patate precedentemente tagliate a dadini\n-Condire con erba cipollina   e aggiustare di sale e pepe"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Soffritto Misto Gelo",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 91,
+          "codiceMp": "MP-088"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Patate per Gnocchi",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 88,
+          "codiceMp": "MP-097"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 14,
+          "codiceMp": "MP-128"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Burro da Kg",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 68,
+          "codiceMp": "MP-095"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Orzo perlato",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 43,
+          "codiceMp": "MP-148"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Brodo Vegetale",
+          "qtaBase": 1.5,
+          "unit": "lt",
+          "conv": 1,
+          "semiIdx": 2,
+          "codiceSl": "SL-029"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Erba cipollina liofilizzata Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 26,
+          "codiceMp": "MP-077"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 55,
+          "codiceMp": "MP-057"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 50,
+          "codiceMp": "MP-058"
+        }
+      ],
+      "dataCreazione": "16/9/2026"
     },
     {
       "codice": "PF-014",
@@ -6000,7 +6345,8 @@
           "codiceSl": "SL-7566"
         }
       ],
-      "dataCreazione": "10/9/2026"
+      "dataCreazione": "10/9/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-010",
@@ -6095,7 +6441,8 @@
           "codiceMp": "MP-126"
         }
       ],
-      "dataCreazione": "5/9/2026"
+      "dataCreazione": "5/9/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-016",
@@ -6126,7 +6473,8 @@
           "codiceSl": "SL-027"
         }
       ],
-      "dataCreazione": "12/9/2026"
+      "dataCreazione": "12/9/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-017",
@@ -6143,7 +6491,7 @@
       "sottocategoria": "",
       "pax": 1,
       "prezzoVendita": 5.9,
-      "coefficiente": 2,
+      "coefficiente": 1,
       "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
@@ -6152,15 +6500,6 @@
       ],
       "componenti": [
         {
-          "tipo": "sl",
-          "nome": "Semifreddo all'Amaretto",
-          "qtaBase": 150,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 26,
-          "codiceSl": "SL-029"
-        },
-        {
           "tipo": "mp",
           "nome": "Cialda per Gelato",
           "qtaBase": 6,
@@ -6168,6 +6507,15 @@
           "conv": 0.001,
           "magIdx": 22,
           "codiceMp": "MP-145"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Semifreddo all'Amaretto",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 28,
+          "codiceSl": "SL-029"
         }
       ],
       "dataCreazione": "13/9/2026"
@@ -6229,7 +6577,8 @@
           "codiceMp": "MP-138"
         }
       ],
-      "dataCreazione": "12/9/2026"
+      "dataCreazione": "12/9/2026",
+      "porzioniVendute": 0
     },
     {
       "codice": "PF-012",
@@ -6316,7 +6665,38 @@
           "codiceMp": "MP-077"
         }
       ],
-      "dataCreazione": "8/9/2026"
+      "dataCreazione": "8/9/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-018",
+      "nome": "Vino  Rosso della Casa  1 Litro",
+      "descrizione": "Corvina Veronese igt Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "Della casa",
+      "pax": 1,
+      "prezzoVendita": 12.5,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Corvina igt bag in box 10L",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
+          "magIdx": 91,
+          "codiceMp": "MP-146"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
     },
     {
       "codice": "PF-021",
@@ -6407,9 +6787,9 @@
       "dataCreazione": "15/9/2026"
     },
     {
-      "codice": "PF-018",
-      "nome": "Vino  Rosso della Casa  1 Litro",
-      "descrizione": "Corvina Veronese igt Cantine di Verona",
+      "codice": "PF-020",
+      "nome": "Vino Rosso della Casa  1/4 Litro",
+      "descrizione": "Corvina IGT Cantine di Verona",
       "tags": [
         "Del territorio"
       ],
@@ -6417,7 +6797,7 @@
       "categoria": "Vini",
       "sottocategoria": "Della casa",
       "pax": 1,
-      "prezzoVendita": 12.5,
+      "prezzoVendita": 4,
       "coefficiente": 1,
       "nelMenu": true,
       "tipoBeverage": true,
@@ -6427,9 +6807,9 @@
         {
           "tipo": "mp",
           "nome": "Corvina igt bag in box 10L",
-          "qtaBase": 1,
-          "unit": "lt",
-          "conv": 1,
+          "qtaBase": 250,
+          "unit": "ml",
+          "conv": 0.001,
           "magIdx": 91,
           "codiceMp": "MP-146"
         }
@@ -6458,36 +6838,6 @@
           "tipo": "mp",
           "nome": "Corvina igt bag in box 10L",
           "qtaBase": 500,
-          "unit": "ml",
-          "conv": 0.001,
-          "magIdx": 91,
-          "codiceMp": "MP-146"
-        }
-      ],
-      "dataCreazione": "15/9/2026"
-    },
-    {
-      "codice": "PF-020",
-      "nome": "Vino Rosso della Casa  1/4 Litro",
-      "descrizione": "Corvina IGT Cantine di Verona",
-      "tags": [
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Vini",
-      "sottocategoria": "Della casa",
-      "pax": 1,
-      "prezzoVendita": 4,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Corvina igt bag in box 10L",
-          "qtaBase": 250,
           "unit": "ml",
           "conv": 0.001,
           "magIdx": 91,
