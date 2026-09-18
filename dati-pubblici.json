@@ -120,6 +120,46 @@
       "tracce": []
     },
     {
+      "nome": "Torta di Mele",
+      "descrizione": "Un Classico",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 4,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Latte e lattosio",
+        "Arachidi"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
+      "nome": "Mille Foglie al piatto",
+      "descrizione": "Ottima in ogni stagione",
+      "tags": [
+        "Consigliato",
+        "Novità",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Dolci",
+      "prezzoVendita": 6,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Latte e lattosio",
+        "Uova",
+        "Frutta a guscio"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
       "nome": "Panna Cotta Vegana",
       "descrizione": "Con caramello salato",
       "tags": [
@@ -6503,14 +6543,45 @@
       "porzioniVendute": 0
     },
     {
+      "codice": "PF-026",
+      "nome": "Torta di Mele",
+      "descrizione": "Un Classico",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 4,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Servire 150 gr a persona, se aggiungiamo qualcosaltro rivedere il prezzo di vendita"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Torta di mele (base)",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 33,
+          "codiceSl": "SL-034"
+        }
+      ],
+      "dataCreazione": "18/9/2026"
+    },
+    {
       "codice": "PF-009",
       "nome": "Mille Foglie al piatto",
       "descrizione": "Ottima in ogni stagione",
       "tags": [
         "Consigliato",
-        "Novità"
+        "Novità",
+        "Fuori menù"
       ],
-      "pochePorzioni": false,
+      "pochePorzioni": true,
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 1,
@@ -6560,8 +6631,7 @@
           "codiceMp": "MP-119"
         }
       ],
-      "dataCreazione": "30/8/2026",
-      "porzioniVendute": 0
+      "dataCreazione": "30/8/2026"
     },
     {
       "codice": "PF-024",
@@ -6992,36 +7062,6 @@
       ],
       "dataCreazione": "12/9/2026",
       "porzioniVendute": 0
-    },
-    {
-      "codice": "PF-026",
-      "nome": "Torta di Mele",
-      "descrizione": "Un Classico",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 4,
-      "coefficiente": 3,
-      "nelMenu": false,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [
-        "Servire 150 gr a persona, se aggiungiamo qualcosaltro rivedere il prezzo di vendita"
-      ],
-      "componenti": [
-        {
-          "tipo": "sl",
-          "nome": "Torta di mele (base)",
-          "qtaBase": 150,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 33,
-          "codiceSl": "SL-034"
-        }
-      ],
-      "dataCreazione": "18/9/2026"
     },
     {
       "codice": "PF-012",
