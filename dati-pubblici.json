@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "17/9/2026",
+  "exportDate": "18/9/2026",
   "menuData": [
     {
       "nome": "Canederli ai Funghi e burro fuso",
@@ -114,12 +114,13 @@
         "Glutine",
         "Uova",
         "Latte e lattosio",
-        "Anidride solforosa e solfiti"
+        "Anidride solforosa e solfiti",
+        "Frutta a guscio"
       ],
       "tracce": [
         "Soia",
-        "Frutta a guscio",
-        "Sesamo"
+        "Senape",
+        "Lupini"
       ]
     },
     {
@@ -1182,6 +1183,46 @@
       ]
     },
     {
+      "codice": "MP-150",
+      "nome": "Cioccolato fondente extra",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Soia"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Latte e lattosio",
+        "Frutta a guscio"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 527,
+        "grassi": 31.6,
+        "grassiSaturi": 19.8,
+        "carboidrati": 51.4,
+        "zuccheri": 48.9,
+        "fibre": 0,
+        "proteine": 4.9,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 12,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-092",
       "nome": "Concentrato pomodoro Mutti da 440 gr",
       "categoria": "Generale",
@@ -1794,6 +1835,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 5.7377,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-151",
+      "nome": "Miele Millefiori",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 322,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 80,
+        "zuccheri": 80,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
           "storico": []
         }
       ]
@@ -5783,6 +5859,49 @@
         }
       ],
       "dataCreazione": "8/9/2026"
+    },
+    {
+      "codice": "SL-032",
+      "nome": "Terra al cioccolato",
+      "categoria": "Dolci e creme",
+      "resaQta": 430,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Versa l'acqua e lo zucchero in un pentolino capiente e porta a ebollizione per creare uno sciroppo.Togli dal fuoco o unisci il cioccolato fondente tritato.Mescola finché il composto non cristallizza e assume una consistenza granulosa e scura simile alla terra. Conserva in un vasetto",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 90,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 68,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 23,
+          "codiceMp": "MP-150",
+          "nome": "Cioccolato fondente extra",
+          "qtaBase": 140,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "18/9/2026"
     }
   ],
   "piatti": [
@@ -6475,6 +6594,57 @@
       ],
       "dataCreazione": "12/9/2026",
       "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-025",
+      "nome": "Semifreddo al Pino Mugo",
+      "descrizione": "Con la nostra grappa",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 5.9,
+      "coefficiente": 3,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Mettere come base la terra di cioccolato, adagiare sopra il semifreddo (150 gr pax) e a chiudete il miele"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Semifreddo alla grappa di Pino Mugo",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 29,
+          "codiceSl": "SL-031"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Terra al cioccolato",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 31,
+          "codiceSl": "SL-032"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Miele Millefiori",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 41,
+          "codiceMp": "MP-151"
+        }
+      ],
+      "dataCreazione": "18/9/2026"
     },
     {
       "codice": "PF-017",
