@@ -8096,26 +8096,36 @@ function slByCodice(codice){
 }
 /* risolve l'indice attuale di una materia prima da un componente, usando il codice se presente */
 function resolveMagIdx(c){
-  if(c.codiceMp){var idx=mpByCodice(c.codiceMp);if(idx>=0)return idx;}
+  if(c.codiceMp){
+    var idx=mpByCodice(c.codiceMp);
+    if(idx>=0&&magazzino[idx].nome===c.nome)return idx;
+  }
+  if(c.nome){var byName=magazzino.findIndex(function(x){return x.nome===c.nome;});if(byName>=0)return byName;}
   return c.magIdx;
 }
 /* risolve l'indice attuale di un semilavorato da un componente, usando il codice se presente */
 function resolveSemiIdx(c){
-  if(c.codiceSl){var idx=slByCodice(c.codiceSl);if(idx>=0)return idx;}
+  if(c.codiceSl){
+    var idx=slByCodice(c.codiceSl);
+    /* verifica che il codice risolva allo stesso nome — protezione da codici duplicati */
+    if(idx>=0&&semilavorati[idx].nome===c.nome)return idx;
+  }
+  /* fallback: cerca per nome */
+  if(c.nome){var byName=semilavorati.findIndex(function(x){return x.nome===c.nome;});if(byName>=0)return byName;}
   return c.semiIdx;
 }
 
 /* ripara silenziosamente i codici mancanti (no alert, salva solo se ci sono fix) */
 function riparaComponentiSilenzioso(){
   var fix=0;
-  function slCodiceValido(cod){return !!cod&&semilavorati.some(function(x){return x.codice===cod;});}
-  function mpCodiceValido(cod){return !!cod&&magazzino.some(function(x){return x.codice===cod;});}
+  function slRef(cod,nome){var i=semilavorati.findIndex(function(x){return x.codice===cod;});return i>=0&&semilavorati[i].nome===nome;}
+  function mpRef(cod,nome){var i=magazzino.findIndex(function(x){return x.codice===cod;});return i>=0&&magazzino[i].nome===nome;}
   semilavorati.forEach(function(s){
     (s.componenti||[]).forEach(function(c){
-      if(c.tipo==='sl'&&!slCodiceValido(c.codiceSl)){
+      if(c.tipo==='sl'&&!slRef(c.codiceSl,c.nome)){
         var sRif=semilavorati.find(function(x){return x.nome===c.nome;});
         if(sRif){c.codiceSl=sRif.codice||null;c.semiIdx=semilavorati.indexOf(sRif);fix++;}
-      } else if(c.tipo==='mp'&&!mpCodiceValido(c.codiceMp)){
+      } else if(c.tipo==='mp'&&!mpRef(c.codiceMp,c.nome)){
         var m=magazzino.find(function(x){return x.nome===c.nome;});
         if(m){c.codiceMp=m.codice||null;c.magIdx=magazzino.indexOf(m);fix++;}
       }
@@ -8123,10 +8133,10 @@ function riparaComponentiSilenzioso(){
   });
   piatti.forEach(function(p){
     (p.componenti||[]).forEach(function(c){
-      if(c.tipo==='mp'&&!mpCodiceValido(c.codiceMp)){
+      if(c.tipo==='mp'&&!mpRef(c.codiceMp,c.nome)){
         var m=magazzino.find(function(x){return x.nome===c.nome;});
         if(m){c.codiceMp=m.codice||null;c.magIdx=magazzino.indexOf(m);fix++;}
-      } else if(c.tipo==='sl'&&!slCodiceValido(c.codiceSl)){
+      } else if(c.tipo==='sl'&&!slRef(c.codiceSl,c.nome)){
         var s=semilavorati.find(function(x){return x.nome===c.nome;});
         if(s){c.codiceSl=s.codice||null;c.semiIdx=semilavorati.indexOf(s);fix++;}
       }
