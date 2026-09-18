@@ -115,34 +115,9 @@
         "Uova",
         "Latte e lattosio",
         "Anidride solforosa e solfiti",
-        "Frutta a guscio"
+        "Arachidi"
       ],
-      "tracce": [
-        "Soia",
-        "Senape",
-        "Lupini"
-      ]
-    },
-    {
-      "nome": "Mille Foglie al piatto",
-      "descrizione": "Ottima in ogni stagione",
-      "tags": [
-        "Consigliato",
-        "Novità"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 6,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Glutine",
-        "Latte e lattosio",
-        "Uova",
-        "Frutta a guscio"
-      ],
-      "tracce": [
-        "Soia"
-      ]
+      "tracce": []
     },
     {
       "nome": "Panna Cotta Vegana",
@@ -199,6 +174,26 @@
       ]
     },
     {
+      "nome": "Semifreddo al Pino Mugo",
+      "descrizione": "Con la nostra grappa",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 5.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Uova",
+        "Latte e lattosio",
+        "Soia"
+      ],
+      "tracce": [
+        "Frutta a guscio"
+      ]
+    },
+    {
       "nome": "Semifreddo all'Amaretto",
       "descrizione": "Con Prodotti locali",
       "tags": [
@@ -216,11 +211,10 @@
         "Uova",
         "Soia",
         "Latte e lattosio",
-        "Sedano"
+        "Frutta a guscio"
       ],
       "tracce": [
         "Arachidi",
-        "Frutta a guscio",
         "Senape",
         "Sesamo",
         "Lupini"
@@ -698,6 +692,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 1.8182,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-154",
+      "nome": "Mele Renetta",
+      "categoria": "Frutta",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 52,
+        "grassi": 0.2,
+        "grassiSaturi": 0,
+        "carboidrati": 14,
+        "zuccheri": 10,
+        "fibre": 2,
+        "proteine": 0.3,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.4,
           "storico": []
         }
       ]
@@ -1660,6 +1689,43 @@
       ]
     },
     {
+      "codice": "MP-153",
+      "nome": "Lievito Vanigliato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 346,
+        "grassi": 32,
+        "grassiSaturi": 19,
+        "carboidrati": 12,
+        "zuccheri": 9.3,
+        "fibre": 0,
+        "proteine": 2,
+        "sale": 0.09
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 16.5,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-134",
       "nome": "Maccheroncini di pasta fresca",
       "categoria": "Generale",
@@ -1905,6 +1971,43 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 90.9091,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-152",
+      "nome": "Olio di semi vari",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Arachidi"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 828,
+        "grassi": 92,
+        "grassiSaturi": 14,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.59,
           "storico": []
         }
       ]
@@ -4985,6 +5088,31 @@
       "dataCreazione": "6/9/2026"
     },
     {
+      "codice": "SL-033",
+      "nome": "Mele Pulite",
+      "categoria": "Altro",
+      "resaQta": 160,
+      "resaUm": "g",
+      "tempo": "5",
+      "procedimento": "Sbucciare e detorsolare le mele",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-154",
+          "nome": "Mele Renetta",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "18/9/2026"
+    },
+    {
       "codice": "SL-028",
       "nome": "Meringa all'italiana",
       "categoria": "Dolci e creme",
@@ -5696,7 +5824,7 @@
       "dataCreazione": "12/9/2026"
     },
     {
-      "codice": "SL-029",
+      "codice": "SL-928",
       "nome": "Semifreddo all'Amaretto",
       "categoria": "Dolci e creme",
       "resaQta": 4500,
@@ -5736,15 +5864,6 @@
           "conv": 0.001
         },
         {
-          "tipo": "sl",
-          "semiIdx": 15,
-          "codiceSl": "SL-028",
-          "nome": "Meringa all'italiana",
-          "qtaBase": 1000,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
           "tipo": "mp",
           "magIdx": 74,
           "codiceMp": "MP-101",
@@ -5759,6 +5878,15 @@
           "codiceMp": "MP-143",
           "nome": "Amaretti Bonomi",
           "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 16,
+          "codiceSl": "SL-028",
+          "nome": "Meringa all'italiana",
+          "qtaBase": 1000,
           "unit": "g",
           "conv": 0.001
         }
@@ -5897,6 +6025,121 @@
           "codiceMp": "MP-150",
           "nome": "Cioccolato fondente extra",
           "qtaBase": 140,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "18/9/2026"
+    },
+    {
+      "codice": "SL-034",
+      "nome": "Torta di mele (base)",
+      "categoria": "Dolci e creme",
+      "resaQta": 1200,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Tagliare 3 mele a cubetti e una a fettine di 3 mm.\nMischiare con la frusta il burro morbido, l'olio, il latte, il sale, la vaniglia e la scorza di limone.\nMontare le uova con lo zucchero e il miele, oi incorporare il composto preparato in precedenza con la marisa.\nAggiungere quindi la farina ed il lievito setacciati, mescolando delicatamente, ed in fine le mele a cubetti.\nVersare in una tortiera  precedentemente imburrata, coprite con le mele a fettine , cospargete con un po' di zucchero semolato e infornare a 170°C per 40/45 minuti.",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 29,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 67,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 180,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 72,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 73,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 70,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-151",
+          "nome": "Miele Millefiori",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 45,
+          "codiceMp": "MP-152",
+          "nome": "Olio di semi vari",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 37,
+          "codiceMp": "MP-153",
+          "nome": "Lievito Vanigliato",
+          "qtaBase": 16,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 28,
+          "codiceSl": "SL-7569",
+          "nome": "Scorza Limone Grattugiata",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 60,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 16,
+          "codiceSl": "SL-033",
+          "nome": "Mele Pulite",
+          "qtaBase": 640,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 68,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
         }
@@ -6273,7 +6516,7 @@
       "pax": 1,
       "prezzoVendita": 6,
       "coefficiente": 3,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -6609,7 +6852,7 @@
       "pax": 1,
       "prezzoVendita": 5.9,
       "coefficiente": 3,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -6661,7 +6904,7 @@
       "sottocategoria": "",
       "pax": 1,
       "prezzoVendita": 5.9,
-      "coefficiente": 1,
+      "coefficiente": 3,
       "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
@@ -6685,7 +6928,7 @@
           "unit": "g",
           "conv": 0.001,
           "semiIdx": 28,
-          "codiceSl": "SL-029"
+          "codiceSl": "SL-928"
         }
       ],
       "dataCreazione": "13/9/2026"
@@ -6749,6 +6992,36 @@
       ],
       "dataCreazione": "12/9/2026",
       "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-026",
+      "nome": "Torta di Mele",
+      "descrizione": "Un Classico",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 4,
+      "coefficiente": 3,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Servire 150 gr a persona, se aggiungiamo qualcosaltro rivedere il prezzo di vendita"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Torta di mele (base)",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 33,
+          "codiceSl": "SL-034"
+        }
+      ],
+      "dataCreazione": "18/9/2026"
     },
     {
       "codice": "PF-012",
