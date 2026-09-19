@@ -8122,10 +8122,12 @@ function riparaComponentiSilenzioso(){
   function mpRef(cod,nome){var i=magazzino.findIndex(function(x){return x.codice===cod;});return i>=0&&magazzino[i].nome===nome;}
   semilavorati.forEach(function(s){
     (s.componenti||[]).forEach(function(c){
+      if(!c.nome)return;
       if(c.tipo==='sl'&&!slRef(c.codiceSl,c.nome)){
         var sRif=semilavorati.find(function(x){return x.nome===c.nome;});
         if(sRif){c.codiceSl=sRif.codice||null;c.semiIdx=semilavorati.indexOf(sRif);fix++;}
-      } else if(c.tipo==='mp'&&!mpRef(c.codiceMp,c.nome)){
+      } else if(c.tipo!=='sl'&&c.nome&&(!c.codiceSl)&&!mpRef(c.codiceMp,c.nome)){
+        /* gestisce anche componenti vecchi senza campo tipo impostato */
         var m=magazzino.find(function(x){return x.nome===c.nome;});
         if(m){c.codiceMp=m.codice||null;c.magIdx=magazzino.indexOf(m);fix++;}
       }
@@ -8133,12 +8135,13 @@ function riparaComponentiSilenzioso(){
   });
   piatti.forEach(function(p){
     (p.componenti||[]).forEach(function(c){
-      if(c.tipo==='mp'&&!mpRef(c.codiceMp,c.nome)){
-        var m=magazzino.find(function(x){return x.nome===c.nome;});
-        if(m){c.codiceMp=m.codice||null;c.magIdx=magazzino.indexOf(m);fix++;}
-      } else if(c.tipo==='sl'&&!slRef(c.codiceSl,c.nome)){
+      if(!c.nome)return;
+      if(c.tipo==='sl'&&!slRef(c.codiceSl,c.nome)){
         var s=semilavorati.find(function(x){return x.nome===c.nome;});
         if(s){c.codiceSl=s.codice||null;c.semiIdx=semilavorati.indexOf(s);fix++;}
+      } else if(c.tipo!=='sl'&&!mpRef(c.codiceMp,c.nome)){
+        var m=magazzino.find(function(x){return x.nome===c.nome;});
+        if(m){c.codiceMp=m.codice||null;c.magIdx=magazzino.indexOf(m);fix++;}
       }
     });
   });
