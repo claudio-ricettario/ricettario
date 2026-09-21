@@ -7684,17 +7684,30 @@ function printPiatto(idx){
           righe+='<tr><td style="padding:4px 10px 4px 26px;border-bottom:1px solid #f5f3ef;color:#666;font-size:13px;">&#8627; '+codMpSc+nomeMp+'</td>'
             +'<td style="padding:4px 10px;border-bottom:1px solid #f5f3ef;text-align:right;color:#666;font-size:13px;">'+fmtQ(qSc,sc.unit)+'</td></tr>';
           if(sc.tipo==='sl'){
-            var scRifProc=semilavorati[sc.semiIdx];
+            var scRifProc=semilavorati[resolveSemiIdx(sc)];
             if(scRifProc&&scRifProc.procedimento){
+              var scResaLabel=scRifProc.resaQta+' '+(scRifProc.resaUm||'g');
+              var scQNec=fmtQ(sc.qtaBase*fatt,sc.unit);
+              var scPct=scRifProc.resaQta>0?Math.round((sc.qtaBase*fatt)/(scRifProc.resaUm==='kg'||scRifProc.resaUm==='lt'?scRifProc.resaQta*1000:scRifProc.resaQta)*100):100;
               righe+='<tr><td colspan="2" style="padding:6px 10px 10px 40px;border-bottom:1px solid #f5f3ef;color:#777;font-size:11px;line-height:1.6;white-space:pre-wrap;background:#fbfafa;">'
-                +'<strong style="display:block;margin-bottom:3px;color:#999;font-size:10px;text-transform:uppercase;letter-spacing:.04em;">Procedimento '+scRifProc.nome+'</strong>'
+                +'<strong style="display:block;margin-bottom:6px;color:#999;font-size:10px;text-transform:uppercase;letter-spacing:.04em;">Procedimento '+scRifProc.nome+'</strong>'
+                +'<span style="display:block;background:#fff8e1;border-left:3px solid #f59e0b;padding:4px 8px;border-radius:0 4px 4px 0;font-size:10px;color:#92400e;margin-bottom:6px;white-space:normal;">'
+                +'&#9888; Ricetta base: '+scResaLabel+'. Servono '+scQNec+' &rarr; usa il <strong>'+scPct+'%</strong> delle quantità.'
+                +'</span>'
                 +scRifProc.procedimento+'</td></tr>';
             }
           }
         });
         if(s.procedimento){
+          var pctLabel=Math.round(fatt*100);
+          var resaLabel=s.resaQta+' '+(s.resaUm||'g');
+          var qNecLabel=fmtQ(qtaScalata,c.unit);
           righe+='<tr><td colspan="2" style="padding:8px 10px 14px 26px;border-bottom:1px solid #f0ede6;color:#555;font-size:12px;line-height:1.6;white-space:pre-wrap;background:#fafaf8;">'
-            +'<strong style="display:block;margin-bottom:3px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.04em;">Procedimento '+s.nome+'</strong>'
+            +'<strong style="display:block;margin-bottom:6px;color:#888;font-size:11px;text-transform:uppercase;letter-spacing:.04em;">Procedimento '+s.nome+'</strong>'
+            +'<span style="display:block;background:#fff8e1;border-left:3px solid #f59e0b;padding:5px 10px;border-radius:0 4px 4px 0;font-size:11px;color:#92400e;margin-bottom:8px;white-space:normal;">'
+            +'&#9888; Procedimento scritto per la ricetta base (resa: '+resaLabel+'). '
+            +'Per questa stampa servono '+qNecLabel+' &rarr; usa il <strong>'+pctLabel+'%</strong> delle quantità indicate nel testo.'
+            +'</span>'
             +s.procedimento+'</td></tr>';
         }
       } else {
