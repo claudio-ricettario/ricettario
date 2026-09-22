@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "18/9/2026",
+  "exportDate": "22/9/2026",
   "menuData": [
     {
       "nome": "Canederli ai Funghi e burro fuso",
@@ -76,7 +76,7 @@
       "prezzoVendita": 14,
       "tipoBeverage": false,
       "allergeni": [
-        "Anidride solforosa e solfiti",
+        "Glutine",
         "Sedano"
       ],
       "tracce": []
@@ -96,10 +96,11 @@
         "Anidride solforosa e solfiti",
         "Latte e lattosio",
         "Glutine",
+        "Soia",
         "Uova"
       ],
       "tracce": [
-        "Soia"
+        "Frutta a guscio"
       ]
     },
     {
@@ -113,9 +114,9 @@
       "allergeni": [
         "Glutine",
         "Uova",
-        "Latte e lattosio",
+        "Sedano",
         "Anidride solforosa e solfiti",
-        "Arachidi"
+        "Soia"
       ],
       "tracce": []
     },
@@ -138,7 +139,7 @@
       ]
     },
     {
-      "nome": "Mille Foglie al piatto",
+      "nome": "MilleFoglie al piatto",
       "descrizione": "Ottima in ogni stagione",
       "tags": [
         "Consigliato",
@@ -222,7 +223,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Dolci",
-      "prezzoVendita": 5.9,
+      "prezzoVendita": 6.4,
       "tipoBeverage": false,
       "allergeni": [
         "Uova",
@@ -388,7 +389,7 @@
   "magazzino": [
     {
       "codice": "MP-070",
-      "nome": "Macinato Anatra",
+      "nome": "Macinato di Anatra",
       "categoria": "Carne e pollame",
       "um": "kg",
       "iva": 10,
@@ -697,6 +698,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 1.3636,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-155",
+      "nome": "Pancia di Maiale",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 518,
+        "grassi": 53,
+        "grassiSaturi": 19,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 9.34,
+        "sale": 0.032
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 4.5,
           "storico": []
         }
       ]
@@ -1131,6 +1167,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 268.1818,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-156",
+      "nome": "Buste cottura sottovuoto 30x20",
+      "categoria": "Generale",
+      "um": "pz",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 0.04,
           "storico": []
         }
       ]
@@ -2564,6 +2635,41 @@
       ]
     },
     {
+      "codice": "MP-157",
+      "nome": "Sacchetti cottura sottovuoto 30x20",
+      "categoria": "Generale",
+      "um": "pz",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 0.106,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-057",
       "nome": "Sale Fino",
       "categoria": "Generale",
@@ -2704,6 +2810,44 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 23.1818,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-158",
+      "nome": "Senape",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Senape"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 102,
+        "grassi": 4.6,
+        "grassiSaturi": 0.3,
+        "carboidrati": 10.2,
+        "zuccheri": 5.4,
+        "fibre": 0,
+        "proteine": 5.2,
+        "sale": 2.5
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8.2,
           "storico": []
         }
       ]
@@ -3752,6 +3896,41 @@
       ]
     },
     {
+      "codice": "MP-159",
+      "nome": "Champignon Congelati",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 20,
+        "grassi": 0.2,
+        "grassiSaturi": 0,
+        "carboidrati": 0.8,
+        "zuccheri": 0.8,
+        "fibre": 0.1,
+        "proteine": 3.7,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.4,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-067",
       "nome": "Cipolle",
       "categoria": "Verdura",
@@ -4596,7 +4775,7 @@
     },
     {
       "codice": "SL-017",
-      "nome": "Crema per Millefoglie (4pax circa)",
+      "nome": "Crema per Millefoglie",
       "categoria": "Dolci e creme",
       "resaQta": 333,
       "resaUm": "g",
@@ -4822,49 +5001,48 @@
           "nome": "Ossa di manzo",
           "qtaBase": 1500,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-129"
         },
         {
-          "magIdx": 76,
+          "magIdx": 99,
           "nome": "Sedano",
           "qtaBase": 100,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-068"
         },
         {
-          "magIdx": 19,
-          "nome": "Concentrato pomodoro",
-          "qtaBase": 30,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
-          "magIdx": 9,
+          "magIdx": 12,
           "nome": "Acqua",
           "qtaBase": 4,
           "unit": "lt",
-          "conv": 1
+          "conv": 1,
+          "codiceMp": "MP-096"
         },
         {
-          "magIdx": 32,
+          "magIdx": 48,
           "nome": "Olio extra vergine d'oliva",
           "qtaBase": 30,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-064"
         },
         {
-          "magIdx": 13,
+          "magIdx": 16,
           "nome": "Alloro foglie Wiberg",
           "qtaBase": 2,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-128"
         },
         {
-          "magIdx": 39,
+          "magIdx": 57,
           "nome": "Pepe Nero Macinato Wiberg",
           "qtaBase": 2,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-058"
         },
         {
           "tipo": "mp",
@@ -4890,6 +5068,15 @@
           "codiceMp": "MP-071",
           "nome": "Vino Rosso/Bianco Cucina",
           "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 27,
+          "codiceMp": "MP-092",
+          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "qtaBase": 30,
           "unit": "g",
           "conv": 0.001
         }
@@ -5194,6 +5381,164 @@
         }
       ],
       "dataCreazione": "13/9/2026"
+    },
+    {
+      "codice": "SL-036",
+      "nome": "Millefoglie di Patate",
+      "categoria": "Verdure lavorate",
+      "resaQta": 950,
+      "resaUm": "g",
+      "tempo": "120",
+      "procedimento": "Affetta le patate dello spessore di 1 mm, condiscile con abbondante sale  e falle macerare per 10 min, poi lava ed asciuga bene.\nAmalgama tutti gli altri ingredienti fino ad ottenere una crema.\nFodera con pellicola 2 stampi (1 kg patate) da 10x20 , lasciando uno strato abbondante che avanzi dai lati che serva a coprire il tutto, poi spennella l'interno con il condimento.\nCrea la millefoglie nella pirofila con le fette fino ad esaurirle, sovrapponendole in modo uniforme e distribuendo il condimento tra ogni strato.\nChiudere la millefoglie con la pellicola che avanza, forala con l'ago e abbatti in positivo per rassodare.\nEstrai dalla pirofila e metti in un sacchetto per sottovuoto.\nCondiziona sottovuoto e cuoci a 88°C per 2 ore, poi abbatti in positivo fino e non usare prima di 24 ore.\n(150 gr Porzione)",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 98,
+          "codiceMp": "MP-097",
+          "nome": "Patate per Gnocchi",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 77,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 67,
+          "codiceMp": "MP-158",
+          "nome": "Senape",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 14,
+          "codiceMp": "MP-081",
+          "nome": "Aglio Wiberg – in polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 49,
+          "codiceMp": "MP-078",
+          "nome": "Origano tritato essiccato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 63,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 12,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "21/9/2026"
+    },
+    {
+      "codice": "SL-035",
+      "nome": "Pancia di Maiale CBT",
+      "categoria": "Carni lavorate",
+      "resaQta": 700,
+      "resaUm": "g",
+      "tempo": "1440",
+      "procedimento": "Con 1 kg di pancia fresca circa 4 porzioni.\nPulisci la pancia da eventuali tracce di setole e tagliala a strisce di 5/6 cm di larghezza.\nUnisci tutti gli altri ingredienti fino all'aglio e massaggia i pezzi di pancia.\nInserisci nella busta da cottura e condiziona sottovuoto.\nCuoci a 72°C per 24h, poi abbatti in positivo e attendi 24 ore prima di utilizzarla.\nScalda leggermente la pancia a bagnomaria, apri la busta e separala dal fondodi cottura.\nTrasferisci il fondo filtrato con il fondo bruno, fai ridurre alla consistenza desiderata, la pancia si può scaldare nel fondo o in una padella antiaderente se si vuole la crosticina.",
+      "coefficiente": 4,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-155",
+          "nome": "Pancia di Maiale",
+          "qtaBase": 1,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 61,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 56,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 62,
+          "codiceMp": "MP-073",
+          "nome": "Salvia liofilizzata Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 60,
+          "codiceMp": "MP-072",
+          "nome": "Rosmarino liofilizzato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 16,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 14,
+          "codiceMp": "MP-081",
+          "nome": "Aglio Wiberg – in polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 12,
+          "codiceSl": "SL-1936",
+          "nome": "Fondo bruno di manzo",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "19/9/2026"
     },
     {
       "codice": "SL-012",
@@ -5597,42 +5942,48 @@
           "nome": "Macinato di Coniglio",
           "qtaBase": 200,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-110"
         },
         {
           "magIdx": 5,
           "nome": "Macinato di Pollo",
           "qtaBase": 300,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-112"
         },
         {
           "magIdx": 0,
           "nome": "Macinato di Anatra",
           "qtaBase": 300,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-070"
         },
         {
-          "magIdx": 71,
+          "magIdx": 90,
           "nome": "Tastasal",
           "qtaBase": 200,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-133"
         },
         {
-          "magIdx": 78,
+          "magIdx": 100,
           "nome": "Soffritto Misto Gelo",
           "qtaBase": 300,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-088"
         },
         {
-          "magIdx": 32,
+          "magIdx": 48,
           "nome": "Olio extra vergine d'oliva",
           "qtaBase": 50,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-064"
         },
         {
           "tipo": "sl",
@@ -6265,11 +6616,11 @@
       "componenti": [
         {
           "tipo": "sl",
-          "nome": "Canederli ai Formaggi Base",
+          "nome": "Canederli ai Formaggi (Base)",
           "qtaBase": 600,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 1,
+          "semiIdx": 5,
           "codiceSl": "SL-005"
         },
         {
@@ -6324,11 +6675,11 @@
       "componenti": [
         {
           "tipo": "sl",
-          "nome": "Gnocchi di Patate",
+          "nome": "Gnocchi di Patate (base)",
           "qtaBase": 2200,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 3,
+          "semiIdx": 14,
           "codiceSl": "SL-010"
         },
         {
@@ -6574,7 +6925,7 @@
     },
     {
       "codice": "PF-009",
-      "nome": "Mille Foglie al piatto",
+      "nome": "MilleFoglie al piatto",
       "descrizione": "Ottima in ogni stagione",
       "tags": [
         "Consigliato",
@@ -6605,11 +6956,11 @@
         },
         {
           "tipo": "sl",
-          "nome": "Crema per Millefoglie (4pax circa)",
+          "nome": "Crema per Millefoglie",
           "qtaBase": 100,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 6,
+          "semiIdx": 9,
           "codiceSl": "SL-017"
         },
         {
@@ -6920,7 +7271,7 @@
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 5.9,
+      "prezzoVendita": 6.4,
       "coefficiente": 3,
       "nelMenu": true,
       "tipoBeverage": false,
