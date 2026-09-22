@@ -1924,7 +1924,7 @@ function renderMagazzino(){
           +'onclick="toggleExpand('+mi+')">'
           +'<span style="font-size:13px;color:#aaa;width:16px;">&#9654;</span>'
           +statusDot
-          +'<span style="flex:1;font-size:14px;font-weight:500;"><span style="color:#aaa;font-weight:400;font-size:11px;margin-right:6px;">'+(m.codice||'')+'</span>'+m.nome+'</span>'
+          +'<span style="flex:1;font-size:14px;font-weight:500;"><span style="color:#aaa;font-weight:400;font-size:11px;margin-right:6px;">'+(m.codice||'')+'</span>'+m.nome+(m.marca?'<span style="font-size:11px;color:#aaa;font-weight:400;margin-left:6px;">'+m.marca+'</span>':'')+'</span>'
           +'<span style="font-size:12px;color:#888;min-width:120px;">'+act.nome+'</span>'
           +(scarto>0?'<span style="font-size:11px;color:#b45309;font-weight:600;min-width:50px;text-align:right;">-'+scarto+'%</span>':'<span style="min-width:50px;"></span>')
           +'<span style="font-size:13px;font-weight:600;min-width:80px;text-align:right;">'+eur(prezzoNetto)+'/'+m.um+'</span>'
@@ -7179,7 +7179,7 @@ function openNuovaMPModal(editIdx){
   if(tg) tg.innerHTML=ALLERGENI_LIST.map(function(a){
     return '<label style="font-size:12px;display:flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #e0ded8;border-radius:6px;cursor:pointer;"><input type="checkbox" class="mp-tracce-cb" value="'+a+'"> '+a+'</label>';
   }).join('');
-  var fields=['mp-nome','mp-forn','mp-prezzo','mp-energia','mp-grassi','mp-saturi','mp-carbo','mp-zuccheri','mp-fibre','mp-proteine','mp-sale'];
+  var fields=['mp-nome','mp-marca','mp-forn','mp-prezzo','mp-energia','mp-grassi','mp-saturi','mp-carbo','mp-zuccheri','mp-fibre','mp-proteine','mp-sale'];
   if(isNew){
     fields.forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
     document.getElementById('mp-cat').value='Generale';
@@ -7193,6 +7193,7 @@ function openNuovaMPModal(editIdx){
   } else {
     var m=magazzino[editIdx];
     document.getElementById('mp-nome').value=m.nome||'';
+    document.getElementById('mp-marca').value=m.marca||'';
     document.getElementById('mp-cat').value=m.categoria||'Generale';
     document.getElementById('mp-um').value=m.um||'kg';
     document.getElementById('mp-iva').value=m.iva||10;
@@ -7252,10 +7253,11 @@ function mpSalva(){
     proteine:parseFloat(document.getElementById('mp-proteine').value)||0,
     sale:parseFloat(document.getElementById('mp-sale').value)||0
   };
+  var marca=document.getElementById('mp-marca').value.trim();
   if(mpEditIdx===-1){
     magazzino.push({
       codice:nuovoCodice('mp'),
-      nome:nome,categoria:document.getElementById('mp-cat').value,
+      nome:nome,marca:marca||undefined,categoria:document.getElementById('mp-cat').value,
       um:document.getElementById('mp-um').value,
       iva:parseInt(document.getElementById('mp-iva').value)||10,
       scarto:scarto,resa:Math.round((100-scarto)*100)/100,
@@ -7267,7 +7269,7 @@ function mpSalva(){
     });
   } else {
     var m=magazzino[mpEditIdx];
-    m.nome=nome;m.categoria=document.getElementById('mp-cat').value;
+    m.nome=nome;m.marca=marca||undefined;m.categoria=document.getElementById('mp-cat').value;
     m.um=document.getElementById('mp-um').value;
     m.iva=parseInt(document.getElementById('mp-iva').value)||10;
     m.scarto=scarto;m.resa=Math.round((100-scarto)*100)/100;
@@ -8780,6 +8782,7 @@ function cambiaPasswordApp(){
     <div class="section-label">Informazioni generali</div>
     <div class="form-grid">
       <div class="form-row"><label>Nome *</label><input type="text" id="mp-nome" placeholder="es. Petto di pollo"/></div>
+      <div class="form-row"><label>Marca / prodotto</label><input type="text" id="mp-marca" placeholder="es. Findus Champignon 1kg (facoltativo)"/></div>
       <div class="form-row"><label>Categoria *</label>
         <select id="mp-cat">
           <option value="Verdura">Verdura</option>
