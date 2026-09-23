@@ -6262,7 +6262,7 @@ function renderSemilavorati(){
           var sRef=semilavorati[resolveSemiIdx(c)];
           codRef=sRef&&sRef.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+sRef.codice+'</span>':'';
         } else {
-          var mRef=magazzino[c.magIdx];
+          var mRef=magazzino[resolveMagIdx(c)];
           codRef=mRef&&mRef.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+mRef.codice+'</span>':'';
         }
         return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+codRef+c.nome+'</td>'
