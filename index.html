@@ -8094,9 +8094,10 @@ function slByCodice(codice){
 function resolveMagIdx(c){
   if(c.codiceMp){
     var idx=mpByCodice(c.codiceMp);
-    if(idx>=0&&magazzino[idx].nome===c.nome)return idx;
+    if(idx>=0&&magazzino[idx].nome.toLowerCase()===( c.nome||'').toLowerCase())return idx;
+    if(idx>=0)return idx; // codice trovato anche se nome non combacia
   }
-  if(c.nome){var byName=magazzino.findIndex(function(x){return x.nome===c.nome;});if(byName>=0)return byName;}
+  if(c.nome){var cn=c.nome.toLowerCase();var byName=magazzino.findIndex(function(x){return x.nome.toLowerCase()===cn;});if(byName>=0)return byName;}
   return c.magIdx;
 }
 /* risolve l'indice attuale di un semilavorato da un componente, usando il codice se presente */
@@ -8104,10 +8105,11 @@ function resolveSemiIdx(c){
   if(c.codiceSl){
     var idx=slByCodice(c.codiceSl);
     /* verifica che il codice risolva allo stesso nome — protezione da codici duplicati */
-    if(idx>=0&&semilavorati[idx].nome===c.nome)return idx;
+    if(idx>=0&&semilavorati[idx].nome.toLowerCase()===(c.nome||'').toLowerCase())return idx;
+    if(idx>=0)return idx; // codice trovato anche se nome non combacia per case
   }
-  /* fallback: cerca per nome */
-  if(c.nome){var byName=semilavorati.findIndex(function(x){return x.nome===c.nome;});if(byName>=0)return byName;}
+  /* fallback: cerca per nome (case-insensitive) */
+  if(c.nome){var cn=c.nome.toLowerCase();var byName=semilavorati.findIndex(function(x){return x.nome.toLowerCase()===cn;});if(byName>=0)return byName;}
   return c.semiIdx;
 }
 
