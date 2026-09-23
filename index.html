@@ -6259,7 +6259,7 @@ function renderSemilavorati(){
         var costo=costoCompSm(c);
         var codRef='';
         if(c.tipo==='sl'){
-          var sRef=semilavorati[c.semiIdx];
+          var sRef=semilavorati[resolveSemiIdx(c)];
           codRef=sRef&&sRef.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+sRef.codice+'</span>':'';
         } else {
           var mRef=magazzino[c.magIdx];
@@ -7753,7 +7753,7 @@ function printSemilavorato(idx){
   var righe=(s.componenti||[]).map(function(c){
     var nome,codRif;
     if(c.tipo==='sl'){
-      var sRif=semilavorati[c.semiIdx];
+      var sRif=semilavorati[resolveSemiIdx(c)];
       nome=sRif?sRif.nome:(c.nome||'?');
       codRif=sRif&&sRif.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+sRif.codice+'</span>':'';
     } else {

@@ -1,0 +1,7709 @@
+{
+  "version": 6,
+  "exportDate": "22/9/2026",
+  "magazzino": [
+    {
+      "codice": "MP-070",
+      "nome": "Macinato di Anatra",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 135,
+        "grassi": 5.95,
+        "grassiSaturi": 2.32,
+        "carboidrati": 0.94,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 18.28,
+        "sale": 0.074
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.9091,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-110",
+      "nome": "Macinato di Coniglio",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 136,
+        "grassi": 5.55,
+        "grassiSaturi": 1.66,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 20.05,
+        "sale": 0.041
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 21.8182,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-111",
+      "nome": "Macinato di Faraona",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 110,
+        "grassi": 2.47,
+        "grassiSaturi": 0.64,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 20.64,
+        "sale": 0.069
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 25.4545,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-090",
+      "nome": "Macinato di Maiale",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 361,
+        "grassi": 30.86,
+        "grassiSaturi": 9.242,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 20.89,
+        "sale": 0.091
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-089",
+      "nome": "Macinato di Manzo",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 332,
+        "grassi": 30,
+        "grassiSaturi": 11.29,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 14.35,
+        "sale": 0.067
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 12.7273,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-112",
+      "nome": "Macinato di Pollo",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 146,
+        "grassi": 7.8,
+        "grassiSaturi": 2.7,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 19,
+        "sale": 0.068
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 13.6364,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-091",
+      "nome": "Macinato di Vitello",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 144,
+        "grassi": 6.77,
+        "grassiSaturi": 2.79,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 19.35,
+        "sale": 0.082
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 14.5455,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-127",
+      "nome": "Muscolo Bovino",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 2,
+      "resa": 98,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 108,
+        "grassi": 2.4,
+        "grassiSaturi": 0.76,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 21.5,
+        "sale": 0.051
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10.9091,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-129",
+      "nome": "Ossa di manzo",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 15,
+        "grassi": 1,
+        "grassiSaturi": 1,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 3.5,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.3636,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-155",
+      "nome": "Pancia di Maiale",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 518,
+        "grassi": 53,
+        "grassiSaturi": 19,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 9.34,
+        "sale": 0.032
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 4.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-142",
+      "nome": "Limoni",
+      "categoria": "Frutta",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 29,
+        "grassi": 0.3,
+        "grassiSaturi": 0.04,
+        "carboidrati": 9.32,
+        "zuccheri": 2.5,
+        "fibre": 2.8,
+        "proteine": 1.1,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.8182,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-154",
+      "nome": "Mele Renetta",
+      "categoria": "Frutta",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 52,
+        "grassi": 0.2,
+        "grassiSaturi": 0,
+        "carboidrati": 14,
+        "zuccheri": 10,
+        "fibre": 2,
+        "proteine": 0.3,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.4,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-096",
+      "nome": "Acqua",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 0,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-104",
+      "nome": "Agar Agar",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 26,
+        "grassi": 0.03,
+        "grassiSaturi": 0.006,
+        "carboidrati": 6.75,
+        "zuccheri": 0.28,
+        "fibre": 0.5,
+        "proteine": 0.54,
+        "sale": 0.009
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 45.4545,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-081",
+      "nome": "Aglio Wiberg – in polvere",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 357,
+        "grassi": 0.3,
+        "grassiSaturi": 0.06,
+        "carboidrati": 70.3,
+        "zuccheri": 21,
+        "fibre": 4.7,
+        "proteine": 15.8,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 36.3636,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-117",
+      "nome": "Albume Pastorizzato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 43,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0.9,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 9.8,
+        "sale": 0.42
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.8689,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-128",
+      "nome": "Alloro foglie Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 353,
+        "grassi": 8.4,
+        "grassiSaturi": 2.3,
+        "carboidrati": 48.6,
+        "zuccheri": 48.1,
+        "fibre": 26.3,
+        "proteine": 7.6,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 134.5455,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-143",
+      "nome": "Amaretti Bonomi",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova",
+        "Frutta a guscio"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Glutine",
+        "Latte e lattosio"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 432,
+        "grassi": 9.5,
+        "grassiSaturi": 1,
+        "carboidrati": 78,
+        "zuccheri": 77,
+        "fibre": 0,
+        "proteine": 7,
+        "sale": 0.13
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 6.3636,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-118",
+      "nome": "Amaretti Vicenzi",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova",
+        "Latte e lattosio",
+        "Frutta a guscio"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Glutine"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 432,
+        "grassi": 10,
+        "grassiSaturi": 1,
+        "carboidrati": 77,
+        "zuccheri": 76,
+        "fibre": 3,
+        "proteine": 6.9,
+        "sale": 0.13
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-083",
+      "nome": "Aneto liofilizzato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 315,
+        "grassi": 4.4,
+        "grassiSaturi": 0.81,
+        "carboidrati": 42.2,
+        "zuccheri": 41.8,
+        "fibre": 13.6,
+        "proteine": 19.9,
+        "sale": 0.53
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 277.2727,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-080",
+      "nome": "Bacche di ginepro Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 385,
+        "grassi": 14.6,
+        "grassiSaturi": 0.62,
+        "carboidrati": 37.3,
+        "zuccheri": 7.5,
+        "fibre": 12.7,
+        "proteine": 19.8,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 50.2273,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-082",
+      "nome": "Basilico liofilizzato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 300,
+        "grassi": 4,
+        "grassiSaturi": 0.74,
+        "carboidrati": 43,
+        "zuccheri": 42.6,
+        "fibre": 17.8,
+        "proteine": 14,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 268.1818,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-156",
+      "nome": "Buste cottura sottovuoto 30x20",
+      "categoria": "Generale",
+      "um": "pz",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 0.04,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-138",
+      "nome": "Cacao Amaro",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 419,
+        "grassi": 23,
+        "grassiSaturi": 14,
+        "carboidrati": 18,
+        "zuccheri": 0.5,
+        "fibre": 27,
+        "proteine": 21.5,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 13.6364,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-109",
+      "nome": "Caffè Solubile",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 1,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0.3,
+        "zuccheri": 0,
+        "fibre": 23.8,
+        "proteine": 0.2,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 29.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-145",
+      "nome": "Cialda per Gelato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Soia",
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Arachidi",
+        "Frutta a guscio",
+        "Senape",
+        "Sesamo",
+        "Lupini"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 487,
+        "grassi": 21,
+        "grassiSaturi": 5.1,
+        "carboidrati": 68,
+        "zuccheri": 45,
+        "fibre": 0,
+        "proteine": 6.1,
+        "sale": 0.11
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-150",
+      "nome": "Cioccolato fondente extra",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Soia"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Latte e lattosio",
+        "Frutta a guscio"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 527,
+        "grassi": 31.6,
+        "grassiSaturi": 19.8,
+        "carboidrati": 51.4,
+        "zuccheri": 48.9,
+        "fibre": 0,
+        "proteine": 4.9,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 12,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-092",
+      "nome": "Concentrato pomodoro Mutti da 440 gr",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 96,
+        "grassi": 0.2,
+        "grassiSaturi": 0.1,
+        "carboidrati": 17,
+        "zuccheri": 12.3,
+        "fibre": 0,
+        "proteine": 4.2,
+        "sale": 0.85
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 7.2727,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-137",
+      "nome": "Cremor tartaro",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia",
+        "Latte e lattosio",
+        "Frutta a guscio"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 51,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 24.1,
+        "zuccheri": 0,
+        "fibre": 0.2,
+        "proteine": 0.1,
+        "sale": 7.89
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 48.3,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-079",
+      "nome": "Dragoncello liofilizzato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 342,
+        "grassi": 7.2,
+        "grassiSaturi": 1.33,
+        "carboidrati": 42.8,
+        "zuccheri": 42.4,
+        "fibre": 7.4,
+        "proteine": 22.8,
+        "sale": 0.15
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 363.6364,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-077",
+      "nome": "Erba cipollina liofilizzata Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 264,
+        "grassi": 4.2,
+        "grassiSaturi": 0.61,
+        "carboidrati": 10.6,
+        "zuccheri": 10.5,
+        "fibre": 41.8,
+        "proteine": 25,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 317.2727,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-060",
+      "nome": "Farina \"00\"",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 366,
+        "grassi": 1.48,
+        "grassiSaturi": 0.302,
+        "carboidrati": 76.22,
+        "zuccheri": 0.49,
+        "fibre": 2.4,
+        "proteine": 9.71,
+        "sale": 0.002
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 0.9615,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-130",
+      "nome": "Farina Gialla Bramata per polenta",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 362,
+        "grassi": 3.8,
+        "grassiSaturi": 0.5,
+        "carboidrati": 74.5,
+        "zuccheri": 0.5,
+        "fibre": 6.5,
+        "proteine": 8.5,
+        "sale": 0.002
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.2404,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-139",
+      "nome": "Farina Gialla Fioretto per Polenta",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 347,
+        "grassi": 2.1,
+        "grassiSaturi": 0.34,
+        "carboidrati": 72.3,
+        "zuccheri": 1.07,
+        "fibre": 6,
+        "proteine": 7.7,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.2727,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-098",
+      "nome": "Fecola di Patate",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 357,
+        "grassi": 0.34,
+        "grassiSaturi": 0.09,
+        "carboidrati": 83.1,
+        "zuccheri": 3.52,
+        "fibre": 5.9,
+        "proteine": 6.9,
+        "sale": 0.055
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 4.5455,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-099",
+      "nome": "Fiocchi di Patate",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Glutine",
+        "Soia",
+        "Latte e lattosio"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 349,
+        "grassi": 1,
+        "grassiSaturi": 0.1,
+        "carboidrati": 73,
+        "zuccheri": 1.5,
+        "fibre": 8,
+        "proteine": 8,
+        "sale": 0.045
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 4.5455,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-114",
+      "nome": "Funghi Secchi con porcini \"Merlini\"",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 317,
+        "grassi": 2.7,
+        "grassiSaturi": 0.5,
+        "carboidrati": 35.3,
+        "zuccheri": 0,
+        "fibre": 15,
+        "proteine": 30.02,
+        "sale": 0.2
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 34.6154,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-125",
+      "nome": "Giardiniera Zuccato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Sedano",
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 21,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 3.9,
+        "zuccheri": 1.1,
+        "fibre": 2.1,
+        "proteine": 0,
+        "sale": 2.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.8361,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-136",
+      "nome": "Latte di cocco",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 168,
+        "grassi": 18,
+        "grassiSaturi": 15,
+        "carboidrati": 1.8,
+        "zuccheri": 1.2,
+        "fibre": 0,
+        "proteine": 0.7,
+        "sale": 0.03
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 4.5455,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-153",
+      "nome": "Lievito Vanigliato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 346,
+        "grassi": 32,
+        "grassiSaturi": 19,
+        "carboidrati": 12,
+        "zuccheri": 9.3,
+        "fibre": 0,
+        "proteine": 2,
+        "sale": 0.09
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 16.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-134",
+      "nome": "Maccheroncini di pasta fresca",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 280,
+        "grassi": 0.2,
+        "grassiSaturi": 0.1,
+        "carboidrati": 60.1,
+        "zuccheri": 0.1,
+        "fibre": 0,
+        "proteine": 9.4,
+        "sale": 0.054
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.6364,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-075",
+      "nome": "Maggiorana liofilizzata Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 320,
+        "grassi": 7,
+        "grassiSaturi": 1.29,
+        "carboidrati": 42.5,
+        "zuccheri": 42.1,
+        "fibre": 18.1,
+        "proteine": 12.7,
+        "sale": 0.2
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 423.6364,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-116",
+      "nome": "Maizena",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 381,
+        "grassi": 0.05,
+        "grassiSaturi": 0.009,
+        "carboidrati": 91.27,
+        "zuccheri": 0,
+        "fibre": 0.9,
+        "proteine": 0.26,
+        "sale": 0.009
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5.4545,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-140",
+      "nome": "Mandorle Sgusciate",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Frutta a guscio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 575,
+        "grassi": 49.42,
+        "grassiSaturi": 3.73,
+        "carboidrati": 21.67,
+        "zuccheri": 3.89,
+        "fibre": 12.2,
+        "proteine": 21.22,
+        "sale": 0.001
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8.3636,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-126",
+      "nome": "Marmellata cipolle rosse",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 150,
+        "grassi": 0.2,
+        "grassiSaturi": 0,
+        "carboidrati": 32,
+        "zuccheri": 31,
+        "fibre": 1,
+        "proteine": 1,
+        "sale": 0.03
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5.7377,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-151",
+      "nome": "Miele Millefiori",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 322,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 80,
+        "zuccheri": 80,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-076",
+      "nome": "Noce moscata macinata Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 538,
+        "grassi": 36.3,
+        "grassiSaturi": 25.94,
+        "carboidrati": 45,
+        "zuccheri": 22.5,
+        "fibre": 4,
+        "proteine": 5.8,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 90.9091,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-152",
+      "nome": "Olio di semi vari",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Arachidi"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 828,
+        "grassi": 92,
+        "grassiSaturi": 14,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.59,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-064",
+      "nome": "Olio extra vergine d'oliva",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 824,
+        "grassi": 91.6,
+        "grassiSaturi": 13.25,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.6154,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-078",
+      "nome": "Origano tritato essiccato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 365,
+        "grassi": 10.3,
+        "grassiSaturi": 1.9,
+        "carboidrati": 49.5,
+        "zuccheri": 49,
+        "fibre": 15,
+        "proteine": 11,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 102.7273,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-148",
+      "nome": "Orzo perlato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia",
+        "Senape",
+        "Lupini"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 319,
+        "grassi": 2.2,
+        "grassiSaturi": 0.22,
+        "carboidrati": 59.85,
+        "zuccheri": 0.8,
+        "fibre": 9.2,
+        "proteine": 15.4,
+        "sale": 0.007
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.27,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-054",
+      "nome": "Pane a cubetti Bianco",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 238,
+        "grassi": 2.15,
+        "grassiSaturi": 0.63,
+        "carboidrati": 43.91,
+        "zuccheri": 5,
+        "fibre": 9.2,
+        "proteine": 10.66,
+        "sale": 0.478
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5.7692,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-113",
+      "nome": "Pane a cubetti Integrale",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Uova",
+        "Soia",
+        "Latte e lattosio",
+        "Frutta a guscio",
+        "Sesamo"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 247,
+        "grassi": 3.35,
+        "grassiSaturi": 0.747,
+        "carboidrati": 41.29,
+        "zuccheri": 5.57,
+        "fibre": 6.8,
+        "proteine": 12.95,
+        "sale": 0.472
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5.4545,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-135",
+      "nome": "Panna di soia Valsoia",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Soia"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 141,
+        "grassi": 12,
+        "grassiSaturi": 1.6,
+        "carboidrati": 6.3,
+        "zuccheri": 3.8,
+        "fibre": 0.2,
+        "proteine": 1.8,
+        "sale": 0.23
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5.9091,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-086",
+      "nome": "Paprica affumicata Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 319,
+        "grassi": 12.9,
+        "grassiSaturi": 2.1,
+        "carboidrati": 19.1,
+        "zuccheri": 10.3,
+        "fibre": 34.9,
+        "proteine": 14.1,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 45.7273,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-085",
+      "nome": "Paprica rubino delicata Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 358,
+        "grassi": 13,
+        "grassiSaturi": 2.11,
+        "carboidrati": 34.9,
+        "zuccheri": 33.2,
+        "fibre": 20.9,
+        "proteine": 14.8,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 30.4545,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-094",
+      "nome": "Pasta Per Lasagne Koch (10 fogli x 2 kg) gn",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 216,
+        "grassi": 1.9,
+        "grassiSaturi": 0.5,
+        "carboidrati": 41,
+        "zuccheri": 1.4,
+        "fibre": 1.8,
+        "proteine": 7.9,
+        "sale": 0.4
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.6364,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-058",
+      "nome": "Pepe Nero Macinato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 308,
+        "grassi": 3,
+        "grassiSaturi": 0.86,
+        "carboidrati": 52,
+        "zuccheri": 49.4,
+        "fibre": 13.1,
+        "proteine": 11,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 38.8182,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-087",
+      "nome": "Peperoncino rosso tritato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 379,
+        "grassi": 17,
+        "grassiSaturi": 3.22,
+        "carboidrati": 32,
+        "zuccheri": 30.4,
+        "fibre": 24.9,
+        "proteine": 12,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 56,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-093",
+      "nome": "Polpa Pomodoro Mutti da kg 4,05",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 26,
+        "grassi": 0.2,
+        "grassiSaturi": 0.1,
+        "carboidrati": 3.9,
+        "zuccheri": 2.8,
+        "fibre": 0,
+        "proteine": 1.2,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.3636,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-115",
+      "nome": "Prezzemolo liofilizzato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 296,
+        "grassi": 2,
+        "grassiSaturi": 0.26,
+        "carboidrati": 35.9,
+        "zuccheri": 23.4,
+        "fibre": 21.8,
+        "proteine": 22.7,
+        "sale": 0.14
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 209.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-072",
+      "nome": "Rosmarino liofilizzato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 377,
+        "grassi": 15.2,
+        "grassiSaturi": 2.8,
+        "carboidrati": 46.4,
+        "zuccheri": 45.9,
+        "fibre": 17.7,
+        "proteine": 4.88,
+        "sale": 0.13
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 250,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-157",
+      "nome": "Sacchetti cottura sottovuoto 30x20",
+      "categoria": "Generale",
+      "um": "pz",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 0.106,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-057",
+      "nome": "Sale Fino",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 98
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 0.9615,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-073",
+      "nome": "Salvia liofilizzata Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 364,
+        "grassi": 12.7,
+        "grassiSaturi": 7.04,
+        "carboidrati": 42.7,
+        "zuccheri": 42.3,
+        "fibre": 18.1,
+        "proteine": 10.6,
+        "sale": 0.03
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 333.6364,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-107",
+      "nome": "Savoiardi",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 378,
+        "grassi": 3.8,
+        "grassiSaturi": 1.1,
+        "carboidrati": 77,
+        "zuccheri": 42,
+        "fibre": 1.7,
+        "proteine": 8.5,
+        "sale": 0.25
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5.4545,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-084",
+      "nome": "Semi di cumino interi Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 384,
+        "grassi": 14.6,
+        "grassiSaturi": 0.6,
+        "carboidrati": 37.3,
+        "zuccheri": 7.5,
+        "fibre": 12.7,
+        "proteine": 19.8,
+        "sale": 0.05
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 23.1818,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-158",
+      "nome": "Senape",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Senape"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 102,
+        "grassi": 4.6,
+        "grassiSaturi": 0.3,
+        "carboidrati": 10.2,
+        "zuccheri": 5.4,
+        "fibre": 0,
+        "proteine": 5.2,
+        "sale": 2.5
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8.2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-160",
+      "nome": "Spaghetti",
+      "marca": "Rummo n° 5",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia",
+        "Senape"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 356,
+        "grassi": 1.6,
+        "grassiSaturi": 0.3,
+        "carboidrati": 69.5,
+        "zuccheri": 3.1,
+        "fibre": 2.9,
+        "proteine": 14.5,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.53,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-074",
+      "nome": "Timo liofilizzato Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 321,
+        "grassi": 7.4,
+        "grassiSaturi": 3.7,
+        "carboidrati": 45.3,
+        "zuccheri": 44.8,
+        "fibre": 18.6,
+        "proteine": 9.1,
+        "sale": 0.15
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 341.8182,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-102",
+      "nome": "Tuorlo Pastorizzato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 294,
+        "grassi": 26,
+        "grassiSaturi": 8.4,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 15,
+        "sale": 0.8
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 7.7273,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-131",
+      "nome": "Uova Fresche",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 143,
+        "grassi": 9.51,
+        "grassiSaturi": 3.658,
+        "carboidrati": 0.72,
+        "zuccheri": 0.37,
+        "fibre": 0,
+        "proteine": 12.56,
+        "sale": 0.142
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 12.7273,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-059",
+      "nome": "Uova Pastorizzate",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 128,
+        "grassi": 8.7,
+        "grassiSaturi": 4,
+        "carboidrati": 0.5,
+        "zuccheri": 0.5,
+        "fibre": 0,
+        "proteine": 12,
+        "sale": 0.34
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-105",
+      "nome": "Vaniglia in Polvere",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 324,
+        "grassi": 11.6,
+        "grassiSaturi": 1.58,
+        "carboidrati": 26.7,
+        "zuccheri": 8.1,
+        "fibre": 42.7,
+        "proteine": 6.9,
+        "sale": 0.13
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 454.5455,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-071",
+      "nome": "Vino Rosso/Bianco Cucina",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 85,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 2.61,
+        "zuccheri": 0.62,
+        "fibre": 0,
+        "proteine": 0.07,
+        "sale": 0.004
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.8182,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-119",
+      "nome": "Zucchero a Velo da Kg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 389,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 99.8,
+        "zuccheri": 97.8,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.2727,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-103",
+      "nome": "Zucchero di canna",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 380,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 98.09,
+        "zuccheri": 97.02,
+        "fibre": 0,
+        "proteine": 0.12,
+        "sale": 0.028
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.2727,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-106",
+      "nome": "Zucchero Semolato da Kg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 380,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 98,
+        "zuccheri": 97,
+        "fibre": 0.2,
+        "proteine": 0.15,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 0.9091,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-095",
+      "nome": "Burro da Kg",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 758,
+        "grassi": 82,
+        "grassiSaturi": 58,
+        "carboidrati": 0.5,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0.5,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.6154,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-065",
+      "nome": "Burro della Lessinia",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 717,
+        "grassi": 81.11,
+        "grassiSaturi": 51.368,
+        "carboidrati": 0.06,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0.85,
+        "sale": 0.011
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 11.5385,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-124",
+      "nome": "Caciottina Fresca",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 343,
+        "grassi": 30,
+        "grassiSaturi": 18.5,
+        "carboidrati": 0.9,
+        "zuccheri": 0.8,
+        "fibre": 0,
+        "proteine": 7.3,
+        "sale": 1.9
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 11.8182,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-123",
+      "nome": "Formaggio Capra Fresco",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 364,
+        "grassi": 29.84,
+        "grassiSaturi": 20.6,
+        "carboidrati": 2.54,
+        "zuccheri": 2.54,
+        "fibre": 0,
+        "proteine": 21.58,
+        "sale": 0.515
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 19.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-056",
+      "nome": "Grana Padano Dop",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 398,
+        "grassi": 29,
+        "grassiSaturi": 18,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 33,
+        "sale": 1.5
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 13.4615,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-062",
+      "nome": "Latte Intero UHT",
+      "categoria": "Latticini e formaggi",
+      "um": "lt",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 61,
+        "grassi": 3.27,
+        "grassiSaturi": 1.865,
+        "carboidrati": 4.78,
+        "zuccheri": 5.05,
+        "fibre": 0,
+        "proteine": 3.15,
+        "sale": 0.043
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.4423,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-108",
+      "nome": "Mascarpone",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 383,
+        "grassi": 39,
+        "grassiSaturi": 27,
+        "carboidrati": 4,
+        "zuccheri": 3.4,
+        "fibre": 0,
+        "proteine": 4,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 7.2727,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-055",
+      "nome": "Monte Veronese d'allevo",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 407,
+        "grassi": 32.5,
+        "grassiSaturi": 24,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 28.5,
+        "sale": 1.9
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.6154,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-101",
+      "nome": "Panna Fresca",
+      "categoria": "Latticini e formaggi",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 337,
+        "grassi": 35,
+        "grassiSaturi": 25,
+        "carboidrati": 3.2,
+        "zuccheri": 2.8,
+        "fibre": 0,
+        "proteine": 2.2,
+        "sale": 0.07
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-100",
+      "nome": "Ricotta Fresca",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 174,
+        "grassi": 12.98,
+        "grassiSaturi": 8.295,
+        "carboidrati": 3.04,
+        "zuccheri": 0.27,
+        "fibre": 0,
+        "proteine": 11.26,
+        "sale": 0.084
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 11.5385,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-121",
+      "nome": "Pancetta arrotolata",
+      "categoria": "Salumi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 11,
+      "resa": 89,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 418,
+        "grassi": 37,
+        "grassiSaturi": 15,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 21,
+        "sale": 2
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 11.3636,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-122",
+      "nome": "Prosciutto cotto Alta Qualità",
+      "categoria": "Salumi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 145,
+        "grassi": 7,
+        "grassiSaturi": 2.7,
+        "carboidrati": 0.6,
+        "zuccheri": 0.6,
+        "fibre": 0,
+        "proteine": 20,
+        "sale": 1.9
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-120",
+      "nome": "Salame Nostrano",
+      "categoria": "Salumi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 5,
+      "resa": 95,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 349,
+        "grassi": 26.1,
+        "grassiSaturi": 10.2,
+        "carboidrati": 1.2,
+        "zuccheri": 0.1,
+        "fibre": 0,
+        "proteine": 27.4,
+        "sale": 4.9
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 15.4545,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-132",
+      "nome": "Speck Segata",
+      "categoria": "Salumi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 10,
+      "resa": 90,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 211,
+        "grassi": 8.7,
+        "grassiSaturi": 3.1,
+        "carboidrati": 0.5,
+        "zuccheri": 0.5,
+        "fibre": 0,
+        "proteine": 33,
+        "sale": 5.3
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-133",
+      "nome": "Tastasal",
+      "categoria": "Salumi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 333,
+        "grassi": 29.18,
+        "grassiSaturi": 10,
+        "carboidrati": 2.85,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 13.72,
+        "sale": 1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 7.6364,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-144",
+      "nome": "Amaretto di saronno",
+      "categoria": "Spirits e liquori",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 272,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 15.4545,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-141",
+      "nome": "Grappa Morbida",
+      "categoria": "Spirits e liquori",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 242,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 7,
+        "zuccheri": 7,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 13.6364,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-149",
+      "nome": "Grappa Mugo",
+      "categoria": "Spirits e liquori",
+      "um": "lt",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 31,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-069",
+      "nome": "Aglio",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 10,
+      "resa": 90,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 149,
+        "grassi": 0.5,
+        "grassiSaturi": 0.089,
+        "carboidrati": 33.6,
+        "zuccheri": 1,
+        "fibre": 2.1,
+        "proteine": 6.36,
+        "sale": 0.017
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9.6154,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-066",
+      "nome": "Carote",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 20,
+      "resa": 80,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 41,
+        "grassi": 0.24,
+        "grassiSaturi": 0.037,
+        "carboidrati": 9.58,
+        "zuccheri": 4.74,
+        "fibre": 2.8,
+        "proteine": 0.93,
+        "sale": 0.069
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.1538,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-159",
+      "nome": "Champignon Congelati",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 20,
+        "grassi": 0.2,
+        "grassiSaturi": 0,
+        "carboidrati": 0.8,
+        "zuccheri": 0.8,
+        "fibre": 0.1,
+        "proteine": 3.7,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.4,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-067",
+      "nome": "Cipolle",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 10,
+      "resa": 90,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 40,
+        "grassi": 0.1,
+        "grassiSaturi": 0.042,
+        "carboidrati": 9.34,
+        "zuccheri": 4.24,
+        "fibre": 1.7,
+        "proteine": 1.1,
+        "sale": 0.004
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.4423,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-097",
+      "nome": "Patate per Gnocchi",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 77,
+        "grassi": 0.09,
+        "grassiSaturi": 0.026,
+        "carboidrati": 17.47,
+        "zuccheri": 0.78,
+        "fibre": 2.2,
+        "proteine": 2.02,
+        "sale": 0.006
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.4423,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-061",
+      "nome": "Porri",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 20,
+      "resa": 80,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 61,
+        "grassi": 0.3,
+        "grassiSaturi": 0.04,
+        "carboidrati": 14.15,
+        "zuccheri": 3.9,
+        "fibre": 1.8,
+        "proteine": 1.5,
+        "sale": 0.02
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.8846,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-068",
+      "nome": "Sedano",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 20,
+      "resa": 80,
+      "activeIdx": 0,
+      "allergeni": [
+        "Sedano"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 16,
+        "grassi": 0.17,
+        "grassiSaturi": 0.042,
+        "carboidrati": 2.97,
+        "zuccheri": 1.83,
+        "fibre": 1.6,
+        "proteine": 0.69,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 0.9615,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-088",
+      "nome": "Soffritto Misto Gelo",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Sedano"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 21,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 3.5,
+        "zuccheri": 3.5,
+        "fibre": 2,
+        "proteine": 0.7,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.6364,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-146",
+      "nome": "Corvina igt bag in box 10L",
+      "categoria": "Vini",
+      "um": "lt",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 85,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 2.61,
+        "zuccheri": 0.62,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0.004
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.2787,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-147",
+      "nome": "Garganega igt Bag in Box",
+      "categoria": "Vini",
+      "um": "lt",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 82,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 2.6,
+        "zuccheri": 0.96,
+        "fibre": 0,
+        "proteine": 0.07,
+        "sale": 0.005
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.2787,
+          "storico": []
+        }
+      ]
+    }
+  ],
+  "ingredienti": [
+    {
+      "nome": "Riso arborio",
+      "magIdx": 0,
+      "qtaBase": 320,
+      "unit": "g",
+      "conv": 0.001
+    },
+    {
+      "nome": "Midollo di bue",
+      "magIdx": 1,
+      "qtaBase": 50,
+      "unit": "g",
+      "conv": 0.001
+    },
+    {
+      "nome": "Burro",
+      "magIdx": 2,
+      "qtaBase": 80,
+      "unit": "g",
+      "conv": 0.001
+    },
+    {
+      "nome": "Cipolla",
+      "magIdx": 3,
+      "qtaBase": 50,
+      "unit": "g",
+      "conv": 0.001
+    },
+    {
+      "nome": "Vino bianco",
+      "magIdx": 4,
+      "qtaBase": 0.125,
+      "unit": "lt",
+      "conv": 1
+    },
+    {
+      "nome": "Zafferano",
+      "magIdx": 11,
+      "qtaBase": 1,
+      "unit": "bust.",
+      "conv": 1
+    },
+    {
+      "nome": "Pistilli di zafferano",
+      "magIdx": 12,
+      "qtaBase": 5,
+      "unit": "g",
+      "conv": 0.001
+    },
+    {
+      "nome": "Grana grattugiato",
+      "magIdx": 13,
+      "qtaBase": 60,
+      "unit": "g",
+      "conv": 0.001
+    },
+    {
+      "nome": "Olio EVO",
+      "magIdx": 16,
+      "qtaBase": 50,
+      "unit": "g",
+      "conv": 0.001
+    },
+    {
+      "nome": "Sale fino",
+      "magIdx": 17,
+      "qtaBase": 8,
+      "unit": "g",
+      "conv": 0.001
+    },
+    {
+      "nome": "Pepe nero",
+      "magIdx": 18,
+      "qtaBase": 2,
+      "unit": "g",
+      "conv": 0.001
+    }
+  ],
+  "ricetteSalvate": [],
+  "semilavorati": [
+    {
+      "codice": "SL-007",
+      "nome": "Besciamella",
+      "categoria": "Salse e sughi",
+      "resaQta": 2957.5,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Scaldare il latte fino a 80°C, fare un roux con burro e farina, aggiungerlo al latte , portare a bollore e far sobbollire qualche minuto tenendo mescolato e facendo attenzione che non attacchi, aggiugi gli altri ingredienti, usa subito o abbatti in positivo.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 33,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 2.5,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 8,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 220,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 13,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 220,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 26,
+          "codiceMp": "MP-057",
+          "nome": "sale Fino",
+          "qtaBase": 15,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 15,
+          "codiceMp": "MP-076",
+          "nome": "Noce moscata macinata Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "26/6/2026"
+    },
+    {
+      "codice": "SL-019",
+      "nome": "Brodo di manzo",
+      "categoria": "Fondi e brodi",
+      "resaQta": 2,
+      "resaUm": "lt",
+      "tempo": "180",
+      "procedimento": "Se non sai fare il brodo cambia lavoro",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 8,
+          "codiceMp": "MP-129",
+          "nome": "Ossa di manzo",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 7,
+          "codiceMp": "MP-127",
+          "nome": "Muscolo Bovino",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 70,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 73,
+          "codiceMp": "MP-068",
+          "nome": "Sedano",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 69,
+          "codiceMp": "MP-066",
+          "nome": "Carote",
+          "qtaBase": 96.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 72,
+          "codiceMp": "MP-061",
+          "nome": "Porri",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 3,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 13,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 68,
+          "codiceMp": "MP-069",
+          "nome": "Aglio",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "6/9/2026"
+    },
+    {
+      "codice": "SL-029",
+      "nome": "Brodo Vegetale",
+      "categoria": "Fondi e brodi",
+      "resaQta": 2.2,
+      "resaUm": "lt",
+      "tempo": "60",
+      "procedimento": "'1. Mondare e tagliare grossolanamente cipolla, carota e sedano.\n'2. Mettere le verdure in una pentola capiente con l\\'acqua fredda e la foglia di alloro e un gambo di prezzemolo e mezzo pomodoro.\n'3. Portare a bollore, abbassare la fiamma e sobbollire per 60 minuti schiumando di tanto in tanto.\n      '4. Aggiustare di sale a fine cottura.\n      '5. Filtrare con colino a maglie fitte.\n      '6. Raffreddare rapidamente e conservare in frigo o porzionare e congelare.",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 4,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 87,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 86,
+          "codiceMp": "MP-066",
+          "nome": "Carote",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 90,
+          "codiceMp": "MP-068",
+          "nome": "Sedano",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 3,
+          "unit": "lt",
+          "conv": 1
+        }
+      ],
+      "dataCreazione": "16/9/2026"
+    },
+    {
+      "codice": "SL-004",
+      "nome": "Burro Nocciola",
+      "categoria": "Salse e sughi",
+      "resaQta": 900,
+      "resaUm": "g",
+      "tempo": "15",
+      "procedimento": "Portare il burro fino al color dorato/nocciola, filtrare con un colino fine e tenere in caldo",
+      "coefficiente": 1,
+      "componenti": [
+        {
+          "magIdx": 0,
+          "codiceMp": "MP-065",
+          "nome": "Burro della Lessinia",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "21/6/2026"
+    },
+    {
+      "codice": "SL-014",
+      "nome": "Caffè Per Tiramisù",
+      "categoria": "Pasta e impasti",
+      "resaQta": 1010,
+      "resaUm": "g",
+      "tempo": "1",
+      "procedimento": "Porta l'acqua a 80° ed aggiungi il caffè, fai freddare prima di usare",
+      "coefficiente": 1,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 4,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 12,
+          "codiceMp": "MP-109",
+          "nome": "Caffè Solubile",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "12/7/2026"
+    },
+    {
+      "codice": "SL-005",
+      "nome": "Canederli ai Formaggi (Base)",
+      "categoria": "Pasta e impasti",
+      "resaQta": 7109,
+      "resaUm": "g",
+      "tempo": "45",
+      "procedimento": "Mettere tutti gli ingredienti secchi in un contenitore adatto, aggiungere le uova ed il latte, mescolando piano dal basso verso l'alto, lasciar riposare 15 min poi formare i canederli da 50 gr l'uno, a questo punto si possono usare cosi o abbattere a -18 per una conservazione piu lunga",
+      "coefficiente": 6,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "magIdx": 4,
+          "codiceMp": "MP-054",
+          "nome": "Pane a cubetti Bianco",
+          "qtaBase": 2000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 10,
+          "codiceMp": "MP-055",
+          "nome": "Monte Veronese d'allevo",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 8,
+          "codiceMp": "MP-056",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 7,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 480,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 1,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 9,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 2,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "magIdx": 6,
+          "codiceMp": "MP-057",
+          "nome": "sale Fino",
+          "qtaBase": 25,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 5,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 9,
+          "codiceSl": "SL-003",
+          "nome": "Porri stufati",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 20,
+          "codiceMp": "MP-076",
+          "nome": "Noce moscata macinata Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 16,
+          "codiceMp": "MP-077",
+          "nome": "Erba cipollina liofilizzata Wiberg",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "21/6/2026"
+    },
+    {
+      "codice": "SL-016",
+      "nome": "Canederli con funghi misti Secchi (Base)",
+      "categoria": "Pasta e impasti",
+      "resaQta": 1100,
+      "resaUm": "g",
+      "tempo": "30",
+      "procedimento": "Mettere in ammollo i funghi in 100 gr di acqua per 30 minuti.\nMettere a stufare la cipolla tritata con il burro, aggiungere i funghi strizzati e tritati, cuocere 5 minuti.\nMettere tutti gli ingredienti secchi in una bacinella capiente, aggiungi i funghi stufati, mescolare delicatamente.\nMetti l'acqua dell'ammollo, il latte e le uova insieme, mescola ed aggiungi agli altri ingredienti.\nMescola senza impastare e fai riposare 30 minuti. Forma dei canederli da 50 gr l'uno. Fare la prova di cottura ed eventualmente aggiungere all'impasto del pan grattato.a questo punto si possono usare cosi o abbattere a -18 per una conservazione piu lunga",
+      "coefficiente": 4,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 26,
+          "codiceMp": "MP-113",
+          "nome": "Pane a cubetti Integrale",
+          "qtaBase": 400,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 20,
+          "codiceMp": "MP-114",
+          "nome": "Funghi Secchi con porcini \"Merlini\"",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 41,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 180,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 49,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 7,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 4,
+          "codiceSl": "SL-015",
+          "nome": "Cipolla Tritata",
+          "qtaBase": 55,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 46,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 17,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 60,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 35,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 6,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 48,
+          "codiceMp": "MP-056",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 30,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 22,
+          "codiceMp": "MP-076",
+          "nome": "Noce moscata macinata Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 33,
+          "codiceMp": "MP-115",
+          "nome": "Prezzemolo liofilizzato Wiberg",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "28/8/2026"
+    },
+    {
+      "codice": "SL-7566",
+      "nome": "Caramello Salato Vegano",
+      "categoria": "Dolci e creme",
+      "resaQta": 350,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Fai un caramello a secco o con l'acqua fino a colore ambrato scuro, togli dal fuoco e aggiungi il latte di cocco caldo a filo mescolando velocemente (attenzione agli schizzi), rimetti sul fuoco 1-2 minuti per amalgamare, aggiungi il sale. Si addensa raffreddando.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 59,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 28,
+          "codiceMp": "MP-136",
+          "nome": "Latte di cocco",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 47,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "10/9/2026"
+    },
+    {
+      "codice": "SL-015",
+      "nome": "Cipolla Tritata",
+      "categoria": "Verdure lavorate",
+      "resaQta": 1000,
+      "resaUm": "g",
+      "tempo": "5",
+      "procedimento": "Tritare a piacimento per l'uso indicato in ricetta",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 53,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 1100,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "28/8/2026"
+    },
+    {
+      "codice": "SL-017",
+      "nome": "Crema per Millefoglie",
+      "categoria": "Dolci e creme",
+      "resaQta": 333,
+      "resaUm": "g",
+      "tempo": "15",
+      "procedimento": "Cuocere a bagnomaria i tuorlicon 90 gr di zucchero, il burro, la maizena e la vaniglia, portando a 82°C, raffreddare.\nIntanto preparare una meringa con gli albumi e i 30 gr di zucchero rimanenti, quindi amalgamare i due composti.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 42,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 60,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-117",
+          "nome": "Albume Pastorizzato",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 47,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 48,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 23,
+          "codiceMp": "MP-116",
+          "nome": "Maizena",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 44,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "29/8/2026"
+    },
+    {
+      "codice": "SL-7568",
+      "nome": "Crema Tiramisù",
+      "categoria": "Dolci e creme",
+      "resaQta": 1500,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Mescola il Cremor con lo zucchero, metti in planetaria tutti gli ingredienti e monta fino al risultato desiderato",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 67,
+          "codiceMp": "MP-108",
+          "nome": "Mascarpone",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 69,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 60,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 55,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 56,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 20,
+          "codiceMp": "MP-137",
+          "nome": "Cremor tartaro",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "10/9/2026"
+    },
+    {
+      "codice": "SL-013",
+      "nome": "Creme Brulè",
+      "categoria": "Dolci e creme",
+      "resaQta": 1627,
+      "resaUm": "g",
+      "tempo": "5",
+      "procedimento": "Mescolare tutti gli ingredienti tranne lo zucchero di canna, passarli al colino fine e mettere negli stampini di ceramica, cuocere a forno misto130°C per 13 minuti oppure forno a vapore a 89°C per 60 minuti. Tieni in frigo e al momento di servire , spolvera con zucchero di canna e brucia con il cannello.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 34,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 140,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 41,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 39,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 175,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 38,
+          "codiceMp": "MP-103",
+          "nome": "Zucchero di canna",
+          "qtaBase": 60,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "10/7/2026"
+    },
+    {
+      "codice": "SL-1936",
+      "nome": "Fondo bruno di manzo",
+      "categoria": "Fondi e brodi",
+      "resaQta": 1,
+      "resaUm": "lt",
+      "tempo": "360",
+      "procedimento": "1. Tostare le ossa di manzo in forno a 200°C per 40-45 minuti fino a doratura intensa.\n2. Rosolare le verdure (cipolla, carota, sedano) in olio EVO nella pentola.\n3. Aggiungere il concentrato di pomodoro e tostare 2-3 minuti.\n4. Unire le ossa tostate, sfumare con il vino rosso e deglassare bene.\n5. Coprire con acqua fredda. Portare a bollore schiumando.\n6. Sobbollire a fuoco basso per 3 ore.\n7. A metà cottura aggiungere abbondante ghiaccio (shock termico) per estrarre al meglio il collagene e la gelatina. Riprendere la cottura.\n8. Filtrare con colino a maglie fitte.\n9. Ridurre il liquido filtrato fino a consistenza sciropposa (circa 1 litro finale).\n10. Conservare in frigorifero o porzionare e congelare.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 5,
+      "shelfLifeSottovuoto": 14,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "magIdx": 8,
+          "nome": "Ossa di manzo",
+          "qtaBase": 1500,
+          "unit": "g",
+          "conv": 0.001,
+          "codiceMp": "MP-129"
+        },
+        {
+          "magIdx": 99,
+          "nome": "Sedano",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "codiceMp": "MP-068"
+        },
+        {
+          "magIdx": 12,
+          "nome": "Acqua",
+          "qtaBase": 4,
+          "unit": "lt",
+          "conv": 1,
+          "codiceMp": "MP-096"
+        },
+        {
+          "magIdx": 48,
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001,
+          "codiceMp": "MP-064"
+        },
+        {
+          "magIdx": 16,
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001,
+          "codiceMp": "MP-128"
+        },
+        {
+          "magIdx": 57,
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001,
+          "codiceMp": "MP-058"
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 72,
+          "codiceMp": "MP-066",
+          "nome": "Carote",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 73,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 54,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 27,
+          "codiceMp": "MP-092",
+          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "2026-09-09"
+    },
+    {
+      "codice": "SL-011",
+      "nome": "Gnocchi di Malga (base)",
+      "categoria": "Pasta e impasti",
+      "resaQta": 5500,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Mettere in planetaria con la foglia la farina , la ricotta e il sale, versare il latte tiepido ed accendere prima lentamente poi veloce, per circa 5 minuti. colare in acqua bollente o con i chucchiai o con l'apposita mandolina, si può usare espresso o cuocere alcuni minuti in acqua bollente e raffreddare subito in acqua fredda, tenere in frigo ed usare entro 4/6 ore.",
+      "coefficiente": 3,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 14,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 2450,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 2000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 38,
+          "codiceMp": "MP-100",
+          "nome": "Ricotta Fresca",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 29,
+          "codiceMp": "MP-057",
+          "nome": "sale Fino",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "7/7/2026"
+    },
+    {
+      "codice": "SL-010",
+      "nome": "Gnocchi di Patate (base)",
+      "categoria": "Salse e sughi",
+      "resaQta": 10087,
+      "resaUm": "g",
+      "tempo": "30",
+      "procedimento": "Passare le patate cotte, aggiungere la farina e arieggiare un po', fare una fontana e mettere tutti gli altri ingredienti, impastare fino ad ottenere un impasto ben formato che non appiccichi. Formare dei cilindri e tagliere gli gnocchi  a piacere, si possono abbattere in negativo e conservare per 6 mesi, si possono usare espressi crudi o si possono sbianchire e raffreddare in acqua fredda per usare un servizio, conservare in frigo coperti e leggermente unti per max 12 ore. 220 gr per porzione circa",
+      "coefficiente": 5,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 16,
+          "codiceMp": "MP-099",
+          "nome": "Fiocchi di Patate",
+          "qtaBase": 350,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 15,
+          "codiceMp": "MP-098",
+          "nome": "Fecola di Patate",
+          "qtaBase": 350,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 33,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 560,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 29,
+          "codiceMp": "MP-057",
+          "nome": "sale Fino",
+          "qtaBase": 70,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 18,
+          "codiceMp": "MP-076",
+          "nome": "Noce moscata macinata Wiberg",
+          "qtaBase": 7,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 14,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 1750,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 42,
+          "codiceMp": "MP-097",
+          "nome": "Patate per Gnocchi",
+          "qtaBase": 7000,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "7/7/2026"
+    },
+    {
+      "codice": "SL-020",
+      "nome": "Goulash di manzo (base)",
+      "categoria": "Carni lavorate",
+      "resaQta": 2400,
+      "resaUm": "g",
+      "tempo": "120",
+      "procedimento": "Questo semilavorato è per circa 4 persone\nDorare le cipolle nell'olio\nTagliare la carne a dadi di 40 gr e rosolarla in padella\nAggiungere la carne rosolata alle cipolle, aggiungere il concentrato e continuare la cottura\nCospargere con la paprika, bagnare con il vino ridurre la salsa e salare\nVersare il brodo e brasare fino a cottura",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 7,
+          "codiceMp": "MP-127",
+          "nome": "Muscolo Bovino",
+          "qtaBase": 800,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 70,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 31,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 19,
+          "codiceMp": "MP-092",
+          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 51,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso Cucina",
+          "qtaBase": 125,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 1,
+          "codiceSl": "SL-019",
+          "nome": "Brodo di manzo",
+          "qtaBase": 2,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-085",
+          "nome": "Paprica rubino delicata Wiberg",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 13,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 38,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "6/9/2026"
+    },
+    {
+      "codice": "SL-033",
+      "nome": "Mele Pulite",
+      "categoria": "Altro",
+      "resaQta": 160,
+      "resaUm": "g",
+      "tempo": "5",
+      "procedimento": "Sbucciare e detorsolare le mele",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-154",
+          "nome": "Mele Renetta",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "18/9/2026"
+    },
+    {
+      "codice": "SL-028",
+      "nome": "Meringa all'italiana",
+      "categoria": "Dolci e creme",
+      "resaQta": 1650,
+      "resaUm": "g",
+      "tempo": "30",
+      "procedimento": "In un tegame porta l'acqua e lo zucchero a 115/118 °C, quando lo zucchero comincia a bollire sbattere a parte gli albumi  aneve ben ferma ed appena lo zucchero è pronto versarlo adagio a filo negli albumi continuando la sbattitura.\nQuando tutto lo zucchero è stato versato ridurre la velocità e continuare fino al completo raffreddamento. Per velocizzare si può versare su di un tavolo ben pulito, poi mettere in un contenitore chiuso e conservare in frigo.",
+      "coefficiente": 4,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 64,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 13,
+          "codiceMp": "MP-117",
+          "nome": "Albume Pastorizzato",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "13/9/2026"
+    },
+    {
+      "codice": "SL-036",
+      "nome": "Millefoglie di Patate",
+      "categoria": "Verdure lavorate",
+      "resaQta": 950,
+      "resaUm": "g",
+      "tempo": "120",
+      "procedimento": "Affetta le patate dello spessore di 1 mm, condiscile con abbondante sale  e falle macerare per 10 min, poi lava ed asciuga bene.\nAmalgama tutti gli altri ingredienti fino ad ottenere una crema.\nFodera con pellicola 2 stampi (1 kg patate) da 10x20 , lasciando uno strato abbondante che avanzi dai lati che serva a coprire il tutto, poi spennella l'interno con il condimento.\nCrea la millefoglie nella pirofila con le fette fino ad esaurirle, sovrapponendole in modo uniforme e distribuendo il condimento tra ogni strato.\nChiudere la millefoglie con la pellicola che avanza, forala con l'ago e abbatti in positivo per rassodare.\nEstrai dalla pirofila e metti in un sacchetto per sottovuoto.\nCondiziona sottovuoto e cuoci a 88°C per 2 ore, poi abbatti in positivo fino e non usare prima di 24 ore.\n(150 gr Porzione)",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 98,
+          "codiceMp": "MP-097",
+          "nome": "Patate per Gnocchi",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 77,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 67,
+          "codiceMp": "MP-158",
+          "nome": "Senape",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 14,
+          "codiceMp": "MP-081",
+          "nome": "Aglio Wiberg – in polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 49,
+          "codiceMp": "MP-078",
+          "nome": "Origano tritato essiccato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 63,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 12,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "21/9/2026"
+    },
+    {
+      "codice": "SL-035",
+      "nome": "Pancia di Maiale CBT",
+      "categoria": "Carni lavorate",
+      "resaQta": 700,
+      "resaUm": "g",
+      "tempo": "1440",
+      "procedimento": "Con 1 kg di pancia fresca circa 4 porzioni.\nPulisci la pancia da eventuali tracce di setole e tagliala a strisce di 5/6 cm di larghezza.\nUnisci tutti gli altri ingredienti fino all'aglio e massaggia i pezzi di pancia.\nInserisci nella busta da cottura e condiziona sottovuoto.\nCuoci a 72°C per 24h, poi abbatti in positivo e attendi 24 ore prima di utilizzarla.\nScalda leggermente la pancia a bagnomaria, apri la busta e separala dal fondodi cottura.\nTrasferisci il fondo filtrato con il fondo bruno, fai ridurre alla consistenza desiderata, la pancia si può scaldare nel fondo o in una padella antiaderente se si vuole la crosticina.",
+      "coefficiente": 4,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-155",
+          "nome": "Pancia di Maiale",
+          "qtaBase": 1,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 61,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 56,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 62,
+          "codiceMp": "MP-073",
+          "nome": "Salvia liofilizzata Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 60,
+          "codiceMp": "MP-072",
+          "nome": "Rosmarino liofilizzato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 16,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 14,
+          "codiceMp": "MP-081",
+          "nome": "Aglio Wiberg – in polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 12,
+          "codiceSl": "SL-1936",
+          "nome": "Fondo bruno di manzo",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "19/9/2026"
+    },
+    {
+      "codice": "SL-012",
+      "nome": "Panna Cotta (base)",
+      "categoria": "Dolci e creme",
+      "resaQta": 1100,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Versare tutti gli ingredienti in un pentolino e, mescolando con una frusta a mano, far cuocere a fiamma moderata fino a bollore. Abbassare quindi la fiamma e continuare a mescolare per altri 3/4 minuti.\nTogliere dal fuoco, versare negli stampini e fare addensare in Abbattitore positivo per 60 min. Tenere in frigo coperta e usare entro 7 giorni",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 39,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 5,
+          "codiceMp": "MP-104",
+          "nome": "Agar Agar",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "9/7/2026"
+    },
+    {
+      "codice": "SL-7567",
+      "nome": "Panna Cotta Vegana (base)",
+      "categoria": "Dolci e creme",
+      "resaQta": 1000,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Scaldi la panna con lo zucchero e la vaniglia, aggiungi l'agar mescolando bene, porti a bollore per 2 minuti, versi subito nei bicchierini e lasci raffreddare. In bicchierino il servizio è anche più veloce",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 38,
+          "codiceMp": "MP-135",
+          "nome": "Panna di soia Valsoia",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 59,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-104",
+          "nome": "Agar Agar",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 55,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "10/9/2026"
+    },
+    {
+      "codice": "SL-018",
+      "nome": "Pasta sfoglia",
+      "categoria": "Dolci e creme",
+      "resaQta": 1160,
+      "resaUm": "g",
+      "tempo": "45",
+      "procedimento": "Impastare la Farina con l'acqua, il sale e 75 gr di burro. Formare un panetto liscio e lasciar riposare 15 minuti. Con il restante burro formare una mattonella di circa 1 cm.\nCon un mattarello stendere il panetto di pasta fino a formare un rettangolo dello spessore di 4/5 mm e al centro adagiatevi la mattonella di burro, ricoprendola con i lembi laterali della pasta. Battete la forma con il mattarello, poi distendete la pasta.\nCominciate  a piegare la pasta in tre parti, sovrapponendole, poi stendetela, ripetendo l'operazione per 3 volte e lasciando riposare 10min in frigo tra un giro e l'altro.\nInfine stendere la pasta dello spessore  di 2/3 mm, ricavate dei quadrati o dei dischi di circa 8mm, cuocere su placca forate a 200°C per 10/15min. Far Raffreddare.",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 18,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 37,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 15,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 7,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 48,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 525,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "29/8/2026"
+    },
+    {
+      "codice": "SL-009",
+      "nome": "Patate cotte",
+      "categoria": "Verdure lavorate",
+      "resaQta": 700,
+      "resaUm": "g",
+      "tempo": "45",
+      "procedimento": "Cuoci le patate in forno a vapore finche non raggiungono al cuore 92°C , una volta pelate e raffreddate conserva in frigo, max 48 ore",
+      "coefficiente": 1,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 39,
+          "codiceMp": "MP-097",
+          "nome": "Patate per Gnocchi",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "7/7/2026"
+    },
+    {
+      "codice": "SL-021",
+      "nome": "Polenta morbida",
+      "categoria": "Altro",
+      "resaQta": 4430,
+      "resaUm": "g",
+      "tempo": "45",
+      "procedimento": "Con 1 kg di farina escono circa 20 porzioni",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 23,
+          "codiceMp": "MP-130",
+          "nome": "Farina Gialla Bramata per polenta",
+          "qtaBase": 1,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 4,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 44,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 32,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "6/9/2026"
+    },
+    {
+      "codice": "SL-003",
+      "nome": "Porri stufati",
+      "categoria": "Altro",
+      "resaQta": 500,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Stufare i porri senza bruciarli per 15 min circa, devono risultare morbidi",
+      "coefficiente": 2,
+      "componenti": [
+        {
+          "magIdx": 10,
+          "codiceMp": "MP-061",
+          "nome": "Porri",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 15,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "21/6/2026"
+    },
+    {
+      "codice": "SL-006",
+      "nome": "Ragù di carne",
+      "categoria": "Salse e sughi",
+      "resaQta": 21.3,
+      "resaUm": "kg",
+      "tempo": "2400",
+      "procedimento": "In una padella rosola leggermente le verdure con 100 di olio, in una pentola ampia e larga rosola la carne con 400 di olio, unisci le verdure , sfuma con il vino rosso finchè non evapora del tutto. Aggiungi la Polpa, il concentrato, e tutti gli altri ingredienti, copri e cuoci a fuoco basso per 3/4 ore. Abbatti e conserva in frigo a +4, o surgela.",
+      "coefficiente": 6,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 2,
+          "codiceMp": "MP-089",
+          "nome": "Macinato di Manzo",
+          "qtaBase": 5,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 1,
+          "codiceMp": "MP-090",
+          "nome": "Macinato di Maiale",
+          "qtaBase": 5,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 27,
+          "codiceMp": "MP-088",
+          "nome": "Soffritto Misto Gelo",
+          "qtaBase": 2,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 4,
+          "codiceMp": "MP-081",
+          "nome": "Aglio Wiberg – in polvere",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-092",
+          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "qtaBase": 880,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 22,
+          "codiceMp": "MP-093",
+          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "qtaBase": 15,
+          "unit": "kg",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 24,
+          "codiceMp": "MP-057",
+          "nome": "sale Fino",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 20,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 23,
+          "codiceMp": "MP-072",
+          "nome": "Rosmarino liofilizzato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 25,
+          "codiceMp": "MP-073",
+          "nome": "Salvia liofilizzata Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 15,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 0.5,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 54,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 2,
+          "unit": "lt",
+          "conv": 1
+        }
+      ],
+      "dataCreazione": "24/6/2026"
+    },
+    {
+      "codice": "SL-7565",
+      "nome": "Ragù di cortile",
+      "categoria": "Carni lavorate",
+      "resaQta": 1260,
+      "resaUm": "g",
+      "tempo": "90",
+      "procedimento": "1. Rosolare il soffritto misto in olio EVO fino a doratura.\n2. Aggiungere il tastasal e sgranarlo bene in padella.\n3. Unire macinato di coniglio, pollo e anatra. Rosolare a fuoco vivo mescolando.\n4. Sfumare con il vino bianco e far evaporare completamente.\n5. Aggiungere alloro, rosmarino e salvia.\n6. Incorporare il fondo bruno di manzo per mantenere il ragù sugoso.\n7. Cuocere a fuoco basso con coperchio per 60-70 minuti, aggiungendo fondo se necessario.\n8. Aggiustare di sale e pepe. Il ragù deve risultare morbido e ben legato.\n9. Rimuovere gli aromi prima del servizio.",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 4,
+      "shelfLifeSottovuoto": 10,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "magIdx": 1,
+          "nome": "Macinato di Coniglio",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "codiceMp": "MP-110"
+        },
+        {
+          "magIdx": 5,
+          "nome": "Macinato di Pollo",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001,
+          "codiceMp": "MP-112"
+        },
+        {
+          "magIdx": 0,
+          "nome": "Macinato di Anatra",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001,
+          "codiceMp": "MP-070"
+        },
+        {
+          "magIdx": 90,
+          "nome": "Tastasal",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "codiceMp": "MP-133"
+        },
+        {
+          "magIdx": 100,
+          "nome": "Soffritto Misto Gelo",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001,
+          "codiceMp": "MP-088"
+        },
+        {
+          "magIdx": 48,
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "codiceMp": "MP-064"
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 9,
+          "codiceSl": "SL-1936",
+          "nome": "Fondo bruno di manzo",
+          "qtaBase": 300,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "magIdx": 45,
+          "nome": "Salvia",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 53,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso Cucina",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 13,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-072",
+          "nome": "Rosmarino liofilizzato Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 44,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 39,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "2026-09-09"
+    },
+    {
+      "codice": "SL-037",
+      "nome": "Ragù di Funghi",
+      "categoria": "Salse e sughi",
+      "resaQta": 1400,
+      "resaUm": "g",
+      "tempo": "90",
+      "procedimento": "Metti i funghi secchi in ammollo in acqua tiepida per 30 minuti. Scolali, filtra l'acqua di ammollo con un colino fine e tienila da parte. Trita grossolanamente i porcini a coltello.\n\nIn una casseruola scalda l'olio EVO a fuoco vivace, aggiungi i champignon congelati direttamente senza scongelare e rosola mescolando spesso finché l'acqua di vegetazione è completamente evaporata, circa 8-10 minuti. Abbassa il fuoco.\n\nUnisci il soffritto misto e l'aglio, fai appassire 4-5 minuti. Aggiungi i porcini tritati e mescola bene per insaporire.\n\nSfuma con il vino bianco e lascia evaporare completamente. Aggiungi la polpa di pomodoro, l'acqua di ammollo filtrata, l'alloro e il timo. Aggiusta di sale e pepe.\n\nCuoci a fuoco basso con coperchio per 35 minuti mescolando di tanto in tanto. Negli ultimi 10 minuti togli il coperchio per far restringere il sugo.\n\nRimuovi le foglie di alloro prima di porzionare.\n150 gr Porzione",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 97,
+          "codiceMp": "MP-159",
+          "nome": "Champignon Congelati",
+          "qtaBase": 800,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-114",
+          "nome": "Funghi Secchi con porcini \"Merlini\"",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 102,
+          "codiceMp": "MP-088",
+          "nome": "Soffritto Misto Gelo",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 95,
+          "codiceMp": "MP-069",
+          "nome": "Aglio",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 48,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 59,
+          "codiceMp": "MP-093",
+          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 16,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 68,
+          "codiceMp": "MP-074",
+          "nome": "Timo liofilizzato Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 63,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 57,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 73,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 150,
+          "unit": "ml",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "22/9/2026"
+    },
+    {
+      "codice": "SL-027",
+      "nome": "Sbrisolona (base)",
+      "categoria": "Dolci e creme",
+      "resaQta": 1800,
+      "resaUm": "g",
+      "tempo": "45",
+      "procedimento": "Mescola a mano in una ciotola capiente farina, farina di mais fioretto, zucchero, mandorle tritate grossolanamente, scorza di limone grattugiata e un pizzico di sale. Aggiungi il burro freddo a pezzetti e lavora velocemente con le dita sfregando gli ingredienti tra i palmi fino a ottenere un composto sabbioso e granuloso — non impastare, deve rimanere briciole irregolari. Aggiungi i tuorli e la vaniglia e amalgama ancora brevemente senza compattare. Versa il composto in una teglia imburrata premendo leggermente in modo non uniforme, lasciando la superficie rustica e irregolare. Cuoci in forno a 170°C per 30-35 minuti fino a doratura uniforme. Lascia raffreddare completamente prima di rompere a pezzi a mano.",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 25,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 420,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 27,
+          "codiceMp": "MP-139",
+          "nome": "Farina Gialla Fioretto per Polenta",
+          "qtaBase": 220,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 64,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 320,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 65,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 400,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 57,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-140",
+          "nome": "Mandorle Sgusciate",
+          "qtaBase": 320,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 23,
+          "codiceSl": "SL-7569",
+          "nome": "Scorza Limone Grattugiata",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 52,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 60,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 80,
+          "codiceMp": "MP-141",
+          "nome": "Grappa Morbida",
+          "qtaBase": 18,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "12/9/2026"
+    },
+    {
+      "codice": "SL-030",
+      "nome": "Sciroppo zucchero 36 °Bè",
+      "categoria": "Pasta e impasti",
+      "resaQta": 1900,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Portare ad ebollizione, raffreddare e conservare in frigo",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 67,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 900,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "17/9/2026"
+    },
+    {
+      "codice": "SL-7569",
+      "nome": "Scorza Limone Grattugiata",
+      "categoria": "Altro",
+      "resaQta": 20,
+      "resaUm": "g",
+      "tempo": "2",
+      "procedimento": "gratta gratta",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-142",
+          "nome": "Limoni",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "12/9/2026"
+    },
+    {
+      "codice": "SL-928",
+      "nome": "Semifreddo all'Amaretto",
+      "categoria": "Dolci e creme",
+      "resaQta": 4500,
+      "resaUm": "g",
+      "tempo": "30",
+      "procedimento": "Frullare gli amaretti e tenerli da parte.\nFrullare i tuorli, l'Amaretto e scaldare a 20°C, raffreddare ed aggiungere il mascarpone e mescolare bene con la frusta.\nAmalgamare alla meringa, aggiungere gli amaretti sbriciolati ed in fine aggiungere la panna montata poco alla volta incorporandola molto lentamente.\nRaffreddare a -18°C . \nCirca 150 gr per porzione dessert",
+      "coefficiente": 4,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 58,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 375,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 81,
+          "codiceMp": "MP-144",
+          "nome": "Amaretto di saronno",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 72,
+          "codiceMp": "MP-108",
+          "nome": "Mascarpone",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 74,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 2100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 15,
+          "codiceMp": "MP-143",
+          "nome": "Amaretti Bonomi",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 16,
+          "codiceSl": "SL-028",
+          "nome": "Meringa all'italiana",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "13/9/2026"
+    },
+    {
+      "codice": "SL-031",
+      "nome": "Semifreddo alla grappa di Pino Mugo",
+      "categoria": "Dolci e creme",
+      "resaQta": 4280,
+      "resaUm": "g",
+      "tempo": "20",
+      "procedimento": "-Frullare i tuorli, la grappa e lo sciroppo, scaldare a circa 20°C, \n-Raffreddare ed aggiungere il mascarpone, mescolare bene con la frusta\n-Incorporare piano nella meringa\n- Montare la panna ed aggiungere piano al resto degli ingredienti\n-Abbattere in negativo , porzione di circa 150 gr a persona",
+      "coefficiente": 4,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 60,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 375,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 85,
+          "codiceMp": "MP-149",
+          "nome": "Grappa Mugo",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 26,
+          "codiceSl": "SL-030",
+          "nome": "Sciroppo zucchero 36 °Bè",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 74,
+          "codiceMp": "MP-108",
+          "nome": "Mascarpone",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 16,
+          "codiceSl": "SL-028",
+          "nome": "Meringa all'italiana",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 76,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 2000,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "17/9/2026"
+    },
+    {
+      "codice": "SL-022",
+      "nome": "Speck croccante",
+      "categoria": "Altro",
+      "resaQta": 62,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Mettere in padella antiaderente tagliato a julienne e farlo croccante, tenere in caldo durante il servizio",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 70,
+          "codiceMp": "MP-132",
+          "nome": "Speck Segata",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "8/9/2026"
+    },
+    {
+      "codice": "SL-032",
+      "nome": "Terra al cioccolato",
+      "categoria": "Dolci e creme",
+      "resaQta": 430,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Versa l'acqua e lo zucchero in un pentolino capiente e porta a ebollizione per creare uno sciroppo.Togli dal fuoco o unisci il cioccolato fondente tritato.Mescola finché il composto non cristallizza e assume una consistenza granulosa e scura simile alla terra. Conserva in un vasetto",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 90,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 68,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 23,
+          "codiceMp": "MP-150",
+          "nome": "Cioccolato fondente extra",
+          "qtaBase": 140,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "18/9/2026"
+    },
+    {
+      "codice": "SL-034",
+      "nome": "Torta di mele (base)",
+      "categoria": "Dolci e creme",
+      "resaQta": 1200,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Tagliare 3 mele a cubetti e una a fettine di 3 mm.\nMischiare con la frusta il burro morbido, l'olio, il latte, il sale, la vaniglia e la scorza di limone.\nMontare le uova con lo zucchero e il miele, oi incorporare il composto preparato in precedenza con la marisa.\nAggiungere quindi la farina ed il lievito setacciati, mescolando delicatamente, ed in fine le mele a cubetti.\nVersare in una tortiera  precedentemente imburrata, coprite con le mele a fettine , cospargete con un po' di zucchero semolato e infornare a 170°C per 40/45 minuti.",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 29,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 67,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 180,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 72,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 73,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 70,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-151",
+          "nome": "Miele Millefiori",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 45,
+          "codiceMp": "MP-152",
+          "nome": "Olio di semi vari",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 37,
+          "codiceMp": "MP-153",
+          "nome": "Lievito Vanigliato",
+          "qtaBase": 16,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 28,
+          "codiceSl": "SL-7569",
+          "nome": "Scorza Limone Grattugiata",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 60,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 16,
+          "codiceSl": "SL-033",
+          "nome": "Mele Pulite",
+          "qtaBase": 640,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 68,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "18/9/2026"
+    }
+  ],
+  "piatti": [
+    {
+      "codice": "PF-008",
+      "nome": "Canederli ai Funghi e burro fuso",
+      "descrizione": "Nuova proposta da provare",
+      "tags": [
+        "Vegetariano",
+        "Novità",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 10.9,
+      "coefficiente": 4,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Cuocere i canederli almeno 15 minuti in acqua salata, scolarli, impiattare, spolverare con il grana, mettere il burro nocciola spumeggiante e aggiungere un po' di erba cipollina prima dell'uscita."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Canederli con funghi misti Secchi (Base)",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 4,
+          "codiceSl": "SL-016"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Burro Nocciola",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 1,
+          "codiceSl": "SL-004"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 48,
+          "codiceMp": "MP-056"
+        }
+      ],
+      "dataCreazione": "29/8/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-001",
+      "nome": "Canederli di Monte Veronese al burro fuso",
+      "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 10.9,
+      "coefficiente": 4,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Cuocere i canederli almeno 15 minuti in acqua salata, scolarli, impiattare, spolverare con il grana, mettere il burro nocciola spumeggiante e aggiungere un po' di erba cipollina prima dell'uscita."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Canederli ai Formaggi (Base)",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 5,
+          "codiceSl": "SL-005"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Burro Nocciola",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 1,
+          "codiceSl": "SL-004"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 48,
+          "codiceMp": "MP-056"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Erba cipollina liofilizzata Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 16,
+          "codiceMp": "MP-077"
+        }
+      ],
+      "dataCreazione": "21/6/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-003",
+      "nome": "Gnocchi al Ragu'",
+      "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 8.9,
+      "coefficiente": 6,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Gnocchi di Patate (base)",
+          "qtaBase": 2200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 14,
+          "codiceSl": "SL-010"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Ragù di carne",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 6,
+          "codiceSl": "SL-006"
+        }
+      ],
+      "dataCreazione": "7/7/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-004",
+      "nome": "Gnocchi di Malga al Burro fuso",
+      "descrizione": "la lessinia nel piatto",
+      "tags": [
+        "Consigliato",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 8.9,
+      "coefficiente": 4,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Gnocchi di Malga (base)",
+          "qtaBase": 2200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 3,
+          "codiceSl": "SL-011"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Burro Nocciola",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 1,
+          "codiceSl": "SL-004"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 42,
+          "codiceMp": "MP-056"
+        }
+      ],
+      "dataCreazione": "7/7/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-011",
+      "nome": "Goulash con polenta",
+      "descrizione": "Con carne bovina allevata in lessinia",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 14,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Polenta morbida",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 15,
+          "codiceSl": "SL-021"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Goulash di manzo (base)",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 11,
+          "codiceSl": "SL-020"
+        }
+      ],
+      "dataCreazione": "7/9/2026"
+    },
+    {
+      "codice": "PF-002",
+      "nome": "Lasagne al Ragù",
+      "descrizione": "lasagnetta con la ricetta della nonna",
+      "tags": [
+        "Più venduto"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 18,
+      "prezzoVendita": 9.9,
+      "coefficiente": 4,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Con la metà del burro ungere una placca GN 1/1, iniziare gli strati con la besciamella via via alternandoli con il ragù e ogni strato una spolverata di grana, fino a fare 6 strati di pasta.L'ultimo strato farlo misto, spolverare con il grana e mettere dei pezzetti di burro con quello rimanenta. Cuocere a 150/160°C per 45 min, se c'è la sonda arrivare a 85/90°C al cuore. Far riposare coperto 10 min e servire"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Ragù di carne",
+          "qtaBase": 3,
+          "unit": "kg",
+          "conv": 1,
+          "semiIdx": 4,
+          "codiceSl": "SL-006"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Besciamella",
+          "qtaBase": 3,
+          "unit": "kg",
+          "conv": 1,
+          "semiIdx": 0,
+          "codiceSl": "SL-007"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Burro da Kg",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 8,
+          "codiceMp": "MP-095"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 42,
+          "codiceMp": "MP-056"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pasta Per Lasagne Koch (10 fogli x 2 kg) gn",
+          "qtaBase": 1.2,
+          "unit": "kg",
+          "conv": 1,
+          "magIdx": 27,
+          "codiceMp": "MP-094"
+        }
+      ],
+      "dataCreazione": "26/6/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-013",
+      "nome": "Maccheroni al ragù di cortile",
+      "descrizione": "Con la ricetta della nonna",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 8,
+      "prezzoVendita": 10.4,
+      "coefficiente": 4,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Pasta 125 gr pax\nRaguù 100 gr pax"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Maccheroncini di pasta fresca",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 28,
+          "codiceMp": "MP-134"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Ragù di cortile",
+          "qtaBase": 800,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 19,
+          "codiceSl": "SL-7565"
+        }
+      ],
+      "dataCreazione": "10/9/2026"
+    },
+    {
+      "codice": "PF-009",
+      "nome": "MilleFoglie al piatto",
+      "descrizione": "Ottima in ogni stagione",
+      "tags": [
+        "Consigliato",
+        "Novità",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 6,
+      "coefficiente": 3,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Montare la millefoglie alternando crema e Sfoglia cotta in 3 strati, mettere un po di amaretti ai lati e spolverare con zucchero a velo."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Pasta sfoglia",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 11,
+          "codiceSl": "SL-018"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Crema per Millefoglie",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 9,
+          "codiceSl": "SL-017"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Amaretti Vicenzi",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 11,
+          "codiceMp": "MP-118"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Zucchero a Velo da Kg",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 47,
+          "codiceMp": "MP-119"
+        }
+      ],
+      "dataCreazione": "30/8/2026"
+    },
+    {
+      "codice": "PF-024",
+      "nome": "Minestra di orzo",
+      "descrizione": "Per scelta non mettiamo carne",
+      "tags": [
+        "Vegetariano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 7.9,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "-Rosolare il soffritto con il burro per 5 minuti\n-Lavare l'orzo in acqua fredda e versarlo nella pentola con le verdure \n-Aggiungere il brodo, la foglia di alloro e cuocere 90 minuti\n-Aggiungere le patate precedentemente tagliate a dadini\n-Condire con erba cipollina   e aggiustare di sale e pepe"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Soffritto Misto Gelo",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 91,
+          "codiceMp": "MP-088"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Patate per Gnocchi",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 88,
+          "codiceMp": "MP-097"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 14,
+          "codiceMp": "MP-128"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Burro da Kg",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 68,
+          "codiceMp": "MP-095"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Orzo perlato",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 43,
+          "codiceMp": "MP-148"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Brodo Vegetale",
+          "qtaBase": 1.5,
+          "unit": "lt",
+          "conv": 1,
+          "semiIdx": 2,
+          "codiceSl": "SL-029"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Erba cipollina liofilizzata Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 26,
+          "codiceMp": "MP-077"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 55,
+          "codiceMp": "MP-057"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 50,
+          "codiceMp": "MP-058"
+        }
+      ],
+      "dataCreazione": "16/9/2026"
+    },
+    {
+      "codice": "PF-014",
+      "nome": "Panna Cotta Vegana",
+      "descrizione": "Con caramello salato",
+      "tags": [
+        "Vegano",
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 6,
+      "prezzoVendita": 5.4,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Non credo serva spiegone"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Panna Cotta Vegana (base)",
+          "qtaBase": 900,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 15,
+          "codiceSl": "SL-7567"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Caramello Salato Vegano",
+          "qtaBase": 180,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 6,
+          "codiceSl": "SL-7566"
+        }
+      ],
+      "dataCreazione": "10/9/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-010",
+      "nome": "Salumi e formaggi del territorio per 2 persone",
+      "descrizione": "Selezione Bottega Valbusa con giardiniera e marmellata di nostra produzione",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 18.4,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Scriveremo poi"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Salame Nostrano",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 64,
+          "codiceMp": "MP-120"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pancetta arrotolata",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 62,
+          "codiceMp": "MP-121"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Prosciutto cotto Alta Qualità",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 63,
+          "codiceMp": "MP-122"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Monte Veronese d'allevo",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 59,
+          "codiceMp": "MP-055"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Formaggio Capra Fresco",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 55,
+          "codiceMp": "MP-123"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Caciottina Fresca",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 54,
+          "codiceMp": "MP-124"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Giardiniera Zuccato",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 23,
+          "codiceMp": "MP-125"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Marmellata cipolle rosse",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 26,
+          "codiceMp": "MP-126"
+        }
+      ],
+      "dataCreazione": "5/9/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-016",
+      "nome": "Sbrisolona",
+      "descrizione": "Provala con la nostra grappa Morbida +2€",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 4.4,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Sbrisolona (base)",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 23,
+          "codiceSl": "SL-027"
+        }
+      ],
+      "dataCreazione": "12/9/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-025",
+      "nome": "Semifreddo al Pino Mugo",
+      "descrizione": "Con la nostra grappa",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 6.4,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Mettere come base la terra di cioccolato, adagiare sopra il semifreddo (150 gr pax) e a chiudete il miele"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Semifreddo alla grappa di Pino Mugo",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 29,
+          "codiceSl": "SL-031"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Terra al cioccolato",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 31,
+          "codiceSl": "SL-032"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Miele Millefiori",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 41,
+          "codiceMp": "MP-151"
+        }
+      ],
+      "dataCreazione": "18/9/2026"
+    },
+    {
+      "codice": "PF-017",
+      "nome": "Semifreddo all'Amaretto",
+      "descrizione": "Con Prodotti locali",
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Consigliato",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 5.9,
+      "coefficiente": 3,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Fare una mattonella di 150 gr di semifreddo, racchiusa tra le due cialde, servire come al bar Milano de na volta"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Cialda per Gelato",
+          "qtaBase": 6,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 22,
+          "codiceMp": "MP-145"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Semifreddo all'Amaretto",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 28,
+          "codiceSl": "SL-928"
+        }
+      ],
+      "dataCreazione": "13/9/2026"
+    },
+    {
+      "codice": "PF-027",
+      "nome": "Spaghetti al Ragù di funghi",
+      "descrizione": "Con funghi Porcini, possibili contaminazione crociata uova",
+      "tags": [
+        "Vegetariano",
+        "Vegano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 8.9,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Classico spaghettone  con ragù Vegan"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Spaghetti",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 68,
+          "codiceMp": "MP-160"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Ragù di Funghi",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 28,
+          "codiceSl": "SL-037"
+        }
+      ],
+      "dataCreazione": "22/9/2026"
+    },
+    {
+      "codice": "PF-015",
+      "nome": "Tiramisù della Malga",
+      "descrizione": "Con prodotti del territorio",
+      "tags": [
+        "Più venduto"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 5.9,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Crea gli strati come di solito e spolvera solo all'ultimo momento con il cacao"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Crema Tiramisù",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 9,
+          "codiceSl": "SL-7568"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Savoiardi",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 51,
+          "codiceMp": "MP-107"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Caffè Per Tiramisù",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 3,
+          "codiceSl": "SL-014"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Cacao Amaro",
+          "qtaBase": 4,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 18,
+          "codiceMp": "MP-138"
+        }
+      ],
+      "dataCreazione": "12/9/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-026",
+      "nome": "Torta di Mele",
+      "descrizione": "Un Classico",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 4,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Servire 150 gr a persona, se aggiungiamo qualcosaltro rivedere il prezzo di vendita"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Torta di mele (base)",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 33,
+          "codiceSl": "SL-034"
+        }
+      ],
+      "dataCreazione": "18/9/2026"
+    },
+    {
+      "codice": "PF-012",
+      "nome": "Uovo in camicia, patate schiacciate e speck croccante",
+      "descrizione": "Uova da galline felici, patate locali e speck trentino",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 8.4,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Cuoci 3 minuti l'uovo in acqua salata con un goccio di aceto, scalda le patate nel microonde e condiscile con olio sale pepe.\nMetti le patate a tortino alla base, appoggia l'uovo in camicia e cospargi di speck croccante, finisci con erba cipollina"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Patate cotte",
+          "qtaBase": 150.2,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 14,
+          "codiceSl": "SL-009"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Uova Fresche",
+          "qtaBase": 60,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 50,
+          "codiceMp": "MP-131"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Speck croccante",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 18,
+          "codiceSl": "SL-022"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 32,
+          "codiceMp": "MP-064"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Sale Fino",
+          "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 44,
+          "codiceMp": "MP-057"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 0.5,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 39,
+          "codiceMp": "MP-058"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Erba cipollina liofilizzata Wiberg",
+          "qtaBase": 0.5,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 21,
+          "codiceMp": "MP-077"
+        }
+      ],
+      "dataCreazione": "8/9/2026",
+      "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-018",
+      "nome": "Vino  Rosso della Casa  1 Litro",
+      "descrizione": "Corvina Veronese igt Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "Della casa",
+      "pax": 1,
+      "prezzoVendita": 12.5,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Corvina igt bag in box 10L",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
+          "magIdx": 91,
+          "codiceMp": "MP-146"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
+    },
+    {
+      "codice": "PF-021",
+      "nome": "Vino Bianco della Casa 1 Litro",
+      "descrizione": "Garganega IGT Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "Della casa",
+      "pax": 1,
+      "prezzoVendita": 12.5,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Garganega igt Bag in Box",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
+          "magIdx": 92,
+          "codiceMp": "MP-147"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
+    },
+    {
+      "codice": "PF-022",
+      "nome": "Vino Bianco della Casa 1/2 Litro",
+      "descrizione": "Garganega IGT Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "Della casa",
+      "pax": 1,
+      "prezzoVendita": 7.5,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Garganega igt Bag in Box",
+          "qtaBase": 500,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 92,
+          "codiceMp": "MP-147"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
+    },
+    {
+      "codice": "PF-023",
+      "nome": "Vino Bianco della Casa 1/4 di Litro",
+      "descrizione": "Garganega IGT Cantine di Verona",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "Della casa",
+      "pax": 1,
+      "prezzoVendita": 4,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Garganega igt Bag in Box",
+          "qtaBase": 250,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 92,
+          "codiceMp": "MP-147"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
+    },
+    {
+      "codice": "PF-020",
+      "nome": "Vino Rosso della Casa  1/4 Litro",
+      "descrizione": "Corvina IGT Cantine di Verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "Della casa",
+      "pax": 1,
+      "prezzoVendita": 4,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Corvina igt bag in box 10L",
+          "qtaBase": 250,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 91,
+          "codiceMp": "MP-146"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
+    },
+    {
+      "codice": "PF-019",
+      "nome": "Vino Rosso della Casa 1/2 Litro",
+      "descrizione": "Corvina Veronese igt Cantine di verona",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Vini",
+      "sottocategoria": "Della casa",
+      "pax": 1,
+      "prezzoVendita": 7.5,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Corvina igt bag in box 10L",
+          "qtaBase": 500,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 91,
+          "codiceMp": "MP-146"
+        }
+      ],
+      "dataCreazione": "15/9/2026"
+    }
+  ],
+  "fornitori": [
+    {
+      "nome": "Supermercato / Generico",
+      "tipo": "Placeholder",
+      "referente": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "giorniOrdine": [],
+      "giorniConsegna": [],
+      "frequenza": "Su richiesta",
+      "leadtime": "",
+      "minimo": "",
+      "pagamento": "",
+      "note": "Fornitore provvisorio. Sostituire con il fornitore ufficiale appena disponibile."
+    },
+    {
+      "nome": "Riso Gallo / Ingrosso cereali",
+      "tipo": "Ingrosso alimentare",
+      "referente": "Mario Rossi",
+      "tel": "+39 045 000 0001",
+      "email": "ordini@risogallo.it",
+      "web": "www.risogallo.it",
+      "giorniOrdine": [
+        "Lun",
+        "Mer"
+      ],
+      "giorniConsegna": [
+        "Mar",
+        "Gio"
+      ],
+      "frequenza": "2x settimana",
+      "leadtime": "1",
+      "minimo": "80 euro",
+      "pagamento": "Bonifico 30gg",
+      "note": "Sconto 5% su ordini superiori a 200kg"
+    },
+    {
+      "nome": "Macelleria Bianchi",
+      "tipo": "Macelleria / Carni",
+      "referente": "Gianni Bianchi",
+      "tel": "+39 045 000 0002",
+      "email": "macelleria@bianchi.it",
+      "web": "",
+      "giorniOrdine": [
+        "Lun",
+        "Gio"
+      ],
+      "giorniConsegna": [
+        "Mar",
+        "Ven"
+      ],
+      "frequenza": "2x settimana",
+      "leadtime": "1",
+      "minimo": "30 euro",
+      "pagamento": "Contanti alla consegna",
+      "note": "Prodotti freschi - ordinare entro le 10:00"
+    },
+    {
+      "nome": "Latteria Valle Verde",
+      "tipo": "Latteria / Caseificio",
+      "referente": "Anna Verdi",
+      "tel": "+39 045 000 0003",
+      "email": "ordini@valleverde.it",
+      "web": "www.valleverde.it",
+      "giorniOrdine": [
+        "Lun",
+        "Mer",
+        "Ven"
+      ],
+      "giorniConsegna": [
+        "Mar",
+        "Gio",
+        "Sab"
+      ],
+      "frequenza": "3x settimana",
+      "leadtime": "1",
+      "minimo": "50 euro",
+      "pagamento": "RiBa 30gg",
+      "note": "Grana DOP"
+    },
+    {
+      "nome": "Ortofrutticolo Mercato",
+      "tipo": "Ortofrutticolo",
+      "referente": "Luca Neri",
+      "tel": "+39 045 000 0004",
+      "email": "",
+      "web": "",
+      "giorniOrdine": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Gio",
+        "Ven",
+        "Sab"
+      ],
+      "giorniConsegna": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Gio",
+        "Ven",
+        "Sab"
+      ],
+      "frequenza": "Giornaliera",
+      "leadtime": "0",
+      "minimo": "20 euro",
+      "pagamento": "Contanti alla consegna",
+      "note": "Consegna mattina presto"
+    },
+    {
+      "nome": "Cantina San Giorgio",
+      "tipo": "Vini e distillati",
+      "referente": "Paolo Greco",
+      "tel": "+39 045 000 0005",
+      "email": "cantina@sangiorgio.it",
+      "web": "www.cantinasangiorgio.it",
+      "giorniOrdine": [
+        "Lun",
+        "Ven"
+      ],
+      "giorniConsegna": [
+        "Mer"
+      ],
+      "frequenza": "Settimanale",
+      "leadtime": "2",
+      "minimo": "100 euro o 6 bottiglie",
+      "pagamento": "Bonifico 60gg",
+      "note": ""
+    }
+  ],
+  "baseFoto": "",
+  "prezzoVenditaBase": "14.00"
+}
