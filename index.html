@@ -2088,6 +2088,40 @@ function renderMagazzino(){
             +'<button class="btn-sm" onclick="aggiungiLotto('+mi+')">+ Lotto</button>'
             +'</div></div>';
 
+          /* usato in */
+          var usoSl=[],usoPiatti=[];
+          semilavorati.forEach(function(s){
+            (s.componenti||[]).forEach(function(c){
+              if(c.tipo!=='sl'&&c.nome&&c.nome.toLowerCase()===m.nome.toLowerCase())
+                usoSl.push({nome:s.nome,codice:s.codice,qta:c.qtaBase,unit:c.unit});
+            });
+          });
+          piatti.forEach(function(p){
+            (p.componenti||[]).forEach(function(c){
+              if(c.tipo!=='sl'&&c.nome&&c.nome.toLowerCase()===m.nome.toLowerCase())
+                usoPiatti.push({nome:p.nome,qta:c.qtaBase,unit:c.unit});
+            });
+          });
+          if(usoSl.length||usoPiatti.length){
+            out+='<div style="margin-top:12px;padding-top:12px;border-top:1px solid #e0ded8;">'
+              +'<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Usato in</div>';
+            usoSl.forEach(function(u){
+              out+='<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px;">'
+                +'<span style="color:#aaa;font-size:11px;min-width:54px;">'+u.codice+'</span>'
+                +'<span style="flex:1;">'+u.nome+'</span>'
+                +'<span style="color:#888;font-size:12px;">'+u.qta+' '+u.unit+'</span>'
+                +'</div>';
+            });
+            usoPiatti.forEach(function(u){
+              out+='<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px;">'
+                +'<span style="color:#aaa;font-size:11px;min-width:54px;">piatto</span>'
+                +'<span style="flex:1;font-style:italic;">'+u.nome+'</span>'
+                +'<span style="color:#888;font-size:12px;">'+u.qta+' '+u.unit+'</span>'
+                +'</div>';
+            });
+            out+='</div>';
+          }
+
           /* allergeni e nutrizionali */
           out+='<div style="margin-top:12px;padding-top:12px;border-top:1px solid #e0ded8;display:flex;gap:8px;flex-wrap:wrap;">'
             +'<button class="btn-sm" onclick="event.stopPropagation();openSchedaModal('+mi+')">&#128196; Scheda allergeni &amp; nutrizionali</button>'
