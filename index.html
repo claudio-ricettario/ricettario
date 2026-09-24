@@ -6796,9 +6796,16 @@ function homeRicettaRow(r,i){
     return s+(ing.conv?ing.qtaBase*ing.conv*gp(ing.magIdx):0);
   },0);
   var fc=r.prezzoVendita>0?(tot/r.pax/r.prezzoVendita*100):0;
+  var gfBadge='';
+  if(r._isPiatto&&piatti[r._piattoIdx]){
+    var _pa=calcolaAllergeniPiatto(piatti[r._piattoIdx]);
+    var _hasGlut=_pa.certi.indexOf('Glutine')>=0||_pa.tracce.indexOf('Glutine')>=0;
+    if(!_hasGlut)gfBadge='<span class="badge" style="background:#dcfce7;color:#16a34a;font-weight:700;letter-spacing:.02em;">GF</span>';
+  }
   var fcBadge=r._isBase
     ?'<span class="badge badge-gray">base</span>'
     :(r._isPiatto?'<span class="badge badge-blue">piatto</span>':'')
+    +gfBadge
     +(fc>0?fcBadgeHtml(fc,(r._isPiatto&&piatti[r._piattoIdx]&&piatti[r._piattoIdx].tipoBeverage)||false):'');
   var thumbHtml=r.foto
     ?'<img src="'+r.foto+'" style="width:100%;height:100%;object-fit:cover;"/>'
