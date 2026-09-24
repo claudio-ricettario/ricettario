@@ -62,8 +62,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .dish-allergeni{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
 .allerg-badge{font-size:9px;padding:2px 7px;border-radius:10px;background:#fef3f2;color:#c0392b;border:1px solid #fcd5d2;font-weight:500;}
 .tracce-badge{font-size:9px;padding:2px 7px;border-radius:10px;background:#fdf8ed;color:#8a6d1f;border:1px solid #f5e0a0;font-weight:500;}
-.dish-footer{background:#f7f6f2;border-top:1px solid #eeebe4;padding:9px 16px;display:flex;justify-content:flex-start;align-items:center;}
+.dish-footer{background:#f7f6f2;border-top:1px solid #eeebe4;padding:9px 16px;display:flex;justify-content:space-between;align-items:center;}
 .dish-price{font-size:14px;font-weight:400;color:#888;}
+.gf-badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;background:#dcfce7;color:#16a34a;letter-spacing:.04em;border:1px solid #bbf7d0;}
 
 /* EMPTY / LOADING */
 .empty{text-align:center;padding:60px 20px;color:#bbb;font-size:15px;}
@@ -257,7 +258,8 @@ function showCategory(catEnc){
     (p.allergeni||[]).forEach(function(a){ badges+='<span class="allerg-badge">'+escHtml(a)+'</span>'; });
     if(badges) html+='<div class="dish-allergeni">'+badges+'</div>';
     html+='</div>';
-    html+='<div class="dish-footer"><span class="dish-price">'+eur(p.prezzoVendita)+'</span></div>';
+    var isGF=!(p.allergeni||[]).includes('Glutine')&&!(p.tracce||[]).includes('Glutine');
+    html+='<div class="dish-footer"><span class="dish-price">'+eur(p.prezzoVendita)+'</span>'+(isGF?'<span class="gf-badge">Gluten Free</span>':'')+'</div>';
     html+='</div>';
   });
   html+='</div>';
