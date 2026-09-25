@@ -475,6 +475,7 @@ textarea{resize:vertical;min-height:60px;}
         <p class="home-subtitle">Piatti, bevande e ricette — seleziona una categoria</p>
       </div>
       <button id="btn-nuovo-piatto-home" class="btn-primary no-print" onclick="npReset();showTab('nuovo-piatto')" style="margin-left:auto;white-space:nowrap;">&#43; Aggiungi nuova voce</button>
+      <button class="btn-secondary no-print" onclick="printSchedaVuota()" style="white-space:nowrap;" title="Stampa una scheda ricetta vuota da far compilare al cuoco">&#128196; Scheda vuota</button>
       <button id="btn-me" class="btn-secondary no-print" onclick="toggleMenuEngineering()" style="white-space:nowrap;">&#128202; Menu Engineering</button>
       <button class="btn-secondary no-print" onclick="printMenuCompleto()" style="white-space:nowrap;">&#128438; Stampa menu</button>
     </div>
@@ -3295,6 +3296,10 @@ function renderGuida(){
 
     // Piatti finiti
     h+='<details class="gs" data-tab="home,nuovo-piatto,ricetta"><summary>&#127869; Piatti finiti</summary><div class="gb">'
+      +'<h4>&#128196; Scheda vuota — proposta ricetta</h4>'
+      +'<p>Il pulsante <strong>&#128196; Scheda vuota</strong> in cima a La Carte stampa una scheda ricetta in bianco da far compilare al cuoco. La scheda include: nome del piatto, categoria, numero di porzioni, descrizione breve, tabella ingredienti con quantità e unità, procedimento, tempi di preparazione/cottura/riposo, allergeni indicativi e note.</p>'
+      +'<p>In fondo alla scheda trovi lo spazio per segnare il prezzo di vendita e l\'approvazione del titolare. Una volta compilata, inserisci i dati nel sistema con <strong>+ Aggiungi nuova voce</strong> per calcolare il food cost.</p>'
+      +'<div class="gtip">Usa la scheda vuota ogni volta che un collaboratore propone un nuovo piatto — così hai tutto in un foglio prima di decidere se metterlo in carta.</div>'
       +'<h4>Creare un piatto finito</h4>'
       +'<ol>'
       +'<li>Clicca <strong>+ Aggiungi nuova voce</strong> dalla home.</li>'
@@ -7371,6 +7376,106 @@ function creaNuovoFornIng(mi){
   renderMagazzino();
   renderFornitori();
   alert('Fornitore "'+nome+'" creato e aggiunto!');
+}
+
+function printSchedaVuota(){
+  var oggi=new Date();
+  var dataStr=oggi.getDate().toString().padStart(2,'0')+'/'+(oggi.getMonth()+1).toString().padStart(2,'0')+'/'+oggi.getFullYear();
+  var righeIng='';
+  for(var i=0;i<14;i++){
+    righeIng+='<tr><td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">&nbsp;</td>'
+      +'<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">&nbsp;</td>'
+      +'<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">&nbsp;</td>'
+      +'<td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">&nbsp;</td></tr>';
+  }
+  var html='<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"/>'
+    +'<title>Scheda Ricetta</title>'
+    +'<style>'
+    +'*{box-sizing:border-box;margin:0;padding:0;}'
+    +'body{font-family:Georgia,serif;font-size:13px;color:#1a1a1a;padding:28px 32px;}'
+    +'h1{font-size:20px;font-weight:700;letter-spacing:.01em;margin-bottom:2px;}'
+    +'.sub{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px;}'
+    +'.section{margin-bottom:18px;}'
+    +'.section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#2d7d46;border-bottom:1.5px solid #2d7d46;padding-bottom:3px;margin-bottom:10px;}'
+    +'.field-row{display:flex;gap:16px;margin-bottom:10px;}'
+    +'.field{flex:1;}'
+    +'.field label{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:#888;display:block;margin-bottom:3px;}'
+    +'.field .line{border-bottom:1px solid #1a1a1a;min-height:22px;}'
+    +'table{width:100%;border-collapse:collapse;font-size:12px;}'
+    +'thead th{background:#f3f4f6;font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:#555;padding:7px 10px;text-align:left;border-bottom:2px solid #d1d5db;}'
+    +'.proc-box{border:1px solid #d1d5db;border-radius:6px;min-height:130px;padding:8px;font-size:12px;line-height:1.8;}'
+    +'.proc-lines{}'
+    +'.proc-line{border-bottom:1px solid #e5e7eb;min-height:24px;margin-bottom:0;}'
+    +'.tempi{display:flex;gap:16px;}'
+    +'.tempi .field{flex:1;}'
+    +'.note-box{border:1px solid #d1d5db;border-radius:6px;min-height:60px;}'
+    +'.footer{margin-top:24px;display:flex;justify-content:space-between;font-size:10px;color:#aaa;border-top:1px solid #e5e7eb;padding-top:10px;}'
+    +'@media print{body{padding:16px 20px;}}'
+    +'</style></head><body>'
+    +'<h1>Scheda Proposta Ricetta</h1>'
+    +'<div class="sub">MiseEnPlace PRO &nbsp;·&nbsp; '+dataStr+'</div>'
+
+    // INFO BASE
+    +'<div class="section">'
+    +'<div class="section-title">Informazioni base</div>'
+    +'<div class="field-row">'
+    +'<div class="field" style="flex:3;"><label>Nome del piatto</label><div class="line"></div></div>'
+    +'<div class="field"><label>Categoria</label><div class="line"></div></div>'
+    +'<div class="field"><label>N° porzioni</label><div class="line"></div></div>'
+    +'</div>'
+    +'<div class="field-row">'
+    +'<div class="field" style="flex:3;"><label>Descrizione breve (per il menù)</label><div class="line"></div></div>'
+    +'<div class="field"><label>Proposto da</label><div class="line"></div></div>'
+    +'</div>'
+    +'</div>'
+
+    // INGREDIENTI
+    +'<div class="section">'
+    +'<div class="section-title">Ingredienti</div>'
+    +'<table><thead><tr>'
+    +'<th style="width:40%;">Ingrediente / Semilavorato</th>'
+    +'<th style="width:15%;">Quantità</th>'
+    +'<th style="width:15%;">Unità</th>'
+    +'<th style="width:30%;">Note (es. variante, marca)</th>'
+    +'</tr></thead><tbody>'+righeIng+'</tbody></table>'
+    +'</div>'
+
+    // PROCEDIMENTO
+    +'<div class="section">'
+    +'<div class="section-title">Procedimento</div>'
+    +'<div class="proc-box">'
+    +(Array(8).fill('<div class="proc-line"></div>').join(''))
+    +'</div>'
+    +'</div>'
+
+    // TEMPI & ALLERGENI
+    +'<div class="section">'
+    +'<div class="section-title">Tempi e note</div>'
+    +'<div class="field-row tempi">'
+    +'<div class="field"><label>Tempo preparazione</label><div class="line"></div></div>'
+    +'<div class="field"><label>Tempo cottura</label><div class="line"></div></div>'
+    +'<div class="field"><label>Tempo riposo/assemblaggio</label><div class="line"></div></div>'
+    +'<div class="field" style="flex:2;"><label>Allergeni (indicativi)</label><div class="line"></div></div>'
+    +'</div>'
+    +'</div>'
+
+    // NOTE CHEF
+    +'<div class="section">'
+    +'<div class="section-title">Note dello chef</div>'
+    +'<div class="note-box"></div>'
+    +'</div>'
+
+    +'<div class="footer">'
+    +'<span>MiseEnPlace PRO — Scheda proposta ricetta</span>'
+    +'<span>Food cost: calcolato dal titolare &nbsp;|&nbsp; Prezzo vendita: _______ &nbsp;|&nbsp; Approvato: ☐ Sì &nbsp; ☐ No</span>'
+    +'</div>'
+    +'</body></html>';
+
+  var w=window.open('','_blank','width=820,height=1000');
+  w.document.write(html);
+  w.document.close();
+  w.focus();
+  setTimeout(function(){w.print();},400);
 }
 
 function printMenuCompleto(){
