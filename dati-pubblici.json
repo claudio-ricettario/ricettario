@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "22/9/2026",
+  "exportDate": "26/9/2026",
   "menuData": [
     {
       "nome": "Canederli ai Funghi e burro fuso",
@@ -66,44 +66,6 @@
       ]
     },
     {
-      "nome": "Goulash con polenta",
-      "descrizione": "Con carne bovina allevata in lessinia",
-      "tags": [
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Secondi piatti",
-      "prezzoVendita": 14,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Glutine",
-        "Sedano"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Lasagne al Ragù",
-      "descrizione": "lasagnetta con la ricetta della nonna",
-      "tags": [
-        "Più venduto"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Primi piatti",
-      "prezzoVendita": 9.9,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Sedano",
-        "Anidride solforosa e solfiti",
-        "Latte e lattosio",
-        "Glutine",
-        "Soia",
-        "Uova"
-      ],
-      "tracce": [
-        "Frutta a guscio"
-      ]
-    },
-    {
       "nome": "Maccheroni al ragù di cortile",
       "descrizione": "Con la ricetta della nonna",
       "tags": [],
@@ -115,28 +77,9 @@
         "Glutine",
         "Uova",
         "Sedano",
-        "Anidride solforosa e solfiti",
-        "Soia"
+        "Anidride solforosa e solfiti"
       ],
       "tracce": []
-    },
-    {
-      "nome": "Torta di Mele",
-      "descrizione": "Un Classico",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 4,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Glutine",
-        "Uova",
-        "Latte e lattosio",
-        "Arachidi"
-      ],
-      "tracce": [
-        "Soia"
-      ]
     },
     {
       "nome": "MilleFoglie al piatto",
@@ -161,6 +104,26 @@
       ]
     },
     {
+      "nome": "Minestra di orzo",
+      "descrizione": "Per scelta non mettiamo carne",
+      "tags": [
+        "Vegetariano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 7.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Sedano",
+        "Latte e lattosio"
+      ],
+      "tracce": [
+        "Soia",
+        "Senape",
+        "Lupini"
+      ]
+    },
+    {
       "nome": "Panna Cotta Vegana",
       "descrizione": "Con caramello salato",
       "tags": [
@@ -174,6 +137,34 @@
       "allergeni": [
         "Soia"
       ],
+      "tracce": []
+    },
+    {
+      "nome": "Patate al Forno",
+      "descrizione": "",
+      "tags": [
+        "Vegetariano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "prezzoVendita": 4.9,
+      "tipoBeverage": false,
+      "allergeni": [],
+      "tracce": []
+    },
+    {
+      "nome": "Polenta alla griglia",
+      "descrizione": "Un classico che non può mancare",
+      "tags": [
+        "Vegetariano",
+        "Vegano",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "prezzoVendita": 0,
+      "tipoBeverage": false,
+      "allergeni": [],
       "tracce": []
     },
     {
@@ -262,6 +253,27 @@
       ]
     },
     {
+      "nome": "Spaghetti al Ragù di funghi",
+      "descrizione": "Con funghi Porcini, possibili contaminazione crociata uova",
+      "tags": [
+        "Vegetariano",
+        "Vegano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 8.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Sedano",
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": [
+        "Soia",
+        "Senape"
+      ]
+    },
+    {
       "nome": "Tiramisù della Malga",
       "descrizione": "Con prodotti del territorio",
       "tags": [
@@ -279,6 +291,24 @@
       "tracce": [
         "Soia",
         "Frutta a guscio"
+      ]
+    },
+    {
+      "nome": "Torta di Mele",
+      "descrizione": "Un Classico",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 4,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Latte e lattosio",
+        "Arachidi"
+      ],
+      "tracce": [
+        "Soia"
       ]
     },
     {
@@ -808,6 +838,46 @@
       ]
     },
     {
+      "codice": "MP-162",
+      "nome": "Uva Sultanina",
+      "marca": "Life da 500gr",
+      "categoria": "Frutta",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Arachidi",
+        "Frutta a guscio",
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 308,
+        "grassi": 0.6,
+        "grassiSaturi": 0.2,
+        "carboidrati": 70,
+        "zuccheri": 70,
+        "fibre": 5,
+        "proteine": 3.1,
+        "sale": 0.12
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 6,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-096",
       "nome": "Acqua",
       "categoria": "Generale",
@@ -1277,6 +1347,41 @@
       ]
     },
     {
+      "codice": "MP-165",
+      "nome": "Cannella Macinata",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 247,
+        "grassi": 1.24,
+        "grassiSaturi": 0.34,
+        "carboidrati": 80.59,
+        "zuccheri": 2.17,
+        "fibre": 53.1,
+        "proteine": 3.99,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 17,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-145",
       "nome": "Cialda per Gelato",
       "categoria": "Generale",
@@ -1722,6 +1827,42 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 34.6154,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-161",
+      "nome": "Funghi Trifolati Misti",
+      "marca": "Bontà del bosco",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 60,
+        "grassi": 4.7,
+        "grassiSaturi": 0.6,
+        "carboidrati": 1.2,
+        "zuccheri": 0.5,
+        "fibre": 2.1,
+        "proteine": 2.2,
+        "sale": 1.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 11.36,
           "storico": []
         }
       ]
@@ -2313,6 +2454,45 @@
       ]
     },
     {
+      "codice": "MP-164",
+      "nome": "Pane Grattugiato",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 369,
+        "grassi": 1.2,
+        "grassiSaturi": 0.3,
+        "carboidrati": 76.8,
+        "zuccheri": 3,
+        "fibre": 3.9,
+        "proteine": 10.7,
+        "sale": 0.63
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.88,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-135",
       "nome": "Panna di soia Valsoia",
       "categoria": "Generale",
@@ -2525,6 +2705,46 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 56,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-163",
+      "nome": "Pinoli sgusciati",
+      "marca": "Noberasco da 100 gr",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Arachidi",
+        "Soia",
+        "Frutta a guscio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 727,
+        "grassi": 68,
+        "grassiSaturi": 4.9,
+        "carboidrati": 13,
+        "zuccheri": 3.6,
+        "fibre": 3.7,
+        "proteine": 14,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 50,
           "storico": []
         }
       ]
@@ -2848,6 +3068,47 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 8.2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-160",
+      "nome": "Spaghetti",
+      "marca": "Rummo n° 5",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia",
+        "Senape"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 356,
+        "grassi": 1.6,
+        "grassiSaturi": 0.3,
+        "carboidrati": 69.5,
+        "zuccheri": 3.1,
+        "fibre": 2.9,
+        "proteine": 14.5,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.53,
           "storico": []
         }
       ]
@@ -4227,19 +4488,19 @@
         },
         {
           "tipo": "mp",
-          "magIdx": 26,
-          "codiceMp": "MP-057",
-          "nome": "sale Fino",
-          "qtaBase": 15,
+          "magIdx": 15,
+          "codiceMp": "MP-076",
+          "nome": "Noce moscata macinata Wiberg",
+          "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
         },
         {
           "tipo": "mp",
-          "magIdx": 15,
-          "codiceMp": "MP-076",
-          "nome": "Noce moscata macinata Wiberg",
-          "qtaBase": 2,
+          "magIdx": 64,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 15,
           "unit": "g",
           "conv": 0.001
         }
@@ -5652,7 +5913,7 @@
       "resaUm": "g",
       "tempo": "45",
       "procedimento": "Impastare la Farina con l'acqua, il sale e 75 gr di burro. Formare un panetto liscio e lasciar riposare 15 minuti. Con il restante burro formare una mattonella di circa 1 cm.\nCon un mattarello stendere il panetto di pasta fino a formare un rettangolo dello spessore di 4/5 mm e al centro adagiatevi la mattonella di burro, ricoprendola con i lembi laterali della pasta. Battete la forma con il mattarello, poi distendete la pasta.\nCominciate  a piegare la pasta in tre parti, sovrapponendole, poi stendetela, ripetendo l'operazione per 3 volte e lasciando riposare 10min in frigo tra un giro e l'altro.\nInfine stendere la pasta dello spessore  di 2/3 mm, ricavate dei quadrati o dei dischi di circa 8mm, cuocere su placca forate a 200°C per 10/15min. Far Raffreddare.",
-      "coefficiente": 3,
+      "coefficiente": 4,
       "shelfLifeFrigo": 3,
       "shelfLifeSottovuoto": 7,
       "shelfLifeCongelato": 90,
@@ -5999,7 +6260,8 @@
           "nome": "Salvia",
           "qtaBase": 1,
           "unit": "g",
-          "conv": 0.001
+          "conv": 0.001,
+          "codiceMp": "MP-126"
         },
         {
           "tipo": "mp",
@@ -6048,6 +6310,121 @@
         }
       ],
       "dataCreazione": "2026-09-09"
+    },
+    {
+      "codice": "SL-037",
+      "nome": "Ragù di Funghi",
+      "categoria": "Salse e sughi",
+      "resaQta": 1400,
+      "resaUm": "g",
+      "tempo": "90",
+      "procedimento": "Metti i funghi secchi in ammollo in acqua tiepida per 30 minuti. Scolali, filtra l'acqua di ammollo con un colino fine e tienila da parte. Trita grossolanamente i porcini a coltello.\n\nIn una casseruola scalda l'olio EVO a fuoco vivace, aggiungi i champignon congelati direttamente senza scongelare e rosola mescolando spesso finché l'acqua di vegetazione è completamente evaporata, circa 8-10 minuti. Abbassa il fuoco.\n\nUnisci il soffritto misto e l'aglio, fai appassire 4-5 minuti. Aggiungi i porcini tritati e mescola bene per insaporire.\n\nSfuma con il vino bianco e lascia evaporare completamente. Aggiungi la polpa di pomodoro, l'acqua di ammollo filtrata, l'alloro e il timo. Aggiusta di sale e pepe.\n\nCuoci a fuoco basso con coperchio per 35 minuti mescolando di tanto in tanto. Negli ultimi 10 minuti togli il coperchio per far restringere il sugo.\n\nRimuovi le foglie di alloro prima di porzionare.\n150 gr Porzione",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 97,
+          "codiceMp": "MP-159",
+          "nome": "Champignon Congelati",
+          "qtaBase": 800,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-114",
+          "nome": "Funghi Secchi con porcini \"Merlini\"",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 102,
+          "codiceMp": "MP-088",
+          "nome": "Soffritto Misto Gelo",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 95,
+          "codiceMp": "MP-069",
+          "nome": "Aglio",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 48,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 59,
+          "codiceMp": "MP-093",
+          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 16,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 68,
+          "codiceMp": "MP-074",
+          "nome": "Timo liofilizzato Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 63,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 57,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 73,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 150,
+          "unit": "ml",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "22/9/2026"
     },
     {
       "codice": "SL-027",
@@ -6380,6 +6757,121 @@
       "dataCreazione": "8/9/2026"
     },
     {
+      "codice": "SL-038",
+      "nome": "Strudel di mele con pasta sfoglia",
+      "categoria": "Dolci e creme",
+      "resaQta": 1000,
+      "resaUm": "g",
+      "tempo": "60",
+      "procedimento": "Abbrustolire il pane con il burro\nTagliare le mele a fettine e mescolarle con pane, zucchero, uva sultanina, pinoli, limone grattugiato, cannella.\nStendere la pasta circa 40x26 cm, posare al centro il ripieno e ripiegare lo strudel.\nSpennellare con l'uovo e spolverare con lo zucchero a velo.\nCuocere a 180°C per 35/40 min.\nCirca 200 gr a porzione",
+      "coefficiente": 4,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "sl",
+          "semiIdx": 22,
+          "codiceSl": "SL-018",
+          "nome": "Pasta sfoglia",
+          "qtaBase": 400,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 16,
+          "codiceSl": "SL-033",
+          "nome": "Mele Pulite",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 81,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 55,
+          "codiceMp": "MP-164",
+          "nome": "Pane Grattugiato",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 82,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 12,
+          "codiceMp": "MP-162",
+          "nome": "Uva Sultanina",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 62,
+          "codiceMp": "MP-163",
+          "nome": "Pinoli sgusciati",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 31,
+          "codiceSl": "SL-7569",
+          "nome": "Scorza Limone Grattugiata",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 76,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 79,
+          "codiceMp": "MP-119",
+          "nome": "Zucchero a Velo da Kg",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 26,
+          "codiceMp": "MP-165",
+          "nome": "Cannella Macinata",
+          "qtaBase": 1.5,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "25/9/2026"
+    },
+    {
       "codice": "SL-032",
       "nome": "Terra al cioccolato",
       "categoria": "Dolci e creme",
@@ -6412,7 +6904,7 @@
         },
         {
           "tipo": "mp",
-          "magIdx": 23,
+          "magIdx": 26,
           "codiceMp": "MP-150",
           "nome": "Cioccolato fondente extra",
           "qtaBase": 140,
@@ -6746,9 +7238,9 @@
       "porzioniVendute": 0
     },
     {
-      "codice": "PF-011",
+      "codice": "PF-028",
       "nome": "Goulash con polenta",
-      "descrizione": "Con carne bovina allevata in lessinia",
+      "descrizione": "Con carne allevata in Lessinia e Polenta",
       "tags": [
         "Del territorio"
       ],
@@ -6756,33 +7248,35 @@
       "categoria": "Secondi piatti",
       "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 14,
+      "prezzoVendita": 12.9,
       "coefficiente": 3,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
-      "steps": [],
+      "steps": [
+        "La polenta può essere anche alla griglia, forse meglio per la gestione del servizio"
+      ],
       "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Goulash di manzo (base)",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 15,
+          "codiceSl": "SL-020"
+        },
         {
           "tipo": "sl",
           "nome": "Polenta morbida",
           "qtaBase": 200,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 15,
+          "semiIdx": 24,
           "codiceSl": "SL-021"
-        },
-        {
-          "tipo": "sl",
-          "nome": "Goulash di manzo (base)",
-          "qtaBase": 500,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 11,
-          "codiceSl": "SL-020"
         }
       ],
-      "dataCreazione": "7/9/2026"
+      "dataCreazione": "25/9/2026"
     },
     {
       "codice": "PF-002",
@@ -6797,7 +7291,7 @@
       "pax": 18,
       "prezzoVendita": 9.9,
       "coefficiente": 4,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -6890,38 +7384,7 @@
           "codiceSl": "SL-7565"
         }
       ],
-      "dataCreazione": "10/9/2026",
-      "porzioniVendute": 0
-    },
-    {
-      "codice": "PF-026",
-      "nome": "Torta di Mele",
-      "descrizione": "Un Classico",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 4,
-      "coefficiente": 3,
-      "nelMenu": true,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [
-        "Servire 150 gr a persona, se aggiungiamo qualcosaltro rivedere il prezzo di vendita"
-      ],
-      "componenti": [
-        {
-          "tipo": "sl",
-          "nome": "Torta di mele (base)",
-          "qtaBase": 150,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 33,
-          "codiceSl": "SL-034"
-        }
-      ],
-      "dataCreazione": "18/9/2026"
+      "dataCreazione": "10/9/2026"
     },
     {
       "codice": "PF-009",
@@ -6997,7 +7460,7 @@
       "pax": 4,
       "prezzoVendita": 7.9,
       "coefficiente": 3,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -7130,6 +7593,118 @@
       ],
       "dataCreazione": "10/9/2026",
       "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-030",
+      "nome": "Patate al Forno",
+      "descrizione": "",
+      "tags": [
+        "Vegetariano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "sottocategoria": "",
+      "pax": 5,
+      "prezzoVendita": 4.9,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Pela le patate e tagliale a spicchi o cubotti regolari di circa 3-4 cm. \nMettile in acqua fredda e metti sul fuoco, al primo bollore scola subito e distribuisci sulle placche.\nCondisci con olio, rosmarino, aglio schiacciato, sale e pepe. \n\nCuoci in forno ventilato a 200°C per 20/25 minuti, girando a metà cottura.",
+        "Con 1 kg di patate circa 5 porzioni come contorno"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Patate per Gnocchi",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 105,
+          "codiceMp": "MP-097"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 51,
+          "codiceMp": "MP-064"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Rosmarino liofilizzato Wiberg",
+          "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 66,
+          "codiceMp": "MP-072"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Aglio",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 101,
+          "codiceMp": "MP-069"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Sale Fino",
+          "qtaBase": 8,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 68,
+          "codiceMp": "MP-057"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 61,
+          "codiceMp": "MP-058"
+        }
+      ],
+      "dataCreazione": "25/9/2026"
+    },
+    {
+      "codice": "PF-011",
+      "nome": "Polenta alla griglia",
+      "descrizione": "Un classico che non può mancare",
+      "tags": [
+        "Vegetariano",
+        "Vegano",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 0,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Raffredda la polenta in placca e usala a fette grigliate, circa 200gr a porzione"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Polenta morbida",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 24,
+          "codiceSl": "SL-021"
+        }
+      ],
+      "dataCreazione": "7/9/2026"
     },
     {
       "codice": "PF-010",
@@ -7355,6 +7930,81 @@
       "dataCreazione": "13/9/2026"
     },
     {
+      "codice": "PF-027",
+      "nome": "Spaghetti al Ragù di funghi",
+      "descrizione": "Con funghi Porcini, possibili contaminazione crociata uova",
+      "tags": [
+        "Vegetariano",
+        "Vegano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 8.9,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Classico spaghettone  con ragù Vegan"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Spaghetti",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 68,
+          "codiceMp": "MP-160"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Ragù di Funghi",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 28,
+          "codiceSl": "SL-037"
+        }
+      ],
+      "dataCreazione": "22/9/2026"
+    },
+    {
+      "codice": "PF-029",
+      "nome": "Strudel di Mele",
+      "descrizione": "Con Mele del trentino",
+      "tags": [
+        "Vegetariano",
+        "Consigliato"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 5,
+      "prezzoVendita": 4.9,
+      "coefficiente": 4,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Con uno strudel intero facciamo 5/ 6 porzioni circa"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Strudel di mele con pasta sfoglia",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 35,
+          "codiceSl": "SL-038"
+        }
+      ],
+      "dataCreazione": "25/9/2026"
+    },
+    {
       "codice": "PF-015",
       "nome": "Tiramisù della Malga",
       "descrizione": "Con prodotti del territorio",
@@ -7413,6 +8063,36 @@
       ],
       "dataCreazione": "12/9/2026",
       "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-026",
+      "nome": "Torta di Mele",
+      "descrizione": "Un Classico",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 4,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Servire 150 gr a persona, se aggiungiamo qualcosaltro rivedere il prezzo di vendita"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Torta di mele (base)",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 33,
+          "codiceSl": "SL-034"
+        }
+      ],
+      "dataCreazione": "18/9/2026"
     },
     {
       "codice": "PF-012",
