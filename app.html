@@ -4685,7 +4685,7 @@ function stampaME(){
 /* ===== fine #10 ===== */
 
 /* ===== ADMIN MODE ===== */
-var ADMIN_PASSWORD = "ricettario_claudioP70@";
+var ADMIN_PASSWORD = "fe7785da91e946dd8b885e623aa2278c03964bee357fced8b307cd1bc6ed7867"; // sha256
 var isAdmin = false;
 
 function checkAdminSession(){
@@ -4703,14 +4703,16 @@ function checkPassword(){
   }
   var pwd = prompt('Password amministratore:');
   if(pwd === null) return;
-  if(pwd === ADMIN_PASSWORD){
-    isAdmin = true;
-    try{ sessionStorage.setItem('rc_admin','1'); }catch(e){}
-    applyAdminUI();
-    alert('Accesso amministratore attivato.');
-  } else {
-    alert('Password errata.');
-  }
+  _sha256hex(pwd).then(function(hash){
+    if(hash === ADMIN_PASSWORD){
+      isAdmin = true;
+      try{ sessionStorage.setItem('rc_admin','1'); }catch(e){}
+      applyAdminUI();
+      alert('Accesso amministratore attivato.');
+    } else {
+      alert('Password errata.');
+    }
+  });
 }
 
 function logoutAdmin(){
@@ -8843,7 +8845,7 @@ function npSalva(){
 /* ═══════════════════════════════════════════════════
    LANDING PAGE — accesso con password
    ═══════════════════════════════════════════════════ */
-var _APP_PW = 'Y3VjaW5hMjAyNg=='; // btoa('cucina2026')
+var _APP_PW = 'e7a31d9fe01192e435d1a2559daadb4b46914fb12427dc261da3e217177b9008'; // sha256
 
 /* cancella auth alla chiusura — evita che Chrome ripristini la sessione autenticata */
 window.addEventListener('beforeunload',function(){try{sessionStorage.removeItem('mep_auth');}catch(e){}});
@@ -8856,30 +8858,44 @@ function _landingCheck(){
   if(!ok){setTimeout(function(){var i=document.getElementById('landing-pw');if(i)i.focus();},100);}
 }
 
+function _sha256hex(str){
+  var buf=new TextEncoder().encode(str);
+  return crypto.subtle.digest('SHA-256',buf).then(function(hash){
+    return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+  });
+}
+
 function _landingAccedi(){
   var pw=document.getElementById('landing-pw').value;
   var err=document.getElementById('landing-err');
-  if(btoa(pw)===_APP_PW){
-    try{sessionStorage.setItem('mep_auth','1');}catch(e){}
-    document.getElementById('landing-overlay').style.display='none';
-    showTab('dashboard');
-  } else {
-    err.textContent='Password errata. Riprova.';
-    document.getElementById('landing-pw').value='';
-    document.getElementById('landing-pw').focus();
-    setTimeout(function(){err.textContent='';},3000);
-  }
+  _sha256hex(pw).then(function(hash){
+    if(hash===_APP_PW){
+      try{sessionStorage.setItem('mep_auth','1');}catch(e){}
+      document.getElementById('landing-overlay').style.display='none';
+      showTab('dashboard');
+    } else {
+      err.textContent='Password errata. Riprova.';
+      document.getElementById('landing-pw').value='';
+      document.getElementById('landing-pw').focus();
+      setTimeout(function(){err.textContent='';},3000);
+    }
+  });
 }
 
 function cambiaPasswordApp(){
   var attuale=prompt('Password attuale:');
-  if(!attuale||btoa(attuale)!==_APP_PW){alert('Password attuale errata.');return;}
-  var nuova=prompt('Nuova password:');
-  if(!nuova||nuova.length<4){alert('Password troppo corta (min 4 caratteri).');return;}
-  var conferma=prompt('Conferma nuova password:');
-  if(nuova!==conferma){alert('Le password non coincidono.');return;}
-  _APP_PW=btoa(nuova);
-  alert('Password aggiornata. Nota: si resettera al prossimo aggiornamento dell app.');
+  if(!attuale)return;
+  _sha256hex(attuale).then(function(h){
+    if(h!==_APP_PW){alert('Password attuale errata.');return;}
+    var nuova=prompt('Nuova password:');
+    if(!nuova||nuova.length<4){alert('Password troppo corta (min 4 caratteri).');return;}
+    var conferma=prompt('Conferma nuova password:');
+    if(nuova!==conferma){alert('Le password non coincidono.');return;}
+    _sha256hex(nuova).then(function(hn){
+      _APP_PW=hn;
+      alert('Password aggiornata. Nota: si resetterà al prossimo aggiornamento dell\'app.');
+    });
+  });
 }
 
 </script>
