@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "26/9/2026",
+  "exportDate": "27/9/2026",
   "menuData": [
     {
       "nome": "Canederli ai Funghi e burro fuso",
@@ -162,7 +162,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Contorni",
-      "prezzoVendita": 0,
+      "prezzoVendita": 3.9,
       "tipoBeverage": false,
       "allergeni": [],
       "tracce": []
@@ -1132,6 +1132,42 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 9.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-166",
+      "nome": "Amido di Riso",
+      "marca": "da 600gr",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 22,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 362,
+        "grassi": 0.7,
+        "grassiSaturi": 0.1,
+        "carboidrati": 86,
+        "zuccheri": 0.5,
+        "fibre": 0.7,
+        "proteine": 1,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 11,
           "storico": []
         }
       ]
@@ -5035,6 +5071,76 @@
       "dataCreazione": "28/8/2026"
     },
     {
+      "codice": "SL-039",
+      "nome": "Crema Pasticcera",
+      "categoria": "Dolci e creme",
+      "resaQta": 1500,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Porta il latte quasi a bollore con la scorza di limone o la vaniglia. Nel frattempo Mescola i tuorli con lo zucchero fino a ottenere un composto chiaro e spumoso. Setaccia fecola e amido di riso insieme e incorporali al composto di uova mescolando bene senza grumi.\n\nTogli la scorza dal latte e versalo a filo sul composto di uova mescolando continuamente. Riporta tutto in casseruola a fuoco medio-basso, mescolando senza mai fermarti con una frusta o un leccapentole.\n\nMonitora la temperatura — ai 85-86°C la crema addensa rapidamente. Togli subito dal fuoco e mescola ancora un minuto per omogeneizzare.\n\nVersa in contenitore basso e largo, copri con pellicola a contatto per evitare la pellicina e abbatti il più velocemente possibile.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 89,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 83,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 37,
+          "codiceMp": "MP-098",
+          "nome": "Fecola di Patate",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 20,
+          "codiceMp": "MP-166",
+          "nome": "Amido di Riso",
+          "qtaBase": 35,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 76,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 79,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "27/9/2026"
+    },
+    {
       "codice": "SL-017",
       "nome": "Crema per Millefoglie",
       "categoria": "Dolci e creme",
@@ -5650,8 +5756,8 @@
       "resaQta": 950,
       "resaUm": "g",
       "tempo": "120",
-      "procedimento": "Affetta le patate dello spessore di 1 mm, condiscile con abbondante sale  e falle macerare per 10 min, poi lava ed asciuga bene.\nAmalgama tutti gli altri ingredienti fino ad ottenere una crema.\nFodera con pellicola 2 stampi (1 kg patate) da 10x20 , lasciando uno strato abbondante che avanzi dai lati che serva a coprire il tutto, poi spennella l'interno con il condimento.\nCrea la millefoglie nella pirofila con le fette fino ad esaurirle, sovrapponendole in modo uniforme e distribuendo il condimento tra ogni strato.\nChiudere la millefoglie con la pellicola che avanza, forala con l'ago e abbatti in positivo per rassodare.\nEstrai dalla pirofila e metti in un sacchetto per sottovuoto.\nCondiziona sottovuoto e cuoci a 88°C per 2 ore, poi abbatti in positivo fino e non usare prima di 24 ore.\n(150 gr Porzione)",
-      "coefficiente": 1,
+      "procedimento": "Affetta le patate dello spessore di 1 mm, condiscile con abbondante sale  e falle macerare per 10 min, poi lava ed asciuga bene.\nAmalgama tutti gli altri ingredienti fino ad ottenere una crema.\nFodera con pellicola 2 stampi (1 kg patate) da 10x20 , lasciando uno strato abbondante che avanzi dai lati che serva a coprire il tutto, poi spennella l'interno con il condimento.\nCrea la millefoglie nella pirofila con le fette fino ad esaurirle, sovrapponendole in modo uniforme e distribuendo il condimento tra ogni strato.\nChiudere la millefoglie con la pellicola che avanza, forala con l'ago e abbatti in positivo per rassodare.\nEstrai dalla pirofila e metti in un sacchetto per sottovuoto.\nCondiziona sottovuoto e cuoci a 88°C per 2 ore, poi abbatti in positivo fino e non usare prima di 24 ore.\n(150 gr Porzione con secondo)(200 gr come contorno)",
+      "coefficiente": 3,
       "shelfLifeFrigo": 3,
       "shelfLifeSottovuoto": 7,
       "shelfLifeCongelato": 90,
@@ -7448,6 +7554,39 @@
       "dataCreazione": "30/8/2026"
     },
     {
+      "codice": "PF-031",
+      "nome": "Millefoglie di patate",
+      "descrizione": "Con patate della truffa",
+      "tags": [
+        "Vegetariano",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 4,
+      "coefficiente": 3,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Fai le porzioni e gratinale in forno"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Millefoglie di Patate",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 19,
+          "codiceSl": "SL-036"
+        }
+      ],
+      "dataCreazione": "27/9/2026"
+    },
+    {
       "codice": "PF-024",
       "nome": "Minestra di orzo",
       "descrizione": "Per scelta non mettiamo carne",
@@ -7685,7 +7824,7 @@
       "categoria": "Contorni",
       "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 0,
+      "prezzoVendita": 3.9,
       "coefficiente": 2,
       "nelMenu": true,
       "tipoBeverage": false,
@@ -7973,7 +8112,7 @@
     },
     {
       "codice": "PF-029",
-      "nome": "Strudel di Mele",
+      "nome": "Strudel di Mele con crema alla vaniglia",
       "descrizione": "Con Mele del trentino",
       "tags": [
         "Vegetariano",
@@ -7983,13 +8122,14 @@
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 5,
-      "prezzoVendita": 4.9,
-      "coefficiente": 4,
+      "prezzoVendita": 5.9,
+      "coefficiente": 3,
       "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
-        "Con uno strudel intero facciamo 5/ 6 porzioni circa"
+        "Con uno strudel intero facciamo 5/ 6 porzioni circa",
+        "Metti 100 gr di crema a porzione"
       ],
       "componenti": [
         {
@@ -8000,6 +8140,15 @@
           "conv": 0.001,
           "semiIdx": 35,
           "codiceSl": "SL-038"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Crema Pasticcera",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 9,
+          "codiceSl": "SL-039"
         }
       ],
       "dataCreazione": "25/9/2026"

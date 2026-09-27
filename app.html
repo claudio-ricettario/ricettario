@@ -761,11 +761,10 @@ textarea{resize:vertical;min-height:60px;}
     <div class="controls">
       <div class="ctrl-group" style="flex:1;flex-direction:column;align-items:flex-start;gap:4px;">
         <span>Piatto</span>
-        <div style="display:flex;flex-direction:column;gap:4px;width:100%;max-width:320px;">
-          <input id="fc-piatto-search" type="text" placeholder="🔍 Cerca per nome..." oninput="fcFilterPiatti()" style="font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;width:100%;"/>
-          <select id="fc-piatto-sel" onchange="fcSelectPiatto()" style="font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;width:100%;">
-            <option value="">-- seleziona un piatto --</option>
-          </select>
+        <div style="display:flex;flex-direction:column;gap:4px;width:100%;max-width:340px;">
+          <input id="fc-piatto-search" type="text" placeholder="🔍 Cerca per nome..." oninput="fcFilterPiatti()" autocomplete="off" style="font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;width:100%;"/>
+          <div id="fc-piatto-accordion" style="border:1px solid #d0cec8;border-radius:6px;max-height:260px;overflow-y:auto;background:#fff;font-size:13px;"></div>
+          <input type="hidden" id="fc-piatto-sel"/>
         </div>
       </div>
       <div class="ctrl-group">
