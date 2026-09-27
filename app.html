@@ -2659,14 +2659,14 @@ function syncSlider(el){
   renderFoodCost();
 }
 
+var _fcOpenCats={};
+var _fcSelectedIdx='';
+
 function fcPopulateSelector(){
-  var sel=document.getElementById('fc-piatto-sel');
-  if(!sel)return;
-  var current=sel.value;
+  var acc=document.getElementById('fc-piatto-accordion');
+  if(!acc)return;
   var searchEl=document.getElementById('fc-piatto-search');
   var q=searchEl?searchEl.value.trim().toLowerCase():'';
-  sel.innerHTML='<option value="">-- seleziona un piatto --</option>';
-  // raggruppa per categoria
   var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Pane e lievitati','Beverage','Altro'];
   var bycat={};
   piatti.forEach(function(p,i){
@@ -2680,18 +2680,47 @@ function fcPopulateSelector(){
     if(ia<0)ia=99;if(ib<0)ib=99;
     return ia-ib||a.localeCompare(b,'it');
   });
-  cats.forEach(function(cat){
-    var grp=document.createElement('optgroup');
-    grp.label=cat+' ('+bycat[cat].length+')';
-    bycat[cat].forEach(function(item){
-      var opt=document.createElement('option');
-      opt.value=item.i;
-      opt.textContent=item.p.nome+' · '+item.p.pax+' pax';
-      grp.appendChild(opt);
+  var html='';
+  if(!cats.length){
+    html='<div style="padding:10px 12px;color:#aaa;font-size:12px;">Nessun risultato</div>';
+  } else {
+    cats.forEach(function(cat){
+      var isOpen=q?true:!!_fcOpenCats[cat];
+      var items=bycat[cat];
+      html+='<div style="border-bottom:1px solid #f0eeeb;">';
+      html+='<div onclick="fcToggleCat(\''+cat.replace(/'/g,"\\'")+'\')" style="display:flex;justify-content:space-between;align-items:center;padding:7px 12px;cursor:pointer;background:#faf9f7;font-weight:600;font-size:12px;user-select:none;">'
+        +'<span>'+cat+'</span>'
+        +'<span style="display:flex;align-items:center;gap:8px;">'
+        +'<span style="font-size:11px;font-weight:400;color:#888;">'+items.length+' piatti</span>'
+        +'<span style="font-size:10px;color:#888;">'+(isOpen?'▲':'▼')+'</span>'
+        +'</span></div>';
+      if(isOpen){
+        html+='<div>';
+        items.forEach(function(item){
+          var isSel=String(item.i)===String(_fcSelectedIdx);
+          html+='<div onclick="fcPickPiatto('+item.i+')" style="padding:6px 12px 6px 20px;cursor:pointer;border-top:1px solid #f5f3f0;'
+            +(isSel?'background:#e8f5ec;font-weight:600;color:#1a5c2e;':'')
+            +'" onmouseover="this.style.background=\''+(isSel?'#d4eddb':'#f0eeeb')+'\'" onmouseout="this.style.background=\''+(isSel?'#e8f5ec':'')+'\'">'+item.p.nome
+            +'<span style="font-size:11px;color:#aaa;margin-left:6px;">'+item.p.pax+' pax</span></div>';
+        });
+        html+='</div>';
+      }
+      html+='</div>';
     });
-    sel.appendChild(grp);
-  });
-  if(current) sel.value=current;
+  }
+  acc.innerHTML=html;
+}
+
+function fcToggleCat(cat){
+  _fcOpenCats[cat]=!_fcOpenCats[cat];
+  fcPopulateSelector();
+}
+
+function fcPickPiatto(idx){
+  _fcSelectedIdx=String(idx);
+  document.getElementById('fc-piatto-sel').value=idx;
+  fcPopulateSelector();
+  renderFoodCost();
 }
 
 function fcFilterPiatti(){
