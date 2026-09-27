@@ -3138,7 +3138,7 @@ function showTab(name){
   else if(name==='nuovo-piatto'){npInit();}
   else if(name==='produzioni'){renderProduzioni();}
   else if(name==='ricetta'){updateAll();}
-  else if(name==='foodcost'){fcPopulateSelector();renderFoodCost();}
+  else if(name==='foodcost'){_fcSelectedIdx='';_fcOpenCats={};var _fcs=document.getElementById('fc-piatto-search');if(_fcs)_fcs.value='';var _fch=document.getElementById('fc-piatto-sel');if(_fch)_fch.value='';fcPopulateSelector();renderFoodCost();}
   else if(name==='menu-prev'){renderMenuPreventivi();}
   else if(name==='guida'){renderGuida();}
   else{updateAll();}
