@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "27/9/2026",
+  "exportDate": "2/10/2026",
   "menuData": [
     {
       "nome": "Canederli ai Funghi e burro fuso",
@@ -299,7 +299,7 @@
       "tags": [],
       "pochePorzioni": false,
       "categoria": "Dolci",
-      "prezzoVendita": 4,
+      "prezzoVendita": 4.9,
       "tipoBeverage": false,
       "allergeni": [
         "Glutine",
@@ -1273,6 +1273,47 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 268.1818,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-169",
+      "nome": "Biscotti Digestive",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia",
+        "Latte e lattosio",
+        "Senape"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 464,
+        "grassi": 17,
+        "grassiSaturi": 2,
+        "carboidrati": 70,
+        "zuccheri": 17,
+        "fibre": 3.6,
+        "proteine": 6,
+        "sale": 1.6
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.72,
           "storico": []
         }
       ]
@@ -3621,6 +3662,44 @@
       ]
     },
     {
+      "codice": "MP-170",
+      "nome": "Formaggio Spalmabile",
+      "marca": "Exquisa",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 242,
+        "grassi": 23,
+        "grassiSaturi": 16.1,
+        "carboidrati": 2.9,
+        "zuccheri": 2.9,
+        "fibre": 0,
+        "proteine": 5.4,
+        "sale": 0.65
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5.45,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-056",
       "nome": "Grana Padano Dop",
       "categoria": "Latticini e formaggi",
@@ -3838,6 +3917,44 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 11.5385,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-168",
+      "nome": "Yogurt intero",
+      "marca": "Vipiteno",
+      "categoria": "Latticini e formaggi",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 74,
+        "grassi": 4.2,
+        "grassiSaturi": 2.9,
+        "carboidrati": 5.5,
+        "zuccheri": 4.4,
+        "fibre": 0,
+        "proteine": 3.7,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.72,
           "storico": []
         }
       ]
@@ -4407,6 +4524,42 @@
       ]
     },
     {
+      "codice": "MP-167",
+      "nome": "Spinaci Foglia Gelo",
+      "marca": "Bonduelle",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 34,
+        "grassi": 0.4,
+        "grassiSaturi": 0.1,
+        "carboidrati": 1.5,
+        "zuccheri": 0.7,
+        "fibre": 2.3,
+        "proteine": 2.5,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.9,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-146",
       "nome": "Corvina igt bag in box 10L",
       "categoria": "Vini",
@@ -4754,6 +4907,130 @@
       "dataCreazione": "12/7/2026"
     },
     {
+      "codice": "SL-040",
+      "nome": "Canederli agli spinaci (Base)",
+      "categoria": "Pasta e impasti",
+      "resaQta": 699.6,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Sbucciare la cipolla e l'aglio, tagliare tutto finemente e rosolare nel burro. \nTritare gli spinaci, unirli al soffritto e condire con sale, pepe e noce moscata grattugiata. Frullare gli spinaci insieme alle uova. \nUnire al pane gli spinaci frullati, il latte, il formaggio a dadini, la farina, il sale, il pepe e mescolare bene il composto. \nFar riposare l'impasto per circa 15 minuti coperto. Nel frattempo portare a ebollizione dell'acqua in una grande pentola. \nFormare i canederli da 50 gr l'uno utilizzando le mani inumidite o un cucchiaio e cuocerli nell'acqua salata bollente. Disporre i canederli di spinaci su un vassoio o nei piatti e servirli cosparsi di parmigiano e burro nocciola.\nSe fatti piccoli si possono vendere come strangolapreti",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "sl",
+          "semiIdx": 8,
+          "codiceSl": "SL-015",
+          "nome": "Cipolla Tritata",
+          "qtaBase": 60,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 102,
+          "codiceMp": "MP-069",
+          "nome": "Aglio",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 84,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 110,
+          "codiceMp": "MP-167",
+          "nome": "Spinaci Foglia Gelo",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 78,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 55,
+          "codiceMp": "MP-054",
+          "nome": "Pane a cubetti Bianco",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 89,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 91,
+          "codiceMp": "MP-055",
+          "nome": "Monte Veronese d'allevo",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 34,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 69,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 62,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 50,
+          "codiceMp": "MP-076",
+          "nome": "Noce moscata macinata Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "28/9/2026"
+    },
+    {
       "codice": "SL-005",
       "nome": "Canederli ai Formaggi (Base)",
       "categoria": "Pasta e impasti",
@@ -5046,6 +5323,40 @@
       "dataCreazione": "10/9/2026"
     },
     {
+      "codice": "SL-046",
+      "nome": "CheesCake cotta",
+      "categoria": "Pasta e impasti",
+      "resaQta": 1000,
+      "resaUm": "g",
+      "tempo": "60",
+      "procedimento": "Fodera il fondo della tortiera con carta forno e imburra i bordi. Versa il fondo di biscotti nello stampo e premi con il dorso di un cucchiaio in modo uniforme su tutto il fondo, creando uno strato compatto di circa 1 cm. Metti in frigo 15 minuti a rassodare.\n\nVersa la crema sul fondo di biscotti freddo e livella bene con una spatola.\n\nCuoci in forno statico a 150°C per 55-65 minuti. Il bordo deve essere solido, il centro deve tremare leggermente come un budino quando muovi la teglia. Se la superficie tende a colorare troppo copri con un foglio di carta forno.\n\nA cottura ultimata spegni il forno, apri lo sportello a fessura e lascia raffreddare dentro per 30 minuti. Poi porta a temperatura ambiente, quindi metti in frigo per almeno 4 ore — meglio tutta la notte.\n\nSforna delicatamente, aggiungi il topping al momento del servizio.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 4,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "sl",
+          "semiIdx": 16,
+          "codiceSl": "SL-044",
+          "nome": "Fondo di biscotti per  cheescake",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 10,
+          "codiceSl": "SL-045",
+          "nome": "Crema cheescake cotta",
+          "qtaBase": 750,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "1/10/2026"
+    },
+    {
       "codice": "SL-015",
       "nome": "Cipolla Tritata",
       "categoria": "Verdure lavorate",
@@ -5069,6 +5380,85 @@
         }
       ],
       "dataCreazione": "28/8/2026"
+    },
+    {
+      "codice": "SL-045",
+      "nome": "Crema cheescake cotta",
+      "categoria": "Dolci e creme",
+      "resaQta": 1980,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Unire e montare tutti gli ingredienti per 7/8 minuti",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 89,
+          "codiceMp": "MP-170",
+          "nome": "Formaggio Spalmabile",
+          "qtaBase": 650,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 95,
+          "codiceMp": "MP-100",
+          "nome": "Ricotta Fresca",
+          "qtaBase": 650,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 94,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 84,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 79,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 47,
+          "codiceMp": "MP-116",
+          "nome": "Maizena",
+          "qtaBase": 25,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 80,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "1/10/2026"
     },
     {
       "codice": "SL-039",
@@ -5449,6 +5839,40 @@
         }
       ],
       "dataCreazione": "2026-09-09"
+    },
+    {
+      "codice": "SL-044",
+      "nome": "Fondo di biscotti per  cheescake",
+      "categoria": "Dolci e creme",
+      "resaQta": 1000,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Macinare i biscotti in planetaria con la foglia\nSciogliere il burro e unirlo ai biscotti, impastare per 2/3 minuti",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 24,
+          "codiceMp": "MP-169",
+          "nome": "Biscotti Digestive",
+          "qtaBase": 700,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 85,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "1/10/2026"
     },
     {
       "codice": "SL-011",
@@ -6010,6 +6434,85 @@
         }
       ],
       "dataCreazione": "10/9/2026"
+    },
+    {
+      "codice": "SL-041",
+      "nome": "Pasta Frolla",
+      "categoria": "Dolci e creme",
+      "resaQta": 4,
+      "resaUm": "kg",
+      "tempo": "30",
+      "procedimento": "Tagliare il burro a pezzi e impastarlo fino ad ammorbidirlo\naggiungere lo zucchero e lavorare il composto 3 min\naggiungere le uova con la macchina in movimento, \naggiungere le farine e il sale\namalgamare bene\ndividere in panetti della quantita dsiderata avvolti in carta da forno\nfar riposare in frigo per almeno 2 ore\nrimettere in planetaria con foglia qualche minuto prima di usare",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 34,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 1941,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 84,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 971,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 81,
+          "codiceMp": "MP-119",
+          "nome": "Zucchero a Velo da Kg",
+          "qtaBase": 768,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 78,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 101,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 76,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 202,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 69,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 16,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 79,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "30/9/2026"
     },
     {
       "codice": "SL-018",
@@ -6869,7 +7372,7 @@
       "resaQta": 1000,
       "resaUm": "g",
       "tempo": "60",
-      "procedimento": "Abbrustolire il pane con il burro\nTagliare le mele a fettine e mescolarle con pane, zucchero, uva sultanina, pinoli, limone grattugiato, cannella.\nStendere la pasta circa 40x26 cm, posare al centro il ripieno e ripiegare lo strudel.\nSpennellare con l'uovo e spolverare con lo zucchero a velo.\nCuocere a 180°C per 35/40 min.\nCirca 200 gr a porzione",
+      "procedimento": "Abbrustolire il pane con il burro\nTagliare le mele a fettine e mescolarle con pane, zucchero, uva sultanina, pinoli, limone grattugiato, cannella.\nStendere la pasta circa 40x26 cm, posare al centro il ripieno e ripiegare lo strudel.\nSpennellare con l'uovo e spolverare con lo zucchero a velo.\nCuocere a 180°C per 35/40 min.\nCirca 200 gr a porzione\nSi può congelare da crudo e cuocere direttamente da gelo",
       "coefficiente": 4,
       "shelfLifeFrigo": 3,
       "shelfLifeSottovuoto": 7,
@@ -7021,15 +7524,155 @@
       "dataCreazione": "18/9/2026"
     },
     {
+      "codice": "SL-043",
+      "nome": "Torta della Nonna",
+      "categoria": "Dolci e creme",
+      "resaQta": 1500,
+      "resaUm": "g",
+      "tempo": "60",
+      "procedimento": "Dividi la frolla in due parti, una leggermente più grande dell'altra. Stendi la parte più grande a circa 4mm di spessore e fodera la tortiera imburrata e infarinata, facendo risalire i bordi. Bucherella il fondo con una forchetta.\n\nVersa la crema pasticcera fredda sul fondo di frolla e livella bene con una spatola.\n\nStendi la seconda parte di frolla dello stesso spessore e coprila sopra la crema sigillando bene i bordi premendo con le dita o con i rebbi di una forchetta. Elimina la frolla in eccesso.\n\nDistribuisci i pinoli sulla superficie premendoli leggermente in modo che aderiscano.\n\nCuoci in forno statico a 175°C per 35-40 minuti fino a doratura uniforme. Se i pinoli colorano troppo in fretta copri con un foglio di carta forno negli ultimi 10 minuti.\n\nLascia raffreddare completamente prima di sformare. Spolvera con zucchero a velo solo al momento del servizio.\n\nConservazione: frigo 3 giorni coperta — si serve a temperatura ambiente.\nSi può congelare",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "sl",
+          "semiIdx": 24,
+          "codiceSl": "SL-041",
+          "nome": "Pasta Frolla",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 10,
+          "codiceSl": "SL-039",
+          "nome": "Crema Pasticcera",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 64,
+          "codiceMp": "MP-163",
+          "nome": "Pinoli sgusciati",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 81,
+          "codiceMp": "MP-119",
+          "nome": "Zucchero a Velo da Kg",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "30/9/2026"
+    },
+    {
+      "codice": "SL-042",
+      "nome": "Torta di Mele (Base 2)",
+      "categoria": "Dolci e creme",
+      "resaQta": 2200,
+      "resaUm": "g",
+      "tempo": "61",
+      "procedimento": "Tagliare le mele a cubetti, lasciandone 2 da tagliare a fettine.\nAmalgamare con foglia per qualche minuto\nUnire le mele a cubetti e mescolare a mano\nVersare nelle tortiere circa 1kg di impasto, decorare con le fettine di mela e cospargere con zucchero semolato.\nCuocere a 170/180°C per 40/45 min.\nSi può congelare",
+      "coefficiente": 7,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 94,
+          "codiceMp": "MP-168",
+          "nome": "Yogurt intero",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 83,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 34,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 78,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 43,
+          "codiceMp": "MP-153",
+          "nome": "Lievito Vanigliato",
+          "qtaBase": 32,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 51,
+          "codiceMp": "MP-152",
+          "nome": "Olio di semi vari",
+          "qtaBase": 130,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 11,
+          "codiceMp": "MP-154",
+          "nome": "Mele Renetta",
+          "qtaBase": 800,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 83,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "30/9/2026"
+    },
+    {
       "codice": "SL-034",
       "nome": "Torta di mele (base)",
       "categoria": "Dolci e creme",
       "resaQta": 1200,
       "resaUm": "g",
-      "tempo": "",
+      "tempo": "60",
       "procedimento": "Tagliare 3 mele a cubetti e una a fettine di 3 mm.\nMischiare con la frusta il burro morbido, l'olio, il latte, il sale, la vaniglia e la scorza di limone.\nMontare le uova con lo zucchero e il miele, oi incorporare il composto preparato in precedenza con la marisa.\nAggiungere quindi la farina ed il lievito setacciati, mescolando delicatamente, ed in fine le mele a cubetti.\nVersare in una tortiera  precedentemente imburrata, coprite con le mele a fettine , cospargete con un po' di zucchero semolato e infornare a 170°C per 40/45 minuti.",
       "coefficiente": 3,
-      "shelfLifeFrigo": 3,
+      "shelfLifeFrigo": 2,
       "shelfLifeSottovuoto": 7,
       "shelfLifeCongelato": 90,
       "componenti": [
@@ -7137,6 +7780,54 @@
     }
   ],
   "piatti": [
+    {
+      "codice": "PF-032",
+      "nome": "Canederli agli spinaci Al Burro fuso",
+      "descrizione": "Con burro della Lessinia",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 9.4,
+      "coefficiente": 3,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Cuocere i canederli almeno 15 minuti in acqua salata, scolarli, impiattare, spolverare con il grana, mettere il burro nocciola spumeggiante ."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Canederli agli spinaci (Base)",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 5,
+          "codiceSl": "SL-040"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Burro Nocciola",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 3,
+          "codiceSl": "SL-004"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 88,
+          "codiceMp": "MP-056"
+        }
+      ],
+      "dataCreazione": "28/9/2026"
+    },
     {
       "codice": "PF-008",
       "nome": "Canederli ai Funghi e burro fuso",
@@ -8222,7 +8913,7 @@
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 4,
+      "prezzoVendita": 4.9,
       "coefficiente": 3,
       "nelMenu": true,
       "tipoBeverage": false,
