@@ -1623,6 +1623,44 @@ function eliminaIngrediente(mi){
   renderMagazzino();
 }
 
+function apriSostituisciMP(mi){
+  var el=document.getElementById('sost-mp-ui-'+mi);
+  if(!el)return;
+  el.style.display=el.style.display==='none'||el.style.display===''?'flex':'none';
+}
+
+function sostituisciMP(mi){
+  var sel=document.getElementById('sost-mp-sel-'+mi);
+  if(!sel)return;
+  var newMi=parseInt(sel.value);
+  if(isNaN(newMi)||newMi<0||newMi===mi){alert('Seleziona una materia prima diversa.');return;}
+  var oldM=magazzino[mi];
+  var newM=magazzino[newMi];
+  if(!oldM||!newM)return;
+  if(!confirm('Sostituire "'+oldM.nome+'" con "'+newM.nome+'" in tutti i semilavorati e piatti?\nLe grammature rimarranno invariate.'))return;
+  var countSl=0,countPf=0;
+  semilavorati.forEach(function(s){
+    (s.componenti||[]).forEach(function(c){
+      if(c.tipo==='mp'&&(c.magIdx===mi||c.nome===oldM.nome)){
+        c.magIdx=newMi; c.codiceMp=newM.codice||null; c.nome=newM.nome;
+        countSl++;
+      }
+    });
+  });
+  piatti.forEach(function(p){
+    (p.componenti||[]).forEach(function(c){
+      if(c.tipo==='mp'&&(c.magIdx===mi||c.nome===oldM.nome)){
+        c.magIdx=newMi; c.codiceMp=newM.codice||null; c.nome=newM.nome;
+        countPf++;
+      }
+    });
+  });
+  saveSemilavorati();
+  savePiatti();
+  alert('✅ "'+oldM.nome+'" sostituita con "'+newM.nome+'" in '+countSl+' semilavorat'+(countSl===1?'o':'i')+' e '+countPf+' piat'+(countPf===1?'to':'ti')+'.');
+  renderMagazzino();
+}
+
 /* ---- ALERTS ---- */
 function getAlerts(){
   var alerts=[];
@@ -2087,6 +2125,16 @@ function renderMagazzino(){
                 +'<span style="color:#888;font-size:12px;">'+u.qta+' '+u.unit+'</span>'
                 +'</div>';
             });
+            out+='<div style="margin-top:10px;padding-top:10px;border-top:1px dashed #e0ded8;">'
+              +'<button class="btn-sm" onclick="event.stopPropagation();apriSostituisciMP('+mi+')" style="color:#7c5c2e;">&#x1F501; Sostituisci in tutte le ricette</button>'
+              +'<div id="sost-mp-ui-'+mi+'" style="display:none;margin-top:8px;padding:10px;background:#fef9f0;border-radius:8px;display:none;gap:8px;align-items:center;flex-wrap:wrap;" onclick="event.stopPropagation();">'
+              +'<span style="font-size:13px;color:#555;">Sostituisci con:</span>'
+              +'<select id="sost-mp-sel-'+mi+'" style="font-size:13px;padding:4px 8px;border:1px solid #d0cec8;border-radius:6px;flex:1;min-width:160px;">'
+              +magazzino.map(function(m2,i2){return i2===mi?'':'<option value="'+i2+'">'+m2.nome+'</option>';}).join('')
+              +'</select>'
+              +' <button class="btn-sm" style="background:#2d7d46;color:#fff;" onclick="event.stopPropagation();sostituisciMP('+mi+')">&#10003; Conferma</button>'
+              +'</div>'
+              +'</div>'
             out+='</div>';
           }
 
