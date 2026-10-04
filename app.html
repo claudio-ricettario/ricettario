@@ -1626,7 +1626,45 @@ function eliminaIngrediente(mi){
 function apriSostituisciMP(mi){
   var el=document.getElementById('sost-mp-ui-'+mi);
   if(!el)return;
-  el.style.display=el.style.display==='none'||el.style.display===''?'flex':'none';
+  var isOpen=el.style.display==='flex'||el.style.display==='block';
+  el.style.display=isOpen?'none':'flex';
+  if(!isOpen){
+    var s=document.getElementById('sost-mp-search-'+mi);
+    if(s){s.value='';s.focus();}
+    var r=document.getElementById('sost-mp-results-'+mi);
+    if(r)r.style.display='none';
+    var h=document.getElementById('sost-mp-sel-'+mi);
+    if(h)h.value='';
+  }
+}
+
+function filtraSostMP(mi){
+  var s=document.getElementById('sost-mp-search-'+mi);
+  var r=document.getElementById('sost-mp-results-'+mi);
+  var h=document.getElementById('sost-mp-sel-'+mi);
+  if(!s||!r)return;
+  var q=s.value.trim().toLowerCase();
+  h.value='';
+  if(!q){r.style.display='none';r.innerHTML='';return;}
+  var matches=magazzino.map(function(m2,i2){return{m:m2,i:i2};})
+    .filter(function(x){return x.i!==mi&&x.m.nome.toLowerCase().indexOf(q)>=0;});
+  if(!matches.length){r.innerHTML='<div style="padding:8px 12px;color:#aaa;">Nessun risultato</div>';r.style.display='block';return;}
+  r.innerHTML='';
+  r.style.display='block';
+  matches.forEach(function(x){
+    var div=document.createElement('div');
+    div.style.cssText='padding:7px 12px;cursor:pointer;border-bottom:1px solid #f0ede6;';
+    div.textContent=x.m.nome;
+    div.addEventListener('mouseover',function(){div.style.background='#fef3e0';});
+    div.addEventListener('mouseout',function(){div.style.background='';});
+    div.addEventListener('click',function(e){
+      e.stopPropagation();
+      s.value=x.m.nome;
+      h.value=x.i;
+      r.style.display='none';
+    });
+    r.appendChild(div);
+  });
 }
 
 function sostituisciMP(mi){
@@ -2127,12 +2165,13 @@ function renderMagazzino(){
             });
             out+='<div style="margin-top:10px;padding-top:10px;border-top:1px dashed #e0ded8;">'
               +'<button class="btn-sm" onclick="event.stopPropagation();apriSostituisciMP('+mi+')" style="color:#7c5c2e;">&#x1F501; Sostituisci in tutte le ricette</button>'
-              +'<div id="sost-mp-ui-'+mi+'" style="display:none;margin-top:8px;padding:10px;background:#fef9f0;border-radius:8px;display:none;gap:8px;align-items:center;flex-wrap:wrap;" onclick="event.stopPropagation();">'
-              +'<span style="font-size:13px;color:#555;">Sostituisci con:</span>'
-              +'<select id="sost-mp-sel-'+mi+'" style="font-size:13px;padding:4px 8px;border:1px solid #d0cec8;border-radius:6px;flex:1;min-width:160px;">'
-              +magazzino.map(function(m2,i2){return i2===mi?'':'<option value="'+i2+'">'+m2.nome+'</option>';}).join('')
-              +'</select>'
+              +'<div id="sost-mp-ui-'+mi+'" style="display:none;margin-top:8px;padding:10px;background:#fef9f0;border-radius:8px;gap:8px;flex-direction:column;" onclick="event.stopPropagation();">'
+              +'<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">'
+              +'<input type="text" id="sost-mp-search-'+mi+'" placeholder="🔍 Cerca materia prima..." autocomplete="off" oninput="filtraSostMP('+mi+')" style="flex:1;min-width:160px;font-size:13px;padding:5px 8px;border:1px solid #d0cec8;border-radius:6px;"/>'
+              +'<input type="hidden" id="sost-mp-sel-'+mi+'" value=""/>'
               +' <button class="btn-sm" style="background:#2d7d46;color:#fff;" onclick="event.stopPropagation();sostituisciMP('+mi+')">&#10003; Conferma</button>'
+              +'</div>'
+              +'<div id="sost-mp-results-'+mi+'" style="border:1px solid #d0cec8;border-radius:6px;background:#fff;max-height:180px;overflow-y:auto;font-size:13px;display:none;"></div>'
               +'</div>'
               +'</div>'
             out+='</div>';
