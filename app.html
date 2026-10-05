@@ -712,6 +712,11 @@ textarea{resize:vertical;min-height:60px;}
       <button id="btn-nuovo-semilavorato" class="btn-primary" onclick="openSemiModal(-1)">+ Nuovo semilavorato</button>
     </div>
 
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
+      <input type="text" id="semi-search" placeholder="🔍 Cerca per nome..." oninput="renderSemilavorati()" autocomplete="off"
+        style="width:100%;max-width:400px;font-size:14px;padding:7px 12px;border:1px solid #d0cec8;border-radius:8px;"/>
+      <div id="semi-cat-btns" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
+    </div>
     <div id="semi-list"></div>
   </div>
 
@@ -2748,6 +2753,7 @@ function syncSlider(el){
 
 var _fcOpenCats={};
 var _fcSelectedIdx='';
+var _semiCatFilter='';
 
 function fcPopulateSelector(){
   var acc=document.getElementById('fc-piatto-accordion');
@@ -6375,14 +6381,42 @@ function eliminaSemilavorato(){
   renderSemilavorati();
 }
 
+function semiSetCat(cat){
+  _semiCatFilter=cat;
+  renderSemilavorati();
+}
+
 function renderSemilavorati(){
   var el=document.getElementById('semi-list');
   if(!el)return;
   var q=(document.getElementById('semi-search')||{}).value||'';
-  var list=semilavorati.filter(function(s){return !q||s.nome.toLowerCase().indexOf(q.toLowerCase())>=0;});
+
+  /* costruisci bottoni categoria */
+  var catEl=document.getElementById('semi-cat-btns');
+  if(catEl){
+    var cats=[];
+    semilavorati.forEach(function(s){var c=s.categoria||'Altro';if(cats.indexOf(c)<0)cats.push(c);});
+    cats.sort(function(a,b){return a.localeCompare(b,'it');});
+    var btnStyle='font-size:12px;padding:4px 12px;border-radius:16px;border:1px solid #d0cec8;cursor:pointer;white-space:nowrap;';
+    var activeStyle='background:#2d7d46;color:#fff;border-color:#2d7d46;';
+    var inactiveStyle='background:#fff;color:#555;';
+    var html='<button style="'+btnStyle+(_semiCatFilter===''?activeStyle:inactiveStyle)+'" onclick="semiSetCat(\'\')">Tutti ('+semilavorati.length+')</button>';
+    cats.forEach(function(c){
+      var cnt=semilavorati.filter(function(s){return (s.categoria||'Altro')===c;}).length;
+      html+='<button style="'+btnStyle+(_semiCatFilter===c?activeStyle:inactiveStyle)+'" onclick="semiSetCat(\''+c.replace(/'/g,"\\'")+'\')">'
+        +c+' ('+cnt+')</button>';
+    });
+    catEl.innerHTML=html;
+  }
+
+  var list=semilavorati.filter(function(s){
+    if(q&&s.nome.toLowerCase().indexOf(q.toLowerCase())<0)return false;
+    if(_semiCatFilter&&(s.categoria||'Altro')!==_semiCatFilter)return false;
+    return true;
+  });
   if(!list.length){
     el.innerHTML='<div class="card" style="text-align:center;padding:32px;color:#aaa;">'
-      +(semilavorati.length?'Nessun risultato per "'+q+'"':'Nessun semilavorato. Premi "+ Nuovo semilavorato" per iniziare.')
+      +(semilavorati.length?'Nessun risultato':'Nessun semilavorato. Premi "+ Nuovo semilavorato" per iniziare.')
       +'</div>';
     return;
   }
