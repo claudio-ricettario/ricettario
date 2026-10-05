@@ -3,11 +3,29 @@
   "exportDate": "5/10/2026",
   "menuData": [
     {
+      "nome": "Canederli agli spinaci Al Burro fuso",
+      "descrizione": "Con burro della Lessinia",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 9.4,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Latte e lattosio",
+        "Uova",
+        "Glutine"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
       "nome": "Canederli ai Funghi e burro fuso",
-      "descrizione": "Nuova proposta da provare",
+      "descrizione": "Nuova proposta da provare con funghi porcini",
       "tags": [
         "Vegetariano",
         "Novità",
+        "Del territorio",
         "Fuori menù"
       ],
       "pochePorzioni": true,
@@ -23,27 +41,6 @@
         "Soia",
         "Frutta a guscio",
         "Sesamo"
-      ]
-    },
-    {
-      "nome": "Canederli di Monte Veronese al burro fuso",
-      "descrizione": "Tipico in sudtirol ma con i nostri formaggi locali",
-      "tags": [
-        "Vegetariano",
-        "Più venduto",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Primi piatti",
-      "prezzoVendita": 10.9,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Glutine",
-        "Latte e lattosio",
-        "Uova"
-      ],
-      "tracce": [
-        "Soia"
       ]
     },
     {
@@ -64,6 +61,27 @@
       "tracce": []
     },
     {
+      "nome": "Crostata al grano saraceno",
+      "descrizione": "Con mirtilli rossi di montagna",
+      "tags": [
+        "Vegano",
+        "Consigliato",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 4.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Latte e lattosio",
+        "Uova"
+      ],
+      "tracce": [
+        "Senape",
+        "Soia"
+      ]
+    },
+    {
       "nome": "Gnocchi di Malga al Burro fuso",
       "descrizione": "la lessinia nel piatto",
       "tags": [
@@ -81,6 +99,22 @@
       "tracce": [
         "Soia"
       ]
+    },
+    {
+      "nome": "Goulash di manzo",
+      "descrizione": "Leggermente piccante Con carne allevata in Lessinia e Polenta",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "prezzoVendita": 12.4,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti",
+        "Sedano"
+      ],
+      "tracce": []
     },
     {
       "nome": "Maccheroni al ragù di cortile",
@@ -141,6 +175,24 @@
       ]
     },
     {
+      "nome": "Pancia di Maiale cotta delicatamente",
+      "descrizione": "Un piatto che riscalda con maiali allevati in lessinia",
+      "tags": [
+        "Consigliato",
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "prezzoVendita": 12.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Sedano",
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
       "nome": "Panna Cotta Vegana",
       "descrizione": "Con caramello salato",
       "tags": [
@@ -185,6 +237,24 @@
       "tracce": []
     },
     {
+      "nome": "Polenta e Ragù di Funghi con Porcini",
+      "descrizione": "Polenta grigliata ed il nostro Ragù di Funghi",
+      "tags": [
+        "Vegano",
+        "Consigliato",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "prezzoVendita": 7.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Sedano",
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
       "nome": "Salumi e formaggi del territorio per 2 persone",
       "descrizione": "Selezione Bottega Valbusa con giardiniera e marmellata di nostra produzione",
       "tags": [
@@ -200,27 +270,6 @@
         "Anidride solforosa e solfiti"
       ],
       "tracce": []
-    },
-    {
-      "nome": "Sbrisolona",
-      "descrizione": "Provala con la nostra grappa Morbida +2€",
-      "tags": [
-        "Novità",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 4.4,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Glutine",
-        "Latte e lattosio",
-        "Uova",
-        "Frutta a guscio"
-      ],
-      "tracce": [
-        "Soia"
-      ]
     },
     {
       "nome": "Semifreddo al Pino Mugo",
@@ -298,7 +347,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Dolci",
-      "prezzoVendita": 6.4,
+      "prezzoVendita": 5.9,
       "tipoBeverage": false,
       "allergeni": [
         "Latte e lattosio",
@@ -1780,6 +1829,78 @@
       ]
     },
     {
+      "codice": "MP-173",
+      "nome": "Farina di grano saraceno",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [
+        "Senape"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 368,
+        "grassi": 3.1,
+        "grassiSaturi": 0.92,
+        "carboidrati": 68.9,
+        "zuccheri": 1.7,
+        "fibre": 7.5,
+        "proteine": 12.6,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.36,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-174",
+      "nome": "Farina di Mandorle",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 611,
+        "grassi": 51,
+        "grassiSaturi": 3.9,
+        "carboidrati": 1.1,
+        "zuccheri": 2.5,
+        "fibre": 8.6,
+        "proteine": 23,
+        "sale": 0.002
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 15.4,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-130",
       "nome": "Farina Gialla Bramata per polenta",
       "categoria": "Generale",
@@ -2282,6 +2403,42 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 5.7377,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-175",
+      "nome": "Marmellata Mirtilli rossi",
+      "marca": "Rigoni da 330",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 157,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 38,
+        "zuccheri": 37,
+        "fibre": 3.2,
+        "proteine": 0,
+        "sale": 0.13
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 10.3,
           "storico": []
         }
       ]
@@ -5944,6 +6101,40 @@
       "dataCreazione": "10/7/2026"
     },
     {
+      "codice": "SL-053",
+      "nome": "Crostata al grano saraceno",
+      "categoria": "Dolci e creme",
+      "resaQta": 750,
+      "resaUm": "g",
+      "tempo": "40",
+      "procedimento": "Dividi la frolla in due parti: 380g per la base e 170g per la griglia.\n\nStendi la base tra due fogli di carta forno a circa 3-4mm di spessore. Fodera la tortiera da 24cm imburrata e infarinata (con farina di riso per mantenere il senza glutine), rifilando i bordi. Bucherella il fondo con una forchetta.\n\nVersa la marmellata sulla base e distribuiscila uniformemente lasciando 1cm dal bordo.\n\nCon i 170g rimasti forma dei rotolini e posizionali a griglia sulla superficie. In alternativa stendi l'impasto e taglia delle strisce con un tagliapasta.\n\nCuoci in forno statico a 170°C per 30-35 minuti fino a doratura dei bordi e della griglia. Con il ventilato abbassa a 160°C.\n\nSforna e lascia raffreddare completamente in tortiera prima di sformare — con la frolla senza glutine è fondamentale, si rompe facilmente da calda.\n\nSpolverare con zucchero a velo prima di servire.\nPorzioni:\n\nA 8 porzioni → ~93g a fetta — giusta per un dolce da fine pasto\nA 6 porzioni → ~125g a fetta — più generosa, da valutare se la offri come dolce unico",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "sl",
+          "semiIdx": 29,
+          "codiceSl": "SL-052",
+          "nome": "Pasta Frolla saraceno e mandorle",
+          "qtaBase": 550,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 53,
+          "codiceMp": "MP-175",
+          "nome": "Marmellata Mirtilli rossi",
+          "qtaBase": 260,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "5/10/2026"
+    },
+    {
       "codice": "SL-1936",
       "nome": "Fondo bruno di manzo",
       "categoria": "Fondi e brodi",
@@ -6716,6 +6907,103 @@
         }
       ],
       "dataCreazione": "30/9/2026"
+    },
+    {
+      "codice": "SL-052",
+      "nome": "Pasta Frolla saraceno e mandorle",
+      "categoria": "Dolci e creme",
+      "resaQta": 700,
+      "resaUm": "g",
+      "tempo": "15",
+      "procedimento": "Lavora l'impasto freddo e veloce come la classica\nRiposo in frigo minimo 1 ora, meglio 2 — il grano saraceno ha bisogno di più tempo per idratarsi\nStendi sempre tra due fogli di carta forno — è più fragile della frolla classica\nCottura a 170°C ventilato, \n-per una torta da 24 circa 500 di pasta con griglia e bordi, 350 se solo bordi",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 37,
+          "codiceMp": "MP-173",
+          "nome": "Farina di grano saraceno",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 38,
+          "codiceMp": "MP-174",
+          "nome": "Farina di Mandorle",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 88,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 85,
+          "codiceMp": "MP-119",
+          "nome": "Zucchero a Velo da Kg",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 80,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 82,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 73,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 41,
+          "codiceSl": "SL-7569",
+          "nome": "Scorza Limone Grattugiata",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 47,
+          "codiceMp": "MP-153",
+          "nome": "Lievito Vanigliato",
+          "qtaBase": 4,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "5/10/2026"
     },
     {
       "codice": "SL-018",
@@ -8322,7 +8610,7 @@
       "pax": 4,
       "prezzoVendita": 9.4,
       "coefficiente": 3,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -8362,10 +8650,11 @@
     {
       "codice": "PF-008",
       "nome": "Canederli ai Funghi e burro fuso",
-      "descrizione": "Nuova proposta da provare",
+      "descrizione": "Nuova proposta da provare con funghi porcini",
       "tags": [
         "Vegetariano",
         "Novità",
+        "Del territorio",
         "Fuori menù"
       ],
       "pochePorzioni": true,
@@ -8409,8 +8698,7 @@
           "codiceMp": "MP-056"
         }
       ],
-      "dataCreazione": "29/8/2026",
-      "porzioniVendute": 0
+      "dataCreazione": "29/8/2026"
     },
     {
       "codice": "PF-001",
@@ -8427,7 +8715,7 @@
       "pax": 4,
       "prezzoVendita": 10.9,
       "coefficiente": 4,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -8543,6 +8831,40 @@
       "dataCreazione": "4/10/2026"
     },
     {
+      "codice": "PF-038",
+      "nome": "Crostata al grano saraceno",
+      "descrizione": "Con mirtilli rossi di montagna",
+      "tags": [
+        "Vegano",
+        "Consigliato",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 6,
+      "prezzoVendita": 4.9,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Tagliare la torta in 6"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Crostata al grano saraceno",
+          "qtaBase": 750,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 17,
+          "codiceSl": "SL-053"
+        }
+      ],
+      "dataCreazione": "5/10/2026"
+    },
+    {
       "codice": "PF-003",
       "nome": "Gnocchi al Ragu'",
       "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
@@ -8646,7 +8968,7 @@
       "pax": 1,
       "prezzoVendita": 12.4,
       "coefficiente": 3,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -9018,7 +9340,7 @@
       "pax": 4,
       "prezzoVendita": 12.9,
       "coefficiente": 4,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [],
@@ -9204,7 +9526,7 @@
       "pax": 1,
       "prezzoVendita": 7.9,
       "coefficiente": 2,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -9342,7 +9664,7 @@
       "pax": 1,
       "prezzoVendita": 4.4,
       "coefficiente": 3,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [],
@@ -9551,7 +9873,7 @@
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 6.4,
+      "prezzoVendita": 5.9,
       "coefficiente": 2,
       "nelMenu": true,
       "tipoBeverage": false,
