@@ -6973,7 +6973,7 @@ function homeRicettaRow(r,i){
   return '<div class="home-ricetta-row" onclick="'+clickFn+'">'
     +'<div class="home-ricetta-thumb">'+thumbHtml+'</div>'
     +'<div class="home-ricetta-info">'
-    +'<div class="home-ricetta-nome">'+(r.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:6px;">'+r.codice+'</span>':'')+r.nome+'</div>'
+    +'<div class="home-ricetta-nome">'+(r.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:6px;">'+r.codice+'</span>':'')+r.nome+(r._isPiatto&&piatti[r._piattoIdx]&&(piatti[r._piattoIdx].tags||[]).indexOf('Fuori menù')>=0?' <span style="font-size:10px;font-weight:500;background:#f1f0ee;color:#888;border:1px solid #d0cec8;border-radius:10px;padding:1px 7px;vertical-align:middle;">Fuori menù</span>':'')+'</div>'
     +'<div class="home-ricetta-meta">'+r.pax+' porzioni'+(r._isBase?' &middot; ricetta base':r.dataCreazione?' &middot; '+r.dataCreazione:'')+(r._isPiatto&&r.prezzoVendita>0?' &middot; <strong style="color:#2d7d46;">€&nbsp;'+parseFloat(r.prezzoVendita).toFixed(2)+'/pax</strong>':'')+'</div>'
     +'</div>'
     +'<span class="home-ricetta-fc">'+fcBadge+'</span>'
