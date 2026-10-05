@@ -133,26 +133,23 @@
       "tracce": []
     },
     {
-      "nome": "MilleFoglie al piatto",
-      "descrizione": "Ottima in ogni stagione",
+      "nome": "Millefoglie di patate",
+      "descrizione": "Con patate della truffa",
       "tags": [
-        "Consigliato",
-        "Novità",
+        "Vegetariano",
+        "Del territorio",
         "Fuori menù"
       ],
       "pochePorzioni": true,
-      "categoria": "Dolci",
-      "prezzoVendita": 6,
+      "categoria": "Contorni",
+      "prezzoVendita": 4.4,
       "tipoBeverage": false,
       "allergeni": [
-        "Glutine",
         "Latte e lattosio",
-        "Uova",
-        "Frutta a guscio"
+        "Glutine",
+        "Senape"
       ],
-      "tracce": [
-        "Soia"
-      ]
+      "tracce": []
     },
     {
       "nome": "Minestra di orzo",
@@ -292,33 +289,6 @@
       ]
     },
     {
-      "nome": "Semifreddo all'Amaretto",
-      "descrizione": "Con Prodotti locali",
-      "tags": [
-        "Vegetariano",
-        "Più venduto",
-        "Consigliato",
-        "Fuori menù"
-      ],
-      "pochePorzioni": true,
-      "categoria": "Dolci",
-      "prezzoVendita": 5.9,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Glutine",
-        "Uova",
-        "Soia",
-        "Latte e lattosio",
-        "Frutta a guscio"
-      ],
-      "tracce": [
-        "Arachidi",
-        "Senape",
-        "Sesamo",
-        "Lupini"
-      ]
-    },
-    {
       "nome": "Spaghetti al Ragù di funghi",
       "descrizione": "Con funghi Porcini, possibili contaminazione crociata uova",
       "tags": [
@@ -338,6 +308,29 @@
         "Soia",
         "Senape"
       ]
+    },
+    {
+      "nome": "Strudel di Mele con crema alla vaniglia",
+      "descrizione": "Con Mele del trentino",
+      "tags": [
+        "Vegetariano",
+        "Consigliato",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Dolci",
+      "prezzoVendita": 6.4,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Glutine",
+        "Latte e lattosio",
+        "Arachidi",
+        "Frutta a guscio",
+        "Anidride solforosa e solfiti",
+        "Soia",
+        "Uova"
+      ],
+      "tracce": []
     },
     {
       "nome": "Tiramisù della Malga",
@@ -9133,10 +9126,9 @@
       "descrizione": "Ottima in ogni stagione",
       "tags": [
         "Consigliato",
-        "Novità",
-        "Fuori menù"
+        "Novità"
       ],
-      "pochePorzioni": true,
+      "pochePorzioni": false,
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 1,
@@ -9194,9 +9186,10 @@
       "descrizione": "Con patate della truffa",
       "tags": [
         "Vegetariano",
-        "Del territorio"
+        "Del territorio",
+        "Fuori menù"
       ],
-      "pochePorzioni": false,
+      "pochePorzioni": true,
       "categoria": "Contorni",
       "sottocategoria": "",
       "pax": 4,
@@ -9740,10 +9733,9 @@
       "tags": [
         "Vegetariano",
         "Più venduto",
-        "Consigliato",
-        "Fuori menù"
+        "Consigliato"
       ],
-      "pochePorzioni": true,
+      "pochePorzioni": false,
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 1,
@@ -9825,9 +9817,10 @@
       "descrizione": "Con Mele del trentino",
       "tags": [
         "Vegetariano",
-        "Consigliato"
+        "Consigliato",
+        "Fuori menù"
       ],
-      "pochePorzioni": false,
+      "pochePorzioni": true,
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 5,
