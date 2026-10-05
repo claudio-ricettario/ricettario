@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "2/10/2026",
+  "exportDate": "5/10/2026",
   "menuData": [
     {
       "nome": "Canederli ai Funghi e burro fuso",
@@ -45,6 +45,23 @@
       "tracce": [
         "Soia"
       ]
+    },
+    {
+      "nome": "Crauti della Malga",
+      "descrizione": "Con i crauti della Val di Gresta",
+      "tags": [
+        "Vegano",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "prezzoVendita": 3.9,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Sedano",
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
     },
     {
       "nome": "Gnocchi di Malga al Burro fuso",
@@ -132,7 +149,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Dolci",
-      "prezzoVendita": 5.4,
+      "prezzoVendita": 5.9,
       "tipoBeverage": false,
       "allergeni": [
         "Soia"
@@ -143,11 +160,11 @@
       "nome": "Patate al Forno",
       "descrizione": "",
       "tags": [
-        "Vegetariano"
+        "Vegano"
       ],
       "pochePorzioni": false,
       "categoria": "Contorni",
-      "prezzoVendita": 4.9,
+      "prezzoVendita": 3.9,
       "tipoBeverage": false,
       "allergeni": [],
       "tracce": []
@@ -162,7 +179,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Contorni",
-      "prezzoVendita": 3.9,
+      "prezzoVendita": 3.4,
       "tipoBeverage": false,
       "allergeni": [],
       "tracce": []
@@ -281,7 +298,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Dolci",
-      "prezzoVendita": 5.9,
+      "prezzoVendita": 6.4,
       "tipoBeverage": false,
       "allergeni": [
         "Latte e lattosio",
@@ -763,6 +780,41 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 4.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-172",
+      "nome": "Trippa Bovino Precotta",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 74,
+        "grassi": 1.23,
+        "grassiSaturi": 0.49,
+        "carboidrati": 0.41,
+        "zuccheri": 0.41,
+        "fibre": 0,
+        "proteine": 15.4,
+        "sale": 0.2
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 5.5,
           "storico": []
         }
       ]
@@ -4380,6 +4432,42 @@
       ]
     },
     {
+      "codice": "MP-171",
+      "nome": "Crauti Cotti",
+      "marca": "Zuccato",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 25,
+        "grassi": 0.3,
+        "grassiSaturi": 0.1,
+        "carboidrati": 2.3,
+        "zuccheri": 0.8,
+        "fibre": 4.2,
+        "proteine": 1.2,
+        "sale": 1.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.72,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-097",
       "nome": "Patate per Gnocchi",
       "categoria": "Verdura",
@@ -5380,6 +5468,121 @@
         }
       ],
       "dataCreazione": "28/8/2026"
+    },
+    {
+      "codice": "SL-047",
+      "nome": "Crauti Cotti",
+      "categoria": "Verdure lavorate",
+      "resaQta": 1250,
+      "resaUm": "g",
+      "tempo": "30",
+      "procedimento": "rosolate della cipolla in olio di oliva o burro. Versate i crauti ed aggiungete subito per ogni Kg di crauti 1/2 litro di  brodo. Riscaldate bene. Aggiungere tutti gli ingredienti ne far cuocere almeno 30 min, farli asciugare bene prima di servire 150 gr a persona.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 32,
+          "codiceMp": "MP-171",
+          "nome": "Crauti Cotti",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 10,
+          "codiceSl": "SL-015",
+          "nome": "Cipolla Tritata",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 54,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 2,
+          "codiceSl": "SL-029",
+          "nome": "Brodo Vegetale",
+          "qtaBase": 500,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 82,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 100,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 21,
+          "codiceSl": "SL-033",
+          "nome": "Mele Pulite",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 74,
+          "codiceMp": "MP-084",
+          "nome": "Semi di cumino interi Wiberg",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 71,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 64,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 17,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 22,
+          "codiceMp": "MP-080",
+          "nome": "Bacche di ginepro Wiberg",
+          "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "4/10/2026"
     },
     {
       "codice": "SL-045",
@@ -6589,14 +6792,39 @@
       "dataCreazione": "7/7/2026"
     },
     {
+      "codice": "SL-050",
+      "nome": "Polenta Grigliata",
+      "categoria": "Altro",
+      "resaQta": 950,
+      "resaUm": "g",
+      "tempo": "5",
+      "procedimento": "Stendere subito la polenta appena cotta in una teglia e far raffreddare tutta la notte.\nGriglia e usa in base alla ricetta",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "sl",
+          "semiIdx": 31,
+          "codiceSl": "SL-021",
+          "nome": "Polenta morbida",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "5/10/2026"
+    },
+    {
       "codice": "SL-021",
       "nome": "Polenta morbida",
       "categoria": "Altro",
-      "resaQta": 4430,
+      "resaQta": 3800,
       "resaUm": "g",
       "tempo": "45",
       "procedimento": "Con 1 kg di farina escono circa 20 porzioni",
-      "coefficiente": 2,
+      "coefficiente": 1,
       "shelfLifeFrigo": 3,
       "shelfLifeSottovuoto": 7,
       "shelfLifeCongelato": 90,
@@ -6643,12 +6871,15 @@
     {
       "codice": "SL-003",
       "nome": "Porri stufati",
-      "categoria": "Altro",
+      "categoria": "Verdure lavorate",
       "resaQta": 500,
       "resaUm": "g",
       "tempo": "",
       "procedimento": "Stufare i porri senza bruciarli per 15 min circa, devono risultare morbidi",
       "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
       "componenti": [
         {
           "magIdx": 10,
@@ -7034,6 +7265,191 @@
         }
       ],
       "dataCreazione": "22/9/2026"
+    },
+    {
+      "codice": "SL-049",
+      "nome": "Salsa al pomodoro (base)",
+      "categoria": "Salse e sughi",
+      "resaQta": 2200,
+      "resaUm": "g",
+      "tempo": "30",
+      "procedimento": "Soffriggere cipolla tritata fine in olio a fuoco dolce fino a trasparenza/doratura leggera. Aggiungere aglio, far insaporire 1 minuto. Versare la polpa Mutti, salare, pepare. Cuocere a fuoco medio-basso 25-30 minuti mescolando, fino a che si ritira e si addensa. Spegnere, aggiungere basilico a fuoco spento.\n\n\nA 150g a porzione (per una pasta come primo) \n\nLa tieni così come base neutra e poi in padella durante il servizio la personalizzi con quello che ti serve — aglio e olio per una all'arrabbiata, olive e capperi per una puttanesca, ecc.",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 66,
+          "codiceMp": "MP-093",
+          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "qtaBase": 3000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 10,
+          "codiceSl": "SL-015",
+          "nome": "Cipolla Tritata",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 105,
+          "codiceMp": "MP-069",
+          "nome": "Aglio",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 53,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 70,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 25,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 63,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 23,
+          "codiceMp": "MP-082",
+          "nome": "Basilico liofilizzato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "5/10/2026"
+    },
+    {
+      "codice": "SL-048",
+      "nome": "Sbrisolona (base 2)",
+      "categoria": "Dolci e creme",
+      "resaQta": 3000,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Mescola a mano in una ciotola capiente farina, farina di mais fioretto, zucchero, mandorle tritate grossolanamente, scorza di limone grattugiata e un pizzico di sale. Aggiungi il burro freddo a pezzetti e lavora velocemente con le dita sfregando gli ingredienti tra i palmi fino a ottenere un composto sabbioso e granuloso — non impastare, deve rimanere briciole irregolari. Aggiungi i tuorli e la vaniglia e amalgama ancora brevemente senza compattare. Versa il composto in una teglia imburrata premendo leggermente in modo non uniforme, lasciando la superficie rustica e irregolare. Cuoci in forno a 170°C per 30-35 minuti fino a doratura uniforme. Lascia raffreddare completamente prima di rompere a pezzi a mano.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 35,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 1088,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 37,
+          "codiceMp": "MP-139",
+          "nome": "Farina Gialla Fioretto per Polenta",
+          "qtaBase": 272,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 84,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 544,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 70,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 48,
+          "codiceMp": "MP-140",
+          "nome": "Mandorle Sgusciate",
+          "qtaBase": 544,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 44,
+          "codiceMp": "MP-153",
+          "nome": "Lievito Vanigliato",
+          "qtaBase": 24,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 85,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 680,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 79,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 80,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 39,
+          "codiceSl": "SL-7569",
+          "nome": "Scorza Limone Grattugiata",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "5/10/2026"
     },
     {
       "codice": "SL-027",
@@ -7777,6 +8193,121 @@
         }
       ],
       "dataCreazione": "18/9/2026"
+    },
+    {
+      "codice": "SL-051",
+      "nome": "Trippa Alla Parmigiana",
+      "categoria": "Carni lavorate",
+      "resaQta": 1000,
+      "resaUm": "g",
+      "tempo": "60",
+      "procedimento": "Stufa le cipolle con l'olio, aggiungi la farina ed il concentrato mescolare, unire il vino ed il brodo, far sobbollire il liquido.\nVersare la trippa, aggiungere i rimanenti ingredienti e cuocere almeno 60 minuti.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-172",
+          "nome": "Trippa Bovino Precotta",
+          "qtaBase": 700,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 10,
+          "codiceSl": "SL-015",
+          "nome": "Cipolla Tritata",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 54,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 50,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 32,
+          "codiceMp": "MP-092",
+          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "qtaBase": 40,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 82,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 125,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 1,
+          "codiceSl": "SL-019",
+          "nome": "Brodo di manzo",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 64,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 18,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 47,
+          "codiceMp": "MP-075",
+          "nome": "Maggiorana liofilizzata Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 41,
+          "codiceSl": "SL-7569",
+          "nome": "Scorza Limone Grattugiata",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 60,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "5/10/2026"
     }
   ],
   "piatti": [
@@ -7944,6 +8475,74 @@
       "porzioniVendute": 0
     },
     {
+      "codice": "PF-033",
+      "nome": "CheeseCake cotta",
+      "descrizione": "Con ricotta della Lessinia",
+      "tags": [
+        "Vegetariano",
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 8,
+      "prezzoVendita": 4.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Con una Tortiera da 22/24 cm , fare 8 porzioni",
+        "Possiamo servirla o con topping al cioccolato o frutti di bosco, o frutti di bosco freschi"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "CheesCake cotta",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 9,
+          "codiceSl": "SL-046"
+        }
+      ],
+      "dataCreazione": "2/10/2026"
+    },
+    {
+      "codice": "PF-035",
+      "nome": "Crauti della Malga",
+      "descrizione": "Con i crauti della Val di Gresta",
+      "tags": [
+        "Vegano",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 3.9,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Servire 150 gr a persona"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Crauti Cotti",
+          "qtaBase": 1500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 11,
+          "codiceSl": "SL-047"
+        }
+      ],
+      "dataCreazione": "4/10/2026"
+    },
+    {
       "codice": "PF-003",
       "nome": "Gnocchi al Ragu'",
       "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
@@ -8036,8 +8635,8 @@
     },
     {
       "codice": "PF-028",
-      "nome": "Goulash con polenta",
-      "descrizione": "Con carne allevata in Lessinia e Polenta",
+      "nome": "Goulash di manzo",
+      "descrizione": "Leggermente piccante Con carne allevata in Lessinia e Polenta",
       "tags": [
         "Del territorio"
       ],
@@ -8045,13 +8644,13 @@
       "categoria": "Secondi piatti",
       "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 12.9,
+      "prezzoVendita": 12.4,
       "coefficiente": 3,
       "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
-        "La polenta può essere anche alla griglia, forse meglio per la gestione del servizio"
+        "200 gr a porzione 4/5 pezzi"
       ],
       "componenti": [
         {
@@ -8062,18 +8661,41 @@
           "conv": 0.001,
           "semiIdx": 15,
           "codiceSl": "SL-020"
-        },
-        {
-          "tipo": "sl",
-          "nome": "Polenta morbida",
-          "qtaBase": 200,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 24,
-          "codiceSl": "SL-021"
         }
       ],
       "dataCreazione": "25/9/2026"
+    },
+    {
+      "codice": "PF-037",
+      "nome": "La Trippa secondo Claudio",
+      "descrizione": "Con carne Bovina allevata in Lessinia",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 9.4,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Servire 250 gr circa a persona"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Trippa Alla Parmigiana",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 50,
+          "codiceSl": "SL-051"
+        }
+      ],
+      "dataCreazione": "5/10/2026"
     },
     {
       "codice": "PF-002",
@@ -8256,7 +8878,7 @@
       "categoria": "Contorni",
       "sottocategoria": "",
       "pax": 4,
-      "prezzoVendita": 4,
+      "prezzoVendita": 4.4,
       "coefficiente": 3,
       "nelMenu": false,
       "tipoBeverage": false,
@@ -8382,6 +9004,38 @@
       "dataCreazione": "16/9/2026"
     },
     {
+      "codice": "PF-034",
+      "nome": "Pancia di Maiale cotta delicatamente",
+      "descrizione": "Un piatto che riscalda con maiali allevati in lessinia",
+      "tags": [
+        "Consigliato",
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 12.9,
+      "coefficiente": 4,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Pancia di Maiale CBT",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 24,
+          "codiceSl": "SL-035"
+        }
+      ],
+      "dataCreazione": "4/10/2026"
+    },
+    {
       "codice": "PF-014",
       "nome": "Panna Cotta Vegana",
       "descrizione": "Con caramello salato",
@@ -8393,7 +9047,7 @@
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 6,
-      "prezzoVendita": 5.4,
+      "prezzoVendita": 5.9,
       "coefficiente": 2,
       "nelMenu": true,
       "tipoBeverage": false,
@@ -8421,22 +9075,21 @@
           "codiceSl": "SL-7566"
         }
       ],
-      "dataCreazione": "10/9/2026",
-      "porzioniVendute": 0
+      "dataCreazione": "10/9/2026"
     },
     {
       "codice": "PF-030",
       "nome": "Patate al Forno",
       "descrizione": "",
       "tags": [
-        "Vegetariano"
+        "Vegano"
       ],
       "pochePorzioni": false,
       "categoria": "Contorni",
       "sottocategoria": "",
       "pax": 5,
-      "prezzoVendita": 4.9,
-      "coefficiente": 3,
+      "prezzoVendita": 3.9,
+      "coefficiente": 2,
       "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
@@ -8515,26 +9168,69 @@
       "categoria": "Contorni",
       "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 3.9,
-      "coefficiente": 2,
+      "prezzoVendita": 3.4,
+      "coefficiente": 1,
       "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
-        "Raffredda la polenta in placca e usala a fette grigliate, circa 200gr a porzione"
+        "3 fette circa 200 gr porzione"
       ],
       "componenti": [
         {
           "tipo": "sl",
-          "nome": "Polenta morbida",
+          "nome": "Polenta Grigliata",
           "qtaBase": 200,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 24,
-          "codiceSl": "SL-021"
+          "semiIdx": 31,
+          "codiceSl": "SL-050"
         }
       ],
       "dataCreazione": "7/9/2026"
+    },
+    {
+      "codice": "PF-036",
+      "nome": "Polenta e Ragù di Funghi con Porcini",
+      "descrizione": "Polenta grigliata ed il nostro Ragù di Funghi",
+      "tags": [
+        "Vegano",
+        "Consigliato",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 7.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Porzione antipasto: Polenta grigliata: 120g (2 fette) Ragù di funghi: 100g \nCome impiattare: Polenta grigliata come base, ragù sopra al cucchiaio, eventualmente una fogliolina di timo o prezzemolo."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Ragù di Funghi",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 35,
+          "codiceSl": "SL-037"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Polenta Grigliata",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 31,
+          "codiceSl": "SL-050"
+        }
+      ],
+      "dataCreazione": "5/10/2026"
     },
     {
       "codice": "PF-010",
@@ -8813,7 +9509,7 @@
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 5,
-      "prezzoVendita": 5.9,
+      "prezzoVendita": 6.4,
       "coefficiente": 3,
       "nelMenu": false,
       "tipoBeverage": false,
@@ -8855,7 +9551,7 @@
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 5.9,
+      "prezzoVendita": 6.4,
       "coefficiente": 2,
       "nelMenu": true,
       "tipoBeverage": false,
@@ -8901,8 +9597,7 @@
           "codiceMp": "MP-138"
         }
       ],
-      "dataCreazione": "12/9/2026",
-      "porzioniVendute": 0
+      "dataCreazione": "12/9/2026"
     },
     {
       "codice": "PF-026",
