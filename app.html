@@ -6737,7 +6737,7 @@ function renderPiatti(){
     return '<div class="piatto-card" onclick="togglePiattoDetail('+realIdx+',this)">'
       +'<div class="piatto-card-header">'
       +'<div style="flex:1;">'
-      +'<div class="piatto-card-nome">'+p.nome+'</div>'
+      +'<div class="piatto-card-nome">'+p.nome+((p.tags||[]).indexOf('Fuori menù')>=0?' <span style="font-size:11px;font-weight:500;background:#f1f0ee;color:#888;border:1px solid #d0cec8;border-radius:10px;padding:2px 8px;vertical-align:middle;">Fuori menù</span>':'')+'</div>'
       +'<div class="piatto-card-meta">'+p.categoria+(p.sottocategoria?' &middot; '+p.sottocategoria:'')+'</div>'
       +'</div>'
       +'<div style="text-align:right;margin-right:12px;">'
