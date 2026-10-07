@@ -3456,6 +3456,14 @@ function renderGuida(){
       +'<p>Il pulsante <strong>&#128196; Scheda vuota</strong> in cima a La Carte stampa una scheda ricetta in bianco da far compilare al cuoco. La scheda include: nome del piatto, categoria, numero di porzioni, descrizione breve, tabella ingredienti con quantità e unità, procedimento, tempi di preparazione/cottura/riposo, allergeni indicativi e note.</p>'
       +'<p>In fondo alla scheda trovi lo spazio per segnare il prezzo di vendita e l\'approvazione del titolare. Una volta compilata, inserisci i dati nel sistema con <strong>+ Aggiungi nuova voce</strong> per calcolare il food cost.</p>'
       +'<div class="gtip">Usa la scheda vuota ogni volta che un collaboratore propone un nuovo piatto — così hai tutto in un foglio prima di decidere se metterlo in carta.</div>'
+      +'<h4>&#128203; Libro ingredienti</h4>'
+      +'<p>Ogni piatto in La Carte ha il pulsante <strong>&#128203;</strong> (libro ingredienti). Cliccalo per generare un documento stampabile con l\'elenco completo degli ingredienti del piatto, esploso fino alle materie prime — inclusi quelli contenuti nei semilavorati.</p>'
+      +'<ul>'
+      +'<li>Gli ingredienti sono elencati in ordine decrescente di quantità, come richiesto dalla normativa UE sull\'etichettatura (Reg. 1169/2011).</li>'
+      +'<li>Gli allergeni sono riportati in <strong>grassetto</strong> nell\'elenco e riepilogati in un box separato con distinzione tra "Contiene" e "Può contenere tracce di".</li>'
+      +'<li>Il documento riporta data di generazione e nome del piatto — pronto da stampare, plastificare e tenere vicino alla vetrinetta o da consegnare al cliente su richiesta.</li>'
+      +'</ul>'
+      +'<div class="gtip">Per i prodotti esposti sfusi (pasticceria, gastronomia, banco dolci) l\'indicazione degli allergeni è obbligatoria per legge. Su richiesta del cliente devi poter fornire anche l\'elenco completo degli ingredienti.</div>'
       +'<h4>Creare un piatto finito</h4>'
       +'<ol>'
       +'<li>Clicca <strong>+ Aggiungi nuova voce</strong> dalla home.</li>'
@@ -6978,6 +6986,7 @@ function homeRicettaRow(r,i){
     +'</div>'
     +'<span class="home-ricetta-fc">'+fcBadge+'</span>'
     +(r._isPiatto&&isAdmin?'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+r._piattoIdx+')" style="margin-left:6px;flex-shrink:0;background:'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'#dcfce7;color:#16a34a':'#f5f4f0;color:#aaa')+';font-size:14px;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;" title="'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'Nel menu':'Non nel menu')+'">'+( piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'&#9733;':'&#9734;')+'</button>':'')
+    +(r._isPiatto?'<button class="btn-sm" onclick="event.stopPropagation();printLibroIngredienti('+r._piattoIdx+')" style="margin-left:4px;flex-shrink:0;" title="Libro ingredienti">&#128203;</button>':'')
     +(r._isPiatto&&isAdmin?'<div style="display:flex;flex-direction:column;gap:1px;margin-left:4px;">'
       +'<button class="btn-sm" onclick="event.stopPropagation();movePiatto('+r._piattoIdx+',-1)" style="padding:1px 5px;font-size:9px;line-height:1.4;" title="Sposta su">▲</button>'
       +'<button class="btn-sm" onclick="event.stopPropagation();movePiatto('+r._piattoIdx+',1)" style="padding:1px 5px;font-size:9px;line-height:1.4;" title="Sposta giù">▼</button>'
@@ -7006,6 +7015,105 @@ function homeToggleSub(key,el){
   if(!key)return;
   homeSubExp[key]=!homeSubExp[key];
   renderHome();
+}
+
+function printLibroIngredienti(piattoIdx){
+  var p=piatti[piattoIdx];
+  if(!p)return;
+
+  /* raccoglie tutte le MP ricorsivamente con quantità in grammi */
+  var ingMap={};
+
+  function addMP(c, mult){
+    if(c.unit==='q.b.'||c.conv===0) return;
+    var mi=resolveMagIdx(c);
+    var m=mi>=0&&mi<magazzino.length?magazzino[mi]:null;
+    var nome=m?m.nome:c.nome;
+    var qta=c.qtaBase*(mult||1);
+    var qtaG=(c.unit==='g'||c.unit==='ml')?qta:(c.unit==='kg'||c.unit==='lt')?qta*1000:(c.unit==='pz'?qta:0);
+    if(!ingMap[nome]){
+      ingMap[nome]={nome:nome,qtaG:qtaG,allergeni:m?m.allergeni||[]:[], tracce:m?m.tracce||[]:[],isPz:c.unit==='pz'};
+    } else {
+      ingMap[nome].qtaG+=qtaG;
+    }
+  }
+
+  function processComps(comps,mult){
+    (comps||[]).forEach(function(c){
+      if(c.unit==='q.b.'||c.conv===0) return;
+      var qta=c.qtaBase*(mult||1);
+      if(c.tipo==='mp'){
+        addMP(c,mult||1);
+      } else {
+        var si=resolveSemiIdx(c);
+        if(si<0||si>=semilavorati.length) return;
+        var sl=semilavorati[si];
+        var resa=sl.resaQta||1;
+        var ratio=(c.unit==='g'||c.unit==='ml')?qta/resa:(c.unit==='kg'||c.unit==='lt')?qta*1000/resa:qta/resa;
+        processComps(sl.componenti,(mult||1)*ratio);
+      }
+    });
+  }
+
+  processComps(p.componenti,1);
+
+  var lista=Object.keys(ingMap).map(function(k){return ingMap[k];});
+  lista.sort(function(a,b){return b.qtaG-a.qtaG;});
+
+  var allergeniCerti=[],tracce=[];
+  lista.forEach(function(ing){
+    (ing.allergeni||[]).forEach(function(a){if(allergeniCerti.indexOf(a)<0)allergeniCerti.push(a);});
+    (ing.tracce||[]).forEach(function(a){if(tracce.indexOf(a)<0&&allergeniCerti.indexOf(a)<0)tracce.push(a);});
+  });
+
+  var oggi=new Date().toLocaleDateString('it-IT');
+
+  var html='<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8">'
+    +'<title>Ingredienti — '+p.nome+'</title>'
+    +'<style>'
+    +'body{font-family:Georgia,serif;max-width:640px;margin:40px auto;padding:24px;color:#1a1a1a;line-height:1.6;}'
+    +'h1{font-size:24px;margin:0 0 4px;}'
+    +'.meta{font-size:13px;color:#888;margin-bottom:24px;}'
+    +'.label{font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;}'
+    +'.ing-lista{font-size:15px;line-height:2.1;}'
+    +'.ing-allerg{font-weight:700;}'
+    +'.allerg-box{margin-top:24px;padding:14px 18px;border:1px solid #f5c842;border-left:4px solid #e6a817;border-radius:8px;background:#fffbeb;}'
+    +'.allerg-box h3{margin:0 0 10px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#7c5c2e;}'
+    +'.badge{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:10px;margin:2px;}'
+    +'.badge-red{background:#fde8e8;color:#c0392b;border:1px solid #fcd5d2;}'
+    +'.badge-yellow{background:#fef3cd;color:#8a6d1f;border:1px solid #f5e0a0;}'
+    +'.footer{margin-top:32px;font-size:11px;color:#bbb;border-top:1px solid #eee;padding-top:10px;}'
+    +'@media print{body{margin:10mm;}button{display:none;}}'
+    +'</style></head><body>'
+    +'<h1>'+p.nome+'</h1>'
+    +'<div class="meta">'+p.categoria+(p.sottocategoria?' · '+p.sottocategoria:'')+(p.pax?' · '+p.pax+' porzioni':'')+'</div>'
+    +'<div class="label">Ingredienti</div>'
+    +'<div class="ing-lista">'
+    +lista.map(function(ing,i){
+      var bold=(ing.allergeni||[]).length>0;
+      return (i>0?', ':'')+(bold?'<strong class="ing-allerg">'+ing.nome+'</strong>':ing.nome);
+    }).join('')+'.'
+    +'</div>';
+
+  if(allergeniCerti.length||tracce.length){
+    html+='<div class="allerg-box"><h3>⚠️ Allergeni</h3>';
+    if(allergeniCerti.length){
+      html+='<div style="margin-bottom:6px;"><span style="font-size:12px;color:#7c5c2e;font-weight:600;">Contiene: </span>'
+        +allergeniCerti.map(function(a){return '<span class="badge badge-red">'+a+'</span>';}).join('')+'</div>';
+    }
+    if(tracce.length){
+      html+='<div><span style="font-size:12px;color:#8a6d1f;font-weight:600;">Può contenere tracce di: </span>'
+        +tracce.map(function(a){return '<span class="badge badge-yellow">'+a+'</span>';}).join('')+'</div>';
+    }
+    html+='</div>';
+  }
+
+  html+='<div class="footer">Documento generato il '+oggi+' — MiseEnPlace PRO</div>'
+    +'<script>window.onload=function(){window.print();}<\/script>'
+    +'</body></html>';
+
+  var w=window.open('','_blank');
+  if(w){w.document.write(html);w.document.close();}
 }
 
 /* ===== FOTO RICETTA ===== */
