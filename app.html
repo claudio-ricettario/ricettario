@@ -7582,6 +7582,7 @@ function mpSalva(){
     });
   } else {
     var m=magazzino[mpEditIdx];
+    var oldNome=m.nome;
     m.nome=nome;m.marca=marca||undefined;m.categoria=document.getElementById('mp-cat').value;
     m.um=document.getElementById('mp-um').value;
     m.iva=parseInt(document.getElementById('mp-iva').value)||10;
@@ -7590,6 +7591,13 @@ function mpSalva(){
     m.tracce=tracce;m.tracceOk=document.getElementById('mp-tracce-ok').checked;
     m.nutrizionali=nutr;m.nutrizionaliOk=document.getElementById('mp-nutr-ok').checked;
     if(m.suppliers&&m.suppliers[m.activeIdx||0]) m.suppliers[m.activeIdx||0].prezzoKg=prezzo;
+    /* propaga il nuovo nome in tutti i componenti di semilavorati e piatti */
+    if(oldNome!==nome){
+      semilavorati.forEach(function(s){(s.componenti||[]).forEach(function(c){if(c.tipo==='mp'&&c.nome===oldNome)c.nome=nome;});});
+      piatti.forEach(function(p){(p.componenti||[]).forEach(function(c){if(c.tipo==='mp'&&c.nome===oldNome)c.nome=nome;});});
+      saveSemilavorati();
+      savePiatti();
+    }
   }
   magazzino.sort(function(a,b){
     var ca=a.categoria||'Generale',cb=b.categoria||'Generale';
