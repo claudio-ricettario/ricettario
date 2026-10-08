@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "5/10/2026",
+  "exportDate": "8/10/2026",
   "menuData": [
     {
       "nome": "Canederli agli spinaci Al Burro fuso",
@@ -117,6 +117,25 @@
       "tracce": []
     },
     {
+      "nome": "La Trippa secondo Claudio",
+      "descrizione": "Con carne Bovina allevata in Lessinia",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 9.4,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti",
+        "Sedano",
+        "Glutine"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
       "nome": "Maccheroni al ragù di cortile",
       "descrizione": "Con la ricetta della nonna",
       "tags": [],
@@ -216,6 +235,22 @@
       "prezzoVendita": 3.9,
       "tipoBeverage": false,
       "allergeni": [],
+      "tracce": []
+    },
+    {
+      "nome": "Piatto della Malga",
+      "descrizione": "Hamburger di Tastasal Veronese, polenta bramata grigliata e Monte Veronese alla piastra",
+      "tags": [
+        "Consigliato",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "prezzoVendita": 14,
+      "tipoBeverage": false,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
       "tracce": []
     },
     {
@@ -822,6 +857,42 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 4.5,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-176",
+      "nome": "Tastasal di Maiale",
+      "marca": "ATM",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 287,
+        "grassi": 25.4,
+        "grassiSaturi": 10,
+        "carboidrati": 0.7,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 15.7,
+        "sale": 1.9
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9,
           "storico": []
         }
       ]
@@ -6493,6 +6564,31 @@
       "dataCreazione": "6/9/2026"
     },
     {
+      "codice": "SL-055",
+      "nome": "Hamburger di Tastasal",
+      "categoria": "Carni lavorate",
+      "resaQta": 150,
+      "resaUm": "g",
+      "tempo": "2",
+      "procedimento": "Crea dei medaglioni di Tastasal da 150 gr, piu fini possibili e congela IQF",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-176",
+          "nome": "Tastasal di Maiale",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "8/10/2026"
+    },
+    {
       "codice": "SL-033",
       "nome": "Mele Pulite",
       "categoria": "Altro",
@@ -6900,6 +6996,67 @@
         }
       ],
       "dataCreazione": "30/9/2026"
+    },
+    {
+      "codice": "SL-054",
+      "nome": "Pasta frolla Biscotteria (siringata)",
+      "categoria": "Dolci e creme",
+      "resaQta": 920,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Ammorbidire il burro con lo zucchero con la foglia\nUnire il tuorlo ed impastare qualche minuto,\nAggiungere farina e lievito ed impastare ancora qualce minuto.\nMettere in sache a poche e siringare a piacere\nCuocere a 160°C per 10/12 min. verifica la cottura",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 88,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 180,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 47,
+          "codiceMp": "MP-153",
+          "nome": "Lievito Vanigliato",
+          "qtaBase": 4,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 89,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 81,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "7/10/2026"
     },
     {
       "codice": "SL-052",
@@ -8993,7 +9150,7 @@
       "pax": 4,
       "prezzoVendita": 9.4,
       "coefficiente": 2,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -9469,6 +9626,57 @@
         }
       ],
       "dataCreazione": "25/9/2026"
+    },
+    {
+      "codice": "PF-039",
+      "nome": "Piatto della Malga",
+      "descrizione": "Hamburger di Tastasal Veronese, polenta bramata grigliata e Monte Veronese alla piastra",
+      "tags": [
+        "Consigliato",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 14,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Ogni porzione è composta da 1 hamburger di tastasal da 150 gr, 2 fettine di polenta grigliate 120 gr e 1 fetta di Monte da 100 gr."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Hamburger di Tastasal",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 23,
+          "codiceSl": "SL-055"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Monte Veronese d'allevo",
+          "qtaBase": 400,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 98,
+          "codiceMp": "MP-055"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Polenta Grigliata",
+          "qtaBase": 480,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 35,
+          "codiceSl": "SL-050"
+        }
+      ],
+      "dataCreazione": "8/10/2026"
     },
     {
       "codice": "PF-011",
