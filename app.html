@@ -6780,15 +6780,22 @@ function renderPiatti(){
 }
 
 function movePiatto(idx,dir){
-  var newIdx=idx+dir;
-  if(newIdx<0||newIdx>=piatti.length)return;
-  var tmp=piatti[idx];piatti[idx]=piatti[newIdx];piatti[newIdx]=tmp;
+  var cat=(piatti[idx]&&piatti[idx].categoria)||'Altro';
+  var sub=(piatti[idx]&&piatti[idx].sottocategoria)||'';
+  /* trova i piatti della stessa categoria+sottocategoria nell'ordine corrente */
+  var stessaCat=piatti.map(function(p,i){return{p:p,i:i};})
+    .filter(function(o){return (o.p.categoria||'Altro')===cat&&(o.p.sottocategoria||'')=== sub;});
+  var pos=stessaCat.findIndex(function(o){return o.i===idx;});
+  var targetPos=pos+dir;
+  if(targetPos<0||targetPos>=stessaCat.length)return;
+  var targetIdx=stessaCat[targetPos].i;
+  var tmp=piatti[idx];piatti[idx]=piatti[targetIdx];piatti[targetIdx]=tmp;
   /* aggiorna piattoIdx nei preventivi */
   menuPreventivi.forEach(function(m){
     (m.voci||[]).forEach(function(v){
       if(v.tipo==='piatto'){
-        if(v.piattoIdx===idx)v.piattoIdx=newIdx;
-        else if(v.piattoIdx===newIdx)v.piattoIdx=idx;
+        if(v.piattoIdx===idx)v.piattoIdx=targetIdx;
+        else if(v.piattoIdx===targetIdx)v.piattoIdx=idx;
       }
     });
   });
