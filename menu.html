@@ -59,6 +59,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .tag-novita{background:#ede9fe;color:#7c3aed;}
 .tag-tipico{background:#fff7ed;color:#c2410c;}
 .dish-desc{font-size:13px;color:#777;line-height:1.5;}
+.dish-nota{font-size:12px;color:#7c5c2e;font-style:italic;line-height:1.5;margin-top:5px;}
 .dish-allergeni{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
 .allerg-badge{font-size:9px;padding:2px 7px;border-radius:10px;background:#fef3f2;color:#c0392b;border:1px solid #fcd5d2;font-weight:500;}
 .tracce-badge{font-size:9px;padding:2px 7px;border-radius:10px;background:#fdf8ed;color:#8a6d1f;border:1px solid #f5e0a0;font-weight:500;}
@@ -190,6 +191,7 @@ function showCategories(){
       html+='<div class="fuori-menu-item">';
       html+='<div class="fuori-menu-nome">'+escHtml(p.nome)+'</div>';
       if(p.descrizione) html+='<div class="fuori-menu-desc">'+escHtml(p.descrizione)+'</div>';
+      if(p.notaCliente) html+='<div class="dish-nota">📌 '+escHtml(p.notaCliente)+'</div>';
       var badges='';
       (p.allergeni||[]).forEach(function(a){badges+='<span class="allerg-badge">'+escHtml(a)+'</span>';});
       if(badges) html+='<div class="dish-allergeni" style="margin-bottom:6px;">'+badges+'</div>';
@@ -258,6 +260,7 @@ function showCategory(catEnc){
       html+='</div>';
     }
     if(p.descrizione) html+='<div class="dish-desc">'+escHtml(p.descrizione)+'</div>';
+    if(p.notaCliente) html+='<div class="dish-nota">📌 '+escHtml(p.notaCliente)+'</div>';
     var badges='';
     (p.allergeni||[]).forEach(function(a){ badges+='<span class="allerg-badge">'+escHtml(a)+'</span>'; });
     if(badges) html+='<div class="dish-allergeni">'+badges+'</div>';
