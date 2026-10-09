@@ -6981,7 +6981,7 @@ function homeRicettaRow(r,i){
   }
   var fcBadge=r._isBase
     ?'<span class="badge badge-gray">base</span>'
-    :(r._isPiatto?'<span class="badge badge-blue">piatto</span>':'')
+    :(r._isPiatto?'':'')
     +gfBadge
     +(fc>0?fcBadgeHtml(fc,(r._isPiatto&&piatti[r._piattoIdx]&&piatti[r._piattoIdx].tipoBeverage)||false):'');
   var thumbHtml=r.foto
