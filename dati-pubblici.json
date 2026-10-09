@@ -1,10 +1,11 @@
 {
   "version": 1,
-  "exportDate": "8/10/2026",
+  "exportDate": "9/10/2026",
   "menuData": [
     {
       "nome": "Canederli agli spinaci Al Burro fuso",
       "descrizione": "Con burro della Lessinia",
+      "notaCliente": "",
       "tags": [],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
@@ -22,6 +23,7 @@
     {
       "nome": "Canederli ai Funghi e burro fuso",
       "descrizione": "Nuova proposta da provare con funghi porcini",
+      "notaCliente": "",
       "tags": [
         "Vegetariano",
         "Novità",
@@ -46,6 +48,7 @@
     {
       "nome": "Crauti della Malga",
       "descrizione": "Con i crauti della Val di Gresta",
+      "notaCliente": "",
       "tags": [
         "Vegano",
         "Del territorio"
@@ -63,6 +66,7 @@
     {
       "nome": "Crostata al grano saraceno",
       "descrizione": "Con mirtilli rossi di montagna",
+      "notaCliente": "",
       "tags": [
         "Vegano",
         "Consigliato",
@@ -84,6 +88,7 @@
     {
       "nome": "Gnocchi di Malga al Burro fuso",
       "descrizione": "la lessinia nel piatto",
+      "notaCliente": "",
       "tags": [
         "Consigliato",
         "Del territorio"
@@ -103,6 +108,7 @@
     {
       "nome": "Goulash di manzo",
       "descrizione": "Leggermente piccante Con carne allevata in Lessinia",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
@@ -119,6 +125,7 @@
     {
       "nome": "La Trippa secondo Claudio",
       "descrizione": "Con carne Bovina allevata in Lessinia",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
@@ -138,6 +145,7 @@
     {
       "nome": "Maccheroni al ragù di cortile",
       "descrizione": "Con la ricetta della nonna",
+      "notaCliente": "",
       "tags": [],
       "pochePorzioni": false,
       "categoria": "Primi piatti",
@@ -152,27 +160,9 @@
       "tracce": []
     },
     {
-      "nome": "Millefoglie di patate",
-      "descrizione": "Con patate della truffa",
-      "tags": [
-        "Vegetariano",
-        "Del territorio",
-        "Fuori menù"
-      ],
-      "pochePorzioni": true,
-      "categoria": "Contorni",
-      "prezzoVendita": 4.4,
-      "tipoBeverage": false,
-      "allergeni": [
-        "Latte e lattosio",
-        "Glutine",
-        "Senape"
-      ],
-      "tracce": []
-    },
-    {
       "nome": "Minestra di orzo",
       "descrizione": "Per scelta non mettiamo carne",
+      "notaCliente": "",
       "tags": [
         "Vegetariano"
       ],
@@ -193,6 +183,7 @@
     {
       "nome": "Pancia di Maiale cotta delicatamente",
       "descrizione": "Un piatto che riscalda con maiali allevati in lessinia",
+      "notaCliente": "",
       "tags": [
         "Consigliato",
         "Novità",
@@ -211,6 +202,7 @@
     {
       "nome": "Panna Cotta Vegana",
       "descrizione": "Con caramello salato",
+      "notaCliente": "",
       "tags": [
         "Vegano",
         "Novità"
@@ -227,6 +219,7 @@
     {
       "nome": "Patate al Forno",
       "descrizione": "",
+      "notaCliente": "",
       "tags": [
         "Vegano"
       ],
@@ -240,6 +233,7 @@
     {
       "nome": "Piatto della Malga",
       "descrizione": "Hamburger di Tastasal Veronese, polenta bramata grigliata e Monte Veronese alla piastra",
+      "notaCliente": "",
       "tags": [
         "Consigliato",
         "Del territorio"
@@ -256,6 +250,7 @@
     {
       "nome": "Polenta alla griglia",
       "descrizione": "Un classico che non può mancare",
+      "notaCliente": "",
       "tags": [
         "Vegetariano",
         "Vegano",
@@ -271,6 +266,7 @@
     {
       "nome": "Polenta e Ragù di Funghi con Porcini",
       "descrizione": "Polenta grigliata ed il nostro Ragù di Funghi",
+      "notaCliente": "",
       "tags": [
         "Vegano",
         "Consigliato",
@@ -289,6 +285,7 @@
     {
       "nome": "Salumi e formaggi del territorio per 2 persone",
       "descrizione": "Selezione Bottega Valbusa con giardiniera e marmellata di nostra produzione",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
@@ -306,6 +303,7 @@
     {
       "nome": "Semifreddo al Pino Mugo",
       "descrizione": "Con la nostra grappa",
+      "notaCliente": "\"contiene alcool residuo\"",
       "tags": [
         "Novità",
         "Del territorio"
@@ -326,6 +324,7 @@
     {
       "nome": "Spaghetti al Ragù di funghi",
       "descrizione": "Con funghi Porcini, possibili contaminazione crociata uova",
+      "notaCliente": "",
       "tags": [
         "Vegetariano",
         "Vegano"
@@ -347,6 +346,7 @@
     {
       "nome": "Strudel di Mele con crema alla vaniglia",
       "descrizione": "Con Mele del trentino",
+      "notaCliente": "",
       "tags": [
         "Vegetariano",
         "Consigliato",
@@ -370,6 +370,7 @@
     {
       "nome": "Tiramisù della Malga",
       "descrizione": "Con prodotti del territorio",
+      "notaCliente": "",
       "tags": [
         "Più venduto"
       ],
@@ -390,6 +391,7 @@
     {
       "nome": "Torta di Mele",
       "descrizione": "Un Classico",
+      "notaCliente": "",
       "tags": [],
       "pochePorzioni": false,
       "categoria": "Dolci",
@@ -408,6 +410,7 @@
     {
       "nome": "Uovo in camicia, patate schiacciate e speck croccante",
       "descrizione": "Uova da galline felici, patate locali e speck trentino",
+      "notaCliente": "",
       "tags": [
         "Novità",
         "Del territorio"
@@ -424,6 +427,7 @@
     {
       "nome": "Vino  Rosso della Casa  1 Litro",
       "descrizione": "Corvina Veronese igt Cantine di Verona",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
@@ -439,6 +443,7 @@
     {
       "nome": "Vino Bianco della Casa 1 Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
@@ -454,6 +459,7 @@
     {
       "nome": "Vino Bianco della Casa 1/2 Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
@@ -469,6 +475,7 @@
     {
       "nome": "Vino Bianco della Casa 1/4 di Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
+      "notaCliente": "",
       "tags": [],
       "pochePorzioni": false,
       "categoria": "Vini",
@@ -482,6 +489,7 @@
     {
       "nome": "Vino Rosso della Casa  1/4 Litro",
       "descrizione": "Corvina IGT Cantine di Verona",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
@@ -497,6 +505,7 @@
     {
       "nome": "Vino Rosso della Casa 1/2 Litro",
       "descrizione": "Corvina Veronese igt Cantine di verona",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
@@ -1665,6 +1674,47 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 9.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-179",
+      "nome": "Cioccolato Bianco",
+      "marca": "Zaini",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Soia",
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Frutta a guscio"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 456,
+        "grassi": 32,
+        "grassiSaturi": 19.7,
+        "carboidrati": 55.8,
+        "zuccheri": 55.8,
+        "fibre": 0,
+        "proteine": 8.7,
+        "sale": 0.5
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 14.5,
           "storico": []
         }
       ]
@@ -2880,6 +2930,44 @@
       ]
     },
     {
+      "codice": "MP-177",
+      "nome": "Panna Montata spray",
+      "marca": "Meggle da 500",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Latte e lattosio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 338,
+        "grassi": 34,
+        "grassiSaturi": 24,
+        "carboidrati": 5.9,
+        "zuccheri": 5.9,
+        "fibre": 0,
+        "proteine": 2.2,
+        "sale": 0.08
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 9,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-086",
       "nome": "Paprica affumicata Wiberg",
       "categoria": "Generale",
@@ -2985,6 +3073,44 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 3.6364,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-178",
+      "nome": "Pasta Pistacchio puro",
+      "marca": "semilavorato per pasticceria",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Frutta a guscio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 562,
+        "grassi": 45,
+        "grassiSaturi": 6,
+        "carboidrati": 28,
+        "zuccheri": 8,
+        "fibre": 0,
+        "proteine": 20,
+        "sale": 0.001
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 62,
           "storico": []
         }
       ]
@@ -8633,6 +8759,164 @@
       "dataCreazione": "18/9/2026"
     },
     {
+      "codice": "SL-056",
+      "nome": "Tortino al Cioccolato Fondente",
+      "categoria": "Dolci e creme",
+      "resaQta": 700,
+      "resaUm": "g",
+      "tempo": "20",
+      "procedimento": "Fondere cioccolato e burro a bagnomaria o microonde, lasciare intiepidire. Montare uova intere, tuorli e zucchero fino a ottenere un composto chiaro e spumoso. Incorporare il cioccolato fuso al composto di uova mescolando delicatamente. Aggiungere farina e sale setacciati, mescolare fino a liscio.\n\nVersare negli stampini imburrati e infarinati. Abbattere — qui è il vantaggio enorme per il servizio.\n\nCottura al momento: forno statico 200°C per 10-11 minuti da congelato, 8 minuti da frigo. L'esterno deve essere cotto e compatto, il centro ancora morbido.\nSi può abbattere dopo cotto e scaldare al microonde per alcuni secondi, provare prima.\nFai tortini da 125 gr circa",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 32,
+          "codiceMp": "MP-150",
+          "nome": "Cioccolato fondente extra",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 91,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 85,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 83,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 60,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 90,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 37,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 76,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "8/10/2026"
+    },
+    {
+      "codice": "SL-057",
+      "nome": "Tortino al Pistacchio",
+      "categoria": "Pasta e impasti",
+      "resaQta": 450,
+      "resaUm": "g",
+      "tempo": "20",
+      "procedimento": "Montare a Bagnomaria uova, tuorli e zucchero,\nSciogliere a bagnomaria cioccolato e burro, aggiungere il pistacchio\nMescolare tutti gli ingredienti.\nPorzionare circa 125gr a porzione e cuocere 210°C per 8 minuti (provare)\nAbbattere",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 87,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 85,
+          "codiceMp": "MP-102",
+          "nome": "Tuorlo Pastorizzato",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 92,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 32,
+          "codiceMp": "MP-179",
+          "nome": "Cioccolato Bianco",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 93,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 70,
+          "codiceMp": "MP-178",
+          "nome": "Pasta Pistacchio puro",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 38,
+          "codiceMp": "MP-060",
+          "nome": "Farina \"00\"",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "8/10/2026"
+    },
+    {
       "codice": "SL-051",
       "nome": "Trippa Alla Parmigiana",
       "categoria": "Carni lavorate",
@@ -9341,12 +9625,12 @@
       "codice": "PF-031",
       "nome": "Millefoglie di patate",
       "descrizione": "Con patate della truffa",
+      "notaCliente": "",
       "tags": [
         "Vegetariano",
-        "Del territorio",
-        "Fuori menù"
+        "Del territorio"
       ],
-      "pochePorzioni": true,
+      "pochePorzioni": false,
       "categoria": "Contorni",
       "sottocategoria": "",
       "pax": 4,
@@ -9887,6 +10171,7 @@
       "codice": "PF-025",
       "nome": "Semifreddo al Pino Mugo",
       "descrizione": "Con la nostra grappa",
+      "notaCliente": "\"contiene alcool residuo\"",
       "tags": [
         "Novità",
         "Del territorio"
@@ -10151,6 +10436,95 @@
         }
       ],
       "dataCreazione": "18/9/2026"
+    },
+    {
+      "codice": "PF-040",
+      "nome": "Tortino al Cioccolato",
+      "descrizione": "Con Panna Montata",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Consigliato",
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 5.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Scalda il tortino alcuni secondi nel microonde, servi subito con ciuffo di panna montata."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Tortino al Cioccolato Fondente",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 54,
+          "codiceSl": "SL-056"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Panna Montata spray",
+          "qtaBase": 100,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 65,
+          "codiceMp": "MP-177"
+        }
+      ],
+      "dataCreazione": "8/10/2026"
+    },
+    {
+      "codice": "PF-041",
+      "nome": "Tortino al Pistacchio",
+      "descrizione": "Con Panna Montata",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Consigliato",
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 7.4,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Scalda il tortino alcuni secondi nel microonde, servi subito con ciuffo di panna montata."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Tortino al Pistacchio",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 55,
+          "codiceSl": "SL-057"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Panna Montata spray",
+          "qtaBase": 100,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 66,
+          "codiceMp": "MP-177"
+        }
+      ],
+      "dataCreazione": "8/10/2026"
     },
     {
       "codice": "PF-012",
