@@ -6324,8 +6324,9 @@ function rilevaCicloSemilavorato(semiIdxDaAggiungere, editIdx){
     for(var i=0;i<s.componenti.length;i++){
       var c=s.componenti[i];
       if(c.tipo==='sl'){
-        if(c.semiIdx===target) return true;
-        if(contieneRiferimento(c.semiIdx,target,visitati)) return true;
+        var rsi=resolveSemiIdx(c);
+        if(rsi===target) return true;
+        if(contieneRiferimento(rsi,target,visitati)) return true;
       }
     }
     return false;
