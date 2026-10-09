@@ -8110,7 +8110,7 @@ function printPiatto(idx){
         s.componenti.forEach(function(sc){
           var nomeMp,codMpSc;
           if(sc.tipo==='sl'){
-            var scRif=semilavorati[sc.semiIdx];
+            var scRif=semilavorati[resolveSemiIdx(sc)];
             nomeMp=scRif?scRif.nome:(sc.nome||'?');
             codMpSc=scRif&&scRif.codice?'<span style="color:#bbb;font-weight:400;margin-right:5px;">'+scRif.codice+'</span>':'';
           } else {
