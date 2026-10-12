@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "9/10/2026",
+  "exportDate": "12/10/2026",
   "menuData": [
     {
       "nome": "Canederli agli spinaci Al Burro fuso",
@@ -66,9 +66,9 @@
     {
       "nome": "Crostata al grano saraceno",
       "descrizione": "Con mirtilli rossi di montagna",
-      "notaCliente": "",
+      "notaCliente": "Senza Glutine, Senza Lattosio",
       "tags": [
-        "Vegano",
+        "Vegetariano",
         "Consigliato",
         "Del territorio"
       ],
@@ -77,12 +77,11 @@
       "prezzoVendita": 4.9,
       "tipoBeverage": false,
       "allergeni": [
-        "Latte e lattosio",
-        "Uova"
+        "Uova",
+        "Soia"
       ],
       "tracce": [
-        "Senape",
-        "Soia"
+        "Senape"
       ]
     },
     {
@@ -135,12 +134,9 @@
       "tipoBeverage": false,
       "allergeni": [
         "Anidride solforosa e solfiti",
-        "Sedano",
-        "Glutine"
+        "Sedano"
       ],
-      "tracce": [
-        "Soia"
-      ]
+      "tracce": []
     },
     {
       "nome": "Maccheroni al ragù di cortile",
@@ -172,7 +168,8 @@
       "tipoBeverage": false,
       "allergeni": [
         "Sedano",
-        "Latte e lattosio"
+        "Latte e lattosio",
+        "Glutine"
       ],
       "tracce": [
         "Soia",
@@ -413,9 +410,10 @@
       "notaCliente": "",
       "tags": [
         "Novità",
-        "Del territorio"
+        "Del territorio",
+        "Fuori menù"
       ],
-      "pochePorzioni": false,
+      "pochePorzioni": true,
       "categoria": "Antipasti",
       "prezzoVendita": 8.4,
       "tipoBeverage": false,
@@ -942,6 +940,41 @@
       ]
     },
     {
+      "codice": "MP-183",
+      "nome": "Arance",
+      "categoria": "Frutta",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 34,
+        "grassi": 0.2,
+        "grassiSaturi": 0,
+        "carboidrati": 7.8,
+        "zuccheri": 7.8,
+        "fibre": 1.6,
+        "proteine": 0.7,
+        "sale": 0.03
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.15,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-142",
       "nome": "Limoni",
       "categoria": "Frutta",
@@ -1047,6 +1080,44 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 6,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-184",
+      "nome": "Aceto di Mele",
+      "marca": "Ponti",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 21,
+        "grassi": 0.1,
+        "grassiSaturi": 0.1,
+        "carboidrati": 1.5,
+        "zuccheri": 0.3,
+        "fibre": 0.1,
+        "proteine": 0.1,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.9,
           "storico": []
         }
       ]
@@ -1904,6 +1975,44 @@
       ]
     },
     {
+      "codice": "MP-185",
+      "nome": "Fagioli Borlotti secchi",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [
+        "Glutine",
+        "Soia"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 293,
+        "grassi": 0.8,
+        "grassiSaturi": 0.1,
+        "carboidrati": 35,
+        "zuccheri": 2.2,
+        "fibre": 25,
+        "proteine": 24,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.72,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-060",
       "nome": "Farina \"00\"",
       "categoria": "Generale",
@@ -2487,6 +2596,44 @@
       ]
     },
     {
+      "codice": "MP-180",
+      "nome": "Margarina Vegetale",
+      "marca": "Halta da 1 kg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Soia"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 720,
+        "grassi": 80,
+        "grassiSaturi": 49,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0.3
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.17,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-126",
       "nome": "Marmellata cipolle rosse",
       "categoria": "Generale",
@@ -2743,7 +2890,9 @@
       "scarto": 0,
       "resa": 100,
       "activeIdx": 0,
-      "allergeni": [],
+      "allergeni": [
+        "Glutine"
+      ],
       "allergeniOk": true,
       "tracce": [
         "Soia",
@@ -3291,6 +3440,42 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 209.0909,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-181",
+      "nome": "Riso Vialone Nano",
+      "marca": "Riccò",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 350,
+        "grassi": 0.6,
+        "grassiSaturi": 0.1,
+        "carboidrati": 78,
+        "zuccheri": 0.3,
+        "fibre": 1.4,
+        "proteine": 7.4,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2.5,
           "storico": []
         }
       ]
@@ -3907,8 +4092,13 @@
       "suppliers": [
         {
           "nome": "Supermercato / Generico",
-          "prezzoKg": 0.9091,
-          "storico": []
+          "prezzoKg": 0,
+          "storico": [
+            {
+              "prezzo": 0.9091,
+              "data": "2026-10-12"
+            }
+          ]
         }
       ]
     },
@@ -4674,6 +4864,41 @@
       ]
     },
     {
+      "codice": "MP-182",
+      "nome": "Cappucci rossi",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 15,
+      "resa": 85,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 20,
+        "grassi": 0.2,
+        "grassiSaturi": 0,
+        "carboidrati": 2.7,
+        "zuccheri": 2.7,
+        "fibre": 1,
+        "proteine": 1.9,
+        "sale": 0.01
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.63,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-066",
       "nome": "Carote",
       "categoria": "Verdura",
@@ -5313,12 +5538,15 @@
     {
       "codice": "SL-014",
       "nome": "Caffè Per Tiramisù",
-      "categoria": "Pasta e impasti",
+      "categoria": "Dolci e creme",
       "resaQta": 1010,
       "resaUm": "g",
       "tempo": "1",
       "procedimento": "Porta l'acqua a 80° ed aggiungi il caffè, fai freddare prima di usare",
       "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
       "componenti": [
         {
           "tipo": "mp",
@@ -5706,6 +5934,130 @@
       "dataCreazione": "28/8/2026"
     },
     {
+      "codice": "SL-061",
+      "nome": "Cappucci Rossi Stufati",
+      "categoria": "Verdure lavorate",
+      "resaQta": 1300,
+      "resaUm": "g",
+      "tempo": "30",
+      "procedimento": "Tagliare il cappuccio e marinarlo 1 ora con vino-aceto-1 mela grattugiata-il succo e la buccia grattugiata di 1 arancia.\nscaldare l'olio in una casseruola e appassire la cipolla, unire il cappuccio marinato, salare, pepare e versare il brodo, stufare coperto.\nA fine cottura aggiungere la marmellata di mirtilli rossi.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 118,
+          "codiceMp": "MP-182",
+          "nome": "Cappucci rossi",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 10,
+          "codiceSl": "SL-015",
+          "nome": "Cipolla Tritata",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 93,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 50,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 16,
+          "codiceMp": "MP-184",
+          "nome": "Aceto di Mele",
+          "qtaBase": 10,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 14,
+          "codiceMp": "MP-154",
+          "nome": "Mele Renetta",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 12,
+          "codiceMp": "MP-183",
+          "nome": "Arance",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 2,
+          "codiceSl": "SL-029",
+          "nome": "Brodo Vegetale",
+          "qtaBase": 500,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 58,
+          "codiceMp": "MP-175",
+          "nome": "Marmellata Mirtilli rossi",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 85,
+          "codiceMp": "MP-084",
+          "nome": "Semi di cumino interi Wiberg",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 82,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 74,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 61,
+          "codiceMp": "MP-152",
+          "nome": "Olio di semi vari",
+          "qtaBase": 50,
+          "unit": "ml",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "12/10/2026"
+    },
+    {
       "codice": "SL-7566",
       "nome": "Caramello Salato Vegano",
       "categoria": "Dolci e creme",
@@ -5760,7 +6112,7 @@
     {
       "codice": "SL-046",
       "nome": "CheesCake cotta",
-      "categoria": "Pasta e impasti",
+      "categoria": "Dolci e creme",
       "resaQta": 1000,
       "resaUm": "g",
       "tempo": "60",
@@ -5930,6 +6282,49 @@
         }
       ],
       "dataCreazione": "4/10/2026"
+    },
+    {
+      "codice": "SL-059",
+      "nome": "Crema al burro",
+      "categoria": "Dolci e creme",
+      "resaQta": 1000,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Montare burro e zucchero, alla fine aggiungi la grappa, o rum",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 95,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 440,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 92,
+          "codiceMp": "MP-119",
+          "nome": "Zucchero a Velo da Kg",
+          "qtaBase": 549,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 113,
+          "codiceMp": "MP-141",
+          "nome": "Grappa Morbida",
+          "qtaBase": 11,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "9/10/2026"
     },
     {
       "codice": "SL-045",
@@ -6151,6 +6546,94 @@
       "dataCreazione": "29/8/2026"
     },
     {
+      "codice": "SL-058",
+      "nome": "Crema per risini o crostata di riso",
+      "categoria": "Dolci e creme",
+      "resaQta": 1900,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Versare in una pentola Latte, acqua, riso, sale, zucchero, vaniglia.\nFar cuocere a fuoco basso fino al completo assorbimento dei liquidi.\nSpegnere e aggiungere il burro.\nFar raffreddare ed aggiungere la crema pasticcera.\nUsare a piacere in crostate o risini",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 101,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 332,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 15,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 332,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 77,
+          "codiceMp": "MP-181",
+          "nome": "Riso Vialone Nano",
+          "qtaBase": 221,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 80,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 4,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 90,
+          "codiceMp": "MP-105",
+          "nome": "Vaniglia in Polvere",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 94,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 95,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 66,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 13,
+          "codiceSl": "SL-039",
+          "nome": "Crema Pasticcera",
+          "qtaBase": 941,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "9/10/2026"
+    },
+    {
       "codice": "SL-7568",
       "nome": "Crema Tiramisù",
       "categoria": "Dolci e creme",
@@ -6323,6 +6806,85 @@
         }
       ],
       "dataCreazione": "5/10/2026"
+    },
+    {
+      "codice": "SL-062",
+      "nome": "Fagioli all'uccelletta",
+      "categoria": "Altro",
+      "resaQta": 1900,
+      "resaUm": "g",
+      "tempo": "120",
+      "procedimento": "Ammollo fagioli 12 ore, scola e cuoci in acqua fredda non salata con 2 spicchi d’aglio e salvia fino a cottura (60-90 minuti). In casseruola larga fai dorare aglio e salvia in olio abbondante, aggiungi il pomodoro, cuoci 10 minuti. Unisci i fagioli scolati, aggiusta di sale e pepe, cuoci altri 15-20 minuti a fuoco basso finché il fondo si restringe e i fagioli assorbono il condimento. Devono risultare cremosi, non brodosi.\nPorzione a persona 150 gr",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 40,
+          "codiceMp": "MP-185",
+          "nome": "Fagioli Borlotti secchi",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 78,
+          "codiceMp": "MP-093",
+          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "qtaBase": 400,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 118,
+          "codiceMp": "MP-069",
+          "nome": "Aglio",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 63,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 80,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 84,
+          "codiceMp": "MP-073",
+          "nome": "Salvia liofilizzata Wiberg",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 83,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 75,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "12/10/2026"
     },
     {
       "codice": "SL-1936",
@@ -6853,6 +7415,121 @@
       "dataCreazione": "21/9/2026"
     },
     {
+      "codice": "SL-060",
+      "nome": "Non Ragù di verdure",
+      "categoria": "Salse e sughi",
+      "resaQta": 1000,
+      "resaUm": "g",
+      "tempo": "60",
+      "procedimento": "Taglia a brunoise  di 03/04 mm le verdure. soffritto di cipolla in olio finché diventa traslucida, aggiungi carota e sedano e fai andare 8-10 minuti a fuoco medio. Togli le verdure, metti il concentrato direttamente nella casseruola calda e tostalo 2-3 minuti mescolando. Sfuma col vino rosso, fai evaporare, rimetti le verdure, aggiungi la polpa e gli aromi. Cottura 50-60 minuti a fuoco basso con coperchio semiaperto. Aceto balsamico all’ultimo minuto.\n\nResa: da ~1,35kg di ingredienti esci con circa 1kg — metti resa 75% nell’app.\n\nPorzioni: con 150g a porzione → 6-7 porzioni per kg di semilavorato.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 116,
+          "codiceMp": "MP-066",
+          "nome": "Carote",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 118,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 122,
+          "codiceMp": "MP-068",
+          "nome": "Sedano",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 34,
+          "codiceMp": "MP-092",
+          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 75,
+          "codiceMp": "MP-093",
+          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "qtaBase": 400,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 60,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 60,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 91,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 100,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 86,
+          "codiceMp": "MP-074",
+          "nome": "Timo liofilizzato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 19,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie Wiberg",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 80,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 72,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato Wiberg",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "10/10/2026"
+    },
+    {
       "codice": "SL-035",
       "nome": "Pancia di Maiale CBT",
       "categoria": "Carni lavorate",
@@ -7217,15 +7894,6 @@
         },
         {
           "tipo": "mp",
-          "magIdx": 88,
-          "codiceMp": "MP-095",
-          "nome": "Burro da Kg",
-          "qtaBase": 150,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
-          "tipo": "mp",
           "magIdx": 85,
           "codiceMp": "MP-119",
           "nome": "Zucchero a Velo da Kg",
@@ -7275,6 +7943,15 @@
           "codiceMp": "MP-153",
           "nome": "Lievito Vanigliato",
           "qtaBase": 4,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 54,
+          "codiceMp": "MP-180",
+          "nome": "Margarina Vegetale",
+          "qtaBase": 150,
           "unit": "g",
           "conv": 0.001
         }
@@ -7592,11 +8269,11 @@
     {
       "codice": "SL-7565",
       "nome": "Ragù di cortile",
-      "categoria": "Carni lavorate",
+      "categoria": "Salse e sughi",
       "resaQta": 1260,
       "resaUm": "g",
       "tempo": "90",
-      "procedimento": "1. Rosolare il soffritto misto in olio EVO fino a doratura.\n2. Aggiungere il tastasal e sgranarlo bene in padella.\n3. Unire macinato di coniglio, pollo e anatra. Rosolare a fuoco vivo mescolando.\n4. Sfumare con il vino bianco e far evaporare completamente.\n5. Aggiungere alloro, rosmarino e salvia.\n6. Incorporare il fondo bruno di manzo per mantenere il ragù sugoso.\n7. Cuocere a fuoco basso con coperchio per 60-70 minuti, aggiungendo fondo se necessario.\n8. Aggiustare di sale e pepe. Il ragù deve risultare morbido e ben legato.\n9. Rimuovere gli aromi prima del servizio.",
+      "procedimento": "1. Rosolare il soffritto misto in olio EVO fino a doratura.\n2. Aggiungere il tastasal e sgranarlo bene in padella.\n3. Unire macinato di coniglio, pollo e anatra. Rosolare a fuoco vivo mescolando.\n4. Sfumare con il vino bianco e far evaporare completamente.\n5. Aggiungere alloro, rosmarino e salvia.\n6. Incorporare il fondo bruno di manzo per mantenere il ragù sugoso.\n7. Cuocere a fuoco basso con coperchio per 60-70 minuti, aggiungendo fondo se necessario.\n8. Aggiustare di sale e pepe. Il ragù deve risultare morbido e ben legato.\n9. Rimuovere gli aromi prima del servizio.\nua circa 150 gr a persona",
       "coefficiente": 3,
       "shelfLifeFrigo": 4,
       "shelfLifeSottovuoto": 10,
@@ -7669,15 +8346,6 @@
         },
         {
           "tipo": "mp",
-          "magIdx": 53,
-          "codiceMp": "MP-071",
-          "nome": "Vino Rosso Cucina",
-          "qtaBase": 200,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
-          "tipo": "mp",
           "magIdx": 13,
           "codiceMp": "MP-128",
           "nome": "Alloro foglie Wiberg",
@@ -7709,6 +8377,15 @@
           "codiceMp": "MP-058",
           "nome": "Pepe Nero Macinato Wiberg",
           "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 91,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 200,
           "unit": "g",
           "conv": 0.001
         }
@@ -8124,7 +8801,7 @@
     {
       "codice": "SL-030",
       "nome": "Sciroppo zucchero 36 °Bè",
-      "categoria": "Pasta e impasti",
+      "categoria": "Dolci e creme",
       "resaQta": 1900,
       "resaUm": "g",
       "tempo": "10",
@@ -8840,7 +9517,7 @@
     {
       "codice": "SL-057",
       "nome": "Tortino al Pistacchio",
-      "categoria": "Pasta e impasti",
+      "categoria": "Dolci e creme",
       "resaQta": 450,
       "resaUm": "g",
       "tempo": "20",
@@ -8923,7 +9600,7 @@
       "resaQta": 1000,
       "resaUm": "g",
       "tempo": "60",
-      "procedimento": "Stufa le cipolle con l'olio, aggiungi la farina ed il concentrato mescolare, unire il vino ed il brodo, far sobbollire il liquido.\nVersare la trippa, aggiungere i rimanenti ingredienti e cuocere almeno 60 minuti.",
+      "procedimento": "Stufa le cipolle con l'olio,  il concentrato mescolare, unire il vino ed il brodo, far sobbollire il liquido.\nVersare la trippa, aggiungere i rimanenti ingredienti e cuocere almeno 60 minuti.",
       "coefficiente": 2,
       "shelfLifeFrigo": 3,
       "shelfLifeSottovuoto": 7,
@@ -9016,15 +9693,6 @@
           "codiceSl": "SL-7569",
           "nome": "Scorza Limone Grattugiata",
           "qtaBase": 5,
-          "unit": "g",
-          "conv": 0.001
-        },
-        {
-          "tipo": "mp",
-          "magIdx": 36,
-          "codiceMp": "MP-060",
-          "nome": "Farina \"00\"",
-          "qtaBase": 60,
           "unit": "g",
           "conv": 0.001
         }
@@ -9197,6 +9865,40 @@
       "porzioniVendute": 0
     },
     {
+      "codice": "PF-042",
+      "nome": "Cappucci rossi stufati",
+      "descrizione": "Con Cappucci Rossi del trentino",
+      "notaCliente": "",
+      "tags": [
+        "Vegano",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 3.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "150gr a persona come contorno a la carte"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Cappucci Rossi Stufati",
+          "qtaBase": 1500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 8,
+          "codiceSl": "SL-061"
+        }
+      ],
+      "dataCreazione": "12/10/2026"
+    },
+    {
       "codice": "PF-033",
       "nome": "CheeseCake cotta",
       "descrizione": "Con ricotta della Lessinia",
@@ -9268,8 +9970,9 @@
       "codice": "PF-038",
       "nome": "Crostata al grano saraceno",
       "descrizione": "Con mirtilli rossi di montagna",
+      "notaCliente": "Senza Glutine, Senza Lattosio",
       "tags": [
-        "Vegano",
+        "Vegetariano",
         "Consigliato",
         "Del territorio"
       ],
@@ -9299,45 +10002,37 @@
       "dataCreazione": "5/10/2026"
     },
     {
-      "codice": "PF-003",
-      "nome": "Gnocchi al Ragu'",
-      "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù saporito",
+      "codice": "PF-043",
+      "nome": "Fagioli all'uccelletta",
+      "descrizione": "Con Borlotti di Lamon",
+      "notaCliente": "",
       "tags": [
-        "Novità",
-        "Del territorio"
+        "Vegano"
       ],
       "pochePorzioni": false,
-      "categoria": "Primi piatti",
+      "categoria": "Contorni",
       "sottocategoria": "",
       "pax": 10,
-      "prezzoVendita": 8.9,
-      "coefficiente": 6,
+      "prezzoVendita": 3.9,
+      "coefficiente": 2,
       "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
-      "steps": [],
+      "steps": [
+        "150gr pax come contorno"
+      ],
       "componenti": [
         {
           "tipo": "sl",
-          "nome": "Gnocchi di Patate (base)",
-          "qtaBase": 2200,
+          "nome": "Fagioli all'uccelletta",
+          "qtaBase": 1500,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 14,
-          "codiceSl": "SL-010"
-        },
-        {
-          "tipo": "sl",
-          "nome": "Ragù di carne",
-          "qtaBase": 1000,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 6,
-          "codiceSl": "SL-006"
+          "semiIdx": 21,
+          "codiceSl": "SL-062"
         }
       ],
-      "dataCreazione": "7/7/2026",
-      "porzioniVendute": 0
+      "dataCreazione": "12/10/2026"
     },
     {
       "codice": "PF-004",
@@ -9388,6 +10083,49 @@
       ],
       "dataCreazione": "7/7/2026",
       "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-003",
+      "nome": "Gnocchi di patate al Ragu'",
+      "descrizione": "Gnocchi di patate fatti in casa con il nostro ragù con carne allevata in Lessinia",
+      "notaCliente": "",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 8.9,
+      "coefficiente": 6,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "A porzione 220 gr gnocchi, 150 gr di ragù"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Gnocchi di Patate (base)",
+          "qtaBase": 2200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 14,
+          "codiceSl": "SL-010"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Ragù di carne",
+          "qtaBase": 1500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 41,
+          "codiceSl": "SL-006"
+        }
+      ],
+      "dataCreazione": "7/7/2026"
     },
     {
       "codice": "PF-028",
@@ -9646,10 +10384,10 @@
         {
           "tipo": "sl",
           "nome": "Millefoglie di Patate",
-          "qtaBase": 200,
+          "qtaBase": 800,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 19,
+          "semiIdx": 28,
           "codiceSl": "SL-036"
         }
       ],
@@ -10530,17 +11268,19 @@
       "codice": "PF-012",
       "nome": "Uovo in camicia, patate schiacciate e speck croccante",
       "descrizione": "Uova da galline felici, patate locali e speck trentino",
+      "notaCliente": "",
       "tags": [
         "Novità",
-        "Del territorio"
+        "Del territorio",
+        "Fuori menù"
       ],
-      "pochePorzioni": false,
+      "pochePorzioni": true,
       "categoria": "Antipasti",
       "sottocategoria": "",
       "pax": 1,
       "prezzoVendita": 8.4,
       "coefficiente": 3,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -10611,8 +11351,7 @@
           "codiceMp": "MP-077"
         }
       ],
-      "dataCreazione": "8/9/2026",
-      "porzioniVendute": 0
+      "dataCreazione": "8/9/2026"
     },
     {
       "codice": "PF-018",
