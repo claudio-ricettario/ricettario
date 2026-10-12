@@ -6262,7 +6262,9 @@ function smRenderComps(){
     +smComps.map(function(c,i){
       var costo=costoCompSm(c);
       var iconaTipo=c.tipo==='sl'?'&#9881; ':'';
-      return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;font-weight:500;">'+iconaTipo+c.nome+'</td>'
+      var marcaSm='';
+      if(c.tipo==='mp'){var mSm=magazzino[resolveMagIdx(c)];marcaSm=mSm&&mSm.marca?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-left:5px;">'+mSm.marca+'</span>':'';}
+      return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;font-weight:500;">'+iconaTipo+c.nome+marcaSm+'</td>'
         +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
         +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td>'
         +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:center;">'
@@ -6473,9 +6475,9 @@ function renderSemilavorati(){
         } else {
           var mRef=magazzino[resolveMagIdx(c)];
           codRef=mRef&&mRef.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+mRef.codice+'</span>':'';
-          codRef+=(mRef&&mRef.marca?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-left:5px;">'+mRef.marca+'</span>':'');
+          var marcaRef=mRef&&mRef.marca?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-left:6px;">'+mRef.marca+'</span>':'';
         }
-        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+codRef+c.nome+'</td>'
+        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+codRef+c.nome+(marcaRef||'')+'</td>'
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
           +(isAdmin?'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td>':'')+'</tr>';
       }).join('')+'</tbody></table>'
@@ -8121,10 +8123,10 @@ function printPiatto(idx){
             var m=magazzino[resolveMagIdx(sc)];
             nomeMp=m?m.nome:(sc.nome||'?');
             codMpSc=m&&m.codice?'<span style="color:#bbb;font-weight:400;margin-right:5px;">'+m.codice+'</span>':'';
-            codMpSc+=(m&&m.marca?'<span style="color:#bbb;font-weight:400;font-size:11px;margin-left:5px;">'+m.marca+'</span>':'');
+            var marcaMpSc=m&&m.marca?'<span style="color:#bbb;font-weight:400;font-size:11px;margin-left:6px;">'+m.marca+'</span>':'';
           }
           var qSc=sc.qtaBase*fatt;
-          righe+='<tr><td style="padding:4px 10px 4px 26px;border-bottom:1px solid #f5f3ef;color:#666;font-size:13px;">&#8627; '+codMpSc+nomeMp+'</td>'
+          righe+='<tr><td style="padding:4px 10px 4px 26px;border-bottom:1px solid #f5f3ef;color:#666;font-size:13px;">&#8627; '+codMpSc+nomeMp+(marcaMpSc||'')+'</td>'
             +'<td style="padding:4px 10px;border-bottom:1px solid #f5f3ef;text-align:right;color:#666;font-size:13px;">'+fmtQ(qSc,sc.unit)+'</td></tr>';
           if(sc.tipo==='sl'){
             var scRifLink=semilavorati[resolveSemiIdx(sc)];
@@ -8202,10 +8204,10 @@ function printSemilavorato(idx){
       var m=magazzino[resolveMagIdx(c)];
       nome=m?m.nome:(c.nome||'?');
       codRif=m&&m.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+m.codice+'</span>':'';
-      codRif+=(m&&m.marca?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-left:5px;">'+m.marca+'</span>':'');
+      var marcaRif=m&&m.marca?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-left:6px;">'+m.marca+'</span>':'';
     }
     var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':(c.qtaBase+' '+(c.unit||'g'));
-    return '<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+codRif+nome+'</td>'
+    return '<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+codRif+nome+(marcaRif||'')+'</td>'
       +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+qFmt+'</td></tr>';
   }).join('');
   var procHtml='';
