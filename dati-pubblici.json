@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "12/10/2026",
+  "exportDate": "16/10/2026",
   "menuData": [
     {
       "nome": "Canederli agli spinaci Al Burro fuso",
@@ -153,7 +153,9 @@
         "Sedano",
         "Anidride solforosa e solfiti"
       ],
-      "tracce": []
+      "tracce": [
+        "Soia"
+      ]
     },
     {
       "nome": "Minestra di orzo",
@@ -237,7 +239,7 @@
       ],
       "pochePorzioni": false,
       "categoria": "Secondi piatti",
-      "prezzoVendita": 14,
+      "prezzoVendita": 13.9,
       "tipoBeverage": false,
       "allergeni": [
         "Latte e lattosio"
@@ -397,8 +399,7 @@
       "allergeni": [
         "Glutine",
         "Uova",
-        "Latte e lattosio",
-        "Arachidi"
+        "Latte e lattosio"
       ],
       "tracce": [
         "Soia"
@@ -518,6 +519,77 @@
     }
   ],
   "magazzino": [
+    {
+      "codice": "MP-189",
+      "nome": "Cervo",
+      "marca": "Polpa",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 120,
+        "grassi": 2.42,
+        "grassiSaturi": 0.95,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 23,
+        "sale": 0.051
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 21,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-192",
+      "nome": "Cotechino Artigianale",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 325,
+        "grassi": 27,
+        "grassiSaturi": 9.7,
+        "carboidrati": 0.6,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 20,
+        "sale": 2
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 6.3,
+          "storico": []
+        }
+      ]
+    },
     {
       "codice": "MP-070",
       "nome": "Macinato di Anatra",
@@ -869,6 +941,42 @@
       ]
     },
     {
+      "codice": "MP-193",
+      "nome": "Stinco a metà",
+      "marca": "ATM",
+      "categoria": "Carne e pollame",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 212,
+        "grassi": 13,
+        "grassiSaturi": 5,
+        "carboidrati": 0.5,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 24,
+        "sale": 1.9
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 4,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-176",
       "nome": "Tastasal di Maiale",
       "marca": "ATM",
@@ -1194,7 +1302,7 @@
     },
     {
       "codice": "MP-081",
-      "nome": "Aglio Wiberg – in polvere",
+      "nome": "Aglio – in polvere",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -1225,7 +1333,8 @@
           "prezzoKg": 36.3636,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-117",
@@ -1266,7 +1375,7 @@
     },
     {
       "codice": "MP-128",
-      "nome": "Alloro foglie Wiberg",
+      "nome": "Alloro foglie",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -1297,11 +1406,12 @@
           "prezzoKg": 134.5455,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-143",
-      "nome": "Amaretti Bonomi",
+      "nome": "Amaretti",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -1338,11 +1448,12 @@
           "prezzoKg": 6.3636,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Bonomi"
     },
     {
       "codice": "MP-118",
-      "nome": "Amaretti Vicenzi",
+      "nome": "Amaretti",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -1379,7 +1490,8 @@
           "prezzoKg": 9.0909,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Vicenzi"
     },
     {
       "codice": "MP-166",
@@ -1419,7 +1531,7 @@
     },
     {
       "codice": "MP-083",
-      "nome": "Aneto liofilizzato Wiberg",
+      "nome": "Aneto liofilizzato",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -1450,11 +1562,12 @@
           "prezzoKg": 277.2727,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-080",
-      "nome": "Bacche di ginepro Wiberg",
+      "nome": "Bacche di ginepro",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -1485,11 +1598,12 @@
           "prezzoKg": 50.2273,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-082",
-      "nome": "Basilico liofilizzato Wiberg",
+      "nome": "Basilico liofilizzato",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -1520,7 +1634,8 @@
           "prezzoKg": 268.1818,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-169",
@@ -1704,6 +1819,42 @@
       ]
     },
     {
+      "codice": "MP-190",
+      "nome": "Chiodi Garofano",
+      "marca": "Wiberg",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 432,
+        "grassi": 20.1,
+        "grassiSaturi": 6.09,
+        "carboidrati": 52,
+        "zuccheri": 51.5,
+        "fibre": 9.6,
+        "proteine": 6,
+        "sale": 0.6
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 107.5,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-145",
       "nome": "Cialda per Gelato",
       "categoria": "Generale",
@@ -1832,7 +1983,7 @@
     },
     {
       "codice": "MP-092",
-      "nome": "Concentrato pomodoro Mutti da 440 gr",
+      "nome": "Concentrato pomodoro",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -1863,7 +2014,8 @@
           "prezzoKg": 7.2727,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Mutti"
     },
     {
       "codice": "MP-137",
@@ -1906,7 +2058,7 @@
     },
     {
       "codice": "MP-079",
-      "nome": "Dragoncello liofilizzato Wiberg",
+      "nome": "Dragoncello liofilizzato",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -1937,11 +2089,12 @@
           "prezzoKg": 363.6364,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-077",
-      "nome": "Erba cipollina liofilizzata Wiberg",
+      "nome": "Erba cipollina liofilizzata",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -1972,7 +2125,8 @@
           "prezzoKg": 317.2727,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-185",
@@ -2490,7 +2644,7 @@
     },
     {
       "codice": "MP-075",
-      "nome": "Maggiorana liofilizzata Wiberg",
+      "nome": "Maggiorana liofilizzata",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -2521,7 +2675,8 @@
           "prezzoKg": 423.6364,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-116",
@@ -2741,7 +2896,7 @@
     },
     {
       "codice": "MP-076",
-      "nome": "Noce moscata macinata Wiberg",
+      "nome": "Noce moscata macinata",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -2772,20 +2927,19 @@
           "prezzoKg": 90.9091,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-152",
-      "nome": "Olio di semi vari",
+      "nome": "Olio di semi Girasole",
       "categoria": "Generale",
       "um": "lt",
       "iva": 4,
       "scarto": 0,
       "resa": 100,
       "activeIdx": 0,
-      "allergeni": [
-        "Arachidi"
-      ],
+      "allergeni": [],
       "allergeniOk": true,
       "tracce": [],
       "tracceOk": true,
@@ -2848,7 +3002,7 @@
     },
     {
       "codice": "MP-078",
-      "nome": "Origano tritato essiccato Wiberg",
+      "nome": "Origano tritato essiccato",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -2879,7 +3033,8 @@
           "prezzoKg": 102.7273,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-148",
@@ -3118,7 +3273,7 @@
     },
     {
       "codice": "MP-086",
-      "nome": "Paprica affumicata Wiberg",
+      "nome": "Paprica affumicata",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -3149,11 +3304,12 @@
           "prezzoKg": 45.7273,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-085",
-      "nome": "Paprica rubino delicata Wiberg",
+      "nome": "Paprica rubino delicata",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -3184,7 +3340,8 @@
           "prezzoKg": 30.4545,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-094",
@@ -3266,7 +3423,7 @@
     },
     {
       "codice": "MP-058",
-      "nome": "Pepe Nero Macinato Wiberg",
+      "nome": "Pepe Nero Macinato",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -3297,11 +3454,12 @@
           "prezzoKg": 38.8182,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-087",
-      "nome": "Peperoncino rosso tritato Wiberg",
+      "nome": "Peperoncino rosso tritato",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -3332,7 +3490,8 @@
           "prezzoKg": 56,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-163",
@@ -3376,7 +3535,7 @@
     },
     {
       "codice": "MP-093",
-      "nome": "Polpa Pomodoro Mutti da kg 4,05",
+      "nome": "Polpa Pomodoro",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -3407,11 +3566,48 @@
           "prezzoKg": 1.3636,
           "storico": []
         }
+      ],
+      "marca": "Mutti"
+    },
+    {
+      "codice": "MP-186",
+      "nome": "Pomodori Pelati",
+      "marca": "Mutti",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 22,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 3.6,
+        "zuccheri": 2.9,
+        "fibre": 0,
+        "proteine": 1.1,
+        "sale": 0.1
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 2,
+          "storico": []
+        }
       ]
     },
     {
       "codice": "MP-115",
-      "nome": "Prezzemolo liofilizzato Wiberg",
+      "nome": "Prezzemolo liofilizzato",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -3442,7 +3638,8 @@
           "prezzoKg": 209.0909,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-181",
@@ -3482,7 +3679,7 @@
     },
     {
       "codice": "MP-072",
-      "nome": "Rosmarino liofilizzato Wiberg",
+      "nome": "Rosmarino liofilizzato",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -3513,7 +3710,8 @@
           "prezzoKg": 250,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-157",
@@ -3587,7 +3785,7 @@
     },
     {
       "codice": "MP-073",
-      "nome": "Salvia liofilizzata Wiberg",
+      "nome": "Salvia liofilizzata",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -3618,7 +3816,8 @@
           "prezzoKg": 333.6364,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-107",
@@ -3658,11 +3857,12 @@
           "prezzoKg": 5.4545,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Bonomi"
     },
     {
       "codice": "MP-084",
-      "nome": "Semi di cumino interi Wiberg",
+      "nome": "Semi di cumino interi",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -3693,7 +3893,8 @@
           "prezzoKg": 23.1818,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-158",
@@ -3775,8 +3976,50 @@
       ]
     },
     {
+      "codice": "MP-191",
+      "nome": "Tagliatelle all'uovo",
+      "marca": "Barilla",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia",
+        "Senape"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 367,
+        "grassi": 4,
+        "grassiSaturi": 1.2,
+        "carboidrati": 66,
+        "zuccheri": 3,
+        "fibre": 3.5,
+        "proteine": 15,
+        "sale": 0.09
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.8,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-074",
-      "nome": "Timo liofilizzato Wiberg",
+      "nome": "Timo liofilizzato",
       "categoria": "Generale",
       "um": "kg",
       "iva": 10,
@@ -3807,7 +4050,8 @@
           "prezzoKg": 341.8182,
           "storico": []
         }
-      ]
+      ],
+      "marca": "Wiberg"
     },
     {
       "codice": "MP-102",
@@ -4067,7 +4311,7 @@
       "nome": "Zucchero Semolato da Kg",
       "categoria": "Generale",
       "um": "kg",
-      "iva": 10,
+      "iva": 4,
       "scarto": 0,
       "resa": 100,
       "activeIdx": 0,
@@ -4092,7 +4336,7 @@
       "suppliers": [
         {
           "nome": "Supermercato / Generico",
-          "prezzoKg": 0,
+          "prezzoKg": 1.8,
           "storico": [
             {
               "prezzo": 0.9091,
@@ -4655,7 +4899,7 @@
     },
     {
       "codice": "MP-132",
-      "nome": "Speck Segata",
+      "nome": "Speck",
       "categoria": "Salumi",
       "um": "kg",
       "iva": 10,
@@ -4686,42 +4930,8 @@
           "prezzoKg": 9.0909,
           "storico": []
         }
-      ]
-    },
-    {
-      "codice": "MP-133",
-      "nome": "Tastasal",
-      "categoria": "Salumi",
-      "um": "kg",
-      "iva": 10,
-      "scarto": 0,
-      "resa": 100,
-      "activeIdx": 0,
-      "allergeni": [],
-      "allergeniOk": true,
-      "tracce": [],
-      "tracceOk": true,
-      "nutrizionali": {
-        "energia": 333,
-        "grassi": 29.18,
-        "grassiSaturi": 10,
-        "carboidrati": 2.85,
-        "zuccheri": 0,
-        "fibre": 0,
-        "proteine": 13.72,
-        "sale": 1
-      },
-      "nutrizionaliOk": true,
-      "giacenza": 0,
-      "giacenzaMin": 0,
-      "lotti": [],
-      "suppliers": [
-        {
-          "nome": "Supermercato / Generico",
-          "prezzoKg": 7.6364,
-          "storico": []
-        }
-      ]
+      ],
+      "marca": "Segata"
     },
     {
       "codice": "MP-144",
@@ -5075,6 +5285,41 @@
       ]
     },
     {
+      "codice": "MP-187",
+      "nome": "Peperoni Misti",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 15,
+      "resa": 85,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 22,
+        "grassi": 0.3,
+        "grassiSaturi": 0,
+        "carboidrati": 4.2,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0.9,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 3.8,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-061",
       "nome": "Porri",
       "categoria": "Verdura",
@@ -5220,6 +5465,41 @@
       ]
     },
     {
+      "codice": "MP-188",
+      "nome": "Zucca Violina",
+      "categoria": "Verdura",
+      "um": "kg",
+      "iva": 4,
+      "scarto": 25,
+      "resa": 75,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 20,
+        "grassi": 0.1,
+        "grassiSaturi": 0,
+        "carboidrati": 3.5,
+        "zuccheri": 2.5,
+        "fibre": 0.5,
+        "proteine": 1.1,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.25,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-146",
       "nome": "Corvina igt bag in box 10L",
       "categoria": "Vini",
@@ -5339,7 +5619,7 @@
           "tipo": "mp",
           "magIdx": 15,
           "codiceMp": "MP-076",
-          "nome": "Noce moscata macinata Wiberg",
+          "nome": "Noce moscata macinata",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -5355,6 +5635,157 @@
         }
       ],
       "dataCreazione": "26/6/2026"
+    },
+    {
+      "codice": "SL-069",
+      "nome": "Brasato di Manzo (Base)",
+      "categoria": "Carni lavorate",
+      "resaQta": 650,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Marinatura 4-6h: muscolo con vino, verdure tagliate grosse, alloro, ginepro, pepe in frigo.\n\nProcedimento:\n\nScola e asciuga la carne, tieni la marinata\nRosola le verdure in olio fino a caramellare, metti da parte\nRosola il muscolo su tutti i lati a fuoco vivo fino a crosta uniforme\nUnisci verdure e carne, sfuma con la marinata + vino fresco se serve\nFai ridurre 5 minuti, aggiungi concentrato\nCopri a metà con brodo, porta a bollore\nForno 160°C coperto 3-3.5h\nRitira la carne, filtra il fondo, scarta le verdure\nRiduci il fondo sul fuoco, lega con fecola sciolta in acqua fredda\nAbbatti carne nel suo fondo \nA Persona :Porziona 200 gr carne più sugo in sottovuoto",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 8,
+          "codiceMp": "MP-127",
+          "nome": "Muscolo Bovino",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 100,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 127,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 125,
+          "codiceMp": "MP-066",
+          "nome": "Carote",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 132,
+          "codiceMp": "MP-068",
+          "nome": "Sedano",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 40,
+          "codiceMp": "MP-092",
+          "nome": "Concentrato pomodoro",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 1,
+          "codiceSl": "SL-019",
+          "nome": "Brodo di manzo",
+          "qtaBase": 400,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 67,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 40,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 23,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie",
+          "qtaBase": 0.6,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 86,
+          "codiceMp": "MP-072",
+          "nome": "Rosmarino liofilizzato",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 95,
+          "codiceMp": "MP-074",
+          "nome": "Timo liofilizzato",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 28,
+          "codiceMp": "MP-080",
+          "nome": "Bacche di ginepro",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 79,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato",
+          "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 88,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 12,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 50,
+          "codiceMp": "MP-098",
+          "nome": "Fecola di Patate",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "15/10/2026"
     },
     {
       "codice": "SL-019",
@@ -5436,7 +5867,7 @@
           "tipo": "mp",
           "magIdx": 13,
           "codiceMp": "MP-128",
-          "nome": "Alloro foglie Wiberg",
+          "nome": "Alloro foglie",
           "qtaBase": 0.5,
           "unit": "g",
           "conv": 0.001
@@ -5676,7 +6107,7 @@
           "tipo": "mp",
           "magIdx": 62,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 1,
           "unit": "g",
           "conv": 0.001
@@ -5685,7 +6116,7 @@
           "tipo": "mp",
           "magIdx": 50,
           "codiceMp": "MP-076",
-          "nome": "Noce moscata macinata Wiberg",
+          "nome": "Noce moscata macinata",
           "qtaBase": 1,
           "unit": "g",
           "conv": 0.001
@@ -5783,7 +6214,7 @@
           "tipo": "mp",
           "magIdx": 20,
           "codiceMp": "MP-076",
-          "nome": "Noce moscata macinata Wiberg",
+          "nome": "Noce moscata macinata",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -5792,7 +6223,7 @@
           "tipo": "mp",
           "magIdx": 16,
           "codiceMp": "MP-077",
-          "nome": "Erba cipollina liofilizzata Wiberg",
+          "nome": "Erba cipollina liofilizzata",
           "qtaBase": 10,
           "unit": "g",
           "conv": 0.001
@@ -5907,7 +6338,7 @@
           "tipo": "mp",
           "magIdx": 30,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -5916,7 +6347,7 @@
           "tipo": "mp",
           "magIdx": 22,
           "codiceMp": "MP-076",
-          "nome": "Noce moscata macinata Wiberg",
+          "nome": "Noce moscata macinata",
           "qtaBase": 1,
           "unit": "g",
           "conv": 0.001
@@ -5925,7 +6356,7 @@
           "tipo": "mp",
           "magIdx": 33,
           "codiceMp": "MP-115",
-          "nome": "Prezzemolo liofilizzato Wiberg",
+          "nome": "Prezzemolo liofilizzato",
           "qtaBase": 5,
           "unit": "g",
           "conv": 0.001
@@ -6022,7 +6453,7 @@
           "tipo": "mp",
           "magIdx": 85,
           "codiceMp": "MP-084",
-          "nome": "Semi di cumino interi Wiberg",
+          "nome": "Semi di cumino interi",
           "qtaBase": 5,
           "unit": "g",
           "conv": 0.001
@@ -6040,7 +6471,7 @@
           "tipo": "mp",
           "magIdx": 74,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -6049,7 +6480,7 @@
           "tipo": "mp",
           "magIdx": 61,
           "codiceMp": "MP-152",
-          "nome": "Olio di semi vari",
+          "nome": "Olio di semi Girasole",
           "qtaBase": 50,
           "unit": "ml",
           "conv": 0.001
@@ -6169,8 +6600,51 @@
       "dataCreazione": "28/8/2026"
     },
     {
+      "codice": "SL-067",
+      "nome": "Cotechino cotto (Base)",
+      "categoria": "Carni lavorate",
+      "resaQta": 420,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Buca il cotechino in diversi punti, inseriscilo nella busta da cottura assieme ad acqua e sale.\nCuoci 72°C per 18 ore, poi abbatti in positivo",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 0,
+          "codiceMp": "MP-192",
+          "nome": "Cotechino Artigianale",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 18,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 87,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "14/10/2026"
+    },
+    {
       "codice": "SL-047",
-      "nome": "Crauti Cotti",
+      "nome": "Crauti Ripassati",
       "categoria": "Verdure lavorate",
       "resaQta": 1250,
       "resaUm": "g",
@@ -6239,7 +6713,7 @@
           "tipo": "mp",
           "magIdx": 74,
           "codiceMp": "MP-084",
-          "nome": "Semi di cumino interi Wiberg",
+          "nome": "Semi di cumino interi",
           "qtaBase": 5,
           "unit": "g",
           "conv": 0.001
@@ -6257,7 +6731,7 @@
           "tipo": "mp",
           "magIdx": 64,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -6266,7 +6740,7 @@
           "tipo": "mp",
           "magIdx": 17,
           "codiceMp": "MP-128",
-          "nome": "Alloro foglie Wiberg",
+          "nome": "Alloro foglie",
           "qtaBase": 0.3,
           "unit": "g",
           "conv": 0.001
@@ -6275,7 +6749,7 @@
           "tipo": "mp",
           "magIdx": 22,
           "codiceMp": "MP-080",
-          "nome": "Bacche di ginepro Wiberg",
+          "nome": "Bacche di ginepro",
           "qtaBase": 3,
           "unit": "g",
           "conv": 0.001
@@ -6404,6 +6878,112 @@
         }
       ],
       "dataCreazione": "1/10/2026"
+    },
+    {
+      "codice": "SL-064",
+      "nome": "Crema di zucca (base)",
+      "categoria": "Verdure lavorate",
+      "resaQta": 1300,
+      "resaUm": "g",
+      "tempo": "45",
+      "procedimento": "Taglia la zucca violina a cubetti . In casseruola scalda l’olio, fai appassire porri e carote a fuoco basso 5 minuti, aggiungi l’aglio e il timo. Unisci la zucca e le patate a cubetti, fai insaporire 3-4 minuti. Copri con il brodo vegetale caldo, porta a bollore e cuoci a fuoco medio 20-25 minuti finché zucca e patate sono morbide. Frulla con il minipimer fino a crema liscia. Aggiusta di sale.\nQuantità per utilizzo:\n\nVellutata/crema — 250g a porzione, allungata con 50-80ml di brodo caldo al momento del servizio → 5 porzioni per batch\nRisotto alla zucca — 80-100g di crema per porzione, aggiunta a 2/3 cottura per mantecare → 13-17 porzioni per batch\nGnocchi alla zucca — 80g come salsa di condimento → 17 porzioni per batch",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 127,
+          "codiceMp": "MP-061",
+          "nome": "Porri",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 121,
+          "codiceMp": "MP-066",
+          "nome": "Carote",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 63,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 125,
+          "codiceMp": "MP-097",
+          "nome": "Patate per Gnocchi",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 2,
+          "codiceSl": "SL-029",
+          "nome": "Brodo Vegetale",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 119,
+          "codiceMp": "MP-069",
+          "nome": "Aglio",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 90,
+          "codiceMp": "MP-074",
+          "nome": "Timo liofilizzato",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 131,
+          "codiceMp": "MP-188",
+          "nome": "Zucca Violina",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 84,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 75,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "14/10/2026"
     },
     {
       "codice": "SL-039",
@@ -6833,7 +7413,7 @@
           "tipo": "mp",
           "magIdx": 78,
           "codiceMp": "MP-093",
-          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "nome": "Polpa Pomodoro",
           "qtaBase": 400,
           "unit": "g",
           "conv": 0.001
@@ -6860,7 +7440,7 @@
           "tipo": "mp",
           "magIdx": 84,
           "codiceMp": "MP-073",
-          "nome": "Salvia liofilizzata Wiberg",
+          "nome": "Salvia liofilizzata",
           "qtaBase": 1,
           "unit": "g",
           "conv": 0.001
@@ -6878,7 +7458,7 @@
           "tipo": "mp",
           "magIdx": 75,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -6978,7 +7558,7 @@
           "tipo": "mp",
           "magIdx": 27,
           "codiceMp": "MP-092",
-          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "nome": "Concentrato pomodoro",
           "qtaBase": 30,
           "unit": "g",
           "conv": 0.001
@@ -7119,7 +7699,7 @@
           "tipo": "mp",
           "magIdx": 18,
           "codiceMp": "MP-076",
-          "nome": "Noce moscata macinata Wiberg",
+          "nome": "Noce moscata macinata",
           "qtaBase": 7,
           "unit": "g",
           "conv": 0.001
@@ -7189,7 +7769,7 @@
           "tipo": "mp",
           "magIdx": 19,
           "codiceMp": "MP-092",
-          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "nome": "Concentrato pomodoro",
           "qtaBase": 50,
           "unit": "g",
           "conv": 0.001
@@ -7216,7 +7796,7 @@
           "tipo": "mp",
           "magIdx": 36,
           "codiceMp": "MP-085",
-          "nome": "Paprica rubino delicata Wiberg",
+          "nome": "Paprica rubino delicata",
           "qtaBase": 20,
           "unit": "g",
           "conv": 0.001
@@ -7225,7 +7805,7 @@
           "tipo": "mp",
           "magIdx": 13,
           "codiceMp": "MP-128",
-          "nome": "Alloro foglie Wiberg",
+          "nome": "Alloro foglie",
           "qtaBase": 0.3,
           "unit": "g",
           "conv": 0.001
@@ -7234,7 +7814,7 @@
           "tipo": "mp",
           "magIdx": 38,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -7388,7 +7968,7 @@
           "tipo": "mp",
           "magIdx": 14,
           "codiceMp": "MP-081",
-          "nome": "Aglio Wiberg – in polvere",
+          "nome": "Aglio – in polvere",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -7397,7 +7977,7 @@
           "tipo": "mp",
           "magIdx": 49,
           "codiceMp": "MP-078",
-          "nome": "Origano tritato essiccato Wiberg",
+          "nome": "Origano tritato essiccato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -7458,7 +8038,7 @@
           "tipo": "mp",
           "magIdx": 34,
           "codiceMp": "MP-092",
-          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "nome": "Concentrato pomodoro",
           "qtaBase": 80,
           "unit": "g",
           "conv": 0.001
@@ -7467,7 +8047,7 @@
           "tipo": "mp",
           "magIdx": 75,
           "codiceMp": "MP-093",
-          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "nome": "Polpa Pomodoro",
           "qtaBase": 400,
           "unit": "g",
           "conv": 0.001
@@ -7494,7 +8074,7 @@
           "tipo": "mp",
           "magIdx": 86,
           "codiceMp": "MP-074",
-          "nome": "Timo liofilizzato Wiberg",
+          "nome": "Timo liofilizzato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -7503,7 +8083,7 @@
           "tipo": "mp",
           "magIdx": 19,
           "codiceMp": "MP-128",
-          "nome": "Alloro foglie Wiberg",
+          "nome": "Alloro foglie",
           "qtaBase": 0.3,
           "unit": "g",
           "conv": 0.001
@@ -7521,7 +8101,7 @@
           "tipo": "mp",
           "magIdx": 72,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -7531,7 +8111,7 @@
     },
     {
       "codice": "SL-035",
-      "nome": "Pancia di Maiale CBT",
+      "nome": "Pancia di Maiale CBT (Base)",
       "categoria": "Carni lavorate",
       "resaQta": 700,
       "resaUm": "g",
@@ -7564,7 +8144,7 @@
           "tipo": "mp",
           "magIdx": 56,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -7573,7 +8153,7 @@
           "tipo": "mp",
           "magIdx": 62,
           "codiceMp": "MP-073",
-          "nome": "Salvia liofilizzata Wiberg",
+          "nome": "Salvia liofilizzata",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -7582,7 +8162,7 @@
           "tipo": "mp",
           "magIdx": 60,
           "codiceMp": "MP-072",
-          "nome": "Rosmarino liofilizzato Wiberg",
+          "nome": "Rosmarino liofilizzato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -7591,7 +8171,7 @@
           "tipo": "mp",
           "magIdx": 16,
           "codiceMp": "MP-128",
-          "nome": "Alloro foglie Wiberg",
+          "nome": "Alloro foglie",
           "qtaBase": 0.3,
           "unit": "g",
           "conv": 0.001
@@ -7600,7 +8180,7 @@
           "tipo": "mp",
           "magIdx": 14,
           "codiceMp": "MP-081",
-          "nome": "Aglio Wiberg – in polvere",
+          "nome": "Aglio – in polvere",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -8033,6 +8613,112 @@
       "dataCreazione": "7/7/2026"
     },
     {
+      "codice": "SL-063",
+      "nome": "Peperonata (Base)",
+      "categoria": "Verdure lavorate",
+      "resaQta": 410,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Lava i peperoni, togli semi e filamenti bianchi interni, taglia a listarelle di circa 1,5cm. In casseruola larga scalda l’olio, fai appassire la cipolla affettata sottile con l’aglio a fuoco basso 8-10 minuti senza colorire. Aggiungi i peperoni, alza leggermente il fuoco e fai insaporire 5 minuti mescolando. Aggiungi il pomodoro, sale, pepe e lo zucchero. Copri e cuoci a fuoco basso 35-40 minuti mescolando ogni tanto. Negli ultimi 5 minuti togli il coperchio, alza il fuoco e fai restringere il fondo. Sfuma con l’aceto, aggiusta di sale, aggiungi il basilico fresco a fine cottura.\nPorzione come contorno 150gr",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 126,
+          "codiceMp": "MP-187",
+          "nome": "Peperoni Misti",
+          "qtaBase": 300,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 123,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 79,
+          "codiceMp": "MP-186",
+          "nome": "Pomodori Pelati",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 63,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 30,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 119,
+          "codiceMp": "MP-069",
+          "nome": "Aglio",
+          "qtaBase": 0.7,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 84,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 75,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 16,
+          "codiceMp": "MP-184",
+          "nome": "Aceto di Mele",
+          "qtaBase": 20,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 98,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 27,
+          "codiceMp": "MP-082",
+          "nome": "Basilico liofilizzato",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "12/10/2026"
+    },
+    {
       "codice": "SL-050",
       "nome": "Polenta Grigliata",
       "categoria": "Altro",
@@ -8186,7 +8872,7 @@
           "tipo": "mp",
           "magIdx": 4,
           "codiceMp": "MP-081",
-          "nome": "Aglio Wiberg – in polvere",
+          "nome": "Aglio – in polvere",
           "qtaBase": 5,
           "unit": "g",
           "conv": 0.001
@@ -8195,7 +8881,7 @@
           "tipo": "mp",
           "magIdx": 9,
           "codiceMp": "MP-092",
-          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "nome": "Concentrato pomodoro",
           "qtaBase": 880,
           "unit": "g",
           "conv": 0.001
@@ -8204,7 +8890,7 @@
           "tipo": "mp",
           "magIdx": 22,
           "codiceMp": "MP-093",
-          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "nome": "Polpa Pomodoro",
           "qtaBase": 15,
           "unit": "kg",
           "conv": 1
@@ -8222,7 +8908,7 @@
           "tipo": "mp",
           "magIdx": 20,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 10,
           "unit": "g",
           "conv": 0.001
@@ -8231,7 +8917,7 @@
           "tipo": "mp",
           "magIdx": 23,
           "codiceMp": "MP-072",
-          "nome": "Rosmarino liofilizzato Wiberg",
+          "nome": "Rosmarino liofilizzato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -8240,7 +8926,7 @@
           "tipo": "mp",
           "magIdx": 25,
           "codiceMp": "MP-073",
-          "nome": "Salvia liofilizzata Wiberg",
+          "nome": "Salvia liofilizzata",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -8265,6 +8951,166 @@
         }
       ],
       "dataCreazione": "24/6/2026"
+    },
+    {
+      "codice": "SL-066",
+      "nome": "Ragù di Cervo",
+      "categoria": "Salse e sughi",
+      "resaQta": 1600,
+      "resaUm": "g",
+      "tempo": "240",
+      "procedimento": "Taglia la carne a pezzi grossi 5-6cm, mettila in contenitore con vino, aceto, verdure a pezzi, tutte le spezie e aromi. Copri con pellicola e marina in frigo 12-24 ore. \nScola la carne e asciugala bene con carta assorbente — deve essere perfettamente asciutta. \nFiltra la marinata e tienila da parte. In casseruola capiente scalda l’olio a fuoco alto, rosola la carne in pochi pezzi per volta senza sovraccaricare la pentola — vuoi la crosta, non il vapore. \nTogli la carne, nello stesso fondo fai appassire le verdure filtrate dalla marinata 5 minuti con il concentrato di pomodoro.. \nRimetti la carne, versa la marinata filtrata, aggiungi il brodo. \nCopri e cuoci a fuoco bassissimo 3-4 ore o forno a 160°C finché la carne si sfilaccia. Togli la carne, sfilaccia con due forchette, rimetti nel fondo ristretto, aggiusta di sale. Abbatti.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 33,
+          "codiceMp": "MP-189",
+          "nome": "Cervo",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 97,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 500.3,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 16,
+          "codiceMp": "MP-184",
+          "nome": "Aceto di Mele",
+          "qtaBase": 50,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 124,
+          "codiceMp": "MP-067",
+          "nome": "Cipolle",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 122,
+          "codiceMp": "MP-066",
+          "nome": "Carote",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 129,
+          "codiceMp": "MP-068",
+          "nome": "Sedano",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 65,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 50,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 26,
+          "codiceMp": "MP-080",
+          "nome": "Bacche di ginepro",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 21,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 84,
+          "codiceMp": "MP-072",
+          "nome": "Rosmarino liofilizzato",
+          "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 92,
+          "codiceMp": "MP-074",
+          "nome": "Timo liofilizzato",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 34,
+          "codiceMp": "MP-190",
+          "nome": "Chiodi Garofano",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 77,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato",
+          "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 86,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 15,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 1,
+          "codiceSl": "SL-019",
+          "nome": "Brodo di manzo",
+          "qtaBase": 300,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 38,
+          "codiceMp": "MP-092",
+          "nome": "Concentrato pomodoro",
+          "qtaBase": 149.8,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "14/10/2026"
     },
     {
       "codice": "SL-7565",
@@ -8348,7 +9194,7 @@
           "tipo": "mp",
           "magIdx": 13,
           "codiceMp": "MP-128",
-          "nome": "Alloro foglie Wiberg",
+          "nome": "Alloro foglie",
           "qtaBase": 0.2,
           "unit": "g",
           "conv": 0.001
@@ -8357,7 +9203,7 @@
           "tipo": "mp",
           "magIdx": 43,
           "codiceMp": "MP-072",
-          "nome": "Rosmarino liofilizzato Wiberg",
+          "nome": "Rosmarino liofilizzato",
           "qtaBase": 1,
           "unit": "g",
           "conv": 0.001
@@ -8375,7 +9221,7 @@
           "tipo": "mp",
           "magIdx": 39,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 3,
           "unit": "g",
           "conv": 0.001
@@ -8454,7 +9300,7 @@
           "tipo": "mp",
           "magIdx": 59,
           "codiceMp": "MP-093",
-          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "nome": "Polpa Pomodoro",
           "qtaBase": 300,
           "unit": "g",
           "conv": 0.001
@@ -8463,7 +9309,7 @@
           "tipo": "mp",
           "magIdx": 16,
           "codiceMp": "MP-128",
-          "nome": "Alloro foglie Wiberg",
+          "nome": "Alloro foglie",
           "qtaBase": 0.3,
           "unit": "g",
           "conv": 0.001
@@ -8472,7 +9318,7 @@
           "tipo": "mp",
           "magIdx": 68,
           "codiceMp": "MP-074",
-          "nome": "Timo liofilizzato Wiberg",
+          "nome": "Timo liofilizzato",
           "qtaBase": 1,
           "unit": "g",
           "conv": 0.001
@@ -8490,7 +9336,7 @@
           "tipo": "mp",
           "magIdx": 57,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -8506,6 +9352,67 @@
         }
       ],
       "dataCreazione": "22/9/2026"
+    },
+    {
+      "codice": "SL-065",
+      "nome": "Risotto (base)",
+      "categoria": "Pasta e impasti",
+      "resaQta": 2500,
+      "resaUm": "g",
+      "tempo": "15",
+      "procedimento": "Scalda una casseruola larga a fuoco medio-alto senza grassi. Versa il riso a secco e tostalo mescolando continuamente per 2-3 minuti finché i chicchi diventano traslucidi e sentì il profumo di nocciola — questo passaggio è fondamentale, sigilla il chicco e impedisce che si spacchi durante la cottura. Aggiungi l’olio EVO, mescola 30 secondi, poi sfuma con il vino bianco freddo tutto in una volta. Fai evaporare completamente l’alcol mescolando. Aggiungi il brodo vegetale bollente in una volta sola, aggiusta di sale, abbassa il fuoco a medio e cuoci 6-7 minuti mescolando ogni tanto — il riso deve essere ancora molto al dente, quasi crudo al centro. Stendi immediatamente su placche da forno in strato sottile (2-3cm) e abbatti a +3°C nel minor tempo possibile. Una volta abbattuto trasferisci in contenitori gastronorm, copri con pellicola a contatto e conserva in frigo.\n\npadella calda con un filo d’olio, 250g di base risotto, aggiungi brodo caldo poco alla volta e finisci in 4-5 minuti aggiungendo il condimento scelto nell’ultimo minuto.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 81,
+          "codiceMp": "MP-181",
+          "nome": "Riso Vialone Nano",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 63,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 95,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 150,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 2,
+          "codiceSl": "SL-029",
+          "nome": "Brodo Vegetale",
+          "qtaBase": 1.5,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 84,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "14/10/2026"
     },
     {
       "codice": "SL-049",
@@ -8524,7 +9431,7 @@
           "tipo": "mp",
           "magIdx": 66,
           "codiceMp": "MP-093",
-          "nome": "Polpa Pomodoro Mutti da kg 4,05",
+          "nome": "Polpa Pomodoro",
           "qtaBase": 3000,
           "unit": "g",
           "conv": 0.001
@@ -8569,7 +9476,7 @@
           "tipo": "mp",
           "magIdx": 63,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 3,
           "unit": "g",
           "conv": 0.001
@@ -8578,7 +9485,7 @@
           "tipo": "mp",
           "magIdx": 23,
           "codiceMp": "MP-082",
-          "nome": "Basilico liofilizzato Wiberg",
+          "nome": "Basilico liofilizzato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001
@@ -8910,7 +9817,7 @@
           "tipo": "mp",
           "magIdx": 15,
           "codiceMp": "MP-143",
-          "nome": "Amaretti Bonomi",
+          "nome": "Amaretti",
           "qtaBase": 500,
           "unit": "g",
           "conv": 0.001
@@ -9014,13 +9921,225 @@
           "tipo": "mp",
           "magIdx": 70,
           "codiceMp": "MP-132",
-          "nome": "Speck Segata",
+          "nome": "Speck",
           "qtaBase": 100,
           "unit": "g",
           "conv": 0.001
         }
       ],
       "dataCreazione": "8/9/2026"
+    },
+    {
+      "codice": "SL-070",
+      "nome": "Spezzatino di Cervo (Base)",
+      "categoria": "Carni lavorate",
+      "resaQta": 1100,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Marinatura 8-12h: cervo con vino, aceto e spezie in frigo. Scola e asciuga prima di cuocere, tieni il liquido.\n\nProcedimento:\n\nRosola il cervo in olio a fuoco vivo in piccole quantità\nMetti da parte, rosola il soffritto nella stessa casseruola fino a doratura\nRimetti la carne, sfuma con la marinata filtrata\nRiduci 5 minuti a fuoco alto\nAggiungi brodo fino a metà carne, porta a bollore\nForno 160°C coperto 2-2.5h\nRitira la carne, filtra il fondo, riduci\nGrappa fuori dal fuoco (facoltativa), lega con fecola\nRiunisci carne, verdure e salsa, abbatti\n\n200/220 gr a porzione",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 0,
+          "codiceMp": "MP-189",
+          "nome": "Cervo",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 100,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 300,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 19,
+          "codiceMp": "MP-184",
+          "nome": "Aceto di Mele",
+          "qtaBase": 30,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 29,
+          "codiceMp": "MP-080",
+          "nome": "Bacche di ginepro",
+          "qtaBase": 8,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 24,
+          "codiceMp": "MP-128",
+          "nome": "Alloro foglie",
+          "qtaBase": 0.3,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 86,
+          "codiceMp": "MP-072",
+          "nome": "Rosmarino liofilizzato",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 95,
+          "codiceMp": "MP-074",
+          "nome": "Timo liofilizzato",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 79,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 133,
+          "codiceMp": "MP-088",
+          "nome": "Soffritto Misto Gelo",
+          "qtaBase": 350,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 67,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 50,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 2,
+          "codiceSl": "SL-019",
+          "nome": "Brodo di manzo",
+          "qtaBase": 400,
+          "unit": "ml",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 50,
+          "codiceMp": "MP-098",
+          "nome": "Fecola di Patate",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "15/10/2026"
+    },
+    {
+      "codice": "SL-068",
+      "nome": "Stinco CBT (Base)",
+      "categoria": "Carni lavorate",
+      "resaQta": 700,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Pulisci gli stinchi dalle pellicine e scalzali dall'osso.\nImmergi gli stinchi nella marinata di acqua sale zucchero e conserva in frigo per 24 ore.\nFrulla l'olio rosmarino pepe aglio.\nTerminata la marinatura, scola gli stinchi inseriscili nella busta da cottura assieme all'olio con gli aromi. Condiziona sottovuoto.\nCuoci 14 ore a 68°C, poi abbatti in positivo",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 11,
+          "codiceMp": "MP-193",
+          "nome": "Stinco a metà",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 19,
+          "codiceMp": "MP-096",
+          "nome": "Acqua",
+          "qtaBase": 2,
+          "unit": "lt",
+          "conv": 1
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 88,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 103,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 67,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 86,
+          "codiceMp": "MP-072",
+          "nome": "Rosmarino liofilizzato",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 79,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 21,
+          "codiceMp": "MP-081",
+          "nome": "Aglio – in polvere",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "15/10/2026"
     },
     {
       "codice": "SL-038",
@@ -9294,7 +10413,7 @@
           "tipo": "mp",
           "magIdx": 51,
           "codiceMp": "MP-152",
-          "nome": "Olio di semi vari",
+          "nome": "Olio di semi Girasole",
           "qtaBase": 130,
           "unit": "g",
           "conv": 0.001
@@ -9382,7 +10501,7 @@
           "tipo": "mp",
           "magIdx": 45,
           "codiceMp": "MP-152",
-          "nome": "Olio di semi vari",
+          "nome": "Olio di semi Girasole",
           "qtaBase": 30,
           "unit": "g",
           "conv": 0.001
@@ -9595,7 +10714,7 @@
     },
     {
       "codice": "SL-051",
-      "nome": "Trippa Alla Parmigiana",
+      "nome": "Trippa Alla Parmigiana (Base)",
       "categoria": "Carni lavorate",
       "resaQta": 1000,
       "resaUm": "g",
@@ -9637,7 +10756,7 @@
           "tipo": "mp",
           "magIdx": 32,
           "codiceMp": "MP-092",
-          "nome": "Concentrato pomodoro Mutti da 440 gr",
+          "nome": "Concentrato pomodoro",
           "qtaBase": 40,
           "unit": "g",
           "conv": 0.001
@@ -9664,7 +10783,7 @@
           "tipo": "mp",
           "magIdx": 64,
           "codiceMp": "MP-058",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 5,
           "unit": "g",
           "conv": 0.001
@@ -9673,7 +10792,7 @@
           "tipo": "mp",
           "magIdx": 18,
           "codiceMp": "MP-128",
-          "nome": "Alloro foglie Wiberg",
+          "nome": "Alloro foglie",
           "qtaBase": 0.3,
           "unit": "g",
           "conv": 0.001
@@ -9682,7 +10801,7 @@
           "tipo": "mp",
           "magIdx": 47,
           "codiceMp": "MP-075",
-          "nome": "Maggiorana liofilizzata Wiberg",
+          "nome": "Maggiorana liofilizzata",
           "qtaBase": 1,
           "unit": "g",
           "conv": 0.001
@@ -9701,6 +10820,39 @@
     }
   ],
   "piatti": [
+    {
+      "codice": "PF-050",
+      "nome": "Brasato di Manzo",
+      "descrizione": "Con Valpolicella",
+      "notaCliente": "",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 12.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "porzione da 200gr carne"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Brasato di Manzo",
+          "qtaBase": 800,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 1,
+          "codiceSl": "SL-069"
+        }
+      ],
+      "dataCreazione": "15/10/2026"
+    },
     {
       "codice": "PF-032",
       "nome": "Canederli agli spinaci Al Burro fuso",
@@ -9853,7 +11005,7 @@
         },
         {
           "tipo": "mp",
-          "nome": "Erba cipollina liofilizzata Wiberg",
+          "nome": "Erba cipollina liofilizzata",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001,
@@ -9934,6 +11086,48 @@
       "dataCreazione": "2/10/2026"
     },
     {
+      "codice": "PF-048",
+      "nome": "Cotechino e Crauti",
+      "descrizione": "Con Cotechino della Lessinia",
+      "notaCliente": "",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 9.9,
+      "coefficiente": 3,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Per 1 porzione:\ncotechino 200gr, crauti cotti 150gr"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Cotechino cotto",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 12,
+          "codiceSl": "SL-067"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Crauti Ripassati",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 13,
+          "codiceSl": "SL-047"
+        }
+      ],
+      "dataCreazione": "14/10/2026"
+    },
+    {
       "codice": "PF-035",
       "nome": "Crauti della Malga",
       "descrizione": "Con i crauti della Val di Gresta",
@@ -9965,6 +11159,58 @@
         }
       ],
       "dataCreazione": "4/10/2026"
+    },
+    {
+      "codice": "PF-045",
+      "nome": "Crema di Zucca",
+      "descrizione": "",
+      "notaCliente": "",
+      "tags": [
+        "Vegano",
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 7.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Servire circa 350 gr a porzione...con speck croccante e giro d'olio"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Crema di zucca",
+          "qtaBase": 3500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 15,
+          "codiceSl": "SL-064"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 63,
+          "codiceMp": "MP-064"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Speck croccante",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 56,
+          "codiceSl": "SL-022"
+        }
+      ],
+      "dataCreazione": "14/10/2026"
     },
     {
       "codice": "PF-038",
@@ -10340,7 +11586,7 @@
         },
         {
           "tipo": "mp",
-          "nome": "Amaretti Vicenzi",
+          "nome": "Amaretti",
           "qtaBase": 10,
           "unit": "g",
           "conv": 0.001,
@@ -10433,7 +11679,7 @@
         },
         {
           "tipo": "mp",
-          "nome": "Alloro foglie Wiberg",
+          "nome": "Alloro foglie",
           "qtaBase": 0.3,
           "unit": "g",
           "conv": 0.001,
@@ -10469,7 +11715,7 @@
         },
         {
           "tipo": "mp",
-          "nome": "Erba cipollina liofilizzata Wiberg",
+          "nome": "Erba cipollina liofilizzata",
           "qtaBase": 1,
           "unit": "g",
           "conv": 0.001,
@@ -10487,7 +11733,7 @@
         },
         {
           "tipo": "mp",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001,
@@ -10612,7 +11858,7 @@
         },
         {
           "tipo": "mp",
-          "nome": "Rosmarino liofilizzato Wiberg",
+          "nome": "Rosmarino liofilizzato",
           "qtaBase": 3,
           "unit": "g",
           "conv": 0.001,
@@ -10639,7 +11885,7 @@
         },
         {
           "tipo": "mp",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 2,
           "unit": "g",
           "conv": 0.001,
@@ -10650,9 +11896,44 @@
       "dataCreazione": "25/9/2026"
     },
     {
+      "codice": "PF-044",
+      "nome": "Peperonata",
+      "descrizione": "Con peperoni misti",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Vegano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 3.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "150gr porzione come contorno"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Peperonata",
+          "qtaBase": 1500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 40,
+          "codiceSl": "SL-063"
+        }
+      ],
+      "dataCreazione": "12/10/2026"
+    },
+    {
       "codice": "PF-039",
       "nome": "Piatto della Malga",
       "descrizione": "Hamburger di Tastasal Veronese, polenta bramata grigliata e Monte Veronese alla piastra",
+      "notaCliente": "",
       "tags": [
         "Consigliato",
         "Del territorio"
@@ -10661,7 +11942,7 @@
       "categoria": "Secondi piatti",
       "sottocategoria": "",
       "pax": 4,
-      "prezzoVendita": 14,
+      "prezzoVendita": 13.9,
       "coefficiente": 2,
       "nelMenu": true,
       "tipoBeverage": false,
@@ -10776,6 +12057,85 @@
         }
       ],
       "dataCreazione": "5/10/2026"
+    },
+    {
+      "codice": "PF-046",
+      "nome": "Risotto  alla zucca con Tastasal croccante",
+      "descrizione": "Con Riso Vialone Nano IGP  e Tastasal della Lessinia",
+      "notaCliente": "Minimo per 2 persone",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 10.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "finisci il risotto con il brodo, aggiungi la crema di zucca e manteca. In padella separata rosola velocemente il tastasal sbriciolato fino a doratura, appoggialo sopra il risotto impiattato — rimane croccante e non si amalgama, si vede e si sente."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Risotto (base)",
+          "qtaBase": 2500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 48,
+          "codiceSl": "SL-065"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Crema di zucca (base)",
+          "qtaBase": 800,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 15,
+          "codiceSl": "SL-064"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Brodo Vegetale",
+          "qtaBase": 800,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 2,
+          "codiceSl": "SL-029"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Burro da Kg",
+          "qtaBase": 100.3,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 99,
+          "codiceMp": "MP-095"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Tastasal di Maiale",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 10,
+          "codiceMp": "MP-176"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 104,
+          "codiceMp": "MP-056"
+        }
+      ],
+      "dataCreazione": "14/10/2026"
     },
     {
       "codice": "PF-010",
@@ -11043,6 +12403,74 @@
       "dataCreazione": "22/9/2026"
     },
     {
+      "codice": "PF-051",
+      "nome": "Spezzatino di Cervo",
+      "descrizione": "Solo poche porzioni",
+      "notaCliente": "",
+      "tags": [
+        "Consigliato",
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 13.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "200gr a Porzione"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Spezzatino di Cervo",
+          "qtaBase": 2000,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 60,
+          "codiceSl": "SL-070"
+        }
+      ],
+      "dataCreazione": "15/10/2026"
+    },
+    {
+      "codice": "PF-049",
+      "nome": "Stinco al forno a metà",
+      "descrizione": "Cotto delicatamente, da maiale Italiano",
+      "notaCliente": "",
+      "tags": [
+        "Consigliato",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 12.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Scalda la busta degli stinchi per pochi attimi in acqua tiepida per far si che si sciolga il liquido di cottura e filtralo recuperando solo l'olio.\nSpennella gli stinchi con l'olio e falli rosolare in forno a 240°C spennellando di tanto in tanto finchè non raggiungeranno i 42°C .\nServire ben caldi"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Stinco CBT",
+          "qtaBase": 1400,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 59,
+          "codiceSl": "SL-068"
+        }
+      ],
+      "dataCreazione": "15/10/2026"
+    },
+    {
       "codice": "PF-029",
       "nome": "Strudel di Mele con crema alla vaniglia",
       "descrizione": "Con Mele del trentino",
@@ -11085,6 +12513,48 @@
         }
       ],
       "dataCreazione": "25/9/2026"
+    },
+    {
+      "codice": "PF-047",
+      "nome": "Tagliatelle al Ragù di cervo",
+      "descrizione": "Con tagliatelle Barilla e cervo locale",
+      "notaCliente": "",
+      "tags": [
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 12.9,
+      "coefficiente": 2,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Per porzione:\n100gr pasta\n120gr ragù"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Ragù di Cervo",
+          "qtaBase": 1200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 46,
+          "codiceSl": "SL-066"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Tagliatelle all'uovo",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 92,
+          "codiceMp": "MP-191"
+        }
+      ],
+      "dataCreazione": "14/10/2026"
     },
     {
       "codice": "PF-015",
@@ -11334,7 +12804,7 @@
         },
         {
           "tipo": "mp",
-          "nome": "Pepe Nero Macinato Wiberg",
+          "nome": "Pepe Nero Macinato",
           "qtaBase": 0.5,
           "unit": "g",
           "conv": 0.001,
@@ -11343,7 +12813,7 @@
         },
         {
           "tipo": "mp",
-          "nome": "Erba cipollina liofilizzata Wiberg",
+          "nome": "Erba cipollina liofilizzata",
           "qtaBase": 0.5,
           "unit": "g",
           "conv": 0.001,
