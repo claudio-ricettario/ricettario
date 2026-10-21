@@ -779,13 +779,6 @@ textarea{resize:vertical;min-height:60px;}
         <input type="range" id="sl-port2" min="1" max="100" step="1" value="4" oninput="syncSlider(this)"/>
         <span class="val" id="val-port2">4</span>
       </div>
-      <div class="ctrl-group" style="margin-left:auto;">
-        <span>IVA</span>
-        <div class="toggle">
-          <button id="btn-noiva2" class="on" onclick="setIva(false)">Esclusa</button>
-          <button id="btn-iva2" onclick="setIva(true)">10% inclusa</button>
-        </div>
-      </div>
       <div class="ctrl-group">
         <button class="btn-sm" onclick="openGestioneModal()" style="white-space:nowrap;">&#9881; Costi di gestione</button>
       </div>
@@ -858,12 +851,14 @@ textarea{resize:vertical;min-height:60px;}
         </div>
       </div>
       <div class="section-label" style="margin-bottom:6px;">Costi fissi</div>
-      <div style="font-size:12px;color:#999;margin-bottom:8px;">Affitto, utenze, mutuo, assicurazioni, tasse, consulenti, personale t.ind., ammortamenti&hellip;</div>
+      <div style="font-size:12px;color:#999;margin-bottom:4px;">Affitto, utenze, mutuo, assicurazioni, tasse, consulenti, personale t.ind., ammortamenti&hellip;</div>
+      <div style="font-size:11px;color:#bbb;margin-bottom:8px;">Inserisci importi mensili IVA esclusa. Per il personale inserisci il costo aziendale totale (netto + contributi). Se non hai fattura (es. compensi in nero) inserisci il totale pagato.</div>
       <div id="gest-fissi-list"></div>
       <button class="btn-sm" onclick="gestioneAddVoceFissa()" style="margin-top:6px;">+ Aggiungi voce fissa</button>
       <div style="margin-top:8px;font-size:13px;">Totale costi fissi: <strong id="gest-fissi-tot">&euro; 0,00</strong></div>
       <div class="section-label" style="margin:20px 0 6px;">Costi variabili</div>
-      <div style="font-size:12px;color:#999;margin-bottom:8px;">Mat. prime e beverage, personale a chiamata, pulizie, lavanderia, commissioni POS&hellip;</div>
+      <div style="font-size:12px;color:#999;margin-bottom:4px;">Mat. prime e beverage, personale a chiamata, pulizie, lavanderia, commissioni POS&hellip;</div>
+      <div style="font-size:11px;color:#bbb;margin-bottom:8px;">Stessa logica: importi medi mensili IVA esclusa (o lordi se senza fattura).</div>
       <div id="gest-variabili-list"></div>
       <button class="btn-sm" onclick="gestioneAddVoceVariabile()" style="margin-top:6px;">+ Aggiungi voce variabile</button>
       <div style="margin-top:8px;font-size:13px;">Totale costi variabili: <strong id="gest-variabili-tot">&euro; 0,00</strong></div>
@@ -3025,7 +3020,8 @@ function gestioneCreaRigaVoce(nome,importo,updateFn){
   var div=document.createElement('div');
   div.style.cssText='display:flex;gap:8px;margin-bottom:6px;align-items:center;';
   div.innerHTML='<input type="text" placeholder="Nome voce" value="'+(nome||'').replace(/"/g,'&quot;')+'" style="flex:1;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;" oninput="'+updateFn+'()">'
-    +'<input type="number" min="0" step="1" placeholder="0" value="'+(importo||'')+'" style="width:90px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;text-align:right;" oninput="'+updateFn+'()">'
+    +'<input type="number" min="0" step="1" placeholder="0" value="'+(importo||'')+'" style="width:90px;padding:6px 8px;border:1px solid #d0cec8;border-radius:6px;font-size:13px;text-align:right;" oninput="'+updateFn+'()" title="Inserisci il costo mensile IVA esclusa (o il totale lordo se non hai fattura)">'
+    +'<span style="font-size:10px;color:#aaa;white-space:nowrap;">€/mese</span>'
     +'<button style="background:#fee2e2;color:#b91c1c;border:none;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:16px;line-height:1;" onclick="this.parentElement.remove();'+updateFn+'();">&times;</button>';
   return div;
 }
