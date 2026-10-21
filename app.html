@@ -565,7 +565,10 @@ textarea{resize:vertical;min-height:60px;}
         <button class="filtro-btn" onclick="setFiltro('Secondi piatti',this)">Secondi</button>
         <button class="filtro-btn" onclick="setFiltro('Contorni',this)">Contorni</button>
         <button class="filtro-btn" onclick="setFiltro('Dolci',this)">Dolci</button>
-        <button class="filtro-btn" onclick="setFiltro('Pane e lievitati',this)">Pane</button>
+        <button class="filtro-btn" onclick="setFiltro('Caffetteria',this)">Caffetteria</button>
+        <button class="filtro-btn" onclick="setFiltro('Birre',this)">Birre</button>
+        <button class="filtro-btn" onclick="setFiltro('Vino',this)">Vino</button>
+        <button class="filtro-btn" onclick="setFiltro('Bevande',this)">Bevande</button>
       </div>
     </div>
     <div id="ricette-salvate-cont"><p style="font-size:13px;color:#aaa;">Nessuna ricetta salvata ancora.</p></div>
@@ -603,14 +606,12 @@ textarea{resize:vertical;min-height:60px;}
         <div class="form-row"><label>Categoria</label>
           <select id="np-cat" onchange="npCatChange(this.value)">
             <option>Antipasti</option><option selected>Primi piatti</option><option>Secondi piatti</option>
-            <option>Contorni</option><option>Dolci</option><option>Pane e lievitati</option><option>Altro</option>
-            <option disabled>──── Beverage ────</option>
-            <option value="Vini">&#127863; Vini</option>
-            <option value="Birre">&#127866; Birre</option>
-            <option value="Cocktail">&#127481; Cocktail</option>
+            <option>Contorni</option><option>Dolci</option>
             <option value="Caffetteria">&#9749; Caffetteria</option>
-            <option value="Soft drink">&#129380; Soft drink</option>
-            <option value="Beverage vario">&#127863; Beverage vario</option>
+            <option value="Birre">&#127866; Birre</option>
+            <option value="Vino">&#127863; Vino</option>
+            <option value="Bevande">&#129380; Bevande</option>
+            <option>Altro</option>
           </select>
         </div>
       </div>
@@ -2761,7 +2762,7 @@ function fcPopulateSelector(){
   if(!acc)return;
   var searchEl=document.getElementById('fc-piatto-search');
   var q=searchEl?searchEl.value.trim().toLowerCase():'';
-  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Pane e lievitati','Beverage','Altro'];
+  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Birre','Vino','Bevande','Altro'];
   var bycat={};
   piatti.forEach(function(p,i){
     if(q&&p.nome.toLowerCase().indexOf(q)<0)return;
@@ -6886,12 +6887,13 @@ var CAT_ICONS={
   'Secondi piatti':'&#129385;',
   'Contorni':'&#129367;',
   'Dolci':'&#127856;',
-  'Pane e lievitati':'&#129360;',
-  'Altro':'&#127869;',
-  'Vini':'&#127863;','Birre':'&#127866;','Cocktail':'&#127481;',
-  'Caffetteria':'&#9749;','Soft drink':'&#129380;','Beverage vario':'&#127863;'
+  'Caffetteria':'&#9749;',
+  'Birre':'&#127866;',
+  'Vino':'&#127863;',
+  'Bevande':'&#129380;',
+  'Altro':'&#127869;'
 };
-var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Pane e lievitati','Altro','Vini','Birre','Cocktail','Caffetteria','Soft drink','Beverage vario'];
+var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Birre','Vino','Bevande','Altro'];
 var homeExpanded={};   /* cat -> bool */
 var homeSubExp={};     /* cat+sub -> bool */
 
@@ -7167,7 +7169,7 @@ var SOTTOCAT_MAP={
   'Secondi piatti':['Carne','Pesce','Vegetariano','Vegano'],
   'Contorni':['Vegetariano','Vegano'],
   'Dolci':['Vegetariano','Vegano'],
-  'Pane e lievitati':['Vegetariano','Vegano'],
+  'Vino':['Bollicine','Bianchi','Rossi','Dolce','Della casa'],
   'Altro':['Carne','Pesce','Vegetariano','Vegano']
 };
 
@@ -7236,7 +7238,7 @@ function renderRicetteSalvate(){
   }
 
   /* group by categoria */
-  var CATS=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Pane e lievitati','Altro','Vini','Birre','Cocktail','Caffetteria','Soft drink','Beverage vario'];
+  var CATS=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Birre','Vino','Bevande','Altro'];
   var grouped={};
   filtered.forEach(function(r,origIdx){
     var cat=r.categoria||'Altro';
@@ -7799,8 +7801,7 @@ function printSchedaVuota(){
 }
 
 function printMenuCompleto(){
-  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Pane e lievitati',
-    'Vini','Birre','Cocktail','Caffetteria','Soft drink','Beverage vario'];
+  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Birre','Vino','Bevande','Altro'];
   var ALLERG_LIST=[
     ['Cereali con glutine','grano, segale, orzo, avena, farro, kamut e i loro prodotti derivati'],
     ['Crostacei','e prodotti a base di crostacei'],
@@ -9048,14 +9049,14 @@ function fcBadgeHtml(fc,isBev){
 }
 
 function npCatChange(val){
-  var bevCats=['Vini','Birre','Cocktail','Caffetteria','Soft drink','Beverage vario'];
+  var bevCats=['Vino','Birre','Caffetteria','Bevande'];
   var cb=document.getElementById('np-bev');
   if(cb&&bevCats.indexOf(val)>=0)cb.checked=true;
   /* Sottocategorie dinamiche */
   var sel=document.getElementById('np-sottocat');
   if(!sel)return;
   var cur=sel.value;
-  var opts=val==='Vini'
+  var opts=val==='Vino'
     ?['','Bollicine','Bianchi','Rossi','Dolce','Della casa']
     :['','Carne','Pesce','Vegetariano','Vegano'];
   sel.innerHTML=opts.map(function(o){return '<option value="'+o+'">'+(o||'-- nessuna --')+'</option>';}).join('');
