@@ -176,12 +176,18 @@ function showCategories(){
   document.getElementById('back-bar').style.display='none';
   document.getElementById('header-sub').textContent='Il nostro menu';
 
-  // raccoglie tutti i piatti "Fuori menù" da tutte le categorie
+  // raccoglie tutti i piatti "Fuori menù" da tutte le categorie, ordinati per categoria
   var fuoriMenu=[];
   Object.values(_grouped).forEach(function(piatti){
     piatti.forEach(function(p){
       if((p.tags||[]).indexOf('Fuori menù')>=0) fuoriMenu.push(p);
     });
+  });
+  fuoriMenu.sort(function(a,b){
+    var ai=_catKeys.indexOf(a.categoria||'');
+    var bi=_catKeys.indexOf(b.categoria||'');
+    if(ai<0) ai=999; if(bi<0) bi=999;
+    return ai-bi;
   });
 
   var html='';
