@@ -290,8 +290,11 @@ function buildMenu(data){
     return;
   }
 
+  var CAT_HIDDEN=['Altro','Beverage vario','Vini'];
+
   piatti.forEach(function(p){
     var cat=p.categoria||'Altro';
+    if(CAT_HIDDEN.indexOf(cat)>=0) return; // nascondi nel menu digitale
     if(!_grouped[cat]) _grouped[cat]=[];
     _grouped[cat].push(p);
   });
