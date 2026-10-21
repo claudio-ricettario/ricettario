@@ -11141,6 +11141,35 @@
       "dataCreazione": "21/10/2026"
     },
     {
+      "codice": "PF-059",
+      "nome": "Acqua Frizzante Microfiltrata",
+      "descrizione": "Caraffa da 1 Litro",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Bevande",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 2.5,
+      "coefficiente": 1,
+      "nelMenu": false,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Acqua",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
+          "magIdx": 24,
+          "codiceMp": "MP-096"
+        }
+      ],
+      "dataCreazione": "21/10/2026"
+    },
+    {
       "codice": "PF-058",
       "nome": "Acqua Naturale Microfiltrata",
       "descrizione": "Caraffa da 1 Litro",
@@ -11153,6 +11182,35 @@
       "prezzoVendita": 2,
       "coefficiente": 1,
       "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Acqua",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
+          "magIdx": 24,
+          "codiceMp": "MP-096"
+        }
+      ],
+      "dataCreazione": "21/10/2026"
+    },
+    {
+      "codice": "PF-060",
+      "nome": "Acqua Naturale Microfiltrata",
+      "descrizione": "Caraffa da 1 Litro",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Bevande",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 2.5,
+      "coefficiente": 1,
+      "nelMenu": false,
       "tipoBeverage": true,
       "foto": "",
       "steps": [],

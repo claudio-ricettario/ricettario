@@ -2220,7 +2220,13 @@ function updateAll(){
   });
   var pv=parseFloat(document.getElementById('prezzo-vendita').value)||0;
   var pvNetto=ivaOn?pv:pv/1.10;
-  var ricavo=pvNetto*p,pax=tot/p,fcP=ricavo>0?(tot/ricavo*100):0;
+  var ricavo=pvNetto*p,pax=tot/p;
+  /* FC% sempre su prezzi netti — invariante rispetto al toggle IVA */
+  var savedIva2=ivaOn; ivaOn=false;
+  var totNet2=0; ingredienti.forEach(function(ing){if(ing.magIdx<magazzino.length)totNet2+=costoIng(ing,p);});
+  ivaOn=savedIva2;
+  var pvNet2=pv/1.10;
+  var fcP=pvNet2>0?(totNet2/(pvNet2*p)*100):0;
 
   document.getElementById('ricetta-tbody').innerHTML=ingredienti.map(function(ing,i){
     if(ing.magIdx>=magazzino.length)return '<tr><td>'+ing.nome+'</td><td class="sm" colspan="4" style="color:#e0ded8;">ingrediente rimosso dal magazzino</td></tr>';
@@ -2878,7 +2884,7 @@ function renderFoodCost(){
   var pax=parseInt(document.getElementById('sl-port2').value)||p.pax;
   var mult=pax/p.pax;
 
-  /* calc total cost */
+  /* calc total cost (displayed — rispetta ivaOn per la tabella dettaglio) */
   var tot=(p.componenti||[]).reduce(function(t,c){
     if(!c||c.conv===undefined) return t;
     var rmi=c.tipo==='mp'?resolveMagIdx(c):undefined;
@@ -2890,11 +2896,27 @@ function renderFoodCost(){
     return t+costoSemi(rsi)*(c.qtaBase*mult*(c.unit==='g'||c.unit==='ml'?0.001:1));
   },0);
 
+  /* FC% sempre su prezzi NETTI (IVA esclusa) — il ratio non deve cambiare con il toggle IVA */
+  var savedIva=ivaOn; ivaOn=false;
+  var totNet=(p.componenti||[]).reduce(function(t,c){
+    if(!c||c.conv===undefined) return t;
+    var rmi=c.tipo==='mp'?resolveMagIdx(c):undefined;
+    var rsi=c.tipo==='sl'?resolveSemiIdx(c):undefined;
+    if(c.tipo==='mp'&&(rmi===undefined||rmi<0||rmi>=magazzino.length||!magazzino[rmi]))return t;
+    if(c.tipo==='sl'&&(rsi===undefined||rsi<0||rsi>=semilavorati.length||!semilavorati[rsi]))return t;
+    if(c.conv===0||c.unit==='q.b.')return t;
+    if(c.tipo==='mp') return t+c.qtaBase*mult*c.conv*gp(rmi);
+    return t+costoSemi(rsi)*(c.qtaBase*mult*(c.unit==='g'||c.unit==='ml'?0.001:1));
+  },0);
+  ivaOn=savedIva;
+
   var pv=p.prezzoVendita||0;
   var pvNetto=ivaOn?pv:pv/1.10;
   var ricavo=pvNetto*pax;
   var pax1=tot/pax;
-  var fcP=ricavo>0?(tot/ricavo*100):0;
+  var pvNet=pv/1.10; // prezzo netto sempre (pv è il prezzo menu IVA inclusa)
+  var ricavoNet=pvNet*pax;
+  var fcP=ricavoNet>0?(totNet/ricavoNet*100):0;
 
   document.getElementById('fc-costo').textContent=eur(tot);
   document.getElementById('fc-pax').textContent=eur(pax1);
