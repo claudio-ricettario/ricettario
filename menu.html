@@ -151,6 +151,14 @@ var CAT_ORDER=[
 
 var _grouped={};
 var _catKeys=[];
+var TAG_MAP={
+  'Vegetariano':   {cls:'tag-vegetariano', icon:'🌿'},
+  'Vegano':        {cls:'tag-vegano',      icon:'🌱'},
+  'Più venduto':   {cls:'tag-venduto',     icon:'🔥'},
+  'Consigliato':   {cls:'tag-consigliato', icon:'⭐'},
+  'Novità':        {cls:'tag-novita',      icon:'✨'},
+  'Del territorio':{cls:'tag-tipico',      icon:'🏠'}
+};
 
 function eur(v){return (parseFloat(v)||0).toFixed(2).replace('.',',')+'€';}
 
@@ -183,6 +191,14 @@ function showCategories(){
     fuoriMenu.forEach(function(p){
       html+='<div class="fuori-menu-item">';
       html+='<div class="fuori-menu-nome">'+escHtml(p.nome)+'</div>';
+      var visibleTags=(p.tags||[]).filter(function(t){return t!=='Fuori menù'&&TAG_MAP[t];});
+      var isGF=!(p.allergeni||[]).includes('Glutine')&&!(p.tracce||[]).includes('Glutine');
+      if(visibleTags.length||isGF){
+        html+='<div class="dish-tags">';
+        visibleTags.forEach(function(t){var tm=TAG_MAP[t];html+='<span class="dish-tag '+tm.cls+'">'+tm.icon+' '+escHtml(t)+'</span>';});
+        if(isGF) html+='<span class="gf-badge">Gluten Free</span>';
+        html+='</div>';
+      }
       if(p.descrizione) html+='<div class="fuori-menu-desc">'+escHtml(p.descrizione)+'</div>';
       if(p.notaCliente) html+='<div class="dish-nota">📌 '+escHtml(p.notaCliente)+'</div>';
       var badges='';
@@ -233,14 +249,6 @@ function showCategory(catEnc){
   document.getElementById('back-bar-cat').textContent=catIcon(cat)+' '+cat;
   document.getElementById('header-sub').textContent='Il nostro menu';
 
-  var TAG_MAP={
-    'Vegetariano':  {cls:'tag-vegetariano', icon:'🌿'},
-    'Vegano':       {cls:'tag-vegano',       icon:'🌱'},
-    'Più venduto':  {cls:'tag-venduto',      icon:'🔥'},
-    'Consigliato':  {cls:'tag-consigliato',  icon:'⭐'},
-    'Novità':       {cls:'tag-novita',       icon:'✨'},
-    'Del territorio':{cls:'tag-tipico',       icon:'🏠'}
-  };
 
   var html='<div class="cat-section">';
   html+='<div class="cat-section-title"><span>'+catIcon(cat)+'</span>'+escHtml(cat)+'</div>';
