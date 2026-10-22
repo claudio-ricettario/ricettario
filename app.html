@@ -8118,6 +8118,43 @@ function printPiatto(idx){
     return Math.round(qta*100)/100+' '+unit;
   }
 
+  /* espansione ricorsiva SL — dosi sempre scalate sul PF richiesto */
+  function espandiSL(sl,fatt,indPx){
+    var html='';
+    (sl.componenti||[]).forEach(function(sc){
+      if(sc.conv===0||sc.unit==='q.b.'){
+        html+='<tr><td style="padding:4px 10px 4px '+indPx+'px;border-bottom:1px solid #f5f3ef;color:#666;font-size:13px;">&#8627; '+sc.nome+'</td>'
+          +'<td style="padding:4px 10px;border-bottom:1px solid #f5f3ef;text-align:right;color:#666;font-size:13px;">q.b.</td></tr>';
+        return;
+      }
+      var qSc=sc.qtaBase*fatt;
+      if(sc.tipo==='sl'){
+        var scRif=semilavorati[resolveSemiIdx(sc)];
+        var codSc=scRif&&scRif.codice?'<span style="color:#bbb;font-weight:400;margin-right:5px;">'+scRif.codice+'</span>':'';
+        var nomeScRif=scRif?scRif.nome:(sc.nome||'?');
+        if(scRif&&scRif.componenti&&scRif.componenti.length){
+          html+='<tr><td style="padding:4px 10px 2px '+indPx+'px;font-weight:700;font-size:12px;color:#666;border-bottom:1px solid #f5f3ef;">&#8627; '+codSc+nomeScRif+' ('+fmtQ(qSc,sc.unit)+')</td><td style="border-bottom:1px solid #f5f3ef;"></td></tr>';
+          var qNestG=qSc*(sc.unit==='g'||sc.unit==='ml'?1:(sc.conv?sc.conv*1000:1));
+          var resaNest=scRif.resaQta?(scRif.resaUm==='kg'||scRif.resaUm==='lt'?scRif.resaQta*1000:scRif.resaQta):1;
+          var fattNest=resaNest>0?qNestG/resaNest:1;
+          html+=espandiSL(scRif,fattNest,indPx+14);
+          html+='<tr><td colspan="2" style="padding:3px 10px 6px '+(indPx+14)+'px;border-bottom:1px solid #f5f3ef;font-size:11px;color:#aaa;">&#8627; procedimento: vedi scheda <strong style="color:#888;">'+(scRif.codice||'')+' '+scRif.nome+'</strong></td></tr>';
+        } else {
+          html+='<tr><td style="padding:4px 10px 4px '+indPx+'px;border-bottom:1px solid #f5f3ef;color:#666;font-size:13px;">&#8627; '+codSc+nomeScRif+'</td>'
+            +'<td style="padding:4px 10px;border-bottom:1px solid #f5f3ef;text-align:right;color:#666;font-size:13px;">'+fmtQ(qSc,sc.unit)+'</td></tr>';
+        }
+      } else {
+        var m=magazzino[resolveMagIdx(sc)];
+        var nomeMp=m?m.nome:(sc.nome||'?');
+        var codMp=m&&m.codice?'<span style="color:#bbb;font-weight:400;margin-right:5px;">'+m.codice+'</span>':'';
+        var marcaMp=m&&m.marca?'<span style="color:#bbb;font-weight:400;font-size:11px;margin-left:6px;">'+m.marca+'</span>':'';
+        html+='<tr><td style="padding:4px 10px 4px '+indPx+'px;border-bottom:1px solid #f5f3ef;color:#666;font-size:13px;">&#8627; '+codMp+nomeMp+marcaMp+'</td>'
+          +'<td style="padding:4px 10px;border-bottom:1px solid #f5f3ef;text-align:right;color:#666;font-size:13px;">'+fmtQ(qSc,sc.unit)+'</td></tr>';
+      }
+    });
+    return html;
+  }
+
   var righe='';
   (p.componenti||[]).forEach(function(c){
     if(c.conv===0||c.unit==='q.b.'){
@@ -8135,28 +8172,7 @@ function printPiatto(idx){
         var fatt=qNecessaria/resaBase;
         var codSl=s.codice?'<span style="color:#aaa;font-weight:400;margin-right:5px;">'+s.codice+'</span>':'';
         righe+='<tr><td colspan="2" style="padding:8px 10px 2px;font-weight:700;font-size:12px;color:#555;border-bottom:1px solid #f0ede6;">'+codSl+s.nome+' ('+fmtQ(qtaScalata,c.unit)+')</td></tr>';
-        s.componenti.forEach(function(sc){
-          var nomeMp,codMpSc;
-          if(sc.tipo==='sl'){
-            var scRif=semilavorati[resolveSemiIdx(sc)];
-            nomeMp=scRif?scRif.nome:(sc.nome||'?');
-            codMpSc=scRif&&scRif.codice?'<span style="color:#bbb;font-weight:400;margin-right:5px;">'+scRif.codice+'</span>':'';
-          } else {
-            var m=magazzino[resolveMagIdx(sc)];
-            nomeMp=m?m.nome:(sc.nome||'?');
-            codMpSc=m&&m.codice?'<span style="color:#bbb;font-weight:400;margin-right:5px;">'+m.codice+'</span>':'';
-            var marcaMpSc=m&&m.marca?'<span style="color:#bbb;font-weight:400;font-size:11px;margin-left:6px;">'+m.marca+'</span>':'';
-          }
-          var qSc=sc.qtaBase*fatt;
-          righe+='<tr><td style="padding:4px 10px 4px 26px;border-bottom:1px solid #f5f3ef;color:#666;font-size:13px;">&#8627; '+codMpSc+nomeMp+(marcaMpSc||'')+'</td>'
-            +'<td style="padding:4px 10px;border-bottom:1px solid #f5f3ef;text-align:right;color:#666;font-size:13px;">'+fmtQ(qSc,sc.unit)+'</td></tr>';
-          if(sc.tipo==='sl'){
-            var scRifLink=semilavorati[resolveSemiIdx(sc)];
-            if(scRifLink){
-              righe+='<tr><td colspan="2" style="padding:3px 10px 6px 40px;border-bottom:1px solid #f5f3ef;font-size:11px;color:#aaa;">&#8627; procedimento: vedi scheda <strong style="color:#888;">'+scRifLink.codice+' '+scRifLink.nome+'</strong></td></tr>';
-            }
-          }
-        });
+        righe+=espandiSL(s,fatt,26);
         righe+='<tr><td colspan="2" style="padding:4px 10px 10px 26px;border-bottom:1px solid #f0ede6;font-size:11px;color:#aaa;">procedimento: vedi scheda <strong style="color:#888;">'+s.codice+' '+s.nome+'</strong></td></tr>';
       } else {
         righe+='<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+c.nome+'</td>'
