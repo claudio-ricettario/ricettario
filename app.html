@@ -1586,7 +1586,8 @@ function aggiungiIngrediente(){
     }
   }
   var cat=document.getElementById('new-ing-cat')?document.getElementById('new-ing-cat').value:'Generale';
-  magazzino.push({nome:nome,categoria:cat,um:um,iva:iva,activeIdx:0,scarto:0,resa:100,allergeni:[],allergeniOk:false,tracce:[],tracceOk:false,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[{nome:forn,prezzoKg:prezzo,storico:[]}]});
+  var surg=document.getElementById('new-ing-surgelato')?document.getElementById('new-ing-surgelato').checked:false;
+  magazzino.push({nome:nome,categoria:cat,um:um,iva:iva,surgelato:surg||undefined,activeIdx:0,scarto:0,resa:100,allergeni:[],allergeniOk:false,tracce:[],tracceOk:false,nutrizionali:emptyNutrizionali(),nutrizionaliOk:false,giacenza:0,giacenzaMin:0,lotti:[],suppliers:[{nome:forn,prezzoKg:prezzo,storico:[]}]});
   /* sort alphabetically within category */
   magazzino.sort(function(a,b){
     var ca=(a.categoria||'Generale'), cb=(b.categoria||'Generale');
@@ -3441,6 +3442,10 @@ function renderGuida(){
       +'</ol>'
       +'<div class="gtip">Il prezzo delle materie prime aggiorna automaticamente il food cost di tutte le ricette che le contengono.</div>'
       +'<div class="gtip">Non cambiare mai il nome di una materia prima dopo averla usata nelle ricette — il sistema usa il nome come riferimento. Se vuoi precisare il prodotto acquistato usa il campo Marca.</div>'
+      +'<h4>❄️ Ingrediente surgelato</h4>'
+      +'<p>Nel form di ogni materia prima trovi il checkbox <strong>❄️ Surgelato / congelato all\'origine</strong>. Spuntalo se l\'ingrediente viene acquistato surgelato o congelato (piselli gelo, polpa di pesce congelata, cervo abbattuto, ecc.).</p>'
+      +'<p>Il flag si propaga automaticamente: se un semilavorato o un piatto usa quell\'ingrediente, il sistema aggiunge <strong>(*)</strong> al nome del piatto nel PDF del menu e il badge <strong>❄️ surgelato</strong> nel menu digitale. In fondo alla pagina allergeni del PDF compare la riga <em>(*) Preparato con ingredienti surgelati o congelati all\'origine</em>.</p>'
+      +'<div class="gtip">Se cambi fornitore e passi al fresco, basta togliere il checkbox: l\'asterisco sparisce da tutti i piatti che la contengono.</div>'
       +'</div></details>';
 
     // Semilavorati
@@ -5612,6 +5617,7 @@ function pubblicaDatiPubblici(){
       categoria:p.categoria||'',
       prezzoVendita:p.prezzoVendita||0,
       tipoBeverage:p.tipoBeverage||false,
+      surgelato:piattoContineSurgelati(p)||false,
       allergeni:allerg.certi,
       tracce:allerg.tracce
     };
@@ -7541,6 +7547,7 @@ function openNuovaMPModal(editIdx){
     document.getElementById('mp-all-ok').checked=false;
     document.getElementById('mp-tracce-ok').checked=false;
     document.getElementById('mp-nutr-ok').checked=false;
+    document.getElementById('mp-surgelato').checked=false;
   } else {
     var m=magazzino[editIdx];
     document.getElementById('mp-nome').value=m.nome||'';
@@ -7555,6 +7562,7 @@ function openNuovaMPModal(editIdx){
     document.getElementById('mp-all-ok').checked=m.allergeniOk||false;
     document.getElementById('mp-tracce-ok').checked=m.tracceOk||false;
     document.getElementById('mp-nutr-ok').checked=m.nutrizionaliOk||false;
+    document.getElementById('mp-surgelato').checked=m.surgelato||false;
     document.querySelectorAll('.mp-allerg-cb').forEach(function(cb){cb.checked=(m.allergeni||[]).indexOf(cb.value)>=0;});
     document.querySelectorAll('.mp-tracce-cb').forEach(function(cb){cb.checked=(m.tracce||[]).indexOf(cb.value)>=0;});
     var n=m.nutrizionali||{};
@@ -7611,6 +7619,7 @@ function mpSalva(){
       nome:nome,marca:marca||undefined,categoria:document.getElementById('mp-cat').value,
       um:document.getElementById('mp-um').value,
       iva:parseInt(document.getElementById('mp-iva').value)||10,
+      surgelato:document.getElementById('mp-surgelato').checked||false,
       scarto:scarto,resa:Math.round((100-scarto)*100)/100,
       activeIdx:0,allergeni:allergeni,allergeniOk:document.getElementById('mp-all-ok').checked,
       tracce:tracce,tracceOk:document.getElementById('mp-tracce-ok').checked,
@@ -7624,6 +7633,7 @@ function mpSalva(){
     m.nome=nome;m.marca=marca||undefined;m.categoria=document.getElementById('mp-cat').value;
     m.um=document.getElementById('mp-um').value;
     m.iva=parseInt(document.getElementById('mp-iva').value)||10;
+    m.surgelato=document.getElementById('mp-surgelato').checked||false;
     m.scarto=scarto;m.resa=Math.round((100-scarto)*100)/100;
     m.allergeni=allergeni;m.allergeniOk=document.getElementById('mp-all-ok').checked;
     m.tracce=tracce;m.tracceOk=document.getElementById('mp-tracce-ok').checked;
@@ -7821,6 +7831,28 @@ function printSchedaVuota(){
   setTimeout(function(){w.print();},400);
 }
 
+/* controlla ricorsivamente se un piatto contiene almeno una MP surgelata */
+function piattoContineSurgelati(p){
+  function slContineSurgelati(sl,visitati){
+    if(!sl||!sl.componenti) return false;
+    return sl.componenti.some(function(c){
+      if(c.tipo==='mp'){var m=magazzino[resolveMagIdx(c)];return m&&m.surgelato;}
+      if(c.tipo==='sl'){
+        var idx=resolveSemiIdx(c);
+        if(visitati[idx]) return false;
+        visitati[idx]=true;
+        return slContineSurgelati(semilavorati[idx],visitati);
+      }
+      return false;
+    });
+  }
+  return (p.componenti||[]).some(function(c){
+    if(c.tipo==='mp'){var m=magazzino[resolveMagIdx(c)];return m&&m.surgelato;}
+    if(c.tipo==='sl'){var idx=resolveSemiIdx(c);return slContineSurgelati(semilavorati[idx],{});}
+    return false;
+  });
+}
+
 function printMenuCompleto(){
   var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Birre','Vino','Bevande','Altro'];
   var ALLERG_LIST=[
@@ -7906,12 +7938,14 @@ function printMenuCompleto(){
       var allerg=calcolaAllergeniPiatto(p);
       var numStr=allerg.certi.length?allergNumeri(allerg.certi):'';
       var consigliato=(p.tags||[]).indexOf('Consigliato')>=0;
+      var haSurgelati=piattoContineSurgelati(p);
       var descParts=[];
       if(p.descrizione&&p.descrizione.trim()) descParts.push(esc(p.descrizione.trim()));
       if(p.prezzoVendita) descParts.push(eur(p.prezzoVendita));
       var desc=descParts.join(' | ');
+      var supStr=(numStr||haSurgelati)?'<sup>'+(numStr||'')+(haSurgelati?'*':'')+'</sup>':'';
       html+='<div class="dish'+(consigliato?' consigliato':'')+'">'
-        +'<div class="dish-nome">'+esc(p.nome.toUpperCase())+(numStr?'<sup>'+numStr+'</sup>':'')+'</div>';
+        +'<div class="dish-nome">'+esc(p.nome.toUpperCase())+supStr+'</div>';
       if(desc) html+='<div class="dish-desc">'+desc+'</div>';
       if(p.notaCliente&&p.notaCliente.trim()) html+='<div class="dish-nota">📌 '+esc(p.notaCliente.trim())+'</div>';
       html+='</div>';
@@ -7937,6 +7971,9 @@ function printMenuCompleto(){
         +'</div>';
     }).join('')
     +'<p class="allerg-note">Alcuni ingredienti potrebbero aver subito un abbattimento di temperatura controllata per preservarne la freschezza e garantire la sicurezza alimentare.</p>'
+    +(cats.some(function(cat){return (grouped[cat]||[]).some(function(p){return piattoContineSurgelati(p);});})
+      ?'<p class="allerg-note" style="margin-top:8pt;">(*) Preparato con ingredienti surgelati o congelati all\'origine.</p>'
+      :'')
     +'</div>';
 
   html+='</body></html>';
@@ -9253,6 +9290,12 @@ function cambiaPasswordApp(){
           <option value="4">4%</option><option value="10" selected>10%</option><option value="22">22%</option>
         </select>
       </div>
+      <div class="form-row" style="align-items:center;">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;">
+          <input type="checkbox" id="new-ing-surgelato" style="width:15px;height:15px;cursor:pointer;">
+          ❄️ Surgelato
+        </label>
+      </div>
     </div>
     <div class="form-grid">
       <div class="form-row"><label>% Scarto</label>
@@ -9320,6 +9363,13 @@ function cambiaPasswordApp(){
         <select id="mp-iva" onchange="_mpIvaHint()">
           <option value="4">4%</option><option value="10" selected>10%</option><option value="22">22%</option>
         </select>
+      </div>
+      <div class="form-row" style="align-items:center;">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;">
+          <input type="checkbox" id="mp-surgelato" style="width:16px;height:16px;cursor:pointer;">
+          ❄️ Surgelato / congelato all'origine
+        </label>
+        <div style="font-size:11px;color:#aaa;margin-top:3px;">Aggiunge (*) nel menu stampato</div>
       </div>
     </div>
     <div class="form-grid">

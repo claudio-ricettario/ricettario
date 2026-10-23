@@ -66,6 +66,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .dish-footer{background:#f7f6f2;border-top:1px solid #eeebe4;padding:9px 16px;display:flex;justify-content:space-between;align-items:center;}
 .dish-price{font-size:14px;font-weight:400;color:#888;}
 .gf-badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;background:#dcfce7;color:#16a34a;letter-spacing:.04em;border:1px solid #bbf7d0;}
+.surgelato-badge{font-size:10px;padding:2px 8px;border-radius:10px;background:#eff6ff;color:#3b82f6;border:1px solid #bfdbfe;font-weight:500;}
 
 /* EMPTY / LOADING */
 .empty{text-align:center;padding:60px 20px;color:#bbb;font-size:15px;}
@@ -276,7 +277,8 @@ function showCategory(catEnc){
     if(badges) html+='<div class="dish-allergeni">'+badges+'</div>';
     html+='</div>';
     var isGF=!(p.allergeni||[]).includes('Glutine')&&!(p.tracce||[]).includes('Glutine');
-    html+='<div class="dish-footer"><span class="dish-price">'+eur(p.prezzoVendita)+'</span>'+(isGF?'<span class="gf-badge">Gluten Free</span>':'')+'</div>';
+    var badgesFooter=(isGF?'<span class="gf-badge">Gluten Free</span>':'')+(p.surgelato?'<span class="surgelato-badge">❄️ surgelato</span>':'');
+    html+='<div class="dish-footer"><span class="dish-price">'+eur(p.prezzoVendita)+'</span>'+(badgesFooter?'<div style="display:flex;gap:5px;flex-wrap:wrap;">'+badgesFooter+'</div>':'')+'</div>';
     html+='</div>';
   });
   html+='</div>';
