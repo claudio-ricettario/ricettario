@@ -7917,7 +7917,7 @@ function printMenuCompleto(){
     +'.dish{margin-bottom:13pt;break-inside:avoid;padding:0;}'
     +'.dish.consigliato{border:1.2pt solid '+AMBRA+';border-radius:4pt;padding:8pt 10pt;margin-bottom:13pt;}'
     +'.dish-nome{font-size:10.5pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:'+AMBRA+';line-height:1.3;}'
-    +'.dish-nome sup{font-size:6.5pt;font-weight:400;letter-spacing:0;color:#999;margin-left:2pt;vertical-align:super;}'
+    +'.dish-nome sup{font-size:7pt;font-weight:700;letter-spacing:0;color:'+AMBRA+';margin-left:2pt;vertical-align:super;}'
     +'.dish-desc{font-size:10pt;color:#444;line-height:1.6;margin-top:3pt;}'
     +'.dish-nota{font-size:9.5pt;color:#7c5c2e;font-style:italic;line-height:1.5;margin-top:4pt;}'
     +'/* ALLERGEN PAGE */'
@@ -7972,7 +7972,7 @@ function printMenuCompleto(){
     }).join('')
     +'<p class="allerg-note">Alcuni ingredienti potrebbero aver subito un abbattimento di temperatura controllata per preservarne la freschezza e garantire la sicurezza alimentare.</p>'
     +(cats.some(function(cat){return (grouped[cat]||[]).some(function(p){return piattoContineSurgelati(p);});})
-      ?'<p class="allerg-note" style="margin-top:8pt;">(*) Preparato con ingredienti surgelati o congelati all\'origine.</p>'
+      ?'<p class="allerg-note" style="margin-top:8pt;">(*) Alcune pietanze utilizzano ingredienti selezionati conservati in surgelazione. I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.</p>'
       :'')
     +'</div>';
 

@@ -258,7 +258,7 @@ function showCategory(catEnc){
   html+='<div class="cat-section-title"><span>'+catIcon(cat)+'</span>'+escHtml(cat)+'</div>';
   piatti.forEach(function(p){
     html+='<div class="dish-card"><div class="dish-body">';
-    html+='<div class="dish-nome">'+escHtml(p.nome)+(p.surgelato?'<sup style="font-size:10px;color:#aaa;font-weight:400;margin-left:2px;">*</sup>':'')+'</div>';
+    html+='<div class="dish-nome">'+escHtml(p.nome)+(p.surgelato?'<sup style="font-size:11px;color:#b8722a;font-weight:700;margin-left:3px;">*</sup>':'')+'</div>';
     // tag
     var tags=p.tags||[];
     if(tags.length){
@@ -282,7 +282,7 @@ function showCategory(catEnc){
   });
   // nota surgelati in fondo alla categoria, se almeno un piatto è surgelato
   var hasSurg=piatti.some(function(p){return p.surgelato;});
-  if(hasSurg) html+='<div style="font-size:11px;color:#aaa;margin-top:8px;padding:0 4px;">(*) Ingredienti surgelati o congelati all\'origine.</div>';
+  if(hasSurg) html+='<div style="font-size:11px;color:#888;margin-top:12px;padding:10px 12px;background:#faf9f7;border-radius:8px;border:1px solid #eeebe4;line-height:1.6;">(*) Alcune pietanze utilizzano ingredienti selezionati conservati in surgelazione. I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.</div>';
   html+='</div>';
   document.getElementById('content').innerHTML=html;
 }
