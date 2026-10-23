@@ -7861,11 +7861,11 @@ function printMenuCompleto(){
     if(!p.nelMenu) return;
     if((p.tags||[]).indexOf('Fuori menù')>=0) return;
     var cat=p.categoria||'Altro';
+    if(CAT_ORDER.indexOf(cat)<0) return; // ignora categorie vecchie/non più in uso
     if(!grouped[cat]) grouped[cat]=[];
     grouped[cat].push(p);
   });
   var cats=CAT_ORDER.filter(function(c){return grouped[c]&&grouped[c].length;});
-  Object.keys(grouped).forEach(function(c){if(cats.indexOf(c)<0)cats.push(c);});
   if(!cats.length){alert('Nessun piatto nel menu attivo. Attiva almeno un piatto con la stellina.');return;}
 
   function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
