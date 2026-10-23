@@ -125,7 +125,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;"><span class="allerg-badge" style="font-size:11px;padding:3px 10px;white-space:nowrap;">Lupini</span><span style="font-size:13px;color:#555;line-height:1.5;">e prodotti a base di lupini</span></div>
     <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;"><span class="allerg-badge" style="font-size:11px;padding:3px 10px;white-space:nowrap;">Molluschi</span><span style="font-size:13px;color:#555;line-height:1.5;">e prodotti a base di molluschi</span></div>
   </div>
-  <p style="font-size:12px;color:#888;">Alcuni ingredienti potrebbero aver subito un abbattimento di temperatura controllata per preservarne la freschezza e garantire la sicurezza alimentare.</p>
+  <p id="allerg-surg-note" style="font-size:12px;color:#777;font-style:italic;"></p>
 </div>
 
 <div class="footer">
@@ -232,13 +232,14 @@ function showCategories(){
   });
   html+='</div>';
 
-  // nota surgelati/abbattimento in fondo alla home
+  // nota surgelati in fondo alla home (solo se presenti)
   var tuttePietanze=Object.values(_grouped).reduce(function(arr,v){return arr.concat(v);},[]);
   var hasSurg=tuttePietanze.some(function(p){return p.surgelato;});
-  html+='<div style="font-size:11px;color:#777;font-style:italic;margin-top:16px;padding:10px 14px;background:#faf9f7;border-radius:10px;border:1px solid #eeebe4;line-height:1.7;">'
-    +(hasSurg?'(*) Alcune pietanze utilizzano ingredienti selezionati conservati in surgelazione. I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.'
-             :'I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.')
-    +'</div>';
+  if(hasSurg){
+    html+='<div style="font-size:11px;color:#777;font-style:italic;margin-top:16px;padding:10px 14px;background:#faf9f7;border-radius:10px;border:1px solid #eeebe4;line-height:1.7;">'
+      +'(*) Alcune pietanze utilizzano ingredienti selezionati conservati in surgelazione. I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.'
+      +'</div>';
+  }
 
   document.getElementById('content').innerHTML=html;
 }
@@ -289,12 +290,13 @@ function showCategory(catEnc){
     html+='<div class="dish-footer"><span class="dish-price">'+eur(p.prezzoVendita)+'</span>'+(badgesFooter?'<div style="display:flex;gap:5px;flex-wrap:wrap;">'+badgesFooter+'</div>':'')+'</div>';
     html+='</div>';
   });
-  // nota surgelati/abbattimento in fondo a ogni categoria
+  // nota surgelati in fondo a ogni categoria (solo se presenti)
   var hasSurgCat=piatti.some(function(p){return p.surgelato;});
-  html+='<div style="font-size:11px;color:#777;font-style:italic;margin-top:16px;padding:10px 14px;background:#faf9f7;border-radius:10px;border:1px solid #eeebe4;line-height:1.7;">'
-    +(hasSurgCat?'(*) Alcune pietanze utilizzano ingredienti selezionati conservati in surgelazione. I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.'
-               :'I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.')
-    +'</div>';
+  if(hasSurgCat){
+    html+='<div style="font-size:11px;color:#777;font-style:italic;margin-top:16px;padding:10px 14px;background:#faf9f7;border-radius:10px;border:1px solid #eeebe4;line-height:1.7;">'
+      +'(*) Alcune pietanze utilizzano ingredienti selezionati conservati in surgelazione. I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.'
+      +'</div>';
+  }
   html+='</div>';
   document.getElementById('content').innerHTML=html;
 }
@@ -323,6 +325,16 @@ function buildMenu(data){
 
   if(data.exportDate){
     document.getElementById('update-date').textContent='Aggiornato il '+data.exportDate;
+  }
+
+  // nota surgelati in sezione allergeni (dinamica)
+  var tuttiPiatti=data.menuData||[];
+  var hasSurgAny=tuttiPiatti.some(function(p){return p.surgelato;});
+  var noteEl=document.getElementById('allerg-surg-note');
+  if(noteEl){
+    noteEl.textContent=hasSurgAny
+      ?'(*) Alcune pietanze utilizzano ingredienti selezionati conservati in surgelazione. I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.'
+      :'I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.';
   }
 
   showCategories();
