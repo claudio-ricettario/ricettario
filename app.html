@@ -7970,10 +7970,9 @@ function printMenuCompleto(){
         +'<span class="allerg-desc">'+r[1]+'</span>'
         +'</div>';
     }).join('')
-    +'<p class="allerg-note">Alcuni ingredienti potrebbero aver subito un abbattimento di temperatura controllata per preservarne la freschezza e garantire la sicurezza alimentare.</p>'
     +(cats.some(function(cat){return (grouped[cat]||[]).some(function(p){return piattoContineSurgelati(p);});})
-      ?'<p class="allerg-note" style="margin-top:8pt;">(*) Alcune pietanze utilizzano ingredienti selezionati conservati in surgelazione. I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.</p>'
-      :'')
+      ?'<p class="allerg-note">(*) Alcune pietanze utilizzano ingredienti selezionati conservati in surgelazione. I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.</p>'
+      :'<p class="allerg-note">I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.</p>')
     +'</div>';
 
   html+='</body></html>';
