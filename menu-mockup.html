@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Menu Mockup — 4 pagine</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  background:#d6d0c8;
+  color:#1a1a1a;
+  padding:30px 20px;
+  font-size:10.5pt;
+}
+
+/* A4 */
+.a4{
+  width:210mm;
+  min-height:297mm;
+  background:#fff;
+  margin:0 auto 36px;
+  padding:20mm 18mm 20mm 18mm;
+  box-shadow:0 4px 32px rgba(0,0,0,.20);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
+.page-label{
+  position:absolute;
+  top:7mm;
+  right:8mm;
+  font-size:7.5pt;
+  color:#ccc;
+  font-style:italic;
+  letter-spacing:.04em;
+}
+
+/* HEADER */
+.menu-header{
+  text-align:center;
+  margin-bottom:12mm;
+  padding-bottom:7mm;
+  border-bottom:1.5px solid #b8722a;
+}
+.menu-header .ristorante{
+  font-size:26pt;
+  font-weight:700;
+  letter-spacing:.15em;
+  color:#1a1a1a;
+  text-transform:uppercase;
+  line-height:1;
+}
+.menu-header .sottotitolo{
+  font-size:8.5pt;
+  letter-spacing:.30em;
+  color:#999;
+  text-transform:uppercase;
+  margin-top:5pt;
+}
+
+/* DUE COLONNE */
+.two-col{
+  column-count:2;
+  column-gap:10mm;
+  column-rule:1px solid #e2d9cc;
+  flex:1;
+}
+
+/* BLOCCO CATEGORIA */
+.cat-block{
+  break-inside:avoid-column;
+  margin-bottom:22pt;
+}
+.cat-title{
+  font-size:9.5pt;
+  font-weight:700;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+  color:#b8722a;
+  text-align:center;
+  border-top:1px solid #b8722a;
+  border-bottom:1px solid #b8722a;
+  padding:4pt 0 4pt;
+  margin-bottom:11pt;
+}
+
+/* PIATTO */
+.dish{
+  margin-bottom:9pt;
+  break-inside:avoid;
+}
+.dish-nome{
+  font-size:9pt;
+  font-weight:700;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:#b8722a;
+  line-height:1.3;
+}
+.dish-nome sup{
+  font-size:6pt;
+  font-weight:700;
+  color:#b8722a;
+  margin-left:1.5pt;
+  vertical-align:super;
+  letter-spacing:0;
+}
+.dish-desc{
+  font-size:8.5pt;
+  color:#444;
+  font-style:italic;
+  line-height:1.6;
+  margin-top:2pt;
+}
+.dish-nota{
+  font-size:8pt;
+  color:#7c5c2e;
+  font-style:italic;
+  margin-top:2pt;
+}
+.dish.consigliato{
+  border:1pt solid #b8722a;
+  border-radius:3pt;
+  padding:6pt 8pt;
+  margin-bottom:9pt;
+}
+
+/* ── PAGINA 3: DOLCI ── */
+.dolci-page{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  flex:1;
+}
+.dolci-frame{
+  border:1.5pt solid #b8722a;
+  border-radius:6pt;
+  padding:14mm 16mm 12mm;
+  width:100%;
+  max-width:130mm;
+  position:relative;
+}
+/* angolini decorativi */
+.dolci-frame::before,
+.dolci-frame::after{
+  content:'';
+  position:absolute;
+  width:12pt;
+  height:12pt;
+  border-color:#b8722a;
+  border-style:solid;
+}
+.dolci-frame::before{
+  top:-3pt; left:-3pt;
+  border-width:2pt 0 0 2pt;
+}
+.dolci-frame::after{
+  bottom:-3pt; right:-3pt;
+  border-width:0 2pt 2pt 0;
+}
+.dolci-cat-title{
+  font-size:9.5pt;
+  font-weight:700;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+  color:#b8722a;
+  text-align:center;
+  margin-bottom:12pt;
+  padding:4pt 0 4pt;
+  border-top:1px solid #b8722a;
+  border-bottom:1px solid #b8722a;
+}
+.dolci-dish{
+  margin-bottom:10pt;
+  break-inside:avoid;
+}
+.dolci-dish .dish-nome{
+  font-size:9.5pt;
+}
+.dolci-frase{
+  margin-top:10pt;
+  padding-top:8pt;
+  border-top:1px solid #e0d0bc;
+  font-size:8pt;
+  color:#999;
+  font-style:italic;
+  text-align:center;
+  letter-spacing:.06em;
+}
+
+/* ── PAGINA 4: ALLERGENI ── */
+.allerg-page{}
+.allerg-page h2{
+  font-size:13pt;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#b8722a;
+  border-bottom:1.5px solid #b8722a;
+  padding-bottom:5pt;
+  margin-bottom:12pt;
+}
+.allerg-page p{
+  font-size:8.5pt;
+  line-height:1.75;
+  color:#333;
+  margin-bottom:8pt;
+}
+.allerg-warning{
+  display:flex;
+  gap:10pt;
+  align-items:flex-start;
+  background:#fffbeb;
+  border:1px solid #f5c842;
+  border-left:4px solid #e6a817;
+  border-radius:4pt;
+  padding:10pt 12pt;
+  margin:10pt 0;
+}
+.allerg-warning p{margin:0;font-size:8pt;line-height:1.6;color:#7c5c2e;}
+.allerg-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4pt 10mm;
+  margin-top:8pt;
+}
+.allerg-row{
+  display:flex;
+  align-items:baseline;
+  gap:6pt;
+  break-inside:avoid;
+}
+.allerg-num{font-size:7.5pt;font-weight:700;color:#b8722a;min-width:14pt;}
+.allerg-name{font-size:8.5pt;font-weight:700;color:#1a1a1a;min-width:90pt;}
+.allerg-desc{font-size:8pt;color:#666;}
+.allerg-note{
+  font-size:8pt;
+  color:#888;
+  font-style:italic;
+  margin-top:12pt;
+  border-top:1px solid #ddd;
+  padding-top:8pt;
+  line-height:1.7;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PAGINA 1 — Cucina
+     ═══════════════════════════════════════ -->
+<div class="a4">
+  <div class="page-label">pagina 1 · cucina</div>
+
+  <div class="menu-header">
+    <div class="ristorante">MEP</div>
+    <div class="sottotitolo">La Malga</div>
+  </div>
+
+  <div class="two-col">
+
+    <div class="cat-block">
+      <div class="cat-title">Antipasti</div>
+      <div class="dish">
+        <div class="dish-nome">Tagliere di salumi della malga<sup>1,7</sup></div>
+        <div class="dish-desc">Selezione di salumi artigianali locali, mostarda di mele e pane di segale | 14,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Polenta grigliata e funghi porcini<sup>1,7</sup></div>
+        <div class="dish-desc">Polenta di mais bramata, ragù di porcini freschi, erbe alpine | 12,00€</div>
+      </div>
+      <div class="dish consigliato">
+        <div class="dish-nome">Carpaccio di cervo<sup>3,9,10</sup></div>
+        <div class="dish-desc">Filetto di cervo marinato, rucola selvatica, grana a scaglie, olio EVO | 16,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Burrata con crudo e miele<sup>7</sup></div>
+        <div class="dish-desc">Burrata pugliese, prosciutto crudo di montagna, miele di rododendro | 13,50€</div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-title">Primi piatti</div>
+      <div class="dish consigliato">
+        <div class="dish-nome">Tagliatelle al ragù di cervo<sup>1,3,7*</sup></div>
+        <div class="dish-desc">Pasta fresca all'uovo, ragù di cervo selvatico, rosmarino | 16,50€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Ravioli di ricotta e spinaci<sup>1,3,7</sup></div>
+        <div class="dish-desc">Pasta fresca ripiena, burro di malga, salvia, parmigiano 24 mesi | 14,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Strangolapreti al burro fuso<sup>1,3,7</sup></div>
+        <div class="dish-desc">Gnocchi di pane e spinaci, burro di malga, salvia, grana trentino | 12,50€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Canederli in brodo<sup>1,3,7</sup></div>
+        <div class="dish-desc">Canederli di pane e speck, brodo di manzo fatto in casa | 11,00€</div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-title">Secondi piatti</div>
+      <div class="dish consigliato">
+        <div class="dish-nome">Spezzatino di cervo al ginepro<sup>9*</sup></div>
+        <div class="dish-desc">Polpa di cervo, bacche di ginepro, vino rosso, polenta morbida | 22,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Trota alpina alla piastra<sup>4</sup></div>
+        <div class="dish-desc">Trota del torrente, limone, capperi, erbe aromatiche, patate al forno | 19,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Costolette di agnello<sup>7</sup></div>
+        <div class="dish-desc">Agnello di malga, timo selvatico, aglio, verdure arrosto | 24,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Gulasch di manzo con spätzle<sup>1,3,7</sup></div>
+        <div class="dish-desc">Stinco di manzo brasato, paprica dolce e affumicata, spätzle al burro | 20,00€</div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-title">Contorni</div>
+      <div class="dish">
+        <div class="dish-nome">Patate arrosto alle erbe<sup>7</sup></div>
+        <div class="dish-desc">Patate di montagna, rosmarino, timo, burro di malga | 5,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Insalata di campo</div>
+        <div class="dish-desc">Misticanza di erbe selvatiche, aceto di mele, olio EVO | 5,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Polenta grigliata<sup>7</sup></div>
+        <div class="dish-desc">Polenta di mais bramata, burro di malga | 4,50€</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGINA 2 — Bevande
+     ═══════════════════════════════════════ -->
+<div class="a4">
+  <div class="page-label">pagina 2 · bevande</div>
+
+  <div class="menu-header">
+    <div class="ristorante">MEP</div>
+    <div class="sottotitolo">La Malga</div>
+  </div>
+
+  <div class="two-col">
+
+    <div class="cat-block">
+      <div class="cat-title">Vino</div>
+      <div class="dish">
+        <div class="dish-nome">Pinot Grigio — Mezzacorona<sup>12</sup></div>
+        <div class="dish-desc">Trentino DOC, fresco e minerale | calice 5,00€ · bottiglia 22,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Teroldego Rotaliano<sup>12</sup></div>
+        <div class="dish-desc">Trentino DOC, fruttato, note di mora e ciliegia | calice 5,50€ · bottiglia 24,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Gewürztraminer<sup>12</sup></div>
+        <div class="dish-desc">Alto Adige DOC, aromatico, ideale con i formaggi | calice 6,00€ · bottiglia 26,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Vino della casa — bianco / rosso<sup>12</sup></div>
+        <div class="dish-desc">Selezione dello chef | quarto 3,50€ · mezzo 6,50€ · litro 12,00€</div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-title">Birre</div>
+      <div class="dish">
+        <div class="dish-nome">Birra della malga — chiara<sup>1</sup></div>
+        <div class="dish-desc">Birra artigianale locale, luppolatura delicata | 33 cl 4,50€ · 50 cl 6,50€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Birra della malga — scura<sup>1</sup></div>
+        <div class="dish-desc">Note tostate, caramello, malto d'orzo | 33 cl 4,50€ · 50 cl 6,50€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Weizen — Paulaner<sup>1</sup></div>
+        <div class="dish-desc">Birra di frumento bavarese, non filtrata | 50 cl 5,50€</div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-title">Bevande</div>
+      <div class="dish">
+        <div class="dish-nome">Acqua naturale / frizzante</div>
+        <div class="dish-desc">Sorgente alpina locale | 50 cl 2,00€ · 1 lt 3,00€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Succhi di frutta biologici</div>
+        <div class="dish-desc">Mela, albicocca, mirtillo — pressatura a freddo | 3,50€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Bibite in lattina</div>
+        <div class="dish-desc">Cola, aranciata, gassosa, tè freddo | 2,50€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Tisana di erbe alpine</div>
+        <div class="dish-desc">Erbe del maso, miele di montagna | 3,00€</div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-title">Caffetteria</div>
+      <div class="dish">
+        <div class="dish-nome">Espresso</div>
+        <div class="dish-desc">Miscela artigianale, tostatura media | 1,50€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Cappuccino<sup>7</sup></div>
+        <div class="dish-desc">Espresso, latte di malga montato a mano | 2,50€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Caffè corretto</div>
+        <div class="dish-desc">Espresso con grappa di Müller Thurgau | 2,50€</div>
+      </div>
+      <div class="dish">
+        <div class="dish-nome">Grappa della malga</div>
+        <div class="dish-desc">Distillato artigianale locale | 4,00€</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGINA 3 — Dolci
+     ═══════════════════════════════════════ -->
+<div class="a4">
+  <div class="page-label">pagina 3 · dolci</div>
+
+  <div class="menu-header">
+    <div class="ristorante">MEP</div>
+    <div class="sottotitolo">La Malga</div>
+  </div>
+
+  <div class="dolci-page">
+    <div class="dolci-frame">
+      <div class="dolci-cat-title">Dolci</div>
+
+      <div class="dolci-dish dish consigliato">
+        <div class="dish-nome">Semifreddo al pino mugo<sup>3,7,8</sup></div>
+        <div class="dish-desc">Semifreddo artigianale, coulis di frutti di bosco selvatici, meringa croccante | 9,00€</div>
+      </div>
+
+      <div class="dolci-dish dish">
+        <div class="dish-nome">Strudel di mele<sup>1,3,7,8</sup></div>
+        <div class="dish-desc">Mele renette, uvetta, pinoli, pasta sfoglia, gelato alla vaniglia | 8,00€</div>
+      </div>
+
+      <div class="dolci-dish dish">
+        <div class="dish-nome">Crème brûlée alla lavanda<sup>3,7</sup></div>
+        <div class="dish-desc">Crema catalana al fiore di lavanda, caramello croccante | 7,50€</div>
+      </div>
+
+      <div class="dolci-dish dish">
+        <div class="dish-nome">Torta di grano saraceno<sup>1,3,7,8</sup></div>
+        <div class="dish-desc">Ricetta tradizionale trentina, confettura di mirtilli rossi, panna montata | 7,00€</div>
+      </div>
+
+      <div class="dolci-dish dish">
+        <div class="dish-nome">Granita di mirtillo selvatico</div>
+        <div class="dish-desc">Mirtilli freschi del bosco, sorbetto, foglie di menta | 6,50€</div>
+      </div>
+
+      <div class="dolci-dish dish">
+        <div class="dish-nome">Formaggi e miele<sup>7</sup></div>
+        <div class="dish-desc">Selezione di formaggi di malga stagionati, miele di rododendro, noci | 12,00€</div>
+      </div>
+
+      <div class="dolci-frase">
+        Tutti i dolci sono fatti in Malga
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGINA 4 — Allergeni
+     ═══════════════════════════════════════ -->
+<div class="a4">
+  <div class="page-label">pagina 4 · allergeni</div>
+
+  <div class="allerg-page">
+    <div class="menu-header">
+      <div class="ristorante">MEP</div>
+      <div class="sottotitolo">La Malga</div>
+    </div>
+
+    <h2>Allergeni</h2>
+
+    <p>Se soffri di allergie o intolleranze alimentari ti chiediamo di segnalarlo al nostro personale prima di ordinare — saremo felici di guidarti nella scelta.</p>
+    <p>La nostra cucina lavora quotidianamente con tutti i principali allergeni. Pur adottando le necessarie precauzioni, non possiamo escludere contaminazioni crociate con le sostanze elencate di seguito.</p>
+
+    <div class="allerg-warning">
+      <span style="font-size:16px;line-height:1.3;">⚠️</span>
+      <p><strong>Attenzione celiaci:</strong> i piatti contrassegnati come "senza glutine" sono preparati con ingredienti privi di glutine, ma la cucina non è un laboratorio dedicato alla celiachia — non possiamo garantire l'assenza totale di contaminazioni crociate.</p>
+    </div>
+
+    <div class="allerg-grid">
+      <div class="allerg-row"><span class="allerg-num">1.</span><span class="allerg-name">Cereali con glutine</span><span class="allerg-desc">grano, segale, orzo, avena, farro</span></div>
+      <div class="allerg-row"><span class="allerg-num">2.</span><span class="allerg-name">Crostacei</span><span class="allerg-desc">e prodotti a base di crostacei</span></div>
+      <div class="allerg-row"><span class="allerg-num">3.</span><span class="allerg-name">Uova</span><span class="allerg-desc">e prodotti a base di uova</span></div>
+      <div class="allerg-row"><span class="allerg-num">4.</span><span class="allerg-name">Pesce</span><span class="allerg-desc">e prodotti a base di pesce</span></div>
+      <div class="allerg-row"><span class="allerg-num">5.</span><span class="allerg-name">Arachidi</span><span class="allerg-desc">e prodotti a base di arachidi</span></div>
+      <div class="allerg-row"><span class="allerg-num">6.</span><span class="allerg-name">Soia</span><span class="allerg-desc">e prodotti a base di soia</span></div>
+      <div class="allerg-row"><span class="allerg-num">7.</span><span class="allerg-name">Latte e lattosio</span><span class="allerg-desc">e prodotti a base di latte</span></div>
+      <div class="allerg-row"><span class="allerg-num">8.</span><span class="allerg-name">Frutta a guscio</span><span class="allerg-desc">mandorle, nocciole, noci, pistacchi</span></div>
+      <div class="allerg-row"><span class="allerg-num">9.</span><span class="allerg-name">Sedano</span><span class="allerg-desc">e prodotti a base di sedano</span></div>
+      <div class="allerg-row"><span class="allerg-num">10.</span><span class="allerg-name">Senape</span><span class="allerg-desc">e prodotti a base di senape</span></div>
+      <div class="allerg-row"><span class="allerg-num">11.</span><span class="allerg-name">Semi di sesamo</span><span class="allerg-desc">e prodotti a base di semi di sesamo</span></div>
+      <div class="allerg-row"><span class="allerg-num">12.</span><span class="allerg-name">Solfiti</span><span class="allerg-desc">anidride solforosa e solfiti &gt;10 mg/kg</span></div>
+      <div class="allerg-row"><span class="allerg-num">13.</span><span class="allerg-name">Lupini</span><span class="allerg-desc">e prodotti a base di lupini</span></div>
+      <div class="allerg-row"><span class="allerg-num">14.</span><span class="allerg-name">Molluschi</span><span class="allerg-desc">e prodotti a base di molluschi</span></div>
+    </div>
+
+    <p class="allerg-note">(*) Alcune pietanze utilizzano ingredienti selezionati conservati in surgelazione. I prodotti cotti vengono sottoposti ad abbattimento rapido di temperatura per garantire sicurezza e qualità ottimale.</p>
+  </div>
+
+</div>
+
+<div style="text-align:center;font-size:10px;color:#aaa;font-style:italic;margin-bottom:20px;">
+  mockup di esempio — piatti e prezzi non reali &nbsp;·&nbsp; cornice = piatto consigliato &nbsp;·&nbsp; * = surgelato &nbsp;·&nbsp; numeri in apice = allergeni EU 1169/2011
+</div>
+
+</body>
+</html>
