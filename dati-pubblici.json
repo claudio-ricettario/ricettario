@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "24/10/2026",
+  "exportDate": "26/10/2026",
   "menuData": [
     {
       "nome": "Acqua Frizzante Microfiltrata",
@@ -139,6 +139,31 @@
       "surgelato": false,
       "allergeni": [],
       "tracce": []
+    },
+    {
+      "nome": "Canederli ai Funghi e burro fuso",
+      "descrizione": "Nuova proposta da provare con funghi porcini",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 10.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Latte e lattosio"
+      ],
+      "tracce": [
+        "Soia",
+        "Frutta a guscio",
+        "Sesamo"
+      ]
     },
     {
       "nome": "Patate al Forno",
@@ -505,6 +530,76 @@
       "tracce": []
     },
     {
+      "nome": "CheeseCake cotta",
+      "descrizione": "Con ricotta della Lessinia",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 4.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Glutine",
+        "Latte e lattosio",
+        "Uova"
+      ],
+      "tracce": [
+        "Soia",
+        "Senape"
+      ]
+    },
+    {
+      "nome": "Sbrisolona",
+      "descrizione": "Provala con la nostra grappa Morbida +2€",
+      "notaCliente": "",
+      "tags": [
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 4.4,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Glutine",
+        "Latte e lattosio",
+        "Uova",
+        "Frutta a guscio"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
+      "nome": "Spaghetti al Ragù di funghi",
+      "descrizione": "Con funghi Porcini, possibili contaminazione crociata uova",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Vegano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 8.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Glutine",
+        "Sedano",
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": [
+        "Soia",
+        "Senape"
+      ]
+    },
+    {
       "nome": "Spezzatino di Cervo",
       "descrizione": "Solo poche porzioni",
       "notaCliente": "",
@@ -547,8 +642,107 @@
       ]
     },
     {
+      "nome": "Tagliatelle al Ragù di cervo",
+      "descrizione": "Con tagliatelle Barilla e cervo locale",
+      "notaCliente": "",
+      "tags": [
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 12.9,
+      "tipoBeverage": false,
+      "surgelato": true,
+      "allergeni": [
+        "Anidride solforosa e solfiti",
+        "Sedano",
+        "Glutine",
+        "Uova"
+      ],
+      "tracce": [
+        "Soia",
+        "Senape"
+      ]
+    },
+    {
+      "nome": "Semifreddo all'Amaretto",
+      "descrizione": "Con Prodotti locali",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Consigliato"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 5.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Soia",
+        "Latte e lattosio",
+        "Frutta a guscio"
+      ],
+      "tracce": [
+        "Arachidi",
+        "Senape",
+        "Sesamo",
+        "Lupini"
+      ]
+    },
+    {
+      "nome": "Strudel di Mele con crema alla vaniglia",
+      "descrizione": "Con Mele del trentino",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Consigliato"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 6.4,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Glutine",
+        "Latte e lattosio",
+        "Arachidi",
+        "Frutta a guscio",
+        "Anidride solforosa e solfiti",
+        "Soia",
+        "Uova"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Tortino al Cioccolato",
+      "descrizione": "Con Panna Montata",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Consigliato",
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 5.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Soia",
+        "Latte e lattosio",
+        "Uova",
+        "Glutine"
+      ],
+      "tracce": [
+        "Frutta a guscio"
+      ]
+    },
+    {
       "nome": "Uovo in camicia, patate schiacciate e speck croccante",
-      "descrizione": "Uova da galline felici, patate locali e speck trentino",
+      "descrizione": "Uova da galline felici, patate di montagna e speck trentino",
       "notaCliente": "",
       "tags": [
         "Novità",
@@ -11888,7 +12082,7 @@
       "pax": 4,
       "prezzoVendita": 10.9,
       "coefficiente": 4,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13218,7 +13412,7 @@
       "pax": 8,
       "prezzoVendita": 4.9,
       "coefficiente": 2,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13312,7 +13506,7 @@
       "pax": 1,
       "prezzoVendita": 4.4,
       "coefficiente": 3,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [],
@@ -13344,7 +13538,7 @@
       "pax": 1,
       "prezzoVendita": 8.9,
       "coefficiente": 3,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13550,7 +13744,7 @@
       "pax": 10,
       "prezzoVendita": 12.9,
       "coefficiente": 2,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13593,7 +13787,7 @@
       "pax": 1,
       "prezzoVendita": 5.9,
       "coefficiente": 3,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13636,7 +13830,7 @@
       "pax": 5,
       "prezzoVendita": 6.4,
       "coefficiente": 3,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13681,7 +13875,7 @@
       "pax": 4,
       "prezzoVendita": 5.9,
       "coefficiente": 2,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13757,7 +13951,7 @@
     {
       "codice": "PF-012",
       "nome": "Uovo in camicia, patate schiacciate e speck croccante",
-      "descrizione": "Uova da galline felici, patate locali e speck trentino",
+      "descrizione": "Uova da galline felici, patate di montagna e speck trentino",
       "notaCliente": "",
       "tags": [
         "Novità",
