@@ -8014,11 +8014,10 @@ function printMenuCompleto(){
   if(p1cats.length){
     html+='<div class="page">'+headerHtml+'<div class="two-col">';
     p1cats.forEach(function(cat){html+=renderCatBlock(cat);});
-    html+='</div>'
-      +'<div style="margin-top:14pt;padding-top:8pt;border-top:1px solid #e0d0bc;text-align:center;font-size:8pt;color:#999;font-style:italic;letter-spacing:.05em;">'
+    html+='<div style="column-span:all;margin-top:14pt;padding-top:8pt;border-top:1px solid #e0d0bc;text-align:center;font-size:8pt;color:#999;font-style:italic;letter-spacing:.05em;">'
       +'Chiedi al nostro personale — ogni giorno potrebbe esserci qualcosa in più.'
       +'</div>'
-      +'</div>';
+      +'</div></div>';
   }
 
   /* ══ PAGINA 2 — Bevande ══ */
