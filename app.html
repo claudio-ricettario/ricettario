@@ -1167,6 +1167,11 @@ var CAT_ORDER_MAG=['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare'
 var semilavorati=[];
 var codiceCounters={mp:0,sl:0,pf:0};
 var piatti=[];
+
+/* ═══════════════════════════════════════════════════
+   DEMO MODE — attivato con ?demo=1 nell'URL
+   ═══════════════════════════════════════════════════ */
+var DEMO_MODE=(function(){try{return new URLSearchParams(window.location.search).get('demo')==='1';}catch(e){return false;}})();
 /* magExpanded declared globally above */
 
 var ALLERGENI_LIST=['Glutine','Crostacei','Uova','Pesce','Arachidi','Soia','Latte e lattosio','Frutta a guscio','Sedano','Senape','Sesamo','Anidride solforosa e solfiti','Lupini','Molluschi'];
@@ -4918,9 +4923,99 @@ function applyAdminUI(){
 }
 
 loadSaved();
+
+/* ── DEMO MODE SETUP ── */
+if(DEMO_MODE){
+
+  /* 1. dati fittizi "Osteria da Claudio" */
+  (function(){
+    var EN=emptyNutrizionali?emptyNutrizionali():{};
+    magazzino=[
+      {nome:'Farina 00',codice:'MP001',categoria:'Generale',um:'kg',iva:4,prezzoKg:1.20,activeIdx:0,allergeni:['Cereali con glutine'],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:EN,nutrizionaliOk:false,giacenza:10,giacenzaMin:2,lotti:[],scarto:0,resa:100,suppliers:[{nome:'Mulino Valle',prezzoKg:1.20,storico:[]}]},
+      {nome:'Uova fresche',codice:'MP002',categoria:'Generale',um:'kg',iva:4,prezzoKg:3.50,activeIdx:0,allergeni:['Uova'],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:EN,nutrizionaliOk:false,giacenza:3,giacenzaMin:1,lotti:[],scarto:0,resa:100,suppliers:[{nome:'Az. Agricola Rosi',prezzoKg:3.50,storico:[]}]},
+      {nome:'Burro di malga',codice:'MP003',categoria:'Latticini e formaggi',um:'kg',iva:4,prezzoKg:12.00,activeIdx:0,allergeni:['Latte e lattosio'],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:EN,nutrizionaliOk:false,giacenza:2,giacenzaMin:0.5,lotti:[],scarto:0,resa:100,suppliers:[{nome:'Malga Cornon',prezzoKg:12.00,storico:[]}]},
+      {nome:'Funghi porcini freschi',codice:'MP004',categoria:'Verdura',um:'kg',iva:4,prezzoKg:18.00,activeIdx:0,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:EN,nutrizionaliOk:false,giacenza:1.5,giacenzaMin:0.5,lotti:[],scarto:10,resa:90,suppliers:[{nome:'Raccolta locale',prezzoKg:18.00,storico:[]}]},
+      {nome:'Polpa di cervo',codice:'MP005',categoria:'Carne e pollame',um:'kg',iva:10,prezzoKg:28.00,activeIdx:0,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:EN,nutrizionaliOk:false,giacenza:4,giacenzaMin:1,lotti:[],scarto:5,resa:95,suppliers:[{nome:'Macelleria Broz',prezzoKg:28.00,storico:[]}],surgelato:true},
+      {nome:'Patate di montagna',codice:'MP006',categoria:'Verdura',um:'kg',iva:4,prezzoKg:1.80,activeIdx:0,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:EN,nutrizionaliOk:false,giacenza:8,giacenzaMin:2,lotti:[],scarto:15,resa:85,suppliers:[{nome:'Az. Agr. Maffei',prezzoKg:1.80,storico:[]}]},
+      {nome:'Parmigiano Reggiano 24m',codice:'MP007',categoria:'Latticini e formaggi',um:'kg',iva:4,prezzoKg:22.00,activeIdx:0,allergeni:['Latte e lattosio'],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:EN,nutrizionaliOk:false,giacenza:1.5,giacenzaMin:0.3,lotti:[],scarto:0,resa:100,suppliers:[{nome:'Caseificio Dolomia',prezzoKg:22.00,storico:[]}]},
+      {nome:'Mascarpone',codice:'MP008',categoria:'Latticini e formaggi',um:'kg',iva:4,prezzoKg:9.50,activeIdx:0,allergeni:['Latte e lattosio'],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:EN,nutrizionaliOk:false,giacenza:1,giacenzaMin:0.2,lotti:[],scarto:0,resa:100,suppliers:[{nome:'Caseificio Dolomia',prezzoKg:9.50,storico:[]}]},
+      {nome:'Cacao amaro',codice:'MP009',categoria:'Generale',um:'kg',iva:10,prezzoKg:14.00,activeIdx:0,allergeni:[],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:EN,nutrizionaliOk:false,giacenza:0.5,giacenzaMin:0.1,lotti:[],scarto:0,resa:100,suppliers:[{nome:'Ingrosso Fiori',prezzoKg:14.00,storico:[]}]},
+      {nome:'Vino rosso da cucina',codice:'MP010',categoria:'Vini',um:'lt',iva:22,prezzoKg:4.50,activeIdx:0,allergeni:['Anidride solforosa e solfiti'],allergeniOk:true,tracce:[],tracceOk:true,nutrizionali:EN,nutrizionaliOk:false,giacenza:3,giacenzaMin:1,lotti:[],scarto:0,resa:100,suppliers:[{nome:'Cantina Lavis',prezzoKg:4.50,storico:[]}]}
+    ];
+    semilavorati=[
+      {codice:'SL001',nome:'Ragù di cervo',categoria:'Carni',resaQta:1,resaUm:'kg',procedimento:'Rosolare il cervo a pezzi in olio EVO. Sfumare con vino rosso, aggiungere verdure e cuocere 3h a fuoco lento. Frullare parzialmente.',componenti:[
+        {tipo:'mp',codice:'MP005',nome:'Polpa di cervo',qtaBase:0.7,unit:'kg',conv:1},
+        {tipo:'mp',codice:'MP010',nome:'Vino rosso da cucina',qtaBase:0.2,unit:'lt',conv:1}
+      ]},
+      {codice:'SL002',nome:'Pasta fresca all\'uovo',categoria:'Paste',resaQta:0.8,resaUm:'kg',procedimento:'Impastare farina e uova fino a ottenere un impasto liscio. Riposare 30 min coperto.',componenti:[
+        {tipo:'mp',codice:'MP001',nome:'Farina 00',qtaBase:0.5,unit:'kg',conv:1},
+        {tipo:'mp',codice:'MP002',nome:'Uova fresche',qtaBase:0.3,unit:'kg',conv:1}
+      ]}
+    ];
+    piatti=[
+      {codice:'PF001',nome:'Tagliatelle al ragù di cervo',categoria:'Primi piatti',prezzoVendita:16.50,descrizione:'Pasta fresca all\'uovo, ragù di cervo selvatico del territorio, rosmarino',nelMenu:true,tags:['Consigliato'],allergeni:['Cereali con glutine','Uova','Anidride solforosa e solfiti'],tracce:[],allergeniOk:true,componenti:[{tipo:'sl',codice:'SL002',nome:'Pasta fresca all\'uovo',qtaBase:0.15,unit:'kg',conv:1},{tipo:'sl',codice:'SL001',nome:'Ragù di cervo',qtaBase:0.12,unit:'kg',conv:1}]},
+      {codice:'PF002',nome:'Polenta e funghi porcini',categoria:'Antipasti',prezzoVendita:12.00,descrizione:'Polenta di mais bramata, ragù di porcini freschi di raccolta locale',nelMenu:true,tags:[],allergeni:[],tracce:[],allergeniOk:true,componenti:[{tipo:'mp',codice:'MP004',nome:'Funghi porcini freschi',qtaBase:0.15,unit:'kg',conv:1}]},
+      {codice:'PF003',nome:'Spezzatino di cervo al ginepro',categoria:'Secondi piatti',prezzoVendita:22.00,descrizione:'Polpa di cervo, bacche di ginepro, vino rosso, polenta morbida di accompagnamento',nelMenu:true,tags:['Consigliato'],allergeni:['Anidride solforosa e solfiti'],tracce:[],allergeniOk:true,componenti:[{tipo:'sl',codice:'SL001',nome:'Ragù di cervo',qtaBase:0.2,unit:'kg',conv:1}]},
+      {codice:'PF004',nome:'Patate arrosto alle erbe',categoria:'Contorni',prezzoVendita:5.00,descrizione:'Patate di montagna, rosmarino, timo, burro di malga',nelMenu:true,tags:[],allergeni:['Latte e lattosio'],tracce:[],allergeniOk:true,componenti:[{tipo:'mp',codice:'MP006',nome:'Patate di montagna',qtaBase:0.2,unit:'kg',conv:1},{tipo:'mp',codice:'MP003',nome:'Burro di malga',qtaBase:0.02,unit:'kg',conv:1}]},
+      {codice:'PF005',nome:'Tiramisù della casa',categoria:'Dolci',prezzoVendita:7.50,descrizione:'Mascarpone, savoiardi, caffè espresso, cacao amaro — ricetta della nonna',nelMenu:true,tags:[],allergeni:['Uova','Latte e lattosio','Cereali con glutine'],tracce:[],allergeniOk:true,componenti:[{tipo:'mp',codice:'MP008',nome:'Mascarpone',qtaBase:0.1,unit:'kg',conv:1},{tipo:'mp',codice:'MP009',nome:'Cacao amaro',qtaBase:0.01,unit:'kg',conv:1}]},
+      {codice:'PF006',nome:'Tagliere di formaggi locali',categoria:'Antipasti',prezzoVendita:14.00,descrizione:'Selezione di formaggi di malga stagionati, miele di rododendro, noci',nelMenu:true,tags:[],allergeni:['Latte e lattosio','Frutta a guscio'],tracce:[],allergeniOk:true,componenti:[]},
+      {codice:'PF007',nome:'Espresso',categoria:'Caffetteria',prezzoVendita:1.50,descrizione:'Miscela artigianale, tostatura media',nelMenu:true,tags:[],allergeni:[],tracce:[],allergeniOk:true,componenti:[]},
+      {codice:'PF008',nome:'Birra artigianale della malga',categoria:'Birre',prezzoVendita:4.50,descrizione:'Birra chiara locale, luppolatura delicata | 33 cl',nelMenu:true,tags:[],allergeni:['Cereali con glutine'],tracce:[],allergeniOk:true,componenti:[]}
+    ];
+    codiceCounters={mp:10,sl:2,pf:8};
+    menuPreventivi=[
+      {num:'PREV-2026-001',nomeAtt:'Famiglia Rossi',data:'2026-11-15',coperti:12,orario:'13:00',note:'Anniversario 25 anni — richiesto menu fisso con vino incluso',stato:'confermato',
+       voci:[{piattoIdx:0,nome:'Tagliatelle al ragù di cervo',qta:12,prezzoUnitario:16.50},{piattoIdx:2,nome:'Spezzatino di cervo al ginepro',qta:12,prezzoUnitario:22.00},{piattoIdx:4,nome:'Tiramisù della casa',qta:12,prezzoUnitario:7.50}]},
+      {num:'PREV-2026-002',nomeAtt:'Azienda Tech S.r.l.',data:'2026-12-20',coperti:30,orario:'20:00',note:'Cena aziendale — buffet + brindisi di Natale',stato:'opzione',
+       voci:[{piattoIdx:1,nome:'Polenta e funghi porcini',qta:30,prezzoUnitario:12.00},{piattoIdx:2,nome:'Spezzatino di cervo al ginepro',qta:30,prezzoUnitario:22.00}]}
+    ];
+  })();
+
+  /* 2. blocca tutti i salvataggi */
+  var _demoToast=function(){
+    var t=document.createElement('div');
+    t.textContent='Modalità demo — le modifiche non vengono salvate';
+    t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:9px 18px;border-radius:8px;font-size:12px;z-index:99999;opacity:0;transition:opacity .3s;pointer-events:none;';
+    document.body.appendChild(t);
+    setTimeout(function(){t.style.opacity='1';},10);
+    setTimeout(function(){t.style.opacity='0';setTimeout(function(){t.remove();},400);},2200);
+  };
+  saveMagazzino=function(){_demoToast();};
+  saveFornitori=function(){_demoToast();};
+  savePiatti=function(){_demoToast();};
+  saveSemilavorati=function(){_demoToast();};
+  saveMenuPreventivi=function(){_demoToast();};
+  scheduleSyncToGist=function(){};
+  syncToGist=function(){_demoToast();};
+  syncFromGist=function(){};
+
+  /* 3. blocca stampe e download */
+  printMenuCompleto=function(){_demoToast();alert('Stampa non disponibile in modalità demo.');};
+  if(typeof printPiatto==='function') printPiatto=function(){_demoToast();};
+  if(typeof scaricaQr==='function') scaricaQr=function(){_demoToast();};
+
+  /* 4. auto-login (salta la password) */
+  try{sessionStorage.setItem('mep_auth','1');}catch(e){}
+
+  /* 5. banner demo */
+  var banner=document.createElement('div');
+  banner.id='demo-banner';
+  banner.innerHTML='&#128065; <strong>Modalità demo</strong> — Osteria da Claudio &nbsp;·&nbsp; <span style="font-weight:400;opacity:.7;">I dati sono di esempio e non vengono salvati</span>';
+  banner.style.cssText='position:fixed;top:0;left:0;right:0;z-index:9998;background:#1a3a24;color:#fff;font-size:11px;padding:5px 14px;text-align:center;letter-spacing:.02em;';
+  document.body.prepend(banner);
+  /* sposta il body per non coprire il nav */
+  document.body.style.paddingTop='28px';
+}
+
 _landingCheck();
 loadOrdiniStorico();
 loadMenuPreventivi();
+if(DEMO_MODE&&menuPreventivi.length===0){
+  menuPreventivi=[
+    {num:'PREV-2026-001',nomeAtt:'Famiglia Rossi',data:'2026-11-15',coperti:12,orario:'13:00',note:'Anniversario 25 anni',stato:'confermato',voci:[]},
+    {num:'PREV-2026-002',nomeAtt:'Azienda Tech S.r.l.',data:'2026-12-20',coperti:30,orario:'20:00',note:'Cena aziendale di Natale',stato:'opzione',voci:[]}
+  ];
+}
 updateAll();
 renderMagazzino();
 checkAdminSession();
