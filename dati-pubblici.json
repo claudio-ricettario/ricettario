@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "26/10/2026",
+  "exportDate": "27/10/2026",
   "menuData": [
     {
       "nome": "Acqua Frizzante Microfiltrata",
@@ -166,58 +166,6 @@
       ]
     },
     {
-      "nome": "Patate al Forno",
-      "descrizione": "Dalla Val di Gresta",
-      "notaCliente": "",
-      "tags": [
-        "Vegano"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Contorni",
-      "prezzoVendita": 3.9,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [],
-      "tracce": []
-    },
-    {
-      "nome": "Torta di Mele",
-      "descrizione": "Un Classico",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 4.9,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Glutine",
-        "Uova",
-        "Latte e lattosio"
-      ],
-      "tracce": [
-        "Soia"
-      ]
-    },
-    {
-      "nome": "Piatto della Malga",
-      "descrizione": "Hamburger di Tastasal Veronese, polenta bramata grigliata e Monte Veronese alla piastra",
-      "notaCliente": "",
-      "tags": [
-        "Consigliato",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Secondi piatti",
-      "prezzoVendita": 13.9,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Latte e lattosio"
-      ],
-      "tracce": []
-    },
-    {
       "nome": "Cappucci rossi stufati",
       "descrizione": "Con Cappucci Rossi del trentino",
       "notaCliente": "",
@@ -233,6 +181,67 @@
       "allergeni": [
         "Anidride solforosa e solfiti",
         "Sedano"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "CheeseCake cotta",
+      "descrizione": "Con ricotta della Lessinia",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 4.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Glutine",
+        "Latte e lattosio",
+        "Uova"
+      ],
+      "tracce": [
+        "Soia",
+        "Senape"
+      ]
+    },
+    {
+      "nome": "Cotechino e Crauti",
+      "descrizione": "Con Cotechino della Lessinia",
+      "notaCliente": "",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "prezzoVendita": 9.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Sedano",
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Crauti della Malga",
+      "descrizione": "Con i crauti della Val di Gresta",
+      "notaCliente": "",
+      "tags": [
+        "Vegano",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "prezzoVendita": 3.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Sedano",
+        "Anidride solforosa e solfiti"
       ],
       "tracce": []
     },
@@ -259,25 +268,6 @@
       ]
     },
     {
-      "nome": "Crauti della Malga",
-      "descrizione": "Con i crauti della Val di Gresta",
-      "notaCliente": "",
-      "tags": [
-        "Vegano",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Contorni",
-      "prezzoVendita": 3.9,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Sedano",
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
       "nome": "Gnocchi di Malga al Burro fuso",
       "descrizione": "la lessinia nel piatto",
       "notaCliente": "",
@@ -299,20 +289,20 @@
       ]
     },
     {
-      "nome": "Cotechino e Crauti",
-      "descrizione": "Con Cotechino della Lessinia",
+      "nome": "Goulash di manzo",
+      "descrizione": "Leggermente piccante con carne allevata in Lessinia",
       "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
       "pochePorzioni": false,
       "categoria": "Secondi piatti",
-      "prezzoVendita": 9.9,
+      "prezzoVendita": 12.4,
       "tipoBeverage": false,
       "surgelato": false,
       "allergeni": [
-        "Sedano",
-        "Anidride solforosa e solfiti"
+        "Anidride solforosa e solfiti",
+        "Sedano"
       ],
       "tracce": []
     },
@@ -335,6 +325,29 @@
       "tracce": []
     },
     {
+      "nome": "Le Polpette di Carne",
+      "descrizione": "Con carni della lessinia e sugo al pomodoro",
+      "notaCliente": "",
+      "tags": [
+        "Più venduto",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "prezzoVendita": 8.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Glutine",
+        "Anidride solforosa e solfiti",
+        "Latte e lattosio",
+        "Uova"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
       "nome": "Maccheroni al ragù di cortile",
       "descrizione": "Con la ricetta della nonna",
       "notaCliente": "",
@@ -350,45 +363,6 @@
         "Sedano",
         "Anidride solforosa e solfiti"
       ],
-      "tracce": []
-    },
-    {
-      "nome": "Tiramisù della Malga",
-      "descrizione": "Con prodotti del territorio",
-      "notaCliente": "",
-      "tags": [
-        "Più venduto"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 5.9,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Latte e lattosio",
-        "Uova",
-        "Glutine"
-      ],
-      "tracce": [
-        "Soia",
-        "Frutta a guscio"
-      ]
-    },
-    {
-      "nome": "Polenta alla griglia",
-      "descrizione": "Un classico che non può mancare",
-      "notaCliente": "",
-      "tags": [
-        "Vegetariano",
-        "Vegano",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Contorni",
-      "prezzoVendita": 3.4,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [],
       "tracce": []
     },
     {
@@ -415,20 +389,21 @@
       ]
     },
     {
-      "nome": "Goulash di manzo",
-      "descrizione": "Leggermente piccante con carne allevata in Lessinia",
+      "nome": "Pancia di Maiale cotta delicatamente",
+      "descrizione": "Un piatto che riscalda con maiali allevati in Lessinia",
       "notaCliente": "",
       "tags": [
+        "Novità",
         "Del territorio"
       ],
       "pochePorzioni": false,
       "categoria": "Secondi piatti",
-      "prezzoVendita": 12.4,
+      "prezzoVendita": 12.9,
       "tipoBeverage": false,
       "surgelato": false,
       "allergeni": [
-        "Anidride solforosa e solfiti",
-        "Sedano"
+        "Sedano",
+        "Anidride solforosa e solfiti"
       ],
       "tracce": []
     },
@@ -451,22 +426,53 @@
       "tracce": []
     },
     {
-      "nome": "Pancia di Maiale cotta delicatamente",
-      "descrizione": "Un piatto che riscalda con maiali allevati in Lessinia",
+      "nome": "Patate al Forno",
+      "descrizione": "Dalla Val di Gresta",
       "notaCliente": "",
       "tags": [
-        "Novità",
+        "Vegano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "prezzoVendita": 3.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [],
+      "tracce": []
+    },
+    {
+      "nome": "Piatto della Malga",
+      "descrizione": "Hamburger di Tastasal Veronese, polenta bramata grigliata e Monte Veronese alla piastra",
+      "notaCliente": "",
+      "tags": [
+        "Consigliato",
         "Del territorio"
       ],
       "pochePorzioni": false,
       "categoria": "Secondi piatti",
-      "prezzoVendita": 12.9,
+      "prezzoVendita": 13.9,
       "tipoBeverage": false,
       "surgelato": false,
       "allergeni": [
-        "Sedano",
-        "Anidride solforosa e solfiti"
+        "Latte e lattosio"
       ],
+      "tracce": []
+    },
+    {
+      "nome": "Polenta alla griglia",
+      "descrizione": "Un classico che non può mancare",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Vegano",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "prezzoVendita": 3.4,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [],
       "tracce": []
     },
     {
@@ -530,30 +536,6 @@
       "tracce": []
     },
     {
-      "nome": "CheeseCake cotta",
-      "descrizione": "Con ricotta della Lessinia",
-      "notaCliente": "",
-      "tags": [
-        "Vegetariano",
-        "Novità",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 4.9,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Glutine",
-        "Latte e lattosio",
-        "Uova"
-      ],
-      "tracce": [
-        "Soia",
-        "Senape"
-      ]
-    },
-    {
       "nome": "Sbrisolona",
       "descrizione": "Provala con la nostra grappa Morbida +2€",
       "notaCliente": "",
@@ -574,6 +556,57 @@
       ],
       "tracce": [
         "Soia"
+      ]
+    },
+    {
+      "nome": "Semifreddo al Pino Mugo",
+      "descrizione": "Con la nostra grappa",
+      "notaCliente": "\"contiene alcool residuo\"",
+      "tags": [
+        "Novità",
+        "Del territorio",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Dolci",
+      "prezzoVendita": 7.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Uova",
+        "Latte e lattosio",
+        "Soia"
+      ],
+      "tracce": [
+        "Frutta a guscio"
+      ]
+    },
+    {
+      "nome": "Semifreddo all'Amaretto",
+      "descrizione": "Con Prodotti locali",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Consigliato"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 5.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Soia",
+        "Latte e lattosio",
+        "Frutta a guscio"
+      ],
+      "tracce": [
+        "Arachidi",
+        "Senape",
+        "Sesamo",
+        "Lupini"
       ]
     },
     {
@@ -619,27 +652,28 @@
       "tracce": []
     },
     {
-      "nome": "Semifreddo al Pino Mugo",
-      "descrizione": "Con la nostra grappa",
-      "notaCliente": "\"contiene alcool residuo\"",
+      "nome": "Strudel di Mele con crema alla vaniglia",
+      "descrizione": "Con Mele del trentino",
+      "notaCliente": "",
       "tags": [
-        "Novità",
-        "Del territorio",
-        "Fuori menù"
+        "Vegetariano",
+        "Consigliato"
       ],
-      "pochePorzioni": true,
+      "pochePorzioni": false,
       "categoria": "Dolci",
-      "prezzoVendita": 7.9,
+      "prezzoVendita": 6.4,
       "tipoBeverage": false,
       "surgelato": false,
       "allergeni": [
-        "Uova",
+        "Glutine",
         "Latte e lattosio",
-        "Soia"
+        "Arachidi",
+        "Frutta a guscio",
+        "Anidride solforosa e solfiti",
+        "Soia",
+        "Uova"
       ],
-      "tracce": [
-        "Frutta a guscio"
-      ]
+      "tracce": []
     },
     {
       "nome": "Tagliatelle al Ragù di cervo",
@@ -665,13 +699,11 @@
       ]
     },
     {
-      "nome": "Semifreddo all'Amaretto",
-      "descrizione": "Con Prodotti locali",
+      "nome": "Tiramisù della Malga",
+      "descrizione": "Con prodotti del territorio",
       "notaCliente": "",
       "tags": [
-        "Vegetariano",
-        "Più venduto",
-        "Consigliato"
+        "Più venduto"
       ],
       "pochePorzioni": false,
       "categoria": "Dolci",
@@ -679,42 +711,33 @@
       "tipoBeverage": false,
       "surgelato": false,
       "allergeni": [
-        "Glutine",
-        "Uova",
-        "Soia",
         "Latte e lattosio",
-        "Frutta a guscio"
+        "Uova",
+        "Glutine"
       ],
       "tracce": [
-        "Arachidi",
-        "Senape",
-        "Sesamo",
-        "Lupini"
+        "Soia",
+        "Frutta a guscio"
       ]
     },
     {
-      "nome": "Strudel di Mele con crema alla vaniglia",
-      "descrizione": "Con Mele del trentino",
+      "nome": "Torta di Mele",
+      "descrizione": "Un Classico",
       "notaCliente": "",
-      "tags": [
-        "Vegetariano",
-        "Consigliato"
-      ],
+      "tags": [],
       "pochePorzioni": false,
       "categoria": "Dolci",
-      "prezzoVendita": 6.4,
+      "prezzoVendita": 4.9,
       "tipoBeverage": false,
       "surgelato": false,
       "allergeni": [
         "Glutine",
-        "Latte e lattosio",
-        "Arachidi",
-        "Frutta a guscio",
-        "Anidride solforosa e solfiti",
-        "Soia",
-        "Uova"
+        "Uova",
+        "Latte e lattosio"
       ],
-      "tracce": []
+      "tracce": [
+        "Soia"
+      ]
     },
     {
       "nome": "Tortino al Cioccolato",
@@ -9635,6 +9658,130 @@
       "dataCreazione": "6/9/2026"
     },
     {
+      "codice": "SL-074",
+      "nome": "Polpette di carne",
+      "categoria": "Carni lavorate",
+      "resaQta": 1500,
+      "resaUm": "g",
+      "tempo": "30",
+      "procedimento": "Impasta tutti gli ingredienti e fai polpette da 20 gr l'una, rosaola velocemente in forno a 220°C per pochi minuti, abbatti in negativo.",
+      "coefficiente": 3,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 10,
+          "codiceMp": "MP-089",
+          "nome": "Macinato di Manzo",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 9,
+          "codiceMp": "MP-090",
+          "nome": "Macinato di Maiale",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 76,
+          "codiceMp": "MP-054",
+          "nome": "Pane a cubetti Bianco",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 56,
+          "codiceMp": "MP-099",
+          "nome": "Fiocchi di Patate",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 117,
+          "codiceMp": "MP-062",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 116,
+          "codiceMp": "MP-056",
+          "nome": "Grana Padano Dop",
+          "qtaBase": 80,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 94,
+          "codiceMp": "MP-057",
+          "nome": "Sale Fino",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 104,
+          "codiceMp": "MP-059",
+          "nome": "Uova Pastorizzate",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 26,
+          "codiceMp": "MP-081",
+          "nome": "Aglio – in polvere",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 85,
+          "codiceMp": "MP-058",
+          "nome": "Pepe Nero Macinato",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 90,
+          "codiceMp": "MP-115",
+          "nome": "Prezzemolo liofilizzato",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 78,
+          "codiceMp": "MP-164",
+          "nome": "Pane Grattugiato",
+          "qtaBase": 100.5,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "27/10/2026"
+    },
+    {
       "codice": "SL-003",
       "nome": "Porri stufati",
       "categoria": "Verdure lavorate",
@@ -12182,167 +12329,6 @@
       "porzioniVendute": 0
     },
     {
-      "codice": "PF-030",
-      "nome": "Patate al Forno",
-      "descrizione": "Dalla Val di Gresta",
-      "notaCliente": "",
-      "tags": [
-        "Vegano"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Contorni",
-      "sottocategoria": "",
-      "pax": 5,
-      "prezzoVendita": 3.9,
-      "coefficiente": 2,
-      "nelMenu": true,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [
-        "Pela le patate e tagliale a spicchi o cubotti regolari di circa 3-4 cm. \nMettile in acqua fredda e metti sul fuoco, al primo bollore scola subito e distribuisci sulle placche.\nCondisci con olio, rosmarino, aglio schiacciato, sale e pepe. \n\nCuoci in forno ventilato a 200°C per 20/25 minuti, girando a metà cottura.",
-        "Con 1 kg di patate circa 5 porzioni come contorno"
-      ],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Patate per Gnocchi",
-          "qtaBase": 1000,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 105,
-          "codiceMp": "MP-097"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Olio extra vergine d'oliva",
-          "qtaBase": 50,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 51,
-          "codiceMp": "MP-064"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Rosmarino liofilizzato",
-          "qtaBase": 3,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 66,
-          "codiceMp": "MP-072"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Aglio",
-          "qtaBase": 10,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 101,
-          "codiceMp": "MP-069"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Sale Fino",
-          "qtaBase": 8,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 68,
-          "codiceMp": "MP-057"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Pepe Nero Macinato",
-          "qtaBase": 2,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 61,
-          "codiceMp": "MP-058"
-        }
-      ],
-      "dataCreazione": "25/9/2026"
-    },
-    {
-      "codice": "PF-026",
-      "nome": "Torta di Mele",
-      "descrizione": "Un Classico",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 4.9,
-      "coefficiente": 3,
-      "nelMenu": true,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [
-        "Servire 150 gr a persona, se aggiungiamo qualcosaltro rivedere il prezzo di vendita"
-      ],
-      "componenti": [
-        {
-          "tipo": "sl",
-          "nome": "Torta di mele (base)",
-          "qtaBase": 150,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 33,
-          "codiceSl": "SL-034"
-        }
-      ],
-      "dataCreazione": "18/9/2026"
-    },
-    {
-      "codice": "PF-039",
-      "nome": "Piatto della Malga",
-      "descrizione": "Hamburger di Tastasal Veronese, polenta bramata grigliata e Monte Veronese alla piastra",
-      "notaCliente": "",
-      "tags": [
-        "Consigliato",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Secondi piatti",
-      "sottocategoria": "",
-      "pax": 4,
-      "prezzoVendita": 13.9,
-      "coefficiente": 2,
-      "nelMenu": true,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [
-        "Ogni porzione è composta da 1 hamburger di tastasal da 150 gr, 2 fettine di polenta grigliate 120 gr e 1 fetta di Monte da 100 gr."
-      ],
-      "componenti": [
-        {
-          "tipo": "sl",
-          "nome": "Hamburger di Tastasal",
-          "qtaBase": 600,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 23,
-          "codiceSl": "SL-055"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Monte Veronese d'allevo",
-          "qtaBase": 400,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 98,
-          "codiceMp": "MP-055"
-        },
-        {
-          "tipo": "sl",
-          "nome": "Polenta Grigliata",
-          "qtaBase": 480,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 35,
-          "codiceSl": "SL-050"
-        }
-      ],
-      "dataCreazione": "8/10/2026"
-    },
-    {
       "codice": "PF-042",
       "nome": "Cappucci rossi stufati",
       "descrizione": "Con Cappucci Rossi del trentino",
@@ -12375,6 +12361,116 @@
         }
       ],
       "dataCreazione": "12/10/2026"
+    },
+    {
+      "codice": "PF-033",
+      "nome": "CheeseCake cotta",
+      "descrizione": "Con ricotta della Lessinia",
+      "tags": [
+        "Vegetariano",
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 8,
+      "prezzoVendita": 4.9,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Con una Tortiera da 22/24 cm , fare 8 porzioni",
+        "Possiamo servirla o con topping al cioccolato o frutti di bosco, o frutti di bosco freschi"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "CheesCake cotta",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 9,
+          "codiceSl": "SL-046"
+        }
+      ],
+      "dataCreazione": "2/10/2026"
+    },
+    {
+      "codice": "PF-048",
+      "nome": "Cotechino e Crauti",
+      "descrizione": "Con Cotechino della Lessinia",
+      "notaCliente": "",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 9.9,
+      "coefficiente": 4,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Per 1 porzione:\ncotechino 200gr, crauti cotti 150gr"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Cotechino cotto",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 12,
+          "codiceSl": "SL-067"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Crauti Ripassati",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 13,
+          "codiceSl": "SL-047"
+        }
+      ],
+      "dataCreazione": "14/10/2026"
+    },
+    {
+      "codice": "PF-035",
+      "nome": "Crauti della Malga",
+      "descrizione": "Con i crauti della Val di Gresta",
+      "tags": [
+        "Vegano",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "sottocategoria": "",
+      "pax": 10,
+      "prezzoVendita": 3.9,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Servire 150 gr a persona"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Crauti Cotti",
+          "qtaBase": 1500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 11,
+          "codiceSl": "SL-047"
+        }
+      ],
+      "dataCreazione": "4/10/2026"
     },
     {
       "codice": "PF-045",
@@ -12464,12 +12560,12 @@
       "dataCreazione": "5/10/2026"
     },
     {
-      "codice": "PF-035",
-      "nome": "Crauti della Malga",
-      "descrizione": "Con i crauti della Val di Gresta",
+      "codice": "PF-043",
+      "nome": "Fagioli all'uccelletta",
+      "descrizione": "Con Borlotti di Lamon",
+      "notaCliente": "",
       "tags": [
-        "Vegano",
-        "Del territorio"
+        "Vegano"
       ],
       "pochePorzioni": false,
       "categoria": "Contorni",
@@ -12477,24 +12573,24 @@
       "pax": 10,
       "prezzoVendita": 3.9,
       "coefficiente": 2,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
-        "Servire 150 gr a persona"
+        "150gr pax come contorno"
       ],
       "componenti": [
         {
           "tipo": "sl",
-          "nome": "Crauti Cotti",
+          "nome": "Fagioli all'uccelletta",
           "qtaBase": 1500,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 11,
-          "codiceSl": "SL-047"
+          "semiIdx": 21,
+          "codiceSl": "SL-062"
         }
       ],
-      "dataCreazione": "4/10/2026"
+      "dataCreazione": "12/10/2026"
     },
     {
       "codice": "PF-004",
@@ -12590,9 +12686,9 @@
       "dataCreazione": "7/7/2026"
     },
     {
-      "codice": "PF-048",
-      "nome": "Cotechino e Crauti",
-      "descrizione": "Con Cotechino della Lessinia",
+      "codice": "PF-028",
+      "nome": "Goulash di manzo",
+      "descrizione": "Leggermente piccante con carne allevata in Lessinia",
       "notaCliente": "",
       "tags": [
         "Del territorio"
@@ -12601,35 +12697,26 @@
       "categoria": "Secondi piatti",
       "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 9.9,
-      "coefficiente": 4,
+      "prezzoVendita": 12.4,
+      "coefficiente": 3,
       "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
-        "Per 1 porzione:\ncotechino 200gr, crauti cotti 150gr"
+        "200 gr a porzione 4/5 pezzi"
       ],
       "componenti": [
         {
           "tipo": "sl",
-          "nome": "Cotechino cotto",
+          "nome": "Goulash di manzo (base)",
           "qtaBase": 200,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 12,
-          "codiceSl": "SL-067"
-        },
-        {
-          "tipo": "sl",
-          "nome": "Crauti Ripassati",
-          "qtaBase": 150,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 13,
-          "codiceSl": "SL-047"
+          "semiIdx": 15,
+          "codiceSl": "SL-020"
         }
       ],
-      "dataCreazione": "14/10/2026"
+      "dataCreazione": "25/9/2026"
     },
     {
       "codice": "PF-037",
@@ -12733,6 +12820,49 @@
       "porzioniVendute": 0
     },
     {
+      "codice": "PF-066",
+      "nome": "Le Polpette di Carne",
+      "descrizione": "Con carni della lessinia e sugo al pomodoro",
+      "notaCliente": "",
+      "tags": [
+        "Più venduto",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Antipasti",
+      "sottocategoria": "",
+      "pax": 5,
+      "prezzoVendita": 8.9,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Metti 100gr di polpette e 50 gr di pomodoro a persona, scalda e servi subito"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Polpette di carne",
+          "qtaBase": 500,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 49,
+          "codiceSl": "SL-074"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Salsa al pomodoro (base)",
+          "qtaBase": 250,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 56,
+          "codiceSl": "SL-049"
+        }
+      ],
+      "dataCreazione": "27/10/2026"
+    },
+    {
       "codice": "PF-013",
       "nome": "Maccheroni al ragù di cortile",
       "descrizione": "Con la ricetta della nonna",
@@ -12772,97 +12902,98 @@
       "dataCreazione": "10/9/2026"
     },
     {
-      "codice": "PF-015",
-      "nome": "Tiramisù della Malga",
-      "descrizione": "Con prodotti del territorio",
+      "codice": "PF-009",
+      "nome": "MilleFoglie al piatto",
+      "descrizione": "Ottima in ogni stagione",
       "tags": [
-        "Più venduto"
+        "Consigliato",
+        "Novità"
       ],
       "pochePorzioni": false,
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 5.9,
-      "coefficiente": 2,
-      "nelMenu": true,
+      "prezzoVendita": 6,
+      "coefficiente": 3,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
-        "Crea gli strati come di solito e spolvera solo all'ultimo momento con il cacao"
+        "Montare la millefoglie alternando crema e Sfoglia cotta in 3 strati, mettere un po di amaretti ai lati e spolverare con zucchero a velo."
       ],
       "componenti": [
         {
           "tipo": "sl",
-          "nome": "Crema Tiramisù",
-          "qtaBase": 120,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 9,
-          "codiceSl": "SL-7568"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Savoiardi",
-          "qtaBase": 30,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 51,
-          "codiceMp": "MP-107"
-        },
-        {
-          "tipo": "sl",
-          "nome": "Caffè Per Tiramisù",
+          "nome": "Pasta sfoglia",
           "qtaBase": 50,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 3,
-          "codiceSl": "SL-014"
+          "semiIdx": 11,
+          "codiceSl": "SL-018"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Crema per Millefoglie",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 9,
+          "codiceSl": "SL-017"
         },
         {
           "tipo": "mp",
-          "nome": "Cacao Amaro",
-          "qtaBase": 4,
+          "nome": "Amaretti",
+          "qtaBase": 10,
           "unit": "g",
           "conv": 0.001,
-          "magIdx": 18,
-          "codiceMp": "MP-138"
+          "magIdx": 11,
+          "codiceMp": "MP-118"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Zucchero a Velo da Kg",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 47,
+          "codiceMp": "MP-119"
         }
       ],
-      "dataCreazione": "12/9/2026"
+      "dataCreazione": "30/8/2026"
     },
     {
-      "codice": "PF-011",
-      "nome": "Polenta alla griglia",
-      "descrizione": "Un classico che non può mancare",
+      "codice": "PF-031",
+      "nome": "Millefoglie di patate",
+      "descrizione": "Con patate della truffa",
+      "notaCliente": "",
       "tags": [
         "Vegetariano",
-        "Vegano",
         "Del territorio"
       ],
       "pochePorzioni": false,
       "categoria": "Contorni",
       "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 3.4,
-      "coefficiente": 1,
-      "nelMenu": true,
+      "pax": 4,
+      "prezzoVendita": 4.4,
+      "coefficiente": 3,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
-        "3 fette circa 200 gr porzione"
+        "Fai le porzioni e gratinale in forno"
       ],
       "componenti": [
         {
           "tipo": "sl",
-          "nome": "Polenta Grigliata",
-          "qtaBase": 200,
+          "nome": "Millefoglie di Patate",
+          "qtaBase": 800,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 31,
-          "codiceSl": "SL-050"
+          "semiIdx": 28,
+          "codiceSl": "SL-036"
         }
       ],
-      "dataCreazione": "7/9/2026"
+      "dataCreazione": "27/9/2026"
     },
     {
       "codice": "PF-024",
@@ -12969,37 +13100,36 @@
       "dataCreazione": "16/9/2026"
     },
     {
-      "codice": "PF-028",
-      "nome": "Goulash di manzo",
-      "descrizione": "Leggermente piccante con carne allevata in Lessinia",
+      "codice": "PF-034",
+      "nome": "Pancia di Maiale cotta delicatamente",
+      "descrizione": "Un piatto che riscalda con maiali allevati in Lessinia",
       "notaCliente": "",
       "tags": [
+        "Novità",
         "Del territorio"
       ],
       "pochePorzioni": false,
       "categoria": "Secondi piatti",
       "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 12.4,
-      "coefficiente": 3,
+      "pax": 4,
+      "prezzoVendita": 12.9,
+      "coefficiente": 4,
       "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
-      "steps": [
-        "200 gr a porzione 4/5 pezzi"
-      ],
+      "steps": [],
       "componenti": [
         {
           "tipo": "sl",
-          "nome": "Goulash di manzo (base)",
-          "qtaBase": 200,
+          "nome": "Pancia di Maiale CBT",
+          "qtaBase": 1000,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 15,
-          "codiceSl": "SL-020"
+          "semiIdx": 24,
+          "codiceSl": "SL-035"
         }
       ],
-      "dataCreazione": "25/9/2026"
+      "dataCreazione": "4/10/2026"
     },
     {
       "codice": "PF-014",
@@ -13045,9 +13175,9 @@
       "dataCreazione": "10/9/2026"
     },
     {
-      "codice": "PF-043",
-      "nome": "Fagioli all'uccelletta",
-      "descrizione": "Con Borlotti di Lamon",
+      "codice": "PF-030",
+      "nome": "Patate al Forno",
+      "descrizione": "Dalla Val di Gresta",
       "notaCliente": "",
       "tags": [
         "Vegano"
@@ -13055,93 +13185,73 @@
       "pochePorzioni": false,
       "categoria": "Contorni",
       "sottocategoria": "",
-      "pax": 10,
+      "pax": 5,
       "prezzoVendita": 3.9,
       "coefficiente": 2,
-      "nelMenu": false,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [
-        "150gr pax come contorno"
-      ],
-      "componenti": [
-        {
-          "tipo": "sl",
-          "nome": "Fagioli all'uccelletta",
-          "qtaBase": 1500,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 21,
-          "codiceSl": "SL-062"
-        }
-      ],
-      "dataCreazione": "12/10/2026"
-    },
-    {
-      "codice": "PF-031",
-      "nome": "Millefoglie di patate",
-      "descrizione": "Con patate della truffa",
-      "notaCliente": "",
-      "tags": [
-        "Vegetariano",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Contorni",
-      "sottocategoria": "",
-      "pax": 4,
-      "prezzoVendita": 4.4,
-      "coefficiente": 3,
-      "nelMenu": false,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [
-        "Fai le porzioni e gratinale in forno"
-      ],
-      "componenti": [
-        {
-          "tipo": "sl",
-          "nome": "Millefoglie di Patate",
-          "qtaBase": 800,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 28,
-          "codiceSl": "SL-036"
-        }
-      ],
-      "dataCreazione": "27/9/2026"
-    },
-    {
-      "codice": "PF-034",
-      "nome": "Pancia di Maiale cotta delicatamente",
-      "descrizione": "Un piatto che riscalda con maiali allevati in Lessinia",
-      "notaCliente": "",
-      "tags": [
-        "Novità",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Secondi piatti",
-      "sottocategoria": "",
-      "pax": 4,
-      "prezzoVendita": 12.9,
-      "coefficiente": 4,
       "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
-      "steps": [],
+      "steps": [
+        "Pela le patate e tagliale a spicchi o cubotti regolari di circa 3-4 cm. \nMettile in acqua fredda e metti sul fuoco, al primo bollore scola subito e distribuisci sulle placche.\nCondisci con olio, rosmarino, aglio schiacciato, sale e pepe. \n\nCuoci in forno ventilato a 200°C per 20/25 minuti, girando a metà cottura.",
+        "Con 1 kg di patate circa 5 porzioni come contorno"
+      ],
       "componenti": [
         {
-          "tipo": "sl",
-          "nome": "Pancia di Maiale CBT",
+          "tipo": "mp",
+          "nome": "Patate per Gnocchi",
           "qtaBase": 1000,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 24,
-          "codiceSl": "SL-035"
+          "magIdx": 105,
+          "codiceMp": "MP-097"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 51,
+          "codiceMp": "MP-064"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Rosmarino liofilizzato",
+          "qtaBase": 3,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 66,
+          "codiceMp": "MP-072"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Aglio",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 101,
+          "codiceMp": "MP-069"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Sale Fino",
+          "qtaBase": 8,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 68,
+          "codiceMp": "MP-057"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pepe Nero Macinato",
+          "qtaBase": 2,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 61,
+          "codiceMp": "MP-058"
         }
       ],
-      "dataCreazione": "4/10/2026"
+      "dataCreazione": "25/9/2026"
     },
     {
       "codice": "PF-044",
@@ -13176,6 +13286,92 @@
         }
       ],
       "dataCreazione": "12/10/2026"
+    },
+    {
+      "codice": "PF-039",
+      "nome": "Piatto della Malga",
+      "descrizione": "Hamburger di Tastasal Veronese, polenta bramata grigliata e Monte Veronese alla piastra",
+      "notaCliente": "",
+      "tags": [
+        "Consigliato",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Secondi piatti",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 13.9,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Ogni porzione è composta da 1 hamburger di tastasal da 150 gr, 2 fettine di polenta grigliate 120 gr e 1 fetta di Monte da 100 gr."
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Hamburger di Tastasal",
+          "qtaBase": 600,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 23,
+          "codiceSl": "SL-055"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Monte Veronese d'allevo",
+          "qtaBase": 400,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 98,
+          "codiceMp": "MP-055"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Polenta Grigliata",
+          "qtaBase": 480,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 35,
+          "codiceSl": "SL-050"
+        }
+      ],
+      "dataCreazione": "8/10/2026"
+    },
+    {
+      "codice": "PF-011",
+      "nome": "Polenta alla griglia",
+      "descrizione": "Un classico che non può mancare",
+      "tags": [
+        "Vegetariano",
+        "Vegano",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Contorni",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 3.4,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "3 fette circa 200 gr porzione"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Polenta Grigliata",
+          "qtaBase": 200,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 31,
+          "codiceSl": "SL-050"
+        }
+      ],
+      "dataCreazione": "7/9/2026"
     },
     {
       "codice": "PF-036",
@@ -13398,101 +13594,6 @@
       "porzioniVendute": 0
     },
     {
-      "codice": "PF-033",
-      "nome": "CheeseCake cotta",
-      "descrizione": "Con ricotta della Lessinia",
-      "tags": [
-        "Vegetariano",
-        "Novità",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "sottocategoria": "",
-      "pax": 8,
-      "prezzoVendita": 4.9,
-      "coefficiente": 2,
-      "nelMenu": true,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [
-        "Con una Tortiera da 22/24 cm , fare 8 porzioni",
-        "Possiamo servirla o con topping al cioccolato o frutti di bosco, o frutti di bosco freschi"
-      ],
-      "componenti": [
-        {
-          "tipo": "sl",
-          "nome": "CheesCake cotta",
-          "qtaBase": 1000,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 9,
-          "codiceSl": "SL-046"
-        }
-      ],
-      "dataCreazione": "2/10/2026"
-    },
-    {
-      "codice": "PF-009",
-      "nome": "MilleFoglie al piatto",
-      "descrizione": "Ottima in ogni stagione",
-      "tags": [
-        "Consigliato",
-        "Novità"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 6,
-      "coefficiente": 3,
-      "nelMenu": false,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [
-        "Montare la millefoglie alternando crema e Sfoglia cotta in 3 strati, mettere un po di amaretti ai lati e spolverare con zucchero a velo."
-      ],
-      "componenti": [
-        {
-          "tipo": "sl",
-          "nome": "Pasta sfoglia",
-          "qtaBase": 50,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 11,
-          "codiceSl": "SL-018"
-        },
-        {
-          "tipo": "sl",
-          "nome": "Crema per Millefoglie",
-          "qtaBase": 100,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 9,
-          "codiceSl": "SL-017"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Amaretti",
-          "qtaBase": 10,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 11,
-          "codiceMp": "MP-118"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Zucchero a Velo da Kg",
-          "qtaBase": 20,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 47,
-          "codiceMp": "MP-119"
-        }
-      ],
-      "dataCreazione": "30/8/2026"
-    },
-    {
       "codice": "PF-016",
       "nome": "Sbrisolona",
       "descrizione": "Provala con la nostra grappa Morbida +2€",
@@ -13523,6 +13624,102 @@
       ],
       "dataCreazione": "12/9/2026",
       "porzioniVendute": 0
+    },
+    {
+      "codice": "PF-025",
+      "nome": "Semifreddo al Pino Mugo",
+      "descrizione": "Con la nostra grappa",
+      "notaCliente": "\"contiene alcool residuo\"",
+      "tags": [
+        "Novità",
+        "Del territorio",
+        "Fuori menù"
+      ],
+      "pochePorzioni": true,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 7.9,
+      "coefficiente": 3,
+      "nelMenu": false,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Mettere come base la terra di cioccolato, adagiare sopra il semifreddo (150 gr pax) e a chiudete il miele"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Semifreddo alla grappa di Pino Mugo",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 29,
+          "codiceSl": "SL-031"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Terra al cioccolato",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 31,
+          "codiceSl": "SL-032"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Miele Millefiori",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 41,
+          "codiceMp": "MP-151"
+        }
+      ],
+      "dataCreazione": "18/9/2026"
+    },
+    {
+      "codice": "PF-017",
+      "nome": "Semifreddo all'Amaretto",
+      "descrizione": "Con Prodotti locali",
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Consigliato"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 5.9,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Fare una mattonella di 150 gr di semifreddo, racchiusa tra le due cialde, servire come al bar Milano de na volta"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Cialda per Gelato",
+          "qtaBase": 6,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 22,
+          "codiceMp": "MP-145"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Semifreddo all'Amaretto",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 28,
+          "codiceSl": "SL-928"
+        }
+      ],
+      "dataCreazione": "13/9/2026"
     },
     {
       "codice": "PF-027",
@@ -13635,57 +13832,48 @@
       "dataCreazione": "15/10/2026"
     },
     {
-      "codice": "PF-025",
-      "nome": "Semifreddo al Pino Mugo",
-      "descrizione": "Con la nostra grappa",
-      "notaCliente": "\"contiene alcool residuo\"",
+      "codice": "PF-029",
+      "nome": "Strudel di Mele con crema alla vaniglia",
+      "descrizione": "Con Mele del trentino",
+      "notaCliente": "",
       "tags": [
-        "Novità",
-        "Del territorio",
-        "Fuori menù"
+        "Vegetariano",
+        "Consigliato"
       ],
-      "pochePorzioni": true,
+      "pochePorzioni": false,
       "categoria": "Dolci",
       "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 7.9,
+      "pax": 5,
+      "prezzoVendita": 6.4,
       "coefficiente": 3,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
-        "Mettere come base la terra di cioccolato, adagiare sopra il semifreddo (150 gr pax) e a chiudete il miele"
+        "Con uno strudel intero facciamo 5/ 6 porzioni circa",
+        "Metti 100 gr di crema a porzione"
       ],
       "componenti": [
         {
           "tipo": "sl",
-          "nome": "Semifreddo alla grappa di Pino Mugo",
-          "qtaBase": 150,
+          "nome": "Strudel di mele con pasta sfoglia",
+          "qtaBase": 1000,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 29,
-          "codiceSl": "SL-031"
+          "semiIdx": 35,
+          "codiceSl": "SL-038"
         },
         {
           "tipo": "sl",
-          "nome": "Terra al cioccolato",
-          "qtaBase": 30,
+          "nome": "Crema Pasticcera",
+          "qtaBase": 500,
           "unit": "g",
           "conv": 0.001,
-          "semiIdx": 31,
-          "codiceSl": "SL-032"
-        },
-        {
-          "tipo": "mp",
-          "nome": "Miele Millefiori",
-          "qtaBase": 20,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 41,
-          "codiceMp": "MP-151"
+          "semiIdx": 9,
+          "codiceSl": "SL-039"
         }
       ],
-      "dataCreazione": "18/9/2026"
+      "dataCreazione": "25/9/2026"
     },
     {
       "codice": "PF-052",
@@ -13773,91 +13961,93 @@
       "dataCreazione": "14/10/2026"
     },
     {
-      "codice": "PF-017",
-      "nome": "Semifreddo all'Amaretto",
-      "descrizione": "Con Prodotti locali",
+      "codice": "PF-015",
+      "nome": "Tiramisù della Malga",
+      "descrizione": "Con prodotti del territorio",
       "tags": [
-        "Vegetariano",
-        "Più venduto",
-        "Consigliato"
+        "Più venduto"
       ],
       "pochePorzioni": false,
       "categoria": "Dolci",
       "sottocategoria": "",
       "pax": 1,
       "prezzoVendita": 5.9,
-      "coefficiente": 3,
+      "coefficiente": 2,
       "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
-        "Fare una mattonella di 150 gr di semifreddo, racchiusa tra le due cialde, servire come al bar Milano de na volta"
-      ],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Cialda per Gelato",
-          "qtaBase": 6,
-          "unit": "g",
-          "conv": 0.001,
-          "magIdx": 22,
-          "codiceMp": "MP-145"
-        },
-        {
-          "tipo": "sl",
-          "nome": "Semifreddo all'Amaretto",
-          "qtaBase": 150,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 28,
-          "codiceSl": "SL-928"
-        }
-      ],
-      "dataCreazione": "13/9/2026"
-    },
-    {
-      "codice": "PF-029",
-      "nome": "Strudel di Mele con crema alla vaniglia",
-      "descrizione": "Con Mele del trentino",
-      "notaCliente": "",
-      "tags": [
-        "Vegetariano",
-        "Consigliato"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "sottocategoria": "",
-      "pax": 5,
-      "prezzoVendita": 6.4,
-      "coefficiente": 3,
-      "nelMenu": true,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [
-        "Con uno strudel intero facciamo 5/ 6 porzioni circa",
-        "Metti 100 gr di crema a porzione"
+        "Crea gli strati come di solito e spolvera solo all'ultimo momento con il cacao"
       ],
       "componenti": [
         {
           "tipo": "sl",
-          "nome": "Strudel di mele con pasta sfoglia",
-          "qtaBase": 1000,
-          "unit": "g",
-          "conv": 0.001,
-          "semiIdx": 35,
-          "codiceSl": "SL-038"
-        },
-        {
-          "tipo": "sl",
-          "nome": "Crema Pasticcera",
-          "qtaBase": 500,
+          "nome": "Crema Tiramisù",
+          "qtaBase": 120,
           "unit": "g",
           "conv": 0.001,
           "semiIdx": 9,
-          "codiceSl": "SL-039"
+          "codiceSl": "SL-7568"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Savoiardi",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 51,
+          "codiceMp": "MP-107"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Caffè Per Tiramisù",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 3,
+          "codiceSl": "SL-014"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Cacao Amaro",
+          "qtaBase": 4,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 18,
+          "codiceMp": "MP-138"
         }
       ],
-      "dataCreazione": "25/9/2026"
+      "dataCreazione": "12/9/2026"
+    },
+    {
+      "codice": "PF-026",
+      "nome": "Torta di Mele",
+      "descrizione": "Un Classico",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 4.9,
+      "coefficiente": 3,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Servire 150 gr a persona, se aggiungiamo qualcosaltro rivedere il prezzo di vendita"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Torta di mele (base)",
+          "qtaBase": 150,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 33,
+          "codiceSl": "SL-034"
+        }
+      ],
+      "dataCreazione": "18/9/2026"
     },
     {
       "codice": "PF-040",
