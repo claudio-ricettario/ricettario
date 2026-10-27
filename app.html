@@ -1320,6 +1320,7 @@ function today(){var d=new Date();return d.getDate()+'/'+(d.getMonth()+1)+'/'+d.
 /* ===== EXPORT / IMPORT ===== */
 
 function checkBackupReminder(){
+  if(DEMO_MODE) return; // nasconde in demo
   var banner=document.getElementById('backup-reminder');
   var sub=document.getElementById('backup-reminder-sub');
   if(!banner) return;
@@ -4994,8 +4995,10 @@ if(DEMO_MODE){
   if(typeof printPiatto==='function') printPiatto=function(){_demoToast();};
   if(typeof scaricaQr==='function') scaricaQr=function(){_demoToast();};
 
-  /* 4. auto-login (salta la password) */
+  /* 4. auto-login e auto-admin */
   try{sessionStorage.setItem('mep_auth','1');}catch(e){}
+  try{sessionStorage.setItem('rc_admin','1');}catch(e){}
+  isAdmin=true;
 
   /* 5. banner demo */
   var banner=document.createElement('div');
@@ -5020,6 +5023,13 @@ updateAll();
 renderMagazzino();
 checkAdminSession();
 applyAdminUI();
+if(DEMO_MODE){
+  try{renderHome();}catch(e){}
+  try{renderSemilavorati();}catch(e){}
+  try{renderFoodCost();}catch(e){}
+  try{renderMenuEngineering();}catch(e){}
+  try{renderMenuPreventivi();}catch(e){}
+}
 /* mostra bottone guida contestuale sulla tab iniziale */
 (function(){var gb=document.getElementById('guida-ctx-btn');if(gb)gb.style.display='flex';})();
 /* Escape chiude la guida contestuale e ripristina il body */
