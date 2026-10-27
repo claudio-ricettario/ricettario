@@ -4972,7 +4972,7 @@ if(DEMO_MODE){
     ];
   })();
 
-  /* 2. blocca tutti i salvataggi */
+  /* 2. intercetta TUTTI i click — lascia solo la navigazione tra sezioni */
   var _demoToast=function(){
     var t=document.createElement('div');
     t.textContent='Modalità demo — le modifiche non vengono salvate';
@@ -4981,19 +4981,36 @@ if(DEMO_MODE){
     setTimeout(function(){t.style.opacity='1';},10);
     setTimeout(function(){t.style.opacity='0';setTimeout(function(){t.remove();},400);},2200);
   };
-  saveMagazzino=function(){_demoToast();};
-  saveFornitori=function(){_demoToast();};
-  savePiatti=function(){_demoToast();};
-  saveSemilavorati=function(){_demoToast();};
-  saveMenuPreventivi=function(){_demoToast();};
+  saveMagazzino=function(){};
+  saveFornitori=function(){};
+  savePiatti=function(){};
+  saveSemilavorati=function(){};
+  saveMenuPreventivi=function(){};
   scheduleSyncToGist=function(){};
-  syncToGist=function(){_demoToast();};
+  syncToGist=function(){};
   syncFromGist=function(){};
+  printMenuCompleto=function(){};
+  esportaDati=function(){};
 
-  /* 3. blocca stampe e download */
-  printMenuCompleto=function(){_demoToast();alert('Stampa non disponibile in modalità demo.');};
-  if(typeof printPiatto==='function') printPiatto=function(){_demoToast();};
-  if(typeof scaricaQr==='function') scaricaQr=function(){_demoToast();};
+  /* intercettore click globale in capture phase */
+  document.addEventListener('click', function(e){
+    /* elementi sempre permessi: navigazione tra sezioni e logo */
+    var node=e.target;
+    while(node && node!==document.body){
+      var oc=node.getAttribute?node.getAttribute('onclick')||'':'';
+      /* showTab e showHome sono le uniche azioni concesse */
+      if(oc.indexOf('showTab')>=0) return;
+      /* logo cliccabile */
+      if(node.tagName==='IMG'&&node.alt==='MiseEnPlace PRO') return;
+      /* il tab-bar stesso e le card dashboard sono ok */
+      if(node.classList&&(node.classList.contains('dash-card')||node.classList.contains('tab'))) return;
+      node=node.parentElement;
+    }
+    /* tutto il resto: blocca e mostra toast */
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    _demoToast();
+  }, true);
 
   /* 4. auto-login e auto-admin */
   try{sessionStorage.setItem('mep_auth','1');}catch(e){}
