@@ -4992,6 +4992,11 @@ if(DEMO_MODE){
   printMenuCompleto=function(){};
   esportaDati=function(){};
 
+  /* nasconde la card Guida e il tab Guida */
+  var hideGuida=document.createElement('style');
+  hideGuida.textContent='#tab-btn-guida,[onclick="showTab(\'guida\')"]{display:none!important;}';
+  document.head.appendChild(hideGuida);
+
   /* CSS: disabilita pointer-events su tutto, riabilita solo navigazione */
   var demoStyle=document.createElement('style');
   demoStyle.textContent=
