@@ -327,7 +327,7 @@ textarea{resize:vertical;min-height:60px;}
 <!-- END LANDING PAGE -->
 <header>
   <img src="./logo.png" alt="MiseEnPlace PRO" style="height:52px;display:block;border:1.5px solid #1a1a1a;border-radius:6px;padding:2px 8px;"/>
-  <button onclick="showTab('dashboard')" title="Home" style="padding:7px 11px;font-size:18px;background:#fff;border:1px solid #d0cec8;border-radius:8px;cursor:pointer;line-height:1;margin-left:8px;flex-shrink:0;">&#127968;</button>
+  <button id="btn-home-nav" onclick="showTab('dashboard')" title="Home" style="padding:7px 11px;font-size:18px;background:#fff;border:1px solid #d0cec8;border-radius:8px;cursor:pointer;line-height:1;margin-left:8px;flex-shrink:0;">&#127968;</button>
   <div style="flex:1;max-width:320px;min-width:140px;margin:0 8px;">
     <input type="text" id="global-search" placeholder="&#128269; Cerca..." 
       oninput="globalSearch(this.value)"
@@ -4994,7 +4994,8 @@ if(DEMO_MODE){
 
   /* nasconde la card Guida e il tab Guida */
   var hideGuida=document.createElement('style');
-  hideGuida.textContent='#tab-btn-guida,[onclick="showTab(\'guida\')"]{display:none!important;}';
+  hideGuida.textContent='#tab-btn-guida,[onclick="showTab(\'guida\')"]{display:none!important;}'
+    +'#btn-home-nav{pointer-events:auto!important;cursor:pointer!important;}';
   document.head.appendChild(hideGuida);
 
   /* CSS: disabilita pointer-events su tutto, riabilita solo navigazione */
