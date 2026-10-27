@@ -4992,25 +4992,28 @@ if(DEMO_MODE){
   printMenuCompleto=function(){};
   esportaDati=function(){};
 
-  /* intercettore click globale in capture phase */
-  document.addEventListener('click', function(e){
-    /* elementi sempre permessi: navigazione tra sezioni e logo */
-    var node=e.target;
-    while(node && node!==document.body){
-      var oc=node.getAttribute?node.getAttribute('onclick')||'':'';
-      /* showTab e showHome sono le uniche azioni concesse */
-      if(oc.indexOf('showTab')>=0) return;
-      /* logo cliccabile */
-      if(node.tagName==='IMG'&&node.alt==='MiseEnPlace PRO') return;
-      /* il tab-bar stesso e le card dashboard sono ok */
-      if(node.classList&&(node.classList.contains('dash-card')||node.classList.contains('tab'))) return;
-      node=node.parentElement;
-    }
-    /* tutto il resto: blocca e mostra toast */
+  /* CSS: disabilita pointer-events su tutto, riabilita solo navigazione */
+  var demoStyle=document.createElement('style');
+  demoStyle.textContent=
+    /* blocca tutti i bottoni, link e elementi cliccabili */
+    'button,a,[onclick],input,select,textarea{pointer-events:none!important;cursor:default!important;}'
+    /* riabilita navigazione tra sezioni */
+    +'.tab,.dash-card{pointer-events:auto!important;cursor:pointer!important;}'
+    /* riabilita logo e home */
+    +'#demo-banner a,#demo-banner{pointer-events:auto!important;}'
+    /* cursore "non permesso" su cose bloccate */
+    +'button,a,[onclick]{cursor:not-allowed!important;}';
+  document.head.appendChild(demoStyle);
+
+  /* click su qualsiasi cosa non navigabile → toast */
+  document.addEventListener('click',function(e){
+    var t=e.target;
+    if(t.closest&&(t.closest('.tab')||t.closest('.dash-card'))) return;
+    if(t.closest&&t.closest('#demo-banner')) return;
     e.preventDefault();
     e.stopImmediatePropagation();
     _demoToast();
-  }, true);
+  },true);
 
   /* 4. auto-login e auto-admin */
   try{sessionStorage.setItem('mep_auth','1');}catch(e){}
