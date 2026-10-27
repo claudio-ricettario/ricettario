@@ -1499,7 +1499,7 @@ function loadSaved(){
   loadCodiceCounters();
   /* ripara silenziosamente i codiceMp/codiceSl mancanti nei componenti */
   try{riparaComponentiSilenzioso();}catch(e){}
-  /* se un piatto è Fuori menù, disattiva la stellina */
+  /* se un piatto è Fuori menù, porta stato in archivio */
   try{var _fix=false;piatti.forEach(function(p){if((p.tags||[]).indexOf('Fuori menù')>=0&&p.nelMenu){p.nelMenu=false;_fix=true;}});if(_fix)savePiatti();}catch(e){}
   /* avvia sync dal cloud solo al primo caricamento (non nei reload interni) */
   if(!window._syncInitDone){
@@ -3316,7 +3316,7 @@ function renderGuida(){
       +'<li>Usa la <strong>barra di ricerca</strong> in alto per trovare un piatto per nome.</li>'
       +'<li>Clicca sul piatto per aprire la scheda con ingredienti, procedimento e allergeni.</li>'
       +'</ol>'
-      +'<div class="gtip">I piatti contrassegnati con &#9733; sono quelli attualmente nel menu attivo.</div>'
+      +'<div class="gtip">I piatti contrassegnati con <strong style="color:#16a34a;">● attivo</strong> sono quelli attualmente nel menu attivo.</div>'
       +'</div></details>';
 
     h+='<details class="gs"><summary>&#128438; Stampare una ricetta</summary><div class="gb">'
@@ -3507,14 +3507,14 @@ function renderGuida(){
       +'<li>Imposta il coefficiente di complessità del piatto.</li>'
       +'<li>Salva — il food cost viene calcolato automaticamente.</li>'
       +'</ol>'
-      +'<h4>Stellina &#x2605; — Nel menu attivo</h4>'
-      +'<p>Indica che il piatto è incluso nel menu attivo. Si gestisce <strong>solo dalla lista</strong> cliccando &#x2605;/&#x2606; accanto al piatto (modalità admin). I piatti con stellina attiva:</p>'
+      +'<h4>● Attivo / ○ Archivio — Stato nel menu</h4>'
+      +'<p>Indica se il piatto è incluso nel menu attivo. Si gestisce <strong>solo dalla lista</strong> cliccando la pillola accanto al piatto (modalità admin): <strong style="color:#16a34a;">● attivo</strong> significa che è nel menu, <strong style="color:#aaa;">○ archivio</strong> che non appare. I piatti attivi:</p>'
       +'<ul>'
       +'<li>Appaiono nella sezione <em>Porzioni vendute</em> dei Costi di gestione</li>'
       +'<li>Vengono inclusi nel file pubblicato per il <strong>menu digitale</strong> (pulsante Pubblica)</li>'
       +'</ul>'
-      +'<div class="gnote"><strong>Porzioni vendute vuota o incompleta?</strong> Se in Costi di gestione → Porzioni vendute vedi pochi piatti (o solo alcuni), controlla che abbiano la stellina ★ attiva in La Carte. Solo i piatti con stellina compaiono in quella sezione — è il modo in cui l\'app sa quali piatti fanno parte del menu corrente.</div>'
-      +'<div class="gnote"><strong>Fuori menù e stellina:</strong> i piatti con il tag "Fuori menù" non possono avere la stellina attiva — appaiono nella card speciale in cima al menu online e non nelle categorie normali. Se provi ad attivarla, l\'app la blocca automaticamente.</div>'
+      +'<div class="gnote"><strong>Porzioni vendute vuota o incompleta?</strong> Se in Costi di gestione → Porzioni vendute vedi pochi piatti (o solo alcuni), controlla che siano impostati su <strong>● attivo</strong> in La Carte. Solo i piatti attivi compaiono in quella sezione — è il modo in cui l\'app sa quali piatti fanno parte del menu corrente.</div>'
+      +'<div class="gnote"><strong>Fuori menù e stato attivo:</strong> i piatti con il tag "Fuori menù" non possono essere impostati su attivo — appaiono nella card speciale in cima al menu online e non nelle categorie normali. Se provi ad attivarli, l\'app lo blocca automaticamente.</div>'
       +'<h4>Descrizione breve</h4>'
       +'<p>Campo facoltativo di max 120 caratteri che appare sotto il nome del piatto nel menu digitale. Usalo per descrivere ingredienti principali o tecnica di cottura — es. <em>"Ragù di cinghiale, polenta morbida, pecorino stagionato"</em>. Non appare nelle stampe interne né nel food cost.</p>'
       +'<h4>Etichette menu</h4>'
@@ -3533,7 +3533,7 @@ function renderGuida(){
       +'<p>Usala per le proposte del giorno, i piatti stagionali o qualsiasi specialità che vuoi mettere in evidenza. Puoi aggiungerla e toglierla in qualsiasi momento: basta spuntare/deselezionare il tag e fare Pubblica.</p>'
       +'<ul>'
       +'<li>I piatti "Fuori menù" <strong>non appaiono nelle categorie normali</strong> del menu digitale — solo nella card in cima.</li>'
-      +'<li>La stellina ★ viene disattivata automaticamente quando si assegna questo tag.</li>'
+      +'<li>Lo stato viene impostato su <strong>○ archivio</strong> automaticamente quando si assegna questo tag.</li>'
       +'<li>Massimo <strong>3 piatti</strong> contemporaneamente con questo tag.</li>'
       +'<li>Puoi aggiungere la spunta <em>⏳ Poche porzioni disponibili</em> per avvisare i clienti di affrettarsi.</li>'
       +'</ul>'
@@ -3553,7 +3553,7 @@ function renderGuida(){
       +'<h4>&#128438; Stampa menu (PDF A4)</h4>'
       +'<p>Il pulsante <strong>&#128438; Stampa menu</strong> in alto nella sezione <em>La Carte</em> genera un menu cartaceo completo in formato A4, pronto per la stampa o da salvare come PDF.</p>'
       +'<ul>'
-      +'<li>Include solo i piatti con la stellina ★ attiva, raggruppati per categoria nell\'ordine standard (Antipasti, Primi, Secondi…).</li>'
+      +'<li>Include solo i piatti con stato <strong>● attivo</strong>, raggruppati per categoria nell\'ordine standard (Antipasti, Primi, Secondi…).</li>'
       +'<li>I piatti con l\'etichetta <strong>⭐ Consigliato</strong> appaiono evidenziati con una cornice color ambra.</li>'
       +'<li>Il nome di ogni piatto è in maiuscolo con i numeri degli allergeni in apice; descrizione e prezzo sono sulla stessa riga, stesso carattere.</li>'
       +'<li>L\'ultima pagina riporta l\'elenco numerato dei 14 allergeni con le relative descrizioni, come riferimento per i clienti.</li>'
@@ -3775,7 +3775,7 @@ function renderGuida(){
       +'<p>MiseEnPlace PRO include un <strong>menu digitale pubblico</strong> accessibile via QR code da qualsiasi smartphone, senza login. Mostra solo i piatti che hai scelto di pubblicare, con descrizione, allergeni e prezzo.</p>'
       +'<h4>Flusso di aggiornamento</h4>'
       +'<ol>'
-      +'<li>Nella sezione <strong>&#127374; La Carte</strong>, attiva la <strong>&#9733; stellina</strong> sui piatti che vuoi nel menu.</li>'
+      +'<li>Nella sezione <strong>&#127374; La Carte</strong>, imposta su <strong style="color:#16a34a;">● attivo</strong> i piatti che vuoi nel menu.</li>'
       +'<li>Assicurati che ogni piatto abbia una <strong>descrizione breve</strong> (campo nel form — max 120 caratteri).</li>'
       +'<li>Clicca il pulsante verde <strong>&#128228; Pubblica</strong> in alto: salva il file <code>dati-pubblici.json</code> nella cartella del progetto.</li>'
       +'<li>Apri <strong>GitHub Desktop</strong> → fai <strong>Commit</strong> e <strong>Push</strong>.</li>'
@@ -6924,7 +6924,7 @@ function renderPiatti(){
         +'<button class="btn-sm" onclick="event.stopPropagation();movePiatto('+realIdx+',1)" style="padding:1px 6px;font-size:10px;line-height:1.4;" title="Sposta giù">▼</button>'
         +'</div>':'')
       +'<button class="btn-sm" onclick="event.stopPropagation();openPiattoModal('+realIdx+')" style="flex-shrink:0;">&#9998;</button>'
-      +'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+realIdx+')" style="flex-shrink:0;margin-left:4px;background:'+(p.nelMenu?'#dcfce7;color:#16a34a':'#f5f4f0;color:#aaa')+';font-size:14px;" title="'+(p.nelMenu?'Nel menu attivo - clicca per rimuovere':'Non nel menu - clicca per aggiungere')+'">'+( p.nelMenu?'★':'☆')+'</button>'
+      +'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+realIdx+')" style="flex-shrink:0;margin-left:4px;background:'+(p.nelMenu?'#dcfce7':'#f5f4f0')+';color:'+(p.nelMenu?'#16a34a':'#aaa')+';border:1px solid '+(p.nelMenu?'#bbf7d0':'#e0ded8')+';font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;white-space:nowrap;" title="'+(p.nelMenu?'Nel menu attivo - clicca per rimuovere':'Non nel menu - clicca per aggiungere')+'">'+(p.nelMenu?'● attivo':'○ archivio')+'</button>'
       +'</div>'
       +'<div class="semi-detail" id="piatto-detail-'+realIdx+'">'
       +'<table style="width:100%;border-collapse:collapse;font-size:13px;">'
@@ -7162,7 +7162,7 @@ function homeRicettaRow(r,i){
     +'<div class="home-ricetta-meta">'+r.pax+' porzioni'+(r._isBase?' &middot; ricetta base':r.dataCreazione?' &middot; '+r.dataCreazione:'')+(r._isPiatto&&r.prezzoVendita>0?' &middot; <strong style="color:#2d7d46;">€&nbsp;'+parseFloat(r.prezzoVendita).toFixed(2)+'/pax</strong>':'')+'</div>'
     +'</div>'
     +'<span class="home-ricetta-fc">'+fcBadge+'</span>'
-    +(r._isPiatto&&isAdmin?'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+r._piattoIdx+')" style="margin-left:6px;flex-shrink:0;background:'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'#dcfce7;color:#16a34a':'#f5f4f0;color:#aaa')+';font-size:14px;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;" title="'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'Nel menu':'Non nel menu')+'">'+( piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'&#9733;':'&#9734;')+'</button>':'')
+    +(r._isPiatto&&isAdmin?'<button class="btn-sm" onclick="event.stopPropagation();toggleNelMenu('+r._piattoIdx+')" style="margin-left:6px;flex-shrink:0;background:'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'#dcfce7':'#f5f4f0')+';color:'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'#16a34a':'#aaa')+';border:1px solid '+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'#bbf7d0':'#e0ded8')+';font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;white-space:nowrap;cursor:pointer;" title="'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'Nel menu':'Non nel menu')+'">'+(piatti[r._piattoIdx]&&piatti[r._piattoIdx].nelMenu?'● attivo':'○ archivio')+'</button>':'')
     +(r._isPiatto?'<button class="btn-sm" onclick="event.stopPropagation();printLibroIngredienti('+r._piattoIdx+')" style="margin-left:4px;flex-shrink:0;" title="Libro ingredienti">&#128203;</button>':'')
     +(r._isPiatto&&isAdmin?'<div style="display:flex;flex-direction:column;gap:1px;margin-left:4px;">'
       +'<button class="btn-sm" onclick="event.stopPropagation();movePiatto('+r._piattoIdx+',-1)" style="padding:1px 5px;font-size:9px;line-height:1.4;" title="Sposta su">▲</button>'
@@ -8031,7 +8031,7 @@ function printMenuCompleto(){
     grouped[cat].push(p);
   });
   var cats=CAT_ORDER.filter(function(c){return grouped[c]&&grouped[c].length;});
-  if(!cats.length){alert('Nessun piatto nel menu attivo. Attiva almeno un piatto con la stellina.');return;}
+  if(!cats.length){alert('Nessun piatto nel menu attivo. Imposta almeno un piatto su ● attivo in La Carte.');return;}
 
   function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   function eur(v){return (parseFloat(v)||0).toFixed(2).replace('.',',')+'€';}
@@ -9109,7 +9109,7 @@ function npModifica(idx){
   document.getElementById('np-pax').value=p.pax||4;
   document.getElementById('np-pv').value=p.prezzoVendita||'';
   document.getElementById('np-coeff').value=p.coefficiente||1;
-  /* nelMenu gestito dalla stellina nella lista */
+  /* nelMenu gestito dalla pillola attivo/archivio nella lista */
   var bevCb=document.getElementById('np-bev');
   if(bevCb)bevCb.checked=p.tipoBeverage||false;
   setTimeout(aggiornaSuggerimentoCoeff,50);
