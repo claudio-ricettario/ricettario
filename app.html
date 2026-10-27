@@ -5016,6 +5016,7 @@ if(DEMO_MODE){
     var t=e.target;
     if(t.closest&&(t.closest('.tab')||t.closest('.dash-card'))) return;
     if(t.closest&&t.closest('#demo-banner')) return;
+    if(t.closest&&t.closest('#btn-home-nav')) return;
     e.preventDefault();
     e.stopImmediatePropagation();
     _demoToast();
