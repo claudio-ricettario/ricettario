@@ -8148,12 +8148,17 @@ function printMenuCompleto(){
     html+='<div class="page">'+headerHtml+'<div class="two-col">';
     p1cats.forEach(function(cat){html+=renderCatBlock(cat);});
     var qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=120x120&margin=4&data='+encodeURIComponent('https://www.miseenplacepro.it/menu.html');
-    html+='<div style="column-span:all;margin-top:14pt;padding-top:8pt;border-top:1px solid #e0d0bc;display:flex;align-items:center;justify-content:center;gap:10pt;">'
+    html+='<div style="column-span:all;margin-top:14pt;padding-top:8pt;border-top:1px solid #e0d0bc;">'
+      +'<div style="font-size:7.5pt;color:#999;font-style:italic;text-align:center;margin-bottom:7pt;line-height:1.6;">'
+      +'Coperto €2,00 &nbsp;·&nbsp; Per motivi organizzativi serviamo i nostri piatti come da menù, senza variazioni o sostituzioni.<br>Per allergie e intolleranze il personale è a vostra disposizione.'
+      +'</div>'
+      +'<div style="display:flex;align-items:center;justify-content:center;gap:10pt;">'
       +'<div style="text-align:center;">'
-      +'<div style="font-size:8pt;color:#999;font-style:italic;letter-spacing:.05em;">Chiedi al nostro personale — ogni giorno potrebbe esserci qualcosa in più.</div>'
+      +'<div style="font-size:8pt;color:#bbb;font-style:italic;letter-spacing:.05em;">Chiedi al nostro personale — ogni giorno potrebbe esserci qualcosa in più.</div>'
       +'<div style="font-size:7pt;color:#bbb;margin-top:3pt;letter-spacing:.04em;">Scannerizza per il menù digitale completo</div>'
       +'</div>'
       +'<img src="'+qrUrl+'" style="width:28pt;height:28pt;display:block;flex-shrink:0;" alt="QR menu">'
+      +'</div>'
       +'</div>'
       +'</div></div>';
   }
