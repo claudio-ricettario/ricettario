@@ -1,6 +1,7 @@
 {
   "version": 1,
   "exportDate": "29/10/2026",
+  "coperto": 2.5,
   "menuData": [
     {
       "nome": "Acqua Frizzante Microfiltrata",
@@ -374,24 +375,6 @@
       ]
     },
     {
-      "nome": "Maccheroni al ragù di cortile",
-      "descrizione": "Con la ricetta della nonna",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Primi piatti",
-      "prezzoVendita": 10.4,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Glutine",
-        "Uova",
-        "Sedano",
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
       "nome": "Minestra di orzo",
       "descrizione": "Per scelta non mettiamo carne",
       "notaCliente": "",
@@ -700,29 +683,6 @@
         "Uova"
       ],
       "tracce": []
-    },
-    {
-      "nome": "Tagliatelle al Ragù di cervo",
-      "descrizione": "Con tagliatelle Barilla e cervo locale",
-      "notaCliente": "",
-      "tags": [
-        "Novità"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Primi piatti",
-      "prezzoVendita": 12.9,
-      "tipoBeverage": false,
-      "surgelato": true,
-      "allergeni": [
-        "Anidride solforosa e solfiti",
-        "Sedano",
-        "Glutine",
-        "Uova"
-      ],
-      "tracce": [
-        "Soia",
-        "Senape"
-      ]
     },
     {
       "nome": "Tiramisù della Malga",
@@ -12962,7 +12922,7 @@
       "pax": 8,
       "prezzoVendita": 10.4,
       "coefficiente": 4,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -14021,7 +13981,7 @@
       "pax": 10,
       "prezzoVendita": 12.9,
       "coefficiente": 2,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
