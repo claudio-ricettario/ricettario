@@ -478,6 +478,11 @@ textarea{resize:vertical;min-height:60px;}
       <button class="btn-secondary no-print" onclick="printSchedaVuota()" style="white-space:nowrap;" title="Stampa una scheda ricetta vuota da far compilare al cuoco">&#128196; Scheda vuota</button>
       <button id="btn-me" class="btn-secondary no-print" onclick="toggleMenuEngineering()" style="white-space:nowrap;">&#128202; Menu Engineering</button>
       <button class="btn-secondary no-print" onclick="printMenuCompleto()" style="white-space:nowrap;">&#128438; Stampa menu</button>
+      <label class="no-print" style="display:inline-flex;align-items:center;gap:5px;font-size:13px;color:#888;white-space:nowrap;margin-left:4px;" title="Prezzo coperto — si aggiorna nel PDF e nel menu digitale">
+        Coperto €<input type="number" id="coperto-input" min="0" step="0.50" value="2.00"
+          style="width:56px;padding:4px 6px;font-size:13px;border:1px solid #d0cec8;border-radius:6px;text-align:right;"
+          onchange="coperto=parseFloat(this.value)||0;localStorage.setItem('rc_coperto',coperto);flashBackup('✓ Coperto aggiornato — ricordati di fare Pubblica');">
+      </label>
     </div>
     <div id="home-cats-container"></div>
   </div>
@@ -1168,6 +1173,7 @@ var CAT_ORDER_MAG=['Verdura','Frutta','Carne e pollame','Pesce e frutti di mare'
 var semilavorati=[];
 var codiceCounters={mp:0,sl:0,pf:0};
 var piatti=[];
+var coperto=2.00;
 
 /* ═══════════════════════════════════════════════════
    DEMO MODE — attivato con ?demo=1 nell'URL
@@ -1497,6 +1503,8 @@ function loadSaved(){
   try{var sv=localStorage.getItem('rc_semilavorati');if(sv)semilavorati=JSON.parse(sv);}catch(e){}
   /* carica piatti */
   try{var pf=localStorage.getItem('rc_piatti');if(pf)piatti=JSON.parse(pf);}catch(e){}
+  /* carica coperto */
+  try{var cv=localStorage.getItem('rc_coperto');if(cv!==null)coperto=parseFloat(cv)||2.00;}catch(e){}
   loadCodiceCounters();
   /* ripara silenziosamente i codiceMp/codiceSl mancanti nei componenti */
   try{riparaComponentiSilenzioso();}catch(e){}
@@ -4925,6 +4933,8 @@ function applyAdminUI(){
 }
 
 loadSaved();
+/* aggiorna il campo coperto con il valore caricato */
+(function(){var el=document.getElementById('coperto-input');if(el)el.value=coperto.toFixed(2);})();
 
 /* ── DEMO MODE SETUP ── */
 if(DEMO_MODE){
@@ -5758,6 +5768,7 @@ function pubblicaDatiPubblici(){
   var data={
     version:1,
     exportDate:today(),
+    coperto:coperto,
     menuData:menuData,
     magazzino:magazzino,
     semilavorati:semilavorati,
@@ -8150,7 +8161,7 @@ function printMenuCompleto(){
     var qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=120x120&margin=4&data='+encodeURIComponent('https://www.miseenplacepro.it/menu.html');
     html+='<div style="column-span:all;margin-top:14pt;padding-top:8pt;border-top:1px solid #e0d0bc;">'
       +'<div style="font-size:7.5pt;color:#999;font-style:italic;text-align:center;margin-bottom:7pt;line-height:1.6;">'
-      +'Coperto €2,00 &nbsp;·&nbsp; Per motivi organizzativi serviamo i nostri piatti come da menù, senza variazioni o sostituzioni.<br>Per allergie e intolleranze il personale è a vostra disposizione.'
+      +'Coperto €'+coperto.toFixed(2).replace('.',',')+' &nbsp;·&nbsp; Per motivi organizzativi serviamo i nostri piatti come da menù, senza variazioni o sostituzioni.<br>Per allergie e intolleranze il personale è a vostra disposizione.'
       +'</div>'
       +'<div style="display:flex;align-items:center;justify-content:center;gap:10pt;">'
       +'<div style="text-align:center;">'
