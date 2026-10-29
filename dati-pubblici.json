@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "27/10/2026",
+  "exportDate": "29/10/2026",
   "menuData": [
     {
       "nome": "Acqua Frizzante Microfiltrata",
@@ -304,6 +304,32 @@
         "Anidride solforosa e solfiti",
         "Sedano"
       ],
+      "tracce": []
+    },
+    {
+      "nome": "Grappa al Pino Mugo",
+      "descrizione": "Marzadro , 30 ml",
+      "notaCliente": "Bei pian",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Grappe e Amari",
+      "prezzoVendita": 3,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [],
+      "tracce": []
+    },
+    {
+      "nome": "Grappa Morbida",
+      "descrizione": "Della Casa",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Grappe e Amari",
+      "prezzoVendita": 2,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [],
       "tracce": []
     },
     {
@@ -5687,7 +5713,7 @@
       "tracce": [],
       "tracceOk": true,
       "nutrizionali": {
-        "energia": 0,
+        "energia": 230,
         "grassi": 0,
         "grassiSaturi": 0,
         "carboidrati": 0,
@@ -5703,10 +5729,11 @@
       "suppliers": [
         {
           "nome": "Supermercato / Generico",
-          "prezzoKg": 31,
+          "prezzoKg": 24.6,
           "storico": []
         }
-      ]
+      ],
+      "surgelato": false
     },
     {
       "codice": "MP-069",
@@ -12719,6 +12746,68 @@
       "dataCreazione": "25/9/2026"
     },
     {
+      "codice": "PF-067",
+      "nome": "Grappa al Pino Mugo",
+      "descrizione": "Marzadro , 30 ml",
+      "notaCliente": "Bei pian",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Grappe e Amari",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 3,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [
+        "attenersi al dosaggio di 30 ml"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Grappa Mugo",
+          "qtaBase": 30,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 129,
+          "codiceMp": "MP-149"
+        }
+      ],
+      "dataCreazione": "29/10/2026"
+    },
+    {
+      "codice": "PF-068",
+      "nome": "Grappa Morbida",
+      "descrizione": "Della Casa",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Grappe e Amari",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 2,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [
+        "Attenersi alla dose 30 ml a persona"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Grappa Morbida",
+          "qtaBase": 30,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 128,
+          "codiceMp": "MP-141"
+        }
+      ],
+      "dataCreazione": "29/10/2026"
+    },
+    {
       "codice": "PF-037",
       "nome": "La Trippa secondo Claudio",
       "descrizione": "Con carne Bovina allevata in Lessinia",
@@ -13638,7 +13727,7 @@
       "pochePorzioni": true,
       "categoria": "Dolci",
       "sottocategoria": "",
-      "pax": 1,
+      "pax": 2,
       "prezzoVendita": 7.9,
       "coefficiente": 3,
       "nelMenu": false,
