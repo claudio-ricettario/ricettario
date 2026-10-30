@@ -7007,6 +7007,16 @@ function togglePiattoDetail(idx,el){
   if(det) det.classList.toggle('open');
 }
 
+function togglePiattoHome(idx,e){
+  if(e) e.stopPropagation();
+  var det=document.getElementById('piatto-home-detail-'+idx);
+  if(!det) return;
+  var isOpen=det.style.display!=='none';
+  /* chiudi tutti gli altri */
+  document.querySelectorAll('[id^="piatto-home-detail-"]').forEach(function(d){d.style.display='none';});
+  det.style.display=isOpen?'none':'block';
+}
+
 /* ===== FOTO RICETTA BASE ===== */
 var baseFotoData = '';
 
@@ -7166,8 +7176,59 @@ function homeRicettaRow(r,i){
   var thumbHtml=r.foto
     ?'<img src="'+r.foto+'" style="width:100%;height:100%;object-fit:cover;"/>'
     :'<span style="font-size:20px;">&#127869;</span>';
-  var clickFn=r._isBase?'showTab(&quot;ricetta&quot;)':(r._isPiatto?(isAdmin?'npModifica('+r._piattoIdx+')':'printPiatto('+r._piattoIdx+')'):'openRicettaSalvata('+i+')');
-  return '<div class="home-ricetta-row" onclick="'+clickFn+'">'
+  var clickFn=r._isBase?'showTab(&quot;ricetta&quot;)':(r._isPiatto?'togglePiattoHome('+r._piattoIdx+',event)':'openRicettaSalvata('+i+')');
+
+  /* dettaglio inline piatto (componenti + procedimento + allergeni) */
+  var detailHtml='';
+  if(r._isPiatto&&piatti[r._piattoIdx]){
+    var _p=piatti[r._piattoIdx];
+    var _pax=_p.pax||4;
+    /* componenti */
+    detailHtml+='<table style="width:100%;border-collapse:collapse;font-size:13px;">'
+      +'<thead><tr>'
+      +'<th style="text-align:left;padding:5px 8px;font-size:11px;color:#888;">Componente</th>'
+      +'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;">Dose</th>'
+      +(isAdmin?'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;">Costo</th>':'')
+      +'</tr></thead><tbody>'
+      +(_p.componenti||[]).map(function(c){
+        var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*c.conv*gp(resolveMagIdx(c)):costoSemi(resolveSemiIdx(c))*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1)));
+        var marca='';if(c.tipo==='mp'){var m=magazzino[resolveMagIdx(c)];marca=m&&m.marca?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-left:5px;">'+m.marca+'</span>':'';}
+        return '<tr>'
+          +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+c.nome+marca+'</td>'
+          +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
+          +(isAdmin?'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td>':'')
+          +'</tr>';
+      }).join('')
+      +'</tbody></table>';
+    /* procedimento */
+    if(_p.procedimento) detailHtml+='<div style="margin-top:10px;font-size:13px;color:#555;line-height:1.6;white-space:pre-wrap;">'+_p.procedimento+'</div>';
+    /* allergeni */
+    var _al=calcolaAllergeniPiatto(_p);
+    if(_al.certi.length||_al.tracce.length){
+      if(_al.certi.length){
+        detailHtml+='<div style="margin-top:14px;padding-top:10px;border-top:1px solid #f0ede6;">'
+          +'<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Allergeni</div>'
+          +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+          +_al.certi.map(function(a){return '<span style="font-size:12px;padding:3px 8px;background:#fef3f2;border-radius:12px;display:inline-flex;align-items:center;gap:4px;">'+(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';}).join('')
+          +'</div></div>';
+      }
+      if(_al.tracce.length){
+        detailHtml+='<div style="margin-top:8px;">'
+          +'<div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Può contenere tracce di</div>'
+          +'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+          +_al.tracce.map(function(a){return '<span style="font-size:12px;padding:3px 8px;background:#fdf8ed;border-radius:12px;display:inline-flex;align-items:center;gap:4px;color:#8a6d1f;">'+(ALLERGENI_ICONE[a]||'')+' '+a+'</span>';}).join('')
+          +'</div></div>';
+      }
+    }
+    /* footer con stampa + modifica */
+    detailHtml+='<div style="margin-top:14px;padding-top:12px;border-top:1px solid #f0ede6;display:flex;justify-content:space-between;align-items:center;gap:8px;">'
+      +(isAdmin?'<button class="btn-secondary" style="font-size:12px;padding:6px 14px;" onclick="event.stopPropagation();npModifica('+r._piattoIdx+')">&#9998; Modifica</button>':'<span></span>')
+      +'<button class="print-btn" style="font-size:12px;padding:6px 14px;" onclick="event.stopPropagation();printPiatto('+r._piattoIdx+')">&#128438; Stampa / PDF</button>'
+      +'</div>';
+  }
+
+  return '<div style="margin-bottom:2px;">'
+    +'<div class="home-ricetta-row" onclick="'+clickFn+'">'
     +'<div class="home-ricetta-thumb">'+thumbHtml+'</div>'
     +'<div class="home-ricetta-info">'
     +'<div class="home-ricetta-nome">'+(r.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:6px;">'+r.codice+'</span>':'')+r.nome+(r._isPiatto&&piatti[r._piattoIdx]&&(piatti[r._piattoIdx].tags||[]).indexOf('Fuori menù')>=0?' <span style="font-size:10px;font-weight:500;background:#f1f0ee;color:#888;border:1px solid #d0cec8;border-radius:10px;padding:1px 7px;vertical-align:middle;">Fuori menù</span>':'')+'</div>'
@@ -7180,6 +7241,8 @@ function homeRicettaRow(r,i){
       +'<button class="btn-sm" onclick="event.stopPropagation();movePiatto('+r._piattoIdx+',-1)" style="padding:1px 5px;font-size:9px;line-height:1.4;" title="Sposta su">▲</button>'
       +'<button class="btn-sm" onclick="event.stopPropagation();movePiatto('+r._piattoIdx+',1)" style="padding:1px 5px;font-size:9px;line-height:1.4;" title="Sposta giù">▼</button>'
       +'</div>':'')
+    +'</div>'
+    +(r._isPiatto?'<div class="semi-detail" id="piatto-home-detail-'+r._piattoIdx+'" style="padding:12px 16px 14px;border-top:1px solid #f0ede6;margin-top:0;display:none;">'+detailHtml+'</div>':'')
     +'</div>';
 }
 
