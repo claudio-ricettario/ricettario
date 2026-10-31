@@ -313,7 +313,7 @@ function buildMenu(data){
     return;
   }
 
-  var CAT_HIDDEN=['Altro','Beverage vario','Vini'];
+  var CAT_HIDDEN=['Altro','Beverage vario','Vini','Vino'];
 
   piatti.forEach(function(p){
     var cat=p.categoria||'Altro';
@@ -326,7 +326,8 @@ function buildMenu(data){
   var extraKeys=Object.keys(_grouped).filter(function(k){
     return !CAT_ORDER.find(function(c){return c.key.toLowerCase()===k.toLowerCase();});
   });
-  _catKeys=CAT_ORDER.map(function(c){return c.key;}).concat(extraKeys);
+  _catKeys=CAT_ORDER.map(function(c){return c.key;}).concat(extraKeys)
+    .filter(function(k){return (_grouped[k]||[]).length>0;});
 
   if(data.exportDate){
     document.getElementById('update-date').textContent='Aggiornato il '+data.exportDate;
