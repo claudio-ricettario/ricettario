@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "29/10/2026",
+  "exportDate": "31/10/2026",
   "coperto": 2.5,
   "menuData": [
     {
@@ -184,30 +184,6 @@
         "Sedano"
       ],
       "tracce": []
-    },
-    {
-      "nome": "CheeseCake cotta",
-      "descrizione": "Con ricotta della Lessinia",
-      "notaCliente": "",
-      "tags": [
-        "Vegetariano",
-        "Novità",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 4.9,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Glutine",
-        "Latte e lattosio",
-        "Uova"
-      ],
-      "tracce": [
-        "Soia",
-        "Senape"
-      ]
     },
     {
       "nome": "Cotechino e Crauti",
@@ -403,9 +379,10 @@
       "notaCliente": "",
       "tags": [
         "Novità",
-        "Del territorio"
+        "Del territorio",
+        "Fuori menù"
       ],
-      "pochePorzioni": false,
+      "pochePorzioni": true,
       "categoria": "Secondi piatti",
       "prezzoVendita": 12.9,
       "tipoBeverage": false,
@@ -545,29 +522,6 @@
       "tracce": []
     },
     {
-      "nome": "Sbrisolona",
-      "descrizione": "Provala con la nostra grappa Morbida +2€",
-      "notaCliente": "",
-      "tags": [
-        "Novità",
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 4.4,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Glutine",
-        "Latte e lattosio",
-        "Uova",
-        "Frutta a guscio"
-      ],
-      "tracce": [
-        "Soia"
-      ]
-    },
-    {
       "nome": "Semifreddo al Pino Mugo",
       "descrizione": "Con la nostra grappa",
       "notaCliente": "\"contiene alcool residuo\"",
@@ -588,34 +542,6 @@
       ],
       "tracce": [
         "Frutta a guscio"
-      ]
-    },
-    {
-      "nome": "Semifreddo all'Amaretto",
-      "descrizione": "Con Prodotti locali",
-      "notaCliente": "",
-      "tags": [
-        "Vegetariano",
-        "Più venduto",
-        "Consigliato"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 5.9,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Glutine",
-        "Uova",
-        "Soia",
-        "Latte e lattosio",
-        "Frutta a guscio"
-      ],
-      "tracce": [
-        "Arachidi",
-        "Senape",
-        "Sesamo",
-        "Lupini"
       ]
     },
     {
@@ -640,49 +566,6 @@
         "Soia",
         "Senape"
       ]
-    },
-    {
-      "nome": "Spezzatino di Cervo",
-      "descrizione": "Solo poche porzioni",
-      "notaCliente": "",
-      "tags": [
-        "Consigliato",
-        "Novità"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Secondi piatti",
-      "prezzoVendita": 13.9,
-      "tipoBeverage": false,
-      "surgelato": true,
-      "allergeni": [
-        "Anidride solforosa e solfiti",
-        "Sedano"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Strudel di Mele con crema alla vaniglia",
-      "descrizione": "Con Mele del trentino",
-      "notaCliente": "",
-      "tags": [
-        "Vegetariano",
-        "Consigliato"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 6.4,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Glutine",
-        "Latte e lattosio",
-        "Arachidi",
-        "Frutta a guscio",
-        "Anidride solforosa e solfiti",
-        "Soia",
-        "Uova"
-      ],
-      "tracce": []
     },
     {
       "nome": "Tiramisù della Malga",
@@ -723,30 +606,6 @@
       ],
       "tracce": [
         "Soia"
-      ]
-    },
-    {
-      "nome": "Tortino al Cioccolato",
-      "descrizione": "Con Panna Montata",
-      "notaCliente": "",
-      "tags": [
-        "Vegetariano",
-        "Consigliato",
-        "Novità"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 5.9,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Soia",
-        "Latte e lattosio",
-        "Uova",
-        "Glutine"
-      ],
-      "tracce": [
-        "Frutta a guscio"
       ]
     },
     {
@@ -6451,7 +6310,7 @@
       "resaQta": 2,
       "resaUm": "lt",
       "tempo": "180",
-      "procedimento": "Se non sai fare il brodo cambia lavoro",
+      "procedimento": "",
       "coefficiente": 1,
       "shelfLifeFrigo": 3,
       "shelfLifeSottovuoto": 7,
@@ -10814,7 +10673,7 @@
       "resaQta": 4280,
       "resaUm": "g",
       "tempo": "20",
-      "procedimento": "-Frullare i tuorli, la grappa e lo sciroppo, scaldare a circa 20°C, \n-Raffreddare ed aggiungere il mascarpone, mescolare bene con la frusta\n-Incorporare piano nella meringa\n- Montare la panna ed aggiungere piano al resto degli ingredienti\n-Abbattere in negativo , porzione di circa 150 gr a persona\n\nPoresti mettere in infusione nello sciroppo degli aghi di pino mugo -Facoltativo se hai voglia di andare a cercare aghi-",
+      "procedimento": "-Frullare i tuorli, la grappa e lo sciroppo, scaldare a circa 20°C, \n-Raffreddare ed aggiungere il mascarpone, mescolare bene con la frusta\n-Incorporare piano nella meringa\n- Montare la panna ed aggiungere piano al resto degli ingredienti\n-Abbattere in negativo , porzione di circa 75/80 gr a persona\n\nPoresti mettere in infusione nello sciroppo degli aghi di pino mugo -Facoltativo se hai voglia di andare a cercare aghi-",
       "coefficiente": 4,
       "shelfLifeFrigo": 3,
       "shelfLifeSottovuoto": 7,
@@ -10867,10 +10726,10 @@
         },
         {
           "tipo": "mp",
-          "magIdx": 76,
+          "magIdx": 120,
           "codiceMp": "MP-101",
           "nome": "Panna Fresca",
-          "qtaBase": 2000,
+          "qtaBase": 1500,
           "unit": "g",
           "conv": 0.001
         }
@@ -12364,7 +12223,7 @@
       "pax": 8,
       "prezzoVendita": 4.9,
       "coefficiente": 2,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13155,15 +13014,16 @@
       "notaCliente": "",
       "tags": [
         "Novità",
-        "Del territorio"
+        "Del territorio",
+        "Fuori menù"
       ],
-      "pochePorzioni": false,
+      "pochePorzioni": true,
       "categoria": "Secondi piatti",
       "sottocategoria": "",
       "pax": 4,
       "prezzoVendita": 12.9,
       "coefficiente": 4,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [],
@@ -13656,7 +13516,7 @@
       "pax": 1,
       "prezzoVendita": 4.4,
       "coefficiente": 3,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [],
@@ -13742,7 +13602,7 @@
       "pax": 1,
       "prezzoVendita": 5.9,
       "coefficiente": 3,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13827,7 +13687,7 @@
       "pax": 10,
       "prezzoVendita": 13.9,
       "coefficiente": 3,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13895,7 +13755,7 @@
       "pax": 5,
       "prezzoVendita": 6.4,
       "coefficiente": 3,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -14114,7 +13974,7 @@
       "pax": 4,
       "prezzoVendita": 5.9,
       "coefficiente": 2,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
