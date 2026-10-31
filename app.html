@@ -6946,9 +6946,12 @@ function renderPiatti(){
       +'<th style="text-align:right;padding:5px 8px;font-size:11px;color:#888;">Costo</th></tr></thead><tbody>'
       +p.componenti.map(function(c){
         var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*c.conv*gp(resolveMagIdx(c)):costoSemi(resolveSemiIdx(c))*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1)));
+        var codRefP='';
+        if(c.tipo==='sl'){var sRefP=semilavorati[resolveSemiIdx(c)];codRefP=sRefP&&sRefP.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+sRefP.codice+'</span>':'';}
+        else{var mRefP=magazzino[resolveMagIdx(c)];codRefP=mRefP&&mRefP.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+mRefP.codice+'</span>':'';}
         var marcaComp='';
         if(c.tipo==='mp'){var mComp=magazzino[resolveMagIdx(c)];marcaComp=mComp&&mComp.marca?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-left:5px;">'+mComp.marca+'</span>':'';}
-        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+c.nome+marcaComp+'</td>'
+        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+codRefP+c.nome+marcaComp+'</td>'
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;"><span class="comp-tipo '+(c.tipo==='mp'?'mp':'sl')+'">'+(c.tipo==='mp'?'MP':'Semil.')+'</span></td>'
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td></tr>';
@@ -7192,9 +7195,12 @@ function homeRicettaRow(r,i){
       +'</tr></thead><tbody>'
       +(_p.componenti||[]).map(function(c){
         var costo=c.conv===0||c.unit==='q.b.'?0:(c.tipo==='mp'?c.qtaBase*c.conv*gp(resolveMagIdx(c)):costoSemi(resolveSemiIdx(c))*(c.qtaBase*(c.unit==='g'||c.unit==='ml'?0.001:1)));
+        var codRef='';
+        if(c.tipo==='sl'){var sRef=semilavorati[resolveSemiIdx(c)];codRef=sRef&&sRef.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+sRef.codice+'</span>':'';}
+        else{var mRef2=magazzino[resolveMagIdx(c)];codRef=mRef2&&mRef2.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+mRef2.codice+'</span>':'';}
         var marca='';if(c.tipo==='mp'){var m=magazzino[resolveMagIdx(c)];marca=m&&m.marca?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-left:5px;">'+m.marca+'</span>':'';}
         return '<tr>'
-          +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+c.nome+marca+'</td>'
+          +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;">'+codRef+c.nome+marca+'</td>'
           +'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+c.qtaBase+' '+c.unit+'</td>'
           +(isAdmin?'<td style="padding:6px 8px;border-bottom:1px solid #f5f3ef;text-align:right;">'+eur(costo)+'</td>':'')
           +'</tr>';
