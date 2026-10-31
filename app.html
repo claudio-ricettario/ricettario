@@ -615,8 +615,9 @@ textarea{resize:vertical;min-height:60px;}
             <option value="Caffetteria">&#9749; Caffetteria</option>
             <option value="Grappe e Amari">&#129347; Grappe e Amari</option>
             <option value="Birre">&#127866; Birre</option>
-            <option value="Vino">&#127863; Vino</option>
+            <option value="Vino della casa">&#127863; Vino della casa</option>
             <option value="Bevande">&#129380; Bevande</option>
+            <option value="Cantina">&#127870; Cantina</option>
             <option>Altro</option>
           </select>
         </div>
@@ -2782,7 +2783,7 @@ function fcPopulateSelector(){
   if(!acc)return;
   var searchEl=document.getElementById('fc-piatto-search');
   var q=searchEl?searchEl.value.trim().toLowerCase():'';
-  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino','Bevande','Altro'];
+  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Altro'];
   var bycat={};
   piatti.forEach(function(p,i){
     if(q&&p.nome.toLowerCase().indexOf(q)<0)return;
@@ -7082,11 +7083,12 @@ var CAT_ICONS={
   'Caffetteria':'&#9749;',
   'Grappe e Amari':'&#129347;',
   'Birre':'&#127866;',
-  'Vino':'&#127863;',
+  'Vino della casa':'&#127863;',
   'Bevande':'&#129380;',
+  'Cantina':'&#127870;',
   'Altro':'&#127869;'
 };
-var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino','Bevande','Altro'];
+var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Altro'];
 var homeExpanded={};   /* cat -> bool */
 var homeSubExp={};     /* cat+sub -> bool */
 
@@ -8076,7 +8078,7 @@ function piattoContineSurgelati(p){
 }
 
 function printMenuCompleto(){
-  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino','Bevande','Altro'];
+  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Altro'];
   var ALLERG_LIST=[
     ['Cereali con glutine','grano, segale, orzo, avena, farro, kamut e i loro prodotti derivati'],
     ['Crostacei','e prodotti a base di crostacei'],
@@ -8129,15 +8131,17 @@ function printMenuCompleto(){
 
   /* ── RAGGRUPPAMENTO PER PAGINA ── */
   var PAGE1=['Antipasti','Primi piatti','Secondi piatti','Contorni'];
-  var PAGE2=['Birre','Vino','Bevande','Caffetteria','Grappe e Amari'];
+  var PAGE2=['Birre','Vino della casa','Bevande','Caffetteria','Grappe e Amari'];
   var PAGE3=['Dolci'];
+  var PAGE4=['Cantina'];
   // categorie non assegnate a nessuna pagina → finiscono in pagina 1
-  var knownPages=PAGE1.concat(PAGE2).concat(PAGE3);
+  var knownPages=PAGE1.concat(PAGE2).concat(PAGE3).concat(PAGE4);
   cats.forEach(function(c){if(knownPages.indexOf(c)<0) PAGE1.push(c);});
 
   var p1cats=PAGE1.filter(function(c){return grouped[c]&&grouped[c].length;});
   var p2cats=PAGE2.filter(function(c){return grouped[c]&&grouped[c].length;});
   var p3cats=PAGE3.filter(function(c){return grouped[c]&&grouped[c].length;});
+  var p4cats=PAGE4.filter(function(c){return grouped[c]&&grouped[c].length;});
 
   /* ── HELPER: renderizza un piatto ── */
   function renderDish(p){
@@ -8267,8 +8271,45 @@ function printMenuCompleto(){
     html+='</div></div></div>';
   }
 
-  /* ══ PAGINA 4 — Allergeni ══ */
-  var tutteCat=p1cats.concat(p2cats).concat(p3cats);
+  /* ══ PAGINA 4 — Cantina ══ */
+  if(p4cats.length){
+    var SUBCANTINA_ORDER=['Bolle','Bianchi','Rossi','Dolci'];
+    html+='<div class="page">'+headerHtml;
+    p4cats.forEach(function(cat){
+      var vini=grouped[cat]||[];
+      /* raggruppa per sottocategoria */
+      var subGrouped={};
+      var subOrder=[];
+      vini.forEach(function(p){
+        var sub=p.sottocategoria||'';
+        if(!subGrouped[sub]) {subGrouped[sub]=[];subOrder.push(sub);}
+        subGrouped[sub].push(p);
+      });
+      /* ordina: prima SUBCANTINA_ORDER, poi eventuali extra */
+      var sortedSubs=SUBCANTINA_ORDER.filter(function(s){return subGrouped[s];})
+        .concat(subOrder.filter(function(s){return SUBCANTINA_ORDER.indexOf(s)<0;}));
+      html+='<div style="margin-bottom:6pt;">';
+      html+='<div class="cat-title" style="margin-bottom:14pt;">'+esc(cat)+'</div>';
+      html+='<div class="two-col">';
+      if(sortedSubs.length>1){
+        /* con sottocategorie */
+        sortedSubs.forEach(function(sub){
+          html+='<div class="cat-block">';
+          if(sub) html+='<div class="cat-title" style="font-size:8.5pt;letter-spacing:.12em;">'+esc(sub)+'</div>';
+          subGrouped[sub].forEach(function(p){html+=renderDish(p);});
+          html+='</div>';
+        });
+      } else {
+        /* senza sottocategorie */
+        vini.forEach(function(p){html+=renderDish(p);});
+      }
+      html+='</div></div>';
+    });
+    html+='</div>';
+  }
+
+  /* ══ PAGINA 5 — Allergeni ══ */
+  var tutteCat=p1cats.concat(p2cats).concat(p3cats).concat(p4cats);
   var hasSurg=tutteCat.some(function(cat){return (grouped[cat]||[]).some(function(p){return piattoContineSurgelati(p);});});
   html+='<div class="page allerg-page">'+headerHtml
     +'<h2>Allergeni</h2>'
