@@ -8182,6 +8182,9 @@ function printMenuCompleto(){
     +'body{font-family:Georgia,"Times New Roman",serif;background:#fff;color:#1a1a1a;}'
     +'@page{size:A4 portrait;margin:18mm 18mm 16mm 18mm;}'
     +'.page{page-break-after:always;}'
+    +'.page-centered{display:flex;flex-direction:column;min-height:243mm;}'
+    +'.page-centered>.menu-header{flex-shrink:0;}'
+    +'.page-centered>.dolci-body,.page-centered>.cantina-center{flex:1;display:flex;align-items:center;justify-content:center;}'
 
     /* header */
     +'.menu-header{text-align:center;margin-bottom:9mm;padding-bottom:6mm;border-bottom:1.5px solid '+AMBRA+';}'
@@ -8205,7 +8208,7 @@ function printMenuCompleto(){
     +'.dish-nota{font-size:8pt;color:#7c5c2e;font-style:italic;line-height:1.5;margin-top:2pt;}'
 
     /* pagina dolci */
-    +'.dolci-body{display:flex;align-items:center;justify-content:center;padding:8mm 0;}'
+    +'.dolci-body{display:flex;align-items:center;justify-content:center;}'
     +'.dolci-frame{border:1.5pt solid '+AMBRA+';border-radius:6pt;padding:12mm 14mm 10mm;width:130mm;position:relative;}'
     +'.dolci-frame::before,.dolci-frame::after{content:"";position:absolute;width:12pt;height:12pt;border-color:'+AMBRA+';border-style:solid;}'
     +'.dolci-frame::before{top:-3pt;left:-3pt;border-width:2pt 0 0 2pt;}'
@@ -8264,7 +8267,7 @@ function printMenuCompleto(){
 
   /* ══ PAGINA 3 — Dolci ══ */
   if(p3cats.length){
-    html+='<div class="page">'+headerHtml+'<div class="dolci-body"><div class="dolci-frame">';
+    html+='<div class="page page-centered">'+headerHtml+'<div class="dolci-body"><div class="dolci-frame">';
     html+='<div class="dolci-cat-title">Dolci</div>';
     (grouped['Dolci']||[]).forEach(function(p){html+=renderDish(p);});
     html+='<div class="dolci-frase">Tutti i dolci sono fatti in Malga</div>';
@@ -8274,7 +8277,7 @@ function printMenuCompleto(){
   /* ══ PAGINA 4 — Cantina ══ */
   if(p4cats.length){
     var SUBCANTINA_ORDER=['Bolle','Bianchi','Rossi','Dolci'];
-    html+='<div class="page">'+headerHtml;
+    html+='<div class="page page-centered">'+headerHtml+'<div class="dolci-body" style="display:block;">';
     p4cats.forEach(function(cat){
       var vini=grouped[cat]||[];
       /* raggruppa per sottocategoria */
@@ -8305,7 +8308,7 @@ function printMenuCompleto(){
       }
       html+='</div></div>';
     });
-    html+='</div>';
+    html+='</div></div>';
   }
 
   /* ══ PAGINA 5 — Allergeni ══ */
