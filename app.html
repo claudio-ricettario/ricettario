@@ -3842,6 +3842,33 @@ function renderGuida(){
       +'<div class="gtip">Ricorda: ogni volta che cambi prezzi, aggiungi piatti o modifichi allergeni, devi ripetere il ciclo Pubblica → Commit → Push per aggiornare il menu online.</div>'
       +'</div></details>';
 
+    // Preventivi
+    h+='<details class="gs" data-tab="menu-prev"><summary>&#128203; Menu &amp; Preventivi</summary><div class="gb">'
+      +'<p>La sezione <strong>Preventivi</strong> ti permette di creare menu personalizzati per eventi (cene aziendali, matrimoni, degustazioni…) con PDF professionale da stampare o inviare al cliente. Il food cost del menu è visibile solo internamente e non compare nel PDF.</p>'
+      +'<h4>Creare un nuovo menu</h4>'
+      +'<ol>'
+      +'<li>Clicca <strong>+ Nuovo menu</strong> in alto a destra.</li>'
+      +'<li>Dai un nome al menu (es. "Cena aziendale 15 dic") e imposta il prezzo a persona.</li>'
+      +'<li>Usa i pulsanti per comporre il menu:</li>'
+      +'</ol>'
+      +'<table><tr><th>Pulsante</th><th>Cosa fa</th></tr>'
+      +'<tr><td><strong>+ Sezione</strong></td><td>Apre il selettore categorie per scegliere i piatti da inserire</td></tr>'
+      +'<tr><td><strong>+ Voce libera</strong></td><td>Aggiunge una riga personalizzata (es. "Pane e coperto") non collegata al magazzino</td></tr>'
+      +'</table>'
+      +'<h4>Selettore sezioni — come funziona</h4>'
+      +'<ol>'
+      +'<li>Cliccando <strong>+ Sezione</strong> si apre un pannello con tutte le categorie che hanno piatti (Antipasti, Primi, Secondi…).</li>'
+      +'<li>Clicca su una categoria per espanderla: appaiono tutti i piatti con nome, prezzo e checkbox.</li>'
+      +'<li>Spunta i piatti che vuoi includere — puoi espandere più categorie contemporaneamente.</li>'
+      +'<li>Usa <strong>Seleziona tutti</strong> in cima a ogni categoria per includerli in blocco.</li>'
+      +'<li>Clicca <strong>Aggiungi selezionati</strong>: vengono inseriti nel menu divisi per sezione, nell\'ordine scelto.</li>'
+      +'</ol>'
+      +'<div class="gtip">Se hai 20 Primi ma ne vuoi solo 5 nel preventivo, espandi la categoria, spunta solo quelli che ti servono e aggiungi — senza dover cancellare nulla dopo.</div>'
+      +'<h4>Stampare il PDF</h4>'
+      +'<p>Clicca <strong>&#128438; Stampa PDF</strong> all\'interno del menu. Il PDF contiene nome del menu, data, elenco voci con prezzi e note. Il food cost e il margine rimangono visibili solo nella scheda interna.</p>'
+      +'<div class="gnote">Il prezzo di ogni piatto nel preventivo è modificabile singolarmente — puoi applicare uno sconto su una voce senza cambiare il prezzo in carta.</div>'
+      +'</div></details>';
+
     // Infrastruttura & Account
     h+='<details class="gs" data-tab="dashboard"><summary>&#128279; Infrastruttura &amp; Account</summary><div class="gb">'
       +'<p style="color:#888;font-size:13px;margin-bottom:16px;">Riferimenti pratici per gestire dominio, email, hosting e dati. Aggiorna questa sezione se cambi qualcosa.</p>'
