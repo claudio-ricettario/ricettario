@@ -1506,6 +1506,19 @@ function loadSaved(){
   try{var sv=localStorage.getItem('rc_semilavorati');if(sv)semilavorati=JSON.parse(sv);}catch(e){}
   /* carica piatti */
   try{var pf=localStorage.getItem('rc_piatti');if(pf)piatti=JSON.parse(pf);}catch(e){}
+  /* migrazione categorie piatti obsolete */
+  (function(){
+    var _catMap={
+      'Vino':'Vino della casa',
+      'Vini':'Vino della casa',
+      'Beverage vario':'Bevande'
+    };
+    var _changed=false;
+    piatti.forEach(function(p){
+      if(_catMap[p.categoria]){p.categoria=_catMap[p.categoria];_changed=true;}
+    });
+    if(_changed){try{localStorage.setItem('rc_piatti',JSON.stringify(piatti));}catch(e){}}
+  })();
   /* carica coperto */
   try{var cv=localStorage.getItem('rc_coperto');if(cv!==null)coperto=parseFloat(cv)||2.00;}catch(e){}
   loadCodiceCounters();
