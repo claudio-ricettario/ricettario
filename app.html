@@ -105,9 +105,9 @@ textarea{resize:vertical;min-height:60px;}
 .add-btn{width:100%;padding:12px;background:transparent;border:1.5px dashed #d0cec8;border-radius:12px;font-size:13px;color:#888;cursor:pointer;margin-bottom:16px;}
 .add-btn:hover{background:#f5f4f0;}
 .ing-row-main td{background:#fff;}
-.ing-detail{background:#fafaf8;}
+.ing-detail{background:#fff8f2;}
 .ing-detail td{padding:0;}
-.ing-detail-inner{padding:8px 10px 12px 28px;}
+.ing-detail-inner{padding:10px 14px 14px 20px;border-left:3px solid #c8a96e;margin:4px 0;border-radius:0 8px 8px 0;}
 .supplier-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #f0ede6;font-size:13px;}
 .supplier-row:last-child{border-bottom:none;}
 .supplier-name{flex:1;font-weight:500;}
@@ -1815,6 +1815,13 @@ function updateSupplierPrice(mi,si,val){
   saveMagazzino();
   renderMagazzino();
 }
+function deleteStoricoPrezzo(mi,si,hi){
+  var sup=magazzino[mi]&&magazzino[mi].suppliers[si];
+  if(!sup||!sup.storico)return;
+  sup.storico.splice(hi,1);
+  saveMagazzino();
+  renderMagazzino();
+}
 function rimuoviFornitore(mi,si){
   if(magazzino[mi].suppliers.length<=1){alert('Devi avere almeno un fornitore.');return;}
   if(!confirm('Rimuovere questo fornitore?'))return;
@@ -2059,16 +2066,18 @@ function renderMagazzino(){
                 ? '<div id="'+storId+'" style="display:none;margin:0 0 8px 28px;padding:8px 10px;background:#fef9f0;border-radius:6px;border-bottom:1px solid #f0ede6;font-size:11px;">'
                   +'<div style="font-weight:700;color:#92400e;margin-bottom:5px;">&#128200; Storico prezzi &mdash; '+sup.nome+'</div>'
                   +stor.slice().reverse().map(function(h,hi){
+                    var origIdx=stor.length-1-hi;
                     var pct=hi<stor.slice().reverse().length-1
                       ?((h.prezzo-stor.slice().reverse()[hi+1].prezzo)/stor.slice().reverse()[hi+1].prezzo*100)
                       :null;
                     var pctHtml=pct!==null
                       ?' <span style="color:'+(pct>0?'#e53e3e':'#2d7d46')+';">('+(pct>0?'+':'')+pct.toFixed(1)+'%)</span>'
                       :'';
-                    return '<div style="display:flex;gap:10px;padding:3px 0;border-bottom:1px solid #f5ede0;">'
+                    return '<div style="display:flex;align-items:center;gap:10px;padding:3px 0;border-bottom:1px solid #f5ede0;">'
                       +'<span style="color:#888;min-width:90px;">'+h.data+'</span>'
                       +'<span style="color:#555;font-weight:600;">'+h.prezzo.toFixed(2)+' €/'+m.um+'</span>'
                       +pctHtml
+                      +'<button onclick="deleteStoricoPrezzo('+mi+','+si+','+origIdx+')" style="margin-left:auto;background:none;border:none;color:#ccc;cursor:pointer;font-size:13px;padding:0 2px;line-height:1;" title="Elimina voce">&#10005;</button>'
                       +'</div>';
                   }).join('')
                   +'</div>'
