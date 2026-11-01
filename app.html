@@ -8290,7 +8290,7 @@ function printMenuCompleto(){
     +'.page-centered>.dolci-body,.page-centered>.cantina-center{flex:1;display:flex;align-items:center;justify-content:center;}'
 
     /* header */
-    +'.menu-header{text-align:center;margin-bottom:9mm;padding-bottom:6mm;border-bottom:1.5px solid '+AMBRA+';}'
+    +'.menu-header{text-align:center;margin-bottom:9mm;padding-bottom:6mm;}'
     +'.menu-header img{height:48pt;display:block;margin:0 auto;}'
 
     /* due colonne */
@@ -8395,7 +8395,7 @@ function printMenuCompleto(){
       var sortedSubs=SUBCANTINA_ORDER.filter(function(s){return subGrouped[s];})
         .concat(subOrder.filter(function(s){return SUBCANTINA_ORDER.indexOf(s)<0;}));
       html+='<div style="margin-bottom:6pt;">';
-      html+='<div class="cat-title" style="margin-bottom:14pt;">'+esc(cat)+'</div>';
+      html+='<div class="cat-title" style="margin-bottom:14pt;border-top:none;border-bottom:none;padding:0;">'+esc(cat)+'</div>';
       html+='<div class="two-col">';
       if(sortedSubs.length>1){
         /* con sottocategorie */
