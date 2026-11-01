@@ -4368,7 +4368,7 @@ function _renderMenuModalBody(){
   document.getElementById('menu-modal-body').innerHTML=html;
 }
 
-var _SEZIONI_DEFAULT=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci'];
+var _SEZIONI_DEFAULT=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Altro'];
 function _menuAddVoce(tipo){
   var m=window._menuEdit.data;
   if(tipo==='sezione'){
@@ -4381,31 +4381,95 @@ function _menuAddVoce(tipo){
   }
   _renderMenuModalBody();
 }
+
+/* apertura pannello — mostra tutte le categorie che hanno almeno 1 piatto */
 function _menuScelgliSezione(){
   var old=document.getElementById('sezione-chooser');
   if(old){old.remove();return;}
   var div=document.createElement('div');
   div.id='sezione-chooser';
-  div.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.2);padding:20px 24px;z-index:999;min-width:280px;';
-  div.innerHTML='<div style="font-weight:700;font-size:14px;color:#3d2b1f;margin-bottom:14px;">Scegli sezione</div>'
-    +_SEZIONI_DEFAULT.map(function(s,si){
-      var count=piatti.filter(function(p){return (p.categoria||'').toLowerCase()===s.toLowerCase();}).length;
-      return '<button onclick="_menuAddSezioneConPiatti('+si+')" style="display:block;width:100%;text-align:left;padding:9px 12px;margin-bottom:6px;background:#f5f4f0;border:1px solid #e0ded8;border-radius:8px;cursor:pointer;font-size:13px;">'
-        +'<strong>'+s+'</strong><span style="font-size:11px;color:#888;margin-left:8px;">'+count+' piatti</span></button>';
-    }).join('')
-    +'<button onclick="document.getElementById(\'sezione-chooser\').remove()" style="margin-top:6px;font-size:12px;color:#888;background:none;border:none;cursor:pointer;width:100%;text-align:center;">Annulla</button>';
+  div.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.2);padding:20px 24px;z-index:999;min-width:340px;max-width:92vw;max-height:80vh;overflow-y:auto;';
+
+  /* overlay sfondo cliccabile */
+  var bg=document.createElement('div');
+  bg.id='sezione-chooser-bg';
+  bg.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:998;';
+  bg.onclick=function(){var o=document.getElementById('sezione-chooser');if(o)o.remove();bg.remove();};
+  document.body.appendChild(bg);
+
+  var catsPresenti=_SEZIONI_DEFAULT.filter(function(s){
+    return piatti.some(function(p){return (p.categoria||'')===s;});
+  });
+
+  var html='<div style="font-weight:700;font-size:14px;color:#3d2b1f;margin-bottom:14px;">Scegli sezione e piatti</div>';
+  catsPresenti.forEach(function(s){
+    var matching=piatti.map(function(p,i){return {p:p,i:i};}).filter(function(x){return (x.p.categoria||'')===s;});
+    var idS=s.replace(/\s+/g,'_');
+    html+='<div style="margin-bottom:8px;border:1px solid #e0ded8;border-radius:8px;overflow:hidden;">';
+    /* header categoria — clicca per espandere */
+    html+='<div onclick="_scChevron(\''+idS+'\')" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#f5f4f0;cursor:pointer;user-select:none;">'
+      +'<span style="font-weight:600;font-size:13px;">'+s+'</span>'
+      +'<span style="display:flex;align-items:center;gap:10px;">'
+      +'<span style="font-size:11px;color:#888;">'+matching.length+' piatti</span>'
+      +'<span id="sc-chev-'+idS+'" style="font-size:10px;color:#aaa;transition:transform .15s;">▶</span>'
+      +'</span></div>';
+    /* lista piatti (nascosta di default) */
+    html+='<div id="sc-body-'+idS+'" style="display:none;padding:8px 12px 10px;">';
+    html+='<label style="display:flex;align-items:center;gap:8px;font-size:12px;color:#555;padding:4px 0;border-bottom:1px solid #f0ede6;margin-bottom:4px;cursor:pointer;">'
+      +'<input type="checkbox" id="sc-all-'+idS+'" onchange="_scToggleAll(\''+idS+'\',this.checked)" style="cursor:pointer;"> <em>Seleziona tutti</em></label>';
+    matching.forEach(function(x){
+      html+='<label style="display:flex;align-items:center;gap:8px;font-size:12px;color:#1a1a1a;padding:3px 0;cursor:pointer;">'
+        +'<input type="checkbox" class="sc-item-'+idS+'" data-idx="'+x.i+'" data-cat="'+s+'" style="cursor:pointer;"> '+x.p.nome
+        +(x.p.prezzoVendita?'<span style="margin-left:auto;color:#888;font-size:11px;">€'+parseFloat(x.p.prezzoVendita).toFixed(2)+'</span>':'')
+        +'</label>';
+    });
+    html+='</div></div>';
+  });
+
+  html+='<div style="display:flex;gap:8px;margin-top:14px;">'
+    +'<button onclick="_scConferma()" style="flex:1;padding:9px;background:#3d2b1f;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;">Aggiungi selezionati</button>'
+    +'<button onclick="document.getElementById(\'sezione-chooser\').remove();document.getElementById(\'sezione-chooser-bg\').remove();" style="padding:9px 14px;background:#f5f4f0;border:1px solid #e0ded8;border-radius:8px;cursor:pointer;font-size:13px;">Annulla</button>'
+    +'</div>';
+
+  div.innerHTML=html;
   document.body.appendChild(div);
 }
-function _menuAddSezioneConPiatti(idx){
-  var sezione=_SEZIONI_DEFAULT[idx]||'';
-  var old=document.getElementById('sezione-chooser');if(old)old.remove();
+
+function _scChevron(idS){
+  var body=document.getElementById('sc-body-'+idS);
+  var chev=document.getElementById('sc-chev-'+idS);
+  if(!body)return;
+  var open=body.style.display!=='none';
+  body.style.display=open?'none':'block';
+  if(chev)chev.style.transform=open?'':'rotate(90deg)';
+}
+
+function _scToggleAll(idS,checked){
+  document.querySelectorAll('.sc-item-'+idS).forEach(function(cb){cb.checked=checked;});
+}
+
+function _scConferma(){
+  var div=document.getElementById('sezione-chooser');
+  var bg=document.getElementById('sezione-chooser-bg');
   var m=window._menuEdit.data;
-  m.voci.push({tipo:'sezione',testo:sezione});
-  var matching=piatti.filter(function(p){return (p.categoria||'').toLowerCase()===sezione.toLowerCase();});
-  matching.forEach(function(p){
-    var pi=piatti.indexOf(p);
-    m.voci.push({tipo:'piatto',piattoIdx:pi,nome:p.nome,descrizione:'',prezzoVendita:p.prezzoVendita||0,porzioni:1});
+  /* raggruppa selezionati per categoria mantenendo l'ordine */
+  var byCat={};var catOrder=[];
+  document.querySelectorAll('[class^="sc-item-"]:checked,[class*=" sc-item-"]:checked').forEach(function(cb){
+    var cat=cb.getAttribute('data-cat');
+    var idx=parseInt(cb.getAttribute('data-idx'));
+    if(!byCat[cat]){byCat[cat]=[];catOrder.push(cat);}
+    byCat[cat].push(idx);
   });
+  if(!catOrder.length){alert('Seleziona almeno un piatto.');return;}
+  catOrder.forEach(function(cat){
+    m.voci.push({tipo:'sezione',testo:cat});
+    byCat[cat].forEach(function(pi){
+      var p=piatti[pi];
+      if(p)m.voci.push({tipo:'piatto',piattoIdx:pi,nome:p.nome,descrizione:'',prezzoVendita:p.prezzoVendita||0,porzioni:1});
+    });
+  });
+  if(div)div.remove();
+  if(bg)bg.remove();
   _renderMenuModalBody();
 }
 function _menuRefreshFC(){
