@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportDate": "31/10/2026",
+  "exportDate": "1/11/2026",
   "coperto": 2.5,
   "menuData": [
     {
@@ -17,8 +17,8 @@
       "tracce": []
     },
     {
-      "nome": "Acqua Frizzante Microfiltrata",
-      "descrizione": "Caraffa da 1 Litro",
+      "nome": "Acqua Frizzante 1Litro",
+      "descrizione": "Microfiltrata",
       "notaCliente": "",
       "tags": [],
       "pochePorzioni": false,
@@ -43,8 +43,8 @@
       "tracce": []
     },
     {
-      "nome": "Acqua Naturale Microfiltrata",
-      "descrizione": "Caraffa da 1 Litro",
+      "nome": "Acqua Naturale da 1Litro",
+      "descrizione": "Microfiltrata",
       "notaCliente": "",
       "tags": [],
       "pochePorzioni": false,
@@ -186,6 +186,19 @@
       "tracce": []
     },
     {
+      "nome": "Coca Cola in Lattina",
+      "descrizione": "",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Bevande",
+      "prezzoVendita": 2.5,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [],
+      "tracce": []
+    },
+    {
       "nome": "Cotechino e Crauti",
       "descrizione": "Con Cotechino della Lessinia",
       "notaCliente": "",
@@ -243,6 +256,19 @@
       "tracce": [
         "Senape"
       ]
+    },
+    {
+      "nome": "Fanta in Lattina",
+      "descrizione": "",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Bevande",
+      "prezzoVendita": 2.5,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [],
+      "tracce": []
     },
     {
       "nome": "Gnocchi di Malga al Burro fuso",
@@ -644,6 +670,21 @@
       "tracce": []
     },
     {
+      "nome": "Vino Bianco della casa 1 Litro",
+      "descrizione": "Cantine Verona Garganega igt",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
+      "prezzoVendita": 12,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
       "nome": "Vino Bianco della Casa 1 Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
       "notaCliente": "",
@@ -678,12 +719,42 @@
       "tracce": []
     },
     {
+      "nome": "Vino Bianco della Casa 1/2 Litro",
+      "descrizione": "Cantine Verona Garganega igt",
+      "notaCliente": "si distingue per personalità e qualità. È un vino autentico, naturale e identitario,",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
+      "prezzoVendita": 7,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
       "nome": "Vino Bianco della Casa 1/4 di Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
       "notaCliente": "",
       "tags": [],
       "pochePorzioni": false,
       "categoria": "Vini",
+      "prezzoVendita": 4,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Vino della Casa 1/4 Litro",
+      "descrizione": "Cantine di Verona Garganega igt",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
       "prezzoVendita": 4,
       "tipoBeverage": true,
       "surgelato": false,
@@ -710,6 +781,21 @@
       "tracce": []
     },
     {
+      "nome": "Vino Rosso della Casa  1 Litro",
+      "descrizione": "Cantine di Verona Corvina igt",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
+      "prezzoVendita": 12,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
       "nome": "Vino Rosso della Casa  1/2 Litro",
       "descrizione": "Corvina IGT Cantine di Verona",
       "notaCliente": "",
@@ -719,6 +805,21 @@
       "pochePorzioni": false,
       "categoria": "Vino",
       "prezzoVendita": 7.5,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Vino Rosso della Casa  1/2 Litro",
+      "descrizione": "Cantine Verona Corvina igt",
+      "notaCliente": "accompagna primi piatti, salumi e carni bianche. Un vino sincero ma di carattere, capace di unire immediatezza e raffinatezza.",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
+      "prezzoVendita": 7,
       "tipoBeverage": true,
       "surgelato": false,
       "allergeni": [
@@ -750,6 +851,21 @@
       ],
       "pochePorzioni": false,
       "categoria": "Vini",
+      "prezzoVendita": 4,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Vino Rosso della Casa  1/4 Litro",
+      "descrizione": "Cantine di Verona Corvina igt",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
       "prezzoVendita": 4,
       "tipoBeverage": true,
       "surgelato": false,
@@ -886,6 +1002,42 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 2,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-201",
+      "nome": "Coca Cola in Lattina",
+      "categoria": "Birre e bibite",
+      "um": "lt",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 42,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 10.6,
+        "zuccheri": 10.6,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.51,
           "storico": []
         }
       ]
@@ -2605,6 +2757,42 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 3.72,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-202",
+      "nome": "Fanta in Lattina",
+      "categoria": "Generale",
+      "um": "lt",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 48,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 11.8,
+        "zuccheri": 11.8,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 1.86,
           "storico": []
         }
       ]
@@ -11683,8 +11871,8 @@
     },
     {
       "codice": "PF-059",
-      "nome": "Acqua Frizzante Microfiltrata",
-      "descrizione": "Caraffa da 1 Litro",
+      "nome": "Acqua Frizzante 1Litro",
+      "descrizione": "Microfiltrata",
       "notaCliente": "",
       "tags": [],
       "pochePorzioni": false,
@@ -11741,8 +11929,8 @@
     },
     {
       "codice": "PF-060",
-      "nome": "Acqua Naturale Microfiltrata",
-      "descrizione": "Caraffa da 1 Litro",
+      "nome": "Acqua Naturale da 1Litro",
+      "descrizione": "Microfiltrata",
       "notaCliente": "",
       "tags": [],
       "pochePorzioni": false,
@@ -12244,6 +12432,35 @@
       "dataCreazione": "2/10/2026"
     },
     {
+      "codice": "PF-075",
+      "nome": "Coca Cola in Lattina",
+      "descrizione": "",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Bevande",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 2.5,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Coca Cola in Lattina",
+          "qtaBase": 330,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 3,
+          "codiceMp": "MP-201"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
+    },
+    {
       "codice": "PF-048",
       "nome": "Cotechino e Crauti",
       "descrizione": "Con Cotechino della Lessinia",
@@ -12437,6 +12654,35 @@
         }
       ],
       "dataCreazione": "12/10/2026"
+    },
+    {
+      "codice": "PF-076",
+      "nome": "Fanta in Lattina",
+      "descrizione": "",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Bevande",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 2.5,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Fanta in Lattina",
+          "qtaBase": 330,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 51,
+          "codiceMp": "MP-202"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
     },
     {
       "codice": "PF-004",
@@ -14166,6 +14412,35 @@
       "dataCreazione": "15/9/2026"
     },
     {
+      "codice": "PF-072",
+      "nome": "Vino Bianco della casa 1 Litro",
+      "descrizione": "Cantine Verona Garganega igt",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 12,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Garganega igt Bag in Box",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
+          "magIdx": 144,
+          "codiceMp": "MP-147"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
+    },
+    {
       "codice": "PF-021",
       "nome": "Vino Bianco della Casa 1 Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
@@ -14226,6 +14501,35 @@
       "dataCreazione": "15/9/2026"
     },
     {
+      "codice": "PF-073",
+      "nome": "Vino Bianco della Casa 1/2 Litro",
+      "descrizione": "Cantine Verona Garganega igt",
+      "notaCliente": "si distingue per personalità e qualità. È un vino autentico, naturale e identitario,",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 7,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Garganega igt Bag in Box",
+          "qtaBase": 500,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 144,
+          "codiceMp": "MP-147"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
+    },
+    {
       "codice": "PF-023",
       "nome": "Vino Bianco della Casa 1/4 di Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
@@ -14252,6 +14556,35 @@
         }
       ],
       "dataCreazione": "15/9/2026"
+    },
+    {
+      "codice": "PF-074",
+      "nome": "Vino della Casa 1/4 Litro",
+      "descrizione": "Cantine di Verona Garganega igt",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 4,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Garganega igt Bag in Box",
+          "qtaBase": 250,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 144,
+          "codiceMp": "MP-147"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
     },
     {
       "codice": "PF-063",
@@ -14285,6 +14618,35 @@
       "dataCreazione": "21/10/2026"
     },
     {
+      "codice": "PF-069",
+      "nome": "Vino Rosso della Casa  1 Litro",
+      "descrizione": "Cantine di Verona Corvina igt",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 12,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Corvina igt bag in box 10L",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
+          "magIdx": 143,
+          "codiceMp": "MP-146"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
+    },
+    {
       "codice": "PF-062",
       "nome": "Vino Rosso della Casa  1/2 Litro",
       "descrizione": "Corvina IGT Cantine di Verona",
@@ -14314,6 +14676,35 @@
         }
       ],
       "dataCreazione": "21/10/2026"
+    },
+    {
+      "codice": "PF-070",
+      "nome": "Vino Rosso della Casa  1/2 Litro",
+      "descrizione": "Cantine Verona Corvina igt",
+      "notaCliente": "accompagna primi piatti, salumi e carni bianche. Un vino sincero ma di carattere, capace di unire immediatezza e raffinatezza.",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 7,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Corvina igt bag in box 10L",
+          "qtaBase": 500,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 143,
+          "codiceMp": "MP-146"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
     },
     {
       "codice": "PF-061",
@@ -14373,6 +14764,35 @@
         }
       ],
       "dataCreazione": "15/9/2026"
+    },
+    {
+      "codice": "PF-071",
+      "nome": "Vino Rosso della Casa  1/4 Litro",
+      "descrizione": "Cantine di Verona Corvina igt",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 4,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Corvina igt bag in box 10L",
+          "qtaBase": 250,
+          "unit": "ml",
+          "conv": 0.001,
+          "magIdx": 143,
+          "codiceMp": "MP-146"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
     },
     {
       "codice": "PF-019",
