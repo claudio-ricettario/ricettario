@@ -2006,9 +2006,9 @@ function renderMagazzino(){
         var giacMin=m.giacenzaMin||0;
         var giacClass=giac<0?'#e53e3e':(giacMin<=0?'#555':(giac===0?'#e53e3e':giac<giacMin?'#b45309':'#2d7d46'));
 
-        out+='<div style="border-bottom:1px solid #f0ede6;">';
+        out+='<div style="border-bottom:1px solid #f0ede6;'+(isExp?'border:2px solid #c8a96e;border-radius:8px;overflow:hidden;margin:4px 0;':'')+'">';
         /* main row */
-        out+='<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:background .1s;" '
+        out+='<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:background .1s;'+(isExp?'background:#fff8f2;':'')+'" '
           +'onclick="toggleExpand('+mi+')">'
           +'<span style="font-size:13px;color:#aaa;width:16px;">&#9654;</span>'
           +statusDot
@@ -2023,7 +2023,7 @@ function renderMagazzino(){
 
         /* expanded panel */
         if(isExp){
-          out+='<div style="padding:14px 18px 18px 20px;background:#fff8f2;border-top:2px solid #c8a96e;border-left:4px solid #c8a96e;border-radius:0 0 8px 0;box-shadow:inset 0 2px 6px rgba(200,169,110,.07);">';
+          out+='<div style="padding:14px 18px 18px 20px;background:#fff8f2;border-top:1px solid #c8a96e;box-shadow:inset 0 2px 6px rgba(200,169,110,.07);">';
 
           /* categoria */
           out+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:13px;">'
