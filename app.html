@@ -9480,15 +9480,17 @@ function fcBadgeHtml(fc,isBev){
 }
 
 function npCatChange(val){
-  var bevCats=['Vino','Birre','Caffetteria','Bevande'];
+  var bevCats=['Vino della casa','Cantina','Birre','Caffetteria','Bevande','Grappe e Amari'];
   var cb=document.getElementById('np-bev');
   if(cb&&bevCats.indexOf(val)>=0)cb.checked=true;
   /* Sottocategorie dinamiche */
   var sel=document.getElementById('np-sottocat');
   if(!sel)return;
   var cur=sel.value;
-  var opts=val==='Vino'
-    ?['','Bollicine','Bianchi','Rossi','Dolce','Della casa']
+  var opts=val==='Cantina'
+    ?['','Bolle','Bianchi','Rossi','Dolci']
+    :val==='Vino della casa'
+    ?['','Bianco','Rosso','Rosato','Bollicine']
     :['','Carne','Pesce','Vegetariano','Vegano'];
   sel.innerHTML=opts.map(function(o){return '<option value="'+o+'">'+(o||'-- nessuna --')+'</option>';}).join('');
   if(opts.indexOf(cur)>=0)sel.value=cur;
