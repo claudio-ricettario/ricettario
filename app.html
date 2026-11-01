@@ -7114,9 +7114,22 @@ function togglePiattoHome(idx,e){
   var det=document.getElementById('piatto-home-detail-'+idx);
   if(!det) return;
   var isOpen=det.style.display!=='none';
-  /* chiudi tutti gli altri */
-  document.querySelectorAll('[id^="piatto-home-detail-"]').forEach(function(d){d.style.display='none';});
-  det.style.display=isOpen?'none':'block';
+  /* chiudi tutti gli altri e togli bordo */
+  document.querySelectorAll('[id^="piatto-home-detail-"]').forEach(function(d){
+    d.style.display='none';
+    var wi=d.id.replace('piatto-home-detail-','');
+    var wrap=document.getElementById('piatto-home-wrap-'+wi);
+    var row=document.getElementById('piatto-home-row-'+wi);
+    if(wrap)wrap.style.border='';
+    if(row)row.style.background='';
+  });
+  if(!isOpen){
+    det.style.display='block';
+    var wrap=document.getElementById('piatto-home-wrap-'+idx);
+    var row=document.getElementById('piatto-home-row-'+idx);
+    if(wrap){wrap.style.border='2px solid #c8a96e';wrap.style.marginBottom='6px';}
+    if(row)row.style.background='#fff8f2';
+  }
 }
 
 /* ===== FOTO RICETTA BASE ===== */
@@ -7333,8 +7346,8 @@ function homeRicettaRow(r,i){
       +'</div>';
   }
 
-  return '<div style="margin-bottom:2px;">'
-    +'<div class="home-ricetta-row" onclick="'+clickFn+'">'
+  return '<div id="piatto-home-wrap-'+(r._isPiatto?r._piattoIdx:'')+'" style="margin-bottom:2px;border-radius:8px;overflow:hidden;">'
+    +'<div class="home-ricetta-row" id="piatto-home-row-'+(r._isPiatto?r._piattoIdx:'')+'" onclick="'+clickFn+'">'
     +'<div class="home-ricetta-thumb">'+thumbHtml+'</div>'
     +'<div class="home-ricetta-info">'
     +'<div class="home-ricetta-nome">'+(r.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:6px;">'+r.codice+'</span>':'')+r.nome+(r._isPiatto&&piatti[r._piattoIdx]&&(piatti[r._piattoIdx].tags||[]).indexOf('Fuori menù')>=0?' <span style="font-size:10px;font-weight:500;background:#f1f0ee;color:#888;border:1px solid #d0cec8;border-radius:10px;padding:1px 7px;vertical-align:middle;">Fuori menù</span>':'')+'</div>'
@@ -7348,7 +7361,7 @@ function homeRicettaRow(r,i){
       +'<button class="btn-sm" onclick="event.stopPropagation();movePiatto('+r._piattoIdx+',1)" style="padding:1px 5px;font-size:9px;line-height:1.4;" title="Sposta giù">▼</button>'
       +'</div>':'')
     +'</div>'
-    +(r._isPiatto?'<div class="semi-detail" id="piatto-home-detail-'+r._piattoIdx+'" style="padding:12px 16px 14px;border-top:1px solid #f0ede6;margin-top:0;display:none;">'+detailHtml+'</div>':'')
+    +(r._isPiatto?'<div class="semi-detail" id="piatto-home-detail-'+r._piattoIdx+'" style="padding:12px 16px 14px;background:#fff8f2;border-top:1px solid #c8a96e;margin-top:0;display:none;">'+detailHtml+'</div>':'')
     +'</div>';
 }
 
