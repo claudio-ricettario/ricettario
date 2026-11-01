@@ -968,9 +968,11 @@ textarea{resize:vertical;min-height:60px;}
             <option value="Contorni">Contorni</option>
             <option value="Dolci">Dolci</option>
             <option value="Caffetteria">Caffetteria</option>
+            <option value="Grappe e Amari">Grappe e Amari</option>
             <option value="Birre">Birre</option>
-            <option value="Vino">Vino</option>
+            <option value="Vino della casa">Vino della casa</option>
             <option value="Bevande">Bevande</option>
+            <option value="Cantina">Cantina</option>
             <option value="Altro">Altro</option>
           </select>
         </div>
@@ -7489,7 +7491,7 @@ function renderRicetteSalvate(){
   }
 
   /* group by categoria */
-  var CATS=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Birre','Vino','Bevande','Altro'];
+  var CATS=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Altro'];
   var grouped={};
   filtered.forEach(function(r,origIdx){
     var cat=r.categoria||'Altro';
@@ -9924,9 +9926,11 @@ function cambiaPasswordApp(){
           <option>Antipasti</option><option>Primi piatti</option><option>Secondi piatti</option>
           <option>Contorni</option><option>Dolci</option>
           <option value="Caffetteria">&#9749; Caffetteria</option>
+          <option value="Grappe e Amari">&#129347; Grappe e Amari</option>
           <option value="Birre">&#127866; Birre</option>
-          <option value="Vino">&#127863; Vino</option>
+          <option value="Vino della casa">&#127863; Vino della casa</option>
           <option value="Bevande">&#129380; Bevande</option>
+          <option value="Cantina">&#127870; Cantina</option>
           <option>Altro</option>
         </select>
       </div>
