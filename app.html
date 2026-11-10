@@ -8732,8 +8732,21 @@ function printPiatto(idx){
 function printSemilavorato(idx){
   if(idx===undefined||idx<0||!semilavorati[idx]){alert('Salva prima il semilavorato per poterlo stampare.');return;}
   var s=semilavorati[idx];
+  var resaBase=parseFloat(s.resaQta)||1;
+  var resaUm=s.resaUm||'kg';
+  var qtaInput=prompt('Quanti '+resaUm+' vuoi produrre?\n(ricetta base: '+resaBase+' '+resaUm+')',resaBase);
+  if(qtaInput===null)return;
+  var qtaStampa=parseFloat(qtaInput)||resaBase;
+  var mult=qtaStampa/resaBase;
+
+  function fmtQS(qta,unit){
+    if(unit==='g'||unit==='ml'){var v=qta>=100?Math.round(qta/5)*5:Math.round(qta*10)/10;return v+' '+unit;}
+    if(unit==='kg'||unit==='lt')return (Math.round(qta*1000)/1000).toFixed(3).replace(/\.?0+$/,'')+' '+unit;
+    return (Math.round(qta*100)/100)+' '+unit;
+  }
+
   var righe=(s.componenti||[]).map(function(c){
-    var nome,codRif;
+    var nome,codRif,marcaRif='';
     if(c.tipo==='sl'){
       var sRif=semilavorati[resolveSemiIdx(c)];
       nome=sRif?sRif.nome:(c.nome||'?');
@@ -8742,10 +8755,10 @@ function printSemilavorato(idx){
       var m=magazzino[resolveMagIdx(c)];
       nome=m?m.nome:(c.nome||'?');
       codRif=m&&m.codice?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-right:5px;">'+m.codice+'</span>':'';
-      var marcaRif=m&&m.marca?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-left:6px;">'+m.marca+'</span>':'';
+      marcaRif=m&&m.marca?'<span style="color:#aaa;font-weight:400;font-size:11px;margin-left:6px;">'+m.marca+'</span>':'';
     }
-    var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':(c.qtaBase+' '+(c.unit||'g'));
-    return '<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+codRif+nome+(marcaRif||'')+'</td>'
+    var qFmt=(c.conv===0||c.unit==='q.b.')?'q.b.':fmtQS(c.qtaBase*mult,c.unit||'g');
+    return '<tr><td style="padding:8px 10px;border-bottom:1px solid #f0ede6;">'+codRif+nome+marcaRif+'</td>'
       +'<td style="padding:8px 10px;border-bottom:1px solid #f0ede6;text-align:right;font-weight:600;">'+qFmt+'</td></tr>';
   }).join('');
   var procHtml='';
@@ -8753,7 +8766,11 @@ function printSemilavorato(idx){
     procHtml='<h2 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#555;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid #1a1a1a;">Procedimento</h2>'
       +'<p style="font-size:13px;line-height:1.8;white-space:pre-wrap;">'+s.procedimento+'</p>';
   }
-  var subLabel=(s.codice?s.codice+' &middot; ':'')+(s.categoria||'')+(s.tempo?' &middot; '+s.tempo+' min':'');
+  var resaLabel=mult===1
+    ?'resa '+resaBase+' '+resaUm
+    :'resa <strong>'+qtaStampa+' '+resaUm+'</strong> (ricetta base ×'+Math.round(mult*100)/100+')';
+  var subLabel=(s.codice?s.codice+' &middot; ':'')+(s.categoria||'')+(s.tempo?' &middot; '+s.tempo+' min':'')
+    +' &nbsp;&middot;&nbsp; '+resaLabel;
   var printHTML='<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"/>'
     +'<meta name="viewport" content="width=device-width,initial-scale=1.0"/>'
     +'<title>'+s.nome+'</title><style>'
@@ -8768,7 +8785,7 @@ function printSemilavorato(idx){
     +'@media print{body{padding:16px;}button{display:none!important;}}'
     +'</style></head><body>'
     +'<h1>'+s.nome+'</h1>'
-    +'<p class="sub">'+subLabel+' &nbsp;&middot;&nbsp; <strong>resa '+(s.resaQta||'')+' '+(s.resaUm||'')+'</strong></p>'
+    +'<p class="sub">'+subLabel+'</p>'
     +'<table><thead><tr><th>Ingrediente</th><th style="text-align:right;">Dose</th></tr></thead>'
     +'<tbody>'+righe+'</tbody></table>'
     +procHtml
