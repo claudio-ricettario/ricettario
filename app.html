@@ -5849,7 +5849,7 @@ function scaricaQr(){
 }
 
 function pubblicaDatiPubblici(){
-  var menuData=piatti.filter(function(p){return p.nelMenu||(p.tags||[]).indexOf('Fuori menù')>=0;}).map(function(p){
+  var menuData=piatti.filter(function(p){return p.nelMenu||(p.tags||[]).indexOf('Fuori menù')>=0||p.categoria==='Perché no!';}).map(function(p){
     var allerg=calcolaAllergeniPiatto(p);
     return {
       nome:p.nome,
