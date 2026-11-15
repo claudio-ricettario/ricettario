@@ -618,6 +618,7 @@ textarea{resize:vertical;min-height:60px;}
             <option value="Vino della casa">&#127863; Vino della casa</option>
             <option value="Bevande">&#129380; Bevande</option>
             <option value="Cantina">&#127870; Cantina</option>
+            <option value="Perché no!">&#129335; Perché no!</option>
             <option>Altro</option>
           </select>
         </div>
@@ -2807,7 +2808,7 @@ function fcPopulateSelector(){
   if(!acc)return;
   var searchEl=document.getElementById('fc-piatto-search');
   var q=searchEl?searchEl.value.trim().toLowerCase():'';
-  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Altro'];
+  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Perché no!','Altro'];
   var bycat={};
   piatti.forEach(function(p,i){
     if(q&&p.nome.toLowerCase().indexOf(q)<0)return;
@@ -4379,7 +4380,7 @@ function _renderMenuModalBody(){
   document.getElementById('menu-modal-body').innerHTML=html;
 }
 
-var _SEZIONI_DEFAULT=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Altro'];
+var _SEZIONI_DEFAULT=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Perché no!','Altro'];
 function _menuAddVoce(tipo){
   var m=window._menuEdit.data;
   if(tipo==='sezione'){
@@ -7189,9 +7190,10 @@ var CAT_ICONS={
   'Vino della casa':'&#127863;',
   'Bevande':'&#129380;',
   'Cantina':'&#127870;',
+  'Perché no!':'&#129335;',
   'Altro':'&#127869;'
 };
-var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Altro'];
+var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Perché no!','Altro'];
 var homeExpanded={};   /* cat -> bool */
 var homeSubExp={};     /* cat+sub -> bool */
 
@@ -7592,7 +7594,7 @@ function renderRicetteSalvate(){
   }
 
   /* group by categoria */
-  var CATS=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Altro'];
+  var CATS=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Perché no!','Altro'];
   var grouped={};
   filtered.forEach(function(r,origIdx){
     var cat=r.categoria||'Altro';
@@ -8181,7 +8183,7 @@ function piattoContineSurgelati(p){
 }
 
 function printMenuCompleto(){
-  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Altro'];
+  var CAT_ORDER=['Antipasti','Primi piatti','Secondi piatti','Contorni','Dolci','Caffetteria','Grappe e Amari','Birre','Vino della casa','Bevande','Cantina','Altro']; // 'Perché no!' excluded from PDF intentionally
   var ALLERG_LIST=[
     ['Cereali con glutine','grano, segale, orzo, avena, farro, kamut e i loro prodotti derivati'],
     ['Crostacei','e prodotti a base di crostacei'],
@@ -8238,7 +8240,7 @@ function printMenuCompleto(){
   var PAGE3=['Dolci'];
   var PAGE4=['Cantina'];
   // categorie non assegnate a nessuna pagina → finiscono in pagina 1
-  var knownPages=PAGE1.concat(PAGE2).concat(PAGE3).concat(PAGE4);
+  var knownPages=PAGE1.concat(PAGE2).concat(PAGE3).concat(PAGE4).concat(['Perché no!']);
   cats.forEach(function(c){if(knownPages.indexOf(c)<0) PAGE1.push(c);});
 
   var p1cats=PAGE1.filter(function(c){return grouped[c]&&grouped[c].length;});
@@ -10049,6 +10051,7 @@ function cambiaPasswordApp(){
           <option value="Vino della casa">&#127863; Vino della casa</option>
           <option value="Bevande">&#129380; Bevande</option>
           <option value="Cantina">&#127870; Cantina</option>
+          <option value="Perché no!">&#129335; Perché no!</option>
           <option>Altro</option>
         </select>
       </div>
