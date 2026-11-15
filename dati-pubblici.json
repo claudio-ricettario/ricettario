@@ -1,21 +1,8 @@
 {
   "version": 1,
-  "exportDate": "1/11/2026",
+  "exportDate": "15/11/2026",
   "coperto": 2.5,
   "menuData": [
-    {
-      "nome": "Acqua Frizzante Microfiltrata",
-      "descrizione": "Caraffa da 1 litro",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Beverage vario",
-      "prezzoVendita": 2,
-      "tipoBeverage": true,
-      "surgelato": false,
-      "allergeni": [],
-      "tracce": []
-    },
     {
       "nome": "Acqua Frizzante 1Litro",
       "descrizione": "Microfiltrata",
@@ -24,19 +11,6 @@
       "pochePorzioni": false,
       "categoria": "Bevande",
       "prezzoVendita": 2.5,
-      "tipoBeverage": true,
-      "surgelato": false,
-      "allergeni": [],
-      "tracce": []
-    },
-    {
-      "nome": "Acqua Naturale Microfiltrata",
-      "descrizione": "Caraffa da 1 Litro",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Beverage vario",
-      "prezzoVendita": 2,
       "tipoBeverage": true,
       "surgelato": false,
       "allergeni": [],
@@ -54,6 +28,47 @@
       "surgelato": false,
       "allergeni": [],
       "tracce": []
+    },
+    {
+      "nome": "Amarone",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "prezzoVendita": 8,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Bigoli con le sarde di lago e aglio fermentato",
+      "descrizione": "Con sarde dell'amico chef/pescatore Becanet",
+      "notaCliente": "Piatto molto sapido non dite che non vi abbiamo avvertito",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Perché no!",
+      "prezzoVendita": 12.4,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Pesce",
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": [
+        "Soia",
+        "Senape",
+        "Arachidi"
+      ]
     },
     {
       "nome": "Birra alla Spina 0,3",
@@ -142,6 +157,25 @@
       "tracce": []
     },
     {
+      "nome": "Canederli agli spinaci Al Burro fuso",
+      "descrizione": "Con burro della Lessinia",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Primi piatti",
+      "prezzoVendita": 9.4,
+      "tipoBeverage": false,
+      "surgelato": true,
+      "allergeni": [
+        "Latte e lattosio",
+        "Uova",
+        "Glutine"
+      ],
+      "tracce": [
+        "Soia"
+      ]
+    },
+    {
       "nome": "Canederli ai Funghi e burro fuso",
       "descrizione": "Nuova proposta da provare con funghi porcini",
       "notaCliente": "",
@@ -182,6 +216,44 @@
       "allergeni": [
         "Anidride solforosa e solfiti",
         "Sedano"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Cheesecake ai Frutti di Bosco",
+      "descrizione": "Quando possiamo usiamo frutti di bosco della Lessinia",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 6.4,
+      "tipoBeverage": false,
+      "surgelato": true,
+      "allergeni": [
+        "Glutine",
+        "Latte e lattosio",
+        "Frutta a guscio",
+        "Soia",
+        "Uova"
+      ],
+      "tracce": [
+        "Senape"
+      ]
+    },
+    {
+      "nome": "Ciccolata Calda",
+      "descrizione": "Con i migliori cacao scelti da noi",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Caffetteria",
+      "prezzoVendita": 3,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Latte e lattosio"
       ],
       "tracce": []
     },
@@ -256,6 +328,40 @@
       "tracce": [
         "Senape"
       ]
+    },
+    {
+      "nome": "Custoza",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "prezzoVendita": 30,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Durello della Lessinia",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Consigliato"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "prezzoVendita": 30,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
     },
     {
       "nome": "Fanta in Lattina",
@@ -377,6 +483,23 @@
       ]
     },
     {
+      "nome": "Lugana",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "prezzoVendita": 30,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
       "nome": "Minestra di orzo",
       "descrizione": "Per scelta non mettiamo carne",
       "notaCliente": "",
@@ -416,24 +539,6 @@
       "allergeni": [
         "Sedano",
         "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Panna Cotta Vegana",
-      "descrizione": "Con caramello salato",
-      "notaCliente": "Senza Glutine, Senza Lattosio",
-      "tags": [
-        "Vegano",
-        "Novità"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Dolci",
-      "prezzoVendita": 5.9,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Soia"
       ],
       "tracce": []
     },
@@ -500,9 +605,60 @@
       "categoria": "Antipasti",
       "prezzoVendita": 8.4,
       "tipoBeverage": false,
-      "surgelato": false,
+      "surgelato": true,
       "allergeni": [
         "Sedano",
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Prosecco",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Più venduto"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "prezzoVendita": 30,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Recioto",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Consigliato"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "prezzoVendita": 30,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
+      "nome": "Ripasso",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "prezzoVendita": 30,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
         "Anidride solforosa e solfiti"
       ],
       "tracce": []
@@ -571,6 +727,52 @@
       ]
     },
     {
+      "nome": "Semifreddo all'Amaretto",
+      "descrizione": "Con Prodotti locali",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano",
+        "Più venduto",
+        "Consigliato"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "prezzoVendita": 5.9,
+      "tipoBeverage": false,
+      "surgelato": false,
+      "allergeni": [
+        "Glutine",
+        "Uova",
+        "Soia",
+        "Latte e lattosio",
+        "Frutta a guscio"
+      ],
+      "tracce": [
+        "Arachidi",
+        "Senape",
+        "Sesamo",
+        "Lupini"
+      ]
+    },
+    {
+      "nome": "Soave",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Più venduto",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "prezzoVendita": 30,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
       "nome": "Spaghetti al Ragù di funghi",
       "descrizione": "Con funghi Porcini, possibili contaminazione crociata uova",
       "notaCliente": "",
@@ -582,7 +784,7 @@
       "categoria": "Primi piatti",
       "prezzoVendita": 8.9,
       "tipoBeverage": false,
-      "surgelato": false,
+      "surgelato": true,
       "allergeni": [
         "Glutine",
         "Sedano",
@@ -635,6 +837,23 @@
       ]
     },
     {
+      "nome": "Trento Doc",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "prezzoVendita": 30,
+      "tipoBeverage": true,
+      "surgelato": false,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "tracce": []
+    },
+    {
       "nome": "Uovo in camicia, patate schiacciate e speck croccante",
       "descrizione": "Uova da galline felici, patate di montagna e speck trentino",
       "notaCliente": "",
@@ -653,15 +872,18 @@
       "tracce": []
     },
     {
-      "nome": "Vino  Rosso della Casa  1 Litro",
-      "descrizione": "Corvina Veronese igt Cantine di Verona",
+      "nome": "Valpolicella Classico",
+      "descrizione": "cantina del Lety , molto buono",
       "notaCliente": "",
       "tags": [
+        "Più venduto",
+        "Consigliato",
+        "Novità",
         "Del territorio"
       ],
       "pochePorzioni": false,
-      "categoria": "Vini",
-      "prezzoVendita": 12.5,
+      "categoria": "Cantina",
+      "prezzoVendita": 30,
       "tipoBeverage": true,
       "surgelato": false,
       "allergeni": [
@@ -670,13 +892,15 @@
       "tracce": []
     },
     {
-      "nome": "Vino Bianco della casa 1 Litro",
-      "descrizione": "Cantine Verona Garganega igt",
+      "nome": "Vino  Rosso della Casa  1 Litro",
+      "descrizione": "Corvina Veronese igt Cantine di Verona",
       "notaCliente": "",
-      "tags": [],
+      "tags": [
+        "Del territorio"
+      ],
       "pochePorzioni": false,
       "categoria": "Vino della casa",
-      "prezzoVendita": 12,
+      "prezzoVendita": 13,
       "tipoBeverage": true,
       "surgelato": false,
       "allergeni": [
@@ -692,8 +916,8 @@
         "Del territorio"
       ],
       "pochePorzioni": false,
-      "categoria": "Vini",
-      "prezzoVendita": 12.5,
+      "categoria": "Vino della casa",
+      "prezzoVendita": 13,
       "tipoBeverage": true,
       "surgelato": false,
       "allergeni": [
@@ -709,23 +933,8 @@
         "Del territorio"
       ],
       "pochePorzioni": false,
-      "categoria": "Vini",
-      "prezzoVendita": 7.5,
-      "tipoBeverage": true,
-      "surgelato": false,
-      "allergeni": [
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Vino Bianco della Casa 1/2 Litro",
-      "descrizione": "Cantine Verona Garganega igt",
-      "notaCliente": "si distingue per personalità e qualità. È un vino autentico, naturale e identitario,",
-      "tags": [],
-      "pochePorzioni": false,
       "categoria": "Vino della casa",
-      "prezzoVendita": 7,
+      "prezzoVendita": 7.5,
       "tipoBeverage": true,
       "surgelato": false,
       "allergeni": [
@@ -739,101 +948,7 @@
       "notaCliente": "",
       "tags": [],
       "pochePorzioni": false,
-      "categoria": "Vini",
-      "prezzoVendita": 4,
-      "tipoBeverage": true,
-      "surgelato": false,
-      "allergeni": [
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Vino della Casa 1/4 Litro",
-      "descrizione": "Cantine di Verona Garganega igt",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
       "categoria": "Vino della casa",
-      "prezzoVendita": 4,
-      "tipoBeverage": true,
-      "surgelato": false,
-      "allergeni": [
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Vino Rosso della Casa  1 Litro",
-      "descrizione": "Corvina IGT Cantine di Verona",
-      "notaCliente": "",
-      "tags": [
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Vino",
-      "prezzoVendita": 13,
-      "tipoBeverage": true,
-      "surgelato": false,
-      "allergeni": [
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Vino Rosso della Casa  1 Litro",
-      "descrizione": "Cantine di Verona Corvina igt",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Vino della casa",
-      "prezzoVendita": 12,
-      "tipoBeverage": false,
-      "surgelato": false,
-      "allergeni": [
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Vino Rosso della Casa  1/2 Litro",
-      "descrizione": "Corvina IGT Cantine di Verona",
-      "notaCliente": "",
-      "tags": [
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Vino",
-      "prezzoVendita": 7.5,
-      "tipoBeverage": true,
-      "surgelato": false,
-      "allergeni": [
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Vino Rosso della Casa  1/2 Litro",
-      "descrizione": "Cantine Verona Corvina igt",
-      "notaCliente": "accompagna primi piatti, salumi e carni bianche. Un vino sincero ma di carattere, capace di unire immediatezza e raffinatezza.",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Vino della casa",
-      "prezzoVendita": 7,
-      "tipoBeverage": true,
-      "surgelato": false,
-      "allergeni": [
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Vino Rosso della Casa  1/4 Litro",
-      "descrizione": "Cantine Verona",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Vino",
       "prezzoVendita": 4,
       "tipoBeverage": true,
       "surgelato": false,
@@ -849,21 +964,6 @@
       "tags": [
         "Del territorio"
       ],
-      "pochePorzioni": false,
-      "categoria": "Vini",
-      "prezzoVendita": 4,
-      "tipoBeverage": true,
-      "surgelato": false,
-      "allergeni": [
-        "Anidride solforosa e solfiti"
-      ],
-      "tracce": []
-    },
-    {
-      "nome": "Vino Rosso della Casa  1/4 Litro",
-      "descrizione": "Cantine di Verona Corvina igt",
-      "notaCliente": "",
-      "tags": [],
       "pochePorzioni": false,
       "categoria": "Vino della casa",
       "prezzoVendita": 4,
@@ -882,7 +982,7 @@
         "Del territorio"
       ],
       "pochePorzioni": false,
-      "categoria": "Vini",
+      "categoria": "Vino della casa",
       "prezzoVendita": 7.5,
       "tipoBeverage": true,
       "surgelato": false,
@@ -1642,6 +1742,43 @@
       ]
     },
     {
+      "codice": "MP-214",
+      "nome": "Frutti di bosco gelo",
+      "marca": "Asiago Food",
+      "categoria": "Frutta",
+      "um": "kg",
+      "iva": 22,
+      "surgelato": true,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 37,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 6.6,
+        "zuccheri": 6.6,
+        "fibre": 2.8,
+        "proteine": 1,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 6.15,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-142",
       "nome": "Limoni",
       "categoria": "Frutta",
@@ -1894,6 +2031,46 @@
         }
       ],
       "marca": "Wiberg"
+    },
+    {
+      "codice": "MP-216",
+      "nome": "Aglio nero in Polvere",
+      "marca": "Lucrum",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 10,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [],
+      "allergeniOk": true,
+      "tracce": [
+        "Arachidi",
+        "Anidride solforosa e solfiti"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 332,
+        "grassi": 0.6,
+        "grassiSaturi": 0,
+        "carboidrati": 55,
+        "zuccheri": 39,
+        "fibre": 9.2,
+        "proteine": 22,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 142.5,
+          "storico": []
+        }
+      ]
     },
     {
       "codice": "MP-117",
@@ -2195,6 +2372,49 @@
         }
       ],
       "marca": "Wiberg"
+    },
+    {
+      "codice": "MP-217",
+      "nome": "Bigoli di Pasta Fresca",
+      "marca": "Pinton",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 4,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Glutine",
+        "Uova"
+      ],
+      "allergeniOk": true,
+      "tracce": [
+        "Soia",
+        "Senape"
+      ],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 290,
+        "grassi": 3.8,
+        "grassiSaturi": 1.2,
+        "carboidrati": 52.5,
+        "zuccheri": 1.3,
+        "fibre": 2.9,
+        "proteine": 10,
+        "sale": 0.07
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 4.8,
+          "storico": []
+        }
+      ]
     },
     {
       "codice": "MP-169",
@@ -4011,6 +4231,45 @@
       "marca": "Wiberg"
     },
     {
+      "codice": "MP-213",
+      "nome": "Pasta di Mandorle",
+      "marca": "Gocce di Sicilia",
+      "categoria": "Generale",
+      "um": "kg",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Frutta a guscio"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 440.8,
+        "grassi": 14.3,
+        "grassiSaturi": 1.1,
+        "carboidrati": 78.1,
+        "zuccheri": 75.9,
+        "fibre": 0,
+        "proteine": 4.4,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 24.6,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-094",
       "nome": "Pasta Per Lasagne Koch (10 fogli x 2 kg) gn",
       "categoria": "Generale",
@@ -5496,6 +5755,45 @@
       ]
     },
     {
+      "codice": "MP-215",
+      "nome": "Sarde di Lago in Olio EVO",
+      "marca": "del Becanet",
+      "categoria": "Pesce e frutti di mare",
+      "um": "kg",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Pesce"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 191,
+        "grassi": 10,
+        "grassiSaturi": 2.2,
+        "carboidrati": 0.6,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 24,
+        "sale": 16
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 28.68,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-121",
       "nome": "Pancetta arrotolata",
       "categoria": "Salumi",
@@ -5880,7 +6178,8 @@
           "prezzoKg": 2.4,
           "storico": []
         }
-      ]
+      ],
+      "surgelato": true
     },
     {
       "codice": "MP-067",
@@ -6163,10 +6462,11 @@
       "suppliers": [
         {
           "nome": "Supermercato / Generico",
-          "prezzoKg": 2.9,
+          "prezzoKg": 3,
           "storico": []
         }
-      ]
+      ],
+      "surgelato": true
     },
     {
       "codice": "MP-188",
@@ -6199,6 +6499,45 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 1.25,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-211",
+      "nome": "Amarone",
+      "marca": "Claudio Pedotti",
+      "categoria": "Vini",
+      "um": "pz",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
           "storico": []
         }
       ]
@@ -6241,6 +6580,84 @@
       ]
     },
     {
+      "codice": "MP-206",
+      "nome": "Custoza",
+      "marca": "Claudio Pedotti",
+      "categoria": "Vini",
+      "um": "pz",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-203",
+      "nome": "Durello della Lessinia",
+      "marca": "Claudio Pedotti",
+      "categoria": "Vini",
+      "um": "pz",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
+          "storico": []
+        }
+      ]
+    },
+    {
       "codice": "MP-147",
       "nome": "Garganega igt Bag in Box",
       "categoria": "Vini",
@@ -6273,6 +6690,279 @@
         {
           "nome": "Supermercato / Generico",
           "prezzoKg": 3.2787,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-208",
+      "nome": "Lugana",
+      "marca": "Claudio Pedotti",
+      "categoria": "Vini",
+      "um": "pz",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-204",
+      "nome": "Prosecco",
+      "marca": "Claudio Pedotti",
+      "categoria": "Vini",
+      "um": "pz",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-212",
+      "nome": "Recioto",
+      "marca": "Claudio Pedotti",
+      "categoria": "Vini",
+      "um": "pz",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-210",
+      "nome": "Ripasso",
+      "marca": "Claudio Pedotti",
+      "categoria": "Vini",
+      "um": "pz",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-207",
+      "nome": "Soave",
+      "marca": "Claudio Pedotti",
+      "categoria": "Vini",
+      "um": "pz",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-205",
+      "nome": "Trento Doc",
+      "marca": "Claudio Pedotti",
+      "categoria": "Vini",
+      "um": "pz",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
+          "storico": []
+        }
+      ]
+    },
+    {
+      "codice": "MP-209",
+      "nome": "Valpolicella",
+      "marca": "Claudio Pedotti",
+      "categoria": "Vini",
+      "um": "pz",
+      "iva": 22,
+      "surgelato": false,
+      "scarto": 0,
+      "resa": 100,
+      "activeIdx": 0,
+      "allergeni": [
+        "Anidride solforosa e solfiti"
+      ],
+      "allergeniOk": true,
+      "tracce": [],
+      "tracceOk": true,
+      "nutrizionali": {
+        "energia": 0,
+        "grassi": 0,
+        "grassiSaturi": 0,
+        "carboidrati": 0,
+        "zuccheri": 0,
+        "fibre": 0,
+        "proteine": 0,
+        "sale": 0
+      },
+      "nutrizionaliOk": true,
+      "giacenza": 0,
+      "giacenzaMin": 0,
+      "lotti": [],
+      "suppliers": [
+        {
+          "nome": "Supermercato / Generico",
+          "prezzoKg": 8,
           "storico": []
         }
       ]
@@ -7426,6 +8116,49 @@
       "dataCreazione": "14/10/2026"
     },
     {
+      "codice": "SL-077",
+      "nome": "Coulis ai frutti di bosco",
+      "categoria": "Dolci e creme",
+      "resaQta": 820,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "Scongelare i frutti in frigo a <4°C. Cuocere tutti gli ingredienti a fuoco medio per 8-10 minuti mescolando. Frullare e passare al colino fine. Abbattere rapidamente.\n\nPer versione gelatinata: sciogliere 50g di massa gelatina ogni 800gr di coulis caldo sopra i 60°C, mescolare bene e versare immediatamente.",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 21,
+          "codiceMp": "MP-214",
+          "nome": "Frutti di bosco gelo",
+          "qtaBase": 1000,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 114,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 133,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 22,
+          "codiceMp": "MP-142",
+          "nome": "Limoni",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "3/11/2026"
+    },
+    {
       "codice": "SL-047",
       "nome": "Crauti Ripassati",
       "categoria": "Verdure lavorate",
@@ -8430,7 +9163,7 @@
     },
     {
       "codice": "SL-044",
-      "nome": "Fondo di biscotti per  cheescake",
+      "nome": "Fondo di biscotti per  cheescake cotta",
       "categoria": "Dolci e creme",
       "resaQta": 1000,
       "resaUm": "g",
@@ -8461,6 +9194,58 @@
         }
       ],
       "dataCreazione": "1/10/2026"
+    },
+    {
+      "codice": "SL-075",
+      "nome": "Fondo di biscotti per cheesecake",
+      "categoria": "Dolci e creme",
+      "resaQta": 1500,
+      "resaUm": "g",
+      "tempo": "10",
+      "procedimento": "-Macinare i biscotti con la foglia\n-aggiungere la pasta di mandorle a pezzi\n- impastare per 8 minuti a bassa velocità\n-aggiungere burro e cioccolato sciolti nel microonde\n-impastare alcuni minuti e usare a piacere",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 36,
+          "codiceMp": "MP-169",
+          "nome": "Biscotti Digestive",
+          "qtaBase": 568,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 114,
+          "codiceMp": "MP-095",
+          "nome": "Burro da Kg",
+          "qtaBase": 212,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 85,
+          "codiceMp": "MP-213",
+          "nome": "Pasta di Mandorle",
+          "qtaBase": 568,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 44,
+          "codiceMp": "MP-179",
+          "nome": "Cioccolato Bianco",
+          "qtaBase": 152,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "3/11/2026"
     },
     {
       "codice": "SL-011",
@@ -8889,6 +9674,67 @@
         }
       ],
       "dataCreazione": "21/9/2026"
+    },
+    {
+      "codice": "SL-076",
+      "nome": "Mousse per cheesecake",
+      "categoria": "Dolci e creme",
+      "resaQta": 1050,
+      "resaUm": "g",
+      "tempo": "15",
+      "procedimento": "- Montare panna, formaggio e zucchero\n- Sciogliere la massa gelatina ed aggiungerla ad una piccola parte di composto montato, scalda leggermente\n- unire a tutta la massa montata e aggiungere la Meringa\n- usare a piacere facendo rassodare in frigo",
+      "coefficiente": 2,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 118,
+          "codiceMp": "MP-170",
+          "nome": "Formaggio Spalmabile",
+          "qtaBase": 416,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 123,
+          "codiceMp": "MP-101",
+          "nome": "Panna Fresca",
+          "qtaBase": 424,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 113,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 59,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 34,
+          "codiceSl": "SL-072",
+          "nome": "Massa Gelatina",
+          "qtaBase": 66,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "sl",
+          "semiIdx": 36,
+          "codiceSl": "SL-028",
+          "nome": "Meringa all'italiana",
+          "qtaBase": 89,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "3/11/2026"
     },
     {
       "codice": "SL-060",
@@ -9849,6 +10695,58 @@
       "dataCreazione": "21/6/2026"
     },
     {
+      "codice": "SL-078",
+      "nome": "Premix per Cioccolata calda",
+      "categoria": "Dolci e creme",
+      "resaQta": 2000,
+      "resaUm": "g",
+      "tempo": "5",
+      "procedimento": "Mescolare tutti gli ingredienti in planetaria con foglia per 5 minuti, usare 30 gr circa con 250 ml di latte.",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 39,
+          "codiceMp": "MP-138",
+          "nome": "Cacao Amaro",
+          "qtaBase": 635,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 114,
+          "codiceMp": "MP-106",
+          "nome": "Zucchero Semolato da Kg",
+          "qtaBase": 952,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 58,
+          "codiceMp": "MP-098",
+          "nome": "Fecola di Patate",
+          "qtaBase": 254,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 68,
+          "codiceMp": "MP-116",
+          "nome": "Maizena",
+          "qtaBase": 159,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "11/11/2026"
+    },
+    {
       "codice": "SL-006",
       "nome": "Ragù di carne",
       "categoria": "Salse e sughi",
@@ -10512,6 +11410,58 @@
         }
       ],
       "dataCreazione": "5/10/2026"
+    },
+    {
+      "codice": "SL-079",
+      "nome": "Salsa sarde di lago e aglio nero",
+      "categoria": "Salse e sughi",
+      "resaQta": 220,
+      "resaUm": "g",
+      "tempo": "",
+      "procedimento": "Scalda l'olio, metti i filetti di sarde e fai appassire, sfuma con il vino bianco. quando il vino è evaporato aggiungi l'aglio nero e un mestolino di acqua. Fai ridurre leggermente. Abbatti  e conserva in frigo. Circa 25/30 gr a persona con 120 gr di bigoli o 100 di spaghetti",
+      "coefficiente": 1,
+      "shelfLifeFrigo": 3,
+      "shelfLifeSottovuoto": 7,
+      "shelfLifeCongelato": 90,
+      "componenti": [
+        {
+          "tipo": "mp",
+          "magIdx": 129,
+          "codiceMp": "MP-215",
+          "nome": "Sarde di Lago in Olio EVO",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 78,
+          "codiceMp": "MP-064",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 50,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 29,
+          "codiceMp": "MP-216",
+          "nome": "Aglio nero in Polvere",
+          "qtaBase": 10,
+          "unit": "g",
+          "conv": 0.001
+        },
+        {
+          "tipo": "mp",
+          "magIdx": 112,
+          "codiceMp": "MP-071",
+          "nome": "Vino Rosso/Bianco Cucina",
+          "qtaBase": 100,
+          "unit": "g",
+          "conv": 0.001
+        }
+      ],
+      "dataCreazione": "15/11/2026"
     },
     {
       "codice": "SL-048",
@@ -11841,35 +12791,6 @@
   ],
   "piatti": [
     {
-      "codice": "PF-057",
-      "nome": "Acqua Frizzante Microfiltrata",
-      "descrizione": "Caraffa da 1 litro",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Beverage vario",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 2,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Acqua",
-          "qtaBase": 1,
-          "unit": "lt",
-          "conv": 1,
-          "magIdx": 24,
-          "codiceMp": "MP-096"
-        }
-      ],
-      "dataCreazione": "21/10/2026"
-    },
-    {
       "codice": "PF-059",
       "nome": "Acqua Frizzante 1Litro",
       "descrizione": "Microfiltrata",
@@ -11880,35 +12801,6 @@
       "sottocategoria": "",
       "pax": 1,
       "prezzoVendita": 2.5,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Acqua",
-          "qtaBase": 1,
-          "unit": "lt",
-          "conv": 1,
-          "magIdx": 24,
-          "codiceMp": "MP-096"
-        }
-      ],
-      "dataCreazione": "21/10/2026"
-    },
-    {
-      "codice": "PF-058",
-      "nome": "Acqua Naturale Microfiltrata",
-      "descrizione": "Caraffa da 1 Litro",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Beverage vario",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 2,
       "coefficiente": 1,
       "nelMenu": true,
       "tipoBeverage": true,
@@ -11955,6 +12847,106 @@
         }
       ],
       "dataCreazione": "21/10/2026"
+    },
+    {
+      "codice": "PF-085",
+      "nome": "Amarone",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "sottocategoria": "Rossi",
+      "pax": 1,
+      "prezzoVendita": 8,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Amarone",
+          "qtaBase": 1,
+          "unit": "pz",
+          "conv": 1,
+          "magIdx": 145,
+          "codiceMp": "MP-211"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
+    },
+    {
+      "codice": "PF-089",
+      "nome": "Bigoli con le sarde di lago e aglio fermentato",
+      "descrizione": "Con sarde dell'amico chef/pescatore Becanet",
+      "notaCliente": "Piatto molto sapido non dite che non vi abbiamo avvertito",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Perché no!",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 12.4,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "Prepara in anticipo il pane tostato o in padella o in forno con un goccio d'olio EVO.\nCuoci 120 gr di bigoli e saltali in padella con 30 gr di salsa. cospargi di cubetti di pane tostati e prezzemolo."
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Bigoli di Pasta Fresca",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 38,
+          "codiceMp": "MP-217"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Salsa sarde di lago e aglio nero",
+          "qtaBase": 30,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 61,
+          "codiceSl": "SL-079"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Pane a cubetti Bianco",
+          "qtaBase": 20,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 81,
+          "codiceMp": "MP-054"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Olio extra vergine d'oliva",
+          "qtaBase": 5,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 78,
+          "codiceMp": "MP-064"
+        },
+        {
+          "tipo": "mp",
+          "nome": "Prezzemolo liofilizzato",
+          "qtaBase": 1,
+          "unit": "g",
+          "conv": 0.001,
+          "magIdx": 96,
+          "codiceMp": "MP-115"
+        }
+      ],
+      "dataCreazione": "15/11/2026"
     },
     {
       "codice": "PF-053",
@@ -12210,7 +13202,7 @@
       "pax": 4,
       "prezzoVendita": 9.4,
       "coefficiente": 3,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -12397,6 +13389,55 @@
       "dataCreazione": "12/10/2026"
     },
     {
+      "codice": "PF-087",
+      "nome": "Cheesecake ai Frutti di Bosco",
+      "descrizione": "Quando possiamo usiamo frutti di bosco della Lessinia",
+      "notaCliente": "",
+      "tags": [],
+      "pochePorzioni": false,
+      "categoria": "Dolci",
+      "sottocategoria": "",
+      "pax": 1,
+      "prezzoVendita": 6.4,
+      "coefficiente": 2,
+      "nelMenu": true,
+      "tipoBeverage": false,
+      "foto": "",
+      "steps": [
+        "-usare un vesetto per monoporzione\n- metti sul fondo i biscotto, sopra la mousse e prima di servire il coulis o i frutti a piacere"
+      ],
+      "componenti": [
+        {
+          "tipo": "sl",
+          "nome": "Fondo di biscotti per cheesecake",
+          "qtaBase": 45,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 30,
+          "codiceSl": "SL-075"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Mousse per cheesecake",
+          "qtaBase": 130,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 39,
+          "codiceSl": "SL-076"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Coulis ai frutti di bosco",
+          "qtaBase": 35,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 15,
+          "codiceSl": "SL-077"
+        }
+      ],
+      "dataCreazione": "3/11/2026"
+    },
+    {
       "codice": "PF-033",
       "nome": "CheeseCake cotta",
       "descrizione": "Con ricotta della Lessinia",
@@ -12430,6 +13471,48 @@
         }
       ],
       "dataCreazione": "2/10/2026"
+    },
+    {
+      "codice": "PF-088",
+      "nome": "Ciccolata Calda",
+      "descrizione": "Con i migliori cacao scelti da noi",
+      "notaCliente": "",
+      "tags": [
+        "Vegetariano"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Caffetteria",
+      "sottocategoria": "",
+      "pax": 4,
+      "prezzoVendita": 3,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [
+        "fai la ciccolata classica"
+      ],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Latte Intero UHT",
+          "qtaBase": 1,
+          "unit": "lt",
+          "conv": 1,
+          "magIdx": 121,
+          "codiceMp": "MP-062"
+        },
+        {
+          "tipo": "sl",
+          "nome": "Premix per Cioccolata calda",
+          "qtaBase": 120,
+          "unit": "g",
+          "conv": 0.001,
+          "semiIdx": 54,
+          "codiceSl": "SL-078"
+        }
+      ],
+      "dataCreazione": "12/11/2026"
     },
     {
       "codice": "PF-075",
@@ -12621,6 +13704,68 @@
         }
       ],
       "dataCreazione": "5/10/2026"
+    },
+    {
+      "codice": "PF-080",
+      "nome": "Custoza",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "sottocategoria": "Bianchi",
+      "pax": 1,
+      "prezzoVendita": 30,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Custoza",
+          "qtaBase": 1,
+          "unit": "pz",
+          "conv": 1,
+          "magIdx": 147,
+          "codiceMp": "MP-206"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
+    },
+    {
+      "codice": "PF-077",
+      "nome": "Durello della Lessinia",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Consigliato"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "sottocategoria": "Bolle",
+      "pax": 1,
+      "prezzoVendita": 30,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Durello della Lessinia",
+          "qtaBase": 1,
+          "unit": "pz",
+          "conv": 1,
+          "magIdx": 148,
+          "codiceMp": "MP-203"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
     },
     {
       "codice": "PF-043",
@@ -13017,6 +14162,37 @@
       "dataCreazione": "27/10/2026"
     },
     {
+      "codice": "PF-082",
+      "nome": "Lugana",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "sottocategoria": "Bianchi",
+      "pax": 1,
+      "prezzoVendita": 30,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Lugana",
+          "qtaBase": 1,
+          "unit": "pz",
+          "conv": 1,
+          "magIdx": 150,
+          "codiceMp": "MP-208"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
+    },
+    {
       "codice": "PF-013",
       "nome": "Maccheroni al ragù di cortile",
       "descrizione": "Con la ricetta della nonna",
@@ -13301,7 +14477,7 @@
       "pax": 6,
       "prezzoVendita": 5.9,
       "coefficiente": 2,
-      "nelMenu": true,
+      "nelMenu": false,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13571,6 +14747,99 @@
         }
       ],
       "dataCreazione": "5/10/2026"
+    },
+    {
+      "codice": "PF-078",
+      "nome": "Prosecco",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Più venduto"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "sottocategoria": "Bolle",
+      "pax": 1,
+      "prezzoVendita": 30,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Prosecco",
+          "qtaBase": 1,
+          "unit": "pz",
+          "conv": 1,
+          "magIdx": 151,
+          "codiceMp": "MP-204"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
+    },
+    {
+      "codice": "PF-086",
+      "nome": "Recioto",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Consigliato"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "sottocategoria": "Dolci",
+      "pax": 1,
+      "prezzoVendita": 30,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Recioto",
+          "qtaBase": 1,
+          "unit": "pz",
+          "conv": 1,
+          "magIdx": 152,
+          "codiceMp": "MP-212"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
+    },
+    {
+      "codice": "PF-084",
+      "nome": "Ripasso",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "sottocategoria": "Rossi",
+      "pax": 1,
+      "prezzoVendita": 30,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Ripasso",
+          "qtaBase": 1,
+          "unit": "pz",
+          "conv": 1,
+          "magIdx": 153,
+          "codiceMp": "MP-210"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
     },
     {
       "codice": "PF-046",
@@ -13848,7 +15117,7 @@
       "pax": 1,
       "prezzoVendita": 5.9,
       "coefficiente": 3,
-      "nelMenu": false,
+      "nelMenu": true,
       "tipoBeverage": false,
       "foto": "",
       "steps": [
@@ -13875,6 +15144,38 @@
         }
       ],
       "dataCreazione": "13/9/2026"
+    },
+    {
+      "codice": "PF-081",
+      "nome": "Soave",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Più venduto",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "sottocategoria": "Bianchi",
+      "pax": 1,
+      "prezzoVendita": 30,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Soave",
+          "qtaBase": 1,
+          "unit": "pz",
+          "conv": 1,
+          "magIdx": 154,
+          "codiceMp": "MP-207"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
     },
     {
       "codice": "PF-027",
@@ -14294,6 +15595,37 @@
       "dataCreazione": "8/10/2026"
     },
     {
+      "codice": "PF-079",
+      "nome": "Trento Doc",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Novità"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "sottocategoria": "Bolle",
+      "pax": 1,
+      "prezzoVendita": 30,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Trento Doc",
+          "qtaBase": 1,
+          "unit": "pz",
+          "conv": 1,
+          "magIdx": 155,
+          "codiceMp": "MP-205"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
+    },
+    {
       "codice": "PF-012",
       "nome": "Uovo in camicia, patate schiacciate e speck croccante",
       "descrizione": "Uova da galline felici, patate di montagna e speck trentino",
@@ -14382,17 +15714,52 @@
       "dataCreazione": "8/9/2026"
     },
     {
+      "codice": "PF-083",
+      "nome": "Valpolicella Classico",
+      "descrizione": "cantina del Lety , molto buono",
+      "notaCliente": "",
+      "tags": [
+        "Più venduto",
+        "Consigliato",
+        "Novità",
+        "Del territorio"
+      ],
+      "pochePorzioni": false,
+      "categoria": "Cantina",
+      "sottocategoria": "Rossi",
+      "pax": 1,
+      "prezzoVendita": 30,
+      "coefficiente": 1,
+      "nelMenu": true,
+      "tipoBeverage": true,
+      "foto": "",
+      "steps": [],
+      "componenti": [
+        {
+          "tipo": "mp",
+          "nome": "Valpolicella",
+          "qtaBase": 1,
+          "unit": "pz",
+          "conv": 1,
+          "magIdx": 156,
+          "codiceMp": "MP-209"
+        }
+      ],
+      "dataCreazione": "1/11/2026"
+    },
+    {
       "codice": "PF-018",
       "nome": "Vino  Rosso della Casa  1 Litro",
       "descrizione": "Corvina Veronese igt Cantine di Verona",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
       "pochePorzioni": false,
-      "categoria": "Vini",
-      "sottocategoria": "Della casa",
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 12.5,
+      "prezzoVendita": 13,
       "coefficiente": 1,
       "nelMenu": true,
       "tipoBeverage": true,
@@ -14412,46 +15779,18 @@
       "dataCreazione": "15/9/2026"
     },
     {
-      "codice": "PF-072",
-      "nome": "Vino Bianco della casa 1 Litro",
-      "descrizione": "Cantine Verona Garganega igt",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Vino della casa",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 12,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Garganega igt Bag in Box",
-          "qtaBase": 1,
-          "unit": "lt",
-          "conv": 1,
-          "magIdx": 144,
-          "codiceMp": "MP-147"
-        }
-      ],
-      "dataCreazione": "1/11/2026"
-    },
-    {
       "codice": "PF-021",
       "nome": "Vino Bianco della Casa 1 Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
       "pochePorzioni": false,
-      "categoria": "Vini",
-      "sottocategoria": "Della casa",
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
       "pax": 1,
-      "prezzoVendita": 12.5,
+      "prezzoVendita": 13,
       "coefficiente": 1,
       "nelMenu": true,
       "tipoBeverage": true,
@@ -14474,12 +15813,13 @@
       "codice": "PF-022",
       "nome": "Vino Bianco della Casa 1/2 Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
       "pochePorzioni": false,
-      "categoria": "Vini",
-      "sottocategoria": "Della casa",
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
       "pax": 1,
       "prezzoVendita": 7.5,
       "coefficiente": 1,
@@ -14499,44 +15839,16 @@
         }
       ],
       "dataCreazione": "15/9/2026"
-    },
-    {
-      "codice": "PF-073",
-      "nome": "Vino Bianco della Casa 1/2 Litro",
-      "descrizione": "Cantine Verona Garganega igt",
-      "notaCliente": "si distingue per personalità e qualità. È un vino autentico, naturale e identitario,",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Vino della casa",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 7,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Garganega igt Bag in Box",
-          "qtaBase": 500,
-          "unit": "ml",
-          "conv": 0.001,
-          "magIdx": 144,
-          "codiceMp": "MP-147"
-        }
-      ],
-      "dataCreazione": "1/11/2026"
     },
     {
       "codice": "PF-023",
       "nome": "Vino Bianco della Casa 1/4 di Litro",
       "descrizione": "Garganega IGT Cantine di Verona",
+      "notaCliente": "",
       "tags": [],
       "pochePorzioni": false,
-      "categoria": "Vini",
-      "sottocategoria": "Della casa",
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
       "pax": 1,
       "prezzoVendita": 4,
       "coefficiente": 1,
@@ -14558,193 +15870,16 @@
       "dataCreazione": "15/9/2026"
     },
     {
-      "codice": "PF-074",
-      "nome": "Vino della Casa 1/4 Litro",
-      "descrizione": "Cantine di Verona Garganega igt",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Vino della casa",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 4,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Garganega igt Bag in Box",
-          "qtaBase": 250,
-          "unit": "ml",
-          "conv": 0.001,
-          "magIdx": 144,
-          "codiceMp": "MP-147"
-        }
-      ],
-      "dataCreazione": "1/11/2026"
-    },
-    {
-      "codice": "PF-063",
-      "nome": "Vino Rosso della Casa  1 Litro",
-      "descrizione": "Corvina IGT Cantine di Verona",
-      "notaCliente": "",
-      "tags": [
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Vino",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 13,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Corvina igt bag in box 10L",
-          "qtaBase": 1,
-          "unit": "lt",
-          "conv": 1,
-          "magIdx": 140,
-          "codiceMp": "MP-146"
-        }
-      ],
-      "dataCreazione": "21/10/2026"
-    },
-    {
-      "codice": "PF-069",
-      "nome": "Vino Rosso della Casa  1 Litro",
-      "descrizione": "Cantine di Verona Corvina igt",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Vino della casa",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 12,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": false,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Corvina igt bag in box 10L",
-          "qtaBase": 1,
-          "unit": "lt",
-          "conv": 1,
-          "magIdx": 143,
-          "codiceMp": "MP-146"
-        }
-      ],
-      "dataCreazione": "1/11/2026"
-    },
-    {
-      "codice": "PF-062",
-      "nome": "Vino Rosso della Casa  1/2 Litro",
-      "descrizione": "Corvina IGT Cantine di Verona",
-      "notaCliente": "",
-      "tags": [
-        "Del territorio"
-      ],
-      "pochePorzioni": false,
-      "categoria": "Vino",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 7.5,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Corvina igt bag in box 10L",
-          "qtaBase": 500,
-          "unit": "ml",
-          "conv": 0.001,
-          "magIdx": 140,
-          "codiceMp": "MP-146"
-        }
-      ],
-      "dataCreazione": "21/10/2026"
-    },
-    {
-      "codice": "PF-070",
-      "nome": "Vino Rosso della Casa  1/2 Litro",
-      "descrizione": "Cantine Verona Corvina igt",
-      "notaCliente": "accompagna primi piatti, salumi e carni bianche. Un vino sincero ma di carattere, capace di unire immediatezza e raffinatezza.",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Vino della casa",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 7,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Corvina igt bag in box 10L",
-          "qtaBase": 500,
-          "unit": "ml",
-          "conv": 0.001,
-          "magIdx": 143,
-          "codiceMp": "MP-146"
-        }
-      ],
-      "dataCreazione": "1/11/2026"
-    },
-    {
-      "codice": "PF-061",
-      "nome": "Vino Rosso della Casa  1/4 Litro",
-      "descrizione": "Cantine Verona",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Vino",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 4,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Corvina igt bag in box 10L",
-          "qtaBase": 250,
-          "unit": "ml",
-          "conv": 0.001,
-          "magIdx": 140,
-          "codiceMp": "MP-146"
-        }
-      ],
-      "dataCreazione": "21/10/2026"
-    },
-    {
       "codice": "PF-020",
       "nome": "Vino Rosso della Casa  1/4 Litro",
       "descrizione": "Corvina IGT Cantine di Verona",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
       "pochePorzioni": false,
-      "categoria": "Vini",
-      "sottocategoria": "Della casa",
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
       "pax": 1,
       "prezzoVendita": 4,
       "coefficiente": 1,
@@ -14766,44 +15901,16 @@
       "dataCreazione": "15/9/2026"
     },
     {
-      "codice": "PF-071",
-      "nome": "Vino Rosso della Casa  1/4 Litro",
-      "descrizione": "Cantine di Verona Corvina igt",
-      "notaCliente": "",
-      "tags": [],
-      "pochePorzioni": false,
-      "categoria": "Vino della casa",
-      "sottocategoria": "",
-      "pax": 1,
-      "prezzoVendita": 4,
-      "coefficiente": 1,
-      "nelMenu": true,
-      "tipoBeverage": true,
-      "foto": "",
-      "steps": [],
-      "componenti": [
-        {
-          "tipo": "mp",
-          "nome": "Corvina igt bag in box 10L",
-          "qtaBase": 250,
-          "unit": "ml",
-          "conv": 0.001,
-          "magIdx": 143,
-          "codiceMp": "MP-146"
-        }
-      ],
-      "dataCreazione": "1/11/2026"
-    },
-    {
       "codice": "PF-019",
       "nome": "Vino Rosso della Casa 1/2 Litro",
       "descrizione": "Corvina Veronese igt Cantine di verona",
+      "notaCliente": "",
       "tags": [
         "Del territorio"
       ],
       "pochePorzioni": false,
-      "categoria": "Vini",
-      "sottocategoria": "Della casa",
+      "categoria": "Vino della casa",
+      "sottocategoria": "",
       "pax": 1,
       "prezzoVendita": 7.5,
       "coefficiente": 1,
