@@ -173,7 +173,6 @@ function escHtml(s){
 }
 
 function showCategories(){
-  window.scrollTo({top:0,behavior:'smooth'});
   document.getElementById('back-bar').style.display='none';
   document.getElementById('header-sub').textContent='Il nostro menu';
 
@@ -276,6 +275,10 @@ function showCategories(){
   }
 
   document.getElementById('content').innerHTML=html;
+  // scroll in cima DOPO aver aggiornato il DOM (fix iOS)
+  window.scrollTo(0,0);
+  document.body.scrollTop=0;
+  document.documentElement.scrollTop=0;
 }
 
 var TAG_PRIORITY={'Consigliato':0,'Più venduto':1};
@@ -290,7 +293,6 @@ function tagPriority(p){
 function showCategory(catEnc){
   var cat=decodeURIComponent(catEnc);
   var piatti=(_grouped[cat]||[]).filter(function(p){return (p.tags||[]).indexOf('Fuori menù')<0;}).slice().sort(function(a,b){return tagPriority(a)-tagPriority(b);});
-  window.scrollTo({top:0,behavior:'smooth'});
 
   var backBar=document.getElementById('back-bar');
   backBar.style.display='flex';
@@ -333,6 +335,10 @@ function showCategory(catEnc){
   }
   html+='</div>';
   document.getElementById('content').innerHTML=html;
+  // scroll in cima DOPO aver aggiornato il DOM (fix iOS)
+  window.scrollTo(0,0);
+  document.body.scrollTop=0;
+  document.documentElement.scrollTop=0;
 }
 
 var _menuCoperto=2.00;
