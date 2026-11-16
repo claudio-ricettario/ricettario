@@ -275,6 +275,7 @@ function showCategories(){
   }
 
   document.getElementById('content').innerHTML=html;
+  document.querySelector('.allerg-section').style.display='';
   // scroll in cima DOPO aver aggiornato il DOM (fix iOS)
   window.scrollTo(0,0);
   document.body.scrollTop=0;
@@ -335,6 +336,7 @@ function showCategory(catEnc){
   }
   html+='</div>';
   document.getElementById('content').innerHTML=html;
+  document.querySelector('.allerg-section').style.display='none';
   // scroll in cima DOPO aver aggiornato il DOM (fix iOS)
   window.scrollTo(0,0);
   document.body.scrollTop=0;
