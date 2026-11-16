@@ -199,8 +199,8 @@ function showCategories(){
     (pn.allergeni||[]).forEach(function(a){pnBadges+='<span class="allerg-badge">'+escHtml(a)+'</span>';});
     var pnTags=(pn.tags||[]).filter(function(t){return TAG_MAP[t];});
     var pnGF=!(pn.allergeni||[]).includes('Glutine')&&!(pn.tracce||[]).includes('Glutine');
-    html+='<div class="fuori-menu-card">';
-    html+='<div class="fuori-menu-header"><span class="fuori-menu-title">🤷 Perché no!</span><span class="fuori-menu-badge">Fuori tema</span></div>';
+    html+='<div class="fuori-menu-card" style="background:linear-gradient(135deg,#fdf3e3 0%,#faebd0 100%);border-color:#c8a96e;">';
+    html+='<div class="fuori-menu-header" style="border-bottom-color:#e8d5b0;"><span class="fuori-menu-title">🤷 Perché no!</span><span class="fuori-menu-badge">Fuori tema</span></div>';
     html+='<div class="fuori-menu-item">';
     html+='<div class="fuori-menu-nome">'+escHtml(pn.nome)+'</div>';
     if(pnTags.length||pnGF){
